@@ -1,0 +1,244 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-12 09.08.12 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=70;
+    TAXLABELS
+    		'Athyrium atkinsonii'
+		'Athyrium otophorum'
+		'Athyrium filix-femina'
+		'Cornopteris opaca'
+		'Athyrium niponicum'
+		'Athyrium skinneri'
+		'Diplazium wichurae'
+		'Diplazium proliferum'
+		'Diplazium squamigerum'
+		'Diplazium bombonasae'
+		'Diplazium dilatatum'
+		'Deparia petersenii subsp petersenii var petersenii'
+		'Deparia petersenii subsp petersenii var yakusimensis'
+		'Deparia japonica'
+		'Deparia dimorphophylla'
+		'Deparia biserialis'
+		'Deparia lobato-crenata'
+		'Deparia confluens'
+		'Deparia tenuifolia'
+		'Deparia petersenii subsp deflexa'
+		'Deparia longipes'
+		'Deparia pseudoconilii'
+		'Deparia timetensis'
+		'Deparia kiusiana'
+		'Deparia conilii'
+		'Deparia lancea'
+		'Deparia tomitaroana'
+		'Deparia otomasui'
+		'Deparia bonincola'
+		'Deparia fenzliana'
+		'Deparia cataracticola'
+		'Deparia marginalis'
+		'Deparia prolifera'
+		'Deparia kaalaana'
+		'Deparia minamitanii'
+		'Deparia dickasonii'
+		'Deparia concinna'
+		'Deparia omeiensis'
+		'Deparia heterophlebia'
+		'Deparia yunnanensis'
+		'Deparia hainanensis'
+		'Deparia formosana'
+		'Deparia erecta'
+		'Deparia acrostichoides'
+		'Deparia aff jiulungensis'
+		'Deparia pycnosora'
+		'Deparia dolosa'
+		'Deparia macdonellii'
+		'Deparia jiulungensis'
+		'Deparia acuta'
+		'Deparia medogensis'
+		'Deparia auriculata'
+		'Deparia sichuanensis'
+		'Deparia wilsonii'
+		'Deparia emeiensis'
+		'Deparia pterorachis'
+		'Deparia okuboana'
+		'Deparia henryi'
+		'Deparia viridifrons'
+		'Deparia coreana'
+		'Deparia unifurcata'
+		'Deparia gordonii'
+		'Deparia edentula'
+		'Deparia subfluvialis'
+		'Deparia glabrata'
+		'Deparia aff glabrata'
+		'Deparia boryana'
+		'Deparia sp'
+		'Deparia forsythii-majoris'
+		'Deparia parvisora'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=14;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="012345";
+	CHARLABELS
+		 [1] 'Rachis-costa groove'
+		 [2] 'Venation'
+		 [3] 'Basal pinnae'
+		 [4] 'Rhizome'
+		 [5] 'Pneumatophore'
+		 [6] 'Stipe base'
+		 [7] 'Diplazoid sori'
+		 [8] 'Vein-crossing sori'
+		 [9] 'Indusial margin'
+		 [10] 'Perine ornamentation'
+		 [11] 'Perine surface'
+		 [12] 'Abaxial sides of costae'
+		 [13] 'Minimum leaf dissection'
+		 [14] 'Maximum leaf dissection'
+	;
+	STATELABELS
+		1
+		'Disconnected'
+		'Connected'
+		,
+		2
+		'Anastomosing'
+		'Free'
+		,
+		3
+		'Non-auricled'
+		'Auricled'
+		,
+		4
+		'Creeping'
+		'Erect'
+		,
+		5
+		'Absent'
+		'Present'
+		,
+		6
+		'Slender'
+		'Swollen'
+		,
+		7
+		'Absent'
+		'Present'
+		,
+		8
+		'Absent'
+		'Present'
+		,
+		9
+		'Toothed'
+		'Entire'
+		,
+		10
+		'Fold series'
+		'Tubercle series'
+		,
+		11
+		'Smooth'
+		'Glandular'
+		,
+		12
+		'Non-hairy'
+		'Hairy'
+		,
+		13
+		'Simple'
+		'Pinnatifid-pinnate'
+		'Bipinnatifid-bipinnate'
+		'Tripinnatifid-tripinnate'
+		,
+		14
+		'Simple'
+		'Pinnatifid-pinnate'
+		'Bipinnatifid-bipinnate'
+		'Tripinnatifid-tripinnate'
+		'Quadripinnatifid'
+		
+	;
+	MATRIX
+	'Athyrium atkinsonii'		                                           10100001100022
+	'Athyrium otophorum'		                                            10111101100022
+	'Athyrium filix-femina'		                                         10101101000023
+	'Cornopteris opaca'		                                             10011100-00023
+	'Athyrium niponicum'		                                            10100001000023
+	'Athyrium skinneri'		                                             10100001001012
+	'Diplazium wichurae'		                                            10100010101012
+	'Diplazium proliferum'		                                          11010010100112
+	'Diplazium squamigerum'		                                         10000010100012
+	'Diplazium bombonasae'		                                          10110010?01?11
+	'Diplazium dilatatum'		                                           10000010000022
+	'Deparia petersenii subsp petersenii var petersenii'		            00100010011112
+	'Deparia petersenii subsp petersenii var yakusimensis'		          00100010011111
+	'Deparia japonica'		                                              00100010011122
+	'Deparia dimorphophylla'		                                        00100010011122
+	'Deparia biserialis'		                                            00100010011122
+	'Deparia lobato-crenata'		                                        001000100--111
+	'Deparia confluens'		                                             00100010011112
+	'Deparia tenuifolia'		                                            000000110??133
+	'Deparia petersenii subsp deflexa'		                              00100010011122
+	'Deparia longipes'		                                              00100010011122
+	'Deparia pseudoconilii'		                                         00100010011122
+	'Deparia timetensis'		                                            00100011010112
+	'Deparia kiusiana'		                                              00100010011122
+	'Deparia conilii'		                                               00100011011122
+	'Deparia lancea'		                                                -0-00010111000
+	'Deparia tomitaroana'		                                           000000101--011
+	'Deparia otomasui'		                                              00000010011012
+	'Deparia bonincola'		                                             00010010110022
+	'Deparia fenzliana'		                                             00010010110022
+	'Deparia cataracticola'		                                         000100101--122
+	'Deparia marginalis'		                                            00010011111022
+	'Deparia prolifera'		                                             00010001110023
+	'Deparia kaalaana'		                                              00010010110011
+	'Deparia minamitanii'		                                           00010010111122
+	'Deparia dickasonii'		                                            00010011111122
+	'Deparia concinna'		                                              00010011111122
+	'Deparia omeiensis'		                                             00010011011122
+	'Deparia heterophlebia'		                                         01010010101111
+	'Deparia yunnanensis'		                                           01010010101111
+	'Deparia hainanensis'		                                           01010010101111
+	'Deparia formosana'		                                             01010010101111
+	'Deparia erecta'		                                                00010001110022
+	'Deparia acrostichoides'		                                        00101111101022
+	'Deparia aff jiulungensis'		                                      001?11?????122
+	'Deparia pycnosora'		                                             00111111101122
+	'Deparia dolosa'		                                                00110101001022
+	'Deparia macdonellii'		                                           0000?111101122
+	'Deparia jiulungensis'		                                          00111111101122
+	'Deparia acuta'		                                                 00111111011022
+	'Deparia medogensis'		                                            00111111001122
+	'Deparia auriculata'		                                            00111101001123
+	'Deparia sichuanensis'		                                          00111111001122
+	'Deparia wilsonii'		                                              00111101001022
+	'Deparia emeiensis'		                                             00111100001022
+	'Deparia pterorachis'		                                           00001111001133
+	'Deparia okuboana'		                                              00000101001022
+	'Deparia henryi'		                                                00001101101122
+	'Deparia viridifrons'		                                           00001111001033
+	'Deparia coreana'		                                               00001111001022
+	'Deparia unifurcata'		                                            00001101001022
+	'Deparia gordonii'		                                              000???01001022
+	'Deparia edentula'		                                              00001101001134
+	'Deparia subfluvialis'		                                          00011101001134
+	'Deparia glabrata'		                                              0001??01101134
+	'Deparia aff glabrata'		                                          00011101101133
+	'Deparia boryana'		                                               00011101001133
+	'Deparia sp'		                                                    00011101001133
+	'Deparia forsythii-majoris'		                                     00010101001122
+	'Deparia parvisora'		                                             00011101?01112
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 14;
+      ENDBLOCK;
+      

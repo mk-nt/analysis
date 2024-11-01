@@ -1,0 +1,1042 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2024-08-20 01.59.46 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=88;
+    TAXLABELS
+    		'Acanthephyra purpurea'
+		'Funchalia villosa'
+		'Bentheuphausia amblyops'
+		'Euphausia americana'
+		'Euphausia brevis'
+		'Euphausia crystallorophias'
+		'Euphausia diomedeae'
+		'Euphausia distinguenda'
+		'Euphausia eximia'
+		'Euphausia fallax'
+		'Euphausia frigida'
+		'Euphausia gibba'
+		'Euphausia gibboides'
+		'Euphausia hanseni'
+		'Euphausia hemigibba'
+		'Euphausia krohnii'
+		'Euphausia lamelligera'
+		'Euphausia longirostris'
+		'Euphausia lucens'
+		'Euphausia mucronata'
+		'Euphausia mutica'
+		'Euphausia nana'
+		'Euphausia pacifica'
+		'Euphausia paragibba'
+		'Euphausia pseudogibba'
+		'Euphausia recurva'
+		'Euphausia sanzoi'
+		'Euphausia sibogae'
+		'Euphausia similis'
+		'Euphausia spinifera'
+		'Euphausia superba'
+		'Euphausia tenera'
+		'Euphausia triacantha'
+		'Euphausia vallentini'
+		'Thysanopoda acutifrons'
+		'Thysanopoda aequalis'
+		'Thysanopoda astylata'
+		'Thysanopoda cornuta'
+		'Thysanopoda cristata'
+		'Thysanopoda egregia'
+		'Thysanopoda microphthalma'
+		'Thysanopoda minyops'
+		'Thysanopoda monacantha'
+		'Thysanopoda obtusifrons'
+		'Thysanopoda orientalis'
+		'Thysanopoda pectinata'
+		'Thysanopoda spinicaudata'
+		'Thysanopoda tricuspidata'
+		'Nematobrachion boopis'
+		'Nematobrachion flexipes'
+		'Nematobrachion sexspinosum'
+		'Meganyctiphanes norvegica'
+		'Nyctiphanes australis'
+		'Nyctiphanes capensis'
+		'Nyctiphanes couchii'
+		'Nyctiphanes simplex'
+		'Pseudeuphausia latifrons'
+		'Pseudeuphausia sinica'
+		'Thysanoessa gregaria'
+		'Thysanoessa inermis'
+		'Thysanoessa inspinata'
+		'Thysanoessa longicaudata'
+		'Thysanoessa longipes'
+		'Thysanoessa macrura'
+		'Thysanoessa parva'
+		'Thysanoessa raschii'
+		'Thysanoessa spinifera'
+		'Thysanoessa vicina'
+		'Tessarabrachion oculatum'
+		'Nematoscelis atlantica'
+		'Nematoscelis difficilis'
+		'Nematoscelis gracilis'
+		'Nematoscelis lobata'
+		'Nematoscelis megalops'
+		'Nematoscelis microps'
+		'Nematoscelis tenella'
+		'Stylocheiron abbreviatum'
+		'Stylocheiron affine'
+		'Stylocheiron armatum'
+		'Stylocheiron carinatum'
+		'Stylocheiron elongatum'
+		'Stylocheiron indicum'
+		'Stylocheiron insulare'
+		'Stylocheiron longicorne'
+		'Stylocheiron maximum'
+		'Stylocheiron microphthalma'
+		'Stylocheiron robustum'
+		'Stylocheiron suhmi'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=168;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="0123";
+	CHARLABELS
+		 [1] 'Rostrum, long and acute'
+		 [2] 'Rostrum short or inconspicuous'
+		 [3] 'Carapace, frontal margin as a nearly rectangular plate'
+		 [4] 'Frontal plate bending slightly upward and outward as a narrow flange, appearing to shield slightly the upper part of the eye'
+		 [5] 'ionmatrix.ss'
+		 [6] 'Carapace, postocular tooth'
+		 [7] 'Carapace, hepatic tooth'
+		 [8] 'Carapace, two pairs of lateral denticles'
+		 [9] 'Carapace, one pair of lateral denticles'
+		 [10] 'Carapace, one pair of supralateral denticles set above an incision in the lower edge'
+		 [11] 'Abdominal somites I, pleon acute and projected forward'
+		 [12] 'Abdominal somites IV, ventral lobe'
+		 [13] 'Abdominal somites III, mid-dorsal spine'
+		 [14] 'Abdominal somites IV, mid-dorsal spine'
+		 [15] 'Abdominal somites IV, one posterior  tooth on each side'
+		 [16] 'Abdominal somites IV, several irregular posterior teeth on each side'
+		 [17] 'Abdominal somites IV, additional pair of dorsal teeth'
+		 [18] 'Abdominal somites IV, three short rows of integumental pits in depressed grooves which have elevated keel-like borders'
+		 [19] 'Abdominal somites V, ventral lobe'
+		 [20] 'Abdominal somites V, three short rows of integumental pits in depressed grooves which have elevated keel-like borders'
+		 [21] 'Abdominal somites V, mid-dorsal spine'
+		 [22] 'Abdominal somites V, one posterior  tooth on each side'
+		 [23] 'Abdominal somites V, several irregular posterior teeth on each side'
+		 [24] 'Abdominal somites V, additional pair of dorsal teeth'
+		 [25] 'Abdominal somite VI short (nearly as long as somite V)'
+		 [26] 'Eyes'
+		 [27] 'Eyes slightly assymetrical, not completely subdivided'
+		 [28] 'Eye, divided upper part regularly rounded'
+		 [29] 'Eye, divided upper part bent respective to the main axix of eye'
+		 [30] 'Eye, upper part lentoid'
+		 [31] 'Eye, upper part extednded vertically'
+		 [32] 'Eye, upper part crepe-like'
+		 [33] 'Eyes, enlarged cristalline cones'
+		 [34] 'Eyes, two or three crystalline cones in the upper part'
+		 [35] 'Eyes, four to eight crystalline cones in the upper part'
+		 [36] 'Eyes, nine or more crystalline cones in the upper part'
+		 [37] 'AI peduncle sexually dimorphic (2 distal segments much narrower than basal segment)'
+		 [38] 'AI peduncle, flagellum shorthened (<2 tiimes as long as peduncle)'
+		 [39] 'A I, basal segment with distal portion elevated abruptly as a heavy, posteriorly-rounded lobe'
+		 [40] 'A I peduncle, lappet'
+		 [41] 'A I, basal segment, pectinate lappet'
+		 [42] 'A I, basal segment, spiniform lappet'
+		 [43] 'A I, basal segment, distally bifid lappet in both sexes'
+		 [44] 'A I, basal segment, lappet distally bifid in females and simple in males'
+		 [45] 'A I, basal segment, lappet as a simple rounded projection'
+		 [46] 'A I, basal segment, vertically bent lappet'
+		 [47] 'A I, lappet raised as a hood over the base of the 2nd segment'
+		 [48] 'A I, basal segment, thick lappet with forward-directed apical tooth'
+		 [49] 'A I, basal segment, thin, scale-like lappet'
+		 [50] 'A I, second segment with distal lobe overrlying third segment'
+		 [51] 'A I, second segment with distal lobe reaching middle of third segment'
+		 [52] 'A I, second segment with distal lobe not reaching middle of third segment'
+		 [53] 'A I, one strong dorsomedialal tooth on second segment'
+		 [54] 'A I, long distolateral tooth on second segment'
+		 [55] 'A I, short distolateral tooth on second segment'
+		 [56] 'A I, two short dorsal teeth on second segment'
+		 [57] 'A I, two rudimentary dorsal teeth on second segment'
+		 [58] 'A II, elongate scaphocerite (12-15 times as long as wide)'
+		 [59] 'Mandibula, palp'
+		 [60] 'Mandibula, short palp (<1,5 times as long as pars incisiva)'
+		 [61] 'Mandibula, long palp (>1,5 times as long as pars incisiva)'
+		 [62] 'Th I, terminal segment triangular-shaped, furnished with brush-like bristles on inner lateral margin'
+		 [63] 'Th I, propodus with one regular row of setae'
+		 [64] 'Th I, propodus with two regular rows of setae'
+		 [65] 'Th I, propodus with inner margin convex'
+		 [66] 'Th I, propodus with inner margin stright'
+		 [67] 'Th I, dactyl with inner margin concave'
+		 [68] 'Th I, dactyl with inner margin staight'
+		 [69] 'Th II, grasping structure'
+		 [70] 'Th II, strong grasping setae along last three terminal segments at least'
+		 [71] 'Th II, strong grasping setae at the apex of the penultimate segment and on the terminal segment'
+		 [72] 'Thoracopod II, fourth and fifth segments elongated'
+		 [73] 'Thoracopod II, second to fourth segments elongated'
+		 [74] 'ThP II, strong grasping setae along entire margin of two distal segments'
+		 [75] 'ThP II, apical cluster of long spines'
+		 [76] 'ThP II, apical cluster of long spines arising only from dactylus'
+		 [77] 'ThP II, apical cluster of long spines arising from both dactylus and propodus'
+		 [78] 'Th II, slightly expanded, not setose terminal segment'
+		 [79] 'Th III, grasping structure'
+		 [80] 'Th III, bent merus'
+		 [81] 'Th III, dactyl in adult male reduced and bearing a long strong spine'
+		 [82] 'ThP III, a tuft of strong grasping setae on broadened propodus and dactyl'
+		 [83] 'ThP III, dactylus elongated and armed at tip with five long serrated spines'
+		 [84] 'Thoracopod III, setae forming a true chela'
+		 [85] 'Thoracopod III, setae forming a false chela'
+		 [86] 'Thoracopod III, false chela formed of simple curved bristles'
+		 [87] 'Thoracopod III, false chela formed of finely serrate, curved bristles'
+		 [88] 'Thoracopod III, propodus bearing numerous short curved bristles in addition to 3 longer ones'
+		 [89] 'Thoracopod VII, endopod in females'
+		 [90] 'Thoracopod VII, endopod in females 5-segmented, short'
+		 [91] 'Thoracopod VII, endopod in females 2-segmented'
+		 [92] 'Thoracopod VII, endopod in males'
+		 [93] 'Thoracopod VII, endopod in males 5-segmented, short'
+		 [94] 'Thoracopod VII, endopod in males 2-segmented'
+		 [95] 'Thoracopod VII, exopod 2-segmented'
+		 [96] 'ThP VII, developed exopod similar to that on Th I-VI'
+		 [97] 'Thoracopod VII, reduced exopod, shorter than that on Th I-VI'
+		 [98] 'Thoracopod VII, rudimentary undivided exopod'
+		 [99] 'Thoracopod VIII endopod in female developed'
+		 [100] 'Thoracopod VIII, endopod in female rudimentary'
+		 [101] 'Thoracopod VIII, endopod in male rudimentary'
+		 [102] 'Thoracopod VIII, developed exopod similar to that on thoracopods I-VII'
+		 [103] 'Thoracopod VIII, reduced exopod, shorter than that on thoracopods I-VII'
+		 [104] 'Thoracopod VIII, rudimentary undivided exopod'
+		 [105] 'Uropod, exopod 2-segmented'
+		 [106] 'Photophores, well-developed both at the furcilia and at the adult stage'
+		 [107] 'Photophores, well-developed at the furcilia and greatly reduced/absent at the adult stage'
+		 [108] 'Photophores, only five organs'
+		 [109] 'Photophores, ten organs'
+		 [110] 'First pleopod, basipod with 1?6 genital spines in male'
+		 [111] 'Petasma'
+		 [112] 'Petasma, fused lobi internus and medialis'
+		 [113] 'Petasma, lobi internus and medialis separate'
+		 [114] 'Petasma, lobus medialis short (less than lobus internus)'
+		 [115] 'Petasma, lobus medialis rudimentary'
+		 [116] 'Petasma, conic bumps at the base of lobus medialis'
+		 [117] 'Petasma, a single conic bump at the base of lobus medialis'
+		 [118] 'Petasma, two conic bumps at the base of lobus medialis'
+		 [119] 'Petasma, well-developed processus lateralis'
+		 [120] 'Petasma, rudimentary processus lateralis'
+		 [121] 'Petasma, processus lateralis located in the middle of lobus medialis'
+		 [122] 'Petasma, processus lateralis locatied at the base of lobus medialis'
+		 [123] 'Petasma, processus lateralis not reaching the end of lobus medialis'
+		 [124] 'Petasma, processus lateralis reaching the end of lobus medialis'
+		 [125] 'Petasma, processus lateralis overreaching the end of lobus medialis'
+		 [126] 'Petasma, processus lateralis, tooth on the distal end'
+		 [127] 'Petasma, processus lateralis dentate/dissected at the distal end'
+		 [128] 'Petasma, rudimentary lobus internus'
+		 [129] 'Petasma, rhomboid lobus internus'
+		 [130] 'Petasma, lobus internus with serrated outer margin'
+		 [131] 'Petasma, a single processus additionalis'
+		 [132] 'Petasma, two processi additionali'
+		 [133] 'Petasma, three processi additionali'
+		 [134] 'Petasma, four processi additionali'
+		 [135] 'Petasma, processus terminalis'
+		 [136] 'Petasma, processus terminalis with membraneous extensions'
+		 [137] 'Petasma, processus terminalis medially narrowing'
+		 [138] 'Petasma, tapering processus terminalis'
+		 [139] 'Petasma, apically expanded processus terminalis'
+		 [140] 'Petasma, processus terminalis bearing 2-5 big distal teeth'
+		 [141] 'Petasma, processus terminalis bearing numerous small terminal teeth'
+		 [142] 'Petasma, processus terminalis bearing numerous small teeth along the outer edge'
+		 [143] 'Petasma, processus terminalis with flattened and paddle-like tip'
+		 [144] 'Petasma, processus terminalis with additional processus'
+		 [145] 'Petasma, processus terminalis, basal part with well-developed heel-like extension'
+		 [146] 'Petasma, processus terminalis, basal part with rudimentary heel-like extension'
+		 [147] 'Petasma, processus terminalis with thin and elongated heel-like extension'
+		 [148] 'Petasma, processus terminalis with robust heel-like extension'
+		 [149] 'Petasma, processus spinosus'
+		 [150] 'Petasma, processus spinosus thin and strongly curved'
+		 [151] 'Petasma, processus proximalis'
+		 [152] 'Petasma, robust processus proximalis'
+		 [153] 'Petasma, slender processus proximalis'
+		 [154] 'Petasma, processus proximalis tapering'
+		 [155] 'Petasma, processus proximalis apically subcilindrical'
+		 [156] 'Petasma, processus proximalis apically expanded'
+		 [157] 'Petasma, processus proximalis, a plate-like extension at the base'
+		 [158] 'Petasma, processus proximalis, bilobed plate'
+		 [159] 'Petasma, processus proximalis, serration on tip'
+		 [160] 'Petasma, processus proximalis, smooth margin of bilobed plate'
+		 [161] 'Petasma, processus proximalis, a single small tooth on margin of bilobed plate'
+		 [162] 'Petasma, processus proximalis, serrated margin of bilobed plate'
+		 [163] 'Petasma, processus proximalis, a tooth-like outer distal angle'
+		 [164] 'Petasma, processus proximalis, additional spine at the distal end'
+		 [165] 'Petasma, rectangularly bent processus proximalis'
+		 [166] 'Petasma, smoothly curved processus proximalis'
+		 [167] 'Petasma, processus proximalis, terminal hook'
+		 [168] 'Petasma, processus proximalis, a lobe in the basal part'
+	;
+	STATELABELS
+		1
+		'absent'
+		'present'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'absent'
+		'present'
+		,
+		4
+		'absent'
+		'present'
+		,
+		5
+		'absent'
+		'present'
+		,
+		6
+		'absent'
+		'present'
+		,
+		7
+		'absent'
+		'present'
+		,
+		8
+		'absent'
+		'present'
+		,
+		9
+		'absent'
+		'present'
+		,
+		10
+		'absent'
+		'present'
+		,
+		11
+		'absent'
+		'present'
+		,
+		12
+		'absent'
+		'present'
+		,
+		13
+		'absent'
+		'present'
+		,
+		14
+		'absent'
+		'present'
+		,
+		15
+		'absent'
+		'present'
+		,
+		16
+		'absent'
+		'present'
+		,
+		17
+		'absent'
+		'present'
+		,
+		18
+		'absent'
+		'present'
+		,
+		19
+		'absent'
+		'present'
+		,
+		20
+		'absent'
+		'present'
+		,
+		21
+		'absent'
+		'present'
+		,
+		22
+		'absent'
+		'present'
+		,
+		23
+		'absent'
+		'present'
+		,
+		24
+		'absent'
+		'present'
+		,
+		25
+		'absent'
+		'present'
+		,
+		26
+		'entire'
+		'definitely subdivided'
+		,
+		27
+		'absent'
+		'present'
+		,
+		28
+		'absent'
+		'present'
+		,
+		29
+		'absent'
+		'present'
+		,
+		30
+		'absent'
+		'present'
+		,
+		31
+		'absent'
+		'present'
+		,
+		32
+		'absent'
+		'present'
+		,
+		33
+		'absent'
+		'present'
+		,
+		34
+		'absent'
+		'present'
+		,
+		35
+		'absent'
+		'present'
+		,
+		36
+		'absent'
+		'present'
+		,
+		37
+		'absent'
+		'present'
+		,
+		38
+		'absent'
+		'present'
+		,
+		39
+		'absent'
+		'present'
+		,
+		40
+		'present'
+		'absent'
+		,
+		41
+		'absent'
+		'present'
+		,
+		42
+		'absent'
+		'present'
+		,
+		43
+		'absent'
+		'present'
+		,
+		44
+		'absent'
+		'present'
+		,
+		45
+		'absent'
+		'present'
+		,
+		46
+		'absent'
+		'present'
+		,
+		47
+		'absent'
+		'present'
+		,
+		48
+		'absent'
+		'present'
+		,
+		49
+		'absent'
+		'present'
+		,
+		50
+		'absent'
+		'present'
+		,
+		51
+		'absent'
+		'present'
+		,
+		52
+		'absent'
+		'present'
+		,
+		53
+		'absent'
+		'present'
+		,
+		54
+		'absent'
+		'present'
+		,
+		55
+		'absent'
+		'present'
+		,
+		56
+		'absent'
+		'present'
+		,
+		57
+		'absent'
+		'present'
+		,
+		58
+		'absent'
+		'present'
+		,
+		59
+		'absent'
+		'present'
+		,
+		60
+		'absent'
+		'present'
+		,
+		61
+		'absent'
+		'present'
+		,
+		62
+		'absent'
+		'present'
+		,
+		63
+		'absent'
+		'present'
+		,
+		64
+		'absent'
+		'present'
+		,
+		65
+		'absent'
+		'present'
+		,
+		66
+		'absent'
+		'present'
+		,
+		67
+		'absent'
+		'present'
+		,
+		68
+		'absent'
+		'present'
+		,
+		69
+		'absent'
+		'present'
+		,
+		70
+		'absent'
+		'present'
+		,
+		71
+		'absent'
+		'present'
+		,
+		72
+		'absent'
+		'present'
+		,
+		73
+		'absent'
+		'present'
+		,
+		74
+		'absent'
+		'present'
+		,
+		75
+		'absent'
+		'present'
+		,
+		76
+		'absent'
+		'present'
+		,
+		77
+		'absent'
+		'present'
+		,
+		78
+		'absent'
+		'present'
+		,
+		79
+		'absent'
+		'present'
+		,
+		80
+		'absent'
+		'present'
+		,
+		81
+		'absent'
+		'present'
+		,
+		82
+		'absent'
+		'present'
+		,
+		83
+		'absent'
+		'present'
+		,
+		84
+		'absent'
+		'present'
+		,
+		85
+		'absent'
+		'present'
+		,
+		86
+		'absent'
+		'present'
+		,
+		87
+		'absent'
+		'present'
+		,
+		88
+		'absent'
+		'present'
+		,
+		89
+		'absent'
+		'present'
+		,
+		90
+		'absent'
+		'present'
+		,
+		91
+		'absent'
+		'present'
+		,
+		92
+		'absent'
+		'present'
+		,
+		93
+		'absent'
+		'present'
+		,
+		94
+		'absent'
+		'present'
+		,
+		95
+		'absent'
+		'present'
+		,
+		96
+		'absent'
+		'present'
+		,
+		97
+		'absent'
+		'present'
+		,
+		98
+		'absent'
+		'present'
+		,
+		99
+		'absent'
+		'present'
+		,
+		100
+		'absent'
+		'present'
+		,
+		101
+		'absent'
+		'present'
+		,
+		102
+		'absent'
+		'present'
+		,
+		103
+		'absent'
+		'present'
+		,
+		104
+		'absent'
+		'present'
+		,
+		105
+		'absent'
+		'present'
+		,
+		106
+		'absent'
+		'present'
+		,
+		107
+		'absent'
+		'present'
+		,
+		108
+		'absent'
+		'present'
+		,
+		109
+		'absent'
+		'present'
+		,
+		110
+		'absent'
+		'present'
+		,
+		111
+		'absent'
+		'present'
+		,
+		112
+		'absent'
+		'present'
+		,
+		113
+		'absent'
+		'present'
+		,
+		114
+		'absent'
+		'present'
+		,
+		115
+		'absent'
+		'present'
+		,
+		116
+		'absent'
+		'present'
+		,
+		117
+		'absent'
+		'present'
+		,
+		118
+		'absent'
+		'present'
+		,
+		119
+		'absent'
+		'present'
+		,
+		120
+		'absent'
+		'present'
+		,
+		121
+		'absent'
+		'present'
+		,
+		122
+		'absent'
+		'present'
+		,
+		123
+		'absent'
+		'present'
+		,
+		124
+		'absent'
+		'present'
+		,
+		125
+		'absent'
+		'present'
+		,
+		126
+		'absent'
+		'present'
+		,
+		127
+		'absent'
+		'present'
+		,
+		128
+		'absent'
+		'present'
+		,
+		129
+		'absent'
+		'present'
+		,
+		130
+		'absent'
+		'present'
+		,
+		131
+		'absent'
+		'present'
+		,
+		132
+		'absent'
+		'present'
+		,
+		133
+		'absent'
+		'present'
+		,
+		134
+		'absent'
+		'present'
+		,
+		135
+		'absent'
+		'present'
+		,
+		136
+		'absent'
+		'present'
+		,
+		137
+		'absent'
+		'present'
+		,
+		138
+		'absent'
+		'present'
+		,
+		139
+		'absent'
+		'present'
+		,
+		140
+		'absent'
+		'present'
+		,
+		141
+		'absent'
+		'present'
+		,
+		142
+		'absent'
+		'present'
+		,
+		143
+		'absent'
+		'present'
+		,
+		144
+		'absent'
+		'present'
+		,
+		145
+		'absent'
+		'present'
+		,
+		146
+		'absent'
+		'present'
+		,
+		147
+		'absent'
+		'present'
+		,
+		148
+		'absent'
+		'present'
+		,
+		149
+		'absent'
+		'present'
+		,
+		150
+		'absent'
+		'present'
+		,
+		151
+		'absent'
+		'present'
+		,
+		152
+		'absent'
+		'present'
+		,
+		153
+		'absent'
+		'present'
+		,
+		154
+		'absent'
+		'present'
+		,
+		155
+		'absent'
+		'present'
+		,
+		156
+		'absent'
+		'present'
+		,
+		157
+		'absent'
+		'present'
+		,
+		158
+		'absent'
+		'present'
+		,
+		159
+		'absent'
+		'present'
+		'State 2'
+		,
+		160
+		'absent'
+		'present'
+		,
+		161
+		'absent'
+		'present'
+		,
+		162
+		'absent'
+		'present'
+		,
+		163
+		'absent'
+		'present'
+		,
+		164
+		'absent'
+		'present'
+		,
+		165
+		'absent'
+		'present'
+		,
+		166
+		'absent'
+		'present'
+		,
+		167
+		'absent'
+		'present'
+		,
+		168
+		'absent'
+		'present'
+		
+	;
+	MATRIX
+	'Acanthephyra purpurea'		               100000000000000000000000000000000000000100000000000000000010100000000000000000000000000010010001001001001000000000000000000000000000000000000000000000000000000000000000
+	'Funchalia villosa'		                   100000100000000000000000000000000000000100000000000000000010100000000000000000000000000010010001001001001000001000000000000000000000000000000000000000000000000000000000
+	'Bentheuphausia amblyops'		             010000000000000000000000000000000000100000001000000000000010100000000000000000000000000011011011001001001000010000000000000000000000000000000000000000000000000000000000
+	'Euphausia americana'		                 10000001000000000000000000000000000000001000000000000000101010000000000000000000000000000000000001000001010010101000001010???0000000001001010001100100101100000000000100
+	'Euphausia brevis'		                    100000010000000000000000000000000000000000100000000010000010100000000000000000000000000000000000010000010100101010000010100000000000001001000001100100101001000000010100
+	'Euphausia crystallorophias'		          010000000100000000000000000000000000000001000000000000000010100000000000000000000000000000000000010000010100101010000010101001000000001001000000100100101001010100000100
+	'Euphausia diomedeae'		                 100000010000000000000000000000000000000000100000000000010010100000000000000000000000000000000000010000010100101010000010101000000000001001000001100100101100000000010100
+	'Euphausia distinguenda'		              010000001000100000000000000000000000000000000000000100000010100000000000000000000000000000000000010000010100101010000010101001100000001001000000101000101001000000000100
+	'Euphausia eximia'		                    100000010000000000000000000000000000000010000000000000010010100000000000000000000000000000000000010000010100101010000010101000000000001001000001100100101001000000000100
+	'Euphausia fallax'		                    100000001000000000000000000000000000000001000000000001000010100000000000000000000000000000000000010000010100101010000010101000000000001001010000100100101001100000000100
+	'Euphausia frigida'		                   010000001000000000000000000000000000000000001000000000000010100000000000000000000000000000000000010000010100101010000010101001000000001001000000100100101001010100000100
+	'Euphausia gibba'		                     100000001000100000000000000000000000000001000000000000100010100000000000000000000000000000000000010000010100101010000010100010000010001001000000101000101100000000000100
+	'Euphausia gibboides'		                 100000001000100000000000000000000000000001000000000001000010100000000000000000000000000000000000010000010100101010011010101000000000001001000000100100101001100000000100
+	'Euphausia hanseni'		                   100001101000110000001000000000000000000000100000000000000010100000000000000000000000000000000000010000010100101010000010101000000000001001000001100100101001010001000100
+	'Euphausia hemigibba'		                 100000001000100000000000000000000000000001000000000001000010100000000000000000000000000000000000010000010100101010000010101000000000001001000001101000101001000000000100
+	'Euphausia krohnii'		                   10000001000000000000000000000000000000001000000000000000101010000000000000000000000000000000000001000001010010101000001010???0000000001001010001100100101010000000000100
+	'Euphausia lamelligera'		               010000001000100000000000000000000000000000100000011000000010100000000000000000000000000000000000010000010100101010000010101001000000001001000000100100101100000000000100
+	'Euphausia longirostris'		              100001001000110100001010000000000000000000100000000001000010100000000000000000000000000000000000010000010100101010000010101000000010001001000001100100101001000000000100
+	'Euphausia lucens'		                    010000001000000000000000000000000000000001000000000000000010100000000000000000000000000000000000010000010100101010000010101001000000001001000000100100101001010010010100
+	'Euphausia mucronata'		                 010000001000100000000000000000000000000000100000000000100010100000000000000000000000000000000000010000010100101010000010101001000010001001000000100100101001100000000100
+	'Euphausia mutica'		                    100000010000000000000000000000000000000000100000000000000010100000000000000000000000000000000000010000010100101010000010101000000000001001000001100000101001100000000100
+	'Euphausia nana'		                      010000001000000000000000000000000000000001000000000001000010100000000000000000000000000000000000010000010100101010000010101000000000001001000010100000101001000000000100
+	'Euphausia pacifica'		                  010000001000000000000000000000000000000001000000000001000010100000000000000000000000000000000000010000010100101010000010101000000000001001000010100000101001000000000100
+	'Euphausia paragibba'		                 100000001000100000000000000000000000000001000000000000100010100000000000000000000000000000000000010000010100101010000010101000100000001001000001101000101100000000000110
+	'Euphausia pseudogibba'		               100000001000100000000000000000000000000001000000000000100010100000000000000000000000000000000000010000010100101010000010101000000000001001000000101000101100000000000110
+	'Euphausia recurva'		                   100000010000000000000000000000000000000000010100000001010010100000000000000000000000000000000000010000010100101010000010101000000000001001000001100100101010000000000100
+	'Euphausia sanzoi'		                    100000001000100000000000000000000000000001000000000001000010100000000000000000000000000000000000010000010100101010010110101000000000001001000000100100101001100000000100
+	'Euphausia sibogae'		                   010000001000100000000000000000000000000000001000000000000010100000000000000000000000000000000000010000010100101010000010101001000000001001000000100100101001000000000100
+	'Euphausia similis'		                   100000001000000000000000000000000000000000100000000000010010100000000000000000000000000000000000010000010100101010000010101000000000001001000001100100101001000000001000
+	'Euphausia spinifera'		                 100001100100110100001010000000000000000010000000000001000010100000000000000000000000000000000000010000010100101010000010101000000010001001000001100100101001000000000100
+	'Euphausia superba'		                   010000001000000000000000000000000000000000001000011000000010100000000000000000000000000000000000010000010100101010000010101000000000001001000000100100101001010100000100
+	'Euphausia tenera'		                    010000001000000000000000000000000000000000001000000000000010100000000000000000000000000000000000010000010100101010000010101001000000001001000000100100101001002000000100
+	'Euphausia triacantha'		                100000001000110000001000000000000000000000100000000001000010100000000000000000000000000000000000010000010100101010000010101000000000001001000001100100101010001000000100
+	'Euphausia vallentini'		                010000001000100000000000000000000000000000001000010100000010100000000000000000000000000000000000010000010100101010000010101001000010001001000000100100101001010100000100
+	'Thysanopoda acutifrons'		              100000000000000000000000000000000000001000000001010100000011000000000000000000000000000011011011000111000100101010000010100100000001001001000000000010101100000000000100
+	'Thysanopoda aequalis'		                010000001000000000000000000000000000001000000000100000000011000000000000000000000000000011011011000111000100101010000010101000000010001001000000000010101100000000000100
+	'Thysanopoda astylata'		                010000001000000000000000000000000000001000000000100000000011000000000000000000001000000011011011000111000100101010000010101000000010001001000000000010101100000000000100
+	'Thysanopoda cornuta'		                 010000000001000011110001100000000000001000000000000000000010100000000000000000000000000011011011000111000010001010000010101000000001001001000000000010101100000000000100
+	'Thysanopoda cristata'		                100000001000010000001000000000000000001000000010010100000011000000000000000000000000000011011011000111000100101010000011101000000010001001000000000010101100000000000100
+	'Thysanopoda egregia'		                 010000000000000011110001100000000000001000000000000000000011000000000000000000000000000011011011000111000010101010000010100010000001001001000000000010101100000000000100
+	'Thysanopoda microphthalma'		           010000000000000000000000000000000000001000000001010100000011000000000000000000000000000011011011000111000100101010000010101000-00010001001001000000011101100000000000100
+	'Thysanopoda minyops'		                 010000000001000011010001100000000000001000000000000000000011000000000000000000000000000011011011000111000010001010000010100100000010001001000000000010101100000000001000
+	'Thysanopoda monacantha'		              100000001000110000001000000000000000001001000000011000000011000000000000000000000000000011011011000111000100101010000010100100000001001001000000000011101100000000001000
+	'Thysanopoda obtusifrons'		             010000001000000000000000000000000000001000000000100000000011000000000000000000000000000011011011000111000100101010000010101000000010001001001000000010101010000000000101
+	'Thysanopoda orientalis'		              010000000000000000000000000000000000001000000001010100000011000000000000000000000000000011011011000111000100101010000010101000000000101001000000000011101100000000000100
+	'Thysanopoda pectinata'		               010000000000000000000000000000000000001010000000010100000011000000000000000000000000000011011011000111000100101010000010101000000010001000100000000011101100000000000101
+	'Thysanopoda spinicaudata'		            010000000001000011110001100000000000001000000000000000000010100000000000000000000000000011011011000111000010001010000010100100000001001001000000000010101100000000000100
+	'Thysanopoda tricuspidata'		            100010010010110000001000000000000000000001100000011000000011000000000000000000000000000011011011000111000100101010000010100100000010001001000000000010101001001000000100
+	'Nematobrachion boopis'		               010000000000000000000000010000010000000000000010000000000010100000000000000001110010100011011011000001000100101010000010100100000010001011000000000010101100000000000100
+	'Nematobrachion flexipes'		             100000001000110000001000010000010000000000000010000000000010100000000000000001110010100011011011000001000100101010000010100100000010001011000000000010101100000000000100
+	'Nematobrachion sexspinosum'		          100001001000011000001100010000010000000000000010000000000010100000000000000001110010100011011011000001000100101010000010100100000010001011000000000010101100000000000100
+	'Meganyctiphanes norvegica'		           010101001000000000000000000000000000000000001100000000000010100000000000000001000000000010110111000000100100101010000010101000000000011001000000000011101010000000000000
+	'Nyctiphanes australis'		               010101000000000000000000000000000000100000001000000000000010100000000000000000000000000000010111000000100100101011100010100100001100000-------------000-----------------
+	'Nyctiphanes capensis'		                010100000000000000000000000000000000100000001100000000000010100000000000000000000000000000010111000000100100101011100010010010001000000-------------000-----------------
+	'Nyctiphanes couchii'		                 010100000000000000000000000000000000100000001100000000000010100000000000000000000000000000010111000000100100101011100010010100001000000-------------000-----------------
+	'Nyctiphanes simplex'		                 010100000000000000000000000000000000100000001100000000000010100000000000000000000000000000010111000000100100101011100000010010001000000-------------000-----------------
+	'Pseudeuphausia latifrons'		            011000001000000000000000000000000000000010000000000000000010100000000000000000000000000000000000010000010100101010000000000000000000001001000000000010101100000000000000
+	'Pseudeuphausia sinica'		               011000000000000000000000000000000000000010000000000000000000100000000000000000000000000000000000010000010100101010000000000000000000001001000000000010101100000000000000
+	'Thysanoessa gregaria'		                100100001000000000000000010100000000110100000000000000000111000000001101010000000000000010110110100000100100101010000010100100000000001000101000000011101010000000100100
+	'Thysanoessa inermis'		                 100100000000000000000000001000000000110100000000000000000111000000001100010000000000000010110110100000100100101010000010101000000010001100000000000011101100000000000100
+	'Thysanoessa inspinata'		               100100001000000000000000010100000000110100000000000000000111000000001101010000000000000010110110100000100100101010000010101000000000001001000000000011101100000000000100
+	'Thysanoessa longicaudata'		            100100000000000000000000010100000000110100000000000000000111000000001101010000000000000010110110100000100100101010000010101000000000001001000000000011101100000000100100
+	'Thysanoessa longipes'		                100100001000110000001000010100000000110100000000000000000111000000001101010000000000000010110110100000100100101010000010110100000000001001000000000011101100000000000100
+	'Thysanoessa macrura'		                 100100001000000000000000010100000000110100000000000000000111000000001101010000000000000010110110100000100100101010000010011000000000001000100000000011101100000000000110
+	'Thysanoessa parva'		                   100100001000000000000000010100000000110100000000000000000111000000001101010000000000000010110110100000100100101010000010100100000000001000100000000011101010000000100100
+	'Thysanoessa raschii'		                 010100001000000000000000001000000000110100000000000000000111000000001100010000000000000010110110100000100100101010000010101000000000001100000000000011101100000000000100
+	'Thysanoessa spinifera'		               100101000000010000001000001000000000110100000000000000000111000000001100010000000000000010110110100000100100101010000010011000000000001100000000000011101100000000000100
+	'Thysanoessa vicina'		                  100100001000000000000000010100000000110100000000000000000111000000001101010000000000000010110110100000100100101010000010011000000000001000101000000011101010001000000100
+	'Tessarabrachion oculatum'		            010100000000000000000000010001000000110100000000000000000111000000001001010000100100000010110110100000100100101000000000000000010000000000000000000000000000000000000000
+	'Nematoscelis atlantica'		              100100001000000000000000010010000000110100000000000000000111011010101010101100000000000010110110100000100100101010000010101000000000001001000000000010101100000000000100
+	'Nematoscelis difficilis'		             100100000000000000000000010010000000110100000000000000000111010101011010101010000000000010110110100110100100101010000010101000000000001001000100000010101100000000000100
+	'Nematoscelis gracilis'		               010100000000000000000000010010000000110100000000000000000111010101011010101100000000000010110110100000100100101010000010101000100000001001000000000010101100000000000100
+	'Nematoscelis lobata'		                 10010000(0,1)000000000000000010010000000110100000000000000000111011010101010101100000000000010110110100000100100101010000010101000000000001001000000000010101100000000000100
+	'Nematoscelis megalops'		               010100000000000000000000010010000000110100000000000000000111010101011010101010000000000010110110100000100100101010000010101000000000001001000100000010101100000000000100
+	'Nematoscelis microps'		                01010000(0,1)000000000000000010010000000110100000000000000000111011010011010101100000000000010110110100000100100101010000010101000000000001001000000000010101010000000000100
+	'Nematoscelis tenella'		                010100000000000000000000010010000000110100000000000000000111010101011010101100000000000010110110100000100100101010000010101000100000001001000000000010101100000000000100
+	'Stylocheiron abbreviatum'		            100100000000000000001000010000100000110100000000000000000100000000000000000000100101000010110110100000100101001100000010011000010000001001000000000011101100000000000100
+	'Stylocheiron affine'		                 100100000000000000000000010000101010110100000000000000000100000000000000000000100100101010110110100000100101001100000010011000010000001001001000000010110001001000000100
+	'Stylocheiron armatum'		                100100000000000000000000010000101010110100000000000000000100000000000000000000100100110110110110100000100101001100000010011001010000001001001000000010110001000000000100
+	'Stylocheiron carinatum'		              100100000000000000000000010000101010110100000000000000000100000000000000000000100100110010110110100000100101001100000010011001010000001001001000000010110001000000000100
+	'Stylocheiron elongatum'		              010100000000000000000000010000101001110100000000000000000100000000000000000000100100101010110110100000100101001100000001101000010000001001000000000010101100000000000100
+	'Stylocheiron indicum'		                010100000000000000000000010000101001110100000000000000000100000000000000000000100100101010110110100000100101001100000001011000010000001001000000000010101100000000000110
+	'Stylocheiron insulare'		               100100000000000000000000010000101010110100000000000000000100000000000000000000100100101010110110100000100101001100000010011000010000001001000000000010110001000000000100
+	'Stylocheiron longicorne'		             010100000000000000000000010000101001110100000000000000000100000000000000000000100100101010110110100000100101001100000010011000010000001001001000000010110001000000000100
+	'Stylocheiron maximum'		                100100000000000000000000010000100000110100000000000000000100000000000000000000100101000010110110100000100101001100000010011000010000001001000000000011101010000000000100
+	'Stylocheiron microphthalma'		          100100000000000000000000010000101100110100000000000000000100000000000000000000100100101010110110100000100101001100000010011000010000001001000000000010110100000000000100
+	'Stylocheiron robustum'		               100100000000000000000000010000100000110100000000000000000100000000000000000000100101000010110110100000100101001100000010011000010000001001000000000011101100000000000100
+	'Stylocheiron suhmi'		                  100100000000000000000000010000101100110100000000000000000100000000000000000000100100101010110110100000100101001100000010011000010000001001000000000010110001000000000100
+    ;
+    ENDBLOCK;
+
+          BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 168;
+      ENDBLOCK;
+      

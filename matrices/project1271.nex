@@ -1,0 +1,447 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-11 18.15.01 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=25;
+    TAXLABELS
+    		'Oistoceras figulinum'
+		'Amaltheus bifurcus'
+		'Amaltheus stokesi'
+		'Amaltheus talrosei'
+		'Amaltheus subbifurvus'
+		'Amaltheus repressus'
+		'Amaltheus conspectus'
+		'Amaltheus viligaensis'
+		'Amaltheus wertheri'
+		'Amauroceras ferruginum'
+		'Amaltheus subnodosus'
+		'Amaltheus striatus'
+		'Amaltheus gloriosus'
+		'Amaltheus gloriosus W'
+		'Amaltheus gibbosus'
+		'Amaltheus salebrosus'
+		'Pleuroceras becheteri'
+		'Pleuroceras transiens'
+		'Pleuroceras solare'
+		'Pleuroceras quadratum'
+		'Pleuroceras apyrenum'
+		'Pleuroceras spinatum'
+		'Pleuroceras hawskerense'
+		'Pleuroceras paucicostatum'
+		'Pleuroceras yeovilense'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=33;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="0123456789ABCDEFGHIJKLMNOP";
+	CHARLABELS
+		 [1] 'Type of shape growth'
+		 [2] 'Slope of Uw'
+		 [3] 'Uw sigma1'
+		 [4] 'Uw k (saturation growth law)'
+		 [5] 'Uw k (linear growth)'
+		 [6] 'WbWh sigma1'
+		 [7] 'WbWh K (saturation growth law)'
+		 [8] 'WbWh K (linear growth)'
+		 [9] 'Size adult maximum'
+		 [10] 'Ventro-lateral edge on adult body chamber'
+		 [11] 'Ventro-lateral edge on phragmocone'
+		 [12] 'Rounded venral area'
+		 [13] 'Sulci'
+		 [14] 'Ribbing density sigma1'
+		 [15] 'Ribbing density K'
+		 [16] 'Perlatum stage'
+		 [17] 'Perlatum stage offset'
+		 [18] 'Complex Perlatum stage '
+		 [19] 'Type of tubercles in the complex Perlatum stage'
+		 [20] 'Expression of the complex Perlatum stage'
+		 [21] 'Engelhardti stage'
+		 [22] 'Length of Engelhardti stage'
+		 [23] 'Spiral ornamentation'
+		 [24] 'Connection between chevrons and ribs'
+		 [25] 'angle between umbilical and ventral segments of ribs.'
+		 [26] 'Large chevrons'
+		 [27] 'Chevrons density'
+		 [28] 'Individualized keel'
+		 [29] 'Keel with chevrons'
+		 [30] 'Cordated keel '
+		 [31] 'Accessory saddle'
+		 [32] 'Complexity of the suture line ornamentation'
+		 [33] 'Constrictions'
+	;
+	STATELABELS
+		1
+		'linear'
+		'saturation growth'
+		,
+		2
+		'no change'
+		'negative'
+		'positive'
+		,
+		3
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		'State 16'
+		'State 17'
+		'State 18'
+		,
+		4
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		'State 16'
+		'State 17'
+		,
+		5
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		,
+		6
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		'State 16'
+		,
+		7
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		'State 16'
+		,
+		8
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		,
+		9
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		'State 16'
+		'State 17'
+		'State 18'
+		'State 19'
+		'State 20'
+		'State 21'
+		'State 22'
+		'State 23'
+		'State 24'
+		,
+		10
+		'absent'
+		'present'
+		,
+		11
+		'absent'
+		'present'
+		,
+		12
+		'absent'
+		'present'
+		,
+		13
+		'absent'
+		'shallow sulci'
+		'deep sulci'
+		,
+		14
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		'State 16'
+		'State 17'
+		'State 18'
+		'State 19'
+		'State 20'
+		'State 21'
+		'State 22'
+		'State 23'
+		,
+		15
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		'State 16'
+		'State 17'
+		'State 18'
+		'State 19'
+		'State 20'
+		'State 21'
+		'State 22'
+		'State 23'
+		,
+		16
+		'absent'
+		'present'
+		,
+		17
+		'reduced stage'
+		'stage developed in the first half of the growth'
+		'stage developed up to the beginning of the adult body chamber'
+		'stage expressed during the whole ontogeny'
+		,
+		18
+		'absent'
+		'present'
+		,
+		19
+		'State 0'
+		'no relief change'
+		'progressive periodic relief changes'
+		'discontinuous periodic relief changes'
+		,
+		20
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		,
+		21
+		'absent'
+		'present'
+		,
+		22
+		'State 0'
+		'long'
+		'medium'
+		'short'
+		,
+		23
+		'absent'
+		'present'
+		,
+		24
+		'absent'
+		'present'
+		,
+		25
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		'State 9'
+		'State 10'
+		'State 11'
+		'State 12'
+		'State 13'
+		'State 14'
+		'State 15'
+		,
+		26
+		'absent'
+		'present'
+		,
+		27
+		'State 0'
+		'State 1'
+		'State 2'
+		'State 3'
+		'State 4'
+		'State 5'
+		'State 6'
+		'State 7'
+		'State 8'
+		,
+		28
+		'absent'
+		'present'
+		,
+		29
+		'absent'
+		'present'
+		,
+		30
+		'absent'
+		'present'
+		,
+		31
+		'absent'
+		'present'
+		,
+		32
+		'complex'
+		'simplified'
+		,
+		33
+		'absent'
+		'present'
+		
+	;
+	MATRIX
+	'Oistoceras figulinum'		               00??4??441100LH0????0?010??000100
+	'Amaltheus bifurcus'		                 119B?85?20100GK0????0?014?0000100
+	'Amaltheus stokesi'		                  117G?6D?H0100CE0????0?11101010100
+	'Amaltheus talrosei'		                 01??2??1E0100940????0??1D12010100
+	'Amaltheus subbifurvus'		              01??0??0B0100HF0????0??1E13010100
+	'Amaltheus repressus'		                01??????C0100110????0??120?010101
+	'Amaltheus conspectus'		               01?21??2F0110000????0?11A1?010101
+	'Amaltheus viligaensis'		              01??3??370110FG0????0?11F1?010100
+	'Amaltheus wertheri'		                 112E?02?00000MN0????0?1130?010100
+	'Amauroceras ferruginum'		             113D?7G?10000NM0????0?1????010100
+	'Amaltheus subnodosus'		               1164?38?30000IJ110??0?10606110100
+	'Amaltheus striatus'		                 118??13?I000055100??131050?110100
+	'Amaltheus gloriosus'		                1111?44?J0000JI110101310B04110100
+	'Amaltheus gloriosus W'		              1146?26?K0000BC111211310C07110100
+	'Amaltheus gibbosus'		                 1157?57?L0000D9111321310705110100
+	'Amaltheus salebrosus'		               11AH?90?N00002611133121080?110100
+	'Pleuroceras becheteri'		              12CF????D1100AD111341210908110110
+	'Pleuroceras transiens'		              12BC?CA?51100KL120??1110?0?110110
+	'Pleuroceras solare'		                 12E5?AC?81100EB120??1110???111010
+	'Pleuroceras quadratum'		              12??????91100??120??1110???111010
+	'Pleuroceras apyrenum'		               12I0?BE?A1101421?0??1110???111010
+	'Pleuroceras spinatum'		               12D9?FB?O11028A130??0??0???111010
+	'Pleuroceras hawskerense'		            12H3?DF?M110167120?????0???111010
+	'Pleuroceras paucicostatum'		          12GA?G9?6110233130??0??0???111010
+	'Pleuroceras yeovilense'		             12F8?E1?G110278130??0??0???111010
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+        [Character comments]
+        	TEXT CHARACTER=1 TEXT='This character codes if the growth follows a linear or a saturation growth model (Alberch et al. 1979).^n^nTwo parameters follow the model here coded: the umbilical width (Uw) and the whorl breadth divided by the whorl height (Wb/Wh). We code one character for the two in order to avoid redundancy in the coding scheme.^n^nAlberch P., Gould S.J., Oster G.F., Wake D.B. 1979. Size and shape in ontogeny and phylogeny. Paleobiology. 5: 296-317. ';
+	TEXT CHARACTER=2 TEXT='This character codes the slope of change of Uw in the ontogeny.';
+	TEXT CHARACTER=3 TEXT='This character is the values of Y (shape) when a (age) tends to infinity. It corresponds to the final value of the character Uw = U/D. The model used is: Y=sigma1(1-be^(-k(a-Î±) )) with sigma1: values of Y (shape) when a (age) tends to infinity which corresponds to the final value of the character, Î±: size at the beginning of the stage, b: equal to 1 or -1, its sign determines if the function is increasing (+) or decreasing (-), k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n9 7 2 3 6 8 1 4 5 A C B E J D I H F^n  0  176  318  275  187   25  430  242  220  124  184  145  349  551  333  464  424  362^n176    0  142   99   11  151  254   66   44  300  360  321  525  727  509  640  600  538^n318  142    0   43  131  293  112   76   98  442  502  463  667  869  651  782  742  680^n275   99   43    0   88  250  155   33   55  399  459  420  624  826  608  739  699  637^n187   11  131   88    0  162  243   55   33  311  371  332  536  738  520  651  611  549^n 25  151  293  250  162    0  405  217  195  149  209  170  374  576  358  489  449  387^n430  254  112  155  243  405    0  188  210  554  614  575  779  981  763  894  854  792^n242   66   76   33   55  217  188    0   22  366  426  387  591  793  575  706  666  604^n220   44   98   55   33  195  210   22    0  344  404  365  569  771  553  684  644  582^n124  300  442  399  311  149  554  366  344    0   60   21  225  427  209  340  300  238^n184  360  502  459  371  209  614  426  404   60    0   39  165  367  149  280  240  178^n145  321  463  420  332  170  575  387  365   21   39    0  204  406  188  319  279  217^n349  525  667  624  536  374  779  591  569  225  165  204    0  202   16  115   75   13^n551  727  869  826  738  576  981  793  771  427  367  406  202    0  218   87  127  189^n333  509  651  608  520  358  763  575  553  209  149  188   16  218    0  131   91   29^n464  640  782  739  651  489  894  706  684  340  280  319  115   87  131    0   40  102^n424  600  742  699  611  449  854  666  644  300  240  279   75  127   91   40    0   62^n362  538  680  637  549  387  792  604  582  238  178  217   13  189   29  102   62    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=4 TEXT='This character corresponds to the values of k, the growth rate on ontogenetic trajectories of Uw for taxa which follow a saturation growth law. The model used is: Y=sigma1(1-be^(-k(a-Î±)) with sigma1: values of Y (shape) when a (age) tends to infinity which corresponds to the final value of the character, Î±: size at the beginning of the stage, b: equal to 1 or -1, its sign determines if the function is increasing (+) or decreasing (-), k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^nB H 2 F D 4 1 6 7 I G C 5 0 9 3 A 8^n 0   89   53   25   10   43   60   42   30  938   53    6   42   62   23   48   18   24^n89    0  142   64   79  132  149  131  119  849   36   83  131  151  112  137  107  113^n53  142    0   78   63   10    7   11   23  991  106   59   11    9   30    5   35   29^n25   64   78    0   15   68   85   67   55  913   28   19   67   87   48   73   43   49^n10   79   63   15    0   53   70   52   40  928   43    4   52   72   33   58   28   34^n43  132   10   68   53    0   17    1   13  981   96   49    1   19   20    5   25   19^n60  149    7   85   70   17    0   18   30  998  113   66   18    2   37   12   42   36^n42  131   11   67   52    1   18    0   12  980   95   48    0   20   19    6   24   18^n30  119   23   55   40   13   30   12    0  968   83   36   12   32    7   18   12    6^n38  849  991  913  928  981  998  980  968    0  885  932  980 1000  961  986  956  962^n53   36  106   28   43   96  113   95   83  885    0   47   95  115   76  101   71   77^n 6   83   59   19    4   49   66   48   36  932   47    0   48   68   29   54   24   30^n42  131   11   67   52    1   18    0   12  980   95   48    0   20   19    6   24   18^n62  151    9   87   72   19    2   20   32 1000  115   68   20    0   39   14   44   38^n23  112   30   48   33   20   37   19    7  961   76   29   19   39    0   25    5    1^n48  137    5   73   58    5   12    6   18  986  101   54    6   14   25    0   30   24^n18  107   35   43   28   25   42   24   12  956   71   24   24   44    5   30    0    6^n24  113   29   49   34   19   36   18    6  962   77   30   18   38    1   24    6    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=5 TEXT='This character corresponds to the values of k, the growth rate on ontogenetic trajectories of Uw for taxa which follow a linear growth law. The model used is: Y=ka+sigma0 with sigma0: values of Y (shape) at the beginning of the stage, k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n4 2 0 1 3^n   0  454 1000  571  386^n 454    0  546  117   68^n1000  546    0  429  614^n 571  117  429    0  185^n 386   68  614  185    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=6 TEXT='This character corresponds to the values of Y (shape) when a (age) tends to infinity. It corresponds to the final value of the character WbWh. The model used is: Y=sigma1(1-be^(-k(a-Î±))) with sigma1: values of Y (shape) when a (age) tends to infinity which corresponds to the final value of the character, Î±: size at the beginning of the stage, b: equal to 1 or -1, its sign determines if the function is increasing (+) or decreasing (-), k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n8 6 0 7 3 1 4 2 5 9 C A B F D G E^n   0   38  354   19   88  185   78  121   65   41  246   41  230  383  302  646  344^n  38    0  316   19   50  147   40   83   27   79  284   79  268  421  340  684  382^n 354  316    0  335  266  169  276  233  289  395  600  395  584  737  656 1000  698^n  19   19  335    0   69  166   59  102   46   60  265   60  249  402  321  665  363^n  88   50  266   69    0   97   10   33   23  129  334  129  318  471  390  734  432^n 185  147  169  166   97    0  107   64  120  226  431  226  415  568  487  831  529^n  78   40  276   59   10  107    0   43   13  119  324  119  308  461  380  724  422^n 121   83  233  102   33   64   43    0   56  162  367  162  351  504  423  767  465^n  65   27  289   46   23  120   13   56    0  106  311  106  295  448  367  711  409^n  41   79  395   60  129  226  119  162  106    0  205    0  189  342  261  605  303^n 246  284  600  265  334  431  324  367  311  205    0  205   16  137   56  400   98^n  41   79  395   60  129  226  119  162  106    0  205    0  189  342  261  605  303^n 230  268  584  249  318  415  308  351  295  189   16  189    0  153   72  416  114^n 383  421  737  402  471  568  461  504  448  342  137  342  153    0   81  263   39^n 302  340  656  321  390  487  380  423  367  261   56  261   72   81    0  344   42^n 646  684 1000  665  734  831  724  767  711  605  400  605  416  263  344    0  302^n 344  382  698  363  432  529  422  465  409  303   98  303  114   39   42  302    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=7 TEXT='This character corresponds to the values of k, the growth rate on ontogenetic trajectories of WbWh for taxa which follow a saturation growth law. The model used is: Y=sigma1(1-be^(-k(a-Î±)) with sigma1: values of Y (shape) when a (age) tends to infinity which corresponds to the final value of the character, Î±: size at the beginning of the stage, b: equal to 1 or -1, its sign determines if the function is increasing (+) or decreasing (-), k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n5 D 2 G 8 3 4 6 7 0 A C E B F 9 1^n   0  466  212  720   99  124    4   12   65  280  293  372  503  306  557  140  256^n 466    0  678  254  367  590  470  454  401  746  173   94   37  160   91  326  722^n 212  678    0  932  311   88  208  224  277   68  505  584  715  518  769  352   44^n 720  254  932    0  621  844  724  708  655 1000  427  348  217  414  163  580  976^n  99  367  311  621    0  223  103   87   34  379  194  273  404  207  458   41  355^n 124  590   88  844  223    0  120  136  189  156  417  496  627  430  681  264  132^n   4  470  208  724  103  120    0   16   69  276  297  376  507  310  561  144  252^n  12  454  224  708   87  136   16    0   53  292  281  360  491  294  545  128  268^n  65  401  277  655   34  189   69   53    0  345  228  307  438  241  492   75  321^n 280  746   68 1000  379  156  276  292  345    0  573  652  783  586  837  420   24^n 293  173  505  427  194  417  297  281  228  573    0   79  210   13  264  153  549^n 372   94  584  348  273  496  376  360  307  652   79    0  131   66  185  232  628^n 503   37  715  217  404  627  507  491  438  783  210  131    0  197   54  363  759^n 306  160  518  414  207  430  310  294  241  586   13   66  197    0  251  166  562^n 557   91  769  163  458  681  561  545  492  837  264  185   54  251    0  417  813^n 140  326  352  580   41  264  144  128   75  420  153  232  363  166  417    0  396^n 256  722   44  976  355  132  252  268  321   24  549  628  759  562  813  396    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=8 TEXT='This character corresponds to the values of k, the growth rate on ontogenetic trajectories of WbWh for taxa which follow a linear growth law. The model used is: Y=ka+sigma0 with sigma0: values of Y (shape) at the beginning of the stage, k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n4 1 0 2 3^n   0  321 1000  289  255^n 321    0  679   32   66^n1000  679    0  711  745^n 289   32  711    0   34^n 255   66  745   34    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=9 TEXT='This character corresponds to the mean adult diameter of each OTU. To avoid redundancy in the coding scheme, it must be coded only one time for all features. A coding of beta for all parameters investigated in the ontogeny should have overweighted the signal bear by the adult size.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n4 2 H E B C F 7 0 1 3 I J K L N D 5 8 9 A O M 6 G^n   0   79  301  222  176  176  263  125  380  380   79  319  319  319  319  440  176    0  125  125  125  620  368    0  263^n  79    0  380  301  255  255  342  204  301  301    0  398  398  398  398  519  255   79  204  204  204  699  447   79  342^n 301  380    0   79  125  125   38  176  681  681  380   18   18   18   18  139  125  301  176  176  176  319   67  301   38^n 222  301   79    0   46   46   41   97  602  602  301   97   97   97   97  218   46  222   97   97   97  398  146  222   41^n 176  255  125   46    0    0   87   51  556  556  255  143  143  143  143  264    0  176   51   51   51  444  192  176   87^n 176  255  125   46    0    0   87   51  556  556  255  143  143  143  143  264    0  176   51   51   51  444  192  176   87^n 263  342   38   41   87   87    0  138  643  643  342   56   56   56   56  177   87  263  138  138  138  357  105  263    0^n 125  204  176   97   51   51  138    0  505  505  204  194  194  194  194  315   51  125    0    0    0  495  243  125  138^n 380  301  681  602  556  556  643  505    0    0  301  699  699  699  699  820  556  380  505  505  505 1000  748  380  643^n 380  301  681  602  556  556  643  505    0    0  301  699  699  699  699  820  556  380  505  505  505 1000  748  380  643^n  79    0  380  301  255  255  342  204  301  301    0  398  398  398  398  519  255   79  204  204  204  699  447   79  342^n 319  398   18   97  143  143   56  194  699  699  398    0    0    0    0  121  143  319  194  194  194  301   49  319   56^n 319  398   18   97  143  143   56  194  699  699  398    0    0    0    0  121  143  319  194  194  194  301   49  319   56^n 319  398   18   97  143  143   56  194  699  699  398    0    0    0    0  121  143  319  194  194  194  301   49  319   56^n 319  398   18   97  143  143   56  194  699  699  398    0    0    0    0  121  143  319  194  194  194  301   49  319   56^n 440  519  139  218  264  264  177  315  820  820  519  121  121  121  121    0  264  440  315  315  315  180   72  440  177^n 176  255  125   46    0    0   87   51  556  556  255  143  143  143  143  264    0  176   51   51   51  444  192  176   87^n   0   79  301  222  176  176  263  125  380  380   79  319  319  319  319  440  176    0  125  125  125  620  368    0  263^n 125  204  176   97   51   51  138    0  505  505  204  194  194  194  194  315   51  125    0    0    0  495  243  125  138^n 125  204  176   97   51   51  138    0  505  505  204  194  194  194  194  315   51  125    0    0    0  495  243  125  138^n 125  204  176   97   51   51  138    0  505  505  204  194  194  194  194  315   51  125    0    0    0  495  243  125  138^n 620  699  319  398  444  444  357  495 1000 1000  699  301  301  301  301  180  444  620  495  495  495    0  252  620  357^n 368  447   67  146  192  192  105  243  748  748  447   49   49   49   49   72  192  368  243  243  243  252    0  368  105^n   0   79  301  222  176  176  263  125  380  380   79  319  319  319  319  440  176    0  125  125  125  620  368    0  263^n 263  342   38   41   87   87    0  138  643  643  342   56   56   56   56  177   87  263  138  138  138  357  105  263    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=10 TEXT='This character corresponds to the absence or presence of the ventro-lateral edge on the adult body chamber.';
+	TEXT CHARACTER=11 TEXT='This character corresponds to the absence or presence of the ventro-lateral edge on the phragmocone.';
+	TEXT CHARACTER=12 TEXT='This character corresponds to the shape of the ventral area. It could be rounded or acute.';
+	TEXT CHARACTER=13 TEXT='This character corresponds to the strength of sulci on each side of the keel. Actually, Amaltheidae do not really have sulci because these "sulci" are due to ribs thickenings. However, literature always talk about "sulci" that is why we use this term. Despite, for larger-scale taxonomic analyses, the homology should be carefully reinvestigating.';
+	TEXT CHARACTER=14 TEXT='This character corresponds to the values of Y (shape) when a (age) tends to infinity. It corresponds to the final value of the character ribbing density. The model used is: Y=sigma1(1-be^(-k(a-Î±) ))  with sigma1: values of Y (shape) when a (age) tends to infinity which corresponds to the final value of the character, Î±: size at the beginning of the stage, b: equal to 1 or -1, its sign determines if the function is increasing (+) or decreasing (-), k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^nL G C 9 H 1 0 F M N I 5 J B D 2 A K E 4 8 6 3 7^n   0  254  295  390  211  606  619  262  271  381  198  498  191  299  289  594  375   26  277  559  431  487  566  453^n 254    0   41  136   43  352  365    8  525  635   56  244   63   45   35  340  121  228   23  305  177  233  312  199^n 295   41    0   95   84  311  324   33  566  676   97  203  104    4    6  299   80  269   18  264  136  192  271  158^n 390  136   95    0  179  216  229  128  661  771  192  108  199   91  101  204   15  364  113  169   41   97  176   63^n 211   43   84  179    0  395  408   51  482  592   13  287   20   88   78  383  164  185   66  348  220  276  355  242^n 606  352  311  216  395    0   13  344  877  987  408  108  415  307  317   12  231  580  329   47  175  119   40  153^n 619  365  324  229  408   13    0  357  890 1000  421  121  428  320  330   25  244  593  342   60  188  132   53  166^n 262    8   33  128   51  344  357    0  533  643   64  236   71   37   27  332  113  236   15  297  169  225  304  191^n 271  525  566  661  482  877  890  533    0  110  469  769  462  570  560  865  646  297  548  830  702  758  837  724^n 381  635  676  771  592  987 1000  643  110    0  579  879  572  680  670  975  756  407  658  940  812  868  947  834^n 198   56   97  192   13  408  421   64  469  579    0  300    7  101   91  396  177  172   79  361  233  289  368  255^n 498  244  203  108  287  108  121  236  769  879  300    0  307  199  209   96  123  472  221   61   67   11   68   45^n 191   63  104  199   20  415  428   71  462  572    7  307    0  108   98  403  184  165   86  368  240  296  375  262^n 299   45    4   91   88  307  320   37  570  680  101  199  108    0   10  295   76  273   22  260  132  188  267  154^n 289   35    6  101   78  317  330   27  560  670   91  209   98   10    0  305   86  263   12  270  142  198  277  164^n 594  340  299  204  383   12   25  332  865  975  396   96  403  295  305    0  219  568  317   35  163  107   28  141^n 375  121   80   15  164  231  244  113  646  756  177  123  184   76   86  219    0  349   98  184   56  112  191   78^n  26  228  269  364  185  580  593  236  297  407  172  472  165  273  263  568  349    0  251  533  405  461  540  427^n 277   23   18  113   66  329  342   15  548  658   79  221   86   22   12  317   98  251    0  282  154  210  289  176^n 559  305  264  169  348   47   60  297  830  940  361   61  368  260  270   35  184  533  282    0  128   72    7  106^n 431  177  136   41  220  175  188  169  702  812  233   67  240  132  142  163   56  405  154  128    0   56  135   22^n 487  233  192   97  276  119  132  225  758  868  289   11  296  188  198  107  112  461  210   72   56    0   79   34^n 566  312  271  176  355   40   53  304  837  947  368   68  375  267  277   28  191  540  289    7  135   79    0  113^n 453  199  158   63  242  153  166  191  724  834  255   45  262  154  164  141   78  427  176  106   22   34  113    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=15 TEXT='This character corresponds to the values of k (i.e. the growth rate on ontogenetic trajectories of ribbing density for taxa). They all follow a saturation growth law. The model used is: Y=sigma1(1-be^(-k(a-Î±)) with sigma1: values of Y (shape) when a (age) tends to infinity which corresponds to the final value of the character, Î±: size at the beginning of the stage, b: equal to 1 or -1, its sign determines if the function is increasing (+) or decreasing (-), k: growth rate.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^nH K E 4 F 1 0 G N M J 5 I C 9 6 D L B 2 A 7 3 8^n   0   32   82  159   66  216  222   35  778  537   32  157   12   96  139  151   86   97   96  206  102  150  188  147^n  32    0  114  191   98  248  254   67  746  505    0  189   20  128  171  183  118   65  128  238  134  182  220  179^n  82  114    0   77   16  134  140   47  860  619  114   75   94   14   57   69    4  179   14  124   20   68  106   65^n 159  191   77    0   93   57   63  124  937  696  191    2  171   63   20    8   73  256   63   47   57    9   29   12^n  66   98   16   93    0  150  156   31  844  603   98   91   78   30   73   85   20  163   30  140   36   84  122   81^n 216  248  134   57  150    0    6  181  994  753  248   59  228  120   77   65  130  313  120   10  114   66   28   69^n 222  254  140   63  156    6    0  187 1000  759  254   65  234  126   83   71  136  319  126   16  120   72   34   75^n  35   67   47  124   31  181  187    0  813  572   67  122   47   61  104  116   51  132   61  171   67  115  153  112^n 778  746  860  937  844  994 1000  813    0  241  746  935  766  874  917  929  864  681  874  984  880  928  966  925^n 537  505  619  696  603  753  759  572  241    0  505  694  525  633  676  688  623  440  633  743  639  687  725  684^n  32    0  114  191   98  248  254   67  746  505    0  189   20  128  171  183  118   65  128  238  134  182  220  179^n 157  189   75    2   91   59   65  122  935  694  189    0  169   61   18    6   71  254   61   49   55    7   31   10^n  12   20   94  171   78  228  234   47  766  525   20  169    0  108  151  163   98   85  108  218  114  162  200  159^n  96  128   14   63   30  120  126   61  874  633  128   61  108    0   43   55   10  193    0  110    6   54   92   51^n 139  171   57   20   73   77   83  104  917  676  171   18  151   43    0   12   53  236   43   67   37   11   49    8^n 151  183   69    8   85   65   71  116  929  688  183    6  163   55   12    0   65  248   55   55   49    1   37    4^n  86  118    4   73   20  130  136   51  864  623  118   71   98   10   53   65    0  183   10  120   16   64  102   61^n  97   65  179  256  163  313  319  132  681  440   65  254   85  193  236  248  183    0  193  303  199  247  285  244^n  96  128   14   63   30  120  126   61  874  633  128   61  108    0   43   55   10  193    0  110    6   54   92   51^n 206  238  124   47  140   10   16  171  984  743  238   49  218  110   67   55  120  303  110    0  104   56   18   59^n 102  134   20   57   36  114  120   67  880  639  134   55  114    6   37   49   16  199    6  104    0   48   86   45^n 150  182   68    9   84   66   72  115  928  687  182    7  162   54   11    1   64  247   54   56   48    0   38    3^n 188  220  106   29  122   28   34  153  966  725  220   31  200   92   49   37  102  285   92   18   86   38    0   41^n 147  179   65   12   81   69   75  112  925  684  179   10  159   51    8    4   61  244   51   59   45    3   41    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=16 TEXT='This character corresponds to the absence or presence of the Perlatum stage. This stage has been defined by Frentzen(1937). It can be recognized by the presence of small tubercles on every rib at the 2/3 of the flanks starting from the dorsal edge of the whorl.';
+	TEXT CHARACTER=17 TEXT='This character corresponds to the extension of the Perlatum stage in the ontogeny. This character is applied to the basic Perlatum stage with untransformed tubercles. This character is discrete as variations between taxa were not overlapping. Discontinuities are clear.';
+	TEXT CHARACTER=18 TEXT='This character corresponds to the presence of the complex Perlatum stage. Frentzen (1937) used several names to describe this stage (e.g. Spinatum stage, Gibbosum stage) which are directly related to his taxonomical views. As a consequence we did not use its terminology. Differences between types of tubercules are coded by character 19.';
+	TEXT CHARACTER=19 TEXT='This character corresponds to the different types of tubercles in the complex Perlatum stage. These differences concern the relative strength of tubercles in the ontogeny. ';
+	TEXT CHARACTER=20 TEXT='This character corresponds to the expression of complex Perlatum stage. Timings of the complex tuberculation appearance are a tricky case, in which modules experienced fragmentation or integration in the ingroup evolution. Start and end of tuberculation are correlated for A. gloriosus, A. gloriosus morph. W, A. gibbosus and A. salebrosum whereas they are independent for A. bechteri. We use a stepmatrix to code the whole module. It means that between the first four above-mentioned taxa, start and end of tuberculation are considered linked whereas independent between each of them and A. bechteri. See associate media for more details.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n0 1 2 3 4^n0	90	90	565	1000^n90	0	0	474	908^n90	0	0	474	909^n565	474	474	0	433^n1000	908	909	433	0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=21 TEXT='This character corresponds to the absence or presence of Engelhardti stage. This stage has been created by dOrbigny as a specific name and used and defined as an ontogenetic stage by Frentzen(1937). It is characterized by a strong decrease of ornamentation strength, tubercles and chevrons. Striae and spiral ornamentation are much more developed in comparison to previous stages.';
+	TEXT CHARACTER=22 TEXT='This character corresponds to the length of the Engelhardti stage. The few fossils available and the use of pictures without scales do not allow us to quantify this length. Thus, we coded an ordinate character with three stages that represent obvious differences.';
+	TEXT CHARACTER=23 TEXT='This character corresponds to the absence or presence of spiral ornamentation. ^n^n';
+	TEXT CHARACTER=24 TEXT='This character corresponds to the lack or presence of a continuity in the ornamental relief between ribs and chevrons.';
+	TEXT CHARACTER=25 TEXT='This character corresponds to the angle between the umbilical and ventral segments of ribs. ^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n0 4 1 D E 2 A F 3 6 5 B C 7 8 9^n   0  250   62 1000 1000   62  750 1000   62  688  438  750  750  688  688  688^n 250    0  188  750  750  188  500  750  188  438  188  500  500  438  438  438^n  62  188    0  938  938    0  688  938    0  626  376  688  688  626  626  626^n1000  750  938    0    0  938  250    0  938  312  562  250  250  312  312  312^n1000  750  938    0    0  938  250    0  938  312  562  250  250  312  312  312^n  62  188    0  938  938    0  688  938    0  626  376  688  688  626  626  626^n 750  500  688  250  250  688    0  250  688   62  312    0    0   62   62   62^n1000  750  938    0    0  938  250    0  938  312  562  250  250  312  312  312^n  62  188    0  938  938    0  688  938    0  626  376  688  688  626  626  626^n 688  438  626  312  312  626   62  312  626    0  250   62   62    0    0    0^n 438  188  376  562  562  376  312  562  376  250    0  312  312  250  250  250^n 750  500  688  250  250  688    0  250  688   62  312    0    0   62   62   62^n 750  500  688  250  250  688    0  250  688   62  312    0    0   62   62   62^n 688  438  626  312  312  626   62  312  626    0  250   62   62    0    0    0^n 688  438  626  312  312  626   62  312  626    0  250   62   62    0    0    0^n 688  438  626  312  312  626   62  312  626    0  250   62   62    0    0    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=26 TEXT='This character corresponds to the width of chevrons compared to whorl breadth. It exists a gap between taxa which the width of chevrons is more than 1/2 of the whorl breadth and those that have a chevrons width less than 1/3 of whorl breadth.';
+	TEXT CHARACTER=27 TEXT='This character corresponds to the chevrons density. The ontogenetic trajectory of the number of chevrons against diameter is linear. We code the slope of each regression.^n^nThis character has been coded using step-matrix gap weighting (Wiens 2001), we used the gap weighting function developped in R language by Bardin et al. 2014, letters have to be replaced by the corresponding numerical states (e.g. A:10, B:11).^n^n0 1 2 3 6 4 7 5 8^n   0   75   94  151  611  355  624  564 1000^n  75    0   19   76  536  280  549  489  925^n  94   19    0   57  517  261  530  470  906^n 151   76   57    0  460  204  473  413  849^n 611  536  517  460    0  256   13   47  389^n 355  280  261  204  256    0  269  209  645^n 624  549  530  473   13  269    0   60  376^n 564  489  470  413   47  209   60    0  436^n1000  925  906  849  389  645  376  436    0^n^nBardin, J., Rouget, I., Yacobucci, M.M. & Cecca, F. 2014. Increasing the number of discrete character states for continuous characters generates well-resolved trees that do not reflect phylogeny. Integrative Zoology, 9, 531-541.^n^nWiens, J.J. 2001. Character analysis in morphological phylogenetics: Problems and solutions. Systematic Biology, 50, 689-699. ';
+	TEXT CHARACTER=28 TEXT='This character corresponds to the absence or presence of an individualized keel. Some taxa develop a raising which is considered as a keel in addition to chevrons relief.';
+	TEXT CHARACTER=29 TEXT='This character corresponds to the absence or presence of chevrons on the keel.';
+	TEXT CHARACTER=30 TEXT='This character corresponds to the absence or presence of a cordated keel that consists of a succession of thickenings.';
+	TEXT CHARACTER=31 TEXT='This character corresponds to the absence or presence of an accessory saddle on the suture line.';
+	TEXT CHARACTER=32 TEXT='This character corresponds to the absence or presence of a simplication of suture line.';
+	TEXT CHARACTER=33 TEXT='This character corresponds to the absence or presence of constrictions.';
+
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 12 14 - 16 18 20 - 21 23 - 33, ord: 13 17 19 22;
+      ENDBLOCK;
+      

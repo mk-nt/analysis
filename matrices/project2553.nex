@@ -1,0 +1,844 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-12 03.16.35 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=37;
+    TAXLABELS
+    		'Acanthodes'
+		'Akmonistion'
+		'Brochoadmones'
+		'Chimaeroidei'
+		'Chondrenchelys'
+		'Cladodoides'
+		'Cladoselache'
+		'Cobelodus'
+		'Cowralepis'
+		'Debeerius'
+		'Dicksonosteus'
+		'Doliodus'
+		'Dwykaselachus'
+		'Egertonodus'
+		'Entelognathus'
+		'Gladbachus'
+		'Guiyu'
+		'Hamiltonichthys'
+		'Helodus'
+		'Iniopera'
+		'Janusiscus'
+		'Kathemacanthus'
+		'Kawichthys'
+		'Ligulalepis'
+		'Mimipiscis'
+		'Onychoselache'
+		'Orthacanthus'
+		'Ozarcus fm 13242'
+		'Poracanthodes'
+		'Psarolepis'
+		'Ptomacanthus'
+		'Pucapampella'
+		'Ramirosuarezia'
+		'Squalus'
+		'Synechodus'
+		'Tamiobatis'
+		'Tristychius'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=145;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="01234";
+	CHARLABELS
+		 [1] 'Tessellate calcified cartilage'
+		 [2] 'Multilayered tesserae'
+		 [3] 'Perichond bone'
+		 [4] 'Endochond bone'
+		 [5] 'Dentine variety'
+		 [6] 'Cosmine'
+		 [7] 'Acrodin'
+		 [8] 'Lepdotrichia'
+		 [9] 'Trunk scales mono/polycuspid'
+		 [10] 'Scale concentric'
+		 [11] 'Scale peg&socket artic.'
+		 [12] 'Scale base convex'
+		 [13] 'Scale base flat'
+		 [14] 'Scale basal canal'
+		 [15] 'Neck canal'
+		 [16] 'Scale sensory line'
+		 [17] 'Sensory line enclosed'
+		 [18] 'Dermal skull plates'
+		 [19] 'Dermal skull tessera'
+		 [20] 'Paired dermal plates'
+		 [21] 'Large median bone in posterior margin of skull roof'
+		 [22] 'Pineal open in dermatocranium'
+		 [23] 'Parietals (placoderm preorbitals) surround pineal marker'
+		 [24] 'Cheek plates'
+		 [25] 'Dermal intracranial joint'
+		 [26] 'Branchiostegals'
+		 [27] 'Submarginal/opercular plate'
+		 [28] 'Gular plates'
+		 [29] 'Gill skeleton position'
+		 [30] 'Interhyal'
+		 [31] 'Hypohyals'
+		 [32] 'Basihyal'
+		 [33] 'Pharyngobranchials'
+		 [34] 'Supra- and infra-pharyngobranchials'
+		 [35] 'Pharyngobranchial orientation'
+		 [36] 'Hypobranchial direction'
+		 [37] 'Oral tubercles on jaw'
+		 [38] 'Pharyngeal teeth or denticles'
+		 [39] 'Tooth whorls'
+		 [40] 'Whorls fused/sep. teeth'
+		 [41] 'Lingual torus'
+		 [42] 'Basiolabial shelf'
+		 [43] 'Adsymph whorl/gape margin'
+		 [44] 'Toothplates'
+		 [45] 'Large posterior, small anterior toothplates'
+		 [46] 'Toothplates 2 upper 1 lower'
+		 [47] 'Jaw dermal plates'
+		 [48] 'Teeth ankylosed'
+		 [49] 'Maxilla & dentary form outer arcade'
+		 [50] 'PQ otic proc. large'
+		 [51] 'PQ ventromedial fossa'
+		 [52] 'PQ oblique ridge'
+		 [53] 'PQ articulation with postorbital process'
+		 [54] 'PQ fused to neurocranium'
+		 [55] 'Mandibular knob'
+		 [56] 'Jaw artic. posterior'
+		 [57] 'Dental sulcus'
+		 [58] 'Scalloped margin'
+		 [59] 'Mandibular symphysis fused'
+		 [60] 'Dermal plates on mesial surfaces of jaws'
+		 [61] 'Parasphenoid'
+		 [62] 'Precerebral fontanelle'
+		 [63] 'Subethmoid keel'
+		 [64] 'Rostral bar'
+		 [65] 'Internasal groove'
+		 [66] 'Orbito-nasal lamina dorsoventrally deep'
+		 [67] 'Olf. tract & telenceph. space slender'
+		 [68] 'Anterior myodome'
+		 [69] 'Supraorbital shelf wide'
+		 [70] 'Interorbit space narrow'
+		 [71] 'Palatobasal articulation'
+		 [72] 'Optic pedicel'
+		 [73] 'Opthalmic foramen'
+		 [74] 'Bucco-hypophyseal space'
+		 [75] 'Internal carotids'
+		 [76] 'Efferent pseudobranchial canal within basicranial cartilage'
+		 [77] 'Basisphen. pillar IC pierced'
+		 [78] 'Spiracular groove on basicranial surface'
+		 [79] 'Spiracular groove on lateral or transverse wall of jugular canal'
+		 [80] 'Orbit large'
+		 [81] 'Postorbital arcade'
+		 [82] 'Postorbit. PQ artic.'
+		 [83] 'Postorbit. arcade shape'
+		 [84] 'Jugular canal size'
+		 [85] 'Trigeminofacial recess'
+		 [86] 'Postorbit. cavity'
+		 [87] 'Hyoid ramus of facial nerve (N. VII) exits through posterior jugular opening'
+		 [88] 'Posterior postorbit. process'
+		 [89] 'Periotic process'
+		 [90] 'Lateral otic process'
+		 [91] 'Subotic occipital fossa'
+		 [92] 'Otic caps extend post'
+		 [93] 'Postotic process'
+		 [94] 'Otic capsule spacing'
+		 [95] 'Domed endocranial space'
+		 [96] 'Mesencephalon roof elevated relative to otic capsule'
+		 [97] 'Telencephalon offset ventrally'
+		 [98] 'Medial capsular wall'
+		 [99] 'Crus commune'
+		 [100] 'Sinus superior'
+		 [101] 'External semicircular canal tilted'
+		 [102] 'External semicircular canals meet posteriorly'
+		 [103] 'Perilymphatic fenestra'
+		 [104] 'Endolymph duct orientation'
+		 [105] 'Endolymphatic ducts anterior to crus commune'
+		 [106] 'Postdors. fontanelle post tect'
+		 [107] 'Subcircular endolymph. foramen'
+		 [108] 'Dorsal ridge with horiz. crest'
+		 [109] 'Dorsal ridge medial recess'
+		 [110] 'Parietal fossa'
+		 [111] 'Ventral cran. fiss.'
+		 [112] 'Intracranial joint'
+		 [113] 'Metotic & occip. cran. fiss.'
+		 [114] 'Hypotic lamina'
+		 [115] 'Glossopharyngeal path'
+		 [116] 'Platy/tropibasic'
+		 [117] 'Dorsal aorta canal in basicranium'
+		 [118] 'Dorsal aorta split'
+		 [119] '(basi) Occip. arch ventral wedge'
+		 [120] '(ex) Occip. arch dorsal wedge'
+		 [121] '(supra) Occip. crest'
+		 [122] 'Unconstricted cranial notochord'
+		 [123] 'Vertebral centra'
+		 [124] 'Chordacentra'
+		 [125] 'Chordacentra rings closely packed'
+		 [126] 'Synarcual'
+		 [127] 'Pectoral girdle micromeric'
+		 [128] 'Scapular postdorsal angle'
+		 [129] 'Dibasal pectoral fin'
+		 [130] 'Metapterygial whip'
+		 [131] 'Puboischiadic bar'
+		 [132] 'Mixipterygial pelvic clasper'
+		 [133] 'Pelvic tenaculum'
+		 [134] 'Dorsal fin spines'
+		 [135] 'Dorsal fin spine posterior denticles'
+		 [136] 'Dorsal fin spine only at pectoral level'
+		 [137] 'Anal fin spines'
+		 [138] 'Pectoral fin spines'
+		 [139] 'Cephalic spines'
+		 [140] 'Dorsal fin number'
+		 [141] 'Posterior dorsal baseplate'
+		 [142] 'Posterior dorsal fin with delta-shaped cartilage'
+		 [143] 'Anal fin'
+		 [144] 'Caudal neural spines'
+		 [145] 'Lunate tail'
+	;
+	STATELABELS
+		1
+		'absent'
+		'present'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'present'
+		'bone absent'
+		,
+		4
+		'absent'
+		'present'
+		,
+		5
+		'meso or semidentine'
+		'orthodentine'
+		,
+		6
+		'absent'
+		'present'
+		,
+		7
+		'absent'
+		'present'
+		,
+		8
+		'present'
+		'lepidotrichs absent'
+		,
+		9
+		'monocuspid'
+		'multicuspid'
+		,
+		10
+		'absent'
+		'present'
+		,
+		11
+		'absent'
+		'present'
+		,
+		12
+		'absent'
+		'present'
+		,
+		13
+		'absent'
+		'present'
+		,
+		14
+		'absent'
+		'present'
+		,
+		15
+		'absent'
+		'present'
+		,
+		16
+		'perforates'
+		'passes between'
+		'c-shaped'
+		,
+		17
+		'sulci in dermal bones'
+		'canals in dermal bones'
+		,
+		18
+		'large dermal plates'
+		'plates, tesserae or scales'
+		,
+		19
+		'large interlocking polygons'
+		'not larger than body scales'
+		,
+		20
+		'absent'
+		'present'
+		,
+		21
+		'absent'
+		'present'
+		,
+		22
+		'present'
+		'absent'
+		,
+		23
+		'surround pineal'
+		'uninterrupted suture'
+		,
+		24
+		'absent'
+		'present'
+		,
+		25
+		'absent'
+		'present'
+		,
+		26
+		'absent'
+		'present'
+		,
+		27
+		'plate present'
+		'plate absent'
+		,
+		28
+		'absent'
+		'present'
+		,
+		29
+		'sub occipital'
+		'posterior to occiput'
+		,
+		30
+		'absent'
+		'present'
+		,
+		31
+		'absent'
+		'present'
+		,
+		32
+		'absent'
+		'present'
+		,
+		33
+		'absent'
+		'present'
+		,
+		34
+		'absent'
+		'present'
+		,
+		35
+		'anterior'
+		'posterior'
+		,
+		36
+		'anteriorly'
+		'hypobranchs of 2nd+ directed posteriorly'
+		,
+		37
+		'absent'
+		'present'
+		,
+		38
+		'absent'
+		'present'
+		,
+		39
+		'absent'
+		'present'
+		,
+		40
+		'single, continuous plate'
+		'some or all whorls of separate teeth'
+		,
+		41
+		'absent'
+		'present'
+		,
+		42
+		'absent'
+		'present'
+		,
+		43
+		'restricted to symphysial region'
+		'distributed along jaw margin'
+		,
+		44
+		'absent'
+		'present'
+		,
+		45
+		'absent'
+		'present'
+		,
+		46
+		'absent'
+		'present'
+		,
+		47
+		'absent'
+		'present'
+		,
+		48
+		'absent'
+		'present'
+		,
+		49
+		'absent'
+		'present'
+		,
+		50
+		'absent'
+		'present'
+		,
+		51
+		'ventromedial recess for adductor muscles'
+		'ventromedial fossa absent'
+		,
+		52
+		'absent'
+		'present'
+		,
+		53
+		'anteriorly'
+		'laterally'
+		'dorsally'
+		,
+		54
+		'absent'
+		'present'
+		'State 2'
+		,
+		55
+		'absent'
+		'present'
+		,
+		56
+		'absent'
+		'present'
+		,
+		57
+		'absent'
+		'present'
+		,
+		58
+		'absent'
+		'present'
+		,
+		59
+		'absent'
+		'present'
+		,
+		60
+		'absent'
+		'present'
+		,
+		61
+		'absent'
+		'present'
+		,
+		62
+		'absent'
+		'present'
+		,
+		63
+		'absent'
+		'present'
+		,
+		64
+		'absent'
+		'present'
+		,
+		65
+		'absent'
+		'present'
+		,
+		66
+		'absent'
+		'present'
+		,
+		67
+		'absent'
+		'present'
+		,
+		68
+		'posterior and dorsal to NII foramen'
+		'anterior and dorsal to NII foramen'
+		,
+		69
+		'absent'
+		'present'
+		,
+		70
+		'absent'
+		'present'
+		,
+		71
+		'posterior'
+		'anterior'
+		,
+		72
+		'absent'
+		'present'
+		,
+		73
+		'absent'
+		'present'
+		,
+		74
+		'open'
+		'closed'
+		,
+		75
+		'posterior angle'
+		'lateral angle'
+		'absent'
+		,
+		76
+		'absent'
+		'present'
+		,
+		77
+		'absent'
+		'present'
+		,
+		78
+		'absent'
+		'present'
+		,
+		79
+		'absent'
+		'present'
+		,
+		80
+		'absent'
+		'present'
+		,
+		81
+		'absent'
+		'present'
+		,
+		82
+		'absent'
+		'present'
+		,
+		83
+		'short and broad'
+		'wide and narrow'
+		'ventrally reduced'
+		,
+		84
+		'small'
+		'large'
+		'absent'
+		,
+		85
+		'absent'
+		'present'
+		,
+		86
+		'absent'
+		'present'
+		,
+		87
+		'absent'
+		'present'
+		,
+		88
+		'absent'
+		'present'
+		,
+		89
+		'absent'
+		'present'
+		,
+		90
+		'absent'
+		'present'
+		,
+		91
+		'absent'
+		'present'
+		,
+		92
+		'absent'
+		'present'
+		,
+		93
+		'absent'
+		'present'
+		,
+		94
+		'widely separated'
+		'close to midline'
+		,
+		95
+		'absent'
+		'present'
+		,
+		96
+		'absent'
+		'present'
+		,
+		97
+		'absent'
+		'present'
+		,
+		98
+		'present'
+		'absent'
+		,
+		99
+		'present'
+		'absent'
+		,
+		100
+		'absent or indistinguishable'
+		'present and nearly vertical'
+		,
+		101
+		'absent'
+		'present'
+		,
+		102
+		'absent'
+		'present'
+		,
+		103
+		'absent'
+		'present'
+		,
+		104
+		'posteriodorsally angled tubes'
+		'tubes vertical through fossa/pdf'
+		,
+		105
+		'absent'
+		'present'
+		,
+		106
+		'absent'
+		'present'
+		,
+		107
+		'absent'
+		'present'
+		,
+		108
+		'absent'
+		'present'
+		,
+		109
+		'absent'
+		'present'
+		,
+		110
+		'absent'
+		'present and open posteriorly'
+		'Present and closed posteriorly'
+		,
+		111
+		'absent'
+		'present'
+		,
+		112
+		'absent'
+		'present'
+		,
+		113
+		'absent'
+		'present'
+		,
+		114
+		'absent'
+		'present'
+		,
+		115
+		'through otic wall'
+		'through fissure'
+		'through canal'
+		'State 3'
+		,
+		116
+		'platybasic'
+		'tropibasic'
+		,
+		117
+		'absent'
+		'present'
+		,
+		118
+		'posterior split'
+		'anterior split'
+		,
+		119
+		'absent'
+		'present'
+		,
+		120
+		'absent'
+		'present'
+		,
+		121
+		'absent'
+		'present'
+		,
+		122
+		'absent'
+		'present'
+		,
+		123
+		'absent'
+		'present'
+		,
+		124
+		'absent'
+		'present'
+		,
+		125
+		'absent'
+		'present'
+		,
+		126
+		'absent'
+		'present'
+		,
+		127
+		'Macromeric dermal pectoral girdle'
+		'micromeric or dermal skeleton absent'
+		,
+		128
+		'absent'
+		'present'
+		,
+		129
+		'absent'
+		'present'
+		,
+		130
+		'absent'
+		'present'
+		,
+		131
+		'absent'
+		'present'
+		,
+		132
+		'absent'
+		'present'
+		,
+		133
+		'absent'
+		'present'
+		,
+		134
+		'absent'
+		'present'
+		,
+		135
+		'absent'
+		'present'
+		,
+		136
+		'absent'
+		'present'
+		,
+		137
+		'absent'
+		'present'
+		,
+		138
+		'absent'
+		'present'
+		,
+		139
+		'absent'
+		'present'
+		,
+		140
+		'one'
+		'two'
+		'State 2'
+		'State 3'
+		,
+		141
+		'absent'
+		'present'
+		,
+		142
+		'absent'
+		'present'
+		,
+		143
+		'absent'
+		'present'
+		,
+		144
+		'short'
+		'long'
+		,
+		145
+		'absent'
+		'present'
+		
+	;
+	MATRIX
+	'Acanthodes'		                0-0010-011010011-1100?-0-0101?0010?000--------0-0111001000000????0??010??00011001100100000000100?10100000001001010110100-000-010000001001100--100
+	'Akmonistion'		               110010010?01?112-1?00--0-010101?10??11111110--0-011?10?011000100?0??1?1??0???0011111?000010001????0??0?10111000011?011?0000??01101010101-00001011
+	'Brochoadmones'		             0-100000100110?101100?-0-0101???????1110--10--0-0????0????????????????????????????????????????????????????????????????????????1??0?001001101001?0
+	'Chimaeroidei'		              1010100100001112-1100--0-01000011010100----1110-001--11100100000011101-01121-0?11-0200-0000001011101000111100000001001101101111110011101-00100000
+	'Chondrenchelys'		            101010010?00??1?-1100--0-0100???????100-00-1100-001--1110-100000?1??00-0?1????011-02000000000?????????0???1000000???0??00?010011100100---003?-000
+	'Cladodoides'		               1010????????????-??00--?-???????????1?111110--0-011?00????0001???00?001100010000110010000000010001010?01010110001110101100???????????????????????
+	'Cladoselache'		              1?1010011001?11?-1100--0-010100?????1?111110--0-0110?01011000????0??1?1??0?????1111??0?01?000?????????????????001???11?0?00??011000?0101-00100011
+	'Cobelodus'		                 1?10?001??0?????-1100--0-010101?????11111110--0-011010101?000????0??111??0???0011111?0?010000??????????????00000111?11?0??00-011010100---00001011
+	'Cowralepis'		                0-00?00?????????00-0111-?0000?01????100----0--1100?--00?00?01????????????????????0?????????????????????0??????????????????00-10???0000?-010-??000
+	'Debeerius'		                 101010010?0????2-1100--0-0100011101010110010--0-001--1?1?0000000?1??01??1??1??0?1-02?0?000000??????????1?11000000???0?????00-01110010101000100000
+	'Dicksonosteus'		             0-0?000?1?0?????00-1111100000???????1???--?0--110000-0?00000100000000001000000000000010100000000000000000-0000000000000000???10-????00--?10??????
+	'Doliodus'		                  1??0?00?100?????-1?00--0-0101?0?????1?10??10--0-011??0?010000100?0??001??00??0?0110??0?0000001????????-??00000001??01000-???????00????0??10??????
+	'Dwykaselachus'		             1010?0??????????-??00--0-???1???????????????????????10??????0?001011011111?10001111100001000010111011001111000001111111000?????????????-?????????
+	'Egertonodus'		               101010010000111--1100--0-0101001101111110010--0-0010-01010000110000100100001?00110001000000001000010001101001100011000110000-01000110110001110100
+	'Entelognathus'		             0-00?00???001???00-111?101010???????0???--?0--1-10?--0?0000??000?0??0????0??000?00???1?100000?????????????????000??000????????0???????0-?10??????
+	'Gladbachus'		                1?10?0?1100100?1-1100--0-0101??110?????-??-0--0-01??00???0000??0????00?????????0110??0?000?00?????????0???0000?01??0??000?00-01??????0--??0100???
+	'Guiyu'		                     0-0110001010100010-1100111010???????1?1-0000--101???-00000011000?0??000??00?1???0---?0????????????????????????11?????????1????0-??0??100?101??1??
+	'Hamiltonichthys'		           1?10100100001111-1100--0-0101??????111110010--0-001--010??0001???0??00???????0??100??0?000?00??????0?????1?01?0001??0?11??00-01000110110001110100
+	'Helodus'		                   1?1010010000111?-1100--0-0100???????1?1{0,1}0011000-001--11101100000?1??0?-?1??1?00?1-02000000000??????????????0??000??011????0??11110010101-001000?0
+	'Iniopera'		                  1010?001000????--1100--0-0100??1????101{0,1}0011000-001--21100100000100?10-00121-0011?1000-000000110?10101010?10000000300???100??0110001?0---00000010
+	'Janusiscus'		                0-00?0??????????10-1?1-?0???????????????--??--???????0??????0????0?100?1?0?0?00?0?00?11000000????????000?-?00000000000?000???????????????????????
+	'Kathemacanthus'		            0-1000-010001111-1100?-0-0101?0?????00-----0--0--????000?000????????0?????????????????????????????????????????????????????????1??0?0?1001101??1?0
+	'Kawichthys'		                1010?0??0?0?????-1?00--0-????????????????????????0??20??????0????0??1?1??0??00011110?0?0000?011??101010111100000??3111??1????????????????????????
+	'Ligulalepis'		               0-01?0??10???01?10-1??1?0???????????????????-???????-0???????000?00100010000??101000100000?001000101?0000?0000101?00??????????????????--?????????
+	'Mimipiscis'		                0-011010101010?010-11001010101101100110-00-0--101111-00000011000001101000000111110001010000001000101000000000010100111000000-00-000000--0000?-100
+	'Onychoselache'		             1?10?00110001?1?-1100--0-0101???????1?110010--0-001-?0?0100001???0??????????????1-0????00??0???????????????????0??????????00-01000010110001110100
+	'Orthacanthus'		              11101001?00011??-1?00--0-010101110111?111110--0-0111001010000110000?001?0001000011001000011001000101000101011100111010110000-0110001010-0002?-100
+	'Ozarcus fm 13242'		          1010?00?????????-1100--0-010101011001?111110--0-0110101011000110?0110111?1?100011111000010000101?1011001111000001111111000???????????????????????
+	'Poracanthodes'		             0-00000010010?1??1000?-0-?1?????????1?10--00--11011??0?????0??????????????????????????????????????????????????????????????????10?0???1001101??1??
+	'Psarolepis'		                0-01110?1010?01010-?1001110?0???????1?1?0000--101???-00000011000?0??0001?00?1?100---?010?0??0????1?????0??????111????????1????0-?????100?10??????
+	'Ptomacanthus'		              0-00?00?1?011?11?10001-0-11?1???????1?10--10--0-0110?0?????00?00?????????000?0????????????0?????????????????????????0?????????00?0?001001101??1?0
+	'Pucapampella'		              1010?0??????????-??00--0-?????????????0----0--0-011?000000000????0??0001?1?1?000110010?0000001??010??000?000001010101000????????????????????-????
+	'Ramirosuarezia'		            0-00??0??????????????1-?0???????????1?0---?0--11?0?0?0??000?0000?0??00???????0??00??1??000000?????????-??-00000000000?000????????????????????????
+	'Squalus'		                   1010100100001111-1100--0-0101001101111110010--0-0010-0101000010100010011011100-0102-10-0000111000011001101000100012?00110010-01000110100-00110100
+	'Synechodus'		                1?10?001??0?????-??00--0-01010??????1?110010--0-011?001010000101?00?0011011100-0112-10-0000111??0??????1?100?100012?0?11001???1???????????0??????
+	'Tamiobatis'		                1110?00?1000111?-1100--0-?1?1???????1?111110--0-011?00??100001???00?001??00100001100?000011001????0??001?10111001110101100?????1????010???011????
+	'Tristychius'		               1?1010011?00??1--1100--0-0101001101?1?111010--0-001020101000010000010010000?0000110010?0000001000010001101001100011000?10000-01100010110000110100
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 145;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1468364257888; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 5349578926611132804; tell It; setDefaultOrder 11 32 9 35 28 18 30 38 0 27 1 16 34 24 2 14 7 23 29 36 3 13 41 5 6 22 20 37 10 8 12 15 4 26 25 19 21; attachments ; endTell; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 4773903575962377375; tell It; setDefaultOrder 0 1 2 3 4 5 6 7 8 9 10 11 12 13 104 14 15 16 17 18 19 20 21 22 23 24 158 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 105 106 138 42 43 44 45 46 47 48 107 49 50 51 52 53 54 55 56 57 119 108 58 117 59 60 61 120 62 115 121 122 63 64 65 66 142 67 68 132 133 69 70 71 72 118 73 74 127 123 103 136 112 116 75 76 77 113 114 82 78 111 80 110 79 135 81 83 84 85 86 131 87 88 124 144 150 109 90 128 129 137 98 91 92 134 141 125 93 139 94 97 126 95 96 130 99 100 101 156 143 102; attachments ; endTell; mqVersion 304; checksumv 0 3 1867950846 null getNumChars 145 numChars 145 getNumTaxa 37 numTaxa 37 short true bits 2305843009213693967 states 15 sumSquaresStatesOnly 6920.0 sumSquares -9.2233720368547738E18 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState false false 128; setPopoutState 400; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 857 648; setLocation 124 30; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; desuppress; endTell; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord; tell It; showDataWindow #4773903575962377375 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; getTable; tell It; rowNamesWidth 110; endTell; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 729 576; setLocation 124 30; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; endTell; setActive; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; colorCells #mesquite.charMatrices.NoColor.NoColor; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames on; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames on; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 80; toggleLinkedScrolling on; toggleScrollLinkedTables off; endTell; showWindow; getWindow; tell It; forceAutosize; endTell; getEmployee #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; getEmployee #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.categ.StateNamesEditor.StateNamesEditor; tell It; makeWindow; tell It; getTable; tell It; rowNamesWidth 142; endTell; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 729 576; setLocation 124 30; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.categ.StateNamesEditor.StateNamesWindow.ibeam; endTell; rowsAreCharacters on; toggleConstrainChar on; toggleConstrainCharNum 3; togglePanel off; toggleSummaryPanel off; endTell; showWindow; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel off; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1 - 145; 
+ENDBLOCK;

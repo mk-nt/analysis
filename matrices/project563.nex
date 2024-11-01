@@ -1,0 +1,1033 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-05-27 03.26.58 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=82;
+    TAXLABELS
+    		'Amphicorina mobilis'
+		'Romanchella quadricostalis'
+		'Sabella spallanzanii'
+		'Salmacina sp.'
+		'Serpula vermicularis'
+		'Augeneriella basifurcata'
+		'Augeneriella hummelincki'
+		'Augeneriella lagunari'
+		'Augeneriella mossambica'
+		'Augeneriella pectinata'
+		'Brifacia metastellaris'
+		'Echinofabricia alata'
+		'Echinofabricia dubia'
+		'Echinofabricia goodhartzorum'
+		'Fabricia oregonica'
+		'Fabricia stellaris Baltic'
+		'Fabricia stellaris Portland'
+		'Fabricinuda bikinii'
+		'Fabricinuda limnicola'
+		'Fabricinuda longilabrum'
+		'Fabricinuda pseudocollaris'
+		'Fabricinuda pseudopalpa'
+		'Fabricinuda rosaelenae'
+		'Fabricinuda sp. Australia'
+		'Fabricinuda trilobata Belize'
+		'Fabricinuda trilobata Panama'
+		'Fabriciola baltica'
+		'Fabriciola berkeleyi'
+		'Fabriciola brevibranchiata'
+		'Fabriciola cri'
+		'Fabriciola flammula Belize'
+		'Fabriciola flammula Panama'
+		'Fabriciola ghardaqa'
+		'Fabriciola liguronis'
+		'Fabriciola mediaseta'
+		'Fabriciola minuta'
+		'Fabriciola parvus'
+		'Fabriciola phuketensis'
+		'Fabriciola rubra'
+		'Fabriciola sp. N. Carolina'
+		'Fabriciola markginsbergi'
+		'Fabriciola tonerella'
+		'Manayunkia aestuarina Baltic'
+		'Manayunkia aestuarina N. Carolina'
+		'Manayunkia athalassia'
+		'Manayunkia baicalensis'
+		'Manayunkia brasiliensis'
+		'Manayunkia mizu'
+		'Manayunkia polaris'
+		'Manayunkia speciosa'
+		'Monroika africana'
+		'Novafabricia bilobata'
+		'Novafabricia brunnea'
+		'Novafabricia chilensis'
+		'Novafabricia exiguus'
+		'Novafabricia gerdi'
+		'Novafabricia guana'
+		'Novafabricia infratorquata'
+		'Novafabricia labrus'
+		'Novafabricia sp. NSW'
+		'Novafabricia tenuiseta'
+		'Novafabricia triangularis'
+		'Parafabricia ventricingulata'
+		'Pseudoaugeneriella bansei'
+		'Pseudoaugeneriella brevirama'
+		'Pseudoaugeneriella nigra'
+		'Pseudoaugeneriella unirama'
+		'Pseudofabricia aberrans'
+		'Pseudofabriciola analis'
+		'Pseudofabriciola australiensis'
+		'Pseudofabriciola californica'
+		'Pseudofabriciola capensis'
+		'Pseudofabriciola filamentosa'
+		'Pseudofabriciola filaris'
+		'Pseudofabriciola incisura'
+		'Pseudofabriciola longa'
+		'Pseudofabriciola longipyga'
+		'Pseudofabriciola peduncula'
+		'Pseudofabriciola quasiincisura'
+		'Pseudofabriciola rousei'
+		'Pseudofabriciola sofla'
+		'Raficiba barryi'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=50;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="0123456";
+	CHARLABELS
+		 [1] 'Tube'
+		 [2] 'Radioles'
+		 [3] 'Number of radioles'
+		 [4] 'Displaced pinnules'
+		 [5] 'Dorsalmost margins of branchial lobes'
+		 [6] 'Interior of ventral filamentous appendages'
+		 [7] 'Ventral filamentous appendages'
+		 [8] 'Dorsal lips'
+		 [9] 'Dorsal lip shape'
+		 [10] 'Ventral margin of branchial lobe'
+		 [11] 'Branchial lobe shape'
+		 [12] 'Branchial crown location'
+		 [13] 'Mid-dorsal collar margin'
+		 [14] 'Anterior peristomial ring collar'
+		 [15] 'Anterior peristomial ring dimensions'
+		 [16] 'APR relative to PPR'
+		 [17] 'Thorax'
+		 [18] 'Peristomial eye color'
+		 [19] 'Pygidial eyes'
+		 [20] 'Eyes in preservation'
+		 [21] 'Inferior thoracic notosetae'
+		 [22] 'Distribution of pseudospatulate setae'
+		 [23] 'Abdominal neurochaetae'
+		 [24] 'Inferior uncini in setigers 2-3'
+		 [25] 'Dentition above main fang of thoracic uncini'
+		 [26] 'Dentition of abdominal uncini'
+		 [27] 'Abdominal uncini teeth size'
+		 [28] 'Abdominal uncini manubrium length'
+		 [29] 'Proximal end of manubrium'
+		 [30] 'Number of abdominal setigers'
+		 [31] 'Body-wall spicules'
+		 [32] 'Distribution of spermiogenesis'
+		 [33] 'Pattern of spermiogenesis'
+		 [34] 'Sperm duct'
+		 [35] 'Mode of reproduction'
+		 [36] 'Sperm storage tissue'
+		 [37] 'Sperm storage position'
+		 [38] 'Structure of spermathecae'
+		 [39] 'Pigmentation of spermathecae'
+		 [40] 'Shape of sperm nucleus'
+		 [41] 'Sperm nuclear axis'
+		 [42] 'Curvature of sperm nucleus'
+		 [43] 'Spiral ridge in sperm nucleus'
+		 [44] 'Sperm nuclear projection'
+		 [45] 'Shape of sperm nuclear projection'
+		 [46] 'Thickening of sperm nuclear membrane'
+		 [47] 'Sperm mitochondrial sheath'
+		 [48] 'Sperm extra-axonemal sheath'
+		 [49] 'Development of extra-axonemal sheath'
+		 [50] 'Sperm acrosome'
+	;
+	STATELABELS
+		1
+		'sediment'
+		'calcareous'
+		,
+		2
+		'all largely similar'
+		'one radiole as an operculum'
+		,
+		3
+		'3 or more pairs'
+		'2 pairs'
+		,
+		4
+		'absent'
+		'present'
+		,
+		5
+		'smooth'
+		'as ventral filamentous appendages'
+		,
+		6
+		'with large blood vessel'
+		'with very small blood vessel'
+		,
+		7
+		'unbranched'
+		'branched'
+		,
+		8
+		'present'
+		'absent'
+		,
+		9
+		'well-developed, triangular ridges with dorsal margins well separated from proximalmost pinnules of dorsal radioles'
+		'dorsal margins fused with proximalmost radioles to some extent, forming low to moderately narrow ridges'
+		,
+		10
+		'even'
+		'slight flange'
+		,
+		11
+		'wide and short'
+		'narrow and elongate, and/or with peduncle-like process'
+		,
+		12
+		'covers all of anterior peristomium margin'
+		'shifted dorsally along anterior peristomium margin'
+		,
+		13
+		'separate'
+		'entire'
+		,
+		14
+		'ventral lobe'
+		'membrane all around'
+		'low ridge'
+		,
+		15
+		'wider than long'
+		'at least as wide as long'
+		,
+		16
+		'distinctly shorter than posterior ring'
+		'equal to posterior ring length'
+		'longer than PPR'
+		,
+		17
+		'segmental elements only'
+		'thoracic membrane fused to peristomial collar'
+		,
+		18
+		'red'
+		'black'
+		,
+		19
+		'present'
+		'absent'
+		,
+		20
+		'persist'
+		'disappear'
+		,
+		21
+		'all elongate narrowly hooded'
+		'combination of elongate narrowly hooded and pseudospatulate'
+		,
+		22
+		'setigers 2-5 pseudospatulate'
+		'setigers 2-8 pseudospatulate'
+		'setigers 3-5 pseudospatulate'
+		'setigers 3-6 pseudospatulate'
+		'setigers 3-7 pseudospatulate'
+		'setigers 3-8 pseudospatulate'
+		,
+		23
+		'only narrowly hooded'
+		'narrowly hooded and ''pin-head'''
+		,
+		24
+		'same as in setigers 4-8'
+		'enlarged main fang'
+		,
+		25
+		'series of uniformly small teeth'
+		'teeth gradually decrease in size away from main fang'
+		'large tooth slightly offset from midline, followed by series of smaller teeth'
+		,
+		26
+		'multiple rows of teeth'
+		'single row of teeth'
+		,
+		27
+		'uniform in size'
+		'gradation in size from proximal to distal'
+		,
+		28
+		'Amphicorina-like'
+		'short (same length as dentate region)'
+		'medium (1.5 to 2.5 times longer than dentate region)'
+		'long (3 times longer than dentate region)'
+		,
+		29
+		'slightly wider than dentate region'
+		'2 or more times wider than dentate region'
+		,
+		30
+		'5 or more'
+		'2'
+		'3'
+		'4'
+		,
+		31
+		'absent'
+		'present'
+		,
+		32
+		'Posterior thoracic and abdominal setigers'
+		'chaetigers 4-8'
+		'chaetigers 3-8'
+		'chaetigers 6-8'
+		,
+		33
+		'tetrads'
+		'large clusters associated with central cytophore'
+		,
+		34
+		'paired'
+		'single'
+		,
+		35
+		'broadcasting'
+		'brooding'
+		,
+		36
+		'epidermal'
+		'spermathecae'
+		,
+		37
+		'peristomium'
+		'crown'
+		,
+		38
+		'simple'
+		'complex'
+		,
+		39
+		'absent'
+		'present'
+		,
+		40
+		'spherical'
+		'elongate'
+		,
+		41
+		'straight'
+		'curved'
+		,
+		42
+		'in one plane'
+		'spiral'
+		,
+		43
+		'absent'
+		'present'
+		,
+		44
+		'absent'
+		'present'
+		,
+		45
+		'spike-like'
+		'knob-like'
+		'digitiform'
+		'pointed'
+		'small bulge with thickened membrane'
+		,
+		46
+		'absent'
+		'present'
+		,
+		47
+		'simple spherical'
+		'Amphicorina-like'
+		'elongate and thin'
+		'short and thin'
+		'short and thick'
+		,
+		48
+		'absent'
+		'present'
+		,
+		49
+		'simple sleeve'
+		'sleeve with marked ridges'
+		'regular projections'
+		'complex spiraling rings'
+		'undeveloped'
+		,
+		50
+		'small and cap-like'
+		'elongate and conical'
+		'flattened in one plane'
+		
+	;
+	MATRIX
+	'Amphicorina mobilis'		                        00000--00000000000010-0010000000001110010-00-010-1
+	'Romanchella quadricostalis'		                 11000--00000100010110-00000000001011???11000-010-1
+	'Sabella spallanzanii'		                       00000--00000000000110-0010010000000????0--00-000-0
+	'Salmacina sp.'		                              10000--00000000010110-0000000000001100011000-010-1
+	'Serpula vermicularis'		                       11000--00000000010110-0000000000000????0--00-000-?
+	'Augeneriella basifurcata'		                   0000101001000001010014002002020111101--11101412111
+	'Augeneriella hummelincki'		                   0000101001000000010013002002120111101--11101412111
+	'Augeneriella lagunari'		                      00001010010000010100140020010201??????????????????
+	'Augeneriella mossambica'		                    00001010010000010100140020010201??????????????????
+	'Augeneriella pectinata'		                     000010100100000101001300200102011110?--11101412111
+	'Brifacia metastellaris'		                     00000--0000000000100140020010201??????????????????
+	'Echinofabricia alata'		                       000010000000000000010-0000020311111100111111013100
+	'Echinofabricia dubia'		                       000010000000000000010-000002031?11110??11111013100
+	'Echinofabricia goodhartzorum'		               000010000000000000010-0000020312111100111111013100
+	'Fabricia oregonica'		                         00000--00000000001000-002002020211111?11??????????
+	'Fabricia stellaris Baltic'		                  00000--0000000000100140020020202111111111001214122
+	'Fabricia stellaris Portland'		                00000--0000000000100140020020202111111111001214122
+	'Fabricinuda bikinii'		                        00001001-1010212010015002001020111100--11001414121
+	'Fabricinuda limnicola'		                      00001001-10002120100150020020201??????????????????
+	'Fabricinuda longilabrum'		                    00000--0010002120100150020020201??????????????????
+	'Fabricinuda pseudocollaris'		                 00001001-10002120100150020010201??????????????????
+	'Fabricinuda pseudopalpa'		                    00000--0010002110100150020010201??????????????????
+	'Fabricinuda rosaelenae'		                     00001000010102120100140020010201??????????????????
+	'Fabricinuda sp. Australia'		                  00001001-10102120100150020010201??????????????????
+	'Fabricinuda trilobata Belize'		               00001001-1010212010015002001020111101--11001414121
+	'Fabricinuda trilobata Panama'		               00001001-1010212010015002001020111101--11001414121
+	'Fabriciola baltica'		                         000011000000010001000-0010031201??????????????????
+	'Fabriciola berkeleyi'		                       000011000000010000000-1110031201??????????????????
+	'Fabriciola brevibranchiata'		                 000011000000010000000-011003120111101--11001313131
+	'Fabriciola cri'		                             000011000000010000000-101003120111111011??????????
+	'Fabriciola flammula Belize'		                 000011000000010000000-10100312021110?--11001313131
+	'Fabriciola flammula Panama'		                 000011000000010000000-10100312021110?--11001313131
+	'Fabriciola ghardaqa'		                        000011000000010000000-??100?120???????????????????
+	'Fabriciola liguronis'		                       000011000000010001000-0010021202111110011101114122
+	'Fabriciola mediaseta'		                       000011000000010000000-11100212011110?--11001313131
+	'Fabriciola minuta'		                          000111000000010001000-0010031102111110111101114121
+	'Fabriciola parvus'		                          000011000000000001100-00100312021110?--11101214131
+	'Fabriciola phuketensis'		                     000011000000010000000-1110031201??????????????????
+	'Fabriciola rubra'		                           000011000000010000000-1010031201??????????????????
+	'Fabriciola sp. N. Carolina'		                 000011000000010000000-10100??20???????????????????
+	'Fabriciola markginsbergi'		                   000011000000010000000-1010031201??????????????????
+	'Fabriciola tonerella'		                       000011000000010000000-1010021201??????????????????
+	'Manayunkia aestuarina Baltic'		               00111000000001000110100010030203111110111101114131
+	'Manayunkia aestuarina N. Carolina'		          00111000000001000110100010030203111110111101114131
+	'Manayunkia athalassia'		                      00111000000001000110??001002020311111011??????????
+	'Manayunkia baicalensis'		                     001110000000010001100-001002020311111011??????????
+	'Manayunkia brasiliensis'		                    0011100000000100011010001002020311111011??????????
+	'Manayunkia mizu'		                            00111000000001000110100010020203111110111111114131
+	'Manayunkia polaris'		                         00111000000001000110130010020203??????????????????
+	'Manayunkia speciosa'		                        001110000000010001100-001002020311111011??????????
+	'Monroika africana'		                          00111000000001000???12002001010???????????????????
+	'Novafabricia bilobata'		                      00000--010000000?100120020020201??????????????????
+	'Novafabricia brunnea'		                       00000--010000000010012002002020111100--11001312131
+	'Novafabricia chilensis'		                     00000--0100000000100130021110201??????????????????
+	'Novafabricia exiguus'		                       00000--0100000000100120020020201??????????????????
+	'Novafabricia gerdi'		                         00000--0100000000100120021110201??????????????????
+	'Novafabricia guana'		                         00000--0100000010100120020020201??????????????????
+	'Novafabricia infratorquata'		                 00000--010000001010012002002020111100--11001312131
+	'Novafabricia labrus'		                        00000--01000000001001300200102021110?--???????????
+	'Novafabricia sp. NSW'		                       00000--010000001010012002002020111101--110????????
+	'Novafabricia tenuiseta'		                     00000--01000000001000-0020020201111111111001212142
+	'Novafabricia triangularis'		                  00000--01000000101001200201202011110?--???????????
+	'Parafabricia ventricingulata'		               00000--000000001010014002001020?11111111100121????
+	'Pseudoaugeneriella bansei'		                  0000100001000000010013002002020???????????????????
+	'Pseudoaugeneriella brevirama'		               0000100001000001010013002002020???????????????????
+	'Pseudoaugeneriella nigra'		                   0000100001000002010013002002020???????????????????
+	'Pseudoaugeneriella unirama'		                 0000100001000001010013002002020???????????????????
+	'Pseudofabricia aberrans'		                    000011000000000001000-002002020211?????1100121?130
+	'Pseudofabriciola analis'		                    00000--01010110001000-0010010201??????????????????
+	'Pseudofabriciola australiensis'		             000010000010110001000-0010020201??????????????????
+	'Pseudofabriciola californica'		               00000--00010110001000-0020020201??????????????????
+	'Pseudofabriciola capensis'		                  00000--00010110001000-0020010201??????????????????
+	'Pseudofabriciola filamentosa'		               00000--0?010110001000-0010020201??????????????????
+	'Pseudofabriciola filaris'		                   00000--01010110001000-0010020201??????????????????
+	'Pseudofabriciola incisura'		                  000010000010110001000-001002020111100--10-01113131
+	'Pseudofabriciola longa'		                     00000--01010110001000-0010010201??????????????????
+	'Pseudofabriciola longipyga'		                 00000--01010110001000-0010020201??????????????????
+	'Pseudofabriciola peduncula'		                 00000--01010110001000-001002020111100--10-01113131
+	'Pseudofabriciola quasiincisura'		             000010000010110001000-00100202011110?--10-01113131
+	'Pseudofabriciola rousei'		                    00000--01010110001000-0010020201??????????????????
+	'Pseudofabriciola sofla'		                     00000--01010110001000-0010020201??????????????????
+	'Raficiba barryi'		                            00000--0000000000100110020010203??????????????????
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+              [Taxon comments]
+        	TEXT TAXON=1 TEXT='Outgroup Sabellidae^n^n^n';
+	TEXT TAXON=2 TEXT='Outgroup Serpulidae^n^n^n';
+	TEXT TAXON=3 TEXT='Outgroup Sabellidae^n^n^n';
+	TEXT TAXON=4 TEXT='Outgroup Serpulidae^n^n^n';
+	TEXT TAXON=5 TEXT='Outgroup Serpulidae^n^n^n';
+
+        [Character comments]
+        	TEXT CHARACTER=33 TEXT='Franzen (1956; Zool. Bidrag); Rouse (1992; Zool. Scr.)^n^nFranzen (1956; Zool. Bidrag); Rouse (1992; Zool. Scr.)^n';
+	TEXT CHARACTER=34 TEXT='Rouse (1995; Acta Zool.)^n^nRouse (1995; Acta Zool.)^n';
+	TEXT CHARACTER=35 TEXT='Rouse & Fitzhugh (1994; Zool. Scr.); Rouse (1996; Zoomorphology)^n^nRouse & Fitzhugh (1994; Zool. Scr.); Rouse (1996; Zoomorphology)^n';
+	TEXT CHARACTER=40 TEXT='Rouse (1992; Zool. Scr.)^n^nRouse (1992; Zool. Scr.)^n';
+	TEXT CHARACTER=43 TEXT='Rouse (1992; Zool. Scr.)^n^nRouse (1992; Zool. Scr.)^n';
+	TEXT CHARACTER=44 TEXT='Rouse (1992; Zool. Scr.)^n^nRouse (1992; Zool. Scr.)^n';
+	TEXT CHARACTER=46 TEXT='Rouse (1995; Acta Zool.)^n^nRouse (1995; Acta Zool.)^n';
+	TEXT CHARACTER=48 TEXT='Rouse (1995; Acta Zool.)^n^nRouse (1995; Acta Zool.)^n';
+
+      [Attribute comments]
+      	TEXT TAXON=1 CHARACTER=3 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=12 CHARACTER=3 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=45 CHARACTER=3 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=47 CHARACTER=3 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=49 CHARACTER=3 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=51 CHARACTER=3 TEXT='Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=43 CHARACTER=4 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=46 CHARACTER=4 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=48 CHARACTER=4 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=50 CHARACTER=4 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=1 CHARACTER=5 TEXT='Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.)';
+	TEXT TAXON=3 CHARACTER=5 TEXT='Knight-Jones & Perkins (1998; Zool. J. Linn. Soc.)';
+	TEXT TAXON=5 CHARACTER=5 TEXT='Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.)';
+	TEXT TAXON=18 CHARACTER=5 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.); original state 0';
+	TEXT TAXON=20 CHARACTER=5 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=22 CHARACTER=5 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=25 CHARACTER=5 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.); original state 0';
+	TEXT TAXON=28 CHARACTER=5 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=30 CHARACTER=5 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=33 CHARACTER=5 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=35 CHARACTER=5 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=37 CHARACTER=5 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=39 CHARACTER=5 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=41 CHARACTER=5 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=43 CHARACTER=5 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=46 CHARACTER=5 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=48 CHARACTER=5 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=50 CHARACTER=5 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=52 CHARACTER=5 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=54 CHARACTER=5 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=56 CHARACTER=5 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=58 CHARACTER=5 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=61 CHARACTER=5 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=63 CHARACTER=5 TEXT='Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=65 CHARACTER=5 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=67 CHARACTER=5 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=69 CHARACTER=5 TEXT='Fitzhugh et al. (1994; Zool. J. Linn. Soc.); Fitzhugh & Simboura (1995; Contrib. Sci.)';
+	TEXT TAXON=71 CHARACTER=5 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=73 CHARACTER=5 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=75 CHARACTER=5 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=77 CHARACTER=5 TEXT='Fitzhugh & Simboura (1995; Contrib. Sci.); Fitzhugh & Simboura (1995; Contrib. Sci.)';
+	TEXT TAXON=79 CHARACTER=5 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=81 CHARACTER=5 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=12 CHARACTER=6 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=19 CHARACTER=6 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=23 CHARACTER=6 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=6 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=46 CHARACTER=6 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=48 CHARACTER=6 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=50 CHARACTER=6 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=64 CHARACTER=6 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.)';
+	TEXT TAXON=66 CHARACTER=6 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=6 TEXT='Fitzhugh (1995; Contrib. Sci.)';
+	TEXT TAXON=75 CHARACTER=6 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=12 CHARACTER=7 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=19 CHARACTER=7 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=23 CHARACTER=7 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=27 CHARACTER=7 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=29 CHARACTER=7 TEXT='Fitzhugh (1992; Pac. Sci.)';
+	TEXT TAXON=31 CHARACTER=7 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=34 CHARACTER=7 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=7 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=38 CHARACTER=7 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=40 CHARACTER=7 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=42 CHARACTER=7 TEXT='Bick (2005; Zool. Anz.)';
+	TEXT TAXON=45 CHARACTER=7 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=47 CHARACTER=7 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=49 CHARACTER=7 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=51 CHARACTER=7 TEXT='Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=65 CHARACTER=7 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=67 CHARACTER=7 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=70 CHARACTER=7 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=79 CHARACTER=7 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=19 CHARACTER=8 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=25 CHARACTER=8 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=1 CHARACTER=9 TEXT='Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.); Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=20 CHARACTER=9 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=23 CHARACTER=9 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=53 CHARACTER=9 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=55 CHARACTER=9 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=57 CHARACTER=9 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=9 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=9 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=9 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=66 CHARACTER=9 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=9 TEXT='Giangrande & Cantone (1990; Boll. Zool.)';
+	TEXT TAXON=70 CHARACTER=9 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=9 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=75 CHARACTER=9 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=77 CHARACTER=9 TEXT='Fitzhugh & Simboura (1995; Contrib. Sci.)';
+	TEXT TAXON=79 CHARACTER=9 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=81 CHARACTER=9 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=66 CHARACTER=10 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=70 CHARACTER=11 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=11 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=74 CHARACTER=11 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=76 CHARACTER=11 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=78 CHARACTER=11 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=80 CHARACTER=11 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=82 CHARACTER=11 TEXT='Fitzhugh (2001; Contrib. Sci.)';
+	TEXT TAXON=3 CHARACTER=12 TEXT='Knight-Jones & Perkins (1998; Zool. J. Linn. Soc.)';
+	TEXT TAXON=19 CHARACTER=12 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=21 CHARACTER=12 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=23 CHARACTER=12 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=69 CHARACTER=12 TEXT='Fitzhugh et al. (1994; Zool. J. Linn. Soc.)';
+	TEXT TAXON=71 CHARACTER=12 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=73 CHARACTER=12 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=75 CHARACTER=12 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=77 CHARACTER=12 TEXT='Fitzhugh & Simboura (1995; Contrib. Sci.)';
+	TEXT TAXON=81 CHARACTER=12 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=2 CHARACTER=13 TEXT='Knight-Jones (1973; Bull. Brit. Mus.); original state 0';
+	TEXT TAXON=69 CHARACTER=13 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=71 CHARACTER=13 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=73 CHARACTER=13 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=75 CHARACTER=13 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=77 CHARACTER=13 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=79 CHARACTER=13 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=81 CHARACTER=13 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=2 CHARACTER=14 TEXT='Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.): low, even segment';
+	TEXT TAXON=4 CHARACTER=14 TEXT='Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.): low, even segment';
+	TEXT TAXON=12 CHARACTER=14 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=19 CHARACTER=14 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=21 CHARACTER=14 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=23 CHARACTER=14 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=25 CHARACTER=14 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=28 CHARACTER=14 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=31 CHARACTER=14 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=35 CHARACTER=14 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=37 CHARACTER=14 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=39 CHARACTER=14 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=43 CHARACTER=14 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=46 CHARACTER=14 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=48 CHARACTER=14 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=50 CHARACTER=14 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=52 CHARACTER=14 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=54 CHARACTER=14 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=56 CHARACTER=14 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=58 CHARACTER=14 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=61 CHARACTER=14 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=63 CHARACTER=14 TEXT='Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=66 CHARACTER=14 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=14 TEXT='Giangrande & Cantone (1990; Boll. Zool.)';
+	TEXT TAXON=70 CHARACTER=14 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=14 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=74 CHARACTER=14 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=76 CHARACTER=14 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=78 CHARACTER=14 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=80 CHARACTER=14 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=82 CHARACTER=14 TEXT='Fitzhugh (2001; Contrib. Sci.)';
+	TEXT TAXON=3 CHARACTER=15 TEXT='Knight-Jones & Perkins (1998; Zool. J. Linn. Soc.)';
+	TEXT TAXON=19 CHARACTER=15 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=21 CHARACTER=15 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=23 CHARACTER=15 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=25 CHARACTER=15 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=18 CHARACTER=16 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=20 CHARACTER=16 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=22 CHARACTER=16 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)?';
+	TEXT TAXON=24 CHARACTER=16 TEXT='Inferred from Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=29 CHARACTER=16 TEXT='Fitzhugh (1992; Pac. Sci.)?';
+	TEXT TAXON=38 CHARACTER=16 TEXT='Fitzhugh (1999; Contrib. Sci.)?';
+	TEXT TAXON=42 CHARACTER=16 TEXT='Bick (2005; Zool. Anz.)?';
+	TEXT TAXON=52 CHARACTER=16 TEXT='Martin & Giangrande (1991; Ophelia)';
+	TEXT TAXON=54 CHARACTER=16 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=56 CHARACTER=16 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=16 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=16 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=16 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.); original state 1';
+	TEXT TAXON=66 CHARACTER=16 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=16 TEXT='Giangrande & Cantone (1990; Boll. Zool.)';
+	TEXT TAXON=70 CHARACTER=16 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=16 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=74 CHARACTER=16 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=76 CHARACTER=16 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=78 CHARACTER=16 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=80 CHARACTER=16 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=82 CHARACTER=16 TEXT='Fitzhugh (2001; Contrib. Sci.)';
+	TEXT TAXON=12 CHARACTER=18 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=27 CHARACTER=18 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=29 CHARACTER=18 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=31 CHARACTER=18 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=34 CHARACTER=18 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=18 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=38 CHARACTER=18 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=42 CHARACTER=18 TEXT='Bick (2005; Zool. Anz.)';
+	TEXT TAXON=45 CHARACTER=18 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=47 CHARACTER=18 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=49 CHARACTER=18 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=51 CHARACTER=18 TEXT='Fitzhugh (1992; Proc. Biol. Soc. Wash.): eyes absent?';
+	TEXT TAXON=53 CHARACTER=18 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=55 CHARACTER=18 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=57 CHARACTER=18 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=18 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=18 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=18 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.)';
+	TEXT TAXON=66 CHARACTER=18 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=18 TEXT='Giangrande & Cantone (1990; Boll. Zool.)';
+	TEXT TAXON=70 CHARACTER=18 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=18 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=74 CHARACTER=18 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=76 CHARACTER=18 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=78 CHARACTER=18 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=80 CHARACTER=18 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=82 CHARACTER=18 TEXT='Fitzhugh (2001; Contrib. Sci.)';
+	TEXT TAXON=12 CHARACTER=19 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=27 CHARACTER=19 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=29 CHARACTER=19 TEXT='Fitzhugh (1992; Pac. Sci.)';
+	TEXT TAXON=31 CHARACTER=19 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=34 CHARACTER=19 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=19 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=38 CHARACTER=19 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=42 CHARACTER=19 TEXT='Bick (2005; Zool. Anz.)';
+	TEXT TAXON=45 CHARACTER=19 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=47 CHARACTER=19 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=49 CHARACTER=19 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=51 CHARACTER=19 TEXT='Hartman (1951; Pac. Sci.); Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=53 CHARACTER=19 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=55 CHARACTER=19 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=57 CHARACTER=19 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=19 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=19 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=19 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.)?';
+	TEXT TAXON=66 CHARACTER=19 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=19 TEXT='Giangrande & Cantone (1990; Boll. Zool.)';
+	TEXT TAXON=70 CHARACTER=19 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=19 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=74 CHARACTER=19 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=76 CHARACTER=19 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=78 CHARACTER=19 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=80 CHARACTER=19 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=82 CHARACTER=19 TEXT='Fitzhugh (2001; Contrib. Sci.)';
+	TEXT TAXON=12 CHARACTER=20 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=28 CHARACTER=20 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=30 CHARACTER=20 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=33 CHARACTER=20 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=35 CHARACTER=20 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=37 CHARACTER=20 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=39 CHARACTER=20 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=43 CHARACTER=20 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=46 CHARACTER=20 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=48 CHARACTER=20 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=50 CHARACTER=20 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=53 CHARACTER=20 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=55 CHARACTER=20 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=57 CHARACTER=20 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=20 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=20 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=20 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.)';
+	TEXT TAXON=66 CHARACTER=20 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=20 TEXT='Giangrande & Cantone (1990; Boll. Zool.)';
+	TEXT TAXON=70 CHARACTER=20 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=20 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=74 CHARACTER=20 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=76 CHARACTER=20 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=78 CHARACTER=20 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=80 CHARACTER=20 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=82 CHARACTER=20 TEXT='Fitzhugh (2001; Contrib. Sci.)';
+	TEXT TAXON=28 CHARACTER=21 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=30 CHARACTER=21 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=34 CHARACTER=21 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=38 CHARACTER=21 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=42 CHARACTER=21 TEXT='Bick (2005; Zool. Anz.)';
+	TEXT TAXON=50 CHARACTER=21 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=68 CHARACTER=21 TEXT='Giangrande & Cantone (1990; Boll. Zool.)';
+	TEXT TAXON=70 CHARACTER=21 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=72 CHARACTER=21 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=74 CHARACTER=21 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=76 CHARACTER=21 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=78 CHARACTER=21 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=80 CHARACTER=21 TEXT='Fitzhugh (2002; J. Nat. Hist.)';
+	TEXT TAXON=6 CHARACTER=22 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=8 CHARACTER=22 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=10 CHARACTER=22 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=16 CHARACTER=22 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=19 CHARACTER=22 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=21 CHARACTER=22 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=23 CHARACTER=22 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=22 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=48 CHARACTER=22 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=51 CHARACTER=22 TEXT='Fitzhugh (1992; Proc. Biol. Soc. Wash.); Jones (1974; Proc. Biol. Soc. Wash.): state 1';
+	TEXT TAXON=53 CHARACTER=22 TEXT='Fitzhugh (1993; Contrib. Sci.)';
+	TEXT TAXON=55 CHARACTER=22 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=58 CHARACTER=22 TEXT='Fitzhugh (1983; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=62 CHARACTER=22 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=22 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.)';
+	TEXT TAXON=66 CHARACTER=22 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=82 CHARACTER=22 TEXT='Fitzhugh (2001; Contrib. Sci.)';
+	TEXT TAXON=28 CHARACTER=23 TEXT='Fitzhugh (1990; Zool. Scr.): holotype?; but see Fitzhugh (1992; Pac. Sci.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=30 CHARACTER=23 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=33 CHARACTER=23 TEXT='Fitzhugh (1990; Zool. Scr.)?';
+	TEXT TAXON=35 CHARACTER=23 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=37 CHARACTER=23 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=39 CHARACTER=23 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=42 CHARACTER=23 TEXT='Bick (2005; Zool. Anz.)';
+	TEXT TAXON=31 CHARACTER=24 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=24 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=38 CHARACTER=24 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=48 CHARACTER=24 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=2 CHARACTER=25 TEXT='Knight-Jones (1973; Bull. Brit. Mus.); Knight-Jones & Fordy (1979; Zool. Scr.); Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.)';
+	TEXT TAXON=4 CHARACTER=25 TEXT='Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.)';
+	TEXT TAXON=12 CHARACTER=25 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=51 CHARACTER=25 TEXT='Jones (1974; Proc. Biol. Soc. Wash.); Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=53 CHARACTER=25 TEXT='Fitzhugh (1993; Contrib. Sci.)';
+	TEXT TAXON=55 CHARACTER=25 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=57 CHARACTER=25 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=25 TEXT='Fitzhugh (1990; Am. Mus. Novit.); Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=25 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=65 CHARACTER=25 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=67 CHARACTER=25 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=69 CHARACTER=25 TEXT='Fitzhugh et al. (1994; Zool. J. Linn. Soc.)';
+	TEXT TAXON=71 CHARACTER=25 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=73 CHARACTER=25 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=75 CHARACTER=25 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=77 CHARACTER=25 TEXT='Fitzhugh et al. (1994; Zool. J. Linn. Soc.)';
+	TEXT TAXON=79 CHARACTER=25 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=81 CHARACTER=25 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=52 CHARACTER=26 TEXT='Martin & Giangrande (1991; Ophelia)';
+	TEXT TAXON=54 CHARACTER=26 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=56 CHARACTER=26 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=26 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=26 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=52 CHARACTER=27 TEXT='Martin & Giangrande (1991; Ophelia)';
+	TEXT TAXON=54 CHARACTER=27 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=56 CHARACTER=27 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=27 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=27 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=14 CHARACTER=27 TEXT='Light micrographs';
+	TEXT TAXON=6 CHARACTER=28 TEXT='Differs from Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=8 CHARACTER=28 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=10 CHARACTER=28 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=12 CHARACTER=28 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=16 CHARACTER=28 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=19 CHARACTER=28 TEXT='Hartman (1951; Pac. Sci.); Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=21 CHARACTER=28 TEXT='Fitzhugh (1990; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=23 CHARACTER=28 TEXT='Lopez & Rodriguez (2008; J. Nat. Hist.)';
+	TEXT TAXON=28 CHARACTER=28 TEXT='Fitzhugh (1990; Zool. Scr.)';
+	TEXT TAXON=30 CHARACTER=28 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=34 CHARACTER=28 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=28 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=38 CHARACTER=28 TEXT='Fitzhugh (1999; Contrib. Sci.)';
+	TEXT TAXON=41 CHARACTER=28 TEXT='Light micrographs';
+	TEXT TAXON=43 CHARACTER=28 TEXT='Fitzhugh (1998; Zool. Scr.)?';
+	TEXT TAXON=46 CHARACTER=28 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=48 CHARACTER=28 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=50 CHARACTER=28 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=52 CHARACTER=28 TEXT='Martin & Giangrande (1991; Ophelia)?';
+	TEXT TAXON=54 CHARACTER=28 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=56 CHARACTER=28 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=28 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=28 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=28 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.)';
+	TEXT TAXON=66 CHARACTER=28 TEXT='Bick (2004; Zool. Anz.)';
+	TEXT TAXON=68 CHARACTER=28 TEXT='Giangrande & Cantone (1990; Boll. Zool.); revised by Fitzhugh';
+	TEXT TAXON=70 CHARACTER=28 TEXT='Fitzhugh (1990; Am. Mus. Novit.): "manubrium about same length as dentate region"; revised by Fitzhugh';
+	TEXT TAXON=72 CHARACTER=28 TEXT='Fitzhugh (1991; J. Nat. Hist.); revised by Fitzhugh';
+	TEXT TAXON=74 CHARACTER=28 TEXT='Fitzhugh (2002; J. Nat. Hist.); revised by Fitzhugh';
+	TEXT TAXON=76 CHARACTER=28 TEXT='Fitzhugh (1990; Am. Mus. Novit.); revised by Fitzhugh';
+	TEXT TAXON=78 CHARACTER=28 TEXT='Fitzhugh (1996; J. Nat. Hist.); revised by Fitzhugh';
+	TEXT TAXON=80 CHARACTER=28 TEXT='Fitzhugh (2002; J. Nat. Hist.); revised by Fitzhugh';
+	TEXT TAXON=82 CHARACTER=28 TEXT='Fitzhugh (2001; Contrib. Sci.); revised by Fitzhugh';
+	TEXT TAXON=27 CHARACTER=29 TEXT='Fitzhugh (1990; Zool. Scr.); revised by Fitzhugh';
+	TEXT TAXON=29 CHARACTER=29 TEXT='Fitzhugh (1992; Pac. Sci.)';
+	TEXT TAXON=31 CHARACTER=29 TEXT='Rouse (1993; Zool. Scr.); revised by Fitzhugh';
+	TEXT TAXON=34 CHARACTER=29 TEXT='Rouse (1993; Zool. Scr.); revised by Fitzhugh';
+	TEXT TAXON=36 CHARACTER=29 TEXT='Rouse (1996; J. Nat. Hist.); revised by Fitzhugh';
+	TEXT TAXON=38 CHARACTER=29 TEXT='Fitzhugh (1999; Contrib. Sci.); revised by Fitzhugh';
+	TEXT TAXON=41 CHARACTER=29 TEXT='Light micrographs';
+	TEXT TAXON=48 CHARACTER=29 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=52 CHARACTER=29 TEXT='Martin & Giangrande (1991; Ophelia)';
+	TEXT TAXON=54 CHARACTER=29 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=56 CHARACTER=29 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=59 CHARACTER=29 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=62 CHARACTER=29 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=64 CHARACTER=29 TEXT='Hartman-Schroder (1986; Mitt. Hamb. Zool. Mus. Inst.)';
+	TEXT TAXON=67 CHARACTER=29 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=69 CHARACTER=29 TEXT='Fitzhugh et al. (1994; Zool. J. Linn. Soc.)';
+	TEXT TAXON=71 CHARACTER=29 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=73 CHARACTER=29 TEXT='Fitzhugh (1991; J. Nat. Hist.)';
+	TEXT TAXON=75 CHARACTER=29 TEXT='Fitzhugh (1990; Am. Mus. Novit.)';
+	TEXT TAXON=77 CHARACTER=29 TEXT='Fitzhugh et al. (1994; Zool. J. Linn. Soc.); Fitzhugh & Simboura (1995; Contrib. Sci.)';
+	TEXT TAXON=79 CHARACTER=29 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=81 CHARACTER=29 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=36 CHARACTER=30 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=58 CHARACTER=30 TEXT='2';
+	TEXT TAXON=13 CHARACTER=31 TEXT='Fitzhugh (1989; Bull. Am. Mus. Nat. Hist.)';
+	TEXT TAXON=1 CHARACTER=32 TEXT='Rouse (1992; Zool. Scr.)';
+	TEXT TAXON=7 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=11 CHARACTER=32 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=18 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=29 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=31 CHARACTER=32 TEXT='Rouse (1993; Zool. Scr.); original state 1';
+	TEXT TAXON=35 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=37 CHARACTER=32 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=39 CHARACTER=32 TEXT='Fitzhugh (1998; Zool. Scr.)';
+	TEXT TAXON=43 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=53 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=58 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=61 CHARACTER=32 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=78 CHARACTER=32 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=81 CHARACTER=32 TEXT='Fitzhugh (1996; J. Nat. Hist.)';
+	TEXT TAXON=1 CHARACTER=35 TEXT='Rouse & Fitzhugh (1994; Zool. Scr.); Rouse (1999; Hydrobiologia)';
+	TEXT TAXON=3 CHARACTER=35 TEXT='Rouse (1999; Hydrobiologia)';
+	TEXT TAXON=5 CHARACTER=35 TEXT='Rouse et al. (2006)';
+	TEXT TAXON=4 CHARACTER=36 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=7 CHARACTER=36 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=12 CHARACTER=36 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=16 CHARACTER=36 TEXT='Rouse (1995; Invertebr. Biol.)';
+	TEXT TAXON=25 CHARACTER=36 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=30 CHARACTER=36 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=34 CHARACTER=36 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=36 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=36 TEXT='Rouse (1995; Invertebr. Biol.)';
+	TEXT TAXON=46 CHARACTER=36 TEXT='Zenkevitsch (1925; Zool. Jahrb.)';
+	TEXT TAXON=48 CHARACTER=36 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=53 CHARACTER=36 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=60 CHARACTER=36 TEXT='Light micrographs';
+	TEXT TAXON=63 CHARACTER=36 TEXT='Rouse (1992; Acta Zool.); Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=78 CHARACTER=36 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=14 CHARACTER=36 TEXT='Light micrographs';
+	TEXT TAXON=1 CHARACTER=37 TEXT='Rouse (1992; Acta Zool.)';
+	TEXT TAXON=6 CHARACTER=37 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=12 CHARACTER=37 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=16 CHARACTER=37 TEXT='Rouse (1995; Invertebr. Biol.)';
+	TEXT TAXON=25 CHARACTER=37 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=30 CHARACTER=37 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=36 CHARACTER=37 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=45 CHARACTER=37 TEXT='Light micrographs';
+	TEXT TAXON=47 CHARACTER=37 TEXT='Light micrographs';
+	TEXT TAXON=50 CHARACTER=37 TEXT='Light micrographs';
+	TEXT TAXON=58 CHARACTER=37 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=61 CHARACTER=37 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=75 CHARACTER=37 TEXT='Rouse (1996; Zool. Scr.)';
+	TEXT TAXON=14 CHARACTER=37 TEXT='Light micrographs';
+	TEXT TAXON=1 CHARACTER=38 TEXT='Rouse (1992; Acta Zool.)';
+	TEXT TAXON=12 CHARACTER=38 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=16 CHARACTER=38 TEXT='Rouse (1995; Invertebr. Biol.)';
+	TEXT TAXON=34 CHARACTER=38 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=43 CHARACTER=38 TEXT='Rouse (1995; Invertebr. Biol.)';
+	TEXT TAXON=46 CHARACTER=38 TEXT='Zenkevitsch (1925; Zool. Jahrb.)';
+	TEXT TAXON=48 CHARACTER=38 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=61 CHARACTER=38 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=1 CHARACTER=39 TEXT='Rouse (1992; Acta Zool.)';
+	TEXT TAXON=12 CHARACTER=39 TEXT='Rouse (1990; Rec. Aust. Mus.)';
+	TEXT TAXON=15 CHARACTER=39 TEXT='Fitzhugh (unpublished)';
+	TEXT TAXON=30 CHARACTER=39 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=36 CHARACTER=39 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=45 CHARACTER=39 TEXT='Light micrographs';
+	TEXT TAXON=47 CHARACTER=39 TEXT='Light micrographs';
+	TEXT TAXON=50 CHARACTER=39 TEXT='Light micrographs';
+	TEXT TAXON=63 CHARACTER=39 TEXT='Rouse (1992; Acta Zool.); Fitzhugh (1992; Proc. Biol. Soc. Wash.)';
+	TEXT TAXON=2 CHARACTER=40 TEXT='Rouse (2005; Hydrobiologia)';
+	TEXT TAXON=4 CHARACTER=40 TEXT='Franzen (1958; Zool. Bidrag); Rouse (1996; Zoomorphology); Rouse (1999; Hydrobiologia); Kupriyanova (2001; Oceanogr. Mar. Biol.)';
+	TEXT TAXON=6 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=10 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=16 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=25 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=30 CHARACTER=40 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=34 CHARACTER=40 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=40 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=53 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=60 CHARACTER=40 TEXT='Light micrographs';
+	TEXT TAXON=63 CHARACTER=40 TEXT='Rouse (1992; Acta Zool.)';
+	TEXT TAXON=75 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=79 CHARACTER=40 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=29 CHARACTER=41 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=34 CHARACTER=41 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=41 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=41 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=60 CHARACTER=41 TEXT='Light micrographs';
+	TEXT TAXON=1 CHARACTER=42 TEXT='Rouse (1992; Zool. Scr.)';
+	TEXT TAXON=4 CHARACTER=42 TEXT='Franzen (1958; Zool. Bidrag); Rouse (1996; Zoomorphology)';
+	TEXT TAXON=7 CHARACTER=42 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=12 CHARACTER=42 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=18 CHARACTER=42 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=29 CHARACTER=42 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=34 CHARACTER=42 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=42 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=42 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=53 CHARACTER=42 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=60 CHARACTER=42 TEXT='Light micrographs';
+	TEXT TAXON=63 CHARACTER=42 TEXT='Rouse (1992; Acta Zool.)';
+	TEXT TAXON=75 CHARACTER=42 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=79 CHARACTER=42 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=14 CHARACTER=42 TEXT='Light micrographs';
+	TEXT TAXON=2 CHARACTER=43 TEXT='Rouse (2005; Hydrobiologia)';
+	TEXT TAXON=31 CHARACTER=43 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=37 CHARACTER=43 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=63 CHARACTER=43 TEXT='Rouse (1992; Acta Zool.)';
+	TEXT TAXON=2 CHARACTER=44 TEXT='Rouse (2005; Hydrobiologia)';
+	TEXT TAXON=37 CHARACTER=44 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=48 CHARACTER=44 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=6 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=10 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=13 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=16 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=25 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=31 CHARACTER=45 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=35 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=37 CHARACTER=45 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=48 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=58 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=63 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=75 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=79 CHARACTER=45 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=48 CHARACTER=46 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=1 CHARACTER=47 TEXT='Rouse (1992; Zool. Scr.)';
+	TEXT TAXON=3 CHARACTER=47 TEXT='Rouse & Fitzhugh (1994; Zool. Scr.)';
+	TEXT TAXON=6 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=10 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=13 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=16 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=25 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.): short and thick mitochondrial elements';
+	TEXT TAXON=31 CHARACTER=47 TEXT='Rouse (1993; Zool. Scr.); Rouse (1995; Acta Zool.)';
+	TEXT TAXON=35 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=37 CHARACTER=47 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=48 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=58 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=75 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=79 CHARACTER=47 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=48 CHARACTER=48 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=7 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=12 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=18 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=29 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=34 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=36 CHARACTER=49 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=49 TEXT='Franzen (1956; Zool. Bidrag); Rouse (1995; Acta Zool.)';
+	TEXT TAXON=53 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=61 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=75 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=79 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=14 CHARACTER=49 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=2 CHARACTER=50 TEXT='Rouse (2005; Hydrobiologia)';
+	TEXT TAXON=4 CHARACTER=50 TEXT='Rouse (1996; Zoomorphology)';
+	TEXT TAXON=7 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=12 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=18 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=29 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=34 CHARACTER=50 TEXT='Rouse (1993; Zool. Scr.)';
+	TEXT TAXON=36 CHARACTER=50 TEXT='Rouse (1996; J. Nat. Hist.)';
+	TEXT TAXON=43 CHARACTER=50 TEXT='Franzen (1956; Zool. Bidrag); Rouse (1995; Acta Zool.)';
+	TEXT TAXON=53 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=61 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=75 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=79 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+	TEXT TAXON=14 CHARACTER=50 TEXT='Rouse (1995; Acta Zool.)';
+      ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 50;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+MESQUITESCRIPTVERSION 2 ; TITLE AUTO ; tell ProjectCoordinator ; timeSaved 1284137650101 ; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa ; tell It ; setID 0 969695624727186822 ; tell It ; setDefaultOrder 3 0 4 1 2 11 12 15 20 21 23 5 7 6 24 27 16 23 33 34 35 38 30 39 40 25 38 39 40 42 46 31 45 49 50 51 52 53 55 56 41 57 58 43 57 58 59 60 61 64 65 66 67 68 69 70 71 72 73 62 73 74 77 8 9 75 10 77 78 79 80 81 82 83 84 85 86 88 89 90 91 92 ; attachments ; endTell ; endTell ; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters ; tell It ; setID 0 501260220798766251 ; tell It ; setDefaultOrder 47 49 0 1 2 3 4 5 6 7 8 9 10 11 12 13 48 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 ; attachments ; endTell ; checksumv 0 2 3034420643 null getNumChars 50 numChars 50 getNumTaxa 82 numTaxa 82 short true bits 63 states 63 sumSquaresStatesOnly 27790.0 sumSquares 27790.0 NumFiles 1 NumMatrices 1 ; endTell ; getWindow ; tell It ; suppress ; setResourcesState false false 186 ; setPopoutState 400 ; setExplanationSize 0 ; setAnnotationSize 0 ; setFontIncAnnot 0 ; setFontIncExp 0 ; setSize 1384 820 ; setLocation 4 22 ; setFont SanSerif ; setFontSize 10 ; getToolPalette ; tell It ; endTell ; desuppress ; endTell ; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord ; tell It ; showDataWindow #501260220798766251 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker ; tell It ; getWindow ; tell It ; getTable ; tell It ; rowNamesWidth 178 ; endTell ; setExplanationSize 30 ; setAnnotationSize 20 ; setFontIncAnnot 0 ; setFontIncExp 0 ; setSize 1198 753 ; setLocation 4 22 ; setFont SanSerif ; setFontSize 10 ; getToolPalette ; tell It ; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam ; endTell ; setActive ; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam ; colorCells #mesquite.charMatrices.NoColor.NoColor ; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor ; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor ; colorText #mesquite.charMatrices.NoColor.NoColor ; setBackground White ; toggleShowNames off ; toggleShowTaxonNames on ; toggleTight off ; toggleThinRows off ; toggleShowChanges on ; toggleSeparateLines off ; toggleShowStates on ; toggleAutoWCharNames on ; toggleAutoTaxonNames off ; toggleShowDefaultCharNames off ; toggleConstrainCW on ; setColumnWidth 16 ; toggleBirdsEye off ; toggleAllowAutosize on ; toggleColorsPanel off ; toggleDiagonal on ; setDiagonalHeight 80 ; toggleLinkedScrolling on ; toggleScrollLinkedTables off ; endTell ; showWindow ; getEmployee #mesquite.charMatrices.ColorCells.ColorCells ; tell It ; setColor Red ; removeColor off ; endTell ; getEmployee #mesquite.categ.StateNamesEditor.StateNamesEditor ; tell It ; makeWindow ; tell It ; getTable ; tell It ; rowNamesWidth 159 ; endTell ; setExplanationSize 30 ; setAnnotationSize 20 ; setFontIncAnnot 0 ; setFontIncExp 0 ; setSize 1198 753 ; setLocation 4 22 ; setFont SanSerif ; setFontSize 10 ; getToolPalette ; tell It ; setTool mesquite.categ.StateNamesEditor.StateNamesWindow.ibeam ; endTell ; rowsAreCharacters on ; toggleConstrainChar on ; toggleConstrainCharNum 3 ; togglePanel off ; toggleSummaryPanel off ; endTell ; showWindow ; endTell ; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip ; tell It ; showStrip off ; endTell ; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel ; tell It ; togglePanel off ; endTell ; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip ; tell It ; showStrip off ; endTell ; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector ; tell It ; autotabOff ; endTell ; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor ; tell It ; panelOpen true ; endTell ; endTell ; endTell ; endTell ;
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ProbModelSet * UNTITLED = Mk1 (est.) : 1 - 50 ;
+ENDBLOCK;

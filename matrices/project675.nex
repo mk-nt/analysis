@@ -1,0 +1,356 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-05-29 19.07.22 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=16;
+    TAXLABELS
+    		'Protungulatum donnae'
+		'Hyopsodus spp.'
+		'Apheliscus spp.'
+		'Haplomylus spp.'
+		'Paschatherium spp.'
+		'Mithrandir gillianus'
+		'Chriacus gallinae'
+		'Ectocion spp.'
+		'Tetraclaenodon puercensis'
+		'Claenodon spp.'
+		'Diacodexis secans'
+		'"Hyracotherium" spp.'
+		'Molinodus suarezi'
+		'Dissacus spp.'
+		'Macroscelidea'
+		'Hyracoidea'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=52;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="01234";
+	CHARLABELS
+		 [1] 'Lower molar cusp relief'
+		 [2] 'Relative heights of molar trigonids and talonids'
+		 [3] 'p4 paraconid and metaconid'
+		 [4] 'p4 protoconid shape'
+		 [5] 'p4 talonid complexity'
+		 [6] 'Relative widths of m1-2 trigonids and talonids'
+		 [7] 'Orientation of m1-3 trigonid cusps in buccal view'
+		 [8] 'm1-3 paraconid height'
+		 [9] 'm1-3 paraconid position'
+		 [10] 'Molar paracristid shape'
+		 [11] 'm1-3 metaconid inflation'
+		 [12] 'm2 cristid obliqua orientation'
+		 [13] 'Position of m1-3 hypoconid'
+		 [14] 'Position of m1-3 entoconids'
+		 [15] 'm1-2 entocristid'
+		 [16] 'm3 relative size'
+		 [17] 'm3 talonid width'
+		 [18] 'P4 metacone'
+		 [19] 'P4 protocone size'
+		 [20] 'P4 postprotocrista orientation'
+		 [21] 'M1-2 stylar shelf'
+		 [22] 'Orientation of M1-2 preparacrista (position of parastyle)'
+		 [23] 'M1-2 mesostyle'
+		 [24] 'M1-2 postprotocrista'
+		 [25] 'M1-2 postprotocingulum (Nannopithex fold)'
+		 [26] 'M1-2 hypocone size'
+		 [27] 'M1-2 hypoloph'
+		 [28] 'Calcaneal tuber relative length'
+		 [29] 'Calcaneal fibular facet'
+		 [30] 'Orientation of long axis of ectal facet'
+		 [31] 'Ectal facet curvature'
+		 [32] 'Overlap between calcaneal ectal and sustentacular facets'
+		 [33] 'Distal extension of sustentacular facet'
+		 [34] 'Position of plantar tubercle'
+		 [35] 'Peroneal tubercle position and size'
+		 [36] 'Curvature of cuboid facet'
+		 [37] 'Orientation of ML axis of cuboid facet relative to long axis of calcaneum'
+		 [38] 'Proportions of cuboid facet'
+		 [39] 'Medial trochlear ridge'
+		 [40] 'Depth of trochlear groove'
+		 [41] 'Radius of curvature of lateral trochlear ridge'
+		 [42] 'Astragalar foramen'
+		 [43] 'Posterior extension of trochlear articular surface'
+		 [44] 'Cotylar fossa'
+		 [45] 'Posteromedial projection of astragalar body'
+		 [46] 'Proximomedial plantar tuberosity'
+		 [47] 'Ectal facet width'
+		 [48] 'Astragalar sustentacular facet shape and curvature'
+		 [49] 'Orientation of long axis of navicular facet'
+		 [50] 'Facet for medial tarsal/spring ligament'
+		 [51] 'Astragalar cuboid facet'
+		 [52] 'Navicular facet convexity'
+	;
+	STATELABELS
+		1
+		'Strong, cusps relatively acute'
+		'Weak'
+		,
+		2
+		'Trigonids much higher than talonids'
+		'Trigonids somewhat higher than talonids'
+		'Trigonids and talonids subequal in height'
+		,
+		3
+		'Both cusps weak or absent'
+		'Both cusps well developed'
+		'Metaconid well developed, paraconid weak or absent'
+		,
+		4
+		'Conical, p4 trigonid relatively closed'
+		'Elongate, p4 trigonid relatively open'
+		,
+		5
+		'p4 talonid simple, with a single well developed cusp'
+		'p4 talonid complex with multiple cusps'
+		,
+		6
+		'Talonids broader than trigonids'
+		'Trigonids and talonids subequal in width or trigonids broader'
+		,
+		7
+		'Cusps erect'
+		'Cusps canted mesially'
+		,
+		8
+		'low'
+		'tall'
+		,
+		9
+		'distinctly separated from metaconid'
+		'close to metaconid or fused with metaconid'
+		,
+		10
+		'Buccal portion of paracristid directed lingually'
+		'Buccal portion of paracristid directed mesially'
+		,
+		11
+		'Metaconid inflated'
+		'Metaconid uninflated'
+		'Metaconid reduced'
+		,
+		12
+		'nearly parallel to anteroposterior axis of crown'
+		'Nearly parallel to long axis of tooth'
+		'oriented around 45 degrees to long axis of crown'
+		'Around 45 degrees to long axis of tooth'
+		,
+		13
+		'Mesial to entoconid'
+		'Aligned with entoconid'
+		,
+		14
+		'Mesial to distal margin of talonid'
+		'At distal margin of talonid'
+		,
+		15
+		'Present and ascends distal slope of metaconid to close talonid'
+		'Present and terminates at base of metaconid'
+		,
+		16
+		'Unreduced, subequal to or larger than m2'
+		'Reduced, noticeably smaller than m2'
+		,
+		17
+		'narrower than m3 trigonid'
+		'Less than trigonid width'
+		'subequal to trigonid width'
+		,
+		18
+		'absent'
+		'weakly developed'
+		'Present'
+		'well developed and well separated from paracone'
+		,
+		19
+		'Small or absent'
+		'Subequal to paracone'
+		,
+		20
+		'Buccal'
+		'Distal'
+		,
+		21
+		'Reduced'
+		'Absent'
+		,
+		22
+		'Oriented mesiobuccally (parastyle buccal to para-, metacones)'
+		'Approximately in line with the para- and metacones'
+		,
+		23
+		'Absent'
+		'Present'
+		,
+		24
+		'Present'
+		'Absent'
+		,
+		25
+		'Absent'
+		'Present'
+		,
+		26
+		'Reduced or absent'
+		'Moderately developed'
+		'Enlarged, subequal in size to protocone'
+		,
+		27
+		'Absent'
+		'Present'
+		,
+		28
+		'short'
+		'intermediate'
+		'elongate'
+		,
+		29
+		'Absent'
+		'Present, relatively flat'
+		'Present, describing an arc of ~180 degrees'
+		,
+		30
+		'Subparallel to long axis of calcaneum'
+		'Approximately 45 degrees to long axis of calcaneum'
+		'Nearly 90 degrees to long axis of calcaneum'
+		,
+		31
+		'Gently, evenly convex'
+		'Strongly convex'
+		'Sharply divided into posterior and anterior surfaces'
+		'Flat'
+		,
+		32
+		'No overlap'
+		'Partial overlap'
+		'Nearly complete overlap'
+		,
+		33
+		'Absent'
+		'Present'
+		,
+		34
+		'At distal margin of calcaneum (level of cuboid facet)'
+		'Shifted proximally'
+		,
+		35
+		'At distal margin of calcaneum, strongly reduced'
+		'At distal margin of calcaneum, elongate'
+		'Between distal margin and sustentaculum, elongate'
+		'At level of sustentaculum, elongate'
+		,
+		36
+		'Flat (no dorsoventral or mediolateral concavity)'
+		'Concave dorsoventrally, flat mediolaterally'
+		'Concave both dorsoventrally and mediolaterally'
+		'Concave mediolaterally, flat dorsoventrally'
+		,
+		37
+		'~90 degrees'
+		'~70-80 degrees'
+		'less than ~70 degrees'
+		,
+		38
+		'Facet much deeper (dorsoventral) than wide (mediolateral)'
+		'Facet depth and width subequal'
+		'Facet much wider (mediolateral) than deep (dorsoventral)'
+		,
+		39
+		'Absent (medial facet of trochlea faces dorsomedially)'
+		'Present (medial facet faces medially)'
+		,
+		40
+		'Shallow'
+		'Moderately deep (U-shaped)'
+		'Deep (V-shaped)'
+		,
+		41
+		'Greater than medial ridge'
+		'Subequal'
+		,
+		42
+		'present'
+		'absent'
+		,
+		43
+		'Absent, articular surface ends on dorsal surface'
+		'Posterior extension of medial ridge'
+		'Entire trochlea extends posteriorly'
+		,
+		44
+		'Weak to absent'
+		'Prominent, dorsally oriented'
+		'Prominent, medially oriented'
+		,
+		45
+		'absent'
+		'present'
+		,
+		46
+		'Weak to absent'
+		'Strong'
+		,
+		47
+		'Transversely narrow'
+		'Broad'
+		,
+		48
+		'Circular, axis of curvature subparallel to long axis of neck'
+		'Elongate, axis of curvature perpendicular to long axis'
+		'Elongate, wrapping around to med side of neck, axis subparallel'
+		,
+		49
+		'Essentially perpendicular to axis of trochlea'
+		'Oblique to or parallel to axis of trochlea'
+		,
+		50
+		'Extends posteriorly along astragalar neck'
+		'Does not extend far beyond level of navicular facet'
+		,
+		51
+		'Present, nearly coplanar with navicular facet'
+		'Absent'
+		'Present, separated from navicular facet by a strong ridge'
+		,
+		52
+		'Convex in one direction'
+		'Flat'
+		'Concave'
+		
+	;
+	MATRIX
+	'Protungulatum donnae'		               0010010100010010000000000000110110101210101000001000
+	'Hyopsodus spp.'		                     0210110110010010101011000110111100021100101010000000
+	'Apheliscus spp.'		                    110111100?001111100111100001210100011112012100001000
+	'Haplomylus spp.'		                    1111101001010111010111001011222100011112012201001120
+	'Paschatherium spp.'		                 0020110000111101010010000100011100131112012100001000
+	'Mithrandir gillianus'		               0110110100011000000001000100110110101210101010001000
+	'Chriacus gallinae'		                  0100001000100010100-10000000111100220110101001000100
+	'Ectocion spp.'		                      1210110010110110111010110201110111011112002000011000
+	'Tetraclaenodon puercensis'		          12101101100101100110101001011-----1---1-00201----0-0
+	'Claenodon spp.'		                     1101000110000110100011000101110110201110101000001000
+	'Diacodexis secans'		                  0101000110010000100011000001203201011012112000011022
+	'"Hyracotherium" spp.'		               1210110--1101010111011010201122011011012112000111022
+	'Molinodus suarezi'		                  1120-101100010110000110010102201001-1100-0101-00000-
+	'Dissacus spp.'		                      00011100012011-1000011000001112201001012101010011022
+	'Macroscelidea'		                      111111-000011101010111011211222000010112112201001120
+	'Hyracoidea'		                         1211110001011110111110110210023001300112012100101111
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+              [Taxon comments]
+        
+        [Character comments]
+        
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 52;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+MESQUITESCRIPTVERSION 2 ; TITLE AUTO ; tell ProjectCoordinator ; timeSaved 1329865610431 ; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa ; tell It ; setID 0 3002915686014714510 ; endTell ; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters ; tell It ; setID 0 3144144637153802787 ; mqVersion 275 ; checksumv 0 3 1735012306 null getNumChars 52 numChars 52 getNumTaxa 16 numTaxa 16 short true bits 15 states 15 sumSquaresStatesOnly 3033.0 sumSquares 3033.0 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1 ; mqVersion ; endTell ; getWindow ; tell It ; suppress ; setResourcesState false false 380 ; setPopoutState 400 ; setExplanationSize 0 ; setAnnotationSize 0 ; setFontIncAnnot 0 ; setFontIncExp 0 ; setSize 1185 650 ; setLocation -8 -8 ; setFont SanSerif ; setFontSize 10 ; getToolPalette ; tell It ; endTell ; desuppress ; endTell ; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord ; tell It ; showDataWindow #3144144637153802787 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker ; tell It ; getWindow ; tell It ; setExplanationSize 30 ; setAnnotationSize 20 ; setFontIncAnnot 0 ; setFontIncExp 0 ; setSize 805 583 ; setLocation -8 -8 ; setFont SanSerif ; setFontSize 10 ; getToolPalette ; tell It ; endTell ; setActive ; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow ; colorCells #mesquite.charMatrices.NoColor.NoColor ; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor ; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor ; colorText #mesquite.charMatrices.NoColor.NoColor ; setBackground White ; toggleShowNames off ; toggleShowTaxonNames on ; toggleTight off ; toggleThinRows off ; toggleShowChanges on ; toggleSeparateLines off ; toggleShowStates on ; toggleAutoWCharNames on ; toggleAutoTaxonNames off ; toggleShowDefaultCharNames off ; toggleConstrainCW on ; toggleBirdsEye off ; toggleShowPaleGrid off ; toggleShowPaleCellColors off ; togglePaleInapplicable on ; toggleShowBoldCellText off ; toggleAllowAutosize on ; toggleColorsPanel off ; toggleDiagonal on ; setDiagonalHeight 80 ; toggleLinkedScrolling on ; toggleScrollLinkedTables off ; endTell ; showWindow ; getWindow ; tell It ; forceAutosize ; endTell ; getEmployee #mesquite.charMatrices.ColorByState.ColorByState ; tell It ; setStateLimit 9 ; toggleUniformMaximum on ; endTell ; getEmployee #mesquite.charMatrices.ColorCells.ColorCells ; tell It ; setColor Red ; removeColor off ; endTell ; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip ; tell It ; showStrip off ; endTell ; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel ; tell It ; togglePanel off ; endTell ; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip ; tell It ; showStrip off ; endTell ; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector ; tell It ; autotabOff ; endTell ; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip ; tell It ; showStrip off ; endTell ; getEmployee #mesquite.silk.AnnotSummary.AnnotSummary ; tell It ; togglePanel off ; endTell ; getEmployee #mesquite.silk.CellImages.CellImages ; tell It ; togglePanel off ; toggleAnnotations off ; toggleSums off ; toggleHistory off ; toggleLocations off ; endTell ; getEmployee #mesquite.silk.StateImages.StateImages ; tell It ; togglePanel off ; toggleStateAnnotations off ; toggleCharAnnotations off ; toggleLocations off ; endTell ; getEmployee #mesquite.silk.aaManageImageIndices.aaManageImageIndices ; tell It ; setLocal ; reset ; endTell ; getEmployee #mesquite.stratigraphictools.ColorScaleCells.ColorScaleCells ; tell It ; setColor Red ; removeColor off ; endTell ; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor ; tell It ; panelOpen true ; endTell ; endTell ; endTell ; endTell ;
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ProbModelSet * UNTITLED = Mk1 (est.) : 1 - 52 ;
+ENDBLOCK;

@@ -1,0 +1,382 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-11 17.30.06 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=86;
+    TAXLABELS
+    		'Ciona intestinalis'
+		'Acodontaster conspicuus'
+		'Allostichaster sp'
+		'Amblypneustes ovum'
+		'Amphipholis squamata'
+		'Arbacia lixula'
+		'Arbacia punctulata'
+		'Archaster typicus'
+		'Asterias forbesi'
+		'Asterina miniata'
+		'Asteronyx sp'
+		'Astropecten articulatus'
+		'Astropecten polyacanthus'
+		'Brisingaster robillardi'
+		'Caymanostella sp'
+		'Cephalodiscus gracilis'
+		'Chiridota rotifera'
+		'Coscinasterias muricata'
+		'Crossaster papposus'
+		'Cucumaria miniata'
+		'Cucumaria salma'
+		'Dermasterias imbricata'
+		'Diplasterias brucei'
+		'Diplodontias miliaris'
+		'Echinaster sentus'
+		'Echinocardium cordatum'
+		'Echinuses culentus'
+		'Encope aberrans'
+		'Eucidaris tribuloides'
+		'Eurygonias hylacanthus'
+		'Evasterias troschelii'
+		'Florometra serratissima'
+		'Genocidaris maculata'
+		'Gorgonocephalus eucnemis'
+		'Gymnocrinus richeri'
+		'Harriamania planktophilus'
+		'Heliaster helianthoides'
+		'Henricia sp'
+		'Holopneustes inflatus'
+		'Holothuria leucospilota'
+		'Hymenaster pellucidus'
+		'Leptasterias hexactis'
+		'Leptosynapta clarkii'
+		'Luidia clathrata'
+		'Luidia foliolata'
+		'Macroptychaster accrescens'
+		'Meoma ventricosa'
+		'Mespilia globulus'
+		'Metacrinusrotundus'
+		'Odontaster validus'
+		'Ophiocanops fugiens'
+		'Ophiocoma echinata'
+		'Ophioderma brevispinum'
+		'Ophiomyxa flaccida'
+		'Ophionereis reticulata'
+		'Ophiopholis aculeata'
+		'Ophiopsammus maculata'
+		'Ophiothrix oerstedii'
+		'Paracentrotus lividus'
+		'Parastichopus californicus'
+		'Patiriella regularis'
+		'Pentacta pygmaea'
+		'Perknaster fuscus'
+		'Pisaster ochraceus'
+		'Psammechinus miliaris'
+		'Pseudarchaster pareli'
+		'Pseudechinus albocinctus'
+		'Pseudostichopus villosus'
+		'Psychropotes longicauda'
+		'Pteraster tesselatus'
+		'Ptychodera flava'
+		'Rathbunaster californicus'
+		'Saccoglossus kowalevskii'
+		'Salmaciella oligopora'
+		'Salmacis belli'
+		'Schizostella bifurcata'
+		'Solaster stimpsonii'
+		'Sphaerechinus granularis'
+		'Stegnaster inflatus'
+		'Stichaster australis'
+		'Stomopneustes variolaris'
+		'Strongylocentrotus purpuratus'
+		'Temnopleurus alexandri'
+		'Temnotrema sculptum'
+		'Tripneustes gratilla'
+		'Xyloplax janetae'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=36;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="0123";
+	CHARLABELS
+		 [1] 'gill slits'
+		 [2] 'calcitic endoskeleton'
+		 [3] 'pentaradial symmetry adult'
+		 [4] 'water-vascular system'
+		 [5] 'ambulacral growth'
+		 [6] 'nervous system'
+		 [7] 'ambulacral skeleton'
+		 [8] 'ambulacral plate addition'
+		 [9] 'epineural sinus over radial nerve'
+		 [10] 'Tiedemanns bodies'
+		 [11] 'polian vesicles'
+		 [12] 'ambulacral plates'
+		 [13] 'hemal system'
+		 [14] 'genital rachis'
+		 [15] 'outer genital coelom surrounds gonad'
+		 [16] 'hydropore external'
+		 [17] 'perianal coelom'
+		 [18] 'perihemal diverticula'
+		 [19] 'expansion of lantern coelom'
+		 [20] 'moveable articulated spines'
+		 [21] 'growth in adult'
+		 [22] 'tube feet with calcified disk'
+		 [23] 'tubefoot with internal ampulla'
+		 [24] 'circumoral water-vascular ring and nerve'
+		 [25] 'internal skeleton on esophagus'
+		 [26] 'secretory cell in tube feet'
+		 [27] 'axial gland'
+		 [28] 'right axial sinus'
+		 [29] 'muscle-ossicle tendons'
+		 [30] 'adambulacral ossicles different'
+		 [31] 'scleroblasts'
+		 [32] 'longitudinal nerve in podia'
+		 [33] 'odontophore'
+		 [34] 'dorsal hollow or collar cord'
+		 [35] 'imperforate extraxial skeleton'
+		 [36] 'pinnules'
+	;
+	STATELABELS
+		1
+		'absent'
+		'present'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'absent'
+		'present'
+		,
+		4
+		'absent'
+		'present'
+		,
+		5
+		'radial'
+		'meridional'
+		,
+		6
+		'entoneural predominant'
+		'ectoneural predominant'
+		,
+		7
+		'integral to body'
+		'appendage'
+		,
+		8
+		'terminal'
+		'subterminal'
+		,
+		9
+		'absent'
+		'present'
+		,
+		10
+		'absent'
+		'present'
+		,
+		11
+		'absent'
+		'present'
+		,
+		12
+		'biserial'
+		'uniserial'
+		,
+		13
+		'diffuse lacunae'
+		'discrete canals'
+		,
+		14
+		'origin at distal end of axial gland'
+		'origin at middle of axial gland'
+		,
+		15
+		'no'
+		'yes'
+		,
+		16
+		'external'
+		'internal'
+		,
+		17
+		'undifferentiated'
+		'differentiated from main body coelom'
+		,
+		18
+		'undifferentiated'
+		'a separate coelom is created by interradial pocketing of the left somatocoel'
+		,
+		19
+		'absent'
+		'present'
+		,
+		20
+		'absent'
+		'present'
+		,
+		21
+		'terminal'
+		'subterminal'
+		,
+		22
+		'no'
+		'yes'
+		,
+		23
+		'no'
+		'yes'
+		,
+		24
+		'adoral to ambulacral skeleton'
+		'associated with first ambulacral'
+		,
+		25
+		'absent'
+		'present'
+		,
+		26
+		'goblet cells only'
+		'goblet and apical tuft cells'
+		,
+		27
+		'within axial sinus'
+		'abuting left axial sinus'
+		,
+		28
+		'absent'
+		'from distal end of complex'
+		'extending along length of complex'
+		,
+		29
+		'attach directly to calcite trabeculae'
+		'attach via tendons'
+		,
+		30
+		'no'
+		'yes'
+		,
+		31
+		'single and do not form syncitium'
+		'form syncitium which calcifies'
+		,
+		32
+		'absent'
+		'present'
+		,
+		33
+		'absent'
+		'present'
+		,
+		34
+		'absent'
+		'present'
+		,
+		35
+		'absent'
+		'present'
+		,
+		36
+		'absent'
+		'present'
+		
+	;
+	MATRIX
+	'Ciona intestinalis'		                     1000?????????????????????????????1??
+	'Acodontaster conspicuus'		                011101000110111001011011000111101000
+	'Allostichaster sp'		                      011101000110111001011011000111101000
+	'Amblypneustes ovum'		                     011111001110010011111111111110110000
+	'Amphipholis squamata'		                   011101001110111001011001000211110000
+	'Arbacia lixula'		                         011111001110010011111111111110110000
+	'Arbacia punctulata'		                     011111001110010011111111111110110000
+	'Archaster typicus'		                      011101000110111001011011000111101000
+	'Asterias forbesi'		                       011101000110111001011011000111101000
+	'Asterina miniata'		                       011101000110111001011011000111101000
+	'Asteronyx sp'		                           011101001110111001011001000211110000
+	'Astropecten articulatus'		                011101000110111001011011000111101000
+	'Astropecten polyacanthus'		               011101000110111001011011000111101000
+	'Brisingaster robillardi'		                011101000110111001011011000111101000
+	'Caymanostella sp'		                       011101000110111001011011000111101000
+	'Cephalodiscus gracilis'		                 0000????????1??0??????????01?????0??
+	'Chiridota rotifera'		                     011111001000010011101111111010100000
+	'Coscinasterias muricata'		                011101000110111001011011000111101000
+	'Crossaster papposus'		                    011101000110111001011011000111101000
+	'Cucumaria miniata'		                      011111001000010011101111111010100000
+	'Cucumaria salma'		                        011111001000010011101111111010100000
+	'Dermasterias imbricata'		                 011101000110111001011011000111101000
+	'Diplasterias brucei'		                    011101000110111001011011000111101000
+	'Diplodontias miliaris'		                  011101000110111001011011000111101000
+	'Echinaster sentus'		                      011101000110111001011011000111101000
+	'Echinocardium cordatum'		                 011111001110010011111111111110110000
+	'Echinuses culentus'		                     011111001110010011111111111110110000
+	'Encope aberrans'		                        011111001110010011111111111110110000
+	'Eucidaris tribuloides'		                  011111001110010011111111111110110000
+	'Eurygonias hylacanthus'		                 011101000110111001011011000111101000
+	'Evasterias troschelii'		                  011101000110111001011011000111101000
+	'Florometra serratissima'		                011100110001101100000000000000000011
+	'Genocidaris maculata'		                   011111001110010011111111111110110000
+	'Gorgonocephalus eucnemis'		               011101001110111001011001000211110000
+	'Gymnocrinus richeri'		                    011100110001101100000000000000000011
+	'Harriamania planktophilus'		              1000????????1??0??????????01?????1??
+	'Heliaster helianthoides'		                011101000110111001011011000111101000
+	'Henricia sp'		                            011101000110111001011011000111101000
+	'Holopneustes inflatus'		                  011111001110010011111111111110100000
+	'Holothuria leucospilota'		                011111001000010011101111111010100000
+	'Hymenaster pellucidus'		                  011101000110111001011011000111101000
+	'Leptasterias hexactis'		                  011101000110111001011011000111101000
+	'Leptosynapta clarkii'		                   011111001000010011101111111010100000
+	'Luidia clathrata'		                       011101000110111001011011000111101000
+	'Luidia foliolata'		                       011101000110111001011011000111101000
+	'Macroptychaster accrescens'		             011101000110111001011011000111101000
+	'Meoma ventricosa'		                       011111001110010011111111111110110000
+	'Mespilia globulus'		                      011111001110010011111111111110110000
+	'Metacrinusrotundus'		                     011100110001101100000000000000000011
+	'Odontaster validus'		                     011101000110111001011011000111101000
+	'Ophiocanops fugiens'		                    011101001110111001011001000211110000
+	'Ophiocoma echinata'		                     011101001110111001011001000211110000
+	'Ophioderma brevispinum'		                 011101001110111001011001000211110000
+	'Ophiomyxa flaccida'		                     011101001110111001011001000211110000
+	'Ophionereis reticulata'		                 011101001110111001011001000211110000
+	'Ophiopholis aculeata'		                   011101001110111001011001000211110000
+	'Ophiopsammus maculata'		                  011101001110111001011001000211110000
+	'Ophiothrix oerstedii'		                   011101001110111001011001000211110000
+	'Paracentrotus lividus'		                  011111001110010011111111111110110000
+	'Parastichopus californicus'		             011111001000010011101111111010100000
+	'Patiriella regularis'		                   011101000110111001011011000111101000
+	'Pentacta pygmaea'		                       011111001000010011101111111010100000
+	'Perknaster fuscus'		                      011101000110111001011011000111101000
+	'Pisaster ochraceus'		                     011101000110111001011011000111101000
+	'Psammechinus miliaris'		                  011111001110010011111111111110110000
+	'Pseudarchaster pareli'		                  011101000110111001011011000111101000
+	'Pseudechinus albocinctus'		               011111001110010011111111111110110000
+	'Pseudostichopus villosus'		               011111001000010011101111111010100000
+	'Psychropotes longicauda'		                011111001000010011101111111010100000
+	'Pteraster tesselatus'		                   011101000110111001011011000111101000
+	'Ptychodera flava'		                       1000????????1??0??????????01?????1??
+	'Rathbunaster californicus'		              011101000110111001011011000111101000
+	'Saccoglossus kowalevskii'		               1000????????1??0??????????01?????1??
+	'Salmaciella oligopora'		                  011111001110010011111111111110110000
+	'Salmacis belli'		                         011111001110010011111111111110110000
+	'Schizostella bifurcata'		                 011101001110111001011001000211110000
+	'Solaster stimpsonii'		                    011101000110111001011011000111101000
+	'Sphaerechinus granularis'		               011111001110010011111111111110110000
+	'Stegnaster inflatus'		                    011101000110111001011011000111101000
+	'Stichaster australis'		                   011101000110111001011011000111101000
+	'Stomopneustes variolaris'		               011111001110010011111111111110110000
+	'Strongylocentrotus purpuratus'		          011111001110010011111111111110110000
+	'Temnopleurus alexandri'		                 011111001110010011111111111110110000
+	'Temnotrema sculptum'		                    011111001110010011111111111110110000
+	'Tripneustes gratilla'		                   011111001110010011111111111110110000
+	'Xyloplax janetae'		                       011111000110111001011011000111101000
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 36;
+      ENDBLOCK;
+      

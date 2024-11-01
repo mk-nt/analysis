@@ -1,0 +1,1875 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-12 07.09.07 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=100;
+    TAXLABELS
+    		'Anyphaena accentuata'
+		'Amazoromus kedus'
+		'Ammoxenus coccineus'
+		'Anagraphis pallens'
+		'Aneplasa facieis'
+		'Anzacia gemmea'
+		'Aphantaulax spp'
+		'Apodrassodes guatemalensis'
+		'Apopyllus silvestrii'
+		'Arauchemus graudo'
+		'Asemesthes spp'
+		'Australoechemus celer'
+		'Berinda amabilis'
+		'Berlandina plumalis'
+		'Callilepis nocturna'
+		'Camillina cordifera'
+		'Cesonia bilineata'
+		'Chileuma paposo'
+		'Chilongius palmas'
+		'Cithaeron praedonius'
+		'Cryptodrassus creticus'
+		'Cryptoerithus occultus'
+		'Doliomalus cimicoides'
+		'Drassinella gertschi'
+		'Drassodes saccatus'
+		'Drassodex lasserti'
+		'Drassyllus fallens'
+		'Echemoides aguilari'
+		'Eilica bicolor'
+		'Galianoella leucostigma'
+		'Gallieniella mygaloides'
+		'Gertschosa spp'
+		'Gnaphosa californica'
+		'Gnaphosoidea tex'
+		'Haplodrassus hiemalis'
+		'Hemicloea sundevalli'
+		'Herpyllus ecclesiasticus'
+		'Heser schmitzi'
+		'Hypodrassodes maoricus'
+		'Kishidaia albimaculata'
+		'Lampona cylindrata'
+		'Latonigena auricomis'
+		'Leptodrassex sp'
+		'Leptodrassus albidus'
+		'Leptopilos levantinus'
+		'Liocranum rupicola'
+		'Litopyllus temporarius'
+		'Lygromma chamberlini'
+		'Meedo houstoni'
+		'Megamyrmaekion transvaalense'
+		'Micaria gosiuta'
+		'Microsa chickeringi'
+		'Minosia simeonica'
+		'Moreno grande'
+		'Nauhea tapa'
+		'Neodrassex aureus'
+		'Neozimiris pubescens'
+		'Nodocion eclecticus'
+		'Nomisia aussereri'
+		'Nopyllus sp'
+		'Notiodrassus distinctus'
+		'Odontodrassus aphanes'
+		'Oltacloea beltraoe'
+		'Orodrassus coloradensis'
+		'Parasyrisca orites'
+		'Phaeocedus braccatus'
+		'Phrurolithus festivus'
+		'Plator spp'
+		'Platyoides walteri'
+		'Prodidomus rufus'
+		'Pterotricha conspersa'
+		'Rastellus spp'
+		'Scopoides catharius'
+		'Scotocesonia demerarae'
+		'Scotognapha teideensis'
+		'Scotophaeus blackwalli'
+		'Sergiolus capulatus'
+		'Setaphis subtilis'
+		'Sosticus insularis'
+		'Sydidrassus'
+		'Synaphosus syntheticus'
+		'Talanites echinus'
+		'Teutamus rama'
+		'Tivodrassus ethophor'
+		'Trachelas mexicanus'
+		'Trachycosmus sculptilis'
+		'Trachyzelotes pedestris'
+		'Trephopoda parvipalpa'
+		'Tricongius amazonicus'
+		'Trochantheria gomezi'
+		'Urozelotes rusticus'
+		'Vectius niger'
+		'Verita williamsi'
+		'Xenoplectus sp'
+		'Xerophaeus capensis'
+		'Zelanda spp'
+		'Zelotes duplex'
+		'Zelotiba simpula'
+		'Zimiromus montenegro'
+		'Echemus angustifrons'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=324;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="0123";
+	CHARLABELS
+		 [1] 'Abdomen anterodorsal tuft of setae'
+		 [2] 'Abdomen dorsal dark and white color pattern'
+		 [3] 'Abdomen dorsal chevrons'
+		 [4] 'Abdomen ventral second abdominal segment epigastrium sclerotization in relation to the rest of abdomen'
+		 [5] 'Abdomen lateral border thick macrosetae'
+		 [6] 'Abdomen pedicel dorsal and ventral sclerites fusion'
+		 [7] 'Abdomen pedicel ventral anterior margin'
+		 [8] 'Abdomen pedicel ventral sclerite articulation with sternum'
+		 [9] 'Abdomen surface plumose setae'
+		 [10] 'Abdomen surface plumose setae appendages brachia disposition'
+		 [11] 'Abdomen surface plumose setae tip shape'
+		 [12] 'Abdomen surface squamose setae'
+		 [13] 'Abdomen surface squamose setae lateroventral appendages'
+		 [14] 'Abdomen surface squamose setae dorsolateral spines'
+		 [15] 'Abdomen surface squamose setae dorsolateral spines type'
+		 [16] 'Abdomen surface squamose setae dorsolateral spines disposition'
+		 [17] 'Abdomen surface squamose setae number of axes shafts'
+		 [18] 'Abdomen surface squamose setae ventral projections'
+		 [19] 'Abdomen ventral internally invaginated postepigastric sclerites'
+		 [20] 'Abdomen F dorsal scutum'
+		 [21] 'Abdomen F dorsal scutum size'
+		 [22] 'Abdomen M dorsal scutum'
+		 [23] 'Abdomen M dorsal scutum size'
+		 [24] 'Abdomen M ventral epiandrum epiandrous spigots'
+		 [25] 'Abdomen M ventral epiandrum epiandrous spigots disposition'
+		 [26] 'Cephalothorax carapace surface plumose setae'
+		 [27] 'Cephalothorax carapace surface plumose setae appendages brachia disposition'
+		 [28] 'Cephalothorax carapace surface plumose setae tip shape'
+		 [29] 'Cephalothorax carapace surface squamose setae'
+		 [30] 'Cephalothorax carapace surface squamose setae lateroventral appendages'
+		 [31] 'Cephalothorax carapace surface squamose setae dorsolateral spines'
+		 [32] 'Cephalothorax carapace surface squamose setae dorsolateral spines type'
+		 [33] 'Cephalothorax carapace surface squamose setae number of axes shafts'
+		 [34] 'Cephalothorax carapace surface squamose setae ventral projections'
+		 [35] 'Cephalothorax carapace anterior chilum'
+		 [36] 'Cephalothorax carapace anterior chilum configuration'
+		 [37] 'Cephalothorax carapace anterior clypeus margin profile in anterior view'
+		 [38] 'Cephalothorax carapace cephalic area anterior lateral eyes tapetum symmetry axis'
+		 [39] 'Cephalothorax carapace cephalic area anterior median eyes black surrounds'
+		 [40] 'Cephalothorax carapace cephalic area anterior median eyes size relative to anterior laterals'
+		 [41] 'Cephalothorax carapace cephalic area posterior lateral and median eyes tapeta axes orthogonal'
+		 [42] 'Cephalothorax carapace cephalic area posterior median eyes lens limits'
+		 [43] 'Cephalothorax carapace cephalic area posterior median eyes lens ridges'
+		 [44] 'Cephalothorax carapace cephalic area posterior median eyes tapeta symmetry axes'
+		 [45] 'Cephalothorax carapace dorsal cephalic area eye row tubercle'
+		 [46] 'Cephalothorax carapace dorsal cephalic area posterior median eyes lens'
+		 [47] 'Cephalothorax carapace dorsal cephalic area posterior median eyes position relative to each other'
+		 [48] 'Cephalothorax carapace dorsal cephalic area posterior median eyes size relative to laterals'
+		 [49] 'Cephalothorax carapace dorsal color pattern'
+		 [50] 'Cephalothorax carapace dorsal fovea'
+		 [51] 'Cephalothorax carapace flatness'
+		 [52] 'Cephalothorax carapace thoracic area height relative to cephalic area'
+		 [53] 'Cephalothorax lateral epimeric sclerites type'
+		 [54] 'Cephalothorax ventral intercoxal extensions'
+		 [55] 'Cephalothorax ventral intercoxal extensions fusion to sternum'
+		 [56] 'Cephalothorax ventral precoxal sclerites'
+		 [57] 'Cephalothorax ventral precoxal sclerites fusion to sternum'
+		 [58] 'Chelicerae fang shaft serrula'
+		 [59] 'Chelicerae fang shaft tubercle in males'
+		 [60] 'Chelicerae fang length'
+		 [61] 'Chelicerae paturon anterior surface proximal mesal mounds in male'
+		 [62] 'Chelicerae paturon anterior surface thick spines'
+		 [63] 'Chelicerae paturon anterior surface tuft of macrosetae'
+		 [64] 'Chelicerae paturon anterior surface tuft of macrosetae length'
+		 [65] 'Chelicerae paturon anterior surface tuft of macrosetae density'
+		 [66] 'Chelicerae paturon basal posterior membranous mound'
+		 [67] 'Chelicerae paturon ectal boss'
+		 [68] 'Chelicerae paturon posterior fang furrow teeth'
+		 [69] 'Chelicerae paturon promargin rake setae'
+		 [70] 'Chelicerae paturon promargin whisker setae'
+		 [71] 'Chelicerae paturon promargin escort setae'
+		 [72] 'Chelicerae paturon promargin keel'
+		 [73] 'Chelicerae paturon promargin tooth I'
+		 [74] 'Chelicerae paturon promargin tooth II'
+		 [75] 'Chelicerae paturon promargin tooth III'
+		 [76] 'Chelicerae paturon promargin tooth IV'
+		 [77] 'Chelicerae paturon promargin tooth V'
+		 [78] 'Chelicerae paturon promargin tooth extras'
+		 [79] 'Chelicerae paturon proximal region deep constriction'
+		 [80] 'Chelicerae paturon retromargin projections lamina keel or teeth'
+		 [81] 'Chelicerae paturon retromargin projections type'
+		 [82] 'Chelicerae paturon retromargin rake setae'
+		 [83] 'Chelicerae paturon retromargin escort setae'
+		 [84] 'Chelicerae paturon retromargin whisker setae'
+		 [85] 'Chelicerae paturon retromargin tooth I'
+		 [86] 'Chelicerae paturon retromargin tooth II'
+		 [87] 'Chelicerae paturon retromargin tooth III'
+		 [88] 'Chelicerae paturon retromargin tooth IV'
+		 [89] 'Chelicerae paturon retromargin tooth extras'
+		 [90] 'Chelicerae paturon retromargin translucent lamina number'
+		 [91] 'Chelicerae paturon retromargin translucent lamina type'
+		 [92] 'Chelicerae paturon retromargin and furrow sclerotization'
+		 [93] 'Chelicerae paturon shape'
+		 [94] 'Chelicerae projection'
+		 [95] 'Chelicerae disposition'
+		 [96] 'Epigynum anterior fold'
+		 [97] 'Epigynum anterior fold posterior extension forming a secondary lateral fold'
+		 [98] 'Epigynum anterior fold hood'
+		 [99] 'Epigynum anterior fold scape'
+		 [100] 'Epigynum lateral folds'
+		 [101] 'Epigynum lateral folds type'
+		 [102] 'Epigynum lateral folds forming small paramedian epigynal pockets'
+		 [103] 'Epigynum median field septum'
+		 [104] 'Epigynum median field plate surface atrium'
+		 [105] 'Epigynum vulva copulatory ducts extension relative to copulatory openings'
+		 [106] 'Epigynum vulva copulatory ducts shape'
+		 [107] 'Epigynum vulva copulatory ducts sclerotization'
+		 [108] 'Epigynum vulva cuticular glands'
+		 [109] 'Epigynum vulva fertilization duct direction'
+		 [110] 'Epigynum vulva fertilization duct position'
+		 [111] 'Epigynum vulva primary spermathecae'
+		 [112] 'Epigynum vulva primary spermathecae position'
+		 [113] 'Epigynum vulva primary spermatheca Bennett''s gland insertion'
+		 [114] 'Epigynum vulva secondary spermatheca'
+		 [115] 'Epigynum vulva secondary spermatheca location'
+		 [116] 'Epigynum vulva secondary spermatheca well defined lumen'
+		 [117] 'Epigynum vulva secondary spermatheca size relative to primary spermatheca'
+		 [118] 'Epigynum vulva secondary spermatheca long duct at least two times the spermatheca diameter'
+		 [119] 'Epigynum vulva primary spermathecae shape'
+		 [120] 'Legs surface plumose setae'
+		 [121] 'Legs surface plumose setae appendages brachiae disposition'
+		 [122] 'Legs surface plumose setae tip shape'
+		 [123] 'Legs surface squamose setae'
+		 [124] 'Legs surface squamose setae lateroventral appendages'
+		 [125] 'Legs surface squamose setae dorsolateral spines'
+		 [126] 'Legs surface squamose setae dorsolateral spines type'
+		 [127] 'Legs surface squamose setae dorsolateral spines disposition'
+		 [128] 'Legs surface squamose setae number of axes shafts'
+		 [129] 'Legs surface squamose setae ventral projections'
+		 [130] 'Legs orientation'
+		 [131] 'Legs tarsi apical clawclaw tuft clasping mechanism of teeth appressed together classic clasper'
+		 [132] 'Legs tarsi apical clawclaw tuft clasping mechanism formed by a developed basal fold folded clasper'
+		 [133] 'Legs tarsi apical clawclaw tuft clasping mechanism formed by solid projection of basal fold pointed solid clasper'
+		 [134] 'Legs tarsi apical claws denticles teeth'
+		 [135] 'Legs tarsi apical claws denticles teeth size'
+		 [136] 'Legs tarsi apical claws teeth insertion line'
+		 [137] 'Legs tarsi apical claws dorsal scales velvety texture'
+		 [138] 'Legs tarsi apical claw tuft'
+		 [139] 'Legs tarsi apical claw tuft twothree pairs of pseudotenent seta with spaced barbs only on leg IV'
+		 [140] 'Legs tarsi apical claw tuft insertion'
+		 [141] 'Legs tarsi apical claw tuft seta basal rectangular blocks'
+		 [142] 'Legs tarsi apical claw tuft seta basal section shape'
+		 [143] 'Legs tarsi apical claw tuft seta base packing'
+		 [144] 'Legs tarsi apical claw tuft seta tenent surface orientation'
+		 [145] 'Legs tarsi apical claw tuft seta type'
+		 [146] 'Legs tarsi apical modified setae with long apical tube'
+		 [147] 'Legs tarsi distal ventral claw slit suture'
+		 [148] 'Legs tarsi distal claw slit suture complete forming onychium'
+		 [149] 'Legs tarsi cuticle texture smooth to rugose'
+		 [150] 'Legs tarsi tarsal organ capsule elevation'
+		 [151] 'Legs tarsi tarsal organ capsule marginal sulci'
+		 [152] 'Legs tarsi tarsal organ capsule texture'
+		 [153] 'Legs tarsi tarsal organ opening rim type'
+		 [154] 'Legs tarsi tarsal organ opening shape'
+		 [155] 'Legs tarsi trichobothria plates differentiation between distal and proximal'
+		 [156] 'Legs tarsi trichobothria distal plate transverse ridges'
+		 [157] 'Legs tarsi trichobothria proximal plate distal margin median limit differentiation'
+		 [158] 'Legs tarsi trichobothria proximal plate transverse ridges'
+		 [159] 'Legs whorled setae'
+		 [160] 'Legs I coxa retrolateral hymen'
+		 [161] 'Legs I M ventral row of long Sshaped setae'
+		 [162] 'Legs I and II metatarsi ventral scopulae of tenent setae'
+		 [163] 'Legs I and II metatarsi ventral scopulae of tenent setae density'
+		 [164] 'Legs I and II metatarsi ventral scopulae of tenent setae longitudinal extension'
+		 [165] 'Legs I and II metatarsi ventral scopulae of tenent setae scopula type'
+		 [166] 'Legs I and II metatarsi and tarsi ventral scopulae of tenent setae seta socket indentation'
+		 [167] 'Legs I and II metatarsi and tarsi ventral scopulae of tenent setae setae type'
+		 [168] 'Legs I and II patellae indentation'
+		 [169] 'Legs I and II tarsi ventral paired row of macrosetae'
+		 [170] 'Legs I and II tarsi ventral grasping setae'
+		 [171] 'Legs I and II tarsi ventral scopulae of tenent setae'
+		 [172] 'Legs I and II tarsi ventral scopulae of tenent setae density'
+		 [173] 'Legs I and II tarsi ventral scopulae of tenent setae scopulae type'
+		 [174] 'Legs I and II trochanters distal rim'
+		 [175] 'Legs I and II tarsi pseudosegmentation'
+		 [176] 'Legs III tarsi pseudosegmentation'
+		 [177] 'Legs IV F tarsi pseudosegmentation'
+		 [178] 'Legs IV M tarsi pseudosegmentation'
+		 [179] 'Legs tarsi pseudosegmentation dorsal extension'
+		 [180] 'Legs tarsi pseudosegmentation longitudinal extension'
+		 [181] 'Legs tarsi pseudosegmentation type'
+		 [182] 'Legs I and II tibia and metatarsi ventral parallel row of strong spines'
+		 [183] 'Legs III and IV metatarsi distal preening bush'
+		 [184] 'Legs III and IV metatarsi distal preening comb'
+		 [185] 'Legs III metatarsi ventral scopulae of tenent setae'
+		 [186] 'Legs III metatarsi ventral scopulae of tenent setae density'
+		 [187] 'Legs III metatarsi ventral scopulae of tenent setae longitudinal extension'
+		 [188] 'Legs III metatarsi ventral scopulae of tenent setae scopula type'
+		 [189] 'Legs III tarsi ventral paired row of macrosetae'
+		 [190] 'Legs III tarsi ventral scopulae of tenent setae'
+		 [191] 'Legs III tarsi ventral scopulae of tenent setae density'
+		 [192] 'Legs III tarsi ventral scopulae of tenent setae scopulae type'
+		 [193] 'Legs III and IV trochanter distal rim'
+		 [194] 'Legs IV metatarsi ventral scopulae of tenent setae'
+		 [195] 'Legs IV metatarsi ventral scopulae of tenent setae density'
+		 [196] 'Legs IV metatarsi ventral scopulae of tenent setae longitudinal extension'
+		 [197] 'Legs IV metatarsi ventral scopulae of tenent setae scopulae type'
+		 [198] 'Legs IV tarsi ventral paired row of macrosetae'
+		 [199] 'Legs IV tarsi ventral trident setae'
+		 [200] 'Legs IV tarsi ventral scopulae of tenent setae'
+		 [201] 'Legs IV tarsi ventral scopulae of tenent setae density'
+		 [202] 'Legs IV tarsi ventral scopulae of tenent setae scopulae type'
+		 [203] 'Legs IV tarsi claw distal teeth elongated compared to other teeth'
+		 [204] 'Legs IV trochanter length relative to trochanter III'
+		 [205] 'Palp endite distal macrosetae'
+		 [206] 'Palp endite dorsal branched setae'
+		 [207] 'Palp endite prolateral edge longitudinal groove'
+		 [208] 'Palp endite serrula'
+		 [209] 'Palp endite ventral surface oblique depression'
+		 [210] 'Palp F tarsus dorsal chemosensory setae distribution'
+		 [211] 'Palp F tarsus dorsal chemosensory patch configuration'
+		 [212] 'Palp F tarsus whorled setae'
+		 [213] 'Palp F tarsus terminal claw'
+		 [214] 'Palp F tarsus terminal claw teeth'
+		 [215] 'Palp F tarsus terminal claw type'
+		 [216] 'Palp copulatory bulb conductor'
+		 [217] 'Palp copulatory bulb conductor sclerotization'
+		 [218] 'Palp copulatory bulb conductor shape'
+		 [219] 'Palp copulatory bulb embolus distal tubular membrane articulation'
+		 [220] 'Palp copulatory bulb embolus embolar base distal projection'
+		 [221] 'Palp copulatory bulb embolus embolar base proximal projection'
+		 [222] 'Palp copulatory bulb embolus embolar base twisted'
+		 [223] 'Palp copulatory bulb embolus embolar locking lobe'
+		 [224] 'Palp copulatory bulb embolus embolar radix projection'
+		 [225] 'Palp copulatory bulb embolus insertion on tegulum in unexpanded bulb'
+		 [226] 'Palp copulatory bulb embolus length relative to tegulum'
+		 [227] 'Palp copulatory bulb embolus pars pendula'
+		 [228] 'Palp copulatory bulb embolus shape'
+		 [229] 'Palp copulatory bulb embolus tubular embolus type'
+		 [230] 'Palp copulatory bulb embolus terminal membrane'
+		 [231] 'Palp copulatory bulb embolus embolar granulation'
+		 [232] 'Palp copulatory bulb fulcrum'
+		 [233] 'Palp copulatory bulb intercalary sclerite'
+		 [234] 'Palp copulatory bulb median apophysis'
+		 [235] 'Palp copulatory bulb median apophysis composed of two sclerites'
+		 [236] 'Palp copulatory bulb median apophysis proximal numerous small spines granulation'
+		 [237] 'Palp copulatory bulb median apophysis sclerotization'
+		 [238] 'Palp copulatory bulb median apophysis shape'
+		 [239] 'Palp copulatory bulb median apophysis terminal hook'
+		 [240] 'Palp copulatory bulb accessory median apophysis'
+		 [241] 'Palp copulatory bulb membranous tegular extension'
+		 [242] 'Palp copulatory bulb membranous tegular extension type'
+		 [243] 'Palp copulatory bulb petiole'
+		 [244] 'Palp copulatory bulb subtegulum locking lobe'
+		 [245] 'Palp copulatory bulb subtegulum proximal projection'
+		 [246] 'Palp copulatory bulb tegulum distal tegular projection'
+		 [247] 'Palp copulatory bulb tegulum distal tegular spinelike process'
+		 [248] 'Palp copulatory bulb tegulum proximal part covered by subtegulum'
+		 [249] 'Palp copulatory bulb terminal apophysis'
+		 [250] 'Palp copulatory bulb terminal apophysis distal part bifid'
+		 [251] 'Palp copulatory bulb terminal apophysis shape sheetlike surrounding the embolus'
+		 [252] 'Palp cymbium dorsal terminal chemosensory patch'
+		 [253] 'Palp cymbium dorsal trichobothria'
+		 [254] 'Palp cymbium retrolateral median process'
+		 [255] 'Palp cymbium retrolateral median process type'
+		 [256] 'Palp cymbium retrolateral proximal process paracymbium'
+		 [257] 'Palp cymbium ventral terminal bunch of thick setae'
+		 [258] 'Palp femur distal dorsal process'
+		 [259] 'Palp femur distal prolateral process'
+		 [260] 'Palp femur median ventral process'
+		 [261] 'Palp tibia retrolateral tibial apophysis'
+		 [262] 'Palp tibia retrolateral tibial apophysis position'
+		 [263] 'Palp tibia retrolateral tibial apophysis type'
+		 [264] 'Palp tibia retrolateral tibial apophysis elaborated folds'
+		 [265] 'Palp tibia retrolateral tibial apophysis ventral lobe'
+		 [266] 'Palp tibia ventral tibial apophysis'
+		 [267] 'Palp tibia ventral tibial apophysis type'
+		 [268] 'Palp tibia dorsal tibial apophysis'
+		 [269] 'Palp tibia prolateral tibial apophysis'
+		 [270] 'Palp patella retrolateral apophysis'
+		 [271] 'Palp tibia proximal retrolateral tibial apophysis'
+		 [272] 'Abdomen anterior lateral spinnerets basal article whorled setae'
+		 [273] 'Abdomen anterior lateral spinnerets distal article'
+		 [274] 'Abdomen anterior lateral spinnerets distal article incomplete ring type'
+		 [275] 'Abdomen anterior lateral spinnerets distal article near piriform gland spigot sensory seta'
+		 [276] 'Abdomen anterior lateral spinnerets distance between them in relation to their diameter'
+		 [277] 'Abdomen anterior lateral spinnerets length in relation to abdomen'
+		 [278] 'Abdomen anterior lateral spinnerets position'
+		 [279] 'Abdomen anterior lateral spinnerets sclerotization'
+		 [280] 'Abdomen anterior lateral spinnerets shape'
+		 [281] 'Abdomen anterior lateral spinnerets spinning field inflatable membrane'
+		 [282] 'Abdomen anterior lateral spinnerets major ampullate gland spigots field conical setaebearing projection'
+		 [283] 'Abdomen anterior lateral spinnerets piriform gland gland spigots base length relative to shaft'
+		 [284] 'Abdomen anterior lateral spinnerets piriform gland spigots base width in relation to major ampullate gland spigots'
+		 [285] 'Abdomen anterior lateral spinnerets piriform gland spigots length relative to the major ampullate gland spigots'
+		 [286] 'Abdomen anterior lateral spinnerets piriform gland spigots plumose base with barbs'
+		 [287] 'Abdomen anterior lateral spinnerets piriform gland spigots shaft fused to base'
+		 [288] 'Abdomen anterior lateral spinnerets piriform gland spigots shaft width relative to base'
+		 [289] 'Abdomen posterior lateral spinnerets distal long spigots on a flat nondistensible pad'
+		 [290] 'Abdomen posterior median and lateral spinnerets modified interdigitate setae'
+		 [291] 'Abdomen posterior median spinnerets minor ampullate gland spigot shaft'
+		 [292] 'Abdomen posterior median spinnerets position'
+		 [293] 'Abdomen F anterior lateral spinnerets anterior ectal major ampullate gland spigots shaft and base thickness relative to posterior mesal'
+		 [294] 'Abdomen F anterior lateral spinnerets major ampullate gland spigots ectal spigot'
+		 [295] 'Abdomen F anterior lateral spinnerets major ampullate gland spigots mesal spigot'
+		 [296] 'Abdomen F anterior lateral spinnerets major ampullate gland spigots mesal spigot type'
+		 [297] 'Abdomen M anterior lateral spinnerets major ampullate gland spigots ectal spigot'
+		 [298] 'Abdomen M anterior lateral spinnerets major ampullate gland spigots mesal spigot'
+		 [299] 'Abdomen M anterior lateral spinnerets major ampullate gland spigots mesal spigot type'
+		 [300] 'Abdomen F anterior lateral spinnerets piriform gland spigots'
+		 [301] 'Abdomen M anterior lateral spinnerets piriform gland spigots'
+		 [302] 'Abdomen F anterior lateral spinnerets piriform gland spigots position'
+		 [303] 'Abdomen F anterior lateral spinnerets spinning field furrow between major ampullate and piriform gland spigots'
+		 [304] 'Abdomen M anterior lateral spinnerets spinning field furrow between major ampullate and piriform gland spigots'
+		 [305] 'Abdomen F posterior lateral spinnerets aciniform gland spigots'
+		 [306] 'Abdomen M posterior lateral spinnerets aciniform gland spigots'
+		 [307] 'Abdomen F posterior lateral spinnerets cylindrical gland spigots'
+		 [308] 'Abdomen F posterior lateral spinnerets minor ampullate gland spigots'
+		 [309] 'Abdomen M posterior lateral spinnerets minor ampullate gland spigots'
+		 [310] 'Abdomen F posterior median spinnerets aciniform gland spigots'
+		 [311] 'Abdomen M posterior median spinnerets aciniform gland spigots'
+		 [312] 'Abdomen F posterior median spinnerets cylindrical gland spigots'
+		 [313] 'Abdomen F posterior median spinnerets cylindrical gland spigots in parallel rows'
+		 [314] 'Abdomen F posterior median spinnerets cylindrical gland spigots forming separated field'
+		 [315] 'Abdomen F posterior median spinnerets spinning field deep constriction'
+		 [316] 'Abdomen F posterior median spinnerets minor ampullate gland spigots'
+		 [317] 'Abdomen M posterior median spinnerets minor ampullate gland spigots'
+		 [318] 'Abdomen spinnerets major ampullate and aciniform gland spigots shaft shape'
+		 [319] 'Abdomen spinnerets spigot insertion articulation type'
+		 [320] 'Abdomen ventral posterior colulus'
+		 [321] 'Cephalothorax dorsal carapace overall shape'
+		 [322] 'Cephalothorax dorsal carapace anterior margin shape'
+		 [323] 'Cephalothorax ventral sternum overall shape'
+		 [324] 'Cephalothorax carapace dorsal cephalic area posterior eye row shape'
+	;
+	STATELABELS
+		1
+		'absent'
+		'present'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'absent'
+		'present'
+		,
+		4
+		'not more sclerotized'
+		'more sclerotized'
+		,
+		5
+		'absent'
+		'present'
+		,
+		6
+		'absent'
+		'present'
+		,
+		7
+		'truncated'
+		'State 1'
+		,
+		8
+		'free'
+		'fused'
+		,
+		9
+		'absent'
+		'present'
+		,
+		10
+		'only on proximal part'
+		'reaching terminal half'
+		,
+		11
+		'cylindrical'
+		'flattened'
+		,
+		12
+		'absent'
+		'present'
+		,
+		13
+		'absent'
+		'present'
+		,
+		14
+		'absent'
+		'present'
+		,
+		15
+		'short and contiguous'
+		'long and separated'
+		,
+		16
+		'on both sides'
+		'only on one side'
+		,
+		17
+		'zero'
+		'one'
+		'two'
+		,
+		18
+		'absent'
+		'present'
+		,
+		19
+		'absent'
+		'present'
+		,
+		20
+		'absent'
+		'present'
+		,
+		21
+		'not passing the first apodeme'
+		'passing the first apodeme'
+		,
+		22
+		'absent'
+		'present'
+		,
+		23
+		'not reaching the first apodeme'
+		'passing first apodeme'
+		,
+		24
+		'absent'
+		'present'
+		,
+		25
+		'sparse'
+		'two groups in separated cavities'
+		'two groups in one unique cavity'
+		,
+		26
+		'absent'
+		'present'
+		,
+		27
+		'only on proximal part'
+		'reaching terminal half'
+		,
+		28
+		'cylindrical'
+		'flattened'
+		,
+		29
+		'absent'
+		'present'
+		,
+		30
+		'absent'
+		'present'
+		,
+		31
+		'absent'
+		'present'
+		,
+		32
+		'short and contiguous'
+		'long and separated'
+		,
+		33
+		'zero'
+		'one'
+		'two'
+		,
+		34
+		'absent'
+		'present'
+		,
+		35
+		'absent'
+		'present'
+		,
+		36
+		'single sclerite'
+		'paired sclerites'
+		,
+		37
+		'straight or slightly curved'
+		'produced in a median lobe anteriorly'
+		'very curved forming an arc'
+		,
+		38
+		'vertical to oblique'
+		'horizontal'
+		,
+		39
+		'absent'
+		'present'
+		,
+		40
+		'half or less'
+		'about same size'
+		'at least one point five times larger'
+		,
+		41
+		'absent'
+		'present'
+		,
+		42
+		'raised from surrounding cuticle'
+		'not raised'
+		,
+		43
+		'absent'
+		'present'
+		,
+		44
+		'parallel to each other'
+		'orthogonal to each other'
+		,
+		45
+		'absent'
+		'present'
+		,
+		46
+		'domed'
+		'flattened'
+		,
+		47
+		'separated'
+		'close almost touching'
+		,
+		48
+		'half or less'
+		'about same size'
+		'at least one point five times larger'
+		,
+		49
+		'uniform'
+		'colored stripes'
+		,
+		50
+		'absent'
+		'present'
+		,
+		51
+		'domed'
+		'extremely flat'
+		,
+		52
+		'lower'
+		'as high'
+		'higher'
+		,
+		53
+		'not fused'
+		'fused'
+		,
+		54
+		'absent'
+		'present'
+		,
+		55
+		'not fused'
+		'fused'
+		,
+		56
+		'absent'
+		'present'
+		,
+		57
+		'not fused'
+		'fused'
+		,
+		58
+		'absent'
+		'present'
+		,
+		59
+		'absent'
+		'present'
+		,
+		60
+		'normal'
+		'elongated with tip almost reaching paturon base'
+		,
+		61
+		'absent'
+		'present'
+		,
+		62
+		'absent'
+		'present'
+		,
+		63
+		'absent'
+		'present'
+		,
+		64
+		'smaller than half of fang length'
+		'at least half of fang length'
+		,
+		65
+		'sparse'
+		'dense'
+		,
+		66
+		'absent'
+		'present'
+		,
+		67
+		'absent'
+		'present'
+		,
+		68
+		'absent'
+		'present'
+		,
+		69
+		'absent'
+		'present'
+		,
+		70
+		'absent'
+		'present'
+		,
+		71
+		'absent'
+		'present'
+		,
+		72
+		'absent'
+		'present the promargin is elevated in a smooth not serrated keel'
+		,
+		73
+		'absent'
+		'present'
+		,
+		74
+		'absent'
+		'present'
+		,
+		75
+		'absent'
+		'present'
+		,
+		76
+		'absent'
+		'present'
+		,
+		77
+		'absent'
+		'present'
+		,
+		78
+		'absent'
+		'present'
+		,
+		79
+		'absent'
+		'present'
+		,
+		80
+		'absent'
+		'present'
+		,
+		81
+		'teeth'
+		'serrated keel'
+		'translucent lamina'
+		,
+		82
+		'absent'
+		'present'
+		,
+		83
+		'absent'
+		'present'
+		,
+		84
+		'absent'
+		'present'
+		,
+		85
+		'absent'
+		'present'
+		,
+		86
+		'absent'
+		'present'
+		,
+		87
+		'absent'
+		'present'
+		,
+		88
+		'absent'
+		'present'
+		,
+		89
+		'absent'
+		'present'
+		,
+		90
+		'one'
+		'two'
+		,
+		91
+		'rounded'
+		'angular'
+		,
+		92
+		'sclerotized'
+		'unsclerotized posterior patch just distal from cheliceral gland area'
+		'completely unsclerotized'
+		,
+		93
+		'conical longer than wide'
+		'rounded about as long as wide'
+		,
+		94
+		'projected ventrally'
+		'projected anteriorly'
+		,
+		95
+		'paraxial'
+		'diaxial'
+		,
+		96
+		'absent'
+		'present'
+		,
+		97
+		'absent'
+		'present'
+		,
+		98
+		'absent'
+		'present'
+		,
+		99
+		'absent'
+		'present'
+		,
+		100
+		'absent the epigynum is an undivided plate'
+		'present there are sutures or furrows delimiting the epigynal fields'
+		,
+		101
+		'suture'
+		'furrow'
+		,
+		102
+		'absent'
+		'present'
+		,
+		103
+		'absent'
+		'present'
+		,
+		104
+		'absent median field on same plane as lateral field'
+		'present there is an excavation on the median field'
+		,
+		105
+		'extending anteriorly'
+		'not extending anteriorly'
+		,
+		106
+		'highly convoluted'
+		'spiral'
+		'curved or with some curls'
+		,
+		107
+		'completely sclerotized'
+		'only proximal part'
+		'only terminal part'
+		,
+		108
+		'absent'
+		'present'
+		,
+		109
+		'ventrally directed'
+		'posteriorly directed'
+		,
+		110
+		'posterior close to epigastric furrow'
+		'anterior well advanced from epigastric furrow'
+		,
+		111
+		'absent'
+		'present'
+		,
+		112
+		'paramedian separated by less than half of the epigynum width'
+		'lateral separated by more than half of the epigynum width'
+		,
+		113
+		'depressed or superficial everted'
+		'State 1'
+		,
+		114
+		'absent'
+		'present'
+		,
+		115
+		'copulatory duct'
+		'spermatheca'
+		,
+		116
+		'absent it is reduced to a patch of gland pores in the copulatory duct or in the primary spermatheca'
+		'present it is a blind sac'
+		,
+		117
+		'smaller'
+		'as large as'
+		'larger'
+		,
+		118
+		'absent'
+		'present'
+		,
+		119
+		'rounded'
+		'elongated'
+		'reniform'
+		,
+		120
+		'absent'
+		'present'
+		,
+		121
+		'only on proximal part'
+		'reaching terminal half'
+		,
+		122
+		'cylindrical'
+		'flattened'
+		,
+		123
+		'absent'
+		'present'
+		,
+		124
+		'absent'
+		'present'
+		,
+		125
+		'absent'
+		'present'
+		,
+		126
+		'short and contiguous'
+		'long and separated'
+		,
+		127
+		'on both sides'
+		'only on one side'
+		,
+		128
+		'zero'
+		'one'
+		'two'
+		,
+		129
+		'absent'
+		'present'
+		,
+		130
+		'prograde'
+		'laterigrade'
+		,
+		131
+		'absent'
+		'present'
+		,
+		132
+		'absent'
+		'present'
+		,
+		133
+		'absent'
+		'present'
+		,
+		134
+		'absent'
+		'present'
+		,
+		135
+		'reduced'
+		'normal'
+		,
+		136
+		'ectal'
+		'median'
+		'mesal'
+		,
+		137
+		'absent'
+		'present'
+		,
+		138
+		'absent'
+		'present'
+		,
+		139
+		'absent'
+		'present'
+		,
+		140
+		'continuous with lateral cuticle'
+		'well delimited plate'
+		,
+		141
+		'absent'
+		'present'
+		,
+		142
+		'about cylindrical'
+		'with folds or ribs'
+		,
+		143
+		'in individual sockets'
+		'together'
+		'bases fused'
+		,
+		144
+		'facing ventrally'
+		'facing mesally'
+		,
+		145
+		'pseudotenent setae with acute tip'
+		'tenent setae with widened tip'
+		,
+		146
+		'absent'
+		'present'
+		,
+		147
+		'absent'
+		'present'
+		,
+		148
+		'absent'
+		'present'
+		,
+		149
+		'fingerprint'
+		'State 1'
+		,
+		150
+		'absent the capsule is contiguous with surrounding cuticle not clearly differentiated'
+		'present'
+		,
+		151
+		'absent'
+		'present'
+		,
+		152
+		'same as surrounding cuticle'
+		'different'
+		,
+		153
+		'depressed'
+		'elevated'
+		,
+		154
+		'round to oval'
+		'teardrop'
+		,
+		155
+		'absent'
+		'present'
+		,
+		156
+		'absent'
+		'present'
+		,
+		157
+		'absent'
+		'present'
+		,
+		158
+		'absent'
+		'present'
+		,
+		159
+		'absent'
+		'present'
+		,
+		160
+		'absent'
+		'present'
+		,
+		161
+		'absent'
+		'present'
+		,
+		162
+		'absent'
+		'present'
+		,
+		163
+		'sparse'
+		'dense'
+		,
+		164
+		'restricted to distal part'
+		'reaching proximal third'
+		,
+		165
+		'continuous'
+		'divided'
+		'only in prolateral side'
+		,
+		166
+		'absent'
+		'present'
+		,
+		167
+		'tenent widened tip'
+		'pseudotenent filiform tip'
+		,
+		168
+		'absent'
+		'present'
+		,
+		169
+		'absent'
+		'present'
+		,
+		170
+		'absent'
+		'present'
+		,
+		171
+		'absent'
+		'present'
+		,
+		172
+		'sparse'
+		'dense'
+		,
+		173
+		'continuous'
+		'divided'
+		,
+		174
+		'straight'
+		'shallow indentation'
+		'notched'
+		,
+		175
+		'absent'
+		'present'
+		,
+		176
+		'absent'
+		'present'
+		,
+		177
+		'absent'
+		'present'
+		,
+		178
+		'absent'
+		'present'
+		,
+		179
+		'absent'
+		'present'
+		,
+		180
+		'only in terminal half'
+		'reaching proximal'
+		,
+		181
+		'rings'
+		'cracked'
+		,
+		182
+		'absent'
+		'present'
+		,
+		183
+		'absent'
+		'present'
+		,
+		184
+		'absent'
+		'present'
+		,
+		185
+		'absent'
+		'present'
+		,
+		186
+		'sparse'
+		'dense'
+		,
+		187
+		'restricted to distal part'
+		'reaching proximal part'
+		,
+		188
+		'continuous'
+		'divided'
+		'only on prolateral side'
+		,
+		189
+		'absent'
+		'present'
+		,
+		190
+		'absent'
+		'present'
+		,
+		191
+		'sparse'
+		'dense'
+		,
+		192
+		'continuous'
+		'divided'
+		,
+		193
+		'normal'
+		'shallow indentation'
+		'notched'
+		,
+		194
+		'absent'
+		'present'
+		,
+		195
+		'sparse'
+		'dense'
+		,
+		196
+		'restricted to distal part'
+		'reaching proximal part'
+		,
+		197
+		'continuous'
+		'divided'
+		'only on prolateral side'
+		,
+		198
+		'absent'
+		'present'
+		,
+		199
+		'absent'
+		'present'
+		,
+		200
+		'absent'
+		'present'
+		,
+		201
+		'sparse'
+		'dense'
+		,
+		202
+		'continuous'
+		'divided'
+		,
+		203
+		'absent'
+		'present'
+		,
+		204
+		'approximately the same size'
+		'at least one point five times longer'
+		,
+		205
+		'absent'
+		'present'
+		,
+		206
+		'absent'
+		'present'
+		,
+		207
+		'absent'
+		'present'
+		,
+		208
+		'absent'
+		'present'
+		,
+		209
+		'absent'
+		'present'
+		,
+		210
+		'scattered'
+		'in a defined patch'
+		,
+		211
+		'on dorsoapical surface'
+		'on apical truncation'
+		,
+		212
+		'absent'
+		'present'
+		,
+		213
+		'absent'
+		'present'
+		,
+		214
+		'absent'
+		'present'
+		,
+		215
+		'normal'
+		'reduced to a nubbin'
+		,
+		216
+		'absent'
+		'present'
+		,
+		217
+		'hyaline'
+		'sclerotized'
+		,
+		218
+		'rounded lobe'
+		'elongated'
+		,
+		219
+		'absent embolus fused to tegulum'
+		'present embolus articulated'
+		,
+		220
+		'absent'
+		'present'
+		,
+		221
+		'absent'
+		'present'
+		,
+		222
+		'absent'
+		'present'
+		,
+		223
+		'absent'
+		'present'
+		,
+		224
+		'absent'
+		'present'
+		,
+		225
+		'retrolateral'
+		'prolateral'
+		,
+		226
+		'about half'
+		'about the same'
+		'longer with loops around it'
+		,
+		227
+		'absent'
+		'present'
+		,
+		228
+		'laminar'
+		'tubular'
+		,
+		229
+		'filiform or conical'
+		'wide massive'
+		,
+		230
+		'absent'
+		'present'
+		,
+		231
+		'absent'
+		'present'
+		,
+		232
+		'absent'
+		'present'
+		,
+		233
+		'absent'
+		'present'
+		,
+		234
+		'absent'
+		'present'
+		,
+		235
+		'absent'
+		'present'
+		,
+		236
+		'absent'
+		'present'
+		,
+		237
+		'completely sclerotized'
+		'partially sclerotized'
+		'not sclerotized'
+		,
+		238
+		'elongate'
+		'rounded or irregularly shaped but approximately as long as wide'
+		,
+		239
+		'absent'
+		'present'
+		,
+		240
+		'absent'
+		'present'
+		,
+		241
+		'absent'
+		'present'
+		,
+		242
+		'long with sulci to support the embolus'
+		'short'
+		,
+		243
+		'absent'
+		'present'
+		,
+		244
+		'absent'
+		'present'
+		,
+		245
+		'absent'
+		'present'
+		,
+		246
+		'absent'
+		'present'
+		,
+		247
+		'absent'
+		'present'
+		,
+		248
+		'absent'
+		'present'
+		,
+		249
+		'absent'
+		'present'
+		,
+		250
+		'absent'
+		'present'
+		,
+		251
+		'absent'
+		'present'
+		,
+		252
+		'absent'
+		'present'
+		,
+		253
+		'absent'
+		'present'
+		,
+		254
+		'absent'
+		'present'
+		,
+		255
+		'without incision'
+		'with incision forming a conductorlike canal'
+		,
+		256
+		'absent'
+		'present'
+		,
+		257
+		'absent'
+		'present'
+		,
+		258
+		'absent'
+		'present'
+		,
+		259
+		'absent'
+		'present'
+		,
+		260
+		'absent'
+		'present'
+		,
+		261
+		'absent'
+		'present'
+		,
+		262
+		'retrolateral'
+		'shifted dorsally'
+		,
+		263
+		'laminar'
+		'almost conical or spinelike'
+		,
+		264
+		'absent'
+		'present'
+		,
+		265
+		'absent'
+		'present'
+		,
+		266
+		'absent'
+		'present'
+		,
+		267
+		'simple'
+		'bifid'
+		,
+		268
+		'absent'
+		'present'
+		,
+		269
+		'absent'
+		'present'
+		,
+		270
+		'absent'
+		'present'
+		,
+		271
+		'absent'
+		'present'
+		,
+		272
+		'absent'
+		'present'
+		,
+		273
+		'completly sclerotized ring'
+		'incomplete ring'
+		,
+		274
+		'semicircle in the anterior margin'
+		'patches of setae at the base of the gland spigots'
+		,
+		275
+		'absent'
+		'present'
+		,
+		276
+		'slightly separated'
+		'separated about one ALS diameter or more'
+		,
+		277
+		'more than twenty two percent'
+		'less than twenty two percent'
+		,
+		278
+		'next to the other two pairs'
+		'anteriorly placed'
+		,
+		279
+		'lightly'
+		'heavily'
+		,
+		280
+		'conical'
+		'cylindrical'
+		'compressed laterally'
+		,
+		281
+		'absent'
+		'present'
+		,
+		282
+		'absent field on a flat or slightly domed area'
+		'present'
+		,
+		283
+		'shorter than or as short as'
+		'longer'
+		,
+		284
+		'about the same'
+		'greatly widened'
+		,
+		285
+		'shorter or about the same'
+		'longer'
+		,
+		286
+		'absent'
+		'present'
+		,
+		287
+		'absent shaft and base delimited'
+		'present fused'
+		,
+		288
+		'narrower'
+		'as wide as base with broad openings'
+		,
+		289
+		'absent'
+		'present'
+		,
+		290
+		'absent'
+		'present'
+		,
+		291
+		'about the same size as the aciniform'
+		'reduced to needlelike extension'
+		'longer than shafts of aciniform gland spigots'
+		,
+		292
+		'posterior to ALS'
+		'anteriorly advanced in same line as ALS'
+		,
+		293
+		'anterior ectal thinner'
+		'same size'
+		'anterior thicker'
+		,
+		294
+		'absent'
+		'present functional or as a nubbin'
+		,
+		295
+		'absent'
+		'present'
+		,
+		296
+		'normal'
+		'nubbin'
+		,
+		297
+		'absent'
+		'present'
+		,
+		298
+		'absent'
+		'present'
+		,
+		299
+		'normal'
+		'nubbin'
+		,
+		300
+		'absent'
+		'present'
+		,
+		301
+		'absent'
+		'present'
+		,
+		302
+		'only on the edge'
+		'on the edge and in the middle of the spinneret'
+		,
+		303
+		'absent'
+		'present'
+		,
+		304
+		'absent'
+		'present'
+		,
+		305
+		'absent'
+		'present'
+		,
+		306
+		'absent'
+		'present'
+		,
+		307
+		'absent'
+		'present'
+		,
+		308
+		'absent'
+		'present'
+		,
+		309
+		'absent'
+		'present'
+		,
+		310
+		'absent'
+		'present'
+		,
+		311
+		'absent'
+		'present'
+		,
+		312
+		'absent'
+		'present'
+		,
+		313
+		'absent'
+		'present'
+		,
+		314
+		'absent'
+		'present the Cy are not mixed with other spigots'
+		,
+		315
+		'absent'
+		'present'
+		,
+		316
+		'absent'
+		'present'
+		,
+		317
+		'absent'
+		'present'
+		,
+		318
+		'cylindrical or tapering'
+		'clavate'
+		,
+		319
+		'simple'
+		'annulate flexible'
+		,
+		320
+		'absent'
+		'present'
+		,
+		321
+		'longer than wide'
+		'wider than long'
+		,
+		322
+		'with a moderate cephalic constriction and a convex anterior margin'
+		'without a cephalic constriction and a straight to concave anterior margin'
+		,
+		323
+		'longer than wide'
+		'wider than long'
+		,
+		324
+		'procurved'
+		'straight to recurved'
+		
+	;
+	MATRIX
+	'Anyphaena accentuata'		                  001000100--0------00-0-0-0--0-----10100100000001110100-11100000--010111001110001001111111--0001101011001120?1010?1010000--0------000011101?00001100-110011111000010110010010120000---?000---010120---00101000?1100-01?010000000011010000010000110-?000000--000-00000101000-000000-001010000000000000-1111111110011010111010110010001
+	'Amazoromus kedus'		                      1000000010010?001000-11??10010??000-0?1200010101010101110100000--?10111011100001001101000--0001101010001120?0010?1010000--0------00??111?1?????01???????????????01011?010010110000---0000---00--10---000--000?1110-01101001000001100-000010010000-1001000--000-00000100000-0000?10?11011100110?10000?11?1??110??1111?111011110?10000
+	'Ammoxenus coccineus'		                   00000010110110--2000-0-11?????????10200100011101010200-0-100010--000010000000000-00?-------2001101011001120?011011010000--110--00000111201?00101100-0?????0-101001002001101010111111000010021101010020010100000110-11110--10000011010000010010100-?00001100000-00000101000-0000010?1101000------0001111011000---1110?111111?10010?00
+	'Anagraphis pallens'		                    100000000--111001010-0-110--11101010000100010101010100-11100000--010111011100001001111000--000110001100012000111?1010100--1110010000011200?------00-1000001111010101100100111100110010000---00--10---000--00000110-011010100000010010000010001000-1000000--000-00000101000-000001001101111011001000011101111101111111111011110010?01
+	'Aneplasa facieis'		                      101000001000------00-????1000-----10000000010101010100-0-1?0000--?101?00000110011001-------00010---11000120?0011?1010020--0------00??111?1?????01????????????????1011?01001010000?---0000---110100---000--100?0110-0110?????????????????????????????????????????????????????????10?11011100110?10000111????1?01?1111?1?11101?0?10001
+	'Anzacia gemmea'		                        100000000--111002?00-0-??0--11101010001100010101010100-11100000--010111011110001001111000--0001101010000120?0011?1012000--1110010000011101?00110100-001110111100010110010010110000---0100---010110---00101000?011??010010110000000010000010000110-1000000--000-00000101000-0000?10?110111?0110?10000???????1?0??1?11?1?1?101?0?10001
+	'Aphantaulax spp'		                       110000000--10?10?000-11??10010?10010000100010101010101111100000--?10111100010001001101000--00011010??000120?0010?1010020--10?1?0000??111?1?????01???????????????01110?010011000000---0000---00--00---000--000?1110-?11010100000010010000000----00-1100000--000-00000101000-0000?10?110111001101100001110111110111111?111010110?10001
+	'Apodrassodes guatemalensis'		            100100001000------10-10111000-----10000100010101010101010100000--010111011100001001110000--100110010-001102?001111010101000------000011101?00000100-011000101100011100010011010000---0000---011110---0001000000110-01100--1000000200-00001000000111000000--001000000101010-000001011101110011001000011101101101111111111111110010001
+	'Apopyllus silvestrii'		                  100100001000------10-11111000-----100001?0010101010100-10100000--010111001110001001101000--0001101011101000?0010?1010001000------000111101000100100-01101011110001111001001111011100100010020101110020010110000110-01100--1000000201000001001010101000000--001100000100100-0000010111011100110010000?1101111101111111111111110010001
+	'Arauchemus graudo'		                     100100001000------10-11111000-----10000100010101010101111100000--?10111011100001001101000--0001101011000120?0010?1010001000------00??11101?0000010000100001?110?01011?010010110000---0100---00--10---000--000?0110-01101010000001100-010010000100-1100000--000-01000101000-0000?10?11011100110?1000011??1??110??1111?111011110?10001
+	'Asemesthes spp'		                        101100001100------1??0-??1100-----0-0?01?0010100010100-1010000100?101?00000100011001-------0001????????????????????????1100------0???111?1?????11???????????????01001?011010100000---0000---110110---10101000?011??????0--1000001210-100010001000-1000011--000100000101000-0000?10?110?11001?0?100?0????1???10??1????????????0?10?01
+	'Australoechemus celer'		                 10000000100101112000-10??10010?010(0,1)0000100010101010100-111?0000--?1011?011100001000101000--00011010???01020?001101012111000------00??111?1?000001???????????????01110??100110200110010001112011020---00110000?0110-?1101011000001100-000010010000-1000000--000-00000100000-0000?10?110111001101100001110111110??1111?111010110?10?00
+	'Berinda amabilis'		                      1000000010011?00?010-101110011?00010000100010101010100-11100000--?10110011110001000111000--0?01100111000120?001001010000--11?0?0000??111?0?------???????????????01011?010?11000000---0010---00--00---000--000?0110-?1100--10000011010000010000100-1000000--000-00000101000-1010?10?11011100110?100001110111110??1?11?111?10110?10?01
+	'Berlandina plumalis'		                   101000001100------00-0-111100-----10000100010101010100-0-100001001101000000100011001-------000110000--0012000010?1011001100------000011101000000100-0?????101000011010011011100000---0000---10--00---100--01000110-01100--10001111110000110000000-1100010--000-00000101000-0000010?11011100110110000-10-10-110111111111111?110010?01
+	'Callilepis nocturna'		                   100000001(0,1)00------00-10111100-----10000100110101010100-0-100001000111000000100012001-----000001110010000120?0010?1010011000------001011201000100100-01000011100?010110011010100000---0000---110100---10101000?0110-01100--10000002010000110000100-1000010--000-000000----0-000001011101110011011000011101111101?11111111011110010001
+	'Camillina cordifera'		                   100100000--0------10-11110--0-----10000100010112010101111100000--01011101111100100?111110--0001100011000120?001011010010--0------0000111001------00-01001110100000-----10110100000---0010---00--00---000--00000110-01100--1000011000-100010101100-100001110000-00000101000-000001011101110011011000011101111101111111111010110010001
+	'Cesonia bilineata'		                     110000000--101(0,1)1(0,1)010-110-10010????0-000100010101110101111100000--010111100010001001101000--00010---1000012000010?1110011000------000011101000000100-0100??111000011100010011000000---00010110101110010010100001110-011010100000010010000010000000-1100000--000-00000100000-000001011101110011011000011101111101111111111010110010001
+	'Chileuma paposo'		                       100000100--101000000-0-0-0--10100010001000010101010100-11100000--01101101111100100111111?--?0010-0011001101?010--101-1-0--110000001000--010001101010110001101100011100010011000000---000111101110101100101-0000110-011010100000010010000010000100-?000000--100-00000101000-0000011011011111110010000-10-10-1101111111111010110010001
+	'Chilongius palmas'		                     100000100--101000010-0-0-0--10101010000000010101010101111100000--011111001110001001101000--00010---0--00101?010--101-0-0--11000000101111010001101010110001110100010010010010100000---0000---010100---0010110000110-011010100000011010000010000100-1000000--100-00000101000-0000011011111111110010000-1111111101111111111010110010001
+	'Cithaeron praedonius'		                  000000100--0------00-0-0-0--0-----10000100010101010200-11100000--010111000000000-011-------000110100--000000000--101-0-0--11100(0,2)0000?11001000000100-0100?011110001011001001100111111000010110101010110010100000110-01100--00000011010000010011000-1000000--000-00000101000-0000010001000(0,1)00000000000111010-1111011011111011110010001
+	'Cryptodrassus creticus'		                1000001010011?00??00-111110011?00010000100010101010100-0-100000--?10111001110001001111000--0001101010001120?0010?1010001000------00??111?0?------???????????????01001?010010000000---0100---00--00---000--000?0110-?1100--00000011010000010000110-1000000--000-00000101000-0000?10111011100110?100001110111110111?11?111010110?10?01
+	'Cryptoerithus occultus'		                100000000--111000000-0-0-0--1110000-001100010012010101111100000--010111001110001001111000--0001100011000100?100--101-0-0--1110000000111111000110101111000011110?010110010010110000---0000---010120---00101000?0110-00--?0100000011010000010000100-1000100--100-00000101000-0000?11?10111111110010000111010-1101111111111010110010?00
+	'Doliomalus cimicoides'		                 000000100--100--0000-0-110--100-0010110101010100001100-11000000--010010011100011001111(0,1)00--01011000110001100001011010100--100--001000111000------00-010000110010010110010010100000---0000---00--00---000--00000010-11100--1010000200-000010001000-1001000--000-00000101000-00001101110101000000100011110111111111111101101011000(0,1)001
+	'Drassinella gertschi'		                  000100100--111002000-11110--11102010000100010101010101111100000--010111011100001001111000--00010---0--001200101011110000--111002000000--010?011010110100??11110000-----1000--00000---1100---00--00---000---00?0110-010-10100000010010000000----00-1001000--000-00001101000-000000-0010100000000000-0-10-10-1010011100111110010010?01
+	'Drassodes saccatus'		                    10000000100101002000-0-111000-----10000100010101010101010100000--010111001110001001101100--0001110010000120?00110101(1,2)001000------000011101000100100-010100111100011110010011020001001000100201112100200110000?0110-01?010000000010010000010000100-1000000--000-00000101000-000001011101110011001000011101111101111111111011110010000
+	'Drassodex lasserti'		                    100000001000------00-0-111000-----100?01?0010101010101111100000--?10111011100011001111000--00(0,1)1100011001010?000--101-011000------00??101?1????001???????????????01110?010011000000---0100---011010---00110100?0110-?1100--1000001200-001010000100-1000000--000-00000101010-0000?10?1101110111001000011101??111??1?11?111010110?10?01
+	'Drassyllus fallens'		                    100100000--0------10-11110--0-----10000100010111010100-10100000--01011?01111100100?111110--0001101011001120?0010?1010000--0------0000111001------00-01101110100000-----1000--00000---0010---00--00---000--00000110-01100--1100011000-100010001100-100001100000-00000101000-000001011101110011011000011101111101111111111110110010001
+	'Echemoides aguilari'		                   10000000100111102000-0-111000-----10000110010101010101111100000--010111011100000-011-------0001110011000120?0111?1010001000------0000111010000?0100-0110101111000111010100110211111010000---110120---1010110000110-01100--00000011010000010001110-11?000101000-00000101010-000001011001110011011000011101??1101?11111111011110010000
+	'Eilica bicolor'		                        100100000--0------00-0-110--0-----0-000100010101010100-10100001000100000000100012001-----10100111001000012000010?1010010--0------001011201000100100-0100000-000000-----10010100000---0000---00--00---000--00100110-01100--10010012010000010000100-100001100000-00000101000-000001011101110011011000011101111101111111111011110010001
+	'Galianoella leucostigma'		               110000100--0------00-11110--0-----10100100010101010001111101000--011100000110010-0?1-------2010100010000000?0011?1010000--0------0000111000------00-00000011100000-----1000--00000---0000---00--00---000--000?0110-01100--0000001200-000010010000-0110000--000-001100----0-100000-00101100------00-0011011000--000111001010110000101
+	'Gallieniella mygaloides'		               000000100--0------00-0-??0--0-----10000100010101010101111111000--01001101010001100?101011--00100---10000010?0010?1110000--0------0000111000------00-0100100-000?010110011010100000---0000---10--00---100--000?0110-01100--00000002110000010010000-1100000--100-000001000010110000-0010100000000000-00110???1?10?0?11?0?10101?0010101
+	'Gertschosa spp'		                        110000001101(0,1)1(0,1)(0,1)2000-11??11010?1000-0001?0010101010101111100000--?1011110001000(0,1)001(0,1)01000--0001101010001120?0010110100211010?1?0000??111?1?0???01???????????????01110?010011000000---0000---00--00---000--000?1110-?1100--00000010010000000----00-1000000--000-00000101000-0000?10?11011100110?10000111011?1?01?1?11?1?10101?0?10001
+	'Gnaphosa californica'		                  101000000--111100000-0-110--11110010000100010101010100-10100001--0111000000100011001-------0001101011001110?0010?1010000--0------000011101000000100-010000101000011010011010100000---0000---10--00---100--10000110-01??0--1000100200-000010010100-1101010--000-00000101000-0000010111011100110110000111011111011111111?1010110010001
+	'Gnaphosoidea tex'		                      000000000--100000000-0-1?0--??????0-001100010101010200-0-100000--?00111000000000-001-------00010---0--00000?010--???-0-0--0------00001110-0------00-00000011110000-----1000--00000---0100---00--00---000--000001111011010000000011011000010000100-100000100100-00000101010-010000-0010000000000000-01110???111110110?0?1010110010?00
+	'Haplodrassus hiemalis'		                 100000001010------00-11111010-----100001?0010101010101010100000--010111001110001001111000--000110101100?1201001001000001010------000011101000000100-010000100100011110010011000000---0000--0011100---0011100001110-01101001?000?10?0-?0?010000100-100001100000-00000111000-000001011101110011011000011101111101111111111010110010101
+	'Hemicloea sundevalli'		                  000000101000------00-0-??1000-----10110101010100001100-11100000--010011001110001001111000--1101100011001120?0010?1100001000------1000111010000?0100-010000111000011100010011000000---0000---00--00---000--01000110-110-1001010011100-001110010100-1000000--000-00000100000-000001011101010000001100011101??1101?1?11?111010110010001
+	'Herpyllus ecclesiasticus'		              11000000100101002000-110-1000-----100?01?0010101010101111100000--010111100010001001101000--0001100110001120?0010?1010021100------000011101000000100-010000111100011100010011000000---0000---011010---000--000?1110-011010100000010010000010000000-1000000--000-00000100000-000001011101110011011000011101111101111111111010110010001
+	'Heser schmitzi'		                        100100000--111000010-11110--11?00010001000010101010100-0-100000--?10110011100000-001-------0001100010000120?0010??????00--0------00??111?0?------???????????????01001?010?10100000---0010---00--00---000--100?0110-?1100--1100001200-100110001000-100000100000-00000101000-0000?10?11011100110?10000?11?111110?11?11?111010110?10?01
+	'Hypodrassodes maoricus'		                100000000--111002000-0-0-0--11102010000100010101010100-11100000--010111001110001001111000--0001111011000120?0011?1011000--1110020000011101000110100-110000111100011100010011020000---0100---011120---0011100000110-011010110000010010000010000100-1001010--000-000001010?0-0000010011011101110010000-1111111111111111111010110010001
+	'Kishidaia albimaculata'		                110000000--1011??000-????0--10?100100001?00101010101011111?0000--??011?10001000100?101000--00011010??000120?0010?10100111010?1?0000??111?1?0???01????????????????11?0?01001100000?---000100201001100200101000?0010-?110?????????????????????????????????????????????????????????10111011100110?100001110???1?0??1?11?1?101?1?0?10001
+	'Lampona cylindrata'		                    010100100--0------10-11121000-----10000200010101010101111100000--010111011110000-011-------10011110000011200001001110111000------000010001000000100-010000111100011100010011000000---0100---011100---00111000001110011010100000010010000000----00-1000000--010-00000101000-000001001101000000000000011101101111111111111000110010001
+	'Latonigena auricomis'		                  1100000011010110?000-11??1100-----1-000100010101010101111100000--010111100010001001101000--00010---10000120?0010110100211010?1?0000??111?1?00??01???????????????01110?010011000000---0000---00--10---000--000?1110-?11010100000010010000000----00-1000000--000-00000101000-0000?10?11011100110?100001110111110??1?111111010110?10001
+	'Leptodrassex sp'		                       100000001000------00-????1000-----0-2?12?00?0102010200-11?00000--?10111001100001001111000--0001100111001120?1011?0----11000------0???111?10????01????????????????0----01001010000?---0000---010100---00101000?0110-?100?????????????????????????????????????????????????????????10?110111001?0?10000?1?????1?0??1?11?1?10101?0?10?01
+	'Leptodrassus albidus'		                  100000001000------00-0-111000-----0-2?12?0010101010100-0-100000--?101110111111012011-----1100011001??001120?1011?0----11000------00??111?1?0???01???????????????00----010010100000---0000---010100---00101000?0110-?1000--00000011010000010000110-1000000--000-00000101010-0100?10?11011100110?10000111?1111?0??1?11?1?10101?0?10?01
+	'Leptopilos levantinus'		                 100000001000------00-0-111000-----0-0?12?00?0101010100-11100000--?10111011100001001111000--0001100011001120?1011?0----11000------00??111?1?0???01???????????????00----01001??000010010000---010000---00100000?0110-?1000--00000011010000010000110-1000000--000-00000101000-0100?10?11011100110?1000011101111?0??1?11?1?10101?0?10?01
+	'Liocranum rupicola'		                    101000000--11100(0,2)000-0-110--1110(0,2)00-000100010001010101111100000--?10111001011001001110100--00011001110001210001101010000--11100(0,2)00000111000------00-100000111001010111010010100000---(0,1)000---00--00---00101000?0110-01101011000001100-000010000100-100000100000-00000101000-000000-001010000000000000-10-10-1110111100111010110010?01
+	'Litopyllus temporarius'		                10000000100101112000-110-1000-----10000100010101010101010100000--010111100010001001101000--20010---1?000020?0011?1012011000------000011101000000100-0100(0,1)1111100011100010011000000---0100---010110---0010100000110-011010100000010010000000----00-1000000--000-00000101000-000001001101110011011000011101111101111111111010110010001
+	'Lygromma chamberlini'		                  100000100--1011?2010-100-0--0-----0-0?1-00010100010100-11100000--010111000000001001111111--00010---110000010000--101-1-0--0------0100111010001111010110001111101010110110010100000---00010110101010010010110000110-010010100000010010000010000100-?000000--100-0000010100100000011010011111111010000011010-1111111111111010110010001
+	'Meedo houstoni'		                        000000100--0------00-111?0--0-----10000100000101010100-0-0?1000--010111000000010-011-------20101000110001000000--100---0--0------000?111000------00-01000011110000-----1000--00000---0000---00--00---000--110?0011001100--000000(0,1)2010000010010000-???0000--000-00??0101000-0000?0-?010010000000?00?0?1101101?10???10?1?1?101?0010000
+	'Megamyrmaekion transvaalense'		          100000000--10110?000-????0--0-----10000200010101010200-111?0000--?10111000000000-011-------0001100011000020?0011?1010110--0------00??111?1???????????????????????1111?01101112111?1010001112011120---00111000?0110-??????????0????????????0?????????????????????????????????????10111011100110?100001110???1?01?1?11?1?10101?0?10?00
+	'Micaria gosiuta'		                       010000000--10100(0,2)100-0-110--1010(0,2)110000100010101010100-11100100--010111000100001001101000--00010-0011001120?0?11?1010020-0111002?00011120100011010100100001000001101000100100001111010000---010000---1010110000110-010010000000010010000010000100-1000000--000-00000111000-0001010001011100000000000111010-1011-11111111010110010001
+	'Microsa chickeringi'		                   101000001100------00-0-??0--0-----100?0000010100010100-1010000100?101000000100011001-------0001110011000120?0010?1012000--0------001011201000101100-00000011100000-----1000--00000---0000---00--00---000--00000110-01100--1000011110-000010000100-1000010--000-00000101000-00000101110111001101100001110???1101111111111011110010001
+	'Minosia simeonica'		                     100000001100------00-0-111100-----10000100010101010100-00100001000101000000100011001-------00010-0011001120?0011?1010021100------00001110100000(0,1)100-011010111000010110010011000000---0000---10--00---100--00000110-01100--10000000011000000----00-1000010--000-000001010010000001011101110011011000011101111101111111111011110010?01
+	'Moreno grande'		                         100000100--101100000-0-0-0--1?????0-001100010101010101111000000--01?1110111(0,1)0001001110100--00010---110000010000--101-1-0--0------01?0111110001?0100-10000111010000-----1000---0000---0000---00--00---000--10000010-010010100000010010000010000110-1000000--100-0000010101100000011?11011111110010000011010-1101111111111010110010001
+	'Nauhea tapa'		                           100000110--110--200??0-??0--110-201000010001011101011110-100100--?10111011110001001111000--0001????????????????????????0--0------0???0--?1?????01???????????????00-----10010100000---0000---00--00---000---00?011??????10100000010010000010000100-?000000--000-00000101000-0000?10?01011100???010000?????????????1???????????0010?01
+	'Neodrassex aureus'		                     100000000--11?00?000-0-110-011?0?00-2?1100010101010101111100000--?10111001110001001111110--00011100??011120?1011?0010010--1100?00000011101000000100001000011010?00----0100101000010010000---010100---00101000?0110-?1000--00000011010000010000110-1000000--000-00000101010-0100?10?11011100110?100001110111110??1?111111010110?10001
+	'Neozimiris pubescens'		                  000000100--0------00-0-0-0--0-----10000110010111010100-11001000--000011000010001001100010--00110-0011001120?0011?1011020--0------000110111010100100-11000110110000-----1000--00000---0000---00--00---000---00000111010110100000010010000010010100-?000000--110-01000101000-0000011001011111110010110-10-10-1011011101111010110110100
+	'Nodocion eclecticus'		                   100000001000------00-110-1000-----10000100010101010101010100000--01011?100010000-011-------0001100010001020?001001010021000------000011101000000100-010000111100011100010011000000---0000---010100---0010100000110-011010100000010010000010000000-1000000--000-00000100000-000001011101110011011000011101111101111111111010110010001
+	'Nomisia aussereri'		                     100000001100------00-0-111100-----10000100010101010100-1010000100?101000000100011001-------0001110010011120?0011?1010001100------001?11101000001100-0100??101000010110011010100000---0000---110110---1010100000110-?1100--1000011000-010000----00-1001010--000-000001010010000001011101110011011000011101111101111111111011110010001
+	'Nopyllus sp'		                           100000000--10?00?010-0-??0-010?0?00-0?1100010101010101111100000--?10111011111001001101111--0001????????????????????????0--0------00??111?100???010??0100001101??00-----1000--00000---0000---00--00---000--100?011??????00-00000002010000000----0111000000--000-10000100000-0000?10?11011100110?10000????110?10??1??1111????110?10?01
+	'Notiodrassus distinctus'		               101100001000------10-10110--0-----10001100010101010101111100000--?10111001110001001111000--0001100011000120?0010?1010001000------00??111?1?????01???????????????01110?010011020000---0001111011020---00101000?0110-?1101011000001100-000010001000-1000000--000-00000101000-0000?10?110111111100100002111111110111?111111010110?10?01
+	'Odontodrassus aphanes'		                 1000000010011100?000-11111000-----10000100010101010100-0-100000--010111001110001001111000--0001100011000120?0010?1010021000------0?0?11101000000(0,1)010010000111000010100010011000000---0100---00--00---010--10000110-01100--10000002010000010000000-1000000--000-00000101000-0000010111011100110110000-10-10-1101111111111111110010001
+	'Oltacloea beltraoe'		                    100000100--101102010-0-??0--1011200-001000000101010100-11?00000--?10111011110001001100100--0001100011010000?000--101-1-0--0------1???(0,1)01?1???1??1???????????????00-----10011100000---0000---00--00---000---10?0110-?10011100000012010000010020100-1000000--100-10000100000-0000?11?11011111110010??0-10-1??110??1?11?1?10101?0?10?01
+	'Orodrassus coloradensis'		               100000001000------00-0-0-1000-----10000000010100010101010100000--010111001110001000111000--0001100010011120?000-?101-0-1000------000?11101000000100-011010111100011100010011010000---00010110110110010011000000110-01001001000011000-100000----00-100000100010-00000101000-00000101110111001100100001110111111111111111101?110010001
+	'Parasyrisca orites'		                    100000001000------00-????1000-----100011000101010101011111?0000--?10111001110001001?11000--0001101010010020?1111??????01000------0???111?1?????01????????????????1110?01001100000?---000????????1100100101000?0110-?100?????????????????????????????????????????????????????????10?110111001?00100001110???1?1??1?11?1?11111?0?10001
+	'Phaeocedus braccatus'		                  110000001000------10-????0-00-----11000100010101010101111100000--?1011110001000(0,1)00?(0,1)0(0,1)000--00010---??000120?001011010020--0------00??111?1?????01????????????????1001?01001110000?---0000---010100---00101000?1110-?110?????????????????????????????????????????????????????????10?11011100110?100001110???1?01?1?11?1?10101?0?10?01
+	'Phrurolithus festivus'		                 010100000--0------10-11110--0-----0-0010000101010?0101111100000--?10111010100001001101100--00010---0--0002010110?1011010--0------0?0?0--010?0110101101000011110000-----0000--00000---1010---00--00---000---00?0010-010011100000010010000000----00-1000000--000-01001100010-000000-001010000000000000211010-1111100101011010110010001
+	'Plator spp'		                            000000100--10?????00-10110--10????0-1?01?1010100001100-11000000--?10011001110001001111000--0101100011000120?001011010000--10?????10??101?0?------???????????????00-----1000--00000---0000---00--00---000--000?0010-?10-1001010001000-000110000000-1001000--000-00000101000-0000?1011101010000001000111101??111??1?11?1?10?01?0001011
+	'Platyoides walteri'		                    000000100--0------00-0-110--100-?0101?01?1010100001100-11101000--000010000010011001100001--001110101100112010010?1012000--100--00100?111000------00-010000111110010110001010100000---0100---00--00---000--01000110-11??1001010001100-000010000100-1000000--000-00000111000-0000010101010100000010000?1101111111111110111010110010101
+	'Prodidomus rufus'		                      000000000--101002000-0-0-0--0-----0-001110010101000100-11001000--000010000000000-001-------0011100011010101?000--???-1-0--0------00010--11010100100-11000011110000-----1000---0000---0000---00--00---000---1001011101000--0000001100-000000----00-1000000--100-00000101010-1000011?0101211111?010100111011011?1111111110---1111?0?00
+	'Pterotricha conspersa'		                 100000001100------00-10111100-----10000000010111010100-10100001000101000000100011001-------000110101000012000011?1010021100------000?10101000?0?100-0100001011000111100110111011110010000---10--10---100--00000110-011011010001011010000010000100-1010010--000-00000101000-00000101100111101101100001110111110111111?1110111?0010001
+	'Rastellus spp'		                         000000000--110--2000-0-11?????????10100100010102010000-11100010--110010000000000-001-------00010---0--00120?1011?10100?0--0------000111201000101100-00000011110000-----1000--00000---0000---00--00---000--000?0?10-01100--10000011010000010010100-?00001100000-00000101000-0000010?1101(0,1)00------00?1-10-10-00---110??110---?00010?00
+	'Scopoides catharius'		                   10010000100111002000-100-1000-----10000100010101010100-10100000--01011?00111000100?101000--0001100111001120?0011?1010021000------000011101000000100-011010111100011100010011000000---00000110101010110011100000110-01101011000001100-000010000100-1000000--000-00000101000-0000010011011100110110000111011111011111111?101?1?0010?00
+	'Scotocesonia demerarae'		                110?0000100101(0,1)(0,1)2000-????10011??00000001000101010101011111?0000--?10111100010001001101000--0001100010001120?001011010021100------00??11??1???????????????????????1110?01001100000?---0??111101101???????????0?0110-?1???????????????????????????????????????????????????????????10?11011100110?100001110???1?0??1?11?1?11101?0?10?01
+	'Scotognapha teideensis'		                101100001000------10-10111000-----10000100010101010100-0-10000100?111?00001100011001-------2001101010001120?0011?1010001000------00??111?1?0???11???0100000-01??01(0,1)(0,1)1?010011000000---0000---010100---00101000?0110-?1101111000001100-000010000100-1000010--000-0000010100100000?10?11011100110?100001110111110?11?111111?11110?10?01
+	'Scotophaeus blackwalli'		                10000000100101102000-110-10010102010000100010101010100-10100000--010111001110001001101000--0001101011001120?0010?1010011000------000011101000000100-0100101111000111000100110000010010000---011010---0010110001110-01?010110000010010000010000100-?000000--000-00000101000-000001011101110011001000011101??1101111111111111110010001
+	'Sergiolus capulatus'		                   110100001100------00-110-1100-----1-000100010101010101111100000--010111100010001001101000--0001100010001020?001001010021100------000011101000000100-010000111100011100010011000000---00010020101110020010100001110-011010100000010010000010000000-1000000--000-00000100000-00000101110111001101100001???1111101111111111010110010001
+	'Setaphis subtilis'		                     100100000--0------10-11110--0-----10000100010111010101111100000--010111001111001001111100--00011000110000020001011000000--0------0000111001------00-010001101000010010010010100000---0010---00--00---000--00000110-01100--1000011200?100010001100-100000100000-00000101000-0000010111011100110110000111010-1101111111111110110010001
+	'Sosticus insularis'		                    101100001000------00-11110--0-----10000100010101010100-0-100000--011111001100001001111100--0001100111001120?0011?0----21000------00001110(0,1)000000100-010010111100010100010011000000---0?00---010100---000--00000110-01100--10001111010000010100000-1001000--000-000001010?0-?00001011101110011011000011101??1101111111111011110010001
+	'Sydidrassus'		                           1000000010(0,1)1(0,1)1(0,1)02000-0-??10(0,1)1(0,1)1(0,1)2010000100010101010101111100000--?10111011100001001101000--00010---11000120?0011?1012001000------00??111?1?????01???????????????01111??100110201110010000---011020---00110000?0110-?11010010000011010000010000000-1000000--000-00000101000-0000?10?11011100110?100001110111110??1?1111110101?0?10?01
+	'Synaphosus syntheticus'		                10010000100110002000-11111000-----0-0001?0010101010100-??100000--01011?001110000-0?1-------00010---11100100?0010?1010000--0------00001110(0,1)0??????00-010010111100010010010010100000---0000---00--00---000--10000110-0???0--10100002010000000----0101000000--000-00000101000-0000010111011100110110000111011?1101?11111111011110010?01
+	'Talanites echinus'		                     101000000--101001010-0-??0--10101010000100010101010100-0-100000--?10111001110001001110100--0001101011001120?0010?0----00--0------000011101000000101011000011110?0111100100110100110010000---00--10---000--00001110-01101001000001100-000010000100-100000100000-00000101000-0000010?110111?0110010000?1100??1101111111111010110010001
+	'Teutamus rama'		                         000101110--0------01011??0--0-----100001000100010000111111?0?00--011111001110001001100010--00010---0--00120?001001010010--0------000011201000120000-01000010110100-----1000--0000?---1100---00--00---000--00000110-010-10110000011010000000-----0-?000000--110-00000101000-000100-00101000000000000011101101111110101001010110010?01
+	'Tivodrassus ethophor'		                  101100(0,1)00--111002010-110-0--0-----0-001010010101010100-11100000--010111001110001001110100--00010---0--00001?000--101-1-0--0------010010111000111101111000111110000-----10010100000---0000---00--00---000--10000110-010010100000011010000010000100-1000000--100-1000010100110000011011011111110010000011111111011111111110?0110010001
+	'Trachelas mexicanus'		                   000100100--0------00-11110--0-----11000100010001010001111100000--010110001110001000101100--00010-000---0-100000--101-0-0--0------000011101001000100-01???0111100010110010010100000---0100---011000---00110000?0110-01??0--1000001?010000000----00-1000000--000-000001010?0-000000-001010000010000000-1111111110011100111010110010?01
+	'Trachycosmus sculptilis'		               000000000--0------00-0-0-0--0-----10000100?10101010101111??0000--01?1110??????110011?????--0?0111001100002?0011001010100--0------10000--01010000100-01000011100?010110010010100000---000????????0??????????00?0010-010-1011??00?02?0-????100000?0-?0?00????100-00??01010010000010-00100000000000000011101101110?11100111010110000?01
+	'Trachyzelotes pedestris'		               100100000--0------10-11110--0-----1000010001010101010101010000111010110011101001001100111--0001101011001120?001101010000--0------0000101000------00-0100(0,1)110100000-----1010--00000---0010---00--00---000--00000110-?1100--1100011000-100010101100-10000110?000-000001010?0-000001011101110011011000011101??1101111111111010110010001
+	'Trephopoda parvipalpa'		                 100000001000------0??0-??1000-----1000010001010101010110-100000--?101??00001000110?1-------0001????????????????????????1000------00??111????????????????????????01001?010010100000---0000---00--00---000--000?011??????0--1000101100-000010000100-1000010--000-00000101000-0000?10?1101110?11???0000????1???10??1??1111?????10?10?01
+	'Tricongius amazonicus'		                 100000100--101000010-0-??0--1010000-0?1000000101010101111100000--?10111001110001001100100--0001000-11000000?000--?????-0--0------01??(0,1)01?1???1??1???????????????00-----1000--00000---0000---00--00---000---10?0110-?10011100000011010000010020000-???0000--100-01000101000-0000?11?11011111110010??0-1??1??110??1?11?1?1??01?0?10?01
+	'Trochantheria gomezi'		                  000000100--0------00-0-110--0-----10110101010100001101111001000--000011000010011000100001--00111000110001000000--101-0-0--0------1000111000------00-01000101100?011111000011100000---0000---00--00---000--11000010-?1101001010011100-001110000100-1000000--000-00000101000-000011011101010000001000011101??1111?111?0111010110000?01
+	'Urozelotes rusticus'		                   100100000--0------10-10110--0-----10000100010111010101111100000--01111?01111100100?111000--00011000110000201001011010000--0------0000111000------00-010011101000010110010010100000---0010---00--00---000--10000110-01100--1000001000-100010101100-110000100000-00000101000-00000101110111001101100001110111110111111111101?110010001
+	'Vectius niger'		                         000010100--0------00-0-110--0-----0-1101?1010100001100-11000000--010010001110001001111000--11011000110001201001011000000-?0-?----1000111000------00-01000001101000-----0000--00000---0000---00--00---000--10000010-11101001010011100-001110000100-1000000--000-00000101000-00001101110101000000110-111101111101110100101010110000011
+	'Verita williamsi'		                      100100?01000------10-110-??0????????00010??1010101010??????0?00--?????????????010????????--?00110101100002??0010110?00?1000------00??11101010010100-0100001(0,1)110?0100110?0010100011???0000---00--00---000--?00?0?1??????0--?000?010?0-???010000100-???00????0?0-00000101000-00000100010?0?000000000001110110111111?111111000110010?01
+	'Xenoplectus sp'		                        100000100--10????000-0-110--10???010010100010101011101111100000--010111001110001001111100--0001100010000120?000--101-0-0--10100001000111000------00-0?????111101010111000010100000---1000---00--00---000--10??0110-01101011000001200-000110000100-?10000100000-00000101000-000000-0010100000000000?021101111101111100111010110010?01
+	'Xerophaeus capensis'		                   100000001001(0,1)1002000-110-1001(0,1)102010000100010111010101111100000--010111011100001001101000--0001??????????????????????0?1000------000011101000000100-01001011110001110001001100???10010001011011110---001100000011??0???1001000001100-000011000000-110000000000-00000101010-0000010111011100110010000????111?10?111?1111????110010001
+	'Zelanda spp'		                           100100001000------00-11??1000-----10000100010101010100-11100000--?10111001110001001100100--000110011010012000110?1010011000------000011101000100100-110000111100011100010011010000---0000---011110---0011100000110-01101001000001110-100010000100-110000100000-00000101000-00100101110111011100100?011111111101111?1?1?10111?0010000
+	'Zelotes duplex'		                        100100000--100000010-11110--0-----10000100010101010100-10100000--010111001110001001111000--0001100011000120?0010?1010000--0------000011101000000100-010111101100010010010010000000---0010---00--00---000--0000011??01100--1000111000-000110101100-10000110??00-00000101000-000001011101110011011000011101111101111111111?10110010001
+	'Zelotiba simpula'		                      100100001000------10-11111000-?---10001100010101010100-11100000--?10111011110001001111100--00010---0--00120?0010?1000-01000------00??111?0?------???????????????00-----10?0--00000---0010---00--00---000--00000110-?1100--1000001100-000010101100-1100000--001000000101000-0001?10111011100110?100001110111110??1?111111110110?10?01
+	'Zimiromus montenegro'		                  100000001000------00-11111000-----0-000110010101010100-11100000--011111011100001001100100--0001100111001120?0010?1012001000------000011101000101100-010?0010110?0101100100101200111010000---010120---0010100000110-00100--00000011010000010000110-1101000--000-00000101010-000001011101110011111000011101111101111111111011110010000
+	'Echemus angustifrons'		                  10000000??????????00-0-?????????????0?01?0010101010100-11?00000--?1????0??????0?????????????001101011001120?0010??????0??????????0???????10?????1???????????????01110?01001100001??010101110011000---00101?00?011?????????10000010?0-00?0100?0100-??00000--??0-0000010100101000????110?1????????????????????????????????????????????
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 324;
+      ENDBLOCK;
+      

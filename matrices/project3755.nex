@@ -1,0 +1,1547 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-13 02.11.52 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=46;
+    TAXLABELS
+    		'Phyllodytes luteolus'
+		'P minuta'
+		'L limellum'
+		'Scarthyla goinorum'
+		'S berthae'
+		'S littoralis'
+		'S perereca'
+		'S fuscovarius'
+		'Sp lacteus'
+		'Sphaenorhynchus pauloalvini'
+		'Sphaenorhynchus prasinus'
+		'Xenohyla truncata'
+		'Dendropsophus columbianus'
+		'Dendropsophus carnifex'
+		'Dendropsophus riveroi'
+		'Dendropsophus haraldschultzi'
+		'Dendropsophus labialis'
+		'Dendropsophus virolinensis'
+		'Dendropsophus anceps'
+		'Dendropsophus elegans'
+		'Dendropsophus triangulum'
+		'Dendropsophus minutus'
+		'Dendropsophus decipiens'
+		'Dendropsophus berthalutzae'
+		'Dendropsophus haddadi'
+		'Dendropsophus bipunctatus'
+		'Dendropsophus oliverai'
+		'Dendropsophus branneri'
+		'Dendropsophus rhodopeplus'
+		'Dendropsophus nanus'
+		'Dendropsophus sanborni'
+		'Dendropsophus elianeae'
+		'Dendropsophus jimi'
+		'Dendropsophus meridianus'
+		'Dendropsophus timbeba'
+		'Dendropsophus microps'
+		'Dendropsophus parviceps'
+		'Dendropsophus ruschii'
+		'Dendropsophus acreanus'
+		'Dendropsophus dutrai'
+		'Dendropsophus marmoratus'
+		'Dendropsophus melanargyreus'
+		'Dendropsophus nahdereri'
+		'Dendropsophus novaisi'
+		'Dendropsophus seniculus'
+		'Dendropsophus soaresi'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=201;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="012345";
+	CHARLABELS
+		 [1] 'Premaxilla relation with nasal capsules in dorsal view.'
+		 [2] 'Sphenethmoid dorsal extension.'
+		 [3] 'Nasals overlap with sphenethmoid.'
+		 [4] 'Degree of frontoparietal fontanelle covering by the medial margins of the anterior third portion of frontoparietals.'
+		 [5] 'Degree of tectum synoticum covering by the medial margins of the posterior third portion of frontoparietals.'
+		 [6] 'Posterolateral development of frontoparietals.'
+		 [7] 'Lateral portion of the nasal relation to the lateroposterior portion of the cartilago obliqua in dorsal view.'
+		 [8] 'Lateral margin of nasal in dorsal view.'
+		 [9] 'Dorsal cartilaginous articulation between exooccipitals.'
+		 [10] 'Crista parotica ossification.'
+		 [11] 'Otic plate of squamosal.'
+		 [12] 'Columellae orientation to medial body axis.'
+		 [13] 'Operculum dorsal visibility.'
+		 [14] 'Alary process of premaxilla shape.'
+		 [15] 'Alary process of premaxilla angle in relation to pars dentalis.'
+		 [16] 'Pars facialis of the maxilla.'
+		 [17] 'Processus maxillaris of the planum terminale anterior development.'
+		 [18] 'Quadratojugal.'
+		 [19] 'Relationship between quadratojugal and squamosal (in males).'
+		 [20] 'Relationship between quadratojugal and maxilla (in males).'
+		 [21] 'Maxillary process of the nasal.'
+		 [22] 'Frontoparietal orbital flange.'
+		 [23] 'Pars externa plectri shape.'
+		 [24] 'Anterior process of vomer.'
+		 [25] 'Angle of vomers medial margins in relation to sagital axis.'
+		 [26] 'Vomers dentigerous process structure.'
+		 [27] 'Relationship between dentigerous process and the main body of vomer.'
+		 [28] 'Maxillary teeth.'
+		 [29] 'Mandibular odontoids.'
+		 [30] 'Maxilla lenght.'
+		 [31] 'Palatines medial margin shape.'
+		 [32] 'Lateral development of palatines.'
+		 [33] 'Medial development of palatines.'
+		 [34] 'Sphenethmoid ventral anterior degree of ossification.'
+		 [35] 'Sphenethmoid ventral posterior degree of ossification.'
+		 [36] 'Sphenethmoid lateral degree of ossification.'
+		 [37] 'Degree of ossification of sphenethmoid lateral margins.'
+		 [38] 'Relationship between pterygoid anterior ramus and maxilla.'
+		 [39] 'Nature of contact between pterygoid anterior ramus and maxilla.'
+		 [40] 'Pterygoid medial flange.'
+		 [41] 'Length of the medial ramus of pterygoid.'
+		 [42] 'Margin of the basal process covered by the medial ramus of the pyterigoid.'
+		 [43] 'Length of the posterior ramus of pyterigoid.'
+		 [44] 'Ocular fenestra size.'
+		 [45] 'Ossification of oculomotor foramen medial margin.'
+		 [46] 'Relationship between prootic and exooccipital ventrally.'
+		 [47] 'Parasphenoid cultriform process margins.'
+		 [48] 'Parasphenoid posterior margin.'
+		 [49] 'Parasphenoid alae lateral extension.'
+		 [50] 'Ventral cartilaginous contact between exooccipitals.'
+		 [51] 'Cartilaginous plate.'
+		 [52] 'Crista subnasalis ventral edge.'
+		 [53] 'Conection between processus lingularis and lamina orbitonasalis.'
+		 [54] 'Processus prenasalis medius.'
+		 [55] 'Cartilago obliqua lateral margin curvature in relation to medial axis.'
+		 [56] 'Crista supraorbitalis.'
+		 [57] 'Crista supraorbitalis shape.'
+		 [58] 'Retrolateral process of crista parotica.'
+		 [59] 'Relationship between the annulus tympanicus and crista parotica.'
+		 [60] 'Anterior process of hyoid.'
+		 [61] 'Shape of the anterior process of hyoid.'
+		 [62] 'Hyoid anterolateral--or alary--process presence.'
+		 [63] 'Hyoid anterolateral--or alary--process shape.'
+		 [64] 'Shape of the tip of the anterolateral process of hyoid.'
+		 [65] 'Hyal basal portion.'
+		 [66] 'Hyoid posterolateral process orientation.'
+		 [67] 'Hyoid posterolateral process origin.'
+		 [68] 'Hyoid plate medial mineralization.'
+		 [69] 'Shape of hyoid plate medial mineralization.'
+		 [70] 'Area of hyoid plate.'
+		 [71] 'Caudal third portion of thyrohyals.'
+		 [72] 'Shape of the posterior (caudal) cartilaginous portion of thyrohyal.'
+		 [73] 'Point of attachment of hyale to the skull.'
+		 [74] 'Medial ventral margins of arytenoids.'
+		 [75] 'Medioventral arytenoid fibrous masses.'
+		 [76] 'Arytenoids inner longitudinal ridges.'
+		 [77] 'Ventromedial vocal chord ligaments.'
+		 [78] 'Internal buttresses of the arytenoids.'
+		 [79] 'Central butresses'
+		 [80] 'Paramedial butresses'
+		 [81] 'Dorsomedial prominence of the arytenoids.'
+		 [82] 'Bronchial process point of origin.'
+		 [83] 'Esophageal process in males.'
+		 [84] 'Esophageal margin of cricoid ring in esophageal view.'
+		 [85] 'Posterior margins of the arytenoids in lateral view.'
+		 [86] 'Xiphisternum distalmost shape.'
+		 [87] 'Coracoid crest.'
+		 [88] 'Anterior process of the suprascapula.'
+		 [89] 'Number of distal prepolical elements.'
+		 [90] 'Mineralization of intercalary elements between ultimate and penultimate phalanges.'
+		 [91] 'Intercalary element shape.'
+		 [92] 'Posterior margin of vertebra VI.'
+		 [93] 'Shape of the sacral diapophysis.'
+		 [94] 'Transverse process of Vertebra IV.'
+		 [95] 'Sacral sesamoid.'
+		 [96] 'Sacral sesamoid - nature.'
+		 [97] 'Metatarsal I sesamoid.'
+		 [98] 'Metatarsal II sesamoid.'
+		 [99] 'Metatarsal II sesamoid - shape.'
+		 [100] 'Metatarsal III sesamoid.'
+		 [101] 'Metatarsal III sesamoid - shape.'
+		 [102] 'M. pectoralis portio axillary presence.'
+		 [103] 'M. pectoralis origin.'
+		 [104] 'Pectoral lymph septum.'
+		 [105] 'Frontal lines - I.'
+		 [106] 'Frontal lines - II.'
+		 [107] 'Frontal lines - III.'
+		 [108] 'Canthal stripe - I.'
+		 [109] 'Canthal stripe - II.'
+		 [110] 'Frontal and canthal lines connection.'
+		 [111] 'Inferior margin of the orbit position in relation to the nostrils.'
+		 [112] 'Vocal sac morphology.'
+		 [113] 'Color of the vocal sac inflatable portion in preservative.'
+		 [114] 'Skin around the margin of the lower lip.'
+		 [115] 'Nostril position.'
+		 [116] 'Subnarial spot.'
+		 [117] 'Suborbital white bar presence.'
+		 [118] 'Number of suborbital white bars.'
+		 [119] 'Suborbital white bar - extension.'
+		 [120] 'Tympanic membrane pigmentation differentiation.'
+		 [121] 'Axillary membrane.'
+		 [122] 'Preaxillary pectoral fold.'
+		 [123] 'Postaxillar pectoral fold presence.'
+		 [124] 'Shape of the postaxillar pectoral fold.'
+		 [125] 'Webbing insertion between fingers II and III (scored on II).'
+		 [126] 'Webbing insertion between fingers III and IV (scored on III).'
+		 [127] 'Webbing insertion between fingers III and IV (scored on IV).'
+		 [128] 'Webbing insertion between fingers IV and V (scored on IV).'
+		 [129] 'Webbing insertion between fingers IV and V (scored on V).'
+		 [130] 'Webbing insertion between toes I and II (scored on I).'
+		 [131] 'Webbing insertion between toes I and II (scored on II).'
+		 [132] 'Webbing insertion between toes II and III (scored on II).'
+		 [133] 'Webbing insertion between toes II and III (scored on III).'
+		 [134] 'Webbing insertion between toes III and IV (scored on III).'
+		 [135] 'Webbing insertion between toes III and IV (scored on IV).'
+		 [136] 'Webbing insertion between toes IV and V (scored on IV).'
+		 [137] 'Webbing insertion between toes IV and V (scored on V).'
+		 [138] 'Flanks ornamentation pattern.'
+		 [139] 'Pelvic girdle melanin deposits.'
+		 [140] 'Belly ornamentation pattern.'
+		 [141] 'Throat ornamentation pattern.'
+		 [142] 'Thigh posterior and dorsal areas relation.'
+		 [143] 'Thigh posterior area pattern.'
+		 [144] 'Thigh ventral area pattern.'
+		 [145] 'Shanks dorsal coloration pattern.'
+		 [146] 'Cloacal sheath.'
+		 [147] 'White line above cloaca.'
+		 [148] 'White lines above heels.'
+		 [149] 'Ulnar fold presence.'
+		 [150] 'Ulnar fold nature.'
+		 [151] 'Tarsal fold presence.'
+		 [152] 'Tarsal fold nature.'
+		 [153] 'Tibial ventral fold.'
+		 [154] 'Calcar presence.'
+		 [155] 'Calcar shape.'
+		 [156] 'Toe I disc shape.'
+		 [157] 'Male glandular nuptial pad extension.'
+		 [158] 'Male glandular nuptial pad shape.'
+		 [159] 'Male nuptial excrescence presence.'
+		 [160] 'Male pectoral gland presence.'
+		 [161] 'Male pectoral gland shape.'
+		 [162] 'Female pectoral gland presence.'
+		 [163] 'Dorsum ornamentation.'
+		 [164] 'Chromosome number.'
+		 [165] 'Larval body shape in dorsal view.'
+		 [166] 'Larval body shape in lateral view.'
+		 [167] 'Larval tail shape.'
+		 [168] 'Oral disc position.'
+		 [169] 'Oral disc marginal labial papillae.'
+		 [170] 'Marginal labial papillae row posterolateral gap.'
+		 [171] 'Number of rows of inferior marginal labial papillae.'
+		 [172] 'Rows of lateral marginal labial papillae.'
+		 [173] 'Anterior labial tooth rows.'
+		 [174] 'Number of anterior labial tooth rows.'
+		 [175] 'Posterior labial tooth rows.'
+		 [176] 'Number of posterior labial tooth rows.'
+		 [177] 'Sheath of thickened tissue in the basal portion of the tail muscle and adjacent fins.'
+		 [178] 'Larval fin coloration.'
+		 [179] 'Relation between larval tail fins.'
+		 [180] 'Tadpole body dorsal coloration.'
+		 [181] 'Tadpole dorsal tail fin initial lateral profile.'
+		 [182] 'Larval nostril position.'
+		 [183] 'Larval nostril orientation.'
+		 [184] 'Larval nostril shape.'
+		 [185] 'Position of the proctodeal tube with respect to the ventral caudal fin.'
+		 [186] 'Myocardium.'
+		 [187] 'Pericardium iridophores.'
+		 [188] 'Lung pigmentation.'
+		 [189] 'Liver color.'
+		 [190] 'Liver size.'
+		 [191] 'Number of visible liver lobes in ventral view.'
+		 [192] 'Relative size of liver halves.'
+		 [193] 'Kidneys posterior cardinal sinus.'
+		 [194] 'Mesenterium.'
+		 [195] 'Size relation between testes and kidneys.'
+		 [196] 'Testes coloration.'
+		 [197] 'Intestinal visceral peritoneum.'
+		 [198] 'Rectum coloration.'
+		 [199] 'Urinary bladder.'
+		 [200] 'Site of clutch deposition.'
+		 [201] 'Rhodomelanocrom presence.'
+	;
+	STATELABELS
+		1
+		': Nasal capsules do not cover premaxilla pars dentalis'
+		': Nasal capsules cover premaxilla pars dentalis'
+		,
+		2
+		': Not reaching half of septum nasi length'
+		': Reaching or passing half of septum nasi length but not covering all of it'
+		': Covering all septum nasi'
+		,
+		3
+		': Nasals not overlapping with sphenethmoid'
+		': Nasals overlapping with sphenethmoid'
+		,
+		4
+		': Frontoparietals not covering the fontanelle, only as wide as the underlying sphenethmoid wall'
+		': Frontoparietals covering the fontanelle in various degrees but leaving a nearly triangular area between the irregular margins'
+		': Frontoparietals with smooth margins covering almost all the underlying frontoparietal fontanelle apart by a very thin rectangular space'
+		,
+		5
+		': Frontoparietals medial margins slender, not expanding medially more then the medial edge of the epiotic eminescences, leaving nearly all tectum synoticum exposed'
+		': Frontoparietals medial margins expand onto tectum synoticum, passing the medial edge of the epiotic eminescences, but without contacting each other and leaving a rhomboidal space between them'
+		': Frontoparietals with smooth, parallel, medial margins covering almost all the underlying tectum synoticum and separated by a thin rectangular space'
+		,
+		6
+		': Posterior margin of frontoparietals not reaching epiotic eminences'
+		': Posterior margin of frontoparietals reaching or slightly covering epiotic eminences'
+		,
+		7
+		': Nasal not covering cartilago obliqua'
+		': Nasal covering cartilago obliqua'
+		,
+		8
+		': Straight margin'
+		': Concave margin'
+		,
+		9
+		': Not mineralized'
+		': Slightly mineralized'
+		': Heavily mineralized'
+		,
+		10
+		': Without ossified expansion'
+		': Anteriorly ossified only (cranially)'
+		': Ossified anteriorly (cranially) and posteriorly (caudally)'
+		,
+		11
+		': Not laying over crista parotica expansion'
+		': Laying over crista parotica expansion until its midpoint caudally'
+		,
+		12
+		': Perpendicular or slightly oriented forward (up to 30 degrees of a transverse axis)'
+		': Strongly oriented forward (about 45 degrees)'
+		,
+		13
+		': Operculum dorsally not visible'
+		': Operculum dorsally visible'
+		,
+		14
+		': Base and tip subequal'
+		': Base much broader then tip'
+		,
+		15
+		': Directed anteriorly'
+		': Directed perpendicularly'
+		': Directed posteriorly'
+		,
+		16
+		': Not covering crista subnasalis laterally to the level of the solum nasi insertion'
+		': Covering crista subnasalis laterally to the level of the solum nasi insertion'
+		,
+		17
+		': Reduced processus'
+		': Developed processus'
+		,
+		18
+		': Quadratojugal absent or extremely reduced'
+		': Quadratojugal present'
+		,
+		19
+		': Not in contact'
+		': In contact'
+		,
+		20
+		': Not in contact'
+		': In contact'
+		,
+		21
+		': Nasal maxillary process absent'
+		': Nasal maxillary process present'
+		,
+		22
+		': Flange absent'
+		': Flange present'
+		,
+		23
+		': Club-like'
+		': Racket-like'
+		,
+		24
+		': Process absent'
+		': Process present'
+		,
+		25
+		': Divergent about 30 degrees of the sagital axis'
+		': Divergent about 45 degrees of the sagital axis'
+		,
+		26
+		': With scattered, unaligned teeth'
+		': With clearly aligned teeth'
+		,
+		27
+		': Dentigerous process is continuous to the main body of vomer'
+		': Dentigerous process is separated of the main body of vomer or connected by a medial constricted portion'
+		,
+		28
+		': Maxillary teeth not reaching the end of maxilla'
+		': Maxillary teeth reaching the end of maxilla'
+		,
+		29
+		': Odontoids absent'
+		': Odontoids present'
+		,
+		30
+		': Small., ending about 1/3 of orbit'
+		': Medium., reaching about 1/2 the orbit length, ending between posterior margin of sphenethmoid and pterygoid central point'
+		': Long., ending at about 2/3 of orbit length, at pterygoid central point level'
+		,
+		31
+		': Lateral edge club-like., blunt'
+		': Lateral edge needle-like., pointed'
+		,
+		32
+		': Reduced., palatines lateral edges are not covered by the maxilla'
+		': Lateral edges of the palatines covered by maxilla., nearly reaching maxilla'
+		': Lateral edges of palatines in contact with maxilla'
+		,
+		33
+		': Not reaching choanae medial wall'
+		': Palatines reach the level of choane medial wall'
+		': Palatines passes choane medial wall but do not reach the level of vomer dentigerous process'
+		': Palatines reach the level of vomer dentigerous process'
+		,
+		34
+		': Posterior to palatines'
+		': Posterior or at the level of the planum antorbitale'
+		': Extending to midlevel of the choanae'
+		': Including entire septum nasi'
+		,
+		35
+		': Not reaching orbit midpoint'
+		': Reaching orbit midpoint'
+		,
+		36
+		': Planum antorbitale entirely cartilaginous'
+		': Ossification of the planum antorbitale extending to the level of, but not including the anterior process of the postnasal wall'
+		': Ossification extending to the level of anterior process of postnasal wall'
+		,
+		37
+		': Not reaching ocular fenestra'
+		': Reaching anterior (cranial) wall of ocular fenestra, but only ventrally'
+		': Reaching anterior (cranial) wall of ocular fenestra both ventrally and dorsally (in lateral view, the left posterior wall of sphenethmoid has a "C?-shape.'
+		,
+		38
+		': Not reaching'
+		': Reaching'
+		,
+		39
+		': Reduced relationship., >40% of anterior ramus length or less'
+		': Extensive relationship., <50% anterior ramus length'
+		,
+		40
+		': Flange absent'
+		': Flange present'
+		,
+		41
+		': Reduced, reaching the basal process, not concealing it'
+		': Concealing about half the basal process length'
+		': Covering all (or almost) the basal process'
+		,
+		42
+		': Anterior margin'
+		': Ventral margin'
+		,
+		43
+		': Extremely short'
+		': Present but not reaching squamosal ventral ramus'
+		': Reaching squamosal ventral ramus'
+		,
+		44
+		': Reaching about halfway through parasphenoid cultriform process'
+		': Reaching about three-fourths through parasphenoid cultriform process'
+		': Reaching or passing the tip of parasphenoid cultriform process'
+		,
+		45
+		': Not ossified'
+		': Ossified'
+		,
+		46
+		': Not fused'
+		': Fused'
+		,
+		47
+		': Subparallel margins'
+		': Convex margins'
+		,
+		48
+		': Convexly rounded'
+		': Presenting a posteromedial process shaped as a triangular tip'
+		,
+		49
+		': Reaching the otic capsules'
+		': Lying over the otic capsule'
+		,
+		50
+		': Slightly mineralized'
+		': Heavily mineralized'
+		,
+		51
+		': Regular'
+		': Expanded'
+		,
+		52
+		': Single, straight'
+		': Bicapitate'
+		,
+		53
+		': Processus lingularis and lamina orbitonasalis not connected'
+		': Processus lingularis and lamina orbitonasalis connected'
+		,
+		54
+		': Processus prenasalis medius absent'
+		': Processus prenasalis medius present'
+		,
+		55
+		': Cartilago obliqua concave'
+		': Cartilago obliqua convex or almost  straight'
+		,
+		56
+		': A small piece of cartilage that does not invade orbit transversally'
+		': A cartilaginous structure that invades the orbit transversally'
+		,
+		57
+		': Without  distal expansion., straight'
+		': Anterolaterally expanded., angled'
+		,
+		58
+		': Retrolateral process absent'
+		': Retrolateral process present'
+		,
+		59
+		': Annulus tympanicus free from crista parotica'
+		': Anterior portion of annulus fused to crista parotica'
+		,
+		60
+		': Anterior process of hyoid absent'
+		': Anterior process of hyoid present'
+		,
+		61
+		': Process transverse to hyal "axis"., subcilindric'
+		': Plate along the hyal "axis"., laminar'
+		,
+		62
+		': Anterolateral process absent'
+		': Anterolateral process present'
+		,
+		63
+		': Strongly reduced to a laminar blade parallel to hyal axis'
+		': Anterolateral process developed as a transversal rod'
+		,
+		64
+		': Acute'
+		': Subrectangular'
+		': Expanded'
+		,
+		65
+		': Thin'
+		': Broad'
+		,
+		66
+		': Directed 45 degrees posteriorly in relation to hyoid plate'
+		': Directed laterally (90 degrees in relation to hyoid plate)'
+		': Directed posteriorly'
+		,
+		67
+		': At, or just above, thyrohyal level'
+		': More than one posterolateral process width above thyrohyial'
+		,
+		68
+		': Mineralization absent'
+		': Mineralization present'
+		,
+		69
+		': Only between the tyrohyals not reaching the anterior margin of the hyoid plate'
+		': Nearly triangular, extending through the hyoid plate but covering only the anterior medial portion in a cranio-caudal direction'
+		': Nearly retangular, covering all (or almost all) hyoid plate between the posterolateral processes'
+		,
+		70
+		': Thin (total length is nearly the same of the retrolateral processes cranial portion)'
+		': Medium (total length is approximately less that two times the tyrohyal cranial portion or less)'
+		': Long (total length is approximately more that two times the retrolateral processes cranial portion)'
+		,
+		71
+		': Not expanded., with approximately the same width of the rest (with exception of thyrohyals caudal cartilaginous portion)'
+		': Expanded., wider, at least 1.5x, than the rest (around thyrohyals caudal cartilaginous portion width)'
+		,
+		72
+		': As an uneven rectangle, with nearly straight margins'
+		': With two unequal apexes, posterior margin curved'
+		': Fairly triangular (almost a square triangle)'
+		,
+		73
+		': Hyale attaching to the basal process'
+		': Hyale attaching to the prootic'
+		,
+		74
+		': Frenulum smooth with medial margin convex'
+		': Evident frenulum, with medial margin concave'
+		': Evident frenulum, with medial margin with secondary constriction'
+		,
+		75
+		': Not extending ventrally of arytenoid margin'
+		': Extending ventrally of arytenoid margin'
+		,
+		76
+		': Absent'
+		': Present'
+		,
+		77
+		': Fibrous'
+		': Distal portions slightly condrified'
+		': Distal portions deeply condrified'
+		,
+		78
+		': Buttresses absent'
+		': Buttresses present'
+		,
+		79
+		': Absent'
+		': Present'
+		,
+		80
+		': Absent'
+		': Present'
+		,
+		81
+		': Poorly developed., major axis parallel to arytenoids'
+		': Well developed., right triangle shaped, with major axis parallel to arytenoids'
+		': Well developed., isosceles triangle shaped, with anterior margin slightly convex'
+		': Well developed., right triangle shaped, with major axis perpendicular to arytenoids'
+		,
+		82
+		': Before cricoid ring midpoint'
+		': At or posterior to cricoid ring midpoint'
+		,
+		83
+		': Process absent'
+		': Process present., oriented esophageally (perpendicular to the main axis of cricoid ring)'
+		': Process present., oriented caudally (following the main axis of cricoid ring)'
+		,
+		84
+		': Curved margin'
+		': Straight margin'
+		,
+		85
+		': Not or slightly passing cricoid ring'
+		': Clearly passing cricoid ring'
+		,
+		86
+		': Triangular., unnotched, round'
+		': Notched., bilobated'
+		,
+		87
+		': Crest absent'
+		': Crest present'
+		,
+		88
+		': Process absent'
+		': Process present'
+		,
+		89
+		': One'
+		': Two'
+		': Three'
+		,
+		90
+		': Not mineralized'
+		': Partially mineralized'
+		': Completely mineralized'
+		,
+		91
+		': Small., cuboidal, transverse to other phalanges'
+		': Elongated., linearly aligned with other phalanges'
+		,
+		92
+		': Straight., vertebra wider than long (>1.2x)'
+		': Curved., vertebra as wide as long (<1.1x)'
+		,
+		93
+		': Expanded diapophysis (index maximum/minimum length of diapophysis> 6)'
+		': Rounded diapophysis (index maximum/minimum length of diapophysis < 3.5)'
+		,
+		94
+		': Transverse process of vertebra IV transverse or slightly angled posteriorly'
+		': Transverse process of vertebra IV strongly angled posteriorly'
+		': Transverse process of vertebra IV L-shaped'
+		,
+		95
+		': Sesamoid absent'
+		': Sesamoid present'
+		,
+		96
+		': Cartilaginous'
+		': Ossified'
+		,
+		97
+		': Sesamoid absent'
+		': Sesamoid present'
+		,
+		98
+		': Sesamoid absent'
+		': Sesamoid present'
+		,
+		99
+		': As a tiny crest'
+		': Spherical'
+		,
+		100
+		': Sesamoid absent'
+		': Sesamoid present'
+		,
+		101
+		': Cartilaginous (or slightly ossified) crest'
+		': Spherical'
+		,
+		102
+		': Absent'
+		': Present'
+		,
+		103
+		': Fibers originate at midbody'
+		': Fibers originate on pelvis., tendon not evident'
+		,
+		104
+		': Pectoral lymph septum not extending into arm., fixation points in the m. deltoideus'
+		': Pectoral lymph septum extending into arm., fixation point in the axillary membrane'
+		,
+		105
+		': Lines absent'
+		': Lines present'
+		,
+		106
+		': One, vertical, dividing rostrum in two halves'
+		': Two, forming a "V" in frontal view'
+		,
+		107
+		': Thin line(s)'
+		': Thick line(s)'
+		,
+		108
+		': Stripe absent'
+		': Stripe present'
+		,
+		109
+		': White'
+		': Black'
+		,
+		110
+		': Connecting dorsally to the nares'
+		': Connecting laterally to the nares'
+		,
+		111
+		': Inferior margin of the orbit lower than nostrils'
+		': Inferior margin of the orbit higher than nostrils'
+		,
+		112
+		': Single, subgular'
+		': Double'
+		,
+		113
+		': Clear cream or white'
+		': Blotched'
+		': Anteriorly black'
+		': Completely black'
+		,
+		114
+		': Smooth'
+		': Warty'
+		,
+		115
+		': At the top of snout, dorsolateral'
+		': Lateral to the snout, frontally or laterally directed'
+		,
+		116
+		': Spot absent'
+		': Spot present'
+		,
+		117
+		': Bar absent,'
+		': Bar present'
+		,
+		118
+		': One'
+		': Two'
+		': Many small spots'
+		,
+		119
+		': Under the eye only'
+		': Extending onto the body'
+		': Extending from rostrum to posterior edge of the eye'
+		,
+		120
+		': Tympanic membrane not clearly differentiated'
+		': Evident tympanic membrane'
+		,
+		121
+		': Membrane absent'
+		': Membrane present'
+		,
+		122
+		': Fold absent'
+		': Fold present'
+		,
+		123
+		': Fold absent'
+		': Fold present'
+		,
+		124
+		': Continuous'
+		': Interrupted medially'
+		,
+		125
+		': Webbing absent'
+		': Reduced to a small fringe'
+		': Reaching subarticular tubercle II level'
+		,
+		126
+		': Webbing absent'
+		': Reduced to a small fringe'
+		': Reaching subarticular tubercle II level'
+		': Reaching subarticular tubercle I level'
+		,
+		127
+		': Webbing absent'
+		': Reduced to a small fringe'
+		': Reaching subarticular tubercle III level'
+		': Reaching subarticular tubercle II level'
+		,
+		128
+		': Webbing absent'
+		': Reduced to a small fringe'
+		': Reaching subarticular tubercle III level'
+		': Reaching subarticular tubercle II level'
+		,
+		129
+		': Webbing absent'
+		': Reduced to a small fringe'
+		': Reaching subarticular tubercle III level'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		130
+		': Absent or reduced to a small fringe'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		131
+		': Lower than subarticular tubercle II or webbing absent'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		132
+		': Absent or reduced to a small fringe'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		133
+		': Webbing absent'
+		': Reaching subarticular tubercle III level'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		134
+		': Webbing absent'
+		': Reaching subarticular tubercle III level'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		135
+		': Absent or reduced to a small fringe'
+		': Reaching subarticular tubercle III level'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		136
+		': Absent or reduced to a small fringe'
+		': Reaching subarticular tubercle III level'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		137
+		': Absent or reduced to a small fringe'
+		': Reaching subarticular tubercle II level'
+		': Reaching the level of subarticular tubercle I or digital disc'
+		,
+		138
+		': Homogeneous'
+		': Blotched'
+		': Stripped'
+		': Marbled'
+		,
+		139
+		': Deposits absent'
+		': Deposits present'
+		,
+		140
+		': Homogeneously clear'
+		': Blotched'
+		': Marbled'
+		': Homogeneously black'
+		,
+		141
+		': Homogeneously clear'
+		': Blotched'
+		': Marbled'
+		': Homogeneously black'
+		,
+		142
+		': Dorsal and posterior areas of the thighs homogeneous, not blotched nor differentiable through color pattern'
+		': Dorsal area different from posterior area. Dorsal following the general dorsal pattern that is different from the posterior area pattern'
+		': Dorsal and posterior areas of the thighs homogeneous blotched'
+		,
+		143
+		': Homogeneous'
+		': Well defined blotched or marbled'
+		': Longitudinally stripped'
+		': Loosely blotched or marbled'
+		,
+		144
+		': Homogeneous'
+		': Blotched'
+		': Longitudinally stripped'
+		,
+		145
+		': Homogeneous., i.e. not differentiable from other areas of the shanks'
+		': With dark transversal stripes'
+		': With well defined clear blotches over a darker base, regardless of the number and similar to dorsal coloration'
+		': With loosely defined dark blotches over a lighter base, regardless of the number and similar to dorsal coloration'
+		,
+		146
+		': Short., not covering all cloaca in posterior view'
+		': Long., covering all cloaca in posterior view'
+		,
+		147
+		': Line absent'
+		': Line present'
+		,
+		148
+		': Lines absent'
+		': Lines present'
+		,
+		149
+		': Ulnar fold absent'
+		': Ulnar fold present'
+		,
+		150
+		': Delicate'
+		': Well-defined fold'
+		': Tubercles'
+		,
+		151
+		': Tarsal fold absent'
+		': Tarsal fold present'
+		,
+		152
+		': Delicate'
+		': Well-defined fold'
+		': Tubercles'
+		,
+		153
+		': Tibial ventral fold absent'
+		': Tibial ventral fold present'
+		,
+		154
+		': Calcar absent'
+		': Calcar present'
+		,
+		155
+		': Tubercular'
+		': Rounded fringe'
+		,
+		156
+		': Rounded'
+		': Transversely elliptical'
+		': Longitudinally elliptical'
+		,
+		157
+		': Pad only in lateral areas of prepolex, not reaching dorsal areas'
+		': Pad covering dorsal areas of prepolex and fingers'
+		': Pad extending onto forearm'
+		,
+		158
+		': Overall appearance as a non-hypertrophied pad'
+		': Overall appearance as a largely hypertrophied pad'
+		,
+		159
+		': Without visible excrescence'
+		': With sparse, not pigmented queratinized excrescence'
+		': With thick queratinized excrescence'
+		,
+		160
+		': Gland absent'
+		': Gland present'
+		,
+		161
+		': Two clear distinct patches'
+		': A single structure, not divided'
+		': As scattered acini'
+		,
+		162
+		': Gland absent'
+		': Gland present'
+		,
+		163
+		': Smooth'
+		': With spiculae'
+		': With tubercles'
+		,
+		164
+		': 22'
+		': 24'
+		': 30'
+		,
+		165
+		': Rounded., ovoid'
+		': Violin-shaped'
+		,
+		166
+		': Anteriorly abruptly ending., rounded., oval'
+		': Triangular but not cuneiform'
+		': Triangular., cuneiform., depressed'
+		,
+		167
+		': Acute'
+		': Xiphicercal'
+		,
+		168
+		': Anterior., terminal., directed anteriorly oral disc'
+		': Anteroventral oral disc., directed more ventrally then anteriorly'
+		': Ventral oral disc'
+		,
+		169
+		': Papillae absent'
+		': Papillae present'
+		,
+		170
+		': Continuous'
+		': Gaped'
+		,
+		171
+		': One'
+		': Two'
+		': Multiple'
+		,
+		172
+		': One'
+		': Two'
+		': Multiple'
+		,
+		173
+		': Rows absent'
+		': Rows present'
+		,
+		174
+		': One'
+		': Two'
+		': Three'
+		,
+		175
+		': Rows absent'
+		': Rows present'
+		,
+		176
+		': One'
+		': Two'
+		': Three'
+		,
+		177
+		': Sheath absent'
+		': Sheath present'
+		,
+		178
+		': Homogeneous brown or similar, mostly ground color'
+		': Zebra like, with black or dark brown bars separated by translucent ones'
+		': Blotched., marbled'
+		': Translucent., unpigmented'
+		,
+		179
+		': Dorsal clearly shallower'
+		': Equal or subequal'
+		': Ventral clearly shallower'
+		,
+		180
+		': Without a pair of paramedian yellow or cream stripes'
+		': With a pair of paramedian yellow or cream stripes'
+		,
+		181
+		': Low'
+		': High'
+		,
+		182
+		': Dorsolateral'
+		': Frontal'
+		,
+		183
+		': Dorsolateral'
+		': Frontal'
+		,
+		184
+		': Kidney shaped'
+		': Valved shaped'
+		,
+		185
+		': Above the margin of the lower fin'
+		': At the margin of the lower fin'
+		,
+		186
+		': Melanofores absent'
+		': Melanofores present'
+		,
+		187
+		': Iridophores absent'
+		': Iridophores present'
+		,
+		188
+		': Melanofores absent'
+		': Melanofores present'
+		,
+		189
+		': Cream colored, with sparse melanophores'
+		': Dark'
+		,
+		190
+		': Covering only a small part of the stomach'
+		': Reaching the pylorus'
+		,
+		191
+		': Two'
+		': Three'
+		,
+		192
+		': Subequal'
+		': Left clearly larger'
+		,
+		193
+		': Melanofores absent'
+		': Melanofores present'
+		,
+		194
+		': Melanofores absent'
+		': Melanofores present'
+		,
+		195
+		': Small testes., not larger than half kidney length'
+		': Large testes., about the same length of the kidney'
+		,
+		196
+		': White., without melanophores'
+		': Cranially marbled'
+		': With sparse melanophores., marbled'
+		': Completely black'
+		,
+		197
+		': Clear., transparent'
+		': Iridophores present'
+		,
+		198
+		': Without melanophores'
+		': With sparse melanophores., marbled'
+		': Completely black'
+		,
+		199
+		': Clear, transparent'
+		': Iridophores present'
+		,
+		200
+		': Aquatic'
+		': Terrestrial (perched on branches or leaves)'
+		,
+		201
+		': Rhodomelanocrom absent'
+		': Rhodomelanocrom present'
+		
+	;
+	MATRIX
+	'Phyllodytes luteolus'		                  01100001(1,2)2001011?11101110110120233(0,1)10101212011101(0,1)000101?11101120001100110000101100101010211001000-11???0--0--0100000--0000-00000000000010?000000000121201011000-?00000210011112?01000001??????????????0?
+	'P minuta'		                              00122001121110111111101111000201221121102121110000010100-010-112100110000200011001001111(0,1)21010111(0,1)-(0,1)-0-01111111130000--100(0,1)(0,1)000001223333221(0,1)(0,1)?221000120-00-210011111010010221112?1101???11111110111302?00
+	'L limellum'		                            0212200112111111111110111100020213122110212111100{0,1}010100-111111210010001120010--?100111102101{0,1}1100-0-???1111111130000--0011100000122333320?0(0,1)12210000-0-00-20000-011010010111112?110100?10101000110302?00
+	'Scarthyla goinorum'		                    11122010121001011111101101(0,1)00201221221002{0,1}2{1,2}11(0,1)011100010-1011112101{0,1}(0,1)200100000--0000011102001010111110??1111110000100--1001000000112232220?00?{1,3}000000-0-00-01001(0,1)1001200100111120100001?00001011000000?00
+	'S berthae'		                             0012110022100001011111010100020222122101202111101111010{0,1}0101011210111202?111011121100110120110110101101?0--11-0000011000000-00000001121110?{0,2}20{1,3}11000121201011000-021001110001112?320100?1???1011?00000000
+	'S littoralis'		                          101{1,2}110121101101011111010100020{1,2}{1,2}2110101202{0,1}111{0,1}11100111(0,1)10101121011120{0,2}011001112?100110100110110101101?0--0--0000011001000-00000000021110?{0,2}20{1,3}11000121201010000-021000110001112??{1,2}0000??0011110101000?00
+	'S perereca'		                            10121101221001010111010101000201111101011020111{0,1}111101011101011210110212?100211010100111000110??01111???0--11-0000000--1011011111002232221?0{0,2}1{1,3}010001{0,2}1{0,2}01011100-0210101100211120310100?0??????????????0?
+	'S fuscovarius'		                         10121101121011110111010101000201011{0,1}0101212011111010010111?10112101(0,1)121201002110?0100111000110100111101?0--0--0000000--101101111100223222110011010000-0-00-11?11{0,1}021(0,1)10110021112?310100?00001010001000?00
+	'Sp lacteus'		                            10122010111110011100111101?00000000020-02101(0,1)(0,1)0110001100-000-1120201100100?001101????011000112??11111???1111110000100--11???233331223333200000000100111101101?00-?01010010001112?20000?110000???0010??10?
+	'Sphaenorhynchus pauloalvini'		           10122000211110111100111000000{0,1}00310{0,1}21012122(0,1)10111010110-00101121011020001000110212000000(1,2)01011011111???1111110000100--010101{2,3}233112232220?000000100101000-01020-0{0,2}?010010111112?20000?11000001100000211?
+	'Sphaenorhynchus prasinus'		              1002201011111001110011?001100000200020-12101000100001100-0?0-0--0011110100000110010000110201021(0,1)111111010111110000100--01???13334122{2,3}{2,3}{2,3}{2,3}200000000100111101101020-?0?010010??1112?20?00?1101001110000121?0
+	'Xenohyla truncata'		                     1012211022011000111001111100010222112100111011111{0,1}0000111{0,1}0111121001110200001101000001110001001100-101010--0--0000100--(0,1)10111233311222222010000000000-0-00-02001(0,1)(0,1)010{1,2}1010001112111011100000111100000{0,1}0??
+	'Dendropsophus columbianus'		             1112111012100011001011111101011222112100{1,2}020111010100??11100-11210011{0,1}0{1,2}01010111100??1111?010110010111010--0--0000000-0011111222211223222(0,2)1(0,2)(0,2)?{0,3}000000-0-00-02001{1,2}10?0110101110111210011010011011100300?00
+	'Dendropsophus carnifex'		                ?????????????????????????????????????????????????????????????????????????????????????????????????????1??0--0--0000001200001112223112232221?101000000101000-00001(0,1)10201101010101112100110(0,1)??????????????0?
+	'Dendropsophus riveroi'		                 11110000001000100010110110000110011121000-120011100100011100-1121010-202000100--010110010001011000-101010--0--0000010--111111322311233222010010010000-0-00-01001210??????????????????????0011100100000??0
+	'Dendropsophus haraldschultzi'		          111211102210000111111111010002122{2,3}1221002021111111110111110111121001110210000111000000110201010-110111010--0--0000000--11???1222311222222000121030000-0-00-010010?0??????????????????????00010000100020??
+	'Dendropsophus labialis'		                01101110221000111010111111000102{2,3}312210021211110111?00011100-11210{0,1}10{0,1}1{1,2}01010111110110010001001101110101(0,1)-010000(0,3)0000--01111122231122222231(0,3)(0,3)11000000-0-00-01100-1020110101111111210011000111011110201?00
+	'Dendropsophus virolinensis'		            11111110121000{0,1}10010110101010101321021002111101{0,1}101000111100-1121010-20102000101101001110001001000-11101(0,1)1010000(0,1)0001020111112223112{2,3}22{2,3}?{1,2}1(0,1)(0,1)1000000100-00-010011?0?00{0,1}010{0,1}{0,1}0-11?{0,2}100???10111010110302?0?
+	'Dendropsophus anceps'		                  100111010210101110101101110101022211010021200011101101011100-11210111201000100--101011110001001001111???1(0,1)0100003000110(0,1)101013333122332221?(1,2)321{0,1}2000101000-01000-1020{1,2}1010101112?310011??0?1????1102020??
+	'Dendropsophus elegans'		                 10111111111010011110111111000101310{0,1}210010120001101(0,1)00011100-11210011201000100--100010110001010-01111???1--10-0000000--010101233311233222010(0,2)000200?100-00-000010102121011100-10?2010110?01110110100020(0,1)0
+	'Dendropsophus triangulum'		              11111?0122101011101011111101010{1,2}{2,3}21020-021101111110000011100-1121011120101010110101010110001010-010111??1-01000000000--0101012333122232220100100200?100-00-00001010?1{1,2}1011100-0-?101011000101011000000010
+	'Dendropsophus minutus'		                 000110001{1,2}100021001011111001010{1,2}310121002122010110000001(0,1)100-11200111212100100--111010110(1,2)01010-011111??(0,1)101(0,1)00000000--011111222211222112010{0,2}0001111100-00-01001{0,1}102(0,1)11(0,1)10(0,1)110111(2,3){0,1}0111??0101011000002000
+	'Dendropsophus decipiens'		               00121100201000110111110110000{1,2}0231112100211{1,2}1110110100011100-11110010201000000--11{0,1}0100112010{0,1}1100-111??0--1(0,1)00000000--{0,1}1???1222301223222000000010000-0-00-010012?02000010000-(0,1)1?110011??0001000000002011
+	'Dendropsophus berthalutzae'		            10110000101000011111?11110000{1,2}?23{1,2}11210020110110110100011100-1111010-201000{0,1}00--110110011201011000-111011111(0,1)00000000--{0,1}1?1?1{1,2}22301{1,2}1{2,3}{1,2}{1,2}20000000{1,3}0000-0-00-010012?0200{0,1}010000-???1100????0101???000002010
+	'Dendropsophus haddadi'		                 10121000201000{0,1}11111?1?110000{1,2}?20111210020111110110100011100-1111010-201000?00--11?110011201011000-111011111(0,1)0000000(0,1)001111012223012232220000000{1,3}0000-0-00-010012?0??????????????????????0101000000002011
+	'Dendropsophus bipunctatus'		             0010{0,1}000121010111010{0,1}1011000010232102100101101111000000111?0-11211011201000{0,1}00--100110010001110-01(0,1)11???1(0,1)0100000001122110101222311223222010000010000-0-00-0100111(0,2)202100---0-0-?020011??1111001000000001
+	'Dendropsophus oliverai'		                10120001110000011111100110000{1,2}1{1,2}321{0,1}210020211110100100010100-11110111201100100--110110101201011000-101011111(0,1)00000000--{0,1}101012223010132221022000{0,3}0000-0-00-010012102000010{0,1}00-(0,1)0?110011??0101000010002010
+	'Dendropsophus branneri'		                11100010110000011010110110010111120020-?20120000100000111100-11211011201100100--100110110001010-00010???110100000000(0,1)00(0,1)10101222311223222010000010000-0-00-010011102?????????????????????11010010000000(0,1)1
+	'Dendropsophus rhodopeplus'		             10000100111010110010{0,1}111100101?2311{0,1}210011110111100001011100-11?01111201000100--1001100100010110011111011-111(0,1)0000001011111112223112232220100000{0,3}0000-0-00-01001210202100---0-0-?020011??0001001000000101
+	'Dendropsophus nanus'		                   11111010121000011010110110010111310{0,1}210010120000100101011100-11210111202000100--1001101000010{0,1}10010111011101000000000--010101122311223222010000030000-0-00-01001110212100---0-0-1{0,2}10011??11110001000000(0,1)0
+	'Dendropsophus sanborni'		                11110010{0,1}100000100101001100101101101210020120001100101011100-111100112{0,1}2000000--100110100101011000-11???0--10-0000000--01???1222{2,3}002232220100000{0,3}0000-0-00-010011?0202100---0-0-?{0,1}11011??1(0,1)11001000000000
+	'Dendropsophus elianeae'		                1111001011100011101011011(0,1)0101101200210020120(0,1)00100000011100-1121000{0,1}202000100--100110110(0,1,2)0101100(0,1)011???1101000000000--01???1222301211122010000030000-0-00-010012?02?????????????????????11110011100000?1
+	'Dendropsophus jimi'		                    11000010110000011010010110010111221121002(0,1)120100100000111100-1121001120{1,2}000000--1101101102010110011111??1101100000000--01???12223011111220100000{0,3}0000-0-00-01001(0,2)?0??????????????????????00010000000000?1
+	'Dendropsophus meridianus'		              1000000011000000101000111001011021102??010120001100100111100-11211001201000100--10011011000100100111110111?1?00000000--110111222301223222010000030000-0-00-01001{1,2}10202110---0-0-?021011??0001000000000000
+	'Dendropsophus timbeba'		                 000000111110001100101111100001022211010020210110100100110100-110001112100201011011001001(0,1)001011000-111010--0--00200010101???122331122322211121001000111100-01001112?01110---0-0-?221011??01110001103000(0,1)0
+	'Dendropsophus microps'		                 100001101110001000101111110101023211210020210111100100110100-1000011121002010110110?1101(0,1)001001000-10???0--0--0021001010101012233112232221102100100011110100200111220(0,1)1(0,1)1(0,1)(0,1)(0,1)0-(0,1)0?221?????0111010110002000
+	'Dendropsophus parviceps'		               1111101012100011001011?11001010021112100202{0,1}0110100100(0,1)1(0,1)100-11210111211020100--311110100(0,1,2)010{0,1}0-00-11???0--0--002000100010101{2,3}2331122322211(1,2,3)(2,3)1{0,3}0100?1{1,2}1{1,2}00-0100111220?101?000-0-?0100????0011010100000000
+	'Dendropsophus ruschii'		                 121001002010000010101111010001003{1,2}11210021201110110100111100-1121010-2110{1,2}0101111010111002010{0,1}1100-10111110100002001100010101222{1,2}0101222101{0,2}2100{0,1}0011010110010011102010011{1,2}{1,2}0-10?110011??001101100000201?
+	'Dendropsophus acreanus'		                100010102210100000101111110101013?1{0,1}11000-201111110000111100-0--00112210020101101110011100010110(0,1)11111010--0--003100{0,1}0011010133341223333201(1,3)(2,3)1101000111111002?01112?121011100-0-12100110000110111101000?0
+	'Dendropsophus dutrai'		                  ????????????????????????????????????????????????????????????????????????????????????????????????????????0--0--000100100010101333411233222{0,1}?{0,2}21101000111111002001112??????????????????????????????????????
+	'Dendropsophus marmoratus'		              1000101122101000?01011111101010132??21000-2011111{0,1}0?0011110??????0112211020101101110011100010110011111010--0--001100100010101333412233332111111110001111110020011122121011100-0-1210011000011011110201000
+	'Dendropsophus melanargyreus'		           10111111101010001010111111010100221021000-200111100100111100-1000011221102010110111000110001011001111???0--0--002100100010101333411223222(0,3)1{0,2}2100100011111100200111?212101?100-1{1,2}1210111?00111011110301000
+	'Dendropsophus nahdereri'		               11101110221010111010{0,1}11111010102321{0,1}010010201111101100111100-112101112110{1,2}010110110011110(0,1)01011001111???0--0--002100100010101222311223222312211010001111110020011122021011000-1010101110000110101100010?0
+	'Dendropsophus novaisi'		                 11101111101010101010111111010102321121000-20111110010011110?????00112211020101101110001100010110011111010--0--00210010001???1{2,3}23311223222{0,3}10211010001111110020011?2??????????????????????10110101102010??
+	'Dendropsophus seniculus'		               1(0,1)10110112101010101011111101010{1,2}3211(0,1,2)1000-201111100100111100-0--00112211020101101110001100010110111111010--0--00210010011???133341122322231021001000111111002001{1,2}?2?0210111(0,2)0-1{0,1}1{2,3}10111000011011110(2,3)01000
+	'Dendropsophus soaresi'		                 1001111110101000101011111101010{0,1}211001000-200011100100111100-0--0011221102010110111001110001011001111???0--0--00210010001???133341122322231{0,2}210010001111110020011?2?0210111(0,1)0-101210111000111???110201??0
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+              [Taxon comments]
+        	TEXT TAXON=1 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=2 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=3 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=4 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=5 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=6 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=7 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=8 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=9 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=10 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=11 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=12 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=13 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=14 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=15 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=16 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=17 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=18 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=19 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=20 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=21 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=22 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=23 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=24 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=25 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=26 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=27 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=28 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=29 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=30 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=31 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=32 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=33 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=34 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=35 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=36 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=37 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=38 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=39 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=40 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=41 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=42 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=43 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=44 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=45 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT TAXON=46 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+
+        [Character comments]
+        	TEXT CHARACTER=1 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=2 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=3 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=4 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=5 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=6 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=7 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=8 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=9 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=10 TEXT='Additive (IMAGEM)^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=11 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=12 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=13 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=14 TEXT='ja substituiu ., por ponto e virgula de verdade? E espaco-: por : de verdade? Cuidado com o Pombal Jr., !!! na hora de trocar, ele tambem muda para ; COnferir o que esta in press e -- por m-dash?^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=15 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=16 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=17 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=18 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=19 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=20 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=21 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=22 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=23 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=24 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=25 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=26 TEXT='IMAGEM Figure M2^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=27 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=28 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=29 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=30 TEXT='Additive IMAGEM Figure M3^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=31 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=32 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=33 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=34 TEXT='Additive IMAGEM Figure M2^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=35 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=36 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=37 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=38 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=39 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=40 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=41 TEXT='Additive IMAGEM FIGURAR^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=42 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=43 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=44 TEXT='Additive (IMAGEM)^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=45 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=46 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=47 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=48 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=49 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=50 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=51 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=52 TEXT='IMAGEM - Fig M1^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=53 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=54 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=55 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=56 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=57 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=58 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=59 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=60 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=61 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=62 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=63 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=64 TEXT='Additive IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=65 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=66 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=67 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=68 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=69 TEXT='Additive (IMAGEM)^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=70 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=71 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=72 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=73 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=74 TEXT='Additive (IMAGEM)^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=75 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=76 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=77 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=78 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=79 TEXT='SUBSTITUIR O CCT NUMERO DE BUTRESSES^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=80 TEXT='SUBSTITUIR O CCT NUMERO DE BUTRESSES^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=81 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=82 TEXT='Additive IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=83 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=84 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=85 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=86 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=87 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=88 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=89 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=90 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=91 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=92 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=93 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=94 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=95 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=96 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=97 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=98 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=99 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=100 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=101 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=102 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=103 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=104 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=105 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=106 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=107 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=108 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=109 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=110 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=111 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=112 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=113 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=114 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=115 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=116 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=117 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=118 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=119 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=120 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=121 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=122 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=123 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=124 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=125 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=126 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=127 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=128 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=129 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=130 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=131 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=132 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=133 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=134 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=135 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=136 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=137 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=138 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=139 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=140 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=141 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=142 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=143 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=144 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=145 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=146 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=147 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=148 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=149 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=150 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=151 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=152 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=153 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=154 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=155 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=156 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=157 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=158 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=159 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=160 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=161 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=162 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=163 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=164 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=165 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=166 TEXT='Additive IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=167 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=168 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=169 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=170 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=171 TEXT='Additive IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=172 TEXT='Additive IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=173 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=174 TEXT='Additive IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=175 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=176 TEXT='Additive IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=177 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=178 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=179 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=180 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=181 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=182 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=183 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=184 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=185 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=186 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=187 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=188 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=189 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=190 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=191 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=192 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=193 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=194 TEXT='IMAGEM^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=195 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=196 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=197 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=198 TEXT='Additive^n^nThe present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=199 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=200 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+	TEXT CHARACTER=201 TEXT='The present file is presented for reproducibility issues ONLY. Comments and some character and character state descriptors have been modified for the final version but the character states within the matrix are the same of those present on file available at the journal S File.';
+
+      [Attribute comments]
+      	TEXT TAXON=21 CHARACTER=3 TEXT='embora haja uma faixa azul que parece separar, o nasal está inclusive cobrindo o esfenoetmóide.';
+	TEXT TAXON=21 CHARACTER=4 TEXT='que coloco?';
+	TEXT TAXON=12 CHARACTER=10 TEXT='comparar com mais material';
+	TEXT TAXON=18 CHARACTER=25 TEXT='CHECAR';
+	TEXT TAXON=32 CHARACTER=26 TEXT='each vomer of Specimen CFBH 21194 could receive one state';
+	TEXT TAXON=27 CHARACTER=31 TEXT='clearly the same state of sanborni';
+	TEXT TAXON=28 CHARACTER=31 TEXT='clearly the same state of D sanborni';
+	TEXT TAXON=30 CHARACTER=31 TEXT='clearly the same state of D sanborni';
+	TEXT TAXON=7 CHARACTER=32 TEXT='pode ser o estado intermediario. Cobrindo mas nao em contato';
+	TEXT TAXON=39 CHARACTER=34 TEXT='parece que é o septum nasi que está calcificado';
+	TEXT TAXON=3 CHARACTER=50 TEXT='eh fundido, mas tem uma porcao que claramente ossifica diferente';
+	TEXT TAXON=43 CHARACTER=51 TEXT='pode ser outro estado';
+	TEXT TAXON=20 CHARACTER=54 TEXT='parece ausente';
+	TEXT TAXON=12 CHARACTER=58 TEXT='Conferir em bicho melhor preparado...';
+	TEXT TAXON=27 CHARACTER=73 TEXT='ver mais inds.';
+	TEXT TAXON=43 CHARACTER=74 TEXT='parece se exatamente um intermediario entre os estados 1e 2';
+	TEXT TAXON=43 CHARACTER=83 TEXT='e gorda mas nao tem um processo';
+	TEXT TAXON=45 CHARACTER=83 TEXT='Igual ao presente em acreanus';
+	TEXT TAXON=46 CHARACTER=83 TEXT='Igual ao presente em acreanus';
+	TEXT TAXON=4 CHARACTER=88 TEXT='conferir';
+	TEXT TAXON=19 CHARACTER=89 TEXT='as pontas aprece que estao quebrando';
+	TEXT TAXON=27 CHARACTER=89 TEXT='ver mais bichos';
+	TEXT TAXON=15 CHARACTER=102 TEXT='nao passa por tras do vaso sanguineo';
+	TEXT TAXON=17 CHARACTER=102 TEXT='inserçao igual a de virolinensis por tras de uma arteria e paralelo aos musculos do braco';
+	TEXT TAXON=18 CHARACTER=102 TEXT='a insercao parece diferente. Reparar quando diafanizar uma. ICN 12518 pasa por deibaixo de um vaso sanguineo e se insere paralelamente aos musculos do braço';
+	TEXT TAXON=45 CHARACTER=112 TEXT='possibly bilobate.';
+	TEXT TAXON=17 CHARACTER=121 TEXT='short axillary membrane';
+	TEXT TAXON=8 CHARACTER=122 TEXT='IMAGE';
+	TEXT TAXON=27 CHARACTER=122 TEXT='IMAGE';
+	TEXT TAXON=29 CHARACTER=122 TEXT='IMAGE';
+	TEXT TAXON=27 CHARACTER=124 TEXT='IMAGE';
+	TEXT TAXON=29 CHARACTER=124 TEXT='IMAGE';
+	TEXT TAXON=18 CHARACTER=127 TEXT='all specimens had clear bifid articular tubercle II in finger V';
+	TEXT TAXON=2 CHARACTER=138 TEXT='FOTO';
+	TEXT TAXON=27 CHARACTER=138 TEXT='Small dots all over the area';
+	TEXT TAXON=21 CHARACTER=139 TEXT='QUANDO cortando para ver o depósito, o indv cfbh 4661 apresentou uma gl imensa no dorso';
+	TEXT TAXON=26 CHARACTER=140 TEXT='but pinkish in many individuals';
+	TEXT TAXON=27 CHARACTER=140 TEXT='small dots all over the belly';
+	TEXT TAXON=29 CHARACTER=140 TEXT='completely clear, and pinkish in many individuals';
+	TEXT TAXON=30 CHARACTER=140 TEXT='completely clear';
+	TEXT TAXON=27 CHARACTER=141 TEXT='small dots all over the area';
+	TEXT TAXON=16 CHARACTER=142 TEXT='All areas are blotched (as in D. anceps';
+	TEXT TAXON=19 CHARACTER=142 TEXT='Thighs are blotched but all the areas relative to this character are blotched. As in D. haraldschultzi';
+	TEXT TAXON=20 CHARACTER=142 TEXT='Although there are small dots on the dorsal area';
+	TEXT TAXON=22 CHARACTER=142 TEXT='small dots all over the thigh';
+	TEXT TAXON=23 CHARACTER=142 TEXT='small dots all over';
+	TEXT TAXON=24 CHARACTER=142 TEXT='small dots all over';
+	TEXT TAXON=26 CHARACTER=142 TEXT='small dots all over';
+	TEXT TAXON=27 CHARACTER=142 TEXT='small dots all over';
+	TEXT TAXON=30 CHARACTER=142 TEXT='small dots all over the thigh';
+	TEXT TAXON=31 CHARACTER=142 TEXT='small dots all over the thigh';
+	TEXT TAXON=32 CHARACTER=142 TEXT='small dots all over';
+	TEXT TAXON=33 CHARACTER=142 TEXT='small dots on the dorsolateral area of the thigh';
+	TEXT TAXON=34 CHARACTER=142 TEXT='small dots all over';
+	TEXT TAXON=18 CHARACTER=143 TEXT='dark flesh color';
+	TEXT TAXON=22 CHARACTER=143 TEXT='small dots all over the thigh';
+	TEXT TAXON=23 CHARACTER=143 TEXT='small dots all over';
+	TEXT TAXON=25 CHARACTER=143 TEXT='small dots all over';
+	TEXT TAXON=27 CHARACTER=143 TEXT='small dots all over';
+	TEXT TAXON=28 CHARACTER=143 TEXT='small dots in some parts';
+	TEXT TAXON=29 CHARACTER=143 TEXT='completely clear';
+	TEXT TAXON=32 CHARACTER=143 TEXT='small dots all over';
+	TEXT TAXON=38 CHARACTER=144 TEXT='small dots allover';
+	TEXT TAXON=38 CHARACTER=145 TEXT='has ligth transverse bars';
+	TEXT TAXON=38 CHARACTER=150 TEXT='IMAGE';
+	TEXT TAXON=38 CHARACTER=154 TEXT='IMAGE';
+	TEXT TAXON=17 CHARACTER=162 TEXT='ICN 2077 two clear patches';
+	TEXT TAXON=19 CHARACTER=162 TEXT='single structure';
+	TEXT TAXON=19 CHARACTER=166 TEXT='claramente nao e arredondado';
+	TEXT TAXON=21 CHARACTER=166 TEXT='considerei triangular interpretando o texto, se e cuneiforme mesmo... vai saber';
+	TEXT TAXON=33 CHARACTER=193 TEXT='IMAGE';
+	TEXT TAXON=42 CHARACTER=196 TEXT='conferir';
+	TEXT TAXON=36 CHARACTER=198 TEXT='conferir';
+      ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 3 6 - 8 11 - 14 16 - 29 31 35 - 40 42 45 - 63 65 - 68 71 73 78 - 81 84 - 89 91 - 117 119 - 124 130 138 - 156 158 160 - 165 167 - 170 173 175 177 - 195 197 199 - 201, ord: 2 4 - 5 9 - 10 15 30 32 - 34 41 43 - 44 64 69 - 70 72 74 - 77 82 - 83 90 118 125 - 129 131 - 137 157 159 166 171 - 172 174 176 196 198;
+      ENDBLOCK;
+      BEGIN LABELS;
+ TAXAGROUPLABEL Pseudis COLOR = (RGB 0.16862745 1 1) ; TAXAGROUPLABEL Scinax_cl._catharinae COLOR = (RGB 0.76862745 0.72156863 0.8) ; TAXAGROUPLABEL Scinax_cl._ruber COLOR = (RGB 0.85490196 1 0.63529412) ; TAXAGROUPLABEL Sphaenorhynchus COLOR = (RGB 0.23529412 1 0.23529412) ; TAXAGROUPLABEL leucophyllatus_group COLOR = (RGB 1 0.53333333 0.53333333) ; TAXAGROUPLABEL minutus COLOR = (RGB 1 0.30588235 0.13333333) ; TAXAGROUPLABEL microcephalus_group COLOR = (RGB 1 1 0.13333333) ; TAXAGROUPLABEL parviceps_group COLOR = (RGB 0.73333333 1 1) ; TAXAGROUPLABEL marmoratus_group COLOR = (RGB 0.8 0.8 0.8) ; TAXAGROUPLABEL Xenohyla COLOR = (RGB 1 0.41960784 0.03529412) ; TAXAGROUPLABEL Scarthyla COLOR = (RGB 0.96862745 0.96862745 0.96862745) ; TAXAGROUPLABEL garagoensis_group COLOR = (RGB 0.53333333 1 0.62745098) ; TAXAGROUPLABEL columbianus_group COLOR = (RGB 0.63529412 0.78039216 1) ; TAXAGROUPLABEL minumus_group COLOR = (RGB 1 0.03529412 0.41960784) ; TAXAGROUPLABEL labialis_group COLOR = (RGB 0.4 1 1) ; TAXAGROUPLABEL Phyllodytes COLOR = (RGB 1 0.93333333 1) ; CHARGROUPLABEL Appendicular_skeleton COLOR = (RGB 1 0.03529412 0.41960784) ; CHARGROUPLABEL 'Cranium - dorsal' COLOR = (RGB 0.06666667 1 0.62745098) ; CHARGROUPLABEL Hyoid_plate COLOR = (RGB 0.03529412 0.03529412 1) ; CHARGROUPLABEL Com_dúvidas COLOR = (RGB 0.46666667 0.46666667 0.46666667) ; CHARGROUPLABEL 'Cranium -cartilago' COLOR = (RGB 0.49019608 0.71764706 0.86666667) ; CHARGROUPLABEL 'Cranium - ventral' COLOR = (RGB 1 1 0.53333333) ; CHARGROUPLABEL External_morphology COLOR = (RGB 0.81176471 1 0.06666667) ; CHARGROUPLABEL Karyotype COLOR = (RGB 0.83529412 0.83529412 0.83529412) ; CHARGROUPLABEL 'Cranium - lateral' COLOR = (RGB 0.63529412 0.9254902 1) ; CHARGROUPLABEL Glandular_morphology COLOR = (RGB 1 1 0.06666667) ; CHARGROUPLABEL Recode COLOR = (RGB 0.96862745 0.03137255 0.03137255) ; CHARGROUPLABEL Vocal_cartilagos COLOR = (RGB 0.90588235 0.53333333 1) ; CHARGROUPLABEL DELETE COLOR = (RGB 0.13333333 0.13333333 0.13333333) ; CHARGROUPLABEL Tadpole_ext._morph. COLOR = (RGB 0.83529412 0.05490196 0.05490196) ; CHARGROUPLABEL Visceral_anatomy COLOR = (RGB 0.90588235 0.76862745 1) ; CHARGROUPLABEL ver_mais_indv COLOR = (RGB 1 0.77254902 0.43529412) ; CHARGROUPLABEL Reproductive_biology COLOR = (RGB 0.03529412 1 0.03529412) ; CHARGROUPLABEL Myology COLOR = (RGB 1 0.41960784 0.03529412) ; CHARGROUPLABEL Tadpole COLOR = (RGB 1 0.03529412 1) ; CHARGROUPLABEL Life_colors COLOR = (RGB 1 0.81960784 0.70196078) ; CHARGROUPLABEL 'DELETE - VAR POT INFO' COLOR = (RGB 0.0 0.0 0.0) ; 
+ENDBLOCK;
+BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1563464593262; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 285278337606493320; tell It; setDefaultOrder 0 71 2 3 71 5 69 60 67 9 63 27 12 13 14 15 16 18 20 21 6 22 26 23 24 27 29 30 31 21 10 7 36 36 34 5 47 45 52 39 40 45 32 43 37 3; attachments ; endTell; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 4675596911317318167; tell It; setDefaultOrder 3 5 6 14 7 8 477 10 11 477 13 15 608 7 2 20 18 456 457 96 23 24 29 32 33 42 42 20 37 37 42 91 52 52 54 43 54 45 46 47 580 579 82 54 62 24 67 67 72 68 63 64 72 81 82 457 456 95 528 87 87 560 69 560 77 483 93 92 94 423 95 423 89 363 96 100 100 83 215 214 403 381 406 406 406 113 244 245 250 363 532 109 114 114 116 117 430 80 532 81 88 148 126 127 160 143 144 169 148 146 168 156 157 163 154 159 381 382 383 167 169 218 219 222 171 173 250 174 175 179 247 181 182 183 184 185 186 222 372 229 232 188 232 233 219 239 233 234 243 244 259 236 258 244 245 245 356 249 357 262 263 246 257 355 398 428 397 396 399 363 402 365 193 198 195 199 410 418 392 393 331 332 267 248 331 361 210 310 359 278 280 311 356 321 357 356 305 356 307 330 223; attachments ; endTell; mqVersion 303; checksumv 0 3 1464120732 null getNumChars 201 numChars 201 getNumTaxa 46 numTaxa 46 short true bits 2305843009213693983 states 31 sumSquaresStatesOnly 49319.0 sumSquares -6.041308684139878E20 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState false false 100; setPopoutState 400; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 1035 641; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; desuppress; endTell; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; showTaxa #285278337606493320 #mesquite.lists.TaxonList.TaxonList; tell It; setTaxa #285278337606493320; getWindow; tell It; newAssistant #mesquite.lists.TaxonListCurrPartition.TaxonListCurrPartition; newAssistant #mesquite.lists.DefaultTaxaOrder.DefaultTaxaOrder; getTable; tell It; columnWidth 1 132; endTell; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 935 569; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.lists.TaxonList.TaxonListWindow.ibeam; endTell; endTell; showWindow; getEmployee #mesquite.lists.ColorTaxon.ColorTaxon; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.lists.TaxonListAnnotPanel.TaxonListAnnotPanel; tell It; togglePanel off; endTell; endTell; endTell; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord; tell It; showDataWindow #4675596911317318167 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; getTable; tell It; rowNamesWidth 113; endTell; setExplanationSize 70; setAnnotationSize 100; setFontIncAnnot 0; setFontIncExp 0; setSize 935 449; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; endTell; setActive; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; colorCells #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames off; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames on; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; setColumnWidth 16; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 80; toggleLinkedScrolling on; toggleScrollLinkedTables off; endTell; showWindow; getEmployee #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.categ.StateNamesEditor.StateNamesEditor; tell It; makeWindow; tell It; getTable; tell It; rowNamesWidth 363; endTell; setExplanationSize 30; setAnnotationSize 40; setFontIncAnnot 0; setFontIncExp 0; setSize 935 549; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.categ.StateNamesEditor.StateNamesWindow.ibeam; endTell; rowsAreCharacters on; toggleConstrainChar on; toggleConstrainCharNum 3; togglePanel off; toggleSummaryPanel off; endTell; showWindow; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip on; endTell; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel on; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; showCharacters #4675596911317318167 #mesquite.lists.CharacterList.CharacterList; tell It; setData 0; getWindow; tell It; newAssistant #mesquite.lists.DefaultCharOrder.DefaultCharOrder; newAssistant #mesquite.lists.CharListInclusion.CharListInclusion; newAssistant #mesquite.lists.CharListPartition.CharListPartition; newAssistant #mesquite.stochchar.CharListProbModels.CharListProbModels; newAssistant #mesquite.parsimony.CharListParsModels.CharListParsModels; getTable; tell It; rowNamesWidth 572; endTell; setExplanationSize 30; setAnnotationSize 60; setFontIncAnnot 0; setFontIncExp 0; setSize 935 529; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.lists.CharacterList.CharacterListWindow.ibeam; endTell; endTell; showWindow; getEmployee #mesquite.lists.CharListAnnotPanel.CharListAnnotPanel; tell It; togglePanel on; endTell; endTell; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1 - 201; 
+ENDBLOCK;
+BEGIN SETS;
+ TAXPARTITION * UNTITLED = Phyllodytes : 1, Pseudis : 2 - 3, Scarthyla : 4, Scinax_cl._catharinae : 5 - 6, Scinax_cl._ruber : 7 - 8, Sphaenorhynchus : 9 - 11, Xenohyla : 12, columbianus_group : 13 - 14, minumus_group : 15, labialis_group : 17, garagoensis_group : 18, leucophyllatus_group : 19 - 21, minutus : 22, microcephalus_group : 23 - 34, parviceps_group : 35 - 38, marmoratus_group : 39 - 46; CHARPARTITION * UNTITLED = 'Cranium - dorsal' : 1 - 13, 'Cranium - lateral' : 14 - 23, 'Cranium - ventral' : 24 - 50, 'Cranium -cartilago' : 51 - 59, Hyoid_plate : 60 - 73, Vocal_cartilagos : 74 - 81 83 - 85, Com_dúvidas : 82, Appendicular_skeleton : 86 - 101, Myology : 102 - 104, External_morphology : 105 - 156, Glandular_morphology : 157 - 163, Karyotype : 164, Tadpole_ext._morph. : 165 - 185, Visceral_anatomy : 186 - 199, Reproductive_biology : 200; 
+ENDBLOCK;

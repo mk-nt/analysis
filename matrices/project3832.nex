@@ -1,0 +1,193 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-14 19.45.40 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=10;
+    TAXLABELS
+    		'Olbiogaster nuxco'
+		'Cretoseguya burmitica'
+		'Anapausis clivicola'
+		'Exiliscelis californiensis'
+		'Hyperoscelis insignis'
+		'Canthyloscelis sp.'
+		'Synneuron decipiens'
+		'Synneuron annulipes'
+		'Synneuron eomontana'
+		'Synneuron jelli'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=27;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="01234";
+	CHARLABELS
+		 [1] 'Sc'
+		 [2] 'R1 length (beyond fusion with R4+5)'
+		 [3] 'Cell r1'
+		 [4] 'Basal section of Rs, prior to fusion of bM'
+		 [5] 'R2+3'
+		 [6] 'R1 and R4+5'
+		 [7] 'R5'
+		 [8] 'Vein bM'
+		 [9] 'M1+2'
+		 [10] 'M1'
+		 [11] 'Base of M2'
+		 [12] 'm-m'
+		 [13] 'M3'
+		 [14] 'Apex of M1, M2 and M4'
+		 [15] 'Origin of M4'
+		 [16] 'Posterior veins'
+		 [17] 'Alignment of veins bM/m-cu'
+		 [18] 'CuP'
+		 [19] 'Anal lobe'
+		 [20] 'M3+4'
+		 [21] 'Cubital pseudovein'
+		 [22] 'CuP - 2'
+		 [23] 'Membrane'
+		 [24] 'Sternite 9'
+		 [25] 'Surstyli'
+		 [26] 'Tibial spurs'
+		 [27] 'Median ocellus'
+	;
+	STATELABELS
+		1
+		'complete'
+		'incomplete, not reaching wing margin'
+		,
+		2
+		'longer than width of cell r1'
+		'very short, shorter than length of cell r1'
+		,
+		3
+		'wide, first section of Rs long, oblique'
+		'slender, first section short, almost'
+		'transverse, second section running close, parallel to R1'
+		'wide, first section short, almost transverse, second section oblique'
+		,
+		4
+		'longer than fused section between R4+5 and M1+2'
+		'very short, much shorter than basal section of bM'
+		,
+		5
+		'present'
+		'absent'
+		,
+		6
+		'independent, R1 reaching C, R4 present'
+		'fused distally, R4 absent'
+		,
+		7
+		'reachinc C beyond level of tip of M2'
+		'reaching C more basally, at level of M2'
+		,
+		8
+		'present'
+		'absent'
+		,
+		9
+		'arched anteriorly at base'
+		'M1 continuing directly from medial fork'
+		,
+		10
+		'arched anteriorly at base'
+		'continuing straight from medial fork'
+		,
+		11
+		'complete'
+		'not produced'
+		,
+		12
+		'present'
+		'absent'
+		,
+		13
+		'present'
+		'absent'
+		,
+		14
+		'gradually approaching wing margin, gently curved distally'
+		'with a more conspicuous curve near apex'
+		,
+		15
+		'at basal third of wing'
+		'at basal fourth of wing'
+		'at basal fifth of wing'
+		,
+		16
+		'weaker than anterior veins, but sclerotization clear'
+		'weakly sclerotized, with a translucid area present between laterals'
+		,
+		17
+		'longitudinal or oblique'
+		'transverse'
+		,
+		18
+		'present'
+		'absent'
+		,
+		19
+		'present, although small'
+		'nearly absent, no notch basally along posterior wing margin'
+		,
+		20
+		'oblique'
+		'nearly transverse'
+		,
+		21
+		'present'
+		'virtually indiscernible'
+		,
+		22
+		'complete, reaching wing margin'
+		'very short'
+		'absent'
+		,
+		23
+		'transluscent'
+		'with dark markings'
+		,
+		24
+		'situated anteriorly on the terminalia'
+		'displaced to a posterior position on the terminalia'
+		,
+		25
+		'present, small'
+		'present, well-developed'
+		,
+		26
+		'present'
+		'absent'
+		,
+		27
+		'present, as developed as lateral ocelli'
+		'reduced or absent'
+		
+	;
+	MATRIX
+	'Olbiogaster nuxco'		                   000000000000000000000000000
+	'Cretoseguya burmitica'		               1000100-0001100000000000010
+	'Anapausis clivicola'		                 100110010001100100000000010
+	'Exiliscelis californiensis'		          100010011001100100000100110
+	'Hyperoscelis insignis'		               101110011001101110111011111
+	'Canthyloscelis sp.'		                  101110011101101110111011111
+	'Synneuron decipiens'		                 102111111101101111111200110
+	'Synneuron annulipes'		                 102111111101101111111200110
+	'Synneuron eomontana'		                 102111111101101110111000??0
+	'Synneuron jelli'		                     111111111111112110011000??0
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 22, ord: 23 - 27;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1604079207790; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 7502389573838699906; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 117362945641107757; mqVersion 360; checksumv 0 3 1032818686 null getNumChars 27 numChars 27 getNumTaxa 10 numTaxa 10 short true bits 7 states 7 sumSquaresStatesOnly 757.0 sumSquares 757.0 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState false false 100; setPopoutState 300; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 1394 777; setLocation 8 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; desuppress; endTell; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord; tell It; showDataWindow #117362945641107757 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1294 705; setLocation 8 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; setActive; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow; colorCells #mesquite.charMatrices.NoColor.NoColor; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames on; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames on; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; togglePaleMissing off; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 80; toggleLinkedScrolling on; toggleScrollLinkedTables off; endTell; showWindow; getWindow; tell It; forceAutosize; endTell; getEmployee #mesquite.charMatrices.AlterData.AlterData; tell It; toggleBySubmenus off; endTell; getEmployee #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; getEmployee #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel off; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1- 27; 
+ENDBLOCK;

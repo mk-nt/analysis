@@ -1,0 +1,1240 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2024-08-20 02.01.26 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=69;
+    TAXLABELS
+    		'Actocharis readingii'
+		'Aleochara curtula'
+		'Aleochara moerens'
+		'Aleochara sp Myanmar'
+		'Amarochara forticornis'
+		'Atheta monticola'
+		'Autalia longicornis'
+		'Baeostethus chiltoni'
+		'Bolitochara pulchra'
+		'Colle campbellensis'
+		'Cordalia obscura'
+		'Crataraea suturalis'
+		'Cyllophallia dauphinensis'
+		'Cypha longicornis'
+		'Cyphea latiuscula'
+		'Deinopsis erosa'
+		'Demerina bickmanni'
+		'Diestota testacea'
+		'Diglotta mersa'
+		'Dinaraea linearis'
+		'Dinarda dentata'
+		'Dioxeuta sp'
+		'Drusilla canaliculata'
+		'Ecitogaster sp'
+		'Ecitomorpha arachnoides'
+		'Geostiba circellaris'
+		'Gnypeta carbonaria'
+		'Gymnusa variegata'
+		'Gyrophaena congrua'
+		'Habrocerus capillaricornis'
+		'Halobrecta flavipes'
+		'Haploglossa marginalis'
+		'Homalota plana'
+		'Hoplandria lateralis'
+		'Hygronoma dimidiata'
+		'Leptusa antarctica'
+		'Leptusa pulchella'
+		'Leucocraspedum scorpio'
+		'Lomechusa emarginata'
+		'Masuria plumbea'
+		'Meotica filiformis'
+		'Myllaena elongata'
+		'Neodioxeuta sp'
+		'Oligota pumilio'
+		'Olisthaerus megacephalus'
+		'Orphnebius draco'
+		'Oxypoda longipes'
+		'Oxypodinus anxius'
+		'Paraconosoma polita'
+		'Phloeocharis subtilissima'
+		'Phloeopora corticalis'
+		'Phyllodinarda xenocephala'
+		'Phytosus spinifer'
+		'Piochardia schaumii'
+		'Placusa incompleta'
+		'Pronomaea picea'
+		'Pseudosemiris circassica'
+		'Silusa rubiginosa'
+		'Stylogymnusa subantarctica'
+		'Tachinus proximus'
+		'Tachyusa objecta'
+		'Termitobaena bryanti'
+		'Termitodiscus heimi'
+		'Termitusa sjoestedti'
+		'Thamiaraea cinnamomea'
+		'Trichophya pilicornis'
+		'Typhloponemys sp Israel'
+		'Typhloponemys sp Tanzania'
+		'Zyras collaris'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=202;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="0123456";
+	CHARLABELS
+		 [1] 'Forebody, form'
+		 [2] 'Antenna, apical antennal article, coeloconic sensillae'
+		 [3] 'Antennae, apical segment, coeloconical sensillae'
+		 [4] 'Antennae, coeloconic sensillae, shape'
+		 [5] 'Head, setigerous pores'
+		 [6] 'Head, width'
+		 [7] 'Head, mandibular-ocular distance'
+		 [8] 'Head, frontoclypeal suture'
+		 [9] 'Head, hypostomal suture'
+		 [10] 'Head, occipital suture'
+		 [11] 'Head, occipital suture, when present'
+		 [12] 'Head, postoccipital sutures'
+		 [13] 'Head, postoccipital sutures, when present'
+		 [14] 'Labrum, divided into two halves by medial longitudinal suture'
+		 [15] 'Labrum, anterior margin, medial area'
+		 [16] 'Labrum, apicolateral margins'
+		 [17] 'Labrum, setose processes in anterolateral areas'
+		 [18] 'Epipharynx, subapical pair of sensory spines'
+		 [19] 'Epipharynx'
+		 [20] 'Epipharynx, medial, basal (more oral) to posteriorly directed setae'
+		 [21] 'Labrum, shape'
+		 [22] 'Epipharynx, mesolateral areas'
+		 [23] 'Epipharynx, middle basal region'
+		 [24] 'Labrum, apodeme'
+		 [25] 'Labrum, apodeme, when present'
+		 [26] 'Labrum, discal setation'
+		 [27] 'Epipharynx, medial region, medial pore field'
+		 [28] 'Epopharynx, basal medial region'
+		 [29] 'Epipharynx, basal medial region, sensory pores'
+		 [30] 'Epipharynx, basal region sensory pores'
+		 [31] 'Epipharynx, mesal region of medial pore field, pores'
+		 [32] 'Epipharynx, mesal region of medial pore field'
+		 [33] 'Epipharynx, lateral pores'
+		 [34] 'Epipharynx, lateral pores, when present'
+		 [35] 'Epipharynx, lateral pores, grouping in a row'
+		 [36] 'Epipharynx, basal lateral pores'
+		 [37] 'Epipharynx, basal lateral pores, number'
+		 [38] 'Epipharynx, a-sensillum'
+		 [39] 'Epipharynx, a-sensillum, when present'
+		 [40] 'Epipharynx, e-sensillum'
+		 [41] 'Epipharynx, e-sensillum, size'
+		 [42] 'Mandibles, shape'
+		 [43] 'Mandibles, molar lobe'
+		 [44] 'Mandible, molar lobe, when distinct'
+		 [45] 'Mandibles, number of ventral ball-and-socket articulating surfaces'
+		 [46] 'Mandiblr (right), recess at first one-third'
+		 [47] 'Mandible (right), subapical teeth'
+		 [48] 'Mandible (right), number of subapical teeth'
+		 [49] 'Mandible (left), shape'
+		 [50] 'Mandible (left), subapical teeth'
+		 [51] 'Mandibles (left), number of subapical teeth'
+		 [52] 'Mandible (left), crescent adge'
+		 [53] 'Mandibles, prostheca'
+		 [54] 'Mandibles, molar ventral area'
+		 [55] 'Mandibles, molar dorsal area, "velvety patch"'
+		 [56] 'Mandibles, molar dorsal area, "silk patch"'
+		 [57] 'Mandibles, molar dorsal area, row of spinules'
+		 [58] 'Mandibles, molar dorsal area, number of row of spinules'
+		 [59] 'Mandibles, molar area, scale-like structures'
+		 [60] 'Maxillary palpi, apical pseudosegment'
+		 [61] 'Maxillary palpi, apical segment'
+		 [62] 'Galea, external (aboral) base'
+		 [63] 'Galea, internal (adoral) base'
+		 [64] 'Galea, apical setae'
+		 [65] 'Maxillary palpomere 1'
+		 [66] 'Maxillary palpomeres 2 and 3'
+		 [67] 'Maxillary palpomere 4 (apical palpomere)'
+		 [68] 'Maxillary palpomere 3, sensory field'
+		 [69] 'Lacinia, length'
+		 [70] 'Lacinia, interdigitating setae'
+		 [71] 'Lacinia, interdigitating setae, size'
+		 [72] 'Lacinia, apicomesal edge'
+		 [73] 'Galea, length to lacinia'
+		 [74] 'Galea, apical spines/setae'
+		 [75] 'Galea, width to lacinia'
+		 [76] 'Cardo, shape'
+		 [77] 'Mentum, size'
+		 [78] 'Mentum and submentum'
+		 [79] 'Mentum, width to gula'
+		 [80] 'Mentum, shape'
+		 [81] 'Mentum, anterior margin'
+		 [82] 'Mentum, shape - 2'
+		 [83] 'Mentum, anterolateral surface'
+		 [84] 'Ligula of prementum'
+		 [85] 'Ligula, shape'
+		 [86] 'Ligula, length'
+		 [87] 'Ligula, shape of apex'
+		 [88] 'Ligula, shape of apex, division into two lobes'
+		 [89] 'Ligula, apical/subapical spines'
+		 [90] 'Ligula, middle part, pair of sensory setae'
+		 [91] 'Ligula, base area'
+		 [92] 'Labial palpi, shape'
+		 [93] 'Labial palpi, fusion'
+		 [94] 'Labial palpomere 2, shape and size'
+		 [95] 'Labial palpomere 1, length'
+		 [96] 'Labial palpi, apical pseudosegment'
+		 [97] 'Labial palpomere 1, longitudinal row of setae'
+		 [98] 'Prementum, presence of discal setae'
+		 [99] 'Prementum, distance between discal setae'
+		 [100] 'Prementum, setae'
+		 [101] 'Prementum, medial area'
+		 [102] 'Prementum, medial pseudopore field'
+		 [103] 'Prementum, medial pseudopore field, pseudopores'
+		 [104] 'Prementum, lateral area, pores'
+		 [105] 'Prementum, lateral area, pseudopores'
+		 [106] 'Prementum, lateral pseudopore field, setae number'
+		 [107] 'Hypopharynx, rows of setigerous pores on each side medial to hypopharyngeal fringe'
+		 [108] 'Hypopharynx'
+		 [109] 'Hypopharinx, setae on aboral margin'
+		 [110] 'Hypopharinx, setae on aboral margin, when present'
+		 [111] 'Pronotum, shape'
+		 [112] 'Pronotum, medial longitudinal sulcus'
+		 [113] 'Hypomeron'
+		 [114] 'Hypomeral process'
+		 [115] 'Prosternum, shape'
+		 [116] 'Prosternum'
+		 [117] 'Prosternum, shape (without lateral flanges)'
+		 [118] 'Prosternum, medial suture'
+		 [119] 'Prosternum, medial keel'
+		 [120] 'Prosternum, medial keel, when present'
+		 [121] 'Mesospiracular peritremes'
+		 [122] 'Scutellar shield'
+		 [123] 'Elytron, shape'
+		 [124] 'Elytra, epipleural ridge'
+		 [125] 'Elytra, pseudoepipleural ridge'
+		 [126] 'Elytra, posterolateral margin'
+		 [127] 'Elytra, posterolateral edge'
+		 [128] 'Tarsomeres, number'
+		 [129] 'Last tarsal segment, large dorsolaterally directed seta on each side near apex'
+		 [130] 'Protibia, preapical longitudinal ctenidium of setulae'
+		 [131] 'Protibia, preapical longitudinal ctenidium of setulae, when present'
+		 [132] 'Tibia, irregularly distributed stout spines'
+		 [133] 'Tarsal claws, shape'
+		 [134] 'Empodial setae'
+		 [135] 'Empodial bristles, relative lengths (when two setae)'
+		 [136] 'Empodial bristles, length relative to tarsal claws'
+		 [137] 'Ventral lamella on hind coxae'
+		 [138] 'Mesonotum, anterolateral setae separation'
+		 [139] 'Mesonotum, large field of setae'
+		 [140] 'Mesonotum, small field of setae'
+		 [141] 'Mesonotum, medial field, pores'
+		 [142] 'Mesonotum, medial field, surface'
+		 [143] 'Meso-ventral process'
+		 [144] 'Meso-metaventral process'
+		 [145] 'Mesocoxae, separation'
+		 [146] 'Mesocoxal acetabula'
+		 [147] 'Metaventral process'
+		 [148] 'Metaventral process, when distinct'
+		 [149] 'Mesocoxal cavities'
+		 [150] 'Mesocoxal cavities, intercoxal bar'
+		 [151] 'Mesocoxal cavities, mesendosternite'
+		 [152] 'Mesocoxal cavities, mesendosternite, additional pair'
+		 [153] 'Mesocoxal cavities, lateral longitudinal ridge'
+		 [154] 'Metendosternite, flanges for muscle attachment at apex of distal arms'
+		 [155] 'Metendosternite, medial spine between distal arms'
+		 [156] 'Hind wings'
+		 [157] 'Wings, presence of flabellum'
+		 [158] 'Wings, flabellum, number of appendages'
+		 [159] 'Wings, setae at R1 area'
+		 [160] 'Laterotergites on abdominal segments 3-7, number'
+		 [161] 'Comb of cuticular projections on posterior margins of abdominal segments 3-6'
+		 [162] 'Cuticular projections on posterior margins of abdominal segments 3-6, form'
+		 [163] 'Abdominal tergite IV-VI, base area, transverse ridges'
+		 [164] 'Abdominal tergite IV-VI, pattern of transverse ridges'
+		 [165] 'Abdominal tergites IV-VI, lateral bar between transverse ridges'
+		 [166] 'Abdominal ventrite III-VI, pattern of transverse ridges'
+		 [167] 'Abdominal ventrite VII, glands opening'
+		 [168] 'Abdominal ventrite VII, glands openings, when grouped'
+		 [169] 'Abdominal ventrites VII, basal transverse ridge'
+		 [170] 'Abdominal tergum VII, tergal gland opening on anterior margin'
+		 [171] 'Tergum VII, gland opening, size'
+		 [172] 'Abdominal sternum IV'
+		 [173] 'Male tergum VIII'
+		 [174] 'Abdominal tergites VIII-IX'
+		 [175] 'Abdominal tergum X, apical form'
+		 [176] 'Male tergum IX, laterotergal struts'
+		 [177] 'Male tergum IX'
+		 [178] 'Male sternum IX, anterior struts'
+		 [179] 'Male sternum IX, anterior struts, when present'
+		 [180] 'Tergum X, shape'
+		 [181] 'Setose areas of tergum X'
+		 [182] 'Tergum X, setose area'
+		 [183] 'Aedeagus, median lobe, compressor plate'
+		 [184] 'Aedeabus, median lobe, compressor plate, when present'
+		 [185] 'Median lobe, internal sac, spines'
+		 [186] 'Basal bulb of aedeagus'
+		 [187] 'Median lobe, attachments for parameres'
+		 [188] 'Median lobe, attachments for parameres, when present'
+		 [189] 'Medial lobe of aedeagus, basal bulb'
+		 [190] 'Medial lobe, basal bulb, sclerotized flap over base of compressor plate'
+		 [191] 'Medial lobe, athetine bridge'
+		 [192] 'Paramere characteristics, general form'
+		 [193] 'Paramere velum'
+		 [194] 'Paramere, velum, form'
+		 [195] 'Paramere, apical lobe of paramerite (length)'
+		 [196] 'Paramere, apical lobe of paramerite, setae distribution'
+		 [197] 'Paramere, apical lobe'
+		 [198] 'Paramere, apical lobe of paramerite, articulation'
+		 [199] 'Paramere, condylite, articulation with paramerite'
+		 [200] 'Paramere, paramerite, hinge zone extended from "dorsal surface" to near articulation between condylite and paramerite'
+		 [201] 'Female tergum VIII'
+		 [202] 'Female gonocoxites'
+	;
+	STATELABELS
+		1
+		'parallel-sided'
+		'fusiform'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'numerous'
+		'one pair'
+		,
+		4
+		'circular'
+		'elongated'
+		,
+		5
+		'absent'
+		'present'
+		,
+		6
+		'distinctly narrower than pronotum'
+		'more less as wide or wider than pronotum'
+		,
+		7
+		'less than 0.5 length of eye'
+		'equal or longer than 0.5 length of eye'
+		,
+		8
+		'present'
+		'absent'
+		,
+		9
+		'complete to lateral edge of submentum'
+		'absent or incomplete'
+		,
+		10
+		'present'
+		'absent'
+		,
+		11
+		'complete to anterior edge of head'
+		'incomplete'
+		,
+		12
+		'present'
+		'absent'
+		,
+		13
+		'complete'
+		'incomplete'
+		,
+		14
+		'not divided'
+		'divided'
+		,
+		15
+		'without row of six to eight flattened, spatulate or modified setae'
+		'with row of six to eight flattened, spatulate or modified setae'
+		,
+		16
+		'not modified to setose or spinose processes'
+		'modified to setose or spinose processes'
+		,
+		17
+		'simple'
+		'bifid'
+		,
+		18
+		'absent'
+		'present'
+		,
+		19
+		'with peglike sensillae in midline and mesolateral areas'
+		'without peglike sensillae in midline and mesolateral areas'
+		,
+		20
+		'without medial multiporose structure'
+		'with medial multiporose structures'
+		,
+		21
+		'transversal, L<W'
+		'quadrate, L=W'
+		'elongate, L>W'
+		,
+		22
+		'mesolateral areas with dense patch of setose processes on each side of midline'
+		'mesolateral areas with a few scattered long setose processes on each side of midline'
+		'mesolateral areas without elongate setose processes'
+		,
+		23
+		'with dense patch of orally directed setose processes'
+		'with orally directed short spinules'
+		'without setose processes or spinules'
+		,
+		24
+		'reduced and (or) invisible'
+		'present, well-defined'
+		,
+		25
+		'simple and short'
+		'complex and long'
+		,
+		26
+		'with a few longer setae'
+		'numerous short setae'
+		'without discal setae'
+		,
+		27
+		'with a few irregularly scattered pores, or pores absent'
+		'with numerous pores in a linear or rectangular array'
+		,
+		28
+		'pores present'
+		'absent'
+		,
+		29
+		'elongated row'
+		'irregular cluster'
+		,
+		30
+		'transverse row of sensory pores divided into two parts'
+		'transverse row not divided'
+		,
+		31
+		'present'
+		'absent'
+		,
+		32
+		'pores not fused'
+		'pores fused'
+		,
+		33
+		'present'
+		'absent'
+		,
+		34
+		'up to six pores present'
+		'more than six pores'
+		,
+		35
+		'row not extended'
+		'row extended to anterior 1/2-1/3 of lenght of epipharynx'
+		,
+		36
+		'absent'
+		'present'
+		,
+		37
+		'up to five pores'
+		'many pores'
+		,
+		38
+		'absent'
+		'present'
+		,
+		39
+		'not reduced'
+		'reduced'
+		,
+		40
+		'absent'
+		'present'
+		,
+		41
+		'short'
+		'elongated'
+		,
+		42
+		'very elongate (length/width ratio greater than 2.5)'
+		'shorter (length/width ratio less than 2.5)'
+		,
+		43
+		'distinct'
+		'indistinct'
+		,
+		44
+		'divided from base of mandible by suture'
+		'not divided from base of mandible by a suture'
+		,
+		45
+		'two'
+		'one'
+		,
+		46
+		'absent'
+		'present'
+		,
+		47
+		'absent'
+		'present'
+		,
+		48
+		'one small'
+		'one large'
+		'two large'
+		,
+		49
+		'without deep V-shaped incision in lateral margin'
+		'with deep V-shaped incision in lateral margin'
+		,
+		50
+		'absent'
+		'present'
+		,
+		51
+		'one large'
+		'two large'
+		,
+		52
+		'absent'
+		'present'
+		,
+		53
+		'a few large teeth'
+		'fringe of small teeth'
+		'fringe of filiform setulae'
+		,
+		54
+		'without dense patch of spinules'
+		'with dense patch of spinules'
+		,
+		55
+		'absent'
+		'present'
+		,
+		56
+		'absent'
+		'present'
+		,
+		57
+		'absent'
+		'present'
+		,
+		58
+		'one or two rows'
+		'more than two rows'
+		,
+		59
+		'absent'
+		'present'
+		,
+		60
+		'absent'
+		'present'
+		,
+		61
+		'not medially divided into pseudosegments'
+		'medially divided into pseudosegments'
+		,
+		62
+		'without hook-like process'
+		'with hooklike process'
+		,
+		63
+		'with hook-like notch'
+		'without notch or indentation'
+		,
+		64
+		'mostly filiform or spinose'
+		'many/most flattened and subspatulate'
+		,
+		65
+		'short, much shorter than palpomere 2'
+		'long, almost as long as palpomere 2'
+		,
+		66
+		'moderate length to short'
+		'very long'
+		,
+		67
+		'moderate sized, longer than greatest width of maxillary palpomere 3'
+		'minute, shorter than width of apex of maxillary palpomere 3'
+		,
+		68
+		'absent'
+		'present'
+		,
+		69
+		'long, slender and stylate to substylate, length 6x or more width at base'
+		'normal, not noticeably long and stylate, length 5x or less width at base'
+		,
+		70
+		'absent'
+		'present'
+		,
+		71
+		'small'
+		'large'
+		,
+		72
+		'partially spinose'
+		'completely spinose'
+		'brushy'
+		,
+		73
+		'subequal'
+		'shorter than lacinia'
+		'longer than lacinia'
+		,
+		74
+		'brushy with scattered or distinct rows of setae or spines'
+		'subapical setae or spines forming a single row'
+		'subapical setae or spines forming a double row'
+		'spines or setae greatly reduced'
+		,
+		75
+		'subequal'
+		'narrower than lacinia'
+		'wider than lacinia'
+		,
+		76
+		'triangular'
+		'rectangular'
+		,
+		77
+		'small'
+		'large (occupying most of ventral area of head)'
+		,
+		78
+		'free'
+		'fussed with submentum'
+		,
+		79
+		'greatest width about equal to apex of gula'
+		'greatest width much greater than apex of gula'
+		,
+		80
+		'2x longer than wide'
+		'3x longer than wide'
+		,
+		81
+		'straight'
+		'weakly to moderately emarginate'
+		'bispinate'
+		'bilobbed'
+		'dyply cleft'
+		'with apically rounded processes'
+		,
+		82
+		'broadest in basal quarter (distinctly narrower at base)'
+		'broadest basally (not distinctly narrowed basally)'
+		,
+		83
+		'on same plane as discal areas'
+		'on different plane from discal areas'
+		,
+		84
+		'without fringe of setae'
+		'with fringe of setae'
+		,
+		85
+		'short and broad'
+		'short and slender'
+		'long and broad'
+		'long and slender'
+		,
+		86
+		'shorter than palpomere 1'
+		'almost same as palpomere 1'
+		'longer than palpomere 1'
+		'extremely long, reaching the tip of labial palpus'
+		,
+		87
+		'entire'
+		'broadly and shallowly emarginare'
+		'divided into two lobes'
+		,
+		88
+		'divided in apical half or less'
+		'divided in apical half or more'
+		'divided to base, or near base'
+		,
+		89
+		'without two to three apical/subapical sensory spines'
+		'with two to three apical/subapical sensory spines'
+		,
+		90
+		'absent'
+		'present'
+		,
+		91
+		'without two pores at the base of ligula'
+		'with two distinctive pores'
+		,
+		92
+		'not styliform'
+		'styliform'
+		,
+		93
+		'palpomeres not fused (three-articled)'
+		'palpomeres 1 and 2 fused (apparently two-articled)'
+		'palpomeres 1, 2 and3 fused (apparently one-articled)'
+		,
+		94
+		'subquadrate or elongate and slender'
+		'subglobose or globose'
+		'minute, less than 0.2x length of 1'
+		,
+		95
+		'subequal to, or shorter than 2 and 3 together'
+		'much longer than 2 and 3 together'
+		,
+		96
+		'absent'
+		'present'
+		,
+		97
+		'absent'
+		'present'
+		,
+		98
+		'not present'
+		'two present'
+		'one present'
+		,
+		99
+		'large, greater than 2x width of setal pore'
+		'small, 1-2x width of setal pore'
+		'contiguous'
+		'one behind the other'
+		,
+		100
+		'with two setae at most'
+		'with many unordered setae on prementum'
+		,
+		101
+		'without barlike or clublike sclerotized support (in medial pseudopore area)'
+		'with barlike or clublike sclerotized support in medial area'
+		,
+		102
+		'broad (greater than 2x width of discal seta pore)'
+		'narrow (less broad than 2x width of discal seta pore)'
+		,
+		103
+		'without pseudopores'
+		'with a few scattered pseudopores (six to eight or less)'
+		'with numerous pseudopores'
+		,
+		104
+		'present, many'
+		'one pore on each side'
+		'absent'
+		,
+		105
+		'present'
+		'absent'
+		,
+		106
+		'one seta on each side'
+		'two setae on each side'
+		'absent'
+		,
+		107
+		'without'
+		'with'
+		,
+		108
+		'with irregularly scattered setae on each side of midline'
+		'with well-differentiated row of setae on each side of midline'
+		,
+		109
+		'absent'
+		'present'
+		,
+		110
+		'present only at base or ½ of length of hypopharynx'
+		'present up to 2/3 or apex but not reach it'
+		'present on all appendage'
+		,
+		111
+		'distinctly broadest in anterior half'
+		'broadest near center'
+		'broadest in posterior half'
+		,
+		112
+		'absent'
+		'present'
+		,
+		113
+		'not visible in lateral view'
+		'visible in lateral view'
+		,
+		114
+		'absent'
+		'present'
+		,
+		115
+		'rectangular'
+		'square'
+		,
+		116
+		'not fussed with hypomeron'
+		'fussed with hypomeron'
+		,
+		117
+		'rectangular'
+		'distinctly square'
+		,
+		118
+		'absent'
+		'present'
+		,
+		119
+		'absent'
+		'present'
+		,
+		120
+		'blunt'
+		'sharp'
+		,
+		121
+		'separated'
+		'meeting at midline'
+		,
+		122
+		'not carinate'
+		'carinate'
+		,
+		123
+		'longer than wide'
+		'quadrate'
+		,
+		124
+		'present'
+		'absent'
+		,
+		125
+		'absent'
+		'present'
+		,
+		126
+		'not sinuate'
+		'slightly to moderate sinuate'
+		'strongly sinuate'
+		,
+		127
+		'not modified'
+		'forming triangle appendage'
+		,
+		128
+		'five-five-five'
+		'four-five-five'
+		'four-four-five'
+		'four-four-four'
+		'three-three-three'
+		,
+		129
+		'absent'
+		'present'
+		,
+		130
+		'absent'
+		'present'
+		,
+		131
+		'not in a depression'
+		'in shallow depression or hollow'
+		'in deep depression or hollow'
+		,
+		132
+		'present'
+		'absent'
+		,
+		133
+		'simple'
+		'with large basal lobe'
+		'with medial and sub-basal tooth'
+		'with small basal tooth'
+		,
+		134
+		'absent'
+		'one seta'
+		'two setae'
+		,
+		135
+		'equal/subequal in length'
+		'one distinctly shorter than the other'
+		,
+		136
+		'distinctly longer than tarsal claws'
+		'subequal in length to tarsal claws'
+		'distinctly shorter than tarsal claws but longer than 0.5x length of tarsal claws'
+		'distinctly shorter than 0.5x length of tarsal claws'
+		,
+		137
+		'absent or small'
+		'present, covering base of trochander'
+		,
+		138
+		'clearly divided into large and small groups of setae'
+		'large group of setae subdivided into two groups'
+		,
+		139
+		'6 setae or less'
+		'8-13 setae'
+		'15 and more setae'
+		,
+		140
+		'1 seta'
+		'2 setae'
+		'3 setae'
+		'many setae present'
+		,
+		141
+		'absent'
+		'present, up to 8'
+		'present, more than 8'
+		,
+		142
+		'without modification'
+		'with scale-like surface'
+		'with short setae'
+		,
+		143
+		'ventral surface not shield-like'
+		'ventral surface expanded, shield-like'
+		,
+		144
+		'not fused'
+		'fused'
+		,
+		145
+		'narrowly to moderate separated'
+		'broadly separated'
+		'contiguous'
+		,
+		146
+		'completely margined posteriorly by fine ridge'
+		'not margined posteriorly, open'
+		,
+		147
+		'small and/or indistinct'
+		'distinct'
+		,
+		148
+		'shorter or subequal length to that of mesosternal process'
+		'much longer than mesosternal process'
+		,
+		149
+		'continuous'
+		'separated'
+		,
+		150
+		'absent'
+		'present'
+		,
+		151
+		'with short appendages'
+		'with elongated blade-like appendages'
+		'with elongated curved appendages'
+		'with short and broad appendages'
+		,
+		152
+		'only appendages on apico-lateral margin present'
+		'short appendages on lateral margins present'
+		,
+		153
+		'absent'
+		'present'
+		,
+		154
+		'large to very large (length of flange subequal to, or greater than, minimum distance between flanges)'
+		'small to moderate sized (length of flange distinctly less than minimum distance between flanges'
+		'indistinct to absent (flange indistinct and difficult to distinguish from apical ends of arms or arms uniformly tapered to muscle attachments'
+		,
+		155
+		'absent'
+		'present'
+		,
+		156
+		'present'
+		'absent or rudimentary'
+		,
+		157
+		'present, well developed'
+		'absent'
+		'State 2'
+		,
+		158
+		'12 or fewer'
+		'15 and more'
+		,
+		159
+		'3 setae present'
+		'setae absent'
+		'more than 3 setae present'
+		,
+		160
+		'one'
+		'two'
+		,
+		161
+		'absent'
+		'present'
+		,
+		162
+		'two types of projection'
+		'one type of projection'
+		,
+		163
+		'present'
+		'absent'
+		,
+		164
+		'one ridge'
+		'two ridges'
+		,
+		165
+		'ridges not connected to each other by a bar'
+		'two ridges connected to each other by a bar'
+		,
+		166
+		'with well-marked basal ridge'
+		'without basal ridge'
+		,
+		167
+		'absent, indistinctive or very few'
+		'present, gorming group'
+		,
+		168
+		'field broad'
+		'field narrow'
+		,
+		169
+		'present, complete'
+		'absent or incomplete'
+		,
+		170
+		'absent'
+		'present'
+		,
+		171
+		'large, about 0.5× width of tergite'
+		'small, 0.2-0.4× width of tergite'
+		,
+		172
+		'without medial gland opening'
+		'with medial gland opening'
+		,
+		173
+		'divided into two triangular processes'
+		'divided into four triangular processes'
+		'various, but not as above'
+		,
+		174
+		'not incorporated into genital apparatus'
+		'incorporated into genital apparatus'
+		,
+		175
+		'subtrapezoidal, rounded apically'
+		'elongate, with elongate apex'
+		,
+		176
+		'absent or reduced'
+		'present'
+		,
+		177
+		'complete'
+		'narrowly divided into hemitergites'
+		'completely divided into hemitergites'
+		,
+		178
+		'absent'
+		'present'
+		,
+		179
+		'longer than 0.5 length of sternum IX'
+		'shorter than 0.5 length of sternum IX'
+		,
+		180
+		'widest at middle'
+		'widest at base or near base'
+		,
+		181
+		'not divided into two linear lobes'
+		'divided into two linear lobes in apical half'
+		'divided to near base into two linear lobes'
+		,
+		182
+		'not completly divided into two lobes'
+		'completly divided into two lobes'
+		,
+		183
+		'present'
+		'absent'
+		,
+		184
+		'long, extended entire length of medial lobe'
+		'short, well-defined compressor plate'
+		,
+		185
+		'few, absent or insignificant'
+		'many and prominent'
+		,
+		186
+		'sclerotized'
+		'completely membranous'
+		,
+		187
+		'process absent or small and insignificant'
+		'process present'
+		,
+		188
+		'with pair of wery large process'
+		'with single large process'
+		'with blade-like process'
+		,
+		189
+		'not deeply incised by V-shaped unsclerotized region'
+		'deeply incised by V-shaped unsclerotized region'
+		,
+		190
+		'absent'
+		'present'
+		,
+		191
+		'absent'
+		'present'
+		,
+		192
+		'small, slender, rodlike, not enclosing medial lobe'
+		'broad, enclosing median lobe'
+		,
+		193
+		'not divided into a paramerite and condylite lobe'
+		'divided into a paramerite and condylite lobe'
+		,
+		194
+		'long (more than half as long as paramere)'
+		'shorter (less than half as long as paramere)'
+		,
+		195
+		'long and slender (longer, or as long as paramerite)'
+		'medium length (less than length of paramerite, but more than 0.5x as long'
+		'short, less than 0.5x as long as paramerite'
+		,
+		196
+		'sub-basally to apex'
+		'only in apical half'
+		'without setae'
+		,
+		197
+		'round'
+		'pointed'
+		'flared'
+		,
+		198
+		'not articulated'
+		'clearly articulated anterior to edge of velum'
+		'articulated posterior to anterior edge of velum'
+		,
+		199
+		'not apparently articulated'
+		'clearly articulated'
+		,
+		200
+		'absent'
+		'present, but faint'
+		'present, prominent'
+		,
+		201
+		'divided into two triangular processes, with setae at apex of each'
+		'various, but not divided into two triangular processes'
+		,
+		202
+		'clearly articulated, two- segmented'
+		'apical lobe reduced to spinose process'
+		'apical lobe absent'
+		
+	;
+	MATRIX
+	'Actocharis readingii'		                00--011101-01000-0100221101001000110-101011-101000-020000-?00010000010-01110000011000-2200101--00100001000011000100000100001000200-100--0---0000210000100211---10-0000110100200110-00-01000-00010121201112
+	'Aleochara curtula'		                   1100000100001000-01002211010010101111101011-100-00-020010-010010000010-000000001110000221000000100-00020000112200000010-0011000000-102130012010010101101010001010-00000-1100200111100-00000-00010121011212
+	'Aleochara moerens'		                   0100000100001000-01002211010010101111101011-100-00-0200110010010000010-000200001110001221000000101000020100112200000010-0011010000-102030012010000101101010001010-00000-0100200111101000000-00010121011212
+	'Aleochara sp Myanmar'		                10--000100001000-01002211010010101111101011-100-00-0200110010010000010-010000001110001221000000100-00020000112200000010-0011000000-102030012010010101101010001010-00000-0100200111100-00000-00010121011212
+	'Amarochara forticornis'		              00--000100001000-01002211010010100011101011-100-00-020000-000010000010-02020000111000021100000000100002000011210100001100001020000-102030012000000101101010000010-00000-0100200111101000000-00010121011112
+	'Atheta monticola'		                    00--000100101000-01002211010010000010101011-111000-0201010000010000010-00000000111001120001000000100001000011010100001100001000100-131-30012010000100000021000010-0100110100200110-01001000-01110121011112
+	'Autalia longicornis'		                 00--010101-1-000-01002211010000000010101011-100-00-0211010000010000010-00000000031003-2001101--00120010000011110101011110001010200-100--002211002100??0002001-010-0000111100200111100-01000-00010120001212
+	'Baeostethus chiltoni'		                00--011101-01000-0100221101001010110-101011-101?01?020000-100010000010-01210000011003-0-00101--00130002010011100000000100011010200-100--0---0000210000000201---10-0000110100200110-00-01000-00010120201012
+	'Bolitochara pulchra'		                 00--000100100000-010022110101-0000011101011-101000-021100-000010000010-00000000011003-2001101--00130010000011010101001110001020200-101-20012010000101100010000010-0011101100200111101001000-00010111001212
+	'Colle campbellensis'		                 00--000100101000-01002211010010000011101011-101000-0201010000010000010-01000000111003-2000101--00110012010011000100001110001010000-100--00000100200000001201---10-0100???100200111101000000-00010021011012
+	'Cordalia obscura'		                    00--000101-01000-0100221101001??00010101011-101000-0201010000010000010-00000000011001120011000000110011000011101000001111101010100-101-20012010000101110020000010-00100-0101200110-01001000-01111121011112
+	'Crataraea suturalis'		                 10--000100001000-01002211010010001010101111-101000-020000-100010000010-0000000011100110-011000000100002010011010000001110001020000-101-30013010000100000120000010-0110111100200111100-00000-00010120011012
+	'Cyllophallia dauphinensis'		           00--00010001-000-01002211010010100010101011-111000-0201010000010000010-00000000111003-2001101--00110010000011010000001100001020100-101-0101201000010110002001-010-00100-0100200111101001000-00010120011112
+	'Cypha longicornis'		                   10--00111001-100-01002211011--1-00010100-11-1011110020000-000110000010-00001000111001120000000000100002010010-200000000-0011000300-10202101100001010100011101-110-00000-0100200111000-01001100010020011112
+	'Cyphea latiuscula'		                   00--000100001000-01002211010010000010101011-101000-020000-000010000010-00000000111000-0-??101--00100001000011020100001110001010200-131-3001201000010100002001-010-00?0110110200111101001000-00010120001112
+	'Deinopsis erosa'		                     10--10111011-001001001110001--1-000100-0-11-1012011000000-000010001000-111110011100022220100001010-000011000--2000000111001101041100220011--000000100000001001201000010-10-0201120-10-1-101100010100020012
+	'Demerina bickmanni'		                  00--000101-01000-01002211010010000010????11-101000-020?????00010001010-0?00000001100???????00000010000001001??01000000110001000100-102020002000001100?100210???10-1--10-1110200110-00-01000-01010121011112
+	'Diestota testacea'		                   00--00010001-000-01002211010010000010101011-101000-0211010000010000000-00000000011001-2100111--00120010000011010100001110001010200-100--001201000010110001101-010-0010110100200111101000000-00010120011112
+	'Diglotta mersa'		                      00--010101-1-000-010?2211011--0000010????11-101000-0201010000010010000-01100000011003-0-00111--002-0011010011100100001100001010200-100--00021000210000000201---10-0001101100200111100-01000-00010121001112
+	'Dinaraea linearis'		                   00--000101-01000-01002211010010000010101011-111000-0201010000010000010-00000000111001121001000000110011000011010100001110001010100-101-30002200000100000021000010-0100110100200110-01001000-01110121011112
+	'Dinarda dentata'		                     10--000100001000-01002211011--0001011101011-100-00-020100-000010000010-00000000111001120001000000100001010011020000001110001010000-101-30003010000100000120000010-0100111100200111101000000-00010110011012
+	'Dioxeuta sp'		                         00--000101-1-000-01002211010000000010101?11-101000-120000-100010000010-0020001010100000-0010000001000010000111001000000-0011000100-131-20013??002100000001001-010-00000-0100200110-00-00000-00010121011112
+	'Drusilla canaliculata'		               00--001100100000-11002211010010001111101011-100-00-020100-000010000010-02010000011001021000000000100002000011111100001110101010100-101-300120000101111000211---10-01000-0100200110-01001000-00110121011112
+	'Ecitogaster sp'		                      00--00010011-000-01002211011--010110-101011-100-00-020000-100010000010-0200000011100000-100000000101000010011101101010110111000300-101-3002100001011111001101?010-1--10-1100200110-01001000-00?10122011112
+	'Ecitomorpha arachnoides'		             00--000101-1-000-01002211010011-01010101011-1?0-00-020000-100010000010-0002000011100110-100000000101000010011111101010111001010100-101-30013010021000010020000010-1--11??100200110-00-01000-01110121011112
+	'Geostiba circellaris'		                00--000100101000-01002211010010000010111-11-101000-0201010000010000010-00000000111001021001000000100001010011110100001100001010100-101-200020100001000000211---10-0100110100200110-01001000-01110121011112
+	'Gnypeta carbonaria'		                  00--000100101000-01002211010010001110101011-101000-0201010000010000010-00000000111001022001000000110010000011110100001100001010100-100--0012010000101100021000010-0110110100200110-00-00001211010021011112
+	'Gymnusa variegata'		                   10--101111-1-001001002010100011-1--0-0-0-1001011010010000-000000011000-101110010111033220001021010-000111000--2000000111001101000110020111--020000100020000001211100010-10-0200101010-1-001000010020000011
+	'Gyrophaena congrua'		                  00--000100101000-010022110101-0000010101011-101000-021100-000010000010-00000000001001-0-01?01--002-00100000110101000010-0011010200-101-3000200001010100001101-010-0100100100200111100-01000-00010121011112
+	'Habrocerus capillaricornis'		          10--000011-1-10100100100-000011-0000-0-0-100000-00-020000-000011000010-0202000011100021-000000000100010100010-100000001000000000010031-311--0200200-0020011001110-00000-00-021001??00-1-11??000?????????10
+	'Halobrecta flavipes'		                 00--00010001-000-01002211010010000010101011-111000-0201010000010000010-00000000111003-2001101--00110012000011010100001100001020100-101-0001201000010110002001-010-0100110100200110-01000000-00010110011112
+	'Haploglossa marginalis'		              10--000100001000-01002211010010001111101111-101000-020000-100010000010-0000000001100100-011000000100002010011020000001110001020000-101-30011010000100000120000010-01000-1100200111100-00000-00010???011?12
+	'Homalota plana'		                      00--000100000000-01002211010000000010101011-101000-0211010000010000010-00000000101001-2000101--00130011000011010100001100001000200-101-3001200000010000002101-010-0100110100200111101001000-00010121011112
+	'Hoplandria lateralis'		                1111000100001000-01002211010010100010101011-101000-0201010010010000010-00000000001003220111000000110012000011010000001100001010100-101-20012010010101000020020010-0010111100200111101000000-00010121011112
+	'Hygronoma dimidiata'		                 00--000101-00000-01002211010010000010101011-111000-020100-000010000010-00000000111001021001000000100001010011110100001100001010300-101-3001200002100000002101-010-0110110100200110-00-01000-01110120011112
+	'Leptusa antarctica'		                  00--001100001000-01002211010010000010101011-101000-0211010000010000010-00000000011003-0-01101--00130010000011010100001110001010200-131-30-----00001000000201---10-0110111100200111101001000-00010111011112
+	'Leptusa pulchella'		                   00--001100001000-01002211010010000010101011-101000-0211010000010000010-00000000011001-0-01101--00130010000011110101001110001020200-101-3001200000010000001001-010-0011101100200111101001000-00010120001112
+	'Leucocraspedum scorpio'		              10--00011001-000-01012211110010000011101011-101000-0200011000010000010-10000000001001-0-00001--00110002010011120000001100011010100-130--1012000000001100010000010-00000-0110200110-01001000-00010112111112
+	'Lomechusa emarginata'		                00--00110011-000-01002211011--1-0110-101011-100-00-020000-100010000010-0200000001100000-000000000101002000011120100001100011010100-102030023010010111100010001010-0100011100200110-00-01000-01110121011112
+	'Masuria plumbea'		                     00--00110001-000-01002211110010101010101011-101000-0200011100010001001110111000011001-0-01101--000-0010010011010100001110001020100-10201001300000010113001001-010-0000111110200110-01001000-00010020011112
+	'Meotica filiformis'		                  011100010011-000-0100221101001010000-101011-101000-020100-000010000010-00000000111001120001000000110001010011?00100001110001010000-130--000200002110000012001?010-00100-0100200111101000000-00010120011212
+	'Myllaena elongata'		                   10--00010011-000-01012211110010001010101011-101000-0200011101010001101110111000021001-0-01111--001100100100111200000010-0001020200-101-1001100002000003001001-010-00000-0110200111102101000-00010110121112
+	'Neodioxeuta sp'		                      00--000001-1-000-01002211010010000010101111-101000-120000-100010000010-0020001010100010-0010000001000020000111001000000-0001000100-131-200????0?210000000101---10-00000-0100200110-00-00000-00010121011112
+	'Oligota pumilio'		                     00--00111001-000-01002211011--1-00010100-11-1011110020000-100110000010-000100001010010220000000000-0000???010-20000001100011010300-10202101100001010100001001-110-00010-0100200101010-01001100010020011112
+	'Olisthaerus megacephalus'		            00--000011-1-000-0000000-010011-0100-0-0-100101100-020000-100010000010-0201000011100021-0000000001001021110112001101000-000000000100020201--02000010002000001-210-1--10-10-0200000-10-1-00100000---1000010
+	'Orphnebius draco'		                    00--01010011-000-110022110101-000110-101011-110-00-020000-100010000010-020000100110001211000000001000020100110201010110-1001000100-102110022000010111100011001010-0100111100200110-02101000-01110???011112
+	'Oxypoda longipes'		                    111000000001-000-01002211010010100011101011-101000-020100-000010000010-00000000111001021001000000100002000011010000001100001020000-131-30012010000100000120001010-0100111100200111101000000-00010120011012
+	'Oxypodinus anxius'		                   00--00010001-000-01012211110010000010101011-100-00-0200011001010000001010100000011001-0-00101--000-00100100110200000010-0001020100-100--001210000010110001001-010-00000-0110200110-01001000-00010?????1112
+	'Paraconosoma polita'		                 10--000011-1-000-01011010010011-1--0-1010101100-00-020000-000010000000-11110000051003322000001001100000011010-200000000-0011000000-100--100202100010?000110000000-1--10-1000200101010-1-001100010000120012
+	'Phloeocharis subtilissima'		           00--000101-1-00110010201000001010010-0-0-101101100-020000-000010000010-0001000010100021-000000000100100111010-100101000-00010000010131-311--00000010002001001-200-1--10-10-0200000-10-1-00100000---1000010
+	'Phloeopora corticalis'		               00--000101-00000-01002211010010000010101011-101000-0200010100010000010-0000000011100000-001000000100001000011000100001110001010000-131-2001301000010100012001-010-0110111100200111100-00000-00010121001112
+	'Phyllodinarda xenocephala'		           10--00110011-000-?1002211011--010110-101011-110-00-120100-000010000010-02010000111000021100000000100002010011120001011101011101100-101-20012010100110110011000010-01000-0100200110-00-01000-01110121011112
+	'Phytosus spinifer'		                   00--000100101000-01002211010010000010101011-101000-020100-000010000010-00000000011001-0-01001--00130011000011000100001110001010200-030--001201000010000002001-010-0100110100200110-01001000-00010121201112
+	'Piochardia schaumii'		                 110000011001-000-01002211010010001111101011-101000-020000-010010000010-020200001110001221000000101000020000111200000010-0011010000-102030012000000101101010001010-00000-0100200111101000000-00010121011212
+	'Placusa incompleta'		                  10--00010001-000-0100221101001000000-101011-100-00-020100-000010000010-01200000001002-0-00101--00100000010011010000000100001010200-101-2001201002010000011001?010-01000-0100200111101000000-00010111011112
+	'Pronomaea picea'		                     00--000100000000-01012211010010000011101011-101000-0200011100010001001010211000041001-2100111--000-0010010011010101001110001020100-100--0002000000101130010000010-00100-1100200110-01001001100010020011212
+	'Pseudosemiris circassica'		            00--000100101000-01002211010010001110111-11-100-00-020100-000010000010-00000000111001021001000000100001010011110100001100001010100-101-30002010000101000021000010-0100110100200110-01001000-01110121011112
+	'Silusa rubiginosa'		                   00--000100001000-01002211010000000010101011-101000-0211010000010000000-00000000011003-0-01111--00130012000011110101001110001020200-101-3001301000010010001001-010-0010101100200111101001000-00010121001112
+	'Stylogymnusa subantarctica'		          10--101101-1-001001021010201--1-1--0-0-0-0011012011010000-000000111000-10311101001101-2200012--010-0001?1200--200000011100100100012000--1-----00000-00000101---01000010-10-0201101010-1-000-00010120000012
+	'Tachinus proximus'		                   10--000011-1-01110010000-010011-0100-0-0-100000-00-020000-000011000010-2200000010101021-000000000100102101111220010001110000000000-0120311--02000010002000001-210-00000-10-0000020-00-1-000-0000---2000000
+	'Tachyusa objecta'		                    00--000100101000-01002211010010001110101011-101000-0201010000010000010-01000000111001020001000000110010000011110100001110001010100-100--00120100001010000200???10-0110110100200110-00-00001211010021011112
+	'Termitobaena bryanti'		                00--000110001000-01002211011--1-0110-101011-110-00-120000-100010000010-020000100?100000-000000000101000000011110000001100001000100-101-2001200002100000001001-010-00000-1100200110-00001000-01010120011112
+	'Termitodiscus heimi'		                 10--00010011-000-0100221101001010000-101011-101000-120000-000010000010-02020000101000120000002000100001010011120000000110011101100-100--001200001010100001001-010-00000-0110200110-02101000-00010121011212
+	'Termitusa sjoestedti'		                10--001111-1-000-010122110100100?????????11-100-00-02000???0001000010??11100000??1003-0-00?01--00100000??001??2000?0000-0011000200-100--0---??00200000300101---10-00000-0110200110-02101000-00010112121112
+	'Thamiaraea cinnamomea'		               00--000100101000-01002211010010000010101011-111000-0201010000010000010-00000000111001-2100101--00110012000011010100001100001010100-101-30012010000101100021000010-0100110100200110-01001000-01110120011112
+	'Trichophya pilicornis'		               00--00100011-00100100100-000011-1--0-100-1001011010010000-000010000010-00000000001000121000000000100010210011210000001110001010000-1120001--0200200-0020011000110-00000-00-020001??00-1-100-0000---1000010
+	'Typhloponemys sp Israel'		             10--000100101000-01002211010010101110101011-100-00-020?00-?00010000010-020000001010000200010000001000020100110200000010-1011101100-102020012000100111000010000010-1--10-1100200110-00-01000-00?10121011112
+	'Typhloponemys sp Tanzania'		           10--000100101000-01002211010010101110101011-100-00-020?00-?00010000010-0000000010100010-0010000001000020100110200000010-1011101100-102020022000100111000010000010-1--10-1100200110-00-01000-00?10121011112
+	'Zyras collaris'		                      00--000100001000-110022110101-000110-101011-100-00-020100-000010000010-02000000011001021100000000100002010011110100001100001010100-101-20012010010111100021001010-01000-0100200110-01001000-01110121011112
+    ;
+    ENDBLOCK;
+
+          BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 202;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1582879407074; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 1045884348456642611; tell It; setDefaultOrder 72 8 9 96 46 44 10 117 11 36 20 57 55 69 58 6 22 71 15 25 31 60 70 41 53 21 28 5 12 3 19 56 13 97 26 38 37 77 23 65 43 17 59 30 2 35 32 66 100 1 80 47 42 45 34 18 112 14 16 0 27 78 73 61 54 4 98 99 29; attachments ; endTell; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 7073827997557864536; tell It; setDefaultOrder 243 196 206 307 195 160 164 69 204 309 202 310 161 1 6 8 4 2 3 16 214 9 10 281 283 215 18 216 217 377 218 220 221 329 211 284 285 282 210 292 286 33 229 26 27 166 249 250 30 251 247 248 32 28 142 293 257 253 360 37 40 22 25 60 35 37 38 287 18 225 246 226 169 228 165 170 40 212 174 343 333 65 67 326 336 171 230 265 46 277 168 55 54 59 58 56 57 48 47 296 52 49 50 386 387 172 64 62 268 269 182 73 252 198 289 245 254 233 235 236 312 300 192 78 267 313 263 83 89 80 81 79 84 85 86 88 318 396 388 389 266 273 92 209 231 186 239 90 315 316 373 355 270 95 96 404 140 392 393 97 98 99 317 275 261 100 260 241 259 112 327 114 101 102 105 108 320 321 322 324 108 242 301 302 115 118 303 304 120 120 121 122 125 125 126 129 342 127 128 130 427 420; attachments ; endTell; mqVersion 360; checksumv 0 3 4245923520 null getNumChars 202 numChars 202 getNumTaxa 69 numTaxa 69 short true bits 63 states 63 sumSquaresStatesOnly 41914.0 sumSquares 41914.0 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState false true 204; setPopoutState 300; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 943; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; desuppress; endTell; getEmployee #mesquite.trees.BasicTreeWindowCoord.BasicTreeWindowCoord; tell It; makeTreeWindow #1045884348456642611 #mesquite.trees.BasicTreeWindowMaker.BasicTreeWindowMaker; tell It; suppressEPCResponse; setTreeSourceEditMode #mesquite.trees.StoredTrees.StoredTrees; tell It; laxMode; setTreeBlock -2147483647; toggleUseWeights off; endTell; setAssignedID 1149.1568047077584.5864666500692973203; getTreeWindow; tell It; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 871; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.trees.BasicTreeWindowMaker.BasicTreeWindow.arrow; endTell; getTreeDrawCoordinator #mesquite.trees.BasicTreeDrawCoordinator.BasicTreeDrawCoordinator; tell It; suppress; setTreeDrawer #mesquite.trees.SquareLineTree.SquareLineTree; tell It; setNodeLocs #mesquite.trees.NodeLocsStandard.NodeLocsStandard; tell It; branchLengthsToggle off; toggleScale on; toggleBroadScale off; toggleCenter on; toggleEven on; setFixedTaxonDistance 0; endTell; setEdgeWidth 4; showEdgeLines on; orientUp; endTell; setBackground White; setBranchColor Black; showNodeNumbers off; showBranchColors on; labelBranchLengths off; centerBrLenLabels on; showBrLensUnspecified on; showBrLenLabelsOnTerminals on; setBrLenLabelColor 0 0 255; setNumBrLenDecimals 6; setSelectedTaxonHighlightMode 1; desuppress; getEmployee #mesquite.trees.BasicDrawTaxonNames.BasicDrawTaxonNames; tell It; setColor Black; setTaxonNameStyler #mesquite.trees.ColorTaxonByAssigned.ColorTaxonByAssigned; toggleShadePartition off; toggleShowFootnotes on; toggleNodeLabels on; toggleCenterNodeNames off; toggleShowNames on; namesAngle ?; endTell; endTell; setTreeNumber 1; setTree '(60,((45,50),((30,66),((49,(16,(28,59))),((14,44),((63,(67,68)),((5,(54,(3,(2,4)))),((47,(21,(12,32))),(55,((10,41),(((31,(13,34)),(18,((40,56),(48,(38,(42,64)))))),(((53,(15,51)),(33,(29,(36,((37,(9,58)),(7,(19,(1,8)))))))),((11,(27,61)),(20,(65,(6,(26,((35,((17,25),(62,(43,22)))),(57,(23,(69,(52,(46,(24,39))))))))))))))))))))))));'; setDrawingSizeMode 0; toggleLegendFloat on; scale 0; toggleTextOnTree off; togglePrintName on; showWindow; newAssistant #mesquite.ancstates.TraceCharacterHistory.TraceCharacterHistory; tell It; suspend ; setDisplayMode #mesquite.ancstates.ShadeStatesOnTree.ShadeStatesOnTree; tell It; toggleLabels off; togglePredictions off; toggleGray off; endTell; setHistorySource #mesquite.ancstates.RecAncestralStates.RecAncestralStates; tell It; getCharacterSource #mesquite.charMatrices.CharSrcCoordObed.CharSrcCoordObed; tell It; setCharacterSource #mesquite.charMatrices.StoredCharacters.StoredCharacters; tell It; setDataSet #7073827997557864536; endTell; endTell; setMethod #mesquite.parsimony.ParsAncestralStates.ParsAncestralStates; tell It; setModelSource #mesquite.parsimony.CurrentParsModels.CurrentParsModels; toggleMPRsMode off; endTell; toggleShowSelectedOnly off; endTell; setCharacter 123; setMapping 1; toggleShowLegend on; setColorMode 0; toggleWeights on; setInitialOffsetX 444; setInitialOffsetY -225; setLegendWidth 671; setLegendHeight 161; resume ; endTell; endTell; setEditMode 'Edited, based on Edited, based on Edited, based on Edited, based on Default Symmetrical Tree+ [Stored Trees] [Stored Trees] [Stored Trees] [Stored Trees] [Stored Trees]'; desuppressEPCResponseNORESET; getEmployee #mesquite.trees.ColorBranches.ColorBranches; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.ornamental.BranchNotes.BranchNotes; tell It; setAlwaysOn off; endTell; getEmployee #mesquite.ornamental.ColorTreeByPartition.ColorTreeByPartition; tell It; colorByPartition off; endTell; getEmployee #mesquite.ornamental.DrawTreeAssocDoubles.DrawTreeAssocDoubles; tell It; setOn on; toggleShow consensusFrequency; toggleShow posteriorProbability; toggleShow bootstrapFrequency; toggleShow consensusFrequency; toggleShow posteriorProbability; toggleShow bootstrapFrequency; setDigits 4; setThreshold ?; writeAsPercentage off; toggleCentred off; toggleHorizontal on; toggleWhiteEdges on; toggleShowOnTerminals on; setFontSize 10; setOffset 0 0; endTell; getEmployee #mesquite.ornamental.DrawTreeAssocStrings.DrawTreeAssocStrings; tell It; setOn on; toggleCentred on; toggleHorizontal on; setFontSize 10; setOffset 0 0; toggleShowOnTerminals on; endTell; getEmployee #mesquite.trees.TreeInfoValues.TreeInfoValues; tell It; panelOpen false; endTell; endTell; endTell; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord; tell It; showDataWindow #7073827997557864536 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; getTable; tell It; rowNamesWidth 297; endTell; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 871; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; endTell; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; colorCells #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel off; endTell; colorRowNames #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; colorColumnNames #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames off; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames off; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; togglePaleMissing off; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 287; toggleLinkedScrolling on; toggleScrollLinkedTables off; getInfoPanel; tell It; btspOpen true; apOpen true; fpOpen true; endTell; toggleInfoPanel on; endTell; showWindow; getWindow; tell It; forceAutosize; endTell; getEmployee #mesquite.charMatrices.AlterData.AlterData; tell It; toggleBySubmenus off; endTell; getEmployee #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; getEmployee #mesquite.categ.StateNamesEditor.StateNamesEditor; tell It; makeWindow; tell It; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 871; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.categ.StateNamesEditor.StateNamesWindow.ibeam; endTell; setActive; rowsAreCharacters on; toggleConstrainChar on; toggleConstrainCharNum 3; togglePanel off; toggleSummaryPanel off; endTell; showWindow; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; showExtraDataWindow #7073827997557864536 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 871; setLocation 0 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow; colorCells #mesquite.charMatrices.NoColor.NoColor; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames on; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames on; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; togglePaleMissing off; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 80; toggleLinkedScrolling on; toggleScrollLinkedTables off; endTell; showWindow; getWindow; tell It; forceAutosize; endTell; getEmployee #mesquite.charMatrices.AlterData.AlterData; tell It; toggleBySubmenus off; endTell; getEmployee #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; getEmployee #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel off; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1- 202; 
+ENDBLOCK;

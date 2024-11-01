@@ -1,0 +1,527 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-14 20.05.08 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=48;
+    TAXLABELS
+    		'Sphaerites glabratus'
+		'Syntelia histeroides'
+		'Cretohister sinensis'
+		'Abraeus sp'
+		'Acritus posternalis'
+		'Plegaderus vulneratus'
+		'Teretrius fabricii'
+		'Teretrius melburnius'
+		'Trypolister sp'
+		'Acritomorphus silvestris'
+		'Trypaneus ensifer'
+		'Pygocoelis africanus'
+		'Dendrophilus pygmaeus'
+		'Anapleus sp'
+		'Australanius ambilicatus'
+		'Bacanius suturalis'
+		'Promyrmister kistneri'
+		'Yarmister sp'
+		'Satrapes sartorii'
+		'Pachylomalus mus'
+		'Paromalus flavicornis'
+		'Eulomalus honoratus'
+		'Saprinus splendens Saprininae'
+		'Philothis arabicus'
+		'Tribalus scaphidiiformis'
+		'Halacritus lividus'
+		'Epierus sp'
+		'Onthophilus striatus'
+		'Epiechinus costatus'
+		'Peploglyptus golbachi'
+		'Pheidoliphila arriagadai'
+		'Chlamydopsis sp'
+		'Arbolister sp'
+		'Asterix affinis'
+		'Pelorurus sp'
+		'Nasaltus chinensis'
+		'Hister cruentus'
+		'Hololepta lissopyga'
+		'Platylister dahdah'
+		'Platysoma bipunctatum'
+		'Platysoma paugami'
+		'Omalodes sp'
+		'Niponius sp india'
+		'Niponius sp australia'
+		'Pantostictus burmanicus'
+		'Antigracilus costatus'
+		'Cretonthophilus tuberculatus'
+		'Amplectister tenax'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=69;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="012345";
+	CHARLABELS
+		 [1] 'Frontoclypeal suture'
+		 [2] 'Frontal stria'
+		 [3] 'Gular suture'
+		 [4] 'Antennae'
+		 [5] 'Antennal club reception on pro'
+		 [6] 'Antennal cavities (for resting'
+		 [7] 'Scape'
+		 [8] 'Antennal pedicel'
+		 [9] 'Antennomere III'
+		 [10] 'Shape of labrum'
+		 [11] 'Dorsal labral setae'
+		 [12] 'Left mandible'
+		 [13] 'Stipes of maxilla'
+		 [14] 'Shape of ultimate maxillary pa'
+		 [15] 'Length of ultimate maxillary p'
+		 [16] 'Maxillary palpomere 2'
+		 [17] 'Labial palpomere 2'
+		 [18] 'Labial palpomere 3'
+		 [19] 'Pronotum shape'
+		 [20] 'Pronotum'
+		 [21] 'Pronotum - 2'
+		 [22] 'Lateral stria on pronotum'
+		 [23] 'Basal margin of pronotum'
+		 [24] 'Connection between base of pro'
+		 [25] 'Prosternum length'
+		 [26] 'Prosternal lobe'
+		 [27] 'Prosternal lobe - 2'
+		 [28] 'Prosternal lobe - 3'
+		 [29] 'Prosternal lobe - 4'
+		 [30] 'Prosternal suture (transverse'
+		 [31] 'Prosternal process'
+		 [32] 'Interspace between procoxae'
+		 [33] 'Protrochantin'
+		 [34] 'Procoxal cavity'
+		 [35] 'Basal margin of prosternal pro'
+		 [36] 'Mesotrochantin'
+		 [37] 'Mesoscutellum'
+		 [38] 'Mesoventrites'
+		 [39] 'Mesosternal process'
+		 [40] 'Mesocoxal cavities'
+		 [41] 'Juction line between meso and'
+		 [42] 'Postcoxal line on metaventrite'
+		 [43] 'Postcoxal line on metaventrite - 2'
+		 [44] 'Metakatepisternal suture'
+		 [45] 'Interspace between hind coxae'
+		 [46] 'Tarsal formulation'
+		 [47] 'Profemur'
+		 [48] 'Protibia'
+		 [49] 'Protibia - 2'
+		 [50] 'Mesotibia'
+		 [51] 'Mesotibia - 2'
+		 [52] 'Mesotarsi length'
+		 [53] 'Metacoxae'
+		 [54] 'Elytra'
+		 [55] 'Elytra dorsal striae'
+		 [56] 'Subhumeral striae on elytra'
+		 [57] 'Elytral epipleural stria'
+		 [58] 'Abdominal ventrite I'
+		 [59] 'Postcoxal line on ventrite I'
+		 [60] 'Postcoxal line on ventrite I - 2'
+		 [61] 'Median groove in abdominal ter'
+		 [62] 'The tergite preceding to propy'
+		 [63] 'Propygidium'
+		 [64] 'Tenth tergiteTenth tergite'
+		 [65] 'Parameres (apical pieces)'
+		 [66] 'Apex of parameres (apical pieces)'
+		 [67] 'Length of basal pieces'
+		 [68] 'Basal piece of aedeagus'
+		 [69] 'Median lobe'
+	;
+	STATELABELS
+		1
+		'present'
+		'absent'
+		,
+		2
+		'absent'
+		'present, complete'
+		'present, incomplete in frontal'
+		,
+		3
+		'broadly separated'
+		'fused together'
+		'narrowly separated'
+		,
+		4
+		'without cupuliform segments'
+		'with cupuliform segment procee'
+		,
+		5
+		'with paired of cavities on ant'
+		'on hypomeron'
+		'on side of prosternal keel'
+		'absent'
+		,
+		6
+		'fully closed posteriorly'
+		'partly delimited posteriorly'
+		'open posteriorly'
+		,
+		7
+		'gradually expanded apically'
+		'strongly expanded apically'
+		'super-expanded apically, trian'
+		,
+		8
+		'conical, narrower distally tha'
+		'bulbose'
+		'cup-like, narrower basally tha'
+		,
+		9
+		'distinctly longer than II'
+		'shorter than II'
+		'as long as II'
+		,
+		10
+		'transverse, width at least 1.5'
+		'semi-circle, width equal to or'
+		'width shorter than length'
+		'invisible dorsally'
+		,
+		11
+		'zero'
+		'one pair'
+		'two pairs'
+		'four pairs'
+		'irregular'
+		,
+		12
+		'with one tooth along inner edg'
+		'with two teeth along inner edg'
+		'without any teeth along inner'
+		,
+		13
+		'elongate, at least to the leng'
+		'normal sized, as long as 1-2 b'
+		,
+		14
+		'subconical (sharp apex)'
+		'cylindrical (not sharp apex)'
+		'fusiform (expanded middely)'
+		,
+		15
+		'at least 1.5 times as long as'
+		'as long as 3 or slightly longe'
+		'shorter than 3'
+		,
+		16
+		'at least 2X of 3rd length'
+		'as long as 3rd one'
+		'1/2 of 3rd one'
+		,
+		17
+		'expanded'
+		'elongate, slightly expanded'
+		,
+		18
+		'acicuate, need-like'
+		'cylindrical, not expanded'
+		'fusiform, expanded in the midd'
+		'subconical, base broader than'
+		,
+		19
+		'distinctly convergent apically'
+		'gradually convergent apically'
+		'subparallel'
+		,
+		20
+		'with at least one costa or projection'
+		'without any costa'
+		,
+		21
+		'with transverse carinae'
+		'without transverse carinae'
+		,
+		22
+		'one'
+		'two'
+		'three'
+		,
+		23
+		'angularly projecting'
+		'widely arcuate or substraight'
+		,
+		24
+		'not co-adaptive with each othe'
+		'tightly co-adaptive with each'
+		,
+		25
+		'at least about 1/3 of pronotum'
+		'less than 1/3 of pronotum leng'
+		,
+		26
+		'present'
+		'absent'
+		,
+		27
+		'extended forwards, less than 1'
+		'obviously extended forwards, m'
+		'not extended'
+		,
+		28
+		'broadly rounded anteriorly'
+		'narrowly rounded and projected'
+		'subtruncate'
+		,
+		29
+		'with striae'
+		'without striae'
+		,
+		30
+		'absent'
+		'present, entire'
+		,
+		31
+		'narrowed behind procoxae'
+		'widened or paralleled behind p'
+		,
+		32
+		'distinctly wide, more or less'
+		'narrow, near each other'
+		,
+		33
+		'visible'
+		'hidden'
+		,
+		34
+		'externally open'
+		'externally closed'
+		,
+		35
+		'subtruncate'
+		'rounded projecting backwards'
+		'emarginate forwards or incised'
+		'sharply projecting backwards'
+		,
+		36
+		'distinctly exposed externally'
+		'conceal, invisible'
+		,
+		37
+		'finger-shaped'
+		'small, triangular'
+		'large, subtriangular'
+		'invisible'
+		,
+		38
+		'with lateral projection'
+		'without lateral projection'
+		,
+		39
+		'arcuate backwards'
+		'subtruncate'
+		,
+		40
+		'broadly separatedly from each'
+		'narrow separatedly, interspace'
+		,
+		41
+		'missing'
+		'present, just a fine line'
+		'present, deeply grooved'
+		,
+		42
+		'missing'
+		'one pair'
+		'two pairs'
+		,
+		43
+		'recurved'
+		'oblique, but short, not arrivi'
+		'oblique, but long, over 2/3 of'
+		,
+		44
+		'present'
+		'absent'
+		,
+		45
+		'broader, more than 1.5 X of hi'
+		'wide, about 1?1.5 X of hind co'
+		'narrow, less than one time of'
+		'close to each other'
+		,
+		46
+		'5-5-5'
+		'5-5-4'
+		,
+		47
+		'oval-shaped, massive'
+		'normal elongate'
+		,
+		48
+		'without tarsi groove'
+		'with straight tarsi groove'
+		'with curved tarsi groove'
+		,
+		49
+		'setose along outer margin'
+		'spinose along outer margin'
+		'dentate along outer margin'
+		'glabrous'
+		,
+		50
+		'strongly dentate'
+		'with regular spines'
+		'glabrous'
+		,
+		51
+		'without tarsi groove externall'
+		'with tarsi groove externally'
+		,
+		52
+		'longer than mesotibia'
+		'equal to or shorted than mesot'
+		,
+		53
+		'subcircular or subtriangular'
+		'transverse'
+		,
+		54
+		'with humeral trichomes and gla'
+		'without humeral trichomes and'
+		,
+		55
+		'absent'
+		'present, with three or less th'
+		'present, with more than 3 dors'
+		,
+		56
+		'missing'
+		'not complete'
+		'complete'
+		,
+		57
+		'absent'
+		'present, one'
+		'present, two'
+		,
+		58
+		'as long as ventrite II, or sli'
+		'1.5?3 times longer of ventrite'
+		'more than 3 times of ventrite'
+		,
+		59
+		'absent'
+		'one pair'
+		'two pairs'
+		,
+		60
+		'ventical or oblique'
+		'recurved'
+		,
+		61
+		'absent'
+		'present'
+		,
+		62
+		'with spiracle'
+		'without spiracle'
+		,
+		63
+		'shorter than pygidium'
+		'longer than pygidium'
+		'equal length to pygidum'
+		,
+		64
+		'entire'
+		'absent'
+		,
+		65
+		'separated, beginning from sub-base of apical pieces to the middle'
+		'separated, beginning at least from the middle to the sub-apex'
+		'entirely separated from the base to the apex'
+		'fused entirely'
+		,
+		66
+		'widely separated, the maximum interspace between the parameres wider than its width'
+		'narrowly separated, the maximum interspace narrower than the width of paramere'
+		'inapplicable when fused'
+		,
+		67
+		'as long as apical pieces (0.9?1.1 times of apical pieces)'
+		'obviously shorted than apical pieces (less than 0.9 times of apical pieces)'
+		'distinctly longer than apical pieces (more than 1.1 times of apical pieces)'
+		'no obvious basal pieces as state (0) and (1), reduced or fused'
+		,
+		68
+		'not fused into a complete ring'
+		'complete sclerotized ring'
+		'not visible, either fused with tegmen or lost'
+		'fused into a bulb'
+		,
+		69
+		'totally membranous'
+		'broad and flat, sometimes with some armatures inside'
+		
+	;
+	MATRIX
+	'Sphaerites glabratus'		                   00013-11002102010201100011----0100302101-0-0301011011100010-010020100
+	'Syntelia histeroides'		                   10213-11210111011121101001----011130010110-1301120011122110-010001100
+	'Cretohister sinensis'		                   00?03-1210???101??01100011----01?03??1102121201001010100000-??20?????
+	'Abraeus sp'		                             10103-110110110002011001000110101001111011110011310101000210100032320
+	'Acritus posternalis'		                    10103-111110101102011011000110101001111011110110010101000210100011320
+	'Plegaderus vulneratus'		                  10103-111040120002010011000110101001111002210010110101000210100032320
+	'Teretrius fabricii'		                     10113-112040120101211011000110111021111021211011100101000010100020111
+	'Teretrius melburnius'		                   10103-11204012010121101100011010102111102101001120010100020-100020111
+	'Trypolister sp'		                         10113-111140100101211011000110101021111021111011200101000110100020111
+	'Acritomorphus silvestris'		               101111111111111102011011000110101001111021011010110101000110100032320
+	'Trypaneus ensifer'		                      10113-1110401011022110011001101110011011111120102000010001101001?????
+	'Pygocoelis africanus'		                   00113-11104010010221101110011011100110102121201020000100010-100132010
+	'Dendrophilus pygmaeus'		                  10203-112010110101011001000110101001111021010011111101221010100021110
+	'Anapleus sp'		                            10103-111010120102011001000110101001111021010010010101021110100011110
+	'Australanius ambilicatus'		               00103-121010101101011011000110101001311011010011011101221221100000010
+	'Bacanius suturalis'		                     00103-112110101101011001000110101001311021010011110101011221100001110
+	'Promyrmister kistneri'		                  021?002??10???????0110010010?1111021?11011010001011101221221??1??????
+	'Yarmister sp'		                           121100211000120102011001000011111011111021211001200101121020101032321
+	'Satrapes sartorii'		                      121000211100110111011011000011111021111021010001311101122221101110110
+	'Pachylomalus mus'		                       11103-121010120111011011001110111011311021011011210101001110100011320
+	'Paromalus flavicornis'		                  10103-111010111101011011001110111011111021210010110101001110100000210
+	'Eulomalus honoratus'		                    12103-121010111111011011001111111011311001210011110101001210100000210
+	'Saprinus splendens Saprininae'		          11112-111040110101011001000110111001111021111011210101121110100010110
+	'Philothis arabicus'		                     12112-111040110102011001000110111001111021111011110101101110100010110
+	'Tribalus scaphidiiformis'		               001000111010110112011001000011101001111021211011110101102111100010321
+	'Halacritus lividus'		                     10103-111130101102011011000110101001111011110110110101000211100011321
+	'Epierus sp'		                             001000111040110112011011000011111001111021211011110101222110100011011
+	'Onthophilus striatus'		                   101000112020110102001001000011101021111020-1001011010122110-100032110
+	'Epiechinus costatus'		                    101000112040100102001001001011101021111021210010210101221210100032110
+	'Peploglyptus golbachi'		                  121000111020100103001001000011101021111021010010110101122110100??????
+	'Pheidoliphila arriagadai'		               111000222112102103201001000011101021311121011011321100000211102011110
+	'Chlamydopsis sp'		                        11100022110210210320100100001111102111102101001132110000020-102011110
+	'Arbolister sp'		                          111000112000110111211011001001111001111021211011200101202010101011111
+	'Asterix affinis'		                        111000121000110111011011001001101011111001211012210101121110101011111
+	'Pelorurus sp'		                           001100111000110111011011001001111021111021011011110101121020101032310
+	'Nasaltus chinensis'		                     111111111201111111011211001001111001111021011011200101201010101032111
+	'Hister cruentus'		                        111112111001110111011211001001111001111021011011200101221110100032111
+	'Hololepta lissopyga'		                    101012112002110111011011000011111011111021211012200101101110101032110
+	'Platylister dahdah'		                     111100111000110111011111001001111001111011211012200101202120100010010
+	'Platysoma bipunctatum'		                  111100111000110111011111001001111011111001211012200101202120100010010
+	'Platysoma paugami'		                      111101111000110111011111001001111011111022211012200101202020102011110
+	'Omalodes sp'		                            121000111100110111011101001001101011111021010011200101102210100011110
+	'Niponius sp india'		                      10103-1120?1110101211011002211101011111021212011200101001110100000210
+	'Niponius sp australia'		                  10103-1110?1110101211011002211101011111111212011200101001110100000210
+	'Pantostictus burmanicus'		                101012012140120002011011000110101001311000-1001001010100020-??0??????
+	'Antigracilus costatus'		                  0?103-0110?0?111??00100101---011?00??11020-12?10????01200011??0??????
+	'Cretonthophilus tuberculatus'		           011000111110?11??10010010011101010211110212100100101011211?-?????????
+	'Amplectister tenax'		                     11?02-111100??????011011000110101021111021210010110101221210??0??????
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+              [Taxon comments]
+        	TEXT TAXON=43 TEXT='India ';
+	TEXT TAXON=44 TEXT='Australia';
+
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 69;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1577617265492; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 7453833235139311924; tell It; setDefaultOrder 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 47 45 46 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44; attachments ; endTell; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 4212557646428814497; mqVersion 360; checksumv 0 3 2970749664 null getNumChars 69 numChars 69 getNumTaxa 48 numTaxa 48 short true bits 31 states 31 sumSquaresStatesOnly 18883.0 sumSquares 18883.0 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState false true 43; setPopoutState 300; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 961; setLocation -8 32; setFont SanSerif; setFontSize 24; getToolPalette; tell It; endTell; desuppress; endTell; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord; tell It; showDataWindow #4212557646428814497 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; getTable; tell It; rowNamesWidth 470; endTell; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 889; setLocation -8 32; setFont SanSerif; setFontSize 24; getToolPalette; tell It; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; endTell; setActive; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.ibeam; colorCells #mesquite.charMatrices.NoColor.NoColor; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames on; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames on; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; togglePaleMissing off; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 80; toggleLinkedScrolling on; toggleScrollLinkedTables off; endTell; showWindow; getWindow; tell It; forceAutosize; endTell; getEmployee #mesquite.charMatrices.AlterData.AlterData; tell It; toggleBySubmenus off; endTell; getEmployee #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; getEmployee #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel off; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; showCharacters #4212557646428814497 #mesquite.lists.CharacterList.CharacterList; tell It; setData 0; getWindow; tell It; useTargetValue off; setTargetValue ; newAssistant #mesquite.lists.DefaultCharOrder.DefaultCharOrder; newAssistant #mesquite.lists.CharListInclusion.CharListInclusion; newAssistant #mesquite.lists.CharListPartition.CharListPartition; newAssistant #mesquite.parsimony.CharListParsModels.CharListParsModels; getTable; tell It; columnWidth 1 109; endTell; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1920 889; setLocation -8 32; setFont SanSerif; setFontSize 24; getToolPalette; tell It; endTell; endTell; showWindow; getEmployee #mesquite.lists.CharListAnnotPanel.CharListAnnotPanel; tell It; togglePanel off; endTell; endTell; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1- 69; 
+ENDBLOCK;

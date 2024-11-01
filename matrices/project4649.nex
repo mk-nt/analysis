@@ -1,0 +1,912 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-16 07.54.16 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=82;
+    TAXLABELS
+    		'Diogmites'
+		'Thereva'
+		'Hilarimorpha'
+		'Caenotus'
+		'Hormopeza'
+		'Ragas'
+		'Zanclotus'
+		'Oreogeton'
+		'Iteaphila'
+		'Homalocnemis'
+		'Brochella'
+		'Hesperempis'
+		'Philetus'
+		'Clinocera'
+		'Afroclinocera'
+		'Chelipodozus'
+		'Chelifera'
+		'Edenophorus'
+		'Empidadelpha'
+		'Sphicosa'
+		'Empis'
+		'Hilara'
+		'Hilarempis'
+		'Nemedina'
+		'Acarteroptera'
+		'Meghyperus'
+		'Atelestus'
+		'Trichinomyia'
+		'Trichina'
+		'Neotrichina'
+		'Ocydromia'
+		'Oedalea'
+		'Symphallophthalmus'
+		'Platypalpus'
+		'Austrodromia'
+		'Bicellaria'
+		'Acarterus'
+		'Stenoproctus'
+		'Hybos'
+		'Heterophlebus'
+		'Sabroskeyella'
+		'Niphogenia'
+		'Anomalempis'
+		'Brachystoma'
+		'Glyphidopeza'
+		'Ceratomerus'
+		'Microphor'
+		'Schistostoma'
+		'Parathalassius'
+		'Microphorella'
+		'Amphithalassius'
+		'Heteropsilopus'
+		'Dolichopus'
+		'Sympycnus'
+		'Opetia'
+		'Microsania'
+		'Agathomyia'
+		'Lonchoptera'
+		'Sciadocera'
+		'Syrphus'
+		'Strobilomyia'
+		'ALAVESIA'
+		'APALOCNEMIS'
+		'ARCHICHRYSOTUS'
+		'ATELESTITES'
+		'AVENAPHORA'
+		'CRETODROMIA'
+		'CRETOMICROPHORUS'
+		'CRETOPLATYPALPUS'
+		'ELECTROPHORELLA'
+		'EMPLITA'
+		'MESOPLATYPALPUS'
+		'MICROPHORITES'
+		'NEMEDROMIA'
+		'NEOTURONIUS'
+		'PHAETEMPIS'
+		'POUILLONHYBOS'
+		'PRISTINMICROPHOR'
+		'PROLATOMYIA'
+		'TRICHINITES'
+		'TURONEMPIS'
+		'ELECTROCHOREUTES'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=127;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="0123456";
+	CHARLABELS
+		 [1] 'Male eye'
+		 [2] 'Eye pubescence'
+		 [3] 'Female eye'
+		 [4] 'eye with inner notch into facets'
+		 [5] 'Face'
+		 [6] 'Scape'
+		 [7] 'Scape length'
+		 [8] 'Conus'
+		 [9] 'Apical mechanoreceptor'
+		 [10] 'Segments'
+		 [11] 'Style position'
+		 [12] 'Arista form'
+		 [13] 'Torma fusion'
+		 [14] 'Torma'
+		 [15] 'Female labrum'
+		 [16] 'Apex of labrum'
+		 [17] 'Blades'
+		 [18] 'Apex of epipharynx'
+		 [19] 'Carina'
+		 [20] 'Stipes'
+		 [21] 'Lacinia'
+		 [22] 'Palp segments'
+		 [23] 'Palp orientation'
+		 [24] 'Palp length'
+		 [25] 'Palpifer'
+		 [26] 'Labellum'
+		 [27] 'Pseudotrachea'
+		 [28] 'Pseudotr.form'
+		 [29] 'Ventrocervical sclerite'
+		 [30] 'Presternum'
+		 [31] 'Prosternum'
+		 [32] 'Pocket'
+		 [33] 'Interseg. ridge'
+		 [34] 'Metepisternum'
+		 [35] 'Lower arm'
+		 [36] 'Upper arm'
+		 [37] 'Furca'
+		 [38] 'Laterotergite'
+		 [39] 'Scutal vestiture'
+		 [40] 'Acro'
+		 [41] 'Postalar'
+		 [42] 'Preapical bristle'
+		 [43] 'Foreleg'
+		 [44] 'Foreleg vestiture'
+		 [45] 'Foreleg gap'
+		 [46] 'Fore comb'
+		 [47] 'Hind comb'
+		 [48] 'Gland'
+		 [49] 'Fore basitarsus'
+		 [50] 'Wing bristle'
+		 [51] 'Costa'
+		 [52] 'Sc'
+		 [53] 'Costal spines'
+		 [54] 'Stigma'
+		 [55] 'R1'
+		 [56] 'Rs'
+		 [57] 'R4+5'
+		 [58] 'M1'
+		 [59] 'M2'
+		 [60] 'Cell dm'
+		 [61] 'Cell cup'
+		 [62] 'CuA shape'
+		 [63] 'Basal cells'
+		 [64] 'Bm-cu crossvein'
+		 [65] 'A1'
+		 [66] 'Anal lobe'
+		 [67] 'Alula'
+		 [68] 'Plaques'
+		 [69] 'Apical female segments'
+		 [70] 'T7 female'
+		 [71] 'T7 male'
+		 [72] 'T8 male'
+		 [73] 'Pregenital male'
+		 [74] 'Rectal papillae'
+		 [75] 'Spiracles'
+		 [76] 'Spermathecae'
+		 [77] 'Sperma.pigmentation'
+		 [78] 'Sperma.form'
+		 [79] 'T8 apodeme'
+		 [80] 'T8 form'
+		 [81] '8th segment'
+		 [82] 'T9'
+		 [83] 'Acantho.spines'
+		 [84] '10th segment'
+		 [85] 'T10'
+		 [86] 'Cercus form'
+		 [87] 'Cercus vestiture'
+		 [88] 'Cercus orientation'
+		 [89] 'Hypopyg. symmetry'
+		 [90] 'Rotation'
+		 [91] 'Hypd form'
+		 [92] 'Hypd+epand'
+		 [93] 'Hypd+phallus'
+		 [94] 'Hypd+gcx'
+		 [95] 'Gcx apodeme'
+		 [96] 'Gcx apod length'
+		 [97] 'Phallapodeme'
+		 [98] 'Ventral apodeme'
+		 [99] 'Gst'
+		 [100] 'Pgt'
+		 [101] 'Pgt fusion'
+		 [102] 'Lat. ejac. proc.'
+		 [103] 'Ej. apod.'
+		 [104] 'Phallic shape'
+		 [105] 'Phallus'
+		 [106] 'Epand'
+		 [107] 'Foramen'
+		 [108] 'Subepand. scl'
+		 [109] 'Bac. scl'
+		 [110] 'Surstylus'
+		 [111] 'Sur position'
+		 [112] 'Proctiger'
+		 [113] 'Cerc. articulation'
+		 [114] 'Cerc. sclerotization'
+		 [115] 'Cerc. position'
+		 [116] 'mandible'
+		 [117] 'maxilla'
+		 [118] 'cephaloskeleton'
+		 [119] 'atrium'
+		 [120] 'pharyngeal ridges'
+		 [121] 'hypopharynx'
+		 [122] 'puparium'
+		 [123] 'pupal resp. organ'
+		 [124] 'Rs - 2'
+		 [125] 'cell r-m'
+		 [126] 'Veins R and M'
+		 [127] 'vein r-m'
+	;
+	STATELABELS
+		1
+		'holoptic'
+		'dichoptic'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'dichoptic'
+		'holoptic'
+		,
+		4
+		'absent'
+		'present'
+		,
+		5
+		'concave'
+		'flat'
+		,
+		6
+		'setose'
+		'bare'
+		,
+		7
+		'short'
+		'long'
+		,
+		8
+		'absent'
+		'lateral'
+		'medial'
+		,
+		9
+		'present'
+		'absent'
+		'bristle-like'
+		,
+		10
+		'zero'
+		'one'
+		'two'
+		'three'
+		'more than 3'
+		,
+		11
+		'apical'
+		'dorsal'
+		,
+		12
+		'tapered'
+		'cylindrical'
+		,
+		13
+		'oblique'
+		'perpendicular'
+		,
+		14
+		'articulated'
+		'displaced'
+		,
+		15
+		'flat'
+		'recurved'
+		,
+		16
+		'pointed'
+		'truncated'
+		,
+		17
+		'absent'
+		'present'
+		'stout'
+		'fused'
+		,
+		18
+		'flat'
+		'brush'
+		,
+		19
+		'absent'
+		'present'
+		'prolonged'
+		,
+		20
+		'separate'
+		'connected'
+		,
+		21
+		'present'
+		'absent'
+		,
+		22
+		'two'
+		'one'
+		,
+		23
+		'curved'
+		'straight'
+		'strongly curved'
+		,
+		24
+		'long'
+		'short'
+		,
+		25
+		'absent'
+		'present'
+		,
+		26
+		'oblique'
+		'horizontal'
+		,
+		27
+		'more than six'
+		'six or less'
+		'absent'
+		,
+		28
+		'normal'
+		'geminate'
+		'lines'
+		,
+		29
+		'absent'
+		'present'
+		,
+		30
+		'narrow'
+		'expanded'
+		,
+		31
+		'free'
+		'fused'
+		,
+		32
+		'absent'
+		'present'
+		,
+		33
+		'absent'
+		'present'
+		,
+		34
+		'broad'
+		'narrowed ventrally'
+		'divided'
+		'widely separated'
+		,
+		35
+		'absent'
+		'present'
+		,
+		36
+		'absent'
+		'present'
+		,
+		37
+		'anterior'
+		'posterior'
+		'straight'
+		,
+		38
+		'bare'
+		'setose'
+		,
+		39
+		'undefined'
+		'defined'
+		,
+		40
+		'biserial'
+		'uniserial'
+		'absent'
+		'scattered'
+		,
+		41
+		'absent'
+		'present'
+		,
+		42
+		'absent'
+		'present'
+		,
+		43
+		'slender'
+		'raptorial'
+		,
+		44
+		'undefined'
+		'stout row(s)'
+		,
+		45
+		'less than twice mid coxa'
+		'more than twice mid coxa'
+		,
+		46
+		'absent'
+		'present'
+		,
+		47
+		'absent'
+		'present'
+		,
+		48
+		'absent'
+		'present'
+		,
+		49
+		'slender'
+		'swollen'
+		,
+		50
+		'absent'
+		'present'
+		,
+		51
+		'circumambient'
+		'R5'
+		'M1'
+		'R1'
+		,
+		52
+		'complete'
+		'incomplete'
+		'short'
+		'fused'
+		,
+		53
+		'absent'
+		'erect'
+		'single'
+		'biserial'
+		'triserial'
+		,
+		54
+		'present'
+		'absent'
+		,
+		55
+		'slender'
+		'swollen'
+		,
+		56
+		'distant'
+		'near'
+		,
+		57
+		'branched'
+		'unbranched'
+		,
+		58
+		'present'
+		'absent'
+		,
+		59
+		'present'
+		'absent'
+		,
+		60
+		'present'
+		'absent'
+		,
+		61
+		'long'
+		'short'
+		'absent'
+		,
+		62
+		'straight'
+		'truncate'
+		'recurved'
+		'convex'
+		'absent'
+		,
+		63
+		'large'
+		'shortened'
+		'only bm short'
+		,
+		64
+		'complete'
+		'incomplete'
+		'absent'
+		,
+		65
+		'complete'
+		'short'
+		'absent'
+		,
+		66
+		'broad'
+		'reduced'
+		'absent'
+		,
+		67
+		'present'
+		'reduced'
+		'absent'
+		,
+		68
+		'present'
+		'absent'
+		,
+		69
+		'slender'
+		'retracted into 7'
+		'retracted into 6'
+		'retracted within 5'
+		'retracted within 4'
+		'telescoping'
+		,
+		70
+		'no fringe'
+		'fringe'
+		,
+		71
+		'setose'
+		'bare or very sparse'
+		,
+		72
+		'broad'
+		'narrow'
+		'absent'
+		'U-shaped'
+		,
+		73
+		'normal'
+		'tubular'
+		'S7 lateral or absent'
+		'inversion'
+		,
+		74
+		'membranous'
+		'sclerotized'
+		,
+		75
+		'present'
+		'segments 1-5'
+		'segments 1-4'
+		,
+		76
+		'three'
+		'two'
+		'one'
+		,
+		77
+		'dark'
+		'unpigmented'
+		,
+		78
+		'spherical'
+		'tubular'
+		'coiled'
+		'elongate'
+		'sac'
+		,
+		79
+		'absent'
+		'present'
+		,
+		80
+		'broad'
+		'desclerotized'
+		'divided'
+		,
+		81
+		'divided'
+		'fused or articulated'
+		,
+		82
+		'present'
+		'absent'
+		,
+		83
+		'present'
+		'slender'
+		'setose'
+		'bare'
+		,
+		84
+		'separate'
+		'articulated'
+		'fused'
+		,
+		85
+		'divided'
+		'complete'
+		'absent'
+		'fused'
+		,
+		86
+		'normal'
+		'stout'
+		'absent'
+		,
+		87
+		'setulae'
+		'spinous'
+		'pointed'
+		'long bristles'
+		,
+		88
+		'horizontal'
+		'upright'
+		,
+		89
+		'symmetrical'
+		'asymmetrical'
+		,
+		90
+		'unrotated'
+		'45-90'
+		'90-180'
+		'360'
+		,
+		91
+		'rectangular'
+		'prolonged'
+		'bilobed'
+		'short'
+		,
+		92
+		'separate'
+		'broadly fused'
+		,
+		93
+		'separate'
+		'fused'
+		,
+		94
+		'separate'
+		'fused'
+		,
+		95
+		'present'
+		'reduced'
+		,
+		96
+		'short'
+		'very long'
+		,
+		97
+		'absent'
+		'present'
+		'articulated'
+		,
+		98
+		'absent'
+		'paired'
+		'single'
+		,
+		99
+		'present'
+		'absent'
+		,
+		100
+		'absent'
+		'near phallus'
+		'erect'
+		'articulated'
+		'projecting to proctiger'
+		,
+		101
+		'free'
+		'right fused'
+		,
+		102
+		'present'
+		'absent'
+		'retracted'
+		,
+		103
+		'piston'
+		'lever'
+		'fused-rod'
+		'fused-plate'
+		'separate'
+		'absent'
+		,
+		104
+		'straight'
+		'curved upwards'
+		,
+		105
+		'tubular'
+		'biarticulated'
+		'hood'
+		'membranous apex'
+		'tripartite apex'
+		'apical filament'
+		,
+		106
+		'broad'
+		'cleft'
+		'U-shaped'
+		'widely separate'
+		,
+		107
+		'absent'
+		'present'
+		,
+		108
+		'membranous'
+		'sclerotized'
+		,
+		109
+		'absent'
+		'present'
+		'fused to hypd'
+		,
+		110
+		'absent'
+		'present'
+		,
+		111
+		'apical'
+		'subapical'
+		,
+		112
+		'simple'
+		'complex'
+		,
+		113
+		'membranous'
+		'articulated'
+		'fused'
+		,
+		114
+		'weakly'
+		'stout'
+		'cl cerc'
+		,
+		115
+		'subapical'
+		'dorsal'
+		'anterior'
+		,
+		116
+		'two components'
+		'one component'
+		'four-six components'
+		,
+		117
+		'sclerotized'
+		'membranous'
+		,
+		118
+		'absent'
+		'present'
+		,
+		119
+		'absent'
+		'present'
+		,
+		120
+		'absent'
+		'present'
+		,
+		121
+		'rectangular'
+		'V-shaped'
+		,
+		122
+		'absent'
+		'present'
+		,
+		123
+		'non-projecting'
+		'projecting'
+		,
+		124
+		'not incorporated as apex of cell br'
+		'short and straight incorporated as apex of cell br'
+		,
+		125
+		'not curved'
+		'curved'
+		,
+		126
+		'distant'
+		'approximated'
+		,
+		127
+		'distal'
+		'basal'
+		
+	;
+	MATRIX
+	'Diogmites'		                   10001000000-000000000000002-000000000110110000000000310000000000000000000000000000000000000000000000-000010000-0000000000000000
+	'Thereva'		                     0000101002000000000001000000001000000000100000000000300000000000000000000000100000000000000000000000-200000000-0000000000000000
+	'Hilarimorpha'		                0001000001000000000001000000000000000000000000000000000000010000001000000000030001301000000001000000-100000000-0000????????0000
+	'Caenotus'		                    000000000200000000000100002-000000000000000000000000000000000000000000000001000000000000000000000000-100010000-0000????????0000
+	'Hormopeza'		                   00010100020100111110010000000000010000101000011001000000000011000020000000020000013010000000010000110110320110-0000????????0001
+	'Ragas'		                       0001110002010011111001100010000101000010100001100000000000001100102000010002000001301000000001000013011032011110000????????0001
+	'Zanclotus'		                   110110001200001111000110002-000101000010100001100000000000001200112000010002000001302000000001000013011032011100000????????0001
+	'Oreogeton'		                   00010000020000011010010000001001030001101000011001000000000012000010000000020000013000000000010000110110020110-0000210001000001
+	'Iteaphila'		                   00010000010100010000011000000000030000101000011000000000000012000020000000020000013030000000010000110111020110-0000????????0001
+	'Homalocnemis'		                00110000020100000000010000000010010000100000011000000000000003000010000000020000013000000000110000110110020110-0000????????0001
+	'Brochella'		                   1001100000--000100000110001000110300011210000110000000000000120011200001000???0001301000000011000010-15002011100000????????0001
+	'Hesperempis'		                 1001100002010001300001100000001003000110000000100000000000001100112020000002000001300000000001100010-11002011110012????????0001
+	'Philetus'		                    10011000020000001010011000001001030000111000011001000000000012001020000000021400013000000000010000110110020110-1010????????0001
+	'Clinocera'		                   110110001200000030001110012-101103000110100001100100100000001200122000010002010001300000000001100010-14002011100022210001000001
+	'Afroclinocera'		               1101100022000000101001100100001103000111100001100100110000001200112000010002000001301000000001100011011003011100000????????0001
+	'Chelipodozus'		                10011000110000001010011000000011030000121011111001010000000012001220000100020000013010000000010000110111030110-1012????????0001
+	'Chelifera'		                   10011000000-000010100110002-0010030000101011111000010000000011001220000000020000013000000000010000110111030110-1011210001000001
+	'Edenophorus'		                 10011000020000001010011000000011?3???0101000001001110000100012001120000200020000013010000000010000110111030110-1001????????0001
+	'Empidadelpha'		                10011000020000001010012000000011030001101100011001110000000012001110000000020000013010000000010000110111030110-1000????????0001
+	'Sphicosa'		                    00010000020000001011012000100011030001101000011001110000000012001010000000020000013010000000010000120111030110-1002????????0001
+	'Empis'		                       0001101002000000101001200000001103000110100000100111000000001200001000000002000001301000000001000010-111030110-1011210001000001
+	'Hilara'		                      10011000020000001010012000000011030000101000011011000010000012000020000100020000013010000000010000120111030110-1002210001000001
+	'Hilarempis'		                  10011000020000001010012000000011030000101000011011010010000012000020000100020000013010000000011000120111030110-1002210001000001
+	'Nemedina'		                    00011100120000000000011000000000020020101000011000210000101111-0001000010002000001302000003001010010-11052011101000????????1111
+	'Acarteroptera'		               0001010003000001000001100010000001000010100000100121000010101300000000030002000001302000003001010111011002011110000????????0001
+	'Meghyperus'		                  0001010003000001000001100000000001000010100000100121000010000300000000030002000001302000003001010111011002011110000????????0001
+	'Atelestus'		                   00010100020000000000011000000000010000101000011001210000101103-0000000030002000001302000003001010010-12042011110000????????0001
+	'Trichinomyia'		                000111002200000010101111100000000300201010000111012100001000110000100000000???0001300000010001100010-12022011100000????????0001
+	'Trichina'		                    0001110022000000101011111000000003002010100001110121000010001100001000000002110001300000112001100010-12022011100000????????0001
+	'Neotrichina'		                 000111002200000010101111100000000300200010000111012100001000110000200000000???0001300000110001100010-12012011100000????????0001
+	'Ocydromia'		                   000111002110000010101111100000000300201010000111001100001100110000200000000???0001303000110001100010-12012011100000210001000001
+	'Oedalea'		                     0001110022000000101011101000000003002000100001110121000010001100001000010002110001303000112001100211112022011100000????????0001
+	'Symphallophthalmus'		          000111001200000010101111102-0000030020101000011101210100101111-0012000010002110001300000110001100211111002011100000????????0001
+	'Platypalpus'		                 100111002200000010101111102-0010030000101000011101210110101111-0112000010002140001300000110001100211111002011100000210001000001
+	'Austrodromia'		                110111002200000010101111102-0000030020101000001101210100101124-001200001000???0001302000110001100211111002011100000????????0001
+	'Bicellaria'		                  0011110002000000101011111000000003002010100001110111000010011100002000000002110001300000112001100211012022011100000????????0001
+	'Acarterus'		                   0011110022000100101011101000000003002010100001110021000010101200002000010002110001300000112001100211012022011100000????????0001
+	'Stenoproctus'		                001111002200010010101110100000000300201010000111002100001010110000200001000???0001300000112001100211012022011100000????????0001
+	'Hybos'		                       001111002200010010101110102-000003002010110001110021000010100200002000000002110001300000112001100011012022011100000????????0001
+	'Heterophlebus'		               0001100002000000101001100000001103000110100001100110100000001200001011000002011111000121000001000011013002011100000????????0001
+	'Sabroskeyella'		               1101100010000000101001100000001103000011100001100101000000001200112011010002001111000121100101100010-13002011100002????????0001
+	'Niphogenia'		                  1001101001000000101011100000000103000111100001100100000000001200112011010002011101001121000001000011013002011100000????????0001
+	'Anomalempis'		                 0001100002000000101101100000001001000010110001100000000010000200102011000002020111021121000001000011013002011100100????????0001
+	'Brachystoma'		                 10011000020000001011011000000010030000101000011000000000000002001120110100020201110211210001010000110130020110-0110????????0001
+	'Glyphidopeza'		                10011011220000001010111000000011030000111000011001001100000012101220100100020001110012--000001100011013003011100000????????0001
+	'Ceratomerus'		                 100110112200000010100110002-001103000010100001100100000000001400222011010002000101000121000001000011013003011100000????????0001
+	'Microphor'		                   0001110012000100300001100000100003102010100001100100200110001210102030101002000211110000120001100011011002012100000????????0001
+	'Schistostoma'		                0001110012000100101001100000100003102010100001100100200110001210102020101002000211010000121001100011011002012100000????????0001
+	'Parathalassius'		              1101110011001100101011110011111013111010100001100100210110001111112030121002110211010000120001100011011103012100000????????0001
+	'Microphorella'		               1101110011001100101011110011111013111010100001100100210110001211112030121002110211010000120001100011011103012100000????????0001
+	'Amphithalassius'		             1100110011001100101011110011110013111011100001100100210110001111102020111002110001100000120001100011011103012100010????????0001
+	'Heteropsilopus'		              1100110012101100202011110112111013111010100001100022310110001211110030021112110211010000121101100014011102112100000210001000001
+	'Dolichopus'		                  1100100212101100202011110111111013111010110001100123310110001212112030121112110211010000121101100014011102112100000210001000001
+	'Sympycnus'		                   1101110012101100202011110111111013111012110001100123310110101212112030122112110211010000121101100011011102112100000????????0001
+	'Opetia'		                      00010000120001000000?100000010000000000010000000000030011001101100014002302214000130?000030001100011014002011100000????????0001
+	'Microsania'		                  00010000130001000000010000000000000000111000000001303001100110-0000100013000000001301000030001101013014102011100000????????0001
+	'Agathomyia'		                  0001000013000100000001000000000100000011100000000020300111000011100100013000000001301000030001101013-15002011100000111111100001
+	'Lonchoptera'		                 10001002130000000000010000000000100000121100011001004101100110100121000230011300013010000300011020130140020110-0000111111110001
+	'Sciadocera'		                  10001102131001000000110000001001110000111100011001133101100010-0002120023001110001301000130001101010-14002011100000111111110001
+	'Syrphus'		                     0000100213100100000001000000000010000002000001100010300010000000000130023000000001300000030001102013014002011100000111111110001
+	'Strobilomyia'		                0000100213100100000011000000000010100010110001000020010110101110000130-23000000201301000030001102013014002011100010111111110001
+	'ALAVESIA'		                    100101000300000?0????110?000??0??????010100001100121010010001300001?00010???000001302000003001010111012002011100001????????0001
+	'APALOCNEMIS'		                 0001110??200000?0????110?0???????????010?00001100001?00000001200201?11?1??????????00?101000001?0001101300201110???1????????0001
+	'ARCHICHRYSOTUS'		              ?000?10??100??????????????????????????10??000???0110?10110101211112?3?????????????0????????????????????????????????????????0001
+	'ATELESTITES'		                 00?0?????200??????????????????????????03??000???0?21?00010000300002?????????????????????00300??????????042?????????????????0001
+	'AVENAPHORA'		                  1000110??200??????????????????????????10??000???0?11?101100111-0102?????????????????????12?????????????????????????????????0001
+	'CRETODROMIA'		                 00?1110??210??????????????????????????03??000???0?21?100101124--212?????????????????????00300?????1????052?????????????????1111
+	'CRETOMICROPHORUS'		            ?0???10??100??????????????????????????10??000???0?11?10110001211112????????????????????????????????????????????????????????0001
+	'CRETOPLATYPALPUS'		            1001?10??200?????????110??????0???????02??000???0121??00101111-0002??????????????????????1???????????????2?????????????????0001
+	'ELECTROPHORELLA'		             1100110??100??0??????111?0????????????1010000??00101?101100012111100301??????????10100001200?????????????3?????????????????0001
+	'EMPLITA'		                     ?000110?0200?????????110??????????????12??000???0?11?10000001210200???????????????3??0?????????????????????????????????????0001
+	'MESOPLATYPALPUS'		             ?000?10??200?????????????0????????????1?1?000??10?11?100101124-0212????????????????????????????????????????????????????????0001
+	'MICROPHORITES'		               1000110?1200??00?0???11100????1??????01010000?100110210110001110110?30101?????????3??0001200???????????????????????????????0001
+	'NEMEDROMIA'		                  0000?10??200?????????110?0????????????03??000???0?21?100101113--012?50????????????3??000???????????????????????????????????1111
+	'NEOTURONIUS'		                 1001110??200?????????110??????????????10??000???0?21?100101101-0002?????0???????????????10200?????1????002?????????????????1111
+	'PHAETEMPIS'		                  0000010??200??????????11??????????????10??000???0?21?100101101-0102???????????????3??00000300??????????052?????????????????1111
+	'POUILLONHYBOS'		               ?1??110?2200?????????????0???????????0????000??10020010010001100012?????????????????????11?????????????002???10????????????0001
+	'PRISTINMICROPHOR'		            1010110??200?????????110??????????????10??000???0110200110101310112?2?????????????0????????????????????????????????????????0001
+	'PROLATOMYIA'		                 ??0??10??200??????????11??????????????????000???0?21?100101114--022?50????????????3????????????????????????????????????????1111
+	'TRICHINITES'		                 ??0??????200??????????????????????????10??000??00?21??0010000100000?5?????????????3??000???????????????????????????????????0001
+	'TURONEMPIS'		                  ?????????300??????????10??????????????10??000???0111?00000001200102????????????????????????????????????????????????????????0001
+	'ELECTROCHOREUTES'		            100111001200??0010???1100000??1??1???01111000??001100101100002000000201?1?????????3??00000??????????????????????010????????0000
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 127;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1684875800861; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 8879008119571913238; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 7597204824016404752; mqVersion 360; checksumv 0 3 3954932484 null getNumChars 127 numChars 127 getNumTaxa 82 numTaxa 82 short true bits 63 states 63 sumSquaresStatesOnly 48969.0 sumSquares 48969.0 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState false false 100; setPopoutState 300; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 1247 776; setLocation 8 25; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; desuppress; endTell; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord; tell It; showDataWindow #7597204824016404752 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 1147 704; setLocation 8 25; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; setActive; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow; colorCells #mesquite.charMatrices.NoColor.NoColor; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames on; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames on; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; togglePaleMissing off; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 80; toggleLinkedScrolling on; toggleScrollLinkedTables off; endTell; showWindow; getWindow; tell It; forceAutosize; endTell; getEmployee #mesquite.charMatrices.AlterData.AlterData; tell It; toggleBySubmenus off; endTell; getEmployee #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; getEmployee #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel off; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1- 127; 
+ENDBLOCK;

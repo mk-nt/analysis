@@ -1,0 +1,526 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-12 11.05.06 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=45;
+    TAXLABELS
+    		'Osmundastrum cinnamomeum'
+		'Angiopteris evecta'
+		'Angiopteris angustifolia'
+		'Christensenia aesculifolia'
+		'Danaea sellowiana'
+		'Eupodium kaulfussii'
+		'Ptisana novoguineensis'
+		'Marattia cicutifolia'
+		'Marattia laxa'
+		'Marattiopsis aganzhenensis'
+		'Marattiopsis asiatica'
+		'Marattiopsis anglica'
+		'Marattiopsis vodrazkae'
+		'Marattiopsis patagonica'
+		'Angiopteris blackii'
+		'Qasimia schyfsmae'
+		'Qasimia lanceolata'
+		'Scolecopteris minor'
+		'Scolecopteris majopsis'
+		'Scolecopteris illinoensis'
+		'Acaulangium bulbaceum'
+		'Scolecopteris latifolia'
+		'Scolecopteris mamayi'
+		'Scolecopteris antarctica'
+		'Scolecopteris globiforma'
+		'Scolecopteris calicifolia'
+		'Scolecopteris gnoma'
+		'Eoangiopteris goodii'
+		'Eoangiopteris andrewsii'
+		'Acitheca polymorpha'
+		'Acitheca adaensis'
+		'Millaya tularosana'
+		'Danaeites rigida'
+		'Radstockia kidstonii'
+		'Sydneia manleyi'
+		'Zhutheca densata'
+		'Taiyuanitheca tetralinea'
+		'Grandeuryella renaultii'
+		'Araiangium pygmaeum'
+		'Buritiranopteris costata'
+		'Danaeopsis fecunda'
+		'Danaeopsis marantacea'
+		'Marantoidea acara'
+		'Pectinangium lanceolatum'
+		'Gemellitheca saudica'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=77;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="012345";
+	CHARLABELS
+		 [1] 'root pith sclerified'
+		 [2] 'continuous band of sclerenchymatous fibers in cortex of root'
+		 [3] 'root hairs'
+		 [4] 'root hair structure'
+		 [5] 'root anatomy'
+		 [6] 'outer root cortex'
+		 [7] 'root mantle'
+		 [8] 'stem symmetry'
+		 [9] 'stem shape'
+		 [10] 'Stem sclerenchyma'
+		 [11] 'mature shoot stele type'
+		 [12] 'vascular stele cycles'
+		 [13] 'pneumathodes'
+		 [14] 'petiole stele number'
+		 [15] 'xylem configuration in petiole'
+		 [16] 'Pitting pattern of metaxylem'
+		 [17] 'scales'
+		 [18] 'scale cells'
+		 [19] 'Peltate laminar scales'
+		 [20] 'mucilage canals'
+		 [21] 'fertile-sterile leaf differentiation'
+		 [22] 'fertile fronds'
+		 [23] 'blade dissection'
+		 [24] 'basal pinnae more elaborated'
+		 [25] 'ultimate pinnule size'
+		 [26] 'rachis wings'
+		 [27] 'number of fronds produced at a time'
+		 [28] 'pinnule attachment'
+		 [29] 'pinnule base'
+		 [30] 'pinnule apices'
+		 [31] 'fertile pinnules'
+		 [32] 'reflexed margin completely envelopes the sporangia'
+		 [33] 'Lamina margins of pinnae or pinnules excluding apex'
+		 [34] 'fibrous lamina margin'
+		 [35] 'forking of veins in fertile frond'
+		 [36] 'veins'
+		 [37] 'vein density'
+		 [38] 'false veins'
+		 [39] 'pulvini'
+		 [40] 'soft spines on veins'
+		 [41] 'sutures at pinnule bases'
+		 [42] 'Stipules'
+		 [43] 'stomatal type'
+		 [44] 'stomatal shape'
+		 [45] 'stomatal guard cells'
+		 [46] 'stomatal complex'
+		 [47] 'idioblasts in abaxial epidermis'
+		 [48] 'Laminar idioblast groupings'
+		 [49] 'laminar tissue expanded between sori/sporangia'
+		 [50] 'sporangial gouping'
+		 [51] 'sporangial stalk width'
+		 [52] 'sporangial development'
+		 [53] 'annulus'
+		 [54] 'shape of sporangia'
+		 [55] 'sporangial aperture development'
+		 [56] 'sporangial aperture shape'
+		 [57] 'sporangial tips'
+		 [58] 'sporangial tip length'
+		 [59] 'size of sporangia'
+		 [60] 'sporangia dorsal wall thickness'
+		 [61] 'indument borne on sporangia'
+		 [62] 'paraphyses'
+		 [63] 'sporangial outer wall cells'
+		 [64] 'number of sporangia per synangium'
+		 [65] 'sporangial fusion in synangia'
+		 [66] 'synangial division between valves'
+		 [67] 'position of the synangia'
+		 [68] 'distribution of synangia'
+		 [69] 'symmetry of synangia'
+		 [70] 'receptacle'
+		 [71] 'tracheids in placental tissue'
+		 [72] 'sporangia/synangia'
+		 [73] 'spore output per sporangium'
+		 [74] 'spore morphology'
+		 [75] 'exine ornamentation'
+		 [76] 'spore size'
+		 [77] 'spores chlorophyllous'
+	;
+	STATELABELS
+		1
+		'no'
+		'yes'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'absent'
+		'present'
+		,
+		4
+		'unicellular'
+		'multicellular'
+		,
+		5
+		'diarch'
+		'polyarch'
+		,
+		6
+		'sclerenchymatous'
+		'parenchymatous'
+		,
+		7
+		'absent'
+		'present'
+		,
+		8
+		'radial'
+		'dorsiventral'
+		,
+		9
+		'elongate'
+		'squat'
+		,
+		10
+		'absent'
+		'present'
+		,
+		11
+		'ectophloic siphonostele'
+		'dictyostele'
+		,
+		12
+		'monocyclic'
+		'polycyclic'
+		,
+		13
+		'absent'
+		'scattered all around petiole'
+		,
+		14
+		'monostele'
+		'polystele'
+		,
+		15
+		'horseshoe-shape variation'
+		'polycyclic'
+		,
+		16
+		'multiseriate scalariform'
+		'scalariform'
+		,
+		17
+		'absent'
+		'present'
+		,
+		18
+		'isodiametric'
+		'elongate'
+		,
+		19
+		'with centrally attached stalks'
+		'strongly asymmetrical'
+		,
+		20
+		'absent'
+		'present'
+		,
+		21
+		'monomorphic'
+		'dimorphic'
+		,
+		22
+		'almost without lamina'
+		'with lamina'
+		,
+		23
+		'once pinnate'
+		'twice pinnate'
+		'more than twice pinnate'
+		,
+		24
+		'no'
+		'yes'
+		,
+		25
+		'up to 1.5 cm'
+		'1.5-4 cm'
+		'over 4 cm'
+		,
+		26
+		'absent'
+		'present'
+		,
+		27
+		'multiple'
+		'typically only one'
+		,
+		28
+		'attached to midrib by entire base'
+		'attached to midrib by single point'
+		,
+		29
+		'rounded'
+		'auriculate'
+		'cordate'
+		'acute'
+		,
+		30
+		'rounded'
+		'tapered'
+		,
+		31
+		'not reflexed'
+		'reflexed to protect sori'
+		,
+		32
+		'no'
+		'yes'
+		,
+		33
+		'dentate'
+		'entire'
+		'lobed (multiple ends of bifurcating vein)'
+		'decompound with cuneate segments'
+		'incised'
+		,
+		34
+		'absent'
+		'present'
+		,
+		35
+		'mainly simple'
+		'normally forking near the midrib'
+		'forking in the lamina'
+		'irregular'
+		,
+		36
+		'free'
+		'anastomosing with free included veinlets'
+		'anastomosing without free included veinlets'
+		,
+		37
+		'less than 7 per cm'
+		'9-16 per cm'
+		'over 30 per cm'
+		,
+		38
+		'absent'
+		'present'
+		,
+		39
+		'absent'
+		'present'
+		,
+		40
+		'absent'
+		'present'
+		,
+		41
+		'absent'
+		'present'
+		,
+		42
+		'absent'
+		'present'
+		,
+		43
+		'anomocytic'
+		'cyclocytic'
+		,
+		44
+		'ellipticial'
+		'circular'
+		,
+		45
+		'functional'
+		'permanently open'
+		,
+		46
+		'surficial or slightly sunken'
+		'raised'
+		,
+		47
+		'absent'
+		'present'
+		,
+		48
+		'solitary or small clusters'
+		'dense areas of idioblasts'
+		,
+		49
+		'absent'
+		'present'
+		,
+		50
+		'absent'
+		'present'
+		,
+		51
+		'four to six cell rows wide'
+		'more than six cell rows'
+		,
+		52
+		'eusporangiate'
+		'leptosporangiate'
+		,
+		53
+		'absent'
+		'present'
+		,
+		54
+		'elongate'
+		'ovoid'
+		'obovoid'
+		'globular'
+		,
+		55
+		'apertures develop longitudinally'
+		'apertures develop apically'
+		'apertures develop vertically'
+		,
+		56
+		'slit'
+		'pore'
+		,
+		57
+		'absent'
+		'present'
+		,
+		58
+		'short'
+		'long'
+		,
+		59
+		'less than 1 mm'
+		'over 1 mm'
+		,
+		60
+		'1-2 cells'
+		'3 or more cells'
+		,
+		61
+		'absent'
+		'present'
+		,
+		62
+		'absent'
+		'present'
+		,
+		63
+		'isodiametric, rounded'
+		'elongate, polygonal'
+		,
+		64
+		'<6'
+		'6-11'
+		'11-24'
+		'up to over 30'
+		,
+		65
+		'basally fused'
+		'fused until opening in dehiscence'
+		'fused but opening as two valves'
+		'completely fused'
+		,
+		66
+		'deeply cut'
+		'shallowly cut'
+		,
+		67
+		'near to margin'
+		'between the margin and the midrib'
+		,
+		68
+		'single row'
+		'two or more rows'
+		'scattered'
+		,
+		69
+		'radial'
+		'bilateral'
+		,
+		70
+		'flat or slightly raised'
+		'developed into a stalk'
+		,
+		71
+		'absent'
+		'present'
+		,
+		72
+		'pendant'
+		'lying perpendicular to midvein'
+		,
+		73
+		'a few hundreds'
+		'one thousand or more'
+		,
+		74
+		'monolete'
+		'trilete'
+		'alete'
+		,
+		75
+		'smooth'
+		'granular'
+		'echinate'
+		'echinate perispore on tubercles'
+		,
+		76
+		'>40 micrometer'
+		'<40 micrometer'
+		,
+		77
+		'no'
+		'yes'
+		
+	;
+	MATRIX
+	'Osmundastrum cinnamomeum'		            -?100000010000000--010001000-00-102010000000000-000113200-00001--------001001
+	'Angiopteris evecta'		                  0011110010111111111101102001010-0010111001100111011002000-0101120-00100011110
+	'Angiopteris angustifolia'		            0011110010111111111101102001010-0010111001100111011002000-0101120-00100011110
+	'Christensenia aesculifolia'		          0011110100101111100101002-01010-103110100111110-011001100-0101013-12001010210
+	'Danaea sellowiana'		                   1111110101111111100111002001010-101010100110000-111001110-0000133-1(0,1,2)100010210
+	'Eupodium kaulfussii'		                 0011110010111111111101211111310-001000110110001001100100100100012110111010210
+	'Ptisana novoguineensis'		              0011110010111111111101102101010-000010101110001001100100100101022000100010110
+	'Marattia cicutifolia'		                0011110010111111111101102101010-00101010011000100110010010010?022010111010210
+	'Marattia laxa'		                       0011110010111111111101112101010-002011100110001001100100110101022100100010110
+	'Marattiopsis aganzhenensis'		          ????????????????????011?2??1010-101010?0????????0110010000010??32?0010?00011?
+	'Marattiopsis asiatica'		               ????????????????????011?20?11?0-101011?00???????0110010000010?030-0010?01(0,1)11?
+	'Marattiopsis anglica'		                ????????????????????011?20?10?0-101011?0????????011001000?010?032?0010?0?(0,1)11?
+	'Marattiopsis vodrazkae'		              ????????????????????01??1??1110-001010?0????????0110010010010?11201011?0?011?
+	'Marattiopsis patagonica'		             ????????????????????01??2??1110-001011?0????????0110010010010?03200010?0?????
+	'Angiopteris blackii'		                 ????????????????????011?21?1010-001010?00???????011002000-010?120-0010?01111?
+	'Qasimia schyfsmae'		                   ????????????????????11(1,2)?(1,2)0?(0,1)200-102021?00?(0,1)0?0??011000000-1???13201010?0?021?
+	'Qasimia lanceolata'		                  ?????????????????????1(1,2)?20?1200-10202??00???????011000000-0????3201010?0?010?
+	'Scolecopteris minor'		                 010-11100111?0011??1012?0000-0114000?0000010?0??0110000011011?101-100110?001?
+	'Scolecopteris majopsis'		              010-11100111?001????012?0000-010100000000010?0??0110000010111?101-100100?100?
+	'Scolecopteris illinoensis'		           010-11100111?001???1012?0000-0100000?0000010?0??011000001001??101-100110?001?
+	'Acaulangium bulbaceum'		               010-11100111?001????012?0000-01010000000001?????0110010011010?101-100010?201?
+	'Scolecopteris latifolia'		             010-11100111?001???1112?0000-011410000000010?0??0110000010101?101-100100?101?
+	'Scolecopteris mamayi'		                010-11100111?0011??1112?0000-011410010000010?0??0110000010101?101-100110?001?
+	'Scolecopteris antarctica'		            ????????????????????012?0000-011????????????????011000001?111?101-100110?201?
+	'Scolecopteris globiforma'		            ?????????1??????????012?0000-011?000?0000010?0??011000001?111?101-100100?001?
+	'Scolecopteris calicifolia'		           010-11100111?001???1112?0000-0114100?0000010?0??011000001?10??101-100100?001?
+	'Scolecopteris gnoma'		                 010-11000111?0011??1112?0000-0114000?0000010?0??0110000011001?101-100110?001?
+	'Eoangiopteris goodii'		                ?10-11?00111????????012?0000-010101010000010?0??011000001110??121-101000?100?
+	'Eoangiopteris andrewsii'		             ?10-11?00111????????012?0000-010101010000010?0??011000001000???21-1010000100?
+	'Acitheca polymorpha'		                 ?10-11100111?001????01200000-010102020000010?0??0110000011101??01-1000?0?100?
+	'Acitheca adaensis'		                   ????????????????????012?0000-011401010?00???????01100000111(0,1)1?101-100010?1?0?
+	'Millaya tularosana'		                  ?????????????????????1??0000-00-100010?00???????111000000-1?0?121-101010??10?
+	'Danaeites rigida'		                    ?????????????????????1(1,2)?0??0-00-100010?00???????011000000-100?121-1010?0?111?
+	'Radstockia kidstonii'		                ?????????????????????02?0??(0,1)-?--300000?00???????01100???0-0????21-0010?0?100?
+	'Sydneia manleyi'		                     ????????????????????102?0??(0,1)-?--301000?00??0?0??011000000-0???121-0010?0?(0,1)01?
+	'Zhutheca densata'		                    ?????????????????????12?0??0-00-201020?00???????01100000100????01-110??01001?
+	'Taiyuanitheca tetralinea'		            ????????????????????012?0??0-0101010?0?00???????01100?000-0?0??21-1100?0?????
+	'Grandeuryella renaultii'		             ????????????????????012?0??0-010101010?00???????0110000010000?111-101011?001?
+	'Araiangium pygmaeum'		                 ????????????????1???112?0??0-00-1000?0?00???????0110000010001?101-100000?100?
+	'Buritiranopteris costata'		            ?10-11100110?101?????12?0000-0114010(1,2)00000??????011000000-1?0??01-1000?011?1?
+	'Danaeopsis fecunda'		                  ????????????????????110?20?1010-101210?00???????001000000-0????--------01100?
+	'Danaeopsis marantacea'		               ????????????????????110?20?1000-101210?00???????001000000-0????--------01100?
+	'Marantoidea acara'		                   ????????????????????110?20?(0,1)010-101210?00???????001000000-0????-------?0?????
+	'Pectinangium lanceolatum'		            ????????????????????01(1,2)?20?0-010101010?00???????011000??0-110??0??1010?0?1?0?
+	'Gemellitheca saudica'		                ????????????????1???112?0??0-011101020?00?00?0??011000000-1???101-0010?11(1,2)01?
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 77;
+      ENDBLOCK;
+      

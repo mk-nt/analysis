@@ -1,0 +1,308 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-11 17.00.46 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=38;
+    TAXLABELS
+    		'Aphrodita aculeata'
+		'Palmyra aurifera'
+		'Harmothoe imbricata'
+		'Lepidonotus squamatus'
+		'Ceratonereis longiceratophora'
+		'Ceratocephale loveni'
+		'Nereimyra punctata'
+		'Ophiodromus flexuosus'
+		'Sirsoe methanicola'
+		'Eulalia viridis'
+		'Notophyllum foliosum'
+		'Eteone picta'
+		'Eusyllis blomstrandi'
+		'Pionosyllis enigmatica'
+		'Streptosyllis bidentata'
+		'Syllides fulvus'
+		'Synmerosyllis'
+		'sp_one'
+		'Chrysopetalum debile'
+		'Arichlidon reyssi'
+		'B heterosetosa'
+		'Paleanotus_sp'
+		'Dysponetus populonectens'
+		'Dysponetus bulbosus'
+		'Dysponetus_sp'
+		'Dysponetus caecus_1'
+		'Dysponetus caecus_2'
+		'Vigtorniella_sp'
+		'Vigtorniella ardabilia'
+		'Vigtorniella flokati'
+		'Calamyzas amphictenicola'
+		'sp'
+		'Iheyomytilidicola lauensis'
+		'Laubierus alvini'
+		'Natsushima bifurcata'
+		'Natsushima sashai'
+		'Shinkai longipedata'
+		'Shinkai fontefridae'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=42;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="01234";
+	CHARLABELS
+		 [1] 'Eyes'
+		 [2] 'Number of eyes'
+		 [3] 'Median antenna'
+		 [4] 'Lateral antenna'
+		 [5] 'Differentiated paired antennae and palps'
+		 [6] 'Biarticulated palps'
+		 [7] 'Ventrolateral palps'
+		 [8] 'Jaws'
+		 [9] 'Stylet shaped jaws'
+		 [10] 'Dorsal tooth'
+		 [11] 'Transversee  proboscis groove'
+		 [12] 'Pharynx'
+		 [13] 'Pharynx differentiation'
+		 [14] 'Proboscis terminal ring'
+		 [15] 'Proboscis surface'
+		 [16] 'Ciliated surface'
+		 [17] 'Caruncle'
+		 [18] 'Mouth flap'
+		 [19] 'Dorsal cirri on segment one'
+		 [20] 'First dorsal cirri differs from others'
+		 [21] 'Ventral cirri on segment 1'
+		 [22] 'Ventral cirri on segment 2'
+		 [23] 'Chaetae on segment 1'
+		 [24] 'Dorsal cirri'
+		 [25] 'Length of dorsal cirri'
+		 [26] 'Annulated dorsal cirri'
+		 [27] 'Enlarged cirrophores'
+		 [28] 'Notochaetae'
+		 [29] 'Paleae'
+		 [30] 'Paleae with internal ribs'
+		 [31] 'Compound neurochaetae'
+		 [32] 'Chambered neurochaetae'
+		 [33] 'Longitudinal channels within neurochaetae'
+		 [34] 'Differentiated neurochaetae (hooks and sigmoid chaetae) in adults'
+		 [35] 'Notoaciculae'
+		 [36] 'Multiple neuroaciculae in median segments'
+		 [37] 'pygidium as a circular structure'
+		 [38] 'pygidial cirri'
+		 [39] 'median pygidial papilla'
+		 [40] 'Circular muscles'
+		 [41] 'Glands in cirrophores'
+		 [42] 'Gametes obvious in notopodia'
+	;
+	STATELABELS
+		1
+		'p'
+		'a'
+		,
+		2
+		'1p'
+		'2p'
+		,
+		3
+		'p'
+		'a'
+		,
+		4
+		'a'
+		'p'
+		,
+		5
+		'p'
+		'a'
+		,
+		6
+		'a'
+		'p'
+		,
+		7
+		'a'
+		'p'
+		,
+		8
+		'a'
+		'p'
+		,
+		9
+		'a'
+		'p'
+		,
+		10
+		'a'
+		'p'
+		,
+		11
+		'a'
+		'p'
+		,
+		12
+		'undiff'
+		'diff'
+		,
+		13
+		'partial'
+		'proventricle'
+		,
+		14
+		'papillae'
+		'smooth'
+		,
+		15
+		'smooth'
+		'papillose'
+		,
+		16
+		'a'
+		'p'
+		,
+		17
+		'a'
+		'p'
+		,
+		18
+		'a'
+		'p'
+		,
+		19
+		'p'
+		'a'
+		,
+		20
+		'p'
+		'a'
+		,
+		21
+		'p'
+		'a'
+		,
+		22
+		'p'
+		'a'
+		,
+		23
+		'p'
+		'a'
+		,
+		24
+		'elytr'
+		'digit'
+		'pyri'
+		'foliac'
+		,
+		25
+		'long'
+		'short'
+		,
+		26
+		'a'
+		'p'
+		,
+		27
+		'a'
+		'p'
+		,
+		28
+		'p'
+		'a'
+		,
+		29
+		'a'
+		'p'
+		,
+		30
+		'a'
+		'p'
+		,
+		31
+		'p'
+		'a'
+		,
+		32
+		'a'
+		'p'
+		,
+		33
+		'a'
+		'p'
+		,
+		34
+		'a'
+		'p'
+		,
+		35
+		'p'
+		'a'
+		,
+		36
+		'a'
+		'p'
+		,
+		37
+		'a'
+		'p'
+		,
+		38
+		'p'
+		'a'
+		,
+		39
+		'a'
+		'p'
+		,
+		40
+		'a'
+		'p'
+		,
+		41
+		'a'
+		'p'
+		,
+		42
+		'a'
+		'p'
+		
+	;
+	MATRIX
+	'Aphrodita aculeata'		                     00000010-000-0000000000000000-100000000000
+	'Palmyra aurifera'		                       01000010-000-00000000001000010100000010000
+	'Harmothoe imbricata'		                    010100010000-0000000000000000-100000000000
+	'Lepidonotus squamatus'		                  010100010000-0000000000000000-100000000000
+	'Ceratonereis longiceratophora'		          01110101011111010000001100110-011001000100
+	'Ceratocephale loveni'		                   01110101011111010000001100110-011001000100
+	'Nereimyra punctata'		                     01110100-11110010000001101000-011001000100
+	'Ophiodromus flexuosus'		                  01010100-11111010000001101000-011011000100
+	'Sirsoe methanicola'		                     1-010100-11110010000001101010-011001000100
+	'Eulalia viridis'		                        00111000-000-0100000001300010-000000000000
+	'Notophyllum foliosum'		                   00111000-000-?100000001300010-000000000000
+	'Eteone picta'		                           00111000-000-0100000001300010-000000000000
+	'Eusyllis blomstrandi'		                   01010000-11110010000001100010-000011001100
+	'Pionosyllis enigmatica'		                 01010000-11110000000001100010-000011000100
+	'Streptosyllis bidentata'		                01010000-01110000000001100010-000011001100
+	'Syllides fulvus'		                        01010000-01110000000001100010-000011001100
+	'Synmerosyllis'		                          01010000-11110000000001100010-000011000100
+	'sp_one'		                                    0101001110110?01??010?1200101101100?00?011
+	'Chrysopetalum debile'		                   010100111011000111010012001011011000000011
+	'Arichlidon reyssi'		                      010100111011000111010112001011011000000011
+	'B heterosetosa'		                         010100111011000111010112001011011000001011
+	'Paleanotus_sp'		                         010100111011000111010112001011011000000011
+	'Dysponetus populonectens'		               01010011101100010101001200100-011000011011
+	'Dysponetus bulbosus'		                    01010011101100010101001200100-011000011011
+	'Dysponetus_sp'		                         ??010011101100010101001200100-011000011011
+	'Dysponetus caecus_1'		                    1-010011101100010101001200100-011000011011
+	'Dysponetus caecus_2'		                    1-010011101100010101001200100-011000011011
+	'Vigtorniella_sp'		                       1-110010-01100010001011200100-011000000011
+	'Vigtorniella ardabilia'		                 01110010-01100010001011200100-011000000011
+	'Vigtorniella flokati'		                   1-110011?01100010001011200100-011000000011
+	'Calamyzas amphictenicola'		               1-11101110?11100001-000110010-001010110???
+	'sp'		                                     1-111010-0110?0000??10?210110-1011?0?100??
+	'Iheyomytilidicola lauensis'		             1-111010-0110100001-101210110-101100?100??
+	'Laubierus alvini'		                       1-111010-0110?00001-101210110-101100?100??
+	'Natsushima bifurcata'		                   1-111010-0110?000001100210110-101110110011
+	'Natsushima sashai'		                      1-111010-0110?000001100210110-101110110011
+	'Shinkai longipedata'		                    1-111010-0110?000001100210110-101110110011
+	'Shinkai fontefridae'		                    1-111010-0110?000001100210110-101110110011
+    ;
+    ENDBLOCK;

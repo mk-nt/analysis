@@ -1,0 +1,231 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-12 07.10.22 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=19;
+    TAXLABELS
+    		'Zaraalestes minutus'
+		'Eogalericius butleri'
+		'Eochenus sinensis'
+		'Galerix aurelianensis'
+		'Galerix exilis'
+		'Galerix iliensis'
+		'Galerix nanus'
+		'Galerix saratji'
+		'Galerix symeonidisi'
+		'Schizogalerix anatolica'
+		'Schizogalerix evae'
+		'Schizogalerix moedligensis'
+		'Schizogalerix pasalarensis'
+		'Parasorex depereti'
+		'Parasorex ibericus'
+		'Parasorex kostakii'
+		'Parasorex socialis'
+		'Deinogalerix masinii'
+		'Apulogalerix pusillus'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=30;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="01234";
+	CHARLABELS
+		 [1] 'P3 hypocone'
+		 [2] 'M1-2 development of the metaconule distal arm'
+		 [3] 'M1-2 mesostyle'
+		 [4] 'M1-2 relative widening'
+		 [5] 'M1 protocone-hypocone-metaconule connection'
+		 [6] 'M1 hypocone  distal arm'
+		 [7] 'M1 distolabial-mesolingual stretch'
+		 [8] 'M2 protocone-hypocone-metaconule-connection'
+		 [9] 'M2 hypocone distal arm'
+		 [10] 'M3 shape'
+		 [11] 'M3 size'
+		 [12] 'i3'
+		 [13] 'Relative size of p2/p3'
+		 [14] 'Number of roots in p2'
+		 [15] 'Paraconid-protoconid connection in p4'
+		 [16] 'Precingulid in p4'
+		 [17] 'Development of metaconid in p4'
+		 [18] 'Hypoconulid in m3'
+		 [19] 'Position of the mental foramen'
+		 [20] 'Relative size of m1 trigonid'
+		 [21] 'Relative size of P3-4'
+		 [22] 'Relative size of p3-4'
+		 [23] 'Morphology of P3/p3 and P4/p4'
+		 [24] 'Cuspids of p4'
+		 [25] 'Morphology of metastylid in m1'
+		 [26] 'Preprotocristid in p4'
+		 [27] 'Crown of i1'
+		 [28] 'Coronoid process'
+		 [29] 'Height of condyle above toothrow'
+		 [30] 'Height of ascending ramus'
+	;
+	STATELABELS
+		1
+		'Absent'
+		'Present'
+		,
+		2
+		'Distal arm absent'
+		'Directed distally and connected or not to cingulum'
+		'Extended to the posterolabial corner of the tooth'
+		,
+		3
+		'Absent or usually unidivided'
+		'Invariably divided'
+		,
+		4
+		'Not'
+		'Yes'
+		,
+		5
+		'Protocone-metaconule connection only'
+		'Protocone-hypocone only'
+		'Triple connection'
+		,
+		6
+		'Absent'
+		'Not connected to distal cingulum'
+		'Connected to distal cingulum'
+		,
+		7
+		'Not'
+		'Yes'
+		,
+		8
+		'Protocone-metaconule connection only'
+		'Protocone-hypocone only'
+		'Triple connection'
+		,
+		9
+		'Absent'
+		'Not connected to distal cingulum'
+		'Connected to distal cingulum'
+		,
+		10
+		'Triangular'
+		'Sub-triangular'
+		,
+		11
+		'Large'
+		'Small'
+		,
+		12
+		'Present'
+		'Absent'
+		,
+		13
+		'p2<p3'
+		'p2>=p3'
+		,
+		14
+		'Two-rooted'
+		'Fused roots'
+		'One-rooted'
+		,
+		15
+		'Paraconid not connected to protoconid'
+		'Paraconid connected to protoconid'
+		,
+		16
+		'May be present'
+		'Completely absent'
+		,
+		17
+		'Strong and high'
+		'Weak'
+		'Absent'
+		,
+		18
+		'Present'
+		'Absent'
+		,
+		19
+		'One beneath p2'
+		'One beneath p3'
+		'One beneath p3/4 or p4'
+		'One beneath p2 and one beneath p3'
+		,
+		20
+		'Non-elongated'
+		'Elongated'
+		,
+		21
+		'Non-enlarged'
+		'Enlarged'
+		,
+		22
+		'non-enlarged'
+		'enlarged'
+		,
+		23
+		'Slender and sharp'
+		'Bulbous'
+		,
+		24
+		'Pointed'
+		'Blunt'
+		,
+		25
+		'Sharp'
+		'Bulbous'
+		,
+		26
+		'Sharp'
+		'Blunt'
+		,
+		27
+		'Non-bilobed'
+		'Bilobed'
+		,
+		28
+		'High'
+		'Low'
+		,
+		29
+		'High'
+		'Low'
+		,
+		30
+		'High'
+		'Low'
+		
+	;
+	MATRIX
+	'Zaraalestes minutus'		                 0(1,2)00200(0,2)0010020000100000000???
+	'Eogalericius butleri'		                ?2000100100000(0,1)01030000000????
+	'Eochenus sinensis'		                   0100??022000000010(0,1,3)0000000??1?
+	'Galerix aurelianensis'		               0(0,1)00(0,2)(0,1)0(0,2)10101001(1,2)120000000????
+	'Galerix exilis'		                      (0,1)100(0,1,2)10(0,1,2)101010(0,1)11110000000?000
+	'Galerix iliensis'		                    1(1,2)001101101???0101?0000000????
+	'Galerix nanus'		                       0100200(0,2)00101001(1,2)1(1,2)0000000????
+	'Galerix saratji'		                     0(1,2)002102101010010110000000????
+	'Galerix symeonidisi'		                 11001(1,2)0(0,1,2)(1,2)0101?(0,1)1(0,1,2)1?0000000????
+	'Schizogalerix anatolica'		             12111211201000110120000000????
+	'Schizogalerix evae'		                  ?20?121???????1?01?0000000????
+	'Schizogalerix moedligensis'		          12111211201???1101?0000000????
+	'Schizogalerix pasalarensis'		          12011211201???1101?0000000????
+	'Parasorex depereti'		                  1(1,2)00(1,2)(1,2)0(1,2)(1,2)0100(0,1,2)1101200000000???
+	'Parasorex ibericus'		                  12001201(1,2)0110(0,1)1101200000000?00
+	'Parasorex kostakii'		                  1200110(1,2)(1,2)01???0?(0,1,2)1?0000000????
+	'Parasorex socialis'		                  1200(1,2)(1,2)0(1,2)(1,2)01000110120000000?000
+	'Deinogalerix masinii'		                1(1,2)001(1,2)01(1,2)110001101111111111111
+	'Apulogalerix pusillus'		               1200(1,2)(1,2)0(1,2)(1,2)011000121200000000000
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = ord: 1 - 30;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1498829073051; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 7822612487008110896; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 6675959538858981664; mqVersion 320; checksumv 0 3 709132743 null getNumChars 30 numChars 30 getNumTaxa 19 numTaxa 19 short true bits 15 states 15 sumSquaresStatesOnly 2904.0 sumSquares 2904.0 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState true false 100; setPopoutState 300; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 700 464; setLocation 8 8; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; desuppress; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1 - 30; 
+ENDBLOCK;

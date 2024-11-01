@@ -1,0 +1,749 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2023-06-14 19.21.58 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=54;
+    TAXLABELS
+    		'Oikopleura fusiformes'
+		'Oikopleura dioica'
+		'Megalocercus huxleyi'
+		'Fritillaria borealis'
+		'Salpa fusiformis'
+		'Thalia democratica'
+		'Iasis cylindrica'
+		'Doliolum nationalis'
+		'Doliolum denticulatum'
+		'Pyrosoma atlanticum'
+		'Ascidiella aspersa'
+		'Ascidiella scabra'
+		'Ascidia mentula'
+		'Ascidia virginea'
+		'Corella parallelogramma'
+		'Rhodosoma callense'
+		'Phallusia mammillata'
+		'Phallusia nigra'
+		'Agnezia septentrionalis'
+		'Perophora japonica'
+		'Perophora viridis'
+		'Ciona intestinalis'
+		'Dendrodoa grossularia'
+		'Molgula retortiformis'
+		'Molgula citrina'
+		'Molgula manhattensis'
+		'Microcosmus claudicans'
+		'Styela clava'
+		'Styela rustica'
+		'Styela plicata'
+		'Botryllus schlosseri'
+		'Symplegma brakenhielmi'
+		'Halocynthia roretzi'
+		'Herdmania momus'
+		'Kukenthalia borealis'
+		'Pelonaia corrugata'
+		'Diazona violacea'
+		'Clavelina lepadiformis'
+		'Diplosoma listerianum'
+		'Didemnum maculosum'
+		'Lissoclinum verrilli'
+		'Distaplia stylifera'
+		'Eudistoma obscuratum'
+		'Polyclinum constellatum'
+		'Polyclinum aurantium'
+		'Synoicum pulmonaria'
+		'Aplidium turbinatum'
+		'Morchellium argus'
+		'Sycozoa sigillinoides'
+		'Branchiostoma floridae'
+		'Branchiostoma lanceolatum'
+		'Petromyzon marinus'
+		'Lampetra planeri'
+		'Lampetra fluviatilis'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=117;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="01234567";
+	CHARLABELS
+		 [1] 'sessile adults'
+		 [2] 'Undulatory locomotion in adults'
+		 [3] 'body division'
+		 [4] 'number of body parts'
+		 [5] 'incurrent and excurrent siphon on opposite poles of the animal'
+		 [6] 'lobed incurrent siphon'
+		 [7] 'number of lobes at incurrent siphon'
+		 [8] 'oral tentacles'
+		 [9] 'shape of oral tentacles'
+		 [10] 'lobed excurrent siphon'
+		 [11] 'number of lobes at excurrent siphon'
+		 [12] 'conspicuous circular muscle bands for locomotion'
+		 [13] 'shape of circular muscle bands'
+		 [14] 'tunic'
+		 [15] 'shape of tunic'
+		 [16] 'calcareous spicules in tunic'
+		 [17] 'tunic protrusions'
+		 [18] 'vanadium'
+		 [19] 'epicardium'
+		 [20] 'shape of epicardium in adult'
+		 [21] 'heart beat reversal'
+		 [22] 'endocarp'
+		 [23] 'light organs'
+		 [24] 'notochord in adults'
+		 [25] 'length of notochord'
+		 [26] 'colonial'
+		 [27] 'sexually mature colonial form:'
+		 [28] 'connection of zooids within colonies'
+		 [29] 'metagenesis'
+		 [30] 'polymorphic generations'
+		 [31] 'type of budding'
+		 [32] 'type of epicardial budding'
+		 [33] 'type of strobilation'
+		 [34] 'type of mesenchymatic budding'
+		 [35] 'shape of branchial basket wall'
+		 [36] 'arrangement of stigmata in one side of the body'
+		 [37] 'shape of stigmata'
+		 [38] 'orientation of stigmata in adults'
+		 [39] 'parastigmatic blood vessels'
+		 [40] 'longitudinal blood vessels'
+		 [41] 'internal longitudinal vessel on papillae'
+		 [42] 'ciliated longitudinal vessels'
+		 [43] 'arrangement of cilia'
+		 [44] 'branchial basket with papillae'
+		 [45] 'papillae at intersections of transverse and longitudinal vessels'
+		 [46] 'junctions of longitudinal and transverse vessels with cilia'
+		 [47] 'dorsal organ'
+		 [48] 'dorsal organ with languets'
+		 [49] 'number of languet equals number of transverse vessels'
+		 [50] 'dorsal organ with membrane'
+		 [51] 'dorsal organ smooth edged or plain'
+		 [52] 'dorsal organ with multiple tranverse ciliary bands'
+		 [53] 'dorsal organ as ciliated groove'
+		 [54] 'shape of peripharyngeal band'
+		 [55] 'peripharyngeal band with conspicuous dorsal curvature'
+		 [56] 'papillae in prebranchial area'
+		 [57] 'excretory structure'
+		 [58] 'type of excretory structure'
+		 [59] 'stomach folded or plicated'
+		 [60] 'hepatic gland'
+		 [61] 'stomach caecum'
+		 [62] 'pyloric gland'
+		 [63] 'shape of gastrointestinal tract'
+		 [64] 'position of gastrointestinal tract in relation to branchial basket'
+		 [65] 'position of lateral gastrointestinal tract'
+		 [66] 'position of rectum in mostly posterior gastrointestinal tracts'
+		 [67] 'atrial cavity'
+		 [68] 'origin of atrial cavity'
+		 [69] 'shape of ontogentetic rudiment of atrial opening'
+		 [70] 'position of unpaired rudiment of atrial opening'
+		 [71] 'hermaphroditism'
+		 [72] 'type (position) of gonads'
+		 [73] 'position of gonads in relation to branchial basket'
+		 [74] 'occurrence of gonads'
+		 [75] 'site of fertilization'
+		 [76] 'site of brooding'
+		 [77] 'site of brood chamber'
+		 [78] 'location of atrial brood chamber'
+		 [79] 'chordate type larva'
+		 [80] 'orientation of larval tail in relation to larval trunk'
+		 [81] 'larval eye'
+		 [82] 'larval statocyte'
+		 [83] 'larval photolith'
+		 [84] 'larval ampullae'
+		 [85] 'larval adhesive papillae (more than one)'
+		 [86] 'orientation of larval papillae'
+		 [87] 'serotonin-lir in the brain of adult specimens'
+		 [88] 'serotonin-lir in the peripharyngeal bands'
+		 [89] 'serotonin-lir in the endostyle'
+		 [90] 'serotonin-lir in the retropharyngeal band'
+		 [91] 'serotonin-lir in the esophagus'
+		 [92] 'serotonin-lir in the gastrointestinal tract'
+		 [93] 'adult with cerebral eye(s)'
+		 [94] 'type of photoreceptor cells in adult cerebral eyes'
+		 [95] 'adult cerebral eye with lens'
+		 [96] 'shape of adult brain'
+		 [97] 'brain divided into cortex and neuropil'
+		 [98] 'neural gland'
+		 [99] 'position of neural gland compared to brain'
+		 [100] 'position of not ventral neural gland'
+		 [101] 'dorsal tubercle'
+		 [102] 'shape of dorsal tubercle'
+		 [103] 'opening of dorsal tubercle pedestal-like elevated'
+		 [104] 'dorsal strand'
+		 [105] 'dorsal strand ends in close proximity to brain'
+		 [106] 'caudal ganglion in adults'
+		 [107] 'ventral visceral nerve'
+		 [108] 'number of ventral visceral nerves'
+		 [109] 'dorsal strand plexus'
+		 [110] 'brain appendages'
+		 [111] 'number anterior nerves per side'
+		 [112] 'number posterior nerves per side'
+		 [113] 'lateral nerves'
+		 [114] 'number of lateral nerves per side'
+		 [115] 'unpaired anterior nerve projecting toward dorsal tubercle'
+		 [116] 'statocyte in adult'
+		 [117] 'conspicuous lateral fiber tracts in adult brains'
+	;
+	STATELABELS
+		1
+		'absent'
+		'present'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'absent'
+		'present'
+		,
+		4
+		'2'
+		'3'
+		,
+		5
+		'absent'
+		'present'
+		,
+		6
+		'absent'
+		'present'
+		,
+		7
+		'4'
+		'6'
+		'8'
+		'>8'
+		,
+		8
+		'absent'
+		'present'
+		,
+		9
+		'simple, unbranched'
+		'branched'
+		,
+		10
+		'absent'
+		'present'
+		,
+		11
+		'2'
+		'4'
+		'6'
+		'>6'
+		'atrial languet'
+		,
+		12
+		'absent'
+		'present'
+		,
+		13
+		'discontinuous'
+		'continuous'
+		,
+		14
+		'absent'
+		'present'
+		,
+		15
+		'simply covers epidermis'
+		'forms elaborated filter-feeding house'
+		,
+		16
+		'absent'
+		'present'
+		,
+		17
+		'absent'
+		'present'
+		,
+		18
+		'absent'
+		'present'
+		,
+		19
+		'absent'
+		'present'
+		,
+		20
+		'uniform'
+		'paired, separated sacs'
+		,
+		21
+		'absent'
+		'present'
+		,
+		22
+		'absent'
+		'present'
+		,
+		23
+		'absent'
+		'present'
+		,
+		24
+		'absent'
+		'present'
+		,
+		25
+		'not extended'
+		'extended, along the whole body'
+		,
+		26
+		'absent'
+		'present'
+		,
+		27
+		'absent: sexually propagating chain of animals break up'
+		'present: colonial forms throughout entire development'
+		,
+		28
+		'zooids completely embedded in a common tunic'
+		'zooids connected via stolons'
+		,
+		29
+		'absent'
+		'present'
+		,
+		30
+		'absent'
+		'present'
+		,
+		31
+		'epicardial'
+		'mesenchymatic'
+		'palleal'
+		'complex stolo prolifer'
+		,
+		32
+		'strobilation'
+		'pyloric (esophageal and entero-epicardial)'
+		,
+		33
+		'abdominal'
+		'postabdominal'
+		,
+		34
+		'septal'
+		'vascular'
+		,
+		35
+		'unfolded'
+		'folded'
+		,
+		36
+		'1 stigma'
+		'3 rows'
+		'4 rows'
+		'>4 rows'
+		,
+		37
+		'straight'
+		'lunate or spiral'
+		'round or ovoid'
+		'expanded'
+		,
+		38
+		'longitudinal (anterior to posterior)'
+		'transversal (ventral to dorsal)'
+		,
+		39
+		'absent'
+		'present'
+		,
+		40
+		'absent'
+		'present'
+		,
+		41
+		'absent'
+		'present'
+		,
+		42
+		'absent'
+		'present'
+		,
+		43
+		'continuous row of cilia'
+		'cilia in individual tufts'
+		,
+		44
+		'absent'
+		'present'
+		,
+		45
+		'absent'
+		'present'
+		,
+		46
+		'absent'
+		'present'
+		,
+		47
+		'absent'
+		'present'
+		,
+		48
+		'absent'
+		'present'
+		,
+		49
+		'absent'
+		'present'
+		,
+		50
+		'absent'
+		'presnt'
+		,
+		51
+		'absent'
+		'present'
+		,
+		52
+		'absent'
+		'present'
+		,
+		53
+		'absent'
+		'present'
+		,
+		54
+		'flat ciliated epithelium'
+		'ciliated groove'
+		,
+		55
+		'absent'
+		'present'
+		,
+		56
+		'absent'
+		'present'
+		,
+		57
+		'absent'
+		'present'
+		,
+		58
+		'kidney'
+		'renal vesicles or nephrocytes'
+		,
+		59
+		'absent'
+		'present'
+		,
+		60
+		'absent'
+		'present'
+		,
+		61
+		'absent'
+		'present'
+		,
+		62
+		'absent'
+		'present'
+		,
+		63
+		'straight'
+		'u-shaped'
+		,
+		64
+		'mostly posterior'
+		'lateral'
+		,
+		65
+		'on left side'
+		'on right side'
+		,
+		66
+		'dorsomedian'
+		'ventromedian'
+		,
+		67
+		'absent'
+		'present'
+		,
+		68
+		'ventral'
+		'dorsal'
+		,
+		69
+		'paired'
+		'unpaired'
+		,
+		70
+		'ventral'
+		'dorsal'
+		,
+		71
+		'absent'
+		'present'
+		,
+		72
+		'enterogon'
+		'pleurogon'
+		,
+		73
+		'lateral'
+		'posterior'
+		,
+		74
+		'unpaired'
+		'paired'
+		,
+		75
+		'external'
+		'internal'
+		,
+		76
+		'atrial or peribranchial area'
+		'brood chambers'
+		,
+		77
+		'outgrowth of peribranchial cavity'
+		'common tunic'
+		,
+		78
+		'left side'
+		'dorsal side'
+		,
+		79
+		'absent'
+		'present'
+		,
+		80
+		'vertical'
+		'horizontal'
+		,
+		81
+		'absent'
+		'present'
+		,
+		82
+		'absent'
+		'present'
+		,
+		83
+		'absent'
+		'present'
+		,
+		84
+		'absent'
+		'present'
+		,
+		85
+		'absent'
+		'present'
+		,
+		86
+		'triradial'
+		'sagittal'
+		,
+		87
+		'absent'
+		'present'
+		,
+		88
+		'absent'
+		'present'
+		,
+		89
+		'absent'
+		'present'
+		,
+		90
+		'absent'
+		'present'
+		,
+		91
+		'absent'
+		'present'
+		,
+		92
+		'absent'
+		'present'
+		,
+		93
+		'absent'
+		'present'
+		,
+		94
+		'rhabdomeric'
+		'ciliary'
+		,
+		95
+		'absent'
+		'present'
+		,
+		96
+		'ovoid, pear-shaped'
+		'elongated'
+		,
+		97
+		'absent'
+		'present'
+		,
+		98
+		'absent'
+		'present'
+		,
+		99
+		'not ventral'
+		'ventral'
+		,
+		100
+		'dorsomedian'
+		'right'
+		,
+		101
+		'absent'
+		'present'
+		,
+		102
+		'simple'
+		'intricate'
+		,
+		103
+		'absent'
+		'present'
+		,
+		104
+		'absent'
+		'present'
+		,
+		105
+		'absent'
+		'present'
+		,
+		106
+		'absent'
+		'present'
+		,
+		107
+		'absent'
+		'present'
+		,
+		108
+		'1'
+		'2'
+		'4'
+		,
+		109
+		'absent'
+		'present'
+		,
+		110
+		'absent'
+		'present'
+		,
+		111
+		'1'
+		'2'
+		'3'
+		'4'
+		'6'
+		,
+		112
+		'1'
+		'2'
+		'3'
+		'4'
+		,
+		113
+		'absent'
+		'present'
+		,
+		114
+		'1'
+		'2'
+		'3'
+		'4'
+		'5'
+		'6'
+		'>6'
+		,
+		115
+		'absent'
+		'present'
+		,
+		116
+		'absent'
+		'present'
+		,
+		117
+		'absent'
+		'present'
+		
+	;
+	MATRIX
+	'Oikopleura fusiformes'		              010-00-0-0-0-110??0-100100--00----002-00---0--10-????0000-000110-10---10100---1101-00-1000000--1??011??0-10--0100-010
+	'Oikopleura dioica'		                  010-00-0-0-0-1100?0-100100--00----002-00---0--10-0-010000-000110-10---00100---1101-00-0000000--111011000-10--0100-010
+	'Megalocercus huxleyi'		               010-00-0-0-0-110??0-100100--00----002-00---0--10-0-010000-000110-10---10100---1101-00-??????0--1?1011000-10--0100-01?
+	'Fritillaria borealis'		               010-00-0-0-0-110??0-100100--00----002-00---0--10-??0?0000-000110-10---10100---1101-00-0000000--1??011??0-10--0100-01?
+	'Salpa fusiformis'		                   000-10-0-0-101000?0-10000101113---003-00---0--10-0-1010011101110-11111101010--0-------1101111??010--1000-00--1321(3,4)001
+	'Thalia democratica'		                 000-10-0-0-101001?0-10000101113---003-00---0--10-0-1010011101110-11111101010--0-------110011100010--1000-00--1(0,3)(0,3)1(1,5)001
+	'Iasis cylindrica'		                   000-10-0-0-10100??0-10000101113---003-00---0--10-0-1010011101110-11111101010--0-------1100111?0010--1000-00--1(0,4)(0,1)1(3,5)001
+	'Doliolum nationalis'		                000-11(2,3)0-1311100??1010000101113---030100---0--0------0100-000110-1110-10100---1001-00-1101100--0111-1000-00--01110100
+	'Doliolum denticulatum'		              000-1130-1311100??1010000101113---030100---0--0------0100-000110-1110-10100---1001-00-??????0--0111-100??0???0??1?10?
+	'Pyrosoma atlanticum'		                000-10-0-0-0-1000?0-10100110103---03010111110011010100000-000110-0110-101010--0-------0110101?00111-1000-00--01110001
+	'Ascidiella aspersa'		                 1-0-01210120-1000?0-100000--00----03000111010111?1110100111001110-110-10000---10110010011??10--1111-1101101000000-000
+	'Ascidiella scabra'		                  1-0-01210120-100??0-100000--00----0300011101011111110100111001110-110-10000---101100100111110--1111-1101001010000-000
+	'Ascidia mentula'		                    1-0-01210120-1000?0-100000--00----03000111011111?111010?111001110-110-10000---10110010011??10--1111-1100-00--03310000
+	'Ascidia virginea'		                   1-0-01210120-100??0-100000--00----0300011101111111110101111001110-110-10000---10110010??????0--?111-110??0???????????
+	'Corella parallelogramma'		            1-0-01210120-100??0-100000--00----031-0110-1011111010100111001111-110-10000---101100100111110--1111-1101000--00010000
+	'Rhodosoma callense'		                 1-0-01210120-100??0-100000--00----03000110-10111110101?0111001111-110-10000---101???10??????0--?111-110??0???????????
+	'Phallusia mammillata'		               1-0-01(2,3)10120-100010-100000--00----030001???11?11?111010?110001110-110-10000---10110010011?110--1111-110??0???????????
+	'Phallusia nigra'		                    1-0-01(2,3)10120-100?10-100000--00----0300011101111111110101110001110-110-10000---10110010??????0--?111-110??0???????????
+	'Agnezia septentrionalis'		            1-0-01(1,2)10120-100??0-100000--00----031-0111010111010101?00-0001110-110-10000---??????????????0--?111-110??0???????????
+	'Perophora japonica'		                 1-0-01110120-1000?0-10000111?01--0020001???1??11?101010?0-0001110-110-100010--111100110111110--1111-1001100--01111000
+	'Perophora viridis'		                  1-0-01110120-100??0-10000111101--002000110-10111110101000-0001110-110-100010--11110011??????0--?111-100??0???????????
+	'Ciona intestinalis'		                 1-0-01210120-1000111100000--00----03001111011111010101000-100110-0110-10100---101100100110110--1111-1111001010000-000
+	'Dendrodoa grossularia'		              1-0-010100-0-100??0-110000--00----13000100-0001001110100111001110-1111110010--1001-110??????0--1110111011010101010000
+	'Molgula retortiformis'		              1-0-01111110-100??10100000--00----131-110??0??10-11001??101111110-111111010---0-------??1???0--??101111??0?????????0?
+	'Molgula citrina'		                    1-0-01111110-100??10100000--00----131-1101000010-11001?0101111110-1111110110--1001-10-??????0--??101111??0?????????0?
+	'Molgula manhattensis'		               1-0-01111110-1001010100000--00----131-1101000010-1100110101111110-111111010---1001-10-0111110--111011111001010000-000
+	'Microcosmus claudicans'		             1-0-01011110-100??0-110000--00----13001101000010-11001?0111111110-111111010---101???10??????0--11100111??0?????????0?
+	'Styela clava'		                       1-0-01010110-1001?0-110000--00----13001101000010-110011?111001110-111111010---10110?100111110--111001111001010000-000
+	'Styela rustica'		                     1-0-01010110-100??0-110000--00----1300110??0?010-11001??111001110-111111010---1001-110??1???0--??10?11???0?????????0?
+	'Styela plicata'		                     1-0-01010110-100000-110000--00----13001101000010-11001?0111001110-111111010---10110110??????0--11100111??0?????????00
+	'Botryllus schlosseri'		               1-0-00-10140-1001?0-1000011010(1,2)--103000101000010-1100100111011110-1111110110--101111100111110--0110010011011004116000
+	'Symplegma brakenhielmi'		             1-0-00-100-0-100??0-1000011010(1,2)--10300010??0??10-110010???1011110-1111110110--101111100111110--0110010???00--0210-000
+	'Halocynthia roretzi'		                1-0-01011100-100100-110000--00----1300110100001100-101?01111?1110-111111010---10110010??????0--111011111?0?????????0?
+	'Herdmania momus'		                    1-0-01011110-101??0-100000--00----1300110100001100-101?0111111110-111111010---101???10??????0--??100111??0?????????0?
+	'Kukenthalia borealis'		               1-0-01010110-101??0-1000011010(1,2)--103001101000010-1100100111011110-11111100110010111?10??????0--0?100100??0?????????0?
+	'Pelonaia corrugata'		                 1-0-01010110-100??0-100000--00----03001101000010-11001?011100110-0111111010---0-------??????0--??100111??0?????????0?
+	'Diazona violacea'		                   1-1001110120-100??101000011110000-03000110-10111?0-1010011000110-0110-10100---10110010??????0--??010110??0?????????0?
+	'Clavelina lepadiformis'		             1-1000-100-0-100??1010000110101--0030000---0--1110-101000-000110-0110-101010--111100100110110--0111-10010010101112000
+	'Diplosoma listerianum'		              1-10011100-0-1000?11100001101001--020000---0--1110-101000-000110-0110-1010111-111101110110110--0111-1001000--0200-000
+	'Didemnum maculosum'		                 1-10011100-0-101??11100001101001--020000---0--1110-101000-000110-0110-1010111-11110111??????0--??11-100??0?????????0?
+	'Lissoclinum verrilli'		               1-10011100-0-101????10000110?001--020000---0--11???1010???000110-0110-1010111-111???110110110--0111-10???00-?0110-000
+	'Distaplia stylifera'		                1-1001110140-100??101000011010000-020010---0--11???1010???10?110-0110-1010110111110?110110110--0111-10011012001114000
+	'Eudistoma obscuratum'		               1-1001110120-100?1101000011010000-010000---0--11???1010???000110-0110-101010--111???110110110--0111-100??00--01213000
+	'Polyclinum constellatum'		            1-1101110140-100?0101000011010001-030000---1--111?01010???000110-0110-101010--1111-?110110110--0111-10010011?01111000
+	'Polyclinum aurantium'		               1-1101110140-100??101000011010001-030000---1--1110-101000-000110-0110-101010--1111-111??????0--0?11-100??0?????????0?
+	'Synoicum pulmonaria'		                1-1101110140-100??1010000110?0001-030000---0--1110-101000-000110-0110-101010--111???11??????0--0?11-100??0?????????0?
+	'Aplidium turbinatum'		                1-1101210140-100??101000011010001-030000---0--11???1010?0-100110-0110-101010--11110111??????0--0111-1000-010-0210-00?
+	'Morchellium argus'		                  1-1101210140-100??101000011010001-030000---0--1110-101?00-100110-0110-101010--11110111??????0--??11-100??0?????????0?
+	'Sycozoa sigillinoides'		              1-1000-10140-100??1?10000110101--0020000---0--1110-101?00-000110-0110-001011011101-010??????0--??11-100??0?????????0?
+	'Branchiostoma floridae'		             010-00-100-0-0-0-010000110--00----030100---0--10-0-011001-???000-1101001010---1010-00-1000011101011-1000-00--0????001
+	'Branchiostoma lanceolatum'		          010-00-100-0-0-0-010000110--00----030100---0--10-0-011001-???000-1101001010---1010-00-??????1101011-1000-00--0????001
+	'Petromyzon marinus'		                 010-00-100-0-0-0-010000100--00----030100---0--10-0-001011-???000-10---00100---1010-00-1100011111011-0--0-00--0????001
+	'Lampetra planeri'		                   010-00-100-0-0-0-010000100--00----030100---0--10-0-001011-???000-10---00100---1010-00-11??011111011-0--0-00--0????001
+	'Lampetra fluviatilis'		               010-00-100-0-0-0-010000100--00----030100---0--10-0-001011-???000-10---00100---1010-00-1????11111011-0--0-00--0????001
+    ;
+    ENDBLOCK;
+
+          BEGIN NOTES;
+      
+      [Attribute comments]
+            ENDBLOCK;
+            BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 117;
+      ENDBLOCK;
+      BEGIN MESQUITE;
+ MESQUITESCRIPTVERSION 2; TITLE AUTO; tell ProjectCoordinator; timeSaved 1563979904566; getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa; tell It; setID 0 7546384350389189834; endTell; getEmployee #mesquite.charMatrices.ManageCharacters.ManageCharacters; tell It; setID 0 8233035360818423592; tell It; setDefaultOrder 0 116 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115; attachments ; endTell; mqVersion 331; checksumv 0 3 3340710632 null getNumChars 117 numChars 117 getNumTaxa 54 numTaxa 54 short true bits 127 states 127 sumSquaresStatesOnly 25463.0 sumSquares 25463.0 longCompressibleToShort false usingShortMatrix true NumFiles 1 NumMatrices 1; mqVersion; endTell; getWindow; tell It; suppress; setResourcesState false false 223; setPopoutState 300; setExplanationSize 0; setAnnotationSize 0; setFontIncAnnot 0; setFontIncExp 0; setSize 2449 1214; setLocation -142 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; endTell; desuppress; endTell; getEmployee #mesquite.charMatrices.BasicDataWindowCoord.BasicDataWindowCoord; tell It; showDataWindow #8233035360818423592 #mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindowMaker; tell It; getWindow; tell It; getTable; tell It; rowNamesWidth 109; endTell; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 2226 1142; setLocation -142 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow; endTell; setActive; setTool mesquite.charMatrices.BasicDataWindowMaker.BasicDataWindow.arrow; colorCells #mesquite.charMatrices.NoColor.NoColor; colorRowNames #mesquite.charMatrices.TaxonGroupColor.TaxonGroupColor; colorColumnNames #mesquite.charMatrices.CharGroupColor.CharGroupColor; colorText #mesquite.charMatrices.NoColor.NoColor; setBackground White; toggleShowNames on; toggleShowTaxonNames on; toggleTight off; toggleThinRows off; toggleShowChanges on; toggleSeparateLines off; toggleShowStates on; toggleAutoWCharNames on; toggleAutoTaxonNames off; toggleShowDefaultCharNames off; toggleConstrainCW on; toggleBirdsEye off; toggleShowPaleGrid off; toggleShowPaleCellColors off; toggleShowPaleExcluded off; togglePaleInapplicable on; toggleShowBoldCellText off; toggleAllowAutosize on; toggleColorsPanel off; toggleDiagonal on; setDiagonalHeight 80; toggleLinkedScrolling on; toggleScrollLinkedTables off; endTell; showWindow; getWindow; tell It; forceAutosize; endTell; getEmployee #mesquite.charMatrices.AlterData.AlterData; tell It; toggleBySubmenus off; endTell; getEmployee #mesquite.charMatrices.ColorByState.ColorByState; tell It; setStateLimit 9; toggleUniformMaximum on; endTell; getEmployee #mesquite.charMatrices.ColorCells.ColorCells; tell It; setColor Red; removeColor off; endTell; getEmployee #mesquite.categ.StateNamesEditor.StateNamesEditor; tell It; makeWindow; tell It; setExplanationSize 30; setAnnotationSize 20; setFontIncAnnot 0; setFontIncExp 0; setSize 2226 1142; setLocation -142 23; setFont SanSerif; setFontSize 10; getToolPalette; tell It; setTool mesquite.categ.StateNamesEditor.StateNamesWindow.ibeam; endTell; rowsAreCharacters on; toggleConstrainChar on; toggleConstrainCharNum 3; togglePanel off; toggleSummaryPanel off; endTell; showWindow; endTell; getEmployee #mesquite.categ.StateNamesStrip.StateNamesStrip; tell It; showStrip on; endTell; getEmployee #mesquite.charMatrices.AnnotPanel.AnnotPanel; tell It; togglePanel off; endTell; getEmployee #mesquite.charMatrices.CharReferenceStrip.CharReferenceStrip; tell It; showStrip off; endTell; getEmployee #mesquite.charMatrices.QuickKeySelector.QuickKeySelector; tell It; autotabOff; endTell; getEmployee #mesquite.charMatrices.SelSummaryStrip.SelSummaryStrip; tell It; showStrip off; endTell; getEmployee #mesquite.categ.SmallStateNamesEditor.SmallStateNamesEditor; tell It; panelOpen true; endTell; endTell; endTell; endTell; 
+ENDBLOCK;
+BEGIN MESQUITECHARMODELS;
+ ProbModelSet * UNTITLED = 'Mk1 (est.)': 1 - 117; 
+ENDBLOCK;

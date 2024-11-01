@@ -1,0 +1,211 @@
+#NEXUS
+
+    [ File output by Morphobank v3.0 (http://www.morphobank.org); 2024-08-20 05.00.23 ]
+
+    BEGIN TAXA;
+    DIMENSIONS NTAX=53;
+    TAXLABELS
+    		'Coscinium'
+		'Anamirta'
+		'Arcangelisia'
+		'Calycocarpum'
+		'Disciphania'
+		'Aspidocarya'
+		'Parabaena'
+		'Tinomiscium'
+		'Borismene'
+		'Fibraurea'
+		'Penianthus'
+		'Sphenocentrum'
+		'Burasaia'
+		'Dioscoreophyllum'
+		'Kolobopetalum'
+		'Tinospora'
+		'Chasmanthera'
+		'Desmonema'
+		'Odontocarya'
+		'Syntriandrium'
+		'Sinomenium'
+		'Menispermum'
+		'Diploclisia'
+		'Pericampylus'
+		'Sarcopetalum'
+		'Abuta'
+		'Anomospermum'
+		'Orthomene'
+		'Caryomene'
+		'Elephantomene'
+		'Telitoxicum'
+		'Legnephora'
+		'Parapachygone'
+		'Hypserpa'
+		'Limacia'
+		'Stephania'
+		'Perichasma'
+		'Antizoma'
+		'Cyclea'
+		'Cissampelos'
+		'Haematocarpus'
+		'Hyperbaena'
+		'Pachygone'
+		'Cocculus'
+		'Strychnopsis'
+		'Chondrodendron'
+		'Curarea'
+		'Carronia'
+		'Pycnarrhena'
+		'Triclisia'
+		'Tiliacora'
+		'Beirnaertia'
+		'Albertisia'
+    ;
+    ENDBLOCK;
+
+    BEGIN CHARACTERS;
+	DIMENSIONS NCHAR=15;
+	FORMAT DATATYPE=STANDARD GAP=- MISSING=? SYMBOLS="01234";
+	CHARLABELS
+		 [1] 'Fruit stylar scar position'
+		 [2] 'Endocarp bilateral curvature'
+		 [3] 'Endocarp dorsoventral curvature'
+		 [4] 'Condyle subhemispherical/boat-shaped'
+		 [5] 'Condyle a ventral groove'
+		 [6] 'Condyle bilaterally compressed'
+		 [7] 'Condyle dorsoventrally compressed'
+		 [8] 'Endocarp with longitudinal and/or transverse ridging'
+		 [9] 'Endocarp wall thickness'
+		 [10] 'Endocarp lateral chambers'
+		 [11] 'Locule ribs conspicuous'
+		 [12] 'Position of vascular traces entering locule'
+		 [13] 'Endosperm type'
+		 [14] 'Cotyledon type'
+		 [15] 'Cotyledon orientation'
+	;
+	STATELABELS
+		1
+		'basal/subbasal'
+		'apical'
+		,
+		2
+		'absent'
+		'present'
+		,
+		3
+		'absent'
+		'present'
+		,
+		4
+		'absent'
+		'present'
+		,
+		5
+		'absent'
+		'present'
+		,
+		6
+		'absent'
+		'present'
+		,
+		7
+		'absent'
+		'present'
+		,
+		8
+		'absent'
+		'longitudinal ridging'
+		'longitudinal and transverse ridging'
+		,
+		9
+		'woody/bony (thick)'
+		'crustaceous/chartaceous/papyraceous (thin)'
+		,
+		10
+		'absent'
+		'present'
+		,
+		11
+		'absent'
+		'present'
+		,
+		12
+		'sublateral'
+		'ventral'
+		,
+		13
+		'ruminate'
+		'ventrally ruminate'
+		'smooth'
+		'absent'
+		,
+		14
+		'foliaceous'
+		'strap-like/subterete'
+		'fleshy'
+		,
+		15
+		'divaricate/imbricate'
+		'dorsoventrally oriented/incumbent'
+		'laterally oriented/accumbent'
+		
+	;
+	MATRIX
+	'Coscinium'		                 011100000000000
+	'Anamirta'		                  011100000000200
+	'Arcangelisia'		              011100000000000
+	'Calycocarpum'		              111100000001200
+	'Disciphania'		               100----1(0,1)001200
+	'Aspidocarya'		               100----11001200
+	'Parabaena'		                 1111000(0,1)0001200
+	'Tinomiscium'		               110010000001200
+	'Borismene'		                 111100001001100
+	'Fibraurea'		                 110010000001200
+	'Penianthus'		                110010001001322
+	'Sphenocentrum'		             110010001001322
+	'Burasaia'		                  11(0,1)(0,1)(0,1)0000001100
+	'Dioscoreophyllum'		          111100010001(1,2)00
+	'Kolobopetalum'		             111100010001100
+	'Tinospora'		                 1111000(0,1)0001(1,2)00
+	'Chasmanthera'		              111100010001100
+	'Desmonema'		                 111100010001(1,2)00
+	'Odontocarya'		               111100010001100
+	'Syntriandrium'		             111100010001100
+	'Sinomenium'		                001001020000211
+	'Menispermum'		               001001020000211
+	'Diploclisia'		               001001(0,1)20010211
+	'Pericampylus'		              001001020011211
+	'Sarcopetalum'		              0010010200??2?2
+	'Abuta'		                     001000100010011
+	'Anomospermum'		              00100010001?012
+	'Orthomene'		                 100----00010012
+	'Caryomene'		                 001000100010012
+	'Elephantomene'		             001000100010012
+	'Telitoxicum'		               001000100010012
+	'Legnephora'		                0010010100??2??
+	'Parapachygone'		             0010001100??3??
+	'Hypserpa'		                  001001000100212
+	'Limacia'		                   001001010100212
+	'Stephania'		                 001001020011211
+	'Perichasma'		                0010010100?1211
+	'Antizoma'		                  001001110101211
+	'Cyclea'		                    001001120101211
+	'Cissampelos'		               001001120111211
+	'Haematocarpus'		             0010001?00??322
+	'Hyperbaena'		                0010001000003(0,1)2
+	'Pachygone'		                 0010010(0,2)010?322
+	'Cocculus'		                  001001020100211
+	'Strychnopsis'		              001000121000322
+	'Chondrodendron'		            001000101000322
+	'Curarea'		                   0010001010?032?
+	'Carronia'		                  001000120000322
+	'Pycnarrhena'		               0010000(0,1)(0,1)00(0,1)322
+	'Triclisia'		                 001000120010322
+	'Tiliacora'		                 0010001(1,2)0010011
+	'Beirnaertia'		               001000120010322
+	'Albertisia'		                00(0,1)000(0,1)0(0,1)000322
+    ;
+    ENDBLOCK;
+
+          BEGIN ASSUMPTIONS;
+      TYPESET * UNTITLED = unord: 1 - 15;
+      ENDBLOCK;
+      
