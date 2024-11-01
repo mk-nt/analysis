@@ -1,0 +1,33 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=25 NCHAR=3;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Acanthopyge_australiformis      101
+    Acanthopyge_australis           10?
+    Acanthopyge_balliviani          101
+    Acanthopyge_brankiensis         100
+    Acanthopyge_brevis              11?
+    Acanthopyge_campbelli           111
+    Acanthopyge_consanguinea        101
+    Acanthopyge_decheni             100
+    Acanthopyge_docekali            001
+    Acanthopyge_edgecombei          001
+    Acanthopyge_erinacea            00?
+    Acanthopyge_hirsuta             000
+    Acanthopyge_limbata             110
+    Acanthopyge_orientalis          000
+    Acanthopyge_paraplerua          000
+    Acanthopyge_parva               000
+    Acanthopyge_pragensis           100
+    Acanthopyge_pustulosa           001
+    Acanthopyge_rictheri            101
+    Acanthopyge_rohri               001
+    Acanthopyge_sinuata             101
+    Acanthopyge_trinodis            ?00
+    Acanthopyge_uralensis           10?
+    Acanthopyge_sp._Victoria        100
+    Hemiarges_wesenbergensis        000
+  ;
+END;
+

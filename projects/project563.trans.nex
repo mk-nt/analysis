@@ -1,0 +1,90 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=82 NCHAR=40;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Amphicorina_mobilis                    0000--00000000000-00100000000111010--1-1
+    Romanchella_quadricostalis             1100--00001000100-0000000001011??110-1-1
+    Sabella_spallanzanii                   0000--00000000000-001001000000???0---0-0
+    Salmacina_sp.                          1000--00000000100-000000000001100110-1-1
+    Serpula_vermicularis                   1100--00000000100-000000000000???0---0-?
+    Augeneriella_basifurcata               00010101000001011400200202111101-1114211
+    Augeneriella_hummelincki               00010101000000011300200212111101-1114211
+    Augeneriella_lagunari                  000101010000010114002001021?????????????
+    Augeneriella_mossambica                000101010000010114002001021?????????????
+    Augeneriella_pectinata                 0001010100000101130020010211110?-1114211
+    Brifacia_metastellaris                 0000--000000000114002001021?????????????
+    Echinofabricia_alata                   00010000000000000-0000020311111001110300
+    Echinofabricia_dubia                   00010000000000000-00000203?11110?1110300
+    Echinofabricia_goodhartzorum           00010000000000000-0000020321111001110300
+    Fabricia_oregonica                     0000--00000000010-00200202211111?1??????
+    Fabricia_stellaris_Baltic              0000--0000000001140020020221111111102422
+    Fabricia_stellaris_Portland            0000--0000000001140020020221111111102422
+    Fabricinuda_bikinii                    000100-1010212011500200102111100-1104421
+    Fabricinuda_limnicola                  000100-10002120115002002021?????????????
+    Fabricinuda_longilabrum                0000--010002120115002002021?????????????
+    Fabricinuda_pseudocollaris             000100-10002120115002001021?????????????
+    Fabricinuda_pseudopalpa                0000--010002110115002001021?????????????
+    Fabricinuda_rosaelenae                 000100010102120114002001021?????????????
+    Fabricinuda_sp._Australia              000100-10102120115002001021?????????????
+    Fabricinuda_trilobata_Belize           000100-1010212011500200102111101-1104421
+    Fabricinuda_trilobata_Panama           000100-1010212011500200102111101-1104421
+    Fabriciola_baltica                     00011000000100010-001003121?????????????
+    Fabriciola_berkeleyi                   00011000000100000-111003121?????????????
+    Fabriciola_brevibranchiata             00011000000100000-01100312111101-1103331
+    Fabriciola_cri                         00011000000100000-1010031211111101??????
+    Fabriciola_flammula_Belize             00011000000100000-1010031221110?-1103331
+    Fabriciola_flammula_Panama             00011000000100000-1010031221110?-1103331
+    Fabriciola_ghardaqa                    00011000000100000-??100?12??????????????
+    Fabriciola_liguronis                   00011000000100010-0010021221111101111422
+    Fabriciola_mediaseta                   00011000000100000-1110021211110?-1103331
+    Fabriciola_minuta                      00011000000100010-0010031121111101111421
+    Fabriciola_parvus                      00011000000000010-0010031221110?-1112431
+    Fabriciola_phuketensis                 00011000000100000-111003121?????????????
+    Fabriciola_rubra                       00011000000100000-101003121?????????????
+    Fabriciola_sp._N._Carolina             00011000000100000-10100??2??????????????
+    Fabriciola_markginsbergi               00011000000100000-101003121?????????????
+    Fabriciola_tonerella                   00011000000100000-101002121?????????????
+    Manayunkia_aestuarina_Baltic           0011000000010001100010030231111101111431
+    Manayunkia_aestuarina_N._Carolina      0011000000010001100010030231111101111431
+    Manayunkia_athalassia                  0011000000010001??0010020231111101??????
+    Manayunkia_baicalensis                 00110000000100010-0010020231111101??????
+    Manayunkia_brasiliensis                0011000000010001100010020231111101??????
+    Manayunkia_mizu                        0011000000010001100010020231111101111431
+    Manayunkia_polaris                     001100000001000113001002023?????????????
+    Manayunkia_speciosa                    00110000000100010-0010020231111101??????
+    Monroika_africana                      001100000001000?1200200101??????????????
+    Novafabricia_bilobata                  0000--10000000?112002002021?????????????
+    Novafabricia_brunnea                   0000--10000000011200200202111100-1103231
+    Novafabricia_chilensis                 0000--100000000113002111021?????????????
+    Novafabricia_exiguus                   0000--100000000112002002021?????????????
+    Novafabricia_gerdi                     0000--100000000112002111021?????????????
+    Novafabricia_guana                     0000--100000010112002002021?????????????
+    Novafabricia_infratorquata             0000--10000001011200200202111100-1103231
+    Novafabricia_labrus                    0000--1000000001130020010221110?-???????
+    Novafabricia_sp._NSW                   0000--10000001011200200202111101-110????
+    Novafabricia_tenuiseta                 0000--10000000010-0020020211111111102242
+    Novafabricia_triangularis              0000--1000000101120020120211110?-???????
+    Parafabricia_ventricingulata           0000--00000001011400200102?1111111102???
+    Pseudoaugeneriella_bansei              00010001000000011300200202??????????????
+    Pseudoaugeneriella_brevirama           00010001000001011300200202??????????????
+    Pseudoaugeneriella_nigra               00010001000002011300200202??????????????
+    Pseudoaugeneriella_unirama             00010001000001011300200202??????????????
+    Pseudofabricia_aberrans                00011000000000010-00200202211????1102?30
+    Pseudofabriciola_analis                0000--10101100010-001001021?????????????
+    Pseudofabriciola_australiensis         00010000101100010-001002021?????????????
+    Pseudofabriciola_californica           0000--00101100010-002002021?????????????
+    Pseudofabriciola_capensis              0000--00101100010-002001021?????????????
+    Pseudofabriciola_filamentosa           0000--?0101100010-001002021?????????????
+    Pseudofabriciola_filaris               0000--10101100010-001002021?????????????
+    Pseudofabriciola_incisura              00010000101100010-00100202111100-10-1331
+    Pseudofabriciola_longa                 0000--10101100010-001001021?????????????
+    Pseudofabriciola_longipyga             0000--10101100010-001002021?????????????
+    Pseudofabriciola_peduncula             0000--10101100010-00100202111100-10-1331
+    Pseudofabriciola_quasiincisura         00010000101100010-0010020211110?-10-1331
+    Pseudofabriciola_rousei                0000--10101100010-001002021?????????????
+    Pseudofabriciola_sofla                 0000--10101100010-001002021?????????????
+    Raficiba_barryi                        0000--000000000111002001023?????????????
+  ;
+END;
+

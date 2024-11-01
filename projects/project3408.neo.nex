@@ -1,0 +1,27 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=19 NCHAR=9;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Zaraalestes_minutus             000000000
+    Eogalericius_butleri            ?00101000
+    Eochenus_sinensis               000?01000
+    Galerix_aurelianensis           000?01011
+    Galerix_exilis                  (0,1)00101011
+    Galerix_iliensis                100101?11
+    Galerix_nanus                   000000011
+    Galerix_saratji                 000101011
+    Galerix_symeonidisi             100?0?011
+    Schizogalerix_anatolica         111111011
+    Schizogalerix_evae              ?0?11???1
+    Schizogalerix_moedligensis      111111?11
+    Schizogalerix_pasalarensis      101111?11
+    Parasorex_depereti              100?0?011
+    Parasorex_ibericus              10010?111
+    Parasorex_kostakii              10010???1
+    Parasorex_socialis              100?0?011
+    Deinogalerix_masinii            100?0?011
+    Apulogalerix_pusillus           100?0?111
+  ;
+END;
+

@@ -1,0 +1,27 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=19 NCHAR=12;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Liparia                      000000000000
+    Podalyria_argentea           100010101001
+    Podalyria_biflora            100011100001
+    Podalyria_burchellii         000000100000
+    Podalyria_buxifolia          121011100011
+    Podalyria_calyptrata         000000100101
+    Podalyria_cordata            000000100100
+    Podalyria_hirsuta            000000100100
+    Podalyria_lanceolata         000000100100
+    Podalyria_leipoldtii         100111111001
+    Podalyria_microphylla        101111112001
+    Podalyria_myrtillifolia      100111112001
+    Podalyria_oleaefolia         121010100011
+    Podalyria_orbicularis        011000100100
+    Podalyria_pearsonii          101111112001
+    Podalyria_rotundifolia       000000100101
+    Podalyria_sericea            100111100001
+    Podalyria_variabilis         100010100001
+    Stirtonanthus                000000000000
+  ;
+END;
+

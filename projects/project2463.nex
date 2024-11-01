@@ -1,0 +1,28 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=20 NCHAR=5;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Lapageria_rosea                        10214
+    Drymophila_moorei                      10210
+    Alstroemeria_pelegrina                 1020?
+    Schelhammera_multiflora                10211
+    Drymophila_cyanocarpa                  10210
+    Paris_quadrifolia                      01215
+    Tricyrtis_formosana                    10211
+    Erythronium_japonicum                  1021?
+    Alstroemeria_aurentiaca                10213
+    Calochortus_apiculatus                 11210
+    Clintonia_borealis                     01215
+    Erythronium_americanum                 10212
+    Heterosmilax_gaudichaudiana            01215
+    Lilium_martagon                        10211
+    Lilium_speciosum                       10211
+    Philesia_magellanica                   11214
+    Ripogonum_album                        01210
+    Smilax_herbacea                        01215
+    Streptopus_streptopoides_japonica      01215
+    Veratrum_album_oxysepalum              10210
+  ;
+END;
+

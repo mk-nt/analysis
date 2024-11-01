@@ -1,0 +1,24 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=16 NCHAR=16;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Protungulatum_donnae           1101000001110000
+    Hyopsodus_spp                  1100000111000010
+    Apheliscus_spp                 0000100001011100
+    Haplomylus_spp                 1110001011011101
+    Paschatherium_spp              1010000100011100
+    Mithrandir_gillianus           1101000101110010
+    Chriacus_gallinae              0000000001010001
+    Ectocion_spp                   1110110101110000
+    Tetraclaenodon_puercensis      1110100101010010
+    Claenodon_spp                  0000000101110000
+    Diacodexis_secans              0000000001011000
+    _Hyracotherium__spp            1110010101111000
+    Molinodus_suarezi              1000001011000010
+    Dissacus_spp                   0000000001010010
+    Macroscelidea                  1110011111011101
+    Hyracoidea                     1110110110011100
+  ;
+END;
+

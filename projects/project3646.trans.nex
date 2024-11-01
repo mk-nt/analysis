@@ -1,0 +1,77 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=69 NCHAR=15;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Actocharis_readingii            -121111----?2-1
+    Aleochara_curtula               -11-211-2121212
+    Aleochara_moerens               -11121112121212
+    Aleochara_sp_Myanmar            -11-211-2121212
+    Amarochara_forticornis          -11121122-21211
+    Atheta_monticola                -111111-11-1211
+    Autalia_longicornis             -111-111-1-11-2
+    Baeostethus_chiltoni            -1312111---?1--
+    Bolitochara_pulchra             -111-11211212-2
+    Colle_campbellensis             -1112111-1-?21-
+    Cordalia_obscura                -111111111-1211
+    Crataraea_suturalis             -111211211-111-
+    Cyllophallia_dauphinensis       -111-11211-1111
+    Cypha_longicornis               -111211-2-2-111
+    Cyphea_latiuscula               -111111111-11-1
+    Deinopsis_erosa                 212--2112-1212-
+    Demerina_bickmanni              -111-11-2--?211
+    Diestota_testacea               -111-111-121111
+    Diglotta_mersa                  -1221111---?2-1
+    Dinaraea_linearis               -11111111--1211
+    Dinarda_dentata                 -111111111-111-
+    Dioxeuta_sp                     -131111-1?21211
+    Drusilla_canaliculata           -11121111--?211
+    Ecitogaster_sp                  -111-11-1-21-11
+    Ecitomorpha_arachnoides         -111-11111-1211
+    Geostiba_circellaris            -111111111-?211
+    Gnypeta_carbonaria              -111-111-1-1211
+    Gymnusa_variegata               -22-121122121--
+    Gyrophaena_congrua              -112-1111-21211
+    Habrocerus_capillaricornis      2111-21-122-???
+    Halobrecta_flavipes             -111211211-1111
+    Haploglossa_marginalis          -111211211-1?1?
+    Homalota_plana                  -111111-1--1211
+    Hoplandria_lateralis            -111211111-1211
+    Hygronoma_dimidiata             -11111111--1111
+    Leptusa_antarctica              -111-1111?-?211
+    Leptusa_pulchella               -111-1121-211-1
+    Leucocraspedum_scorpio          -2112111--21-11
+    Lomechusa_emarginata            -11121112121211
+    Masuria_plumbea                 -22--1122-21111
+    Meotica_filiformis              -1111111---1112
+    Myllaena_elongata               -221-1121-21121
+    Neodioxeuta_sp                  -131211-1?2?211
+    Oligota_pumilio                 -11--??12-2-111
+    Olisthaerus_megacephalus        1111222-22122--
+    Orphnebius_draco                -111211-2-21?11
+    Oxypoda_longipes                -111211211-111-
+    Oxypodinus_anxius               -22--112--21??1
+    Paraconosoma_polita             2121-12--22112-
+    Phloeocharis_subtilissima       -111-22-1-222--
+    Phloeopora_corticalis           -111111111-12-1
+    Phyllodinarda_xenocephala       -111211-1121211
+    Phytosus_spinifer               -1111111-1-12-1
+    Piochardia_schaumii             -11121112-21212
+    Placusa_incompleta              -131-1111121211
+    Pronomaea_picea                 -13--112--21112
+    Pseudosemiris_circassica        -111111111-1211
+    Silusa_rubiginosa               -111211211212-1
+    Stylogymnusa_subantarctica      2---1?-1-?2?1--
+    Tachinus_proximus               1111222-2212---
+    Tachyusa_objecta                -111-111-1-?211
+    Termitobaena_bryanti            -111-11-1-21111
+    Termitodiscus_heimi             -111111---21212
+    Termitusa_sjoestedti            -121-?1--?2?-21
+    Thamiaraea_cinnamomea           -111211111-1111
+    Trichophya_pilicornis           2111--11222-2--
+    Typhloponemys_sp_Israel         -111211-2-21211
+    Typhloponemys_sp_Tanzania       -111211-2-21211
+    Zyras_collaris                  -111211111-1211
+  ;
+END;
+

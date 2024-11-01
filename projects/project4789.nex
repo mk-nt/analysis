@@ -1,0 +1,21 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=13 NCHAR=12;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Curvitriordo        01?01000000?
+    Rectitriordo        11?01000000?
+    Agelacrinites       211000001000
+    Krama               211101000010
+    Postibulla          211101100010
+    Discocystis         111101111110
+    Lispidecodus        01110111111?
+    Stalticodiscus      111101110121
+    Lepidodiscus        111121111121
+    Ulrichidiscus       311121110120
+    Isorophusella       000000000000
+    Isorophus           110000000000
+    Hemicystites        01?00000000?
+  ;
+END;
+

@@ -1,0 +1,61 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=53 NCHAR=9;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Coscinium             111000000
+    Anamirta              111000000
+    Arcangelisia          111000000
+    Calycocarpum          111000000
+    Disciphania           000000100
+    Aspidocarya           000000100
+    Parabaena             111000?00
+    Tinomiscium           100100000
+    Borismene             111000000
+    Fibraurea             100100000
+    Penianthus            100100000
+    Sphenocentrum         100100000
+    Burasaia              1(0,1)(0,1)(0,1)00000
+    Dioscoreophyllum      111000100
+    Kolobopetalum         111000100
+    Tinospora             111000?00
+    Chasmanthera          111000100
+    Desmonema             111000100
+    Odontocarya           111000100
+    Syntriandrium         111000100
+    Sinomenium            010010100
+    Menispermum           010010100
+    Diploclisia           01001(0,1)101
+    Pericampylus          010010101
+    Sarcopetalum          01001010?
+    Abuta                 010001001
+    Anomospermum          010001001
+    Orthomene             000000001
+    Caryomene             010001001
+    Elephantomene         010001001
+    Telitoxicum           010001001
+    Legnephora            01001010?
+    Parapachygone         01000110?
+    Hypserpa              010010010
+    Limacia               010010110
+    Stephania             010010101
+    Perichasma            01001010?
+    Antizoma              010011110
+    Cyclea                010011110
+    Cissampelos           010011111
+    Haematocarpus         010001?0?
+    Hyperbaena            010001000
+    Pachygone             010010?10
+    Cocculus              010010110
+    Strychnopsis          010001100
+    Chondrodendron        010001000
+    Curarea               01000100?
+    Carronia              010001100
+    Pycnarrhena           010000?00
+    Triclisia             010001101
+    Tiliacora             010001?01
+    Beirnaertia           010001101
+    Albertisia            0(0,1)000(0,1)000
+  ;
+END;
+

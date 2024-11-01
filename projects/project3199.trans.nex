@@ -1,0 +1,96 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=88 NCHAR=2;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Acanthephyra_purpurea           00
+    Funchalia_villosa               00
+    Bentheuphausia_amblyops         00
+    Euphausia_americana             00
+    Euphausia_brevis                00
+    Euphausia_crystallorophias      00
+    Euphausia_diomedeae             00
+    Euphausia_distinguenda          00
+    Euphausia_eximia                00
+    Euphausia_fallax                00
+    Euphausia_frigida               00
+    Euphausia_gibba                 00
+    Euphausia_gibboides             00
+    Euphausia_hanseni               00
+    Euphausia_hemigibba             00
+    Euphausia_krohnii               00
+    Euphausia_lamelligera           00
+    Euphausia_longirostris          00
+    Euphausia_lucens                00
+    Euphausia_mucronata             00
+    Euphausia_mutica                00
+    Euphausia_nana                  00
+    Euphausia_pacifica              00
+    Euphausia_paragibba             00
+    Euphausia_pseudogibba           00
+    Euphausia_recurva               00
+    Euphausia_sanzoi                00
+    Euphausia_sibogae               00
+    Euphausia_similis               00
+    Euphausia_spinifera             00
+    Euphausia_superba               00
+    Euphausia_tenera                02
+    Euphausia_triacantha            01
+    Euphausia_vallentini            00
+    Thysanopoda_acutifrons          00
+    Thysanopoda_aequalis            00
+    Thysanopoda_astylata            00
+    Thysanopoda_cornuta             00
+    Thysanopoda_cristata            00
+    Thysanopoda_egregia             00
+    Thysanopoda_microphthalma       00
+    Thysanopoda_minyops             00
+    Thysanopoda_monacantha          00
+    Thysanopoda_obtusifrons         00
+    Thysanopoda_orientalis          00
+    Thysanopoda_pectinata           00
+    Thysanopoda_spinicaudata        00
+    Thysanopoda_tricuspidata        01
+    Nematobrachion_boopis           10
+    Nematobrachion_flexipes         10
+    Nematobrachion_sexspinosum      10
+    Meganyctiphanes_norvegica       00
+    Nyctiphanes_australis           0-
+    Nyctiphanes_capensis            0-
+    Nyctiphanes_couchii             0-
+    Nyctiphanes_simplex             0-
+    Pseudeuphausia_latifrons        00
+    Pseudeuphausia_sinica           00
+    Thysanoessa_gregaria            10
+    Thysanoessa_inermis             00
+    Thysanoessa_inspinata           10
+    Thysanoessa_longicaudata        10
+    Thysanoessa_longipes            10
+    Thysanoessa_macrura             10
+    Thysanoessa_parva               10
+    Thysanoessa_raschii             00
+    Thysanoessa_spinifera           00
+    Thysanoessa_vicina              11
+    Tessarabrachion_oculatum        10
+    Nematoscelis_atlantica          10
+    Nematoscelis_difficilis         10
+    Nematoscelis_gracilis           10
+    Nematoscelis_lobata             10
+    Nematoscelis_megalops           10
+    Nematoscelis_microps            10
+    Nematoscelis_tenella            10
+    Stylocheiron_abbreviatum        10
+    Stylocheiron_affine             11
+    Stylocheiron_armatum            10
+    Stylocheiron_carinatum          10
+    Stylocheiron_elongatum          10
+    Stylocheiron_indicum            10
+    Stylocheiron_insulare           10
+    Stylocheiron_longicorne         10
+    Stylocheiron_maximum            10
+    Stylocheiron_microphthalma      10
+    Stylocheiron_robustum           10
+    Stylocheiron_suhmi              10
+  ;
+END;
+

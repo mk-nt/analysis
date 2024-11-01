@@ -1,0 +1,94 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=86 NCHAR=15;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Ciona_intestinalis                 ???????????????
+    Acodontaster_conspicuus            010001101100111
+    Allostichaster_sp                  010001101100111
+    Amblypneustes_ovum                 110000101111111
+    Amphipholis_squamata               010001101100211
+    Arbacia_lixula                     110000101111111
+    Arbacia_punctulata                 110000101111111
+    Archaster_typicus                  010001101100111
+    Asterias_forbesi                   010001101100111
+    Asterina_miniata                   010001101100111
+    Asteronyx_sp                       010001101100211
+    Astropecten_articulatus            010001101100111
+    Astropecten_polyacanthus           010001101100111
+    Brisingaster_robillardi            010001101100111
+    Caymanostella_sp                   010001101100111
+    Cephalodiscus_gracilis             ?????1?0???01??
+    Chiridota_rotifera                 110000101111-11
+    Coscinasterias_muricata            010001101100111
+    Crossaster_papposus                010001101100111
+    Cucumaria_miniata                  110000101111-11
+    Cucumaria_salma                    110000101111-11
+    Dermasterias_imbricata             010001101100111
+    Diplasterias_brucei                010001101100111
+    Diplodontias_miliaris              010001101100111
+    Echinaster_sentus                  010001101100111
+    Echinocardium_cordatum             110000101111111
+    Echinuses_culentus                 110000101111111
+    Encope_aberrans                    110000101111111
+    Eucidaris_tribuloides              110000101111111
+    Eurygonias_hylacanthus             010001101100111
+    Evasterias_troschelii              010001101100111
+    Florometra_serratissima            001111010000-00
+    Genocidaris_maculata               110000101111111
+    Gorgonocephalus_eucnemis           010001101100211
+    Gymnocrinus_richeri                001111010000-00
+    Harriamania_planktophilus          ?????1?0???01??
+    Heliaster_helianthoides            010001101100111
+    Henricia_sp                        010001101100111
+    Holopneustes_inflatus              110000101111111
+    Holothuria_leucospilota            110000101111-11
+    Hymenaster_pellucidus              010001101100111
+    Leptasterias_hexactis              010001101100111
+    Leptosynapta_clarkii               110000101111-11
+    Luidia_clathrata                   010001101100111
+    Luidia_foliolata                   010001101100111
+    Macroptychaster_accrescens         010001101100111
+    Meoma_ventricosa                   110000101111111
+    Mespilia_globulus                  110000101111111
+    Metacrinusrotundus                 001111010000-00
+    Odontaster_validus                 010001101100111
+    Ophiocanops_fugiens                010001101100211
+    Ophiocoma_echinata                 010001101100211
+    Ophioderma_brevispinum             010001101100211
+    Ophiomyxa_flaccida                 010001101100211
+    Ophionereis_reticulata             010001101100211
+    Ophiopholis_aculeata               010001101100211
+    Ophiopsammus_maculata              010001101100211
+    Ophiothrix_oerstedii               010001101100211
+    Paracentrotus_lividus              110000101111111
+    Parastichopus_californicus         110000101111-11
+    Patiriella_regularis               010001101100111
+    Pentacta_pygmaea                   110000101111-11
+    Perknaster_fuscus                  010001101100111
+    Pisaster_ochraceus                 010001101100111
+    Psammechinus_miliaris              110000101111111
+    Pseudarchaster_pareli              010001101100111
+    Pseudechinus_albocinctus           110000101111111
+    Pseudostichopus_villosus           110000101111-11
+    Psychropotes_longicauda            110000101111-11
+    Pteraster_tesselatus               010001101100111
+    Ptychodera_flava                   ?????1?0???01??
+    Rathbunaster_californicus          010001101100111
+    Saccoglossus_kowalevskii           ?????1?0???01??
+    Salmaciella_oligopora              110000101111111
+    Salmacis_belli                     110000101111111
+    Schizostella_bifurcata             010001101100211
+    Solaster_stimpsonii                010001101100111
+    Sphaerechinus_granularis           110000101111111
+    Stegnaster_inflatus                010001101100111
+    Stichaster_australis               010001101100111
+    Stomopneustes_variolaris           110000101111111
+    Strongylocentrotus_purpuratus      110000101111111
+    Temnopleurus_alexandri             110000101111111
+    Temnotrema_sculptum                110000101111111
+    Tripneustes_gratilla               110000101111111
+    Xyloplax_janetae                   110001101100111
+  ;
+END;
+

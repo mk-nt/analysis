@@ -1,0 +1,46 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=38 NCHAR=35;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Aphrodita_aculeata                 00000100000000000000000100000000000
+    Palmyra_aurifera                   00000100000000000000010100000010000
+    Harmothoe_imbricata                00100010000000000000000100000000000
+    Lepidonotus_squamatus              00100010000000000000000100000000000
+    Ceratonereis_longiceratophora      01101010111000000101100011001000100
+    Ceratocephale_loveni               01101010111000000101100011001000100
+    Nereimyra_punctata                 01101000111000000110000011001000100
+    Ophiodromus_flexuosus              00101000111000000110000011011000100
+    Sirsoe_methanicola                 10101000111000000110100011001000100
+    Eulalia_viridis                    01110000000000000100100000000000000
+    Notophyllum_foliosum               01110000000000000100100000000000000
+    Eteone_picta                       01110000000000000100100000000000000
+    Eusyllis_blomstrandi               00100000111000000100100000011001100
+    Pionosyllis_enigmatica             00100000110000000100100000011000100
+    Streptosyllis_bidentata            00100000010000000100100000011001100
+    Syllides_fulvus                    00100000010000000100100000011001100
+    Synmerosyllis                      00100000110000000100100000011000100
+    sp_one                             00100111011??010?10101101100?00?011
+    Chrysopetalum_debile               00100111011110100101011011000000011
+    Arichlidon_reyssi                  00100111011110101101011011000000011
+    B_heterosetosa                     00100111011110101101011011000001011
+    Paleanotus_sp                      00100111011110101101011011000000011
+    Dysponetus_populonectens           00100111011010100101000011000011011
+    Dysponetus_bulbosus                00100111011010100101000011000011011
+    Dysponetus_sp                      ?0100111011010100101000011000011011
+    Dysponetus_caecus_1                10100111011010100101000011000011011
+    Dysponetus_caecus_2                10100111011010100101000011000011011
+    Vigtorniella_sp                    11100100011000101101000011000000011
+    Vigtorniella_ardabilia             01100100011000101101000011000000011
+    Vigtorniella_flokati               1110011?011000101101000011000000011
+    Calamyzas_amphictenicola           111101110?0001000000100001010110???
+    sp                                 1111010001000??10?011001011?0?100??
+    Iheyomytilidicola_lauensis         11110100010001010101100101100?100??
+    Laubierus_alvini                   11110100010001010101100101100?100??
+    Natsushima_bifurcata               11110100010000110001100101110110011
+    Natsushima_sashai                  11110100010000110001100101110110011
+    Shinkai_longipedata                11110100010000110001100101110110011
+    Shinkai_fontefridae                11110100010000110001100101110110011
+  ;
+END;
+

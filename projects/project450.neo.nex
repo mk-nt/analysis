@@ -1,0 +1,48 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=40 NCHAR=2;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Poa_holciformis                  0?
+    Piptochaetium_medium             11
+    Piptochaetium_lasianthum         11
+    Pappostipa_vaginata_a            01
+    Nassella_pampagrandensis         11
+    Piptochaetium_montevidensis      11
+    Piptochaetium_napostaense        11
+    Nassella_melanosperma            11
+    Nassella_arcuata                 11
+    Nassella_novari                  11
+    Jarava_leptostachya              01
+    Jarava_media                     01
+    Jarava_plumosula                 01
+    Piptatherum_miliaceum            01
+    Aciachne_acicularis              00
+    Anatherostipa_brevis             01
+    Hesperostipa_comata              11
+    Aciachne_flagellifera            00
+    Achnatherum_inebrians            01
+    Achnatherum_chingii              01
+    Achnatherum_psilantherum         01
+    Pappostipa_vaginata_b            01
+    Orysopsis_asperifolia            01
+    Achnatherum_bromoides            01
+    Ortachne_erectifolia_a           00
+    Amelichloa_brachychaeta          01
+    Amelichloa_caudata               01
+    Amelichloa_brevipes              01
+    Ptilagrostis_porteri             01
+    Austrostipa_nodosa               01
+    Ortachne_erectifolia_b           00
+    Achnatherum_diegoense            01
+    Anatherostipa_orurensis          01
+    Hesperostipa_neomexicana         11
+    Achnatherum_multinode            01
+    Achnatherum_eminens              01
+    Austostipa_elegantissima         01
+    Amelichloa_clandestina           01
+    Aciachne_pulvinata               00
+    Amelichloa_ambigua               01
+  ;
+END;
+

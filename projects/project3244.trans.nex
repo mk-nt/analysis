@@ -1,0 +1,34 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=26 NCHAR=25;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Cryptopygus_antarcticus           0---0--000-000--0--------
+    Campodea_fragilis                 1---0-1100-010110----00--
+    Dasyleptus_brongniarti            002?1?0?1?-00?10?????????
+    Dasyleptus_sharovi                002?1???1???0?10?????????
+    Ditrigoniophthalmus_verae         2101110110111011201101101
+    Charimachilis_caucasicus          2100110110111021000000122
+    Turquimachilis_mendesi            1100110110111021100000122
+    Mesomachilis_nearctica            2110110111211021100003100
+    Praemachilis_excelsior            1111110110111021012100100
+    Allopsontus_asiaticus             1102110111111021100101100
+    Lepismachilis_y-signata           1100110111111021212100100
+    Songmachilis_xinxiangensis        2100110111111021112101100
+    Trigoniophthalmus_alternatus      1101111111111021100000100
+    Pedetontinus_luanchuanensis       1100110110111021012100100
+    Petrobius_brevistylis             1100110210111021112101111
+    Petrobiellus_takunagae            2100110210111021012100101
+    Cretaceomachilis_longa            11??110?1011112101?????--
+    Unimeinertellus_abundus           11101?01102011210121??0--
+    Nullmeinertellus_wenxuanii        111?1???10-111210??????--
+    Neomachilellus_dominicanus        21001?1?10-1112101311?0--
+    Neomachilellus_szeptyckii         1100121110-111210131120--
+    Meinertellus_adisi                2100121110-111210131120--
+    Nesomachilis_australica           11021201101111210121120--
+    Allomachilis_froggatti            21011201101111210121120--
+    Machilinus_oaxacensis             1112121110-111210131120--
+    Machilontus_phami                 21001201102011210121120--
+  ;
+END;
+

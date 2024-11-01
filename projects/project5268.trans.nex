@@ -1,0 +1,38 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=30 NCHAR=15;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Cuffeyella                      0(0,1)??000??????00
+    Bicrisia                        10210000100001?
+    Borgiola                        01??11??01200??
+    Cinctipora                      1110020??????01
+    Collapora                       1110(0,1)10?1001000
+    Crisia                          102100001000011
+    Crisina                         111100?01010110
+    Crisulipora                     1?110110112101?
+    Diaperoecia                     1110010?1121001
+    Diplosolen                      01??011?210000?
+    Disporella                      01??11??0(0,1)01000
+    Fasciculipora                   1110021?10020??
+    Favosipora                      01??11??01010??
+    Fenestulipora                   1?2100101012???
+    Foricula                        1110110?10010??
+    Heteropora_magna                1110110??????0?
+    Heteropora_neozelanica          1110100?012??0?
+    Heteropora_parapelliculata      01??100?012000?
+    Hornera                         111100?11011011
+    Idmidronea                      11110010101010?
+    Meliceritites                   1110(0,1)10?1001000
+    Patinella                       01??10??0(0,1)0200?
+    Plagioecia                      01??001?2101000
+    Platonea                        1111001?100200?
+    Stegohornera                    111101?100120??
+    Stomatopora_jurassic            00??011??????00
+    Stomatopora_recent              010011100000?0?
+    Reptomultisparsa                01??010?1002000
+    Tubulipora                      01??011?100210?
+    Trepostome                      11101????????0?
+  ;
+END;
+

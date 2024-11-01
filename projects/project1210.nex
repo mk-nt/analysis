@@ -1,0 +1,94 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=86 NCHAR=37;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Ciona_intestinalis                 1000??????????????????????????????1??
+    Acodontaster_conspicuus            0111010001101110010110110001111101000
+    Allostichaster_sp                  0111010001101110010110110001111101000
+    Amblypneustes_ovum                 0111110011100100111111111111110110000
+    Amphipholis_squamata               0111010011101110010110010001211110000
+    Arbacia_lixula                     0111110011100100111111111111110110000
+    Arbacia_punctulata                 0111110011100100111111111111110110000
+    Archaster_typicus                  0111010001101110010110110001111101000
+    Asterias_forbesi                   0111010001101110010110110001111101000
+    Asterina_miniata                   0111010001101110010110110001111101000
+    Asteronyx_sp                       0111010011101110010110010001211110000
+    Astropecten_articulatus            0111010001101110010110110001111101000
+    Astropecten_polyacanthus           0111010001101110010110110001111101000
+    Brisingaster_robillardi            0111010001101110010110110001111101000
+    Caymanostella_sp                   0111010001101110010110110001111101000
+    Cephalodiscus_gracilis             0000????????1??0??????????011?????0??
+    Chiridota_rotifera                 0111110010000100111011111110-10100000
+    Coscinasterias_muricata            0111010001101110010110110001111101000
+    Crossaster_papposus                0111010001101110010110110001111101000
+    Cucumaria_miniata                  0111110010000100111011111110-10100000
+    Cucumaria_salma                    0111110010000100111011111110-10100000
+    Dermasterias_imbricata             0111010001101110010110110001111101000
+    Diplasterias_brucei                0111010001101110010110110001111101000
+    Diplodontias_miliaris              0111010001101110010110110001111101000
+    Echinaster_sentus                  0111010001101110010110110001111101000
+    Echinocardium_cordatum             0111110011100100111111111111110110000
+    Echinuses_culentus                 0111110011100100111111111111110110000
+    Encope_aberrans                    0111110011100100111111111111110110000
+    Eucidaris_tribuloides              0111110011100100111111111111110110000
+    Eurygonias_hylacanthus             0111010001101110010110110001111101000
+    Evasterias_troschelii              0111010001101110010110110001111101000
+    Florometra_serratissima            0111001100011011000000000000-00000011
+    Genocidaris_maculata               0111110011100100111111111111110110000
+    Gorgonocephalus_eucnemis           0111010011101110010110010001211110000
+    Gymnocrinus_richeri                0111001100011011000000000000-00000011
+    Harriamania_planktophilus          1000????????1??0??????????011?????1??
+    Heliaster_helianthoides            0111010001101110010110110001111101000
+    Henricia_sp                        0111010001101110010110110001111101000
+    Holopneustes_inflatus              0111110011100100111111111111110100000
+    Holothuria_leucospilota            0111110010000100111011111110-10100000
+    Hymenaster_pellucidus              0111010001101110010110110001111101000
+    Leptasterias_hexactis              0111010001101110010110110001111101000
+    Leptosynapta_clarkii               0111110010000100111011111110-10100000
+    Luidia_clathrata                   0111010001101110010110110001111101000
+    Luidia_foliolata                   0111010001101110010110110001111101000
+    Macroptychaster_accrescens         0111010001101110010110110001111101000
+    Meoma_ventricosa                   0111110011100100111111111111110110000
+    Mespilia_globulus                  0111110011100100111111111111110110000
+    Metacrinusrotundus                 0111001100011011000000000000-00000011
+    Odontaster_validus                 0111010001101110010110110001111101000
+    Ophiocanops_fugiens                0111010011101110010110010001211110000
+    Ophiocoma_echinata                 0111010011101110010110010001211110000
+    Ophioderma_brevispinum             0111010011101110010110010001211110000
+    Ophiomyxa_flaccida                 0111010011101110010110010001211110000
+    Ophionereis_reticulata             0111010011101110010110010001211110000
+    Ophiopholis_aculeata               0111010011101110010110010001211110000
+    Ophiopsammus_maculata              0111010011101110010110010001211110000
+    Ophiothrix_oerstedii               0111010011101110010110010001211110000
+    Paracentrotus_lividus              0111110011100100111111111111110110000
+    Parastichopus_californicus         0111110010000100111011111110-10100000
+    Patiriella_regularis               0111010001101110010110110001111101000
+    Pentacta_pygmaea                   0111110010000100111011111110-10100000
+    Perknaster_fuscus                  0111010001101110010110110001111101000
+    Pisaster_ochraceus                 0111010001101110010110110001111101000
+    Psammechinus_miliaris              0111110011100100111111111111110110000
+    Pseudarchaster_pareli              0111010001101110010110110001111101000
+    Pseudechinus_albocinctus           0111110011100100111111111111110110000
+    Pseudostichopus_villosus           0111110010000100111011111110-10100000
+    Psychropotes_longicauda            0111110010000100111011111110-10100000
+    Pteraster_tesselatus               0111010001101110010110110001111101000
+    Ptychodera_flava                   1000????????1??0??????????011?????1??
+    Rathbunaster_californicus          0111010001101110010110110001111101000
+    Saccoglossus_kowalevskii           1000????????1??0??????????011?????1??
+    Salmaciella_oligopora              0111110011100100111111111111110110000
+    Salmacis_belli                     0111110011100100111111111111110110000
+    Schizostella_bifurcata             0111010011101110010110010001211110000
+    Solaster_stimpsonii                0111010001101110010110110001111101000
+    Sphaerechinus_granularis           0111110011100100111111111111110110000
+    Stegnaster_inflatus                0111010001101110010110110001111101000
+    Stichaster_australis               0111010001101110010110110001111101000
+    Stomopneustes_variolaris           0111110011100100111111111111110110000
+    Strongylocentrotus_purpuratus      0111110011100100111111111111110110000
+    Temnopleurus_alexandri             0111110011100100111111111111110110000
+    Temnotrema_sculptum                0111110011100100111111111111110110000
+    Tripneustes_gratilla               0111110011100100111111111111110110000
+    Xyloplax_janetae                   0111110001101110010110110001111101000
+  ;
+END;
+

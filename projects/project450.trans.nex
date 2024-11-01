@@ -1,0 +1,48 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=40 NCHAR=12;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Poa_holciformis                  1101?1?000(1,2)0
+    Piptochaetium_medium             311000101100
+    Piptochaetium_lasianthum         311110101100
+    Pappostipa_vaginata_a            10(0,2)000100100
+    Nassella_pampagrandensis         000110101100
+    Piptochaetium_montevidensis      311111(1,0)01100
+    Piptochaetium_napostaense        311000101100
+    Nassella_melanosperma            002000101100
+    Nassella_arcuata                 0020(0,1)0101100
+    Nassella_novari                  002010101100
+    Jarava_leptostachya              10(0,2)010000100
+    Jarava_media                     10(0,2)000000100
+    Jarava_plumosula                 102010000100
+    Piptatherum_miliaceum            100112001100
+    Aciachne_acicularis              (1,2)00100011120
+    Anatherostipa_brevis             100100000010
+    Hesperostipa_comata              100000101100
+    Aciachne_flagellifera            (1,2)00100011120
+    Achnatherum_inebrians            100010100000
+    Achnatherum_chingii              100000100002
+    Achnatherum_psilantherum         100010100000
+    Pappostipa_vaginata_b            10(0,2)000100100
+    Orysopsis_asperifolia            0001100011(1,2)0
+    Achnatherum_bromoides            100100000002
+    Ortachne_erectifolia_a           10010000(0,1)(0,1)20
+    Amelichloa_brachychaeta          100100100100
+    Amelichloa_caudata               100100100100
+    Amelichloa_brevipes              100100100102
+    Ptilagrostis_porteri             1001001(0,1)(0,1)(0,1)(1,0)2
+    Austrostipa_nodosa               0000001(0,1)110(0,2)
+    Ortachne_erectifolia_b           10010000(0,1)(0,1)20
+    Achnatherum_diegoense            100010100002
+    Anatherostipa_orurensis          100110000000
+    Hesperostipa_neomexicana         100010101100
+    Achnatherum_multinode            100000000002
+    Achnatherum_eminens              100010000000
+    Austostipa_elegantissima         00(0,2)0001(0,1)1101
+    Amelichloa_clandestina           100100100102
+    Aciachne_pulvinata               (1,2)00100011120
+    Amelichloa_ambigua               100100100100
+  ;
+END;
+

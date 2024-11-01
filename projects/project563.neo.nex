@@ -1,0 +1,90 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=82 NCHAR=10;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Amphicorina_mobilis                    0001000000
+    Romanchella_quadricostalis             00110?0000
+    Sabella_spallanzanii                   00110?0000
+    Salmacina_sp.                          0011000000
+    Serpula_vermicularis                   00110?0000
+    Augeneriella_basifurcata               0000000111
+    Augeneriella_hummelincki               0000000111
+    Augeneriella_lagunari                  00000?????
+    Augeneriella_mossambica                00000?????
+    Augeneriella_pectinata                 0000000111
+    Brifacia_metastellaris                 00000?????
+    Echinofabricia_alata                   0001111111
+    Echinofabricia_dubia                   00011?1111
+    Echinofabricia_goodhartzorum           0001111111
+    Fabricia_oregonica                     000001????
+    Fabricia_stellaris_Baltic              0000010111
+    Fabricia_stellaris_Portland            0000010111
+    Fabricinuda_bikinii                    0100000111
+    Fabricinuda_limnicola                  01000?????
+    Fabricinuda_longilabrum                00000?????
+    Fabricinuda_pseudocollaris             01000?????
+    Fabricinuda_pseudopalpa                00000?????
+    Fabricinuda_rosaelenae                 00000?????
+    Fabricinuda_sp._Australia              01000?????
+    Fabricinuda_trilobata_Belize           0100000111
+    Fabricinuda_trilobata_Panama           0100000111
+    Fabriciola_baltica                     00000?????
+    Fabriciola_berkeleyi                   00000?????
+    Fabriciola_brevibranchiata             0000000111
+    Fabriciola_cri                         000001????
+    Fabriciola_flammula_Belize             0000000111
+    Fabriciola_flammula_Panama             0000000111
+    Fabriciola_ghardaqa                    00000?????
+    Fabriciola_liguronis                   0000000111
+    Fabriciola_mediaseta                   0000000111
+    Fabriciola_minuta                      1000010111
+    Fabriciola_parvus                      0010000111
+    Fabriciola_phuketensis                 00000?????
+    Fabriciola_rubra                       00000?????
+    Fabriciola_sp._N._Carolina             00000?????
+    Fabriciola_markginsbergi               00000?????
+    Fabriciola_tonerella                   00000?????
+    Manayunkia_aestuarina_Baltic           1010010111
+    Manayunkia_aestuarina_N._Carolina      1010010111
+    Manayunkia_athalassia                  101001????
+    Manayunkia_baicalensis                 101001????
+    Manayunkia_brasiliensis                101001????
+    Manayunkia_mizu                        1010011111
+    Manayunkia_polaris                     10100?????
+    Manayunkia_speciosa                    101001????
+    Monroika_africana                      10??0?????
+    Novafabricia_bilobata                  00000?????
+    Novafabricia_brunnea                   0000000111
+    Novafabricia_chilensis                 00000?????
+    Novafabricia_exiguus                   00000?????
+    Novafabricia_gerdi                     00000?????
+    Novafabricia_guana                     00000?????
+    Novafabricia_infratorquata             0000000111
+    Novafabricia_labrus                    000000????
+    Novafabricia_sp._NSW                   000000????
+    Novafabricia_tenuiseta                 0000010111
+    Novafabricia_triangularis              000000????
+    Parafabricia_ventricingulata           000001011?
+    Pseudoaugeneriella_bansei              00000?????
+    Pseudoaugeneriella_brevirama           00000?????
+    Pseudoaugeneriella_nigra               00000?????
+    Pseudoaugeneriella_unirama             00000?????
+    Pseudofabricia_aberrans                00000?0111
+    Pseudofabriciola_analis                00000?????
+    Pseudofabriciola_australiensis         00000?????
+    Pseudofabriciola_californica           00000?????
+    Pseudofabriciola_capensis              00000?????
+    Pseudofabriciola_filamentosa           00000?????
+    Pseudofabriciola_filaris               00000?????
+    Pseudofabriciola_incisura              0000000111
+    Pseudofabriciola_longa                 00000?????
+    Pseudofabriciola_longipyga             00000?????
+    Pseudofabriciola_peduncula             0000000111
+    Pseudofabriciola_quasiincisura         0000000111
+    Pseudofabriciola_rousei                00000?????
+    Pseudofabriciola_sofla                 00000?????
+    Raficiba_barryi                        00000?????
+  ;
+END;
+

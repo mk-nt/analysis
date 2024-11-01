@@ -1,0 +1,18 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=10 NCHAR=13;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Olbiogaster_nuxco               0000000000000
+    Cretoseguya_burmitica           0000000000000
+    Anapausis_clivicola             0100001000000
+    Exiliscelis_californiensis      0001001001001
+    Hyperoscelis_insignis           1101011110111
+    Canthyloscelis_sp.              1101111110111
+    Synneuron_decipiens             2111111112001
+    Synneuron_annulipes             2111111112001
+    Synneuron_eomontana             211111111000?
+    Synneuron_jelli                 111112111000?
+  ;
+END;
+

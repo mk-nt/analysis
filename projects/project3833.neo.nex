@@ -1,0 +1,56 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=48 NCHAR=20;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Sphaerites_glabratus               00011?001?0010000001
+    Syntelia_histeroides               10011?00110111110001
+    Cretohister_sinensis               000?1?0??11010000?0?
+    Abraeus_sp                         10010101111100001100
+    Acritus_posternalis                10010101111010001100
+    Plegaderus_vulneratus              10010101101010001100
+    Teretrius_fabricii                 10010101111110001101
+    Teretrius_melburnius               10010101111110000101
+    Trypolister_sp                     10010101111110001101
+    Acritomorphus_silvestris           10110101111010001100
+    Trypaneus_ensifer                  1001010111101000111?
+    Pygocoelis_africanus               00010101111010000111
+    Dendrophilus_pygmaeus              10010101111111111101
+    Anapleus_sp                        10010101111010111101
+    Australanius_ambilicatus           00010101011111111101
+    Bacanius_suturalis                 00010101011110111101
+    Promyrmister_kistneri              011?0111?11111111???
+    Yarmister_sp                       11110111111111111100
+    Satrapes_sartorii                  11110111111101111111
+    Pachylomalus_mus                   11010101011110011100
+    Paromalus_flavicornis              10010101111010011101
+    Eulomalus_honoratus                11010111001110011101
+    Saprinus_splendens_Saprininae      11110101111111111101
+    Philothis_arabicus                 11110101111111011101
+    Tribalus_scaphidiiformis           00110111111111011100
+    Halacritus_lividus                 10010101111010001100
+    Epierus_sp                         00110111111111111101
+    Onthophilus_striatus               10110111110011110101
+    Epiechinus_costatus                10110111111011111101
+    Peploglyptus_golbachi              111101111110111111??
+    Pheidoliphila_arriagadai           11100111011100001101
+    Chlamydopsis_sp                    11100111111100000101
+    Arbolister_sp                      11110111111111011101
+    Asterix_affinis                    11110111101111111101
+    Pelorurus_sp                       00110111111111111100
+    Nasaltus_chinensis                 11110111111111011101
+    Hister_cruentus                    11110111111111111101
+    Hololepta_lissopyga                10100111111111011101
+    Platylister_dahdah                 11110111111111011101
+    Platysoma_bipunctatum              11110111101111011101
+    Platysoma_paugami                  11110111111111011101
+    Omalodes_sp                        11110111111111011101
+    Niponius_sp_india                  10010011111110011101
+    Niponius_sp_australia              10010011111110011101
+    Pantostictus_burmanicus            10110101000010000???
+    Antigracilus_costatus              0?011?0??100?1001???
+    Cretonthophilus_tuberculatus       0111010111101111????
+    Amplectister_tenax                 11110101111011111???
+  ;
+END;
+

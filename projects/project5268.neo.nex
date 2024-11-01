@@ -1,0 +1,38 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=30 NCHAR=30;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Cuffeyella                      10000?0001100???00000?????????
+    Bicrisia                        110001000110010101100011001000
+    Borgiola                        0000(0,1)0101000010010000100010010
+    Cinctipora                      10011000111000??00000101101010
+    Collapora                       000010000110010(0,1)00000???10????
+    Crisia                          110001000110010101100001001000
+    Crisina                         00011001100101101000000?001101
+    Crisulipora                     ?1000?000110010000100001101010
+    Diaperoecia                     100(0,1)10000110010000000101101?10
+    Diplosolen                      000000000110010000010101011010
+    Disporella                      00(0,1)00010100101101000010?010010
+    Fasciculipora                   0000110001?0010000000101010010
+    Favosipora                      001000101010010010010010010010
+    Fenestulipora                   ?000000001100100000001010??001
+    Foricula                        000010(0,1)01110110110001???101?10
+    Heteropora_magna                0000101011100???1000001?010010
+    Heteropora_neozelanica          00001?101110010010000011101000
+    Heteropora_parapelliculata      000000101110010010000011101000
+    Hornera                         00001001100101101000010?001101
+    Idmidronea                      100100000110010000000001101100
+    Meliceritites                   000010000110110100001??1101?10
+    Patinella                       00100010100101101000001?010010
+    Plagioecia                      001000100110010000000100011010
+    Platonea                        1001000001?0010000000000011100
+    Stegohornera                    00001001100101001000010?001001
+    Stomatopora_jurassic            10000?0001100???00000??110????
+    Stomatopora_recent              000100001100?01000000??001000?
+    Reptomultisparsa                000000000110010000000?????????
+    Tubulipora                      100100000110010000000001101000
+    Trepostome                      00001010100(0,1)000?10000(0,1)0???????
+  ;
+END;
+

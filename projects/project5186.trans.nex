@@ -1,0 +1,51 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=43 NCHAR=26;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Nucleopygus                      10011012000111101011001000
+    Pygopistes                       1001?002?01221000000??1000
+    Plagiochasma                     1001?002001221000000??0000
+    Amblypygus                       1001?002?01221000000??0000
+    Catopygus                        10011001100211001001??1000
+    Parapygus                        1000101210011101101100100?
+    Zuffardia                        20001012100311?1?011101001
+    Faujasia                         20001011?00311?1?01?111001
+    Domechinus                       20001011?00311?1?01?101001
+    Oolopygus                        11110011100311?1101?111001
+    Studeria                         21111011100311?11011001000
+    Pisolampas                       2111?0?1100301011011000000
+    Petalobrissus_petalobrissus      10001012000111?1101100100?
+    Petalobrissus_paralampas         20001012000111?1101101100?
+    Harduinia_mortonis               10001011000210?1?01?10001?
+    Harduinia_kellumi                10001012000210?1?01?10001?
+    Gongrochanus                     12000012010110?1?01?11?10?
+    Platypygus                       10000012010111?1?01?11100?
+    Stigmatopygus                    10000012000211?1?01?11100?
+    Rhynchopygus                     10111111010211?1?01?11001?
+    Procassidulus                    10000011000211?1101?11001?
+    Rhyncholampas                    20001110000111?0101100100?
+    Eurhodia                         20001010000312?0101100100?
+    Cassidulus                       20001010000111?0101100000?
+    Pygurostoma                      10001012?00111?1?01?00?10?
+    Clypeolampas                     10011010?00011?0?01?00?10?
+    Vologesia                        10011010?00012?0101100110?
+    Gitolampas_abiadensis            1001?012100111?0101100000?
+    Gitolampas_tunetanus             20001112100111?01011001000
+    Neocatopygus                     10001012?00111?01011001100
+    Arnaudaster                      10001112?00111?01011001101
+    Echinolampas_alta                20011010?00011?01011001101
+    Echinolampas_leymeriei           20001010?00110?01011001001
+    Plesiolampas                     20011012?000?0100010001001
+    Apatopygus                       200110120001?1100010001000
+    Oriolampas                       20011012?00110100010001001
+    Termieria                        2000?011?00201100010000001
+    Pseudopygaulus                   2000?012?001?1100010001001
+    Conoclypeus                      20011012?00110100110000000
+    Oligopygus                       20011011?00100100110000000
+    Haimea                           20011011?00210100110000000
+    Togocyamus                       200110110002000?0?10000000
+    Nucleolites                      00011002000111000000??1000
+  ;
+END;
+

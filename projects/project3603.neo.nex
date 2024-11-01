@@ -1,0 +1,78 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=70 NCHAR=4;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Athyrium_atkinsonii                                       0001
+    Athyrium_otophorum                                        0101
+    Athyrium_filix-femina                                     0101
+    Cornopteris_opaca                                         0100
+    Athyrium_niponicum                                        0001
+    Athyrium_skinneri                                         0001
+    Diplazium_wichurae                                        0010
+    Diplazium_proliferum                                      1010
+    Diplazium_squamigerum                                     0010
+    Diplazium_bombonasae                                      0010
+    Diplazium_dilatatum                                       0010
+    Deparia_petersenii_subsp_petersenii_var_petersenii        0010
+    Deparia_petersenii_subsp_petersenii_var_yakusimensis      0010
+    Deparia_japonica                                          0010
+    Deparia_dimorphophylla                                    0010
+    Deparia_biserialis                                        0010
+    Deparia_lobato-crenata                                    0010
+    Deparia_confluens                                         0010
+    Deparia_tenuifolia                                        0011
+    Deparia_petersenii_subsp_deflexa                          0010
+    Deparia_longipes                                          0010
+    Deparia_pseudoconilii                                     0010
+    Deparia_timetensis                                        0011
+    Deparia_kiusiana                                          0010
+    Deparia_conilii                                           0011
+    Deparia_lancea                                            0010
+    Deparia_tomitaroana                                       0010
+    Deparia_otomasui                                          0010
+    Deparia_bonincola                                         0010
+    Deparia_fenzliana                                         0010
+    Deparia_cataracticola                                     0010
+    Deparia_marginalis                                        0011
+    Deparia_prolifera                                         0001
+    Deparia_kaalaana                                          0010
+    Deparia_minamitanii                                       0010
+    Deparia_dickasonii                                        0011
+    Deparia_concinna                                          0011
+    Deparia_omeiensis                                         0011
+    Deparia_heterophlebia                                     1010
+    Deparia_yunnanensis                                       1010
+    Deparia_hainanensis                                       1010
+    Deparia_formosana                                         1010
+    Deparia_erecta                                            0001
+    Deparia_acrostichoides                                    0111
+    Deparia_aff_jiulungensis                                  01??
+    Deparia_pycnosora                                         0111
+    Deparia_dolosa                                            0001
+    Deparia_macdonellii                                       0?11
+    Deparia_jiulungensis                                      0111
+    Deparia_acuta                                             0111
+    Deparia_medogensis                                        0111
+    Deparia_auriculata                                        0101
+    Deparia_sichuanensis                                      0111
+    Deparia_wilsonii                                          0101
+    Deparia_emeiensis                                         0100
+    Deparia_pterorachis                                       0111
+    Deparia_okuboana                                          0001
+    Deparia_henryi                                            0101
+    Deparia_viridifrons                                       0111
+    Deparia_coreana                                           0111
+    Deparia_unifurcata                                        0101
+    Deparia_gordonii                                          0?01
+    Deparia_edentula                                          0101
+    Deparia_subfluvialis                                      0101
+    Deparia_glabrata                                          0?01
+    Deparia_aff_glabrata                                      0101
+    Deparia_boryana                                           0101
+    Deparia_sp                                                0101
+    Deparia_forsythii-majoris                                 0001
+    Deparia_parvisora                                         0101
+  ;
+END;
+

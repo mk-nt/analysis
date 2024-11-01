@@ -1,0 +1,33 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=25 NCHAR=35;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Oistoceras_figulinum           00-??4??441100-LH0????0?010??000100
+    Amaltheus_bifurcus             1119B?85?20100-GK0????0?014?0000100
+    Amaltheus_stokesi              1117G?6D?H0100-CE0????0?11101010100
+    Amaltheus_talrosei             011??2??1E0100-940????0??1D12010100
+    Amaltheus_subbifurvus          011??0??0B0100-HF0????0??1E13010100
+    Amaltheus_repressus            011??????C0100-110????0??120?010101
+    Amaltheus_conspectus           011?21??2F0110-000????0?11A1?010101
+    Amaltheus_viligaensis          011??3??370110-FG0????0?11F1?010100
+    Amaltheus_wertheri             1112E?02?00000-MN0????0?1130?010100
+    Amauroceras_ferruginum         1113D?7G?10000-NM0????0?1????010100
+    Amaltheus_subnodosus           11164?38?30000-IJ110??0?10606110100
+    Amaltheus_striatus             1118??13?I0000-55100??131050?110100
+    Amaltheus_gloriosus            11111?44?J0000-JI110101310B04110100
+    Amaltheus_gloriosus_W          11146?26?K0000-BC111211310C07110100
+    Amaltheus_gibbosus             11157?57?L0000-D9111321310705110100
+    Amaltheus_salebrosus           111AH?90?N0000-2611133121080?110100
+    Pleuroceras_becheteri          112CF????D1100-AD111341210908110110
+    Pleuroceras_transiens          112BC?CA?51100-KL120??1110?0?110110
+    Pleuroceras_solare             112E5?AC?81100-EB120??1110???111010
+    Pleuroceras_quadratum          112??????91100-??120??1110???111010
+    Pleuroceras_apyrenum           112I0?BE?A11011421?0??1110???111010
+    Pleuroceras_spinatum           112D9?FB?O110128A130??0??0???111010
+    Pleuroceras_hawskerense        112H3?DF?M1101167120?????0???111010
+    Pleuroceras_paucicostatum      112GA?G9?61101233130??0??0???111010
+    Pleuroceras_yeovilense         112F8?E1?G1101278130??0??0???111010
+  ;
+END;
+

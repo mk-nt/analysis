@@ -1,0 +1,34 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=26 NCHAR=12;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Cryptopygus_antarcticus           000100000000
+    Campodea_fragilis                 000100000001
+    Dasyleptus_brongniarti            00011?100?00
+    Dasyleptus_sharovi                00011?100??0
+    Ditrigoniophthalmus_verae         100111100111
+    Charimachilis_caucasicus          111011100111
+    Turquimachilis_mendesi            1??011100111
+    Mesomachilis_nearctica            111011100111
+    Praemachilis_excelsior            111011100111
+    Allopsontus_asiaticus             111011100111
+    Lepismachilis_y-signata           111011100111
+    Songmachilis_xinxiangensis        111011100111
+    Trigoniophthalmus_alternatus      111011100111
+    Pedetontinus_luanchuanensis       101011100111
+    Petrobius_brevistylis             101011100111
+    Petrobiellus_takunagae            100111100111
+    Cretaceomachilis_longa            100111111111
+    Unimeinertellus_abundus           100111111?11
+    Nullmeinertellus_wenxuanii        10011111??01
+    Neomachilellus_dominicanus        100111111?01
+    Neomachilellus_szeptyckii         100111111101
+    Meinertellus_adisi                100111111101
+    Nesomachilis_australica           100111111111
+    Allomachilis_froggatti            100111110111
+    Machilinus_oaxacensis             100111111101
+    Machilontus_phami                 100111111111
+  ;
+END;
+

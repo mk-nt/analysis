@@ -1,0 +1,35 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=27 NCHAR=22;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Ithone_fulva                  1001001111110000100100
+    Nemoptera_coa                 100000110000?0000?0000
+    Chasmoptera_hutti             0100001000000100000000
+    Psychopsis_barnardi           1000101010111000110100
+    Osmylops_ectoarticulatus      0001010010111011000111
+    Osmylops_armatus              0001010010111001010111
+    Osmylops_sejunctus            0001010010111011000111
+    Osmylops_placidus             0001010010111000010111
+    Myiodactylus_osmyloides       0011010010111001110111
+    Myiodactylus_pubescens        ?0?101001011???????111
+    Norfolius_howensis            0111110010111000111111
+    Nesydrion_fuscum              1001011010111100111111
+    Nesydrion_diaphanum           1001011010111100011111
+    Nesydrion_nigrinerve          100101101011???????111
+    Austronymphes_insularis       1111011011111101100111
+    Nymphes_aperta                1111011111111100101111
+    Nymphes_myrmeleonoides        1111011111111100101111
+    Nymphes_modesta               1111011111111100010111
+    Nymphydrion_delicatum         011?01001011????????11
+    Umbranymphes_spinosus         0???1???????10??????11
+    Liminympha_makarkini          ????0?1010?1????????11
+    Nymphites_bimaculatus         ????0?10?1??????????11
+    Sialium_sinicus               1???0?1011?1????????11
+    Sialium_minor                 ????0???1???????????11
+    Baissoleon_similis            111?0?10???1????????11
+    Baissoleon_cretaceous         ?11?0?101011????????11
+    Spilonymphes_major            ????0?0?1???????????11
+  ;
+END;
+
