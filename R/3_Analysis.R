@@ -180,6 +180,7 @@ tnBins <- .EvenBins(tnRatio)
 par(mfrow = c(2, 2))
 .ModelBy(tnBins, "trans:neo characters")
 .ModelBy(cut(tnRatio, c(0, .5, .8, 1/.8, 1/.5, 3, Inf)), "trans:neo characters")
+## Result: Mk-nt preferred more often when lower t:n ratio
 
 .NTBy(cut(tnRatio, c(0, .5, .8, 1/.8, 1/.5, 3, Inf)), "n", "trans:neo characters")
 ## Result: n preferred when proportionally more neomorphic characters
