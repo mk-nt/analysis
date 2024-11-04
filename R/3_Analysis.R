@@ -409,6 +409,8 @@ for (pID in names(oddities)) {
        font = (grid == max(grid)) + 1)
 }
 
+
+table(bestModel[projOK])
 modelFreeN <- c("by_n_ki", "by_nt_ki")
 modelFreeT <- c("by_t_ki", "by_nt_ki")
 message("Preferred model has free _n_ in ",
@@ -430,16 +432,6 @@ tSupport <- Support("by_nt_ki", "by_n_ki") + Support("by_t_ki", "by_ki")
 
 sum(nSupport)
 sum(tSupport)
-
-table(bestModel[projOK])
-modelFreeN <- c("by_n_ki", "by_nt_ki")
-modelFreeT <- c("by_t_ki", "by_nt_ki")
-message("Preferred model has free _n_ in ",
-        sum(nPreferred), "/", sum(projOK), " projects")
-t(marginals[modelFreeN, projOK]) - marginals["by_ki", projOK]
-message("Preferred model has free _t_ in ",
-        sum(bestModel[projOK] %in% modelFreeT), "/", sum(projOK), " projects")
-
 
 
 
