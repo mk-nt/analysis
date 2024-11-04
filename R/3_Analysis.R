@@ -12,10 +12,15 @@ modelPalette["NA"] <- figPalette[["stone"]]
 modelPch <- setNames(c(1, 22, 18, 24), models)
 
 # Decipher
-modelName <- c("by_ki" = "Mk-fixed", "by_n_ki" = "Mk-n", "by_t_ki" = "Mk-t",
+modelName <- c("by_ki" = "Mk-fixed",
+               "by_n_ki" = "Mk-n",
+               "by_t_ki" = "Mk-t",
                "by_nt_ki" = "Mk-nt")
-eqModel <- c(" " = "by_ki", "n " = "by_n_ki", " t" = "by_t_ki",
-             "n t" = "by_nt_ki", "NA" = "NA")
+eqModel <- c(" " = "by_ki",
+             "n " = "by_n_ki",
+             " t" = "by_t_ki",
+             "n t" = "by_nt_ki",
+             "NA" = "NA")
 
 # Load results from cache
 results <- setNames(
@@ -186,8 +191,8 @@ par(mfrow = c(2, 2))
 
 GetPar <- function(model, parameter, projects = names(results),
                    statistic = "50%") {
-  FUN.VALUE = matrix(NA_real_, length(statistic), length(parameter),
-                     dimnames = list(statistic, parameter))
+  FUN.VALUE <- matrix(NA_real_, length(statistic), length(parameter),
+                      dimnames = list(statistic, parameter))
   vapply(results[projects], function(x) {
     par <- x[[c(model, "parameters")]]
     if (is.null(par)) {
@@ -227,7 +232,7 @@ FigPlot(lossN, lossNT, asp = 1, log = "xy",
           1 + colSums(convergence["ess", c("by_n_ki", "by_nt_ki"), mlEss] >
                         2 * essThreshold)])
 abline(0, 1, lty = "dotted")
-## Result: the value of n is not really affected by the existence of t
+## Result: the value of n is not strongly affected when t is a free parameter.
 
 FigPlot(neoT, neoNT, asp = 1, log = "xy",
         col = c(durham$sky, durham$cyan, durham$ink)[
