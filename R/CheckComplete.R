@@ -247,6 +247,17 @@ ExistingResults <- function(pID, scriptID, approx = FALSE) {
   }
   
   pFiles <- PFiles(pID, scriptID)
+  if (!length(pFiles)) {
+    message("Fetching ", pID, " ", scriptID, " results from GitHub")
+    if (FetchResults(pID, scriptID)) {
+      pFiles <- PFiles(pID, scriptID)
+      if (!length(pFiles)) {
+        warning("Log files missing for ", pID, " ", scriptID)
+      }
+    } else {
+      warning("Could not fetch results for ", pID, " ", scriptID)
+    }
+  }
   par <- if (length(pFiles)) {
     p <- do.call(rbind,
                  BurnOff(

@@ -2,9 +2,15 @@ source("R/Helpers.R")
 
 extraMemory <- c(691, 3670, 3708, 3763, 4173, 4285)
 bigMemory <- c(3707, 4284)
+tooMuchMemory <- c(3707) # Out of memory even on bigmem
 moreTime <- c(684, 691, 3708, 3670, 3763, 3804, 4173, 4285, 5228)
 
 MakeSlurm <- function(pID, scriptID, ml = FALSE) {
+  if (pID %in% tooMuchMemory) {
+    RemoveSlurm(pID)
+    return(structure(FALSE, "reason" = "Cannot allocate enough memory"))
+  }
+  
   slurmFile <- SlurmFile(pID, scriptID, ml)
   newLines <- gsub("%PID%", fixed = TRUE, pID,
                    gsub("%SCRIPTBASE%", fixed = TRUE,
@@ -32,7 +38,7 @@ MakeSlurm <- function(pID, scriptID, ml = FALSE) {
   
   if (file.exists(slurmFile) &&
       isTRUE(all.equal(newLines, readLines(slurmFile)))) {
-    FALSE
+    structure(FALSE, reason = "Content not changed")
   } else {
     writeLines(newLines, slurmFile)
     system2("git", sprintf("add %s", slurmFile), stdout = NULL)

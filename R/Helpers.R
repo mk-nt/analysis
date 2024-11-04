@@ -98,7 +98,7 @@ FetchResults <- function(pID, scriptID) {
     }
     setwd(wd)
   } else {
-    .GitClone(pID, scriptID)
+    return(.GitClone(pID, scriptID))
   }
   return(FALSE)
 }
