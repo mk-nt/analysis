@@ -169,7 +169,7 @@ nCharBins <- .EvenBins(colSums(nChar))
 .ModelBy(nCharBins, "n Characters")
 .NTBy(nCharBins, "n", "n Characters")
 .NTBy(nCharBins, "t", "n Characters")
-## Result: Not particularly
+## Result: Subtly stronger support for n or t with more characters
 
 
 
