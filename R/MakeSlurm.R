@@ -7,7 +7,7 @@ moreTime <- c(684, 691, 3708, 3670, 3763, 3804, 4173, 4285, 5228)
 
 MakeSlurm <- function(pID, scriptID, ml = FALSE) {
   if (pID %in% tooMuchMemory) {
-    RemoveSlurm(pID)
+    RemoveSlurm(pID, scriptID, ml, "oom")
     return(structure(FALSE, "reason" = "Cannot allocate enough memory"))
   }
   
@@ -55,9 +55,14 @@ RemoveSlurm <- function(pID, scriptID, ml = FALSE, reason = "OK") {
     msg <- switch(
       reason,
       "OK" = sprintf(
-      "commit -m \"Remove %s_%s slurm files: run complete\"", pID, scriptID),
+        "commit -m \"Remove %s_%s slurm files: run complete\"", pID,
+        scriptID),
       "problem" = sprintf(
-        "commit -m \"Remove %s_%s slurm files: run problematic\"", pID, scriptID)
+        "commit -m \"Remove %s_%s slurm files: run problematic\"", pID,
+          scriptID),
+      "oom" = sprintf(
+        "commit -m \"Remove %s_%s slurm files: insufficient memory\"", pID,
+        scriptID)
     )
     commit <- system2("git", msg, stdout = TRUE)
     .GitPush()
