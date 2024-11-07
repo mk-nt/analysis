@@ -4,11 +4,18 @@ extraMemory <- c(691, 3670, 3708, 3763, 4173, 4285)
 bigMemory <- c(3707, 4284)
 tooMuchMemory <- c(3707) # Out of memory even on bigmem
 moreTime <- c(684, 691, 3708, 3670, 3763, 3804, 4173, 4285, 5228)
+tooMuchTime <- c(684 # Marginal.mcmc needs ~10 days just for burnin
+                 ) 
 
 MakeSlurm <- function(pID, scriptID, ml = FALSE) {
   if (pID %in% tooMuchMemory) {
     RemoveSlurm(pID, scriptID, ml, "oom")
     return(structure(FALSE, "reason" = "Cannot allocate enough memory"))
+  }
+  
+  if (pID %in% tooMuchTime) {
+    RemoveSlurm(pID, scriptID, ml, "timeout")
+    return(structure(FALSE, "reason" = "Run time too long"))
   }
   
   slurmFile <- SlurmFile(pID, scriptID, ml)
@@ -62,6 +69,9 @@ RemoveSlurm <- function(pID, scriptID, ml = FALSE, reason = "OK") {
           scriptID),
       "oom" = sprintf(
         "commit -m \"Remove %s_%s slurm files: insufficient memory\"", pID,
+        scriptID),
+      "timeout" = sprintf(
+        "commit -m \"Remove %s_%s slurm files: run time too long\"", pID,
         scriptID)
     )
     commit <- system2("git", msg, stdout = TRUE)
