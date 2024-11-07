@@ -430,8 +430,13 @@ Support <- function(better, worse) {
 nSupport <- Support("by_nt_ki", "by_t_ki") + Support("by_n_ki", "by_ki")
 tSupport <- Support("by_nt_ki", "by_n_ki") + Support("by_t_ki", "by_ki")
 
+################################################################################
+# These are the results quoted in the manuscript
+################################################################################
 sum(nSupport)
+nSupport
 sum(tSupport)
+tSupport
 
 
 
