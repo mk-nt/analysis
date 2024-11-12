@@ -39,7 +39,6 @@ message("Results not available for ",
         paste(projects[!allIn[projects]], collapse = ", "))
 
 # Filter analyses by convergence and ESS
-cnv <- results[[1]][[1]][["convergence"]]
 convergence <- vapply(results, function(x) {
   y <- sapply(x, `[[`, "convergence")
   matrix(as.numeric(y), nrow = dim(y)[[1]], dimnames = dimnames(y))
