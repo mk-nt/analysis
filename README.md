@@ -1,9 +1,11 @@
-# Mk-nt analysis files
+# Mk-nt analysis
 
 This repository contains scripts necessary to replicate the analyses of 
 
-Smith & Yang (2024), "Improving Phylogenetic Inference by Detecting Asymmetric 
-Evolutionary Rates in Morphological Characters".
+Smith & Yang (2026), "Directional Biases in Morphological Evolution:
+Implications for Phylogenetic Models".
+
+Full usage details are provided in the package vignettes.
 
 We assume that you have `git` and `gh` installed locally and in the system path.
 
