@@ -90,3 +90,7 @@ To reproduce the analyses:
    `rbPDF/project<projectID>-<modelID1>-<modelID2>.dist.rds`, 
    and visualize distances in a summary PDF `rbPDF/*.pdf`.
 
+
+## Archiving analytical results on GitHub
+
+`for repo in $(gh repo list $USERNAME --limit 300 --json name --jq '.[] | select(.name | endswith("_ki")) | .name'); do gh release create "2025-10" --repo "mk-nt/$repo" --title "2025-10" --notes "Archive $repo for Zenodo deposit."; done`
