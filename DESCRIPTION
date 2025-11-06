@@ -28,6 +28,7 @@ Imports:
   PlotTools,
   ppcor,
   Quartet,
+  R.utils,
   Rdpack (>= 2.3),
   readxl,
   Rogue,
