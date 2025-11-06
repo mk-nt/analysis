@@ -31,7 +31,7 @@ ComparisonTrees <- function(scriptID, pID) {
 }
 
 #' Compare trees with well corroborated tree
-#' @param useCache Logical sppecifing whether to use cached results. Set to
+#' @param useCache Logical specifing whether to use cached results. Set to
 #' `FALSE` to regenerate the cache, e.g. if new trees are available.
 #' @importFrom cli cli_progress_done cli_progress_message
 #' @importFrom digest digest
