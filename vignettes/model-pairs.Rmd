@@ -3,13 +3,18 @@ title: "Comparison of model pairs"
 author: "Martin R. Smith <martin.smith@durham.ac.uk>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-bibliography: ../inst/REFERENCES.bib
-csl: ../inst/apa-old-doi-prefix.csl
 vignette: >
   %\VignetteIndexEntry{Comparison of model pairs}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r setup-vignette, message = FALSE, include = FALSE}
+knitr::opts_chunk$set(
+  fig.width = 7.2,
+  fig.height = 5
+)
+```
 
 ```{r setup}
 library("neotrans")

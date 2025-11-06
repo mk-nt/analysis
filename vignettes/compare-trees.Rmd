@@ -3,8 +3,6 @@ title: "Impact of model choice on tree topologies"
 author: "Martin R. Smith <martin.smith@durham.ac.uk>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-bibliography: ../inst/REFERENCES.bib
-csl: ../inst/apa-old-doi-prefix.csl
 vignette: >
   %\VignetteIndexEntry{Impact of model choice on tree topologies}
   %\VignetteEngine{knitr::rmarkdown}
@@ -464,7 +462,7 @@ MostDistant <- function(d, k = 12) {
 
 
 <!--
-```{r}
+```r
 # Explore similarity of model-reconstructed trees to parsimony trees
 # This ended up not being very illuminating
 kValues <- c("k1", "k3", "k10", "kInf")
@@ -535,7 +533,7 @@ parsSim <- vapply(nProjects, function(pID) {
 ); cli::cli_progress_done()
 ```
 
-```{r}
+```r
 parsFrame <- as.data.frame.table(parsSim) |>
   `colnames<-`(c("model", "k", "dataset", "similarity"))
 parsFrame$k <- factor(parsFrame$k, levels = kValues, ordered = TRUE)

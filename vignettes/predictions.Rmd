@@ -3,8 +3,6 @@ title: "Predicting parameters and fit"
 author: "Martin R. Smith <martin.smith@durham.ac.uk>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-bibliography: ../inst/REFERENCES.bib
-csl: ../inst/apa-old-doi-prefix.csl
 vignette: >
   %\VignetteIndexEntry{Predicting parameters and fit}
   %\VignetteEngine{knitr::rmarkdown}

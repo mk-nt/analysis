@@ -3,8 +3,6 @@ title: "Parameter analysis"
 author: "Martin R. Smith <martin.smith@durham.ac.uk>"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-bibliography: ../inst/REFERENCES.bib
-csl: ../inst/apa-old-doi-prefix.csl
 vignette: >
   %\VignetteIndexEntry{Parameter analysis}
   %\VignetteEngine{knitr::rmarkdown}
@@ -47,7 +45,7 @@ plot(stdErr, mds, frame.plot = FALSE, xlab = "Standard error of estimate",
 abline(h = 0, lty = "dashed", col = "grey70")
 abline(0, 1, lty = "dashed", col = "grey70")
 legend("topleft", ModelLabel(modelsT), pch = 16, col = ModelCol(modelsT),
-       bty = "N")
+       bty = "n")
 ```
 
 ### When is a partitioned model preferred?
