@@ -14,13 +14,9 @@
    - `module load gcc/11.2 openmpi/4.1.1`
 1. Navigate to `cd neotrans`
 1. Run the Singularity command through `mpirun`, which will use the local MPI
-   - `mpirun -np 2 singularity run -B $TMPDIR:$TMPDIR --app rbmpi ../revbayes-v1.2.4-linux64-singularity.simg rbScripts/script.Rev`
+   - `mpirun -np 2 singularity run -B $TMPDIR:$TMPDIR --app rbmpi ../revbayes-v1.3.1-linux64-singularity.simg rbScripts/script.Rev`
    - `-np 2` is not required when the command is in a SLURM batch script;
      it will be set automatically to match `#SBATCH -n`
 
 ## Queueing batch jobs using slurm
-1. Create slurm job requests locally in R, using `R/2_RevBayes.R`.
-   Check that `options("nt-slurm" = TRUE)` in `R/_setup.R`.
-1. Push the files to GitHub, then `cd neotrans`, and `git pull`.
-1. Run `sbatch slurm/jobid.sh` to enqueue the job
-1. `squeue -u YOUR-USER-ID` will show the status of your currently queued jobs.
+1. Create slurm job requests locally in R, using `EnqueueML()`.
