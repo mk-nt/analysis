@@ -1,0 +1,94 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=86 NCHAR=24;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Alangium_chinense                  -01010-00-1001001-111000
+    Alangium_eydei                     -01010-00-1001001-111?00
+    Alangium_javanicum                 -00011-10-1011001-111?00
+    Alangium_kurzii                    -01010-00-1001001-111000
+    Alangium_platanifolium             -01010-00-1001001-111000
+    Alangium_vermontanum               -01010-00-1001001-111000
+    Alangium_villosum                  -01110-10-10?1001-111?00
+    Amersinia_obtrullata               -11101-10-00110010{0,1}11100
+    Beckettia_pyriformis               -111110112??????????????
+    Beckettia_samuelis                 -011111112??????????????
+    Broussaisia_arguta                 -210-0-0--0000000-000?21
+    Browniea_serrata                   -00111-10-?110?01???????
+    Caiophora_lateritia                1000-0-0--0000000-000?21
+    Camptotheca_acuminata              -01101-10-1111101-011000
+    Cardiandra_alternifolia            2100-0-0--0000000-000?11
+    Carpenteria_californica            0200-0-0--0000000-000?11
+    Cornus_cf_piggae                   -11?1?-10-0011001111??00
+    Cornus_canadensis                  -01111-00-1011001-111100
+    Cornus_clarnensis                  -01111-00-1011001-111?00
+    Cornus_controversa                 -01011000-1011001-111100
+    Cornus_disciflora                  -01111-00-1011001-111000
+    Cornus_eydeana                     -01011-00-0111001011??00
+    Cornus_florida                     -01111-00-1011001-111000
+    Cornus_kousa                       -00111-00-1011001-111100
+    Cornus_mas                         -01011-00-00110011111000
+    Cornus_multilocularis              -{1,2}1011-00-1011001-111?00
+    Cornus_oblonga                     -11111-10-1011001-111100
+    Cornus_officinalis                 -01011-00-00110011111000
+    Cornus_peruviana                   -01011000-1011001-111100
+    Cornus_piggae                      -{0,1}1111-00-00110011111?00
+    Cornus_sanguinea                   -01011000-1011001-111100
+    Cornus_volkensii                   -01011-00-10110010111?00
+    Curtisia_dentata                   -11111-00-1011001-011000
+    Curtisia_quadrilocularis           -11111-00-1011001-011?00
+    Davidia_antiqua                    -21111-10-1111101-001?00
+    Davidia_involucrata                -21111-10-01111010001100
+    Decumaria_barbara                  4200-0-0--0000000-000?11
+    Deutzia_rubens                     2100-0-0--0000000-000111
+    Diplopanax_eydei                   -00111-11001111000101000
+    Diplopanax_stachyanthus            -00111001001011000101?00
+    Drumheller_fruit_1                 -21111-10-1011001-001??0
+    Drumheller_fruit_2                 -11101-11100111012100?00
+    Edencarpa_grandis                  -11?11-10-1011001-101?00
+    Eomastixia_rostrata                -{0,1}11110112??????????????
+    Eucnide_urens                      3000-0-0--0000000-000121
+    Eydeia_hokkaidoensis               -{1,2}1111-10-1010001-101000
+    Eydeia_jerseyensis                 -11101-10-00110110101?00
+    Eydeia_vancouverensis              -{1,2}1111-10-1011001-101?00
+    Fendlera_rupicola                  01?0-0-0--0000000-?00?11
+    Fendlerella_utahensis              01?0-0-0--0000000-?00?10
+    Fenestracarpa_washingtonensis      -11?01-10-00110010111?00
+    Fouquieria_columnaris              ????????????????????????
+    Grubbia_tomentosa                  -001-1-10-?011001-01?110
+    Hironoia_fusiformis                -11111-10-00100010011?00
+    Hydrangea_knowltonii               3{0,1}00-0-0--0000000-000?11
+    Hydrangea_macrophylla              2?00-0-0--0000000-000?11
+    Hydrostachys_imbricata             0000-0-0--0000000-000011
+    Jamesia_americana                  0100-0-0--0000000-000111
+    Kirengeshoma_palmata               0110-0-0--0000000-000?11
+    Langtonia_bisulcata                -01111101001110000101?00
+    Loasa_vulcanica                    3000-0-0--0000000-000121
+    Mastixia_amygdalaeformis           -0011111100011001011????
+    Mastixia_pentandra                 -00111111011111010111000
+    Mastixia_rattazzii                 -001111010??????????????
+    Mastixicarpum_cretaceum            -011110?10??????????????
+    Mastixioidiocarpum_oregonense      -00111111001110010111?00
+    Mastixiopsis_kirchheimmeri         -011110112??????????????
+    Mentzelia_lindleyi                 3000-0-0--0000000-000121
+    Nyssa_aquatica                     -01101-10-01110010111100
+    Nyssa_eolignitica                  -?1101-0??0111001011??00
+    Nyssa_grayensis                    -{0,1}1101000-011100101?1?00
+    Nyssa_javanica                     -01101-02-01110010111000
+    Nyssa_ogeche                       -01101-02-01110010111000
+    Nyssa_spatulata                    -11101-111?111001-111?00
+    Nyssa_sylvatica                    -01101010-01110010111100
+    Obamacarpa_edenensis               -11101-10-00110010101000
+    Operculifructus_lopezii            -001-1-10-1111001-???010
+    Petalonyx_nitidus                  -000-0-0--0000000-000?00
+    Philadelphus_lewisii               1200-0-0--0000000-000111
+    Pileostegia_viburnoides            4200-0-0--0000000-000?11
+    Retinomastixia_schultei            -00111101001111000111?00
+    Sarracenia_purpurea                1200-0-0--0000000-000011
+    Sheltercarpa_vancouverensis        -11?11-10-1011001-11????
+    Suciacarpa_starrii                 -11101-11200110110100000
+    Suciacarpa_xiangae                 -11101-1110011111010?000
+    Whipplea_modesta                   0??0-0-0--0000000-?00?10
+  ;
+END;
+

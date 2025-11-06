@@ -1,0 +1,61 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=53 NCHAR=9;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Coscinium             11000-000
+    Anamirta              11000-000
+    Arcangelisia          11000-000
+    Calycocarpum          11000-001
+    Disciphania           000000(0,1)01
+    Aspidocarya           000000101
+    Parabaena             11000?001
+    Tinomiscium           00100-001
+    Borismene             11000-101
+    Fibraurea             00100-001
+    Penianthus            00100-101
+    Sphenocentrum         00100-101
+    Burasaia              (0,1)(0,1)(0,1)00-001
+    Dioscoreophyllum      110000001
+    Kolobopetalum         110000001
+    Tinospora             11000?001
+    Chasmanthera          110000001
+    Desmonema             110000001
+    Odontocarya           110000001
+    Syntriandrium         110000001
+    Sinomenium            100101000
+    Menispermum           100101000
+    Diploclisia           1001(0,1)1000
+    Pericampylus          100101001
+    Sarcopetalum          10010100?
+    Abuta                 10001-000
+    Anomospermum          10001-00?
+    Orthomene             00000-000
+    Caryomene             10001-000
+    Elephantomene         10001-000
+    Telitoxicum           10001-000
+    Legnephora            10010000?
+    Parapachygone         10001000?
+    Hypserpa              10010-010
+    Limacia               100100010
+    Stephania             100101001
+    Perichasma            100100001
+    Antizoma              100110011
+    Cyclea                100111011
+    Cissampelos           100111011
+    Haematocarpus         10001?00?
+    Hyperbaena            10001-000
+    Pachygone             10010?01?
+    Cocculus              100101010
+    Strychnopsis          100011100
+    Chondrodendron        10001-100
+    Curarea               10001-100
+    Carronia              100011000
+    Pycnarrhena           10000?(0,1)0(0,1)
+    Triclisia             100011000
+    Tiliacora             10001?000
+    Beirnaertia           100011000
+    Albertisia            (0,1)000(0,1)-(0,1)00
+  ;
+END;
+

@@ -1,0 +1,61 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=53 NCHAR=7;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Coscinium             0100000
+    Anamirta              0100200
+    Arcangelisia          0100000
+    Calycocarpum          1100200
+    Disciphania           1010200
+    Aspidocarya           1010200
+    Parabaena             11?0200
+    Tinomiscium           1100200
+    Borismene             1100100
+    Fibraurea             1100200
+    Penianthus            1100322
+    Sphenocentrum         1100322
+    Burasaia              1100100
+    Dioscoreophyllum      1110(1,2)00
+    Kolobopetalum         1110100
+    Tinospora             11?0(1,2)00
+    Chasmanthera          1110100
+    Desmonema             1110(1,2)00
+    Odontocarya           1110100
+    Syntriandrium         1110100
+    Sinomenium            0010211
+    Menispermum           0010211
+    Diploclisia           0011211
+    Pericampylus          0011211
+    Sarcopetalum          001?2?2
+    Abuta                 0001011
+    Anomospermum          0001012
+    Orthomene             1001012
+    Caryomene             0001012
+    Elephantomene         0001012
+    Telitoxicum           0001012
+    Legnephora            001?2??
+    Parapachygone         001?3??
+    Hypserpa              0000212
+    Limacia               0010212
+    Stephania             0011211
+    Perichasma            001?211
+    Antizoma              0010211
+    Cyclea                0010211
+    Cissampelos           0011211
+    Haematocarpus         00??322
+    Hyperbaena            00003(0,1)2
+    Pachygone             00?0322
+    Cocculus              0010211
+    Strychnopsis          0010322
+    Chondrodendron        0000322
+    Curarea               000?32?
+    Carronia              0010322
+    Pycnarrhena           00?0322
+    Triclisia             0011322
+    Tiliacora             00?1011
+    Beirnaertia           0011322
+    Albertisia            0000322
+  ;
+END;
+

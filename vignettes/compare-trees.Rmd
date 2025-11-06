@@ -1,0 +1,637 @@
+---
+title: "Impact of model choice on tree topologies"
+author: "Martin R. Smith <martin.smith@durham.ac.uk>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
+csl: ../inst/apa-old-doi-prefix.csl
+vignette: >
+  %\VignetteIndexEntry{Impact of model choice on tree topologies}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup-vignette, message = FALSE, include = FALSE}
+knitr::opts_chunk$set(
+  fig.width = 7.2,
+  fig.height = 5
+)
+```
+
+```{r setup, message = FALSE}
+library("neotrans")
+
+hetModels <- c("hg_ki", "hg2_ki", "hg_b_ki", "hg_m_ki", "hg_bm_ki")
+rmModels <- c("rm_by_n_ki", "rm_by_t_ki", "rm_by_nt_ki")
+statModels <- c("by_ki", "by_n_ki", "by_nn_ki", "by_t_ki", "by_nt_ki")
+nsModels <- c("ns_ki", "ns_n_ki", "ns_t_ki", "ns_nt_ki")
+homModels <- c(statModels, nsModels)
+kiModels <- c(statModels, rmModels, nsModels, hetModels)
+nonRm <- setdiff(kiModels, rmModels)
+
+if (length(TreeDist::GetParallel()) == 0) {
+  TreeDist::StartParallel(ceiling(parallel::detectCores() * 0.75))
+}
+```
+
+```{r load-data}
+marginals <- GetMarginals(KiProjects(), nonRm)
+stdErr <- attr(marginals, "stdErr")
+```
+
+```{r}
+# Which datasets favour a model other than by_ki?
+bestModel <- nonRm[apply(marginals, 2, which.max)] |>
+  `names<-`(KiProjects())
+projects <- KiProjects()[bestModel != "by_ki"]
+```
+
+```{r compare-to-Mk1}
+# Compare by_ki with the globally best model
+kiLength <- vapply(projects, function(pID) {
+  median(TreeLengths(pID, "by_ki")) %||% NA_real_
+}, double(1))
+cfLength <- vapply(projects, function(pID) {
+  median(TreeLengths(pID, bestModel[[pID]])) %||% NA_real_
+}, double(1))
+relLen <- cfLength / kiLength
+```
+
+```{r tree-changes, message = FALSE}
+# Estimated trees using the best available stationary model
+treeChange <- sapply(projects, function(pID) {
+  cli::cli_progress_message("Evaluating trees: {pID}")
+  d <- TreeDistances(pID, bestModel[[pID]], "by_ki")
+  disp <- Dispersion(d)
+  prec <- PrecisionIncrease(disp[["spread"]][, "mad"], bestModel[[pID]], "by_ki")
+  
+  c(
+    medMed = disp[["mdmd"]] %||% NA_real_,
+    sil = disp[["sil"]] %||% NA_real_,
+    prec = prec %||% NA_real_
+  )
+})
+cli::cli_progress_done()
+```
+
+
+```{r plot-tree-changes, fig.height = 7.2, fig.width = 7.2}
+modelBF <- sapply(projects, function(pID) {
+  marginals[bestModel[[pID]], pID] - marginals["by_ki", pID]
+})
+
+modelErr <- sapply(projects, function(pID) {
+  stdErr[bestModel[[pID]], pID] + marginals["by_ki", pID]
+})
+dashCol <- "grey70"
+
+OutputPlot("treeDiff", 7.2, 7.2, function() {
+  par(mfrow = c(2, 2), mar = c(4.6, 4.6, 0.4, 0.4))
+  plot(treeChange["sil", ] ~ modelBF,
+       xlab = "Model BF", ylab = "Silhouette score",
+       #pch = 16, col = ModelCol(bestModel),
+       pch = 3,
+       xpd = NA, frame.plot = FALSE)
+  abline(h = 0, lty = 2, col = dashCol)
+  EpsLine(v = TRUE, h = FALSE)
+  Panel(1)
+  
+  plot(treeChange["prec", ] ~ modelBF,
+       xlab = "Model BF", ylab = "Change in precision (MAD, %)",
+       xpd = NA, frame.plot = FALSE,
+       #pch = 16, col = ModelCol(bestModel)
+       pch = 3)
+  abline(h = 0, lty = 2, col = dashCol)
+  EpsLine(h = FALSE, v = TRUE)
+  vioplot::vioplot(treeChange["prec", ], at = 144, add = TRUE, width = 100,
+                   frame.plot = FALSE, wex = 42)
+  Panel(2)
+  
+  plot(treeChange["medMed", ] ~ modelBF,
+       xlab = "Model BF", ylab = "Normalized CI Distance between median trees",
+       type = "n",
+       #pch = 16, col = ModelCol(bestModel),
+       frame.plot = FALSE)
+  abline(h = 0, lty = 2, col = dashCol)
+  points(modelBF, treeChange["medMed", ], pch = 3, xpd = NA)
+  EpsLine(h = FALSE, vert = TRUE)
+  Panel(3)
+  
+  x <- treeChange["medMed", ]
+  x <- x[!is.na(x)]
+  dens <- density(x, from = 0, to = max(x), bw = "nrd0")
+  dens$x <- pmax(dens$x, 0)  # force support ≥ 0
+  xr <- c(x, -x)   # reflect data around 0
+  dens <- density(xr, from = 0, to = max(x), bw = "nrd0")
+  # scale density for plotting
+  scale <- 12
+  xpos <- 144
+  y <- dens$x
+  z <- dens$y / max(dens$y) * scale
+  
+  # draw violin manually
+  polygon(c(xpos - z, rev(xpos + z)),
+          c(y, rev(y)), col = "grey50", border = "black")
+  
+  vioplot::vioplot(x, at = 144, add = TRUE, width = 100,
+                   frame.plot = FALSE, wex = 42, col = "transparent", border = NA)
+  
+  plot(modelBF, relLen,
+       xlab = "Model BF", ylab = "Relative tree length", xpd = NA,
+       log = "y", 
+       #pch = 16, col = ModelCol(bestModel),
+       pch = 3,
+       frame.plot = FALSE)
+  Panel(4)
+  abline(h = 1, lty = 2, col = dashCol)
+  EpsLine(vert = TRUE, horiz = FALSE)
+  vioplot::vioplot(relLen, at = 144, add = TRUE, width = 100,
+                   frame.plot = FALSE, wex = 42)
+})
+summary(relLen)
+```
+
+```{r parsimony-analysis}
+parsModels <- c("by_ki", "ns_ki", "by_t_ki", "by_n_ki", "by_nt_ki",
+                "hg_ki", "hg_b_ki")
+# Get parsimony scores of Bayesian trees
+pScores <- PosteriorTreeSteps(KiProjects(), parsModels)
+pScores$model <- factor(pScores$scriptID, levels = parsModels)
+```
+
+```{r manipulate-pars-results, message = FALSE}
+library("dplyr")
+pNorm <- pScores |>
+  filter(pID %in% KiProjects()) |>
+  rename(scriptID_fac = model) |>
+  group_by(pID) |>
+  mutate(ew = ew / min(ew)) |>
+  mutate(k10 = k10 / min(k10)) |>
+  mutate(k1 = k1 / min(k1)) |>
+  ungroup()
+
+complete_pIDs <- pNorm |>
+  count(pID, scriptID) |>
+  count(pID) |>
+  filter(n == n_distinct(pNorm$scriptID)) |>
+  pull(pID)
+
+if (length(complete_pIDs) < length(KiProjects())) {
+  message("Missing some results from ",
+          paste0(setdiff(KiProjects(), complete_pIDs), collapse = ", "))
+}
+
+pNorm <- pScores |>
+  filter(pID %in% complete_pIDs) |>
+  rename(scriptID_fac = model) |>
+  group_by(pID) |>
+  mutate(ew = ew / min(ew)) |>
+  mutate(k10 = k10 / min(k10)) |>
+  mutate(k1 = k1 / min(k1)) |>
+  ungroup()
+
+ew_split <- split(pNorm$ew, pNorm$scriptID_fac)
+ew_padded <- sapply(ew_split, `length<-`, max(lengths(ew_split)))
+k1_split <- split(pNorm$k1, pNorm$scriptID_fac)
+k1_padded <- sapply(k1_split, `length<-`, max(lengths(k1_split)))
+k10_split <- split(pNorm$k10, pNorm$scriptID_fac)
+k10_padded <- sapply(k10_split, `length<-`, max(lengths(k10_split)))
+```
+
+## Overall parsimony summary
+
+```{r plot-pars-results, fig.width = 7.2, fig.height = 3.6}
+OutputPlot("parsimony_scores", 7.2, 7.2 / 2, function() {
+  mar <- c(3, 4, 0.4, 0.9)
+  par(mfrow = c(1, 2), mar = mar, cex = 0.8)
+  parsWidth <- 5.25
+  parsBin <- 3.8
+  SpindlePlot((ew_padded - 1) * 100, ylab = "Extra EW parsimony length / %",
+              clip = c(0, 0.9), width = parsWidth, nBin = parsBin)
+  abline(h = 0)
+  Panel(1)
+  
+  par(mar = mar + c(0, mar[4], 0, -mar[4]))
+  SpindlePlot((k10_padded - 1) * 100,
+              ylab = "Extra IW parsimony length (k = 10) / %",
+              clip = c(0, 0.88), width = 1.26 * parsWidth, nBin = parsBin)
+  abline(h = 0)
+  Panel(2)
+})
+```
+
+## Parsimony results for each dataset
+
+```{r parsimony-result-by-project, fig.width = 7.2, fig.height = 3.6}
+OutputPlot("parsimony_scores_by_pID", 7.2, 7.2 / 2, function() {
+  for (pid in unique(pNorm$pID)) {
+    cat("Dataset", pid, "\n")
+    
+    
+    thisP <- pScores |>
+      filter(pID %in% pid) |>
+      rename(scriptID_fac = model) |>
+      group_by(pID) |>
+      mutate(ew = ew / min(ew)) |>
+      mutate(k10 = k10 / min(k10)) |>
+      mutate(k1 = k1 / min(k1)) |>
+      ungroup()
+    
+    
+    ew_split <- split(thisP$ew, thisP$scriptID_fac)
+    ew_padded <- sapply(ew_split, `length<-`, max(lengths(ew_split)))
+    k10_split <- split(thisP$k10, thisP$scriptID_fac)
+    k10_padded <- sapply(k10_split, `length<-`, max(lengths(k10_split)))
+    
+    # one page with two panels
+    par(mfrow = c(1, 2), mar = c(4, 4, 0.6, 0.4), cex = 0.8)
+    
+    SpindlePlot((ew_padded - 1) * 100,
+                ylab = "Extra EW parsimony length / %",
+                clip = 0.95, width = 3.5, nBin = 38,
+                main = paste("Dataset:", pid))
+    abline(h = 0)
+    
+    SpindlePlot((k10_padded - 1) * 100,
+                ylab = "Extra IW parsimony length (k = 10) / %",
+                clip = 0.93, width = 3.6, nBin = 38)
+    abline(h = 0)
+  }
+})
+```
+
+
+
+```{r fine-scale-analysis}
+### Now for the more fine-scale analyses
+
+
+nModels <- c("by_n_ki", "by_nt_ki")
+mlAvailable <- ModelBF(marginals, nModels)
+nProjects <- colnames(mlAvailable)
+whichModel <- nModels[apply(mlAvailable, 2, which.max)]
+
+
+treeChange <- matrix(NA_real_, nrow = 6, ncol = length(nProjects),
+                     dimnames = list(c("nsMedMed", "nsSil", "nsPrec",
+                                        "stMedMed", "stSil", "stPrec"), nProjects))
+stLength <- double(length(nProjects))
+nsLength <- stLength
+cfLength <- stLength
+nModelBF <- numeric(length(nProjects))
+nsModelBF <- nModelBF
+eps <- log(10)
+nullParam <- c(`2.5%` = NA_real_, `25%` = NA_real_, `50%` = NA_real_,
+               `75%` = NA_real_, `97.5%` = NA_real_, mad = NA_real_)
+
+
+# Compare estimated trees
+for (model in nModels) {
+  usesModel <- whichModel == model
+  modProjects <- nProjects[usesModel]
+  nsModel <- sub("by_", "ns_", model, fixed = TRUE)
+  cfModel <- c("by_n_ki" = "by_ki", "by_nt_ki" = "by_t_ki")[model]
+  
+  stLength[usesModel] <- vapply(modProjects, function(pID) {
+    median(TreeLengths(pID, model)) %||% NA_real_
+  }, double(1))
+  nsLength[usesModel] <- vapply(modProjects, function(pID) {
+    median(TreeLengths(pID, nsModel)) %||% NA_real_
+  }, double(1))
+  cfLength[usesModel] <- vapply(modProjects, function(pID) {
+    median(TreeLengths(pID, cfModel)) %||% NA_real_
+  }, double(1))
+  
+  # Estimated trees using the best available stationary model
+  treeChange[, modProjects] <- sapply(modProjects, function(pID) {
+    cli::cli_progress_message("Evaluating trees: {pID}")
+    stD <- TreeDistances(pID, cfModel, model)
+    stDisp <- Dispersion(stD)
+    stPrec <- PrecisionIncrease(stDisp[["spread"]][, "mad"], cfModel, model)
+    
+    nsD <- TreeDistances(pID, cfModel, nsModel)
+    nsDisp <- Dispersion(nsD)
+    nsPrec <- PrecisionIncrease(nsDisp[["spread"]][, "mad"], cfModel, nsModel)
+    
+    
+    c(
+      nsMedMed = nsDisp[["mdmd"]] %||% NA_real_,
+      nsSil = nsDisp[["sil"]] %||% NA_real_,
+      nsPrec = nsPrec %||% NA_real_,
+      stMedMed = stDisp[["mdmd"]] %||% NA_real_,
+      stSil = stDisp[["sil"]] %||% NA_real_,
+      stPrec = stPrec %||% NA_real_
+    )
+  })
+  cli::cli_progress_done()
+  
+  
+  nModelBF[usesModel] <- marginals[model, modProjects] -
+    marginals[cfModel, modProjects]
+  
+  # Estimated value of n using the best available non-stationary model
+  # nonStatN[, usesModel] <- sapply(modProjects, function(pID) {
+  #   ExistingResults(pID, nsModel, checkRemote = FALSE)[["parameters"]][, "rate_loss"] %||% nullParam
+  # })
+  nsModelBF[usesModel] <- marginals[nsModel, modProjects] - 
+    marginals[cfModel, modProjects]
+  rm(modProjects) # for safety
+}
+stRelLen <- stLength / cfLength
+nsRelLen <- nsLength / cfLength
+
+# Estimated trees using the best available stationary model
+treeChange <- rbind(treeChange, sapply(colnames(treeChange), function(pID) {
+  cli::cli_progress_message("Evaluating trees: {pID}")
+  hgD <- TreeDistances(pID, "by_ki", "hg_ki")
+  hgDisp <- Dispersion(hgD)
+  hgPrec <- PrecisionIncrease(hgDisp[["spread"]][, "mad"], "by_ki", "hg_ki")
+  
+  c(
+    hgMedMed = hgDisp[["mdmd"]] %||% NA_real_,
+    hgSil = hgDisp[["sil"]] %||% NA_real_,
+    hgPrec = hgPrec %||% NA_real_
+  )
+}))
+cli::cli_progress_done()
+
+
+# Compare estimated trees in HG model
+hgModelBF <- marginals["hg_ki", nProjects] - marginals["by_ki", nProjects]
+hgLength <- vapply(nProjects, function(pID) {
+  median(TreeLengths(pID, "hg_ki")) %||% NA_real_
+}, double(1))
+cfLength <- vapply(nProjects, function(pID) {
+  median(TreeLengths(pID, "by_ki")) %||% NA_real_
+}, double(1))
+hgRelLen <- hgLength / cfLength
+relLenMax <- max(c(stRelLen, nsRelLen, hgRelLen,
+                     1 / stRelLen, 1 / nsRelLen, 1 / hgRelLen),
+                              na.rm = TRUE)
+relLenRange <- c(1 / relLenMax, relLenMax)
+bfRange <- range(c(nModelBF, nsModelBF, hgModelBF), na.rm = TRUE)
+
+
+# Plotting symbols
+stPch <- 3
+nsPch <- 4
+hgPch <- 5
+
+stCol <- ModelCol("bestStat")
+nsCol <- ModelCol("bestNS")
+hgCol <- ModelCol("bestHet")
+dashCol <- "grey70"
+
+par(mfrow = c(2, 2))
+plot(nModelBF, stRelLen,
+     xlab = "Model BF", ylab = "Relative tree length", xpd = NA,
+     xlim = bfRange, ylim = relLenRange, log = "y",
+     pch = stPch, col = stCol,
+     frame.plot = FALSE)
+points(nsModelBF, nsRelLen, pch = nsPch, col = nsCol, xpd = NA)
+points(hgModelBF, hgRelLen, pch = hgPch, col = hgCol, xpd = NA)
+abline(h = 1, lty = 2, col = dashCol)
+abline(v = c(1, -1) * eps, lty = 2, col = dashCol)
+
+plot(treeChange["stSil", ] ~ nModelBF,
+     xlab = "Model BF", ylab = "Silhouette score",
+     xlim = bfRange,
+     pch = stPch, col = stCol,
+     xpd = NA, frame.plot = FALSE)
+points(treeChange["nsSil", ] ~ nsModelBF, pch = nsPch, col = nsCol, xpd = NA)
+points(treeChange["hgSil", ] ~ hgModelBF, pch = hgPch, col = hgCol, xpd = NA)
+abline(h = 0, lty = 2, col = dashCol)
+abline(v = c(1, -1) * eps, lty = 2, col = dashCol)
+legend("bottomright", legend = c("Stationary n", "Non-stationary n", "Heterogeneous"),
+       pch = c(stPch, nsPch, hgPch), col = c(stCol, nsCol, hgCol), bty = "n")
+
+plot(treeChange["stMedMed", ] ~ nModelBF,
+     xlab = "Model BF", ylab = "Normalized CI Distance between median trees",
+     ylim = c(0, max(treeChange[c("stMedMed", "nsMedMed", "hgMedMed"), ], na.rm = TRUE)),
+     pch = stPch, col = stCol,
+     xpd = NA, frame.plot = FALSE)
+points(treeChange["nsMedMed", ] ~ nsModelBF, pch = nsPch, col = nsCol, xpd = NA)
+points(treeChange["hgMedMed", ] ~ hgModelBF, pch = hgPch, col = hgCol, xpd = NA)
+abline(h = 0, lty = 2, col = dashCol)
+abline(v = c(1, -1) * eps, lty = 2, col = dashCol)
+
+plot(treeChange["stPrec", ] ~ nModelBF,
+     xlab = "Model BF", ylab = "Change in precision (MAD, %)",
+     xpd = NA, frame.plot = FALSE,
+     xlim = bfRange,
+     pch = stPch, col = stCol,
+     ylim = range(treeChange[c("stPrec", "nsPrec", "hgPrec"), ], na.rm = TRUE))
+points(treeChange["nsPrec", ] ~ nsModelBF, pch = nsPch, col = nsCol, xpd = NA)
+points(treeChange["hgPrec", ] ~ hgModelBF, pch = hgPch, col = hgCol, xpd = NA)
+abline(h = 0, lty = 2, col = dashCol)
+abline(v = c(1, -1) * eps, lty = 2, col = dashCol)
+```
+
+Sample a representative subset of parsimony trees by identifying `k` trees that
+are as distant as possible from one another.
+
+(Better algorithms likely exist!)
+
+```{r}
+MostDistant <- function(d, k = 12) {
+  n <- attr(d, "Size")
+  if (n < k) {
+    return(seq_len(n))
+  }
+  d <- as.matrix(d)
+  selected <- integer(k)
+  meanD <- rowMeans(d)
+  selected[[1]] <- which.max(meanD)
+  if (k < 2) {
+    return(selected)
+  }
+  
+  for (i in 2:k) {
+    remaining <- setdiff(1:n, selected[1:(i-1)])
+    
+    # For each remaining point, find its minimum distance to any selected point
+    min_distances <- sapply(remaining, function(j) {
+      min(d[j, selected[1:(i-1)]])
+    })
+    
+    # Select the point with the maximum minimum distance
+    selected[[i]] <- remaining[which.max(min_distances)]
+  }
+  selected
+}
+
+```
+
+
+<!--
+```{r}
+# Explore similarity of model-reconstructed trees to parsimony trees
+# This ended up not being very illuminating
+kValues <- c("k1", "k3", "k10", "kInf")
+parsSim <- vapply(nProjects, function(pID) {
+  parsSample <- 6 # previosuly 16; increase to increase rigour
+  cli::cli_progress_message("Fetching results: {pID}")
+  parsPattern <- sprintf("project.*(%s)\\.trees$",
+                         paste0(kValues, collapse = "|"))
+  parsFiles <- list.files(AnalysisDir(pID, "by_ki"), full.names = TRUE,
+                          pattern = parsPattern)
+  if (length(parsFiles) < length(kValues)) {
+    UpdateRecords(pID, "by_ki")
+    parsFiles <- list.files(AnalysisDir(pID, "by_ki"), full.names = TRUE,
+                            pattern = parsPattern)
+  }
+  if (length(parsFiles) < length(kValues)) {
+    neotrans::TreeSearch(pID)
+    return(matrix(NA_real_, length(kValues), length(parsModels)))
+  }
+  maxToDist <- 24 #384 # Not too many to CID
+  if (!all(file.exists(ParsEvalFile(pID, parsModels, parsSample, maxToDist)))) {
+    sampleFiles <- paste0(parsFiles, "-", parsSample)
+    parsK <- gsub(".*_(k.*)\\.trees$", perl = TRUE, "\\1", parsFiles)
+    parsFiles <- ifelse(file.exists(sampleFiles), sampleFiles, parsFiles)
+    parsTrees <- lapply(parsFiles, ape::read.tree, keep.multi = TRUE)
+    cli::cli_progress_message("Selecting representative parsimony trees: {pID}")
+    parsTrees <- lapply(seq_along(parsTrees), function(i) {
+      x <- parsTrees[[i]]
+      if (length(x) < parsSample) {
+        x
+      } else {
+        if (length(x) > maxToDist) {
+          x <- sample(x, maxToDist)
+        }
+        sampled <- x[MostDistant(
+          TreeDist::ClusteringInfoDistance(x, normalize = TRUE),
+          parsSample)]
+        ape::write.tree(sampled, file = sampleFiles[[i]])
+        sampled
+      }
+    })
+    cli::cli_progress_message("Evaluating parsimony trees: {pID}")
+  }
+  vapply(parsModels, function(scriptID) {
+    if (!file.exists(TreeSampleFile(pID, scriptID))) {
+      return(rep(NA_real_, length(kValues)))
+    }
+    cacheFile <- ParsEvalFile(pID, scriptID, parsSample, maxToDist)
+    if (file.exists(cacheFile)) {
+      readRDS(cacheFile)
+    } else {
+      treeSample <- ape::read.tree(TreeSampleFile(pID, scriptID))
+      tip1 <- treeSample[[1]][["tip.label"]][[1]]
+      if (length(treeSample) > maxToDist) {
+        treeSample <- sample(treeSample, maxToDist)
+      }
+      rooted <- TreeTools::RootTree(treeSample, tip1)
+      
+      ret <- vapply(parsTrees, function(trs) {
+        mean(TreeDist::MutualClusteringInfo(trs, rooted, normalize = TRUE))
+      }, double(1))
+      saveRDS(ret, file = cacheFile)
+      ret
+    }
+  }, setNames(double(length(kValues)), kValues))
+}, matrix(0, length(parsModels), length(kValues),
+          dimnames = list(parsModels, kValues))
+); cli::cli_progress_done()
+```
+
+```{r}
+parsFrame <- as.data.frame.table(parsSim) |>
+  `colnames<-`(c("model", "k", "dataset", "similarity"))
+parsFrame$k <- factor(parsFrame$k, levels = kValues, ordered = TRUE)
+parsFrame$model <- gsub("_ki", "", parsFrame$model, fixed = TRUE)
+par(mfrow = c(2, 1), mar = c(4.2, 4.8, 2, 0), xpd = NA)
+boxplot(similarity ~ k + model, data = parsFrame, notch = TRUE,
+        ylab = "Tree similarity", col = 2:5, las = 2)
+boxplot(similarity ~ model + k, data = parsFrame, notch = TRUE, las = 2,
+        ylab = "Tree similarity", col = rep(2:5, each = dim(parsSim)[[1]]))
+
+TreeLength <- TreeSearch::TreeLength
+# Parsimony scores
+library("Ternary")
+par(mfrow = c(2, 2), mar = rep(0.3, 4), xpd = TRUE)
+kVals <- c("k1", "k10", "kInf")
+for (mod in parsModels) {
+  sims <- vapply(parsSim, function(x) {
+    tryCatch(x[kVals, mod],
+             error = function(e) rep(NA_real_, 3))
+  }, setNames(numeric(3), kVals)) |> t()
+  TernaryPlot(kVals[[1]], kVals[[2]], kVals[[3]],
+              kVals[[1]], kVals[[2]], kVals[[3]],
+              axis.labels = seq(0, 1, length.out = 11),
+              main = mod,
+              xlim = c(-0.1, 0.1),
+              ylim = c(0.2, 0.4)
+#              region = list(min = rep(20, 3), max = rep(80, 3))
+  )
+  tp <- sims[!is.na(sims[, 1]), ]
+  TernaryText(labels = rownames(tp), tp, cex = 0.7)
+}
+
+par(mfrow = c(2, 2), mar = c(2, 3, 2, 0), xpd = NA)
+parsIn <- parsSim[vapply(parsSim, function(x) {
+  isTRUE(!is.na(x[[1]]) &&
+    dim(x)[[1]] == 4 &&
+    dim(x)[[2]] == 4)
+           }, logical(1))] |> abind::abind(along = 3)
+parsList <- lapply(kVals, function(i) lapply(1:4, function(j) {
+  data.frame(sim = parsIn[i, j, ],
+             model = parsModels[[j]],
+             k = i)
+}))
+parsFrame <- do.call(rbind, unlist(parsList, recursive = FALSE))
+par(mfrow = c(2, 1), mar = c(2.2, 4.8, 2, 0), xpd = NA)
+boxplot(sim ~ k + model, data = parsFrame, notch = TRUE,
+        ylab = "Tree similarity", col = 2:4)
+boxplot(sim ~ model + k, data = parsFrame, notch = TRUE,
+        ylab = "Tree similarity", col = rep(2:4, each = 4))
+
+
+
+
+treeLengths <- do.call(rbind, lapply(parsModels, function(scriptID) {
+  data.frame(
+    tl = as.double(vapply(nProjects, function(pID) {
+      TreeLengths(pID, "by_ki") %||% rep(NA_real_, 256)
+    }, double(256))),
+    project = rep(nProjects, each = 256),
+    model = scriptID
+  )}))
+treeLengths$model <- factor(treeLengths$model, levels = parsModels)
+
+library("dplyr")
+tlNorm <- treeLengths |>
+  group_by(project) |>
+  mutate(tl = tl / median(tl)) |>
+  ungroup()
+
+par(mfrow = c(2, 1), xpd = TRUE)
+boxplot(ew ~ model, data = pScores, notch = TRUE, frame.plot = FALSE,
+        ylab = "Normalized equal weights parsimony score", ylim = c(1, 1.09))
+
+# No difference between models
+boxplot(tl ~ model, data = tlNorm, notch = TRUE, ylim = c(0, 2),
+        frame.plot = FALSE,
+        ylab = "Normalized tree length", xpd = TRUE)
+# boxplot(tl ~ model, data = treeLengths, notch = TRUE, ylim = c(1, 1.6),
+#         ylab = "Absolute tree length", xpd = FALSE)
+
+{
+par(mfrow = c(3, 2), xpd = TRUE)
+vioLim <- c(1, 2)
+boxLim <- c(1, 1.11)
+vioplot::vioplot(ew ~ scriptID, data = pNorm, notch = TRUE, frame.plot = FALSE,
+                 ylim = vioLim)
+boxplot(ew ~ scriptID, data = pNorm, notch = TRUE, frame.plot = FALSE,
+        ylim = boxLim)
+vioplot::vioplot(k1 ~ scriptID, data = pNorm, notch = TRUE, frame.plot = FALSE,
+                 ylim = vioLim)
+boxplot(k1 ~ scriptID, data = pNorm, notch = TRUE, frame.plot = FALSE,
+        ylim = boxLim)
+vioplot::vioplot(k10 ~ scriptID, data = pNorm, notch = TRUE, frame.plot = FALSE,
+                 ylim = vioLim)
+boxplot(k10 ~ scriptID, data = pNorm, notch = TRUE, frame.plot = FALSE,
+        ylim = boxLim)
+}
+```
+-->

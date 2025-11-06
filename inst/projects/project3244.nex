@@ -1,0 +1,34 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=26 NCHAR=38;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Cryptopygus_antarcticus           000100--0-00000--0000-0000--00--------
+    Campodea_fragilis                 000110--0-00000-11000-01010101----00--
+    Dasyleptus_brongniarti            00010102??1100??0?1?0-00?100?0????????
+    Dasyleptus_sharovi                00010102??1100????1????0?100?0????????
+    Ditrigoniophthalmus_verae         10012110111100100110101101012101101101
+    Charimachilis_caucasicus          11102110101100100110101101110100000122
+    Turquimachilis_mendesi            1??01110101100100110101101111100000122
+    Mesomachilis_nearctica            11102111101100100111111101111100003100
+    Praemachilis_excelsior            11101111111100100110101101110112100100
+    Allopsontus_asiaticus             11101110121100100111101101111100101100
+    Lepismachilis_y-signata           11101110101100100111101101112112100100
+    Songmachilis_xinxiangensis        11102110101100100111101101111112101100
+    Trigoniophthalmus_alternatus      11101110111100101111101101111100000100
+    Pedetontinus_luanchuanensis       10101110101100100110101101110112100100
+    Petrobius_brevistylis             10101110101100100210101101111112101111
+    Petrobiellus_takunagae            10012110101100100210101101110112100101
+    Cretaceomachilis_longa            1001111?1?1111100?1010111111011?????--
+    Unimeinertellus_abundus           10011111101111??01101101111101121??0--
+    Nullmeinertellus_wenxuanii        100111111?111?????100-11111101??????--
+    Neomachilellus_dominicanus        10012110101111??1?100-111111011311?0--
+    Neomachilellus_szeptyckii         100111101011111111100-11111101131120--
+    Meinertellus_adisi                100121101011111111100-11111101131120--
+    Nesomachilis_australica           100111101211111101101011111101121120--
+    Allomachilis_froggatti            100121101111101101101011111101121120--
+    Machilinus_oaxacensis             100111111211111111100-11111101131120--
+    Machilontus_phami                 100121101011111101101101111101121120--
+  ;
+END;
+

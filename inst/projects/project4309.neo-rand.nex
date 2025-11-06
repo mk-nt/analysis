@@ -1,0 +1,24 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=16 NCHAR=25;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Larus_dominicanus            0?0000000000?0000000?000?
+    Aptenodytes_forsteri         0000010010101110111101100
+    Aptenodytes_patagonicus      1000010011001110111001100
+    Pygoscelis_antarctica        001?11100?11000?0011?1001
+    Pygoscelis_adeliae           0010111000111000100010101
+    Pygoscelis_papua             0000???0101100010000??100
+    Spheniscus_demersus          0101?1110111000101?0?0?01
+    Spheniscus_magellanicus      010?????1111100?0001?0101
+    Eudyptula_minor              0001100001110000000010011
+    Megadyptes_antipodes         0001100011111001001110111
+    Eudyptes_pachyrhynchus       00001111011100011001?0010
+    Eudyptes_robustus            000111111111?001110110000
+    Eudyptes_sclateri            0001111?0111?00111010000?
+    Eudyptes_chrysocome          00011111111100011001?0000
+    Eudyptes_chrysolophus        10?11?1101???00?100100100
+    Eudyptes_schlegeli           10?111?10111?0011101?0001
+  ;
+END;
+

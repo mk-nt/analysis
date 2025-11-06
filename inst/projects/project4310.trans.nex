@@ -1,0 +1,56 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=48 NCHAR=19;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Orbicella_annularis                 ??0110100??02000000
+    Acanthastrea_echinata               ?110000111010011012
+    Acanthastrea_subechinata            ?11000?????????????
+    Acanthastrea_hemprichii             ?110000111010011012
+    Acanthastrea_pachysepta             ??-0000121010011002
+    Acanthastrea_rotundoflora           ??10000111010011012
+    Australophyllia_wilsoni             1010100110010011002
+    Cynarina_lacrymalis                 02-0000221110111102
+    Echinophyllia_aspera                2?11-0211-010001101
+    Echinophyllia_glabra                2?11-0211-010001101
+    Echinophyllia_echinoporoides        2?11-0211-010001101
+    Echinophyllia_orpheensis            2?11-0211-010001101
+    Echinophyllia_tarae                 2?11-0?????????????
+    Echinophyllia_patula                2?11-0?????????????
+    Echinophyllia_gallii                2?11-0211-0100?????
+    Echinophyllia_bulbosa               2?11-0211-0100?????
+    Oxypora_convoluta                   2?11-0?????????????
+    Oxypora_lacera                      2?11-0211-010001101
+    Oxypora_echinata                    2?11-0211-010001101
+    Oxypora_crassispinosa               2?11-0?????????????
+    Paraechinophyllia_variabilis_1      2?11-0221-010001101
+    Paraechinophyllia_variabilis_2      2?11-0211-010001101
+    Homophyllia_australis               ?010100220000011002
+    Homophyllia_bowerbanki              ?010100220000011002
+    Lobophyllia_agaricia                1000-10221110111002
+    Lobophyllia_corymbosa               ??-0-10221110111002
+    Lobophyllia_costata                 1?-0-10221110111002
+    Lobophyllia_diminuta                ??-00102211101?????
+    Lobophyllia_erythraea               1000-1?????????????
+    Lobophyllia_flabelliformis          1?-001?????????????
+    Lobophyllia_hataii                  1?-0-10221110111002
+    Lobophyllia_hemprichii              1?-0-10221110111002
+    Lobophyllia_ishigakiensis           1000-10221110111002
+    Lobophyllia_radians                 1000-10221110111002
+    Lobophyllia_recta                   1000-10221110111002
+    Lobophyllia_robusta                 1?-0-10221110111002
+    Lobophyllia_rowleyensis             1010-102211100?????
+    Lobophyllia_valenciennesi           1?-0-10221110111002
+    Lobophyllia_vitiensis               1010-10221110111002
+    Lobophyllia_hassi                   10-0-1?????????????
+    Micromussa_amakusensis              ?100100110011010002
+    Micromussa_indiana                  ?100100110011010002
+    Micromussa_lordhowensis             ?100100110011010002
+    Micromussa_multipunctata            ?100100110011010002
+    Micromussa_pacifica                 ?100100110011010002
+    Moseleya_latistellata               ?010000211012111002
+    Sclerophyllia_margariticola         ??-01002210121?????
+    Sclerophyllia_maxima                ?100100221012111002
+  ;
+END;
+

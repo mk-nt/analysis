@@ -73,3 +73,7 @@ rbOut/*.p
 *.tmp*
 /testing
 /analyses
+/mknt_results
+/trueTree
+/doc/
+/Meta/

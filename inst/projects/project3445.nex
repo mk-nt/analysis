@@ -1,0 +1,38 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=30 NCHAR=39;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Cryptopygus_antarcticus           000100--0-00000--0000-0000-000-----??--
+    Campodea_fragilis                 000110--0-00000-11000-01010101----00---
+    Tricholepidion_gertschi           000111001211000-120?0-200111011100010?0
+    Lepisma_saccharina                101110000-11000-120?0-20-111-1120031000
+    Dasyleptus_brongniarti            00010102??1100??0?1?0-00?100?0?????????
+    Dasyleptus_sharovi                00010102??1100????1????0?100?0?????????
+    Dasyleptus_triassicus             00010?????11000-0?1???0??111?0?????????
+    Ditrigoniophthalmus_verae         100121101111001001101011010121011011001
+    Charimachilis_caucasicus          111021101011001001101011011101000001022
+    Turquimachilis_mendesi            1??011101011001001101011011111000001022
+    Mesomachilis_nearctica            111021111011001001111111011111000031000
+    Gigamachilis_triassicus           1??0?1?0??110?10??1?10??011101?????????
+    Praemachilis_excelsior            111011111111001001101011011101121001000
+    Allopsontus_asiaticus             111011101211001001111011011111001011000
+    Lepismachilis_ysignata            111011101011001001111011011121121001000
+    Songmachilis_xinxiangensis        111021101011001001111011011111121011000
+    Trigoniophthalmus_alternatus      111011101111001011111011011111000001000
+    Pedetontinus_luanchuanensis       101011101011001001101011011101121001000
+    Petrobius_brevistylis             101011101011001002101011011111121011011
+    Petrobiellus_takunagae            100121101011001002101011011101121001001
+    Cretaceomachilis_longa            1001111?1?1111100?1010111111011??????--
+    Unimeinertellus_abundus           10011111101111??01101101111101121??0---
+    Nullmeinertellus_wenxuani         100111111?111?????100-11111101???????--
+    Neomachilellus_dominicanus        10012110101111??1?100-111111011311?0---
+    Neomachilellus_szeptyckii         100111101011111111100-11111101131120---
+    Meinertellus_adisi                100121101011111111100-11111101131120---
+    Nesomachilis_australica           100111101211111101101011111101121120---
+    Allomachilis_froggatti            100121101111101101101011111101121120---
+    Machilinus_oaxacensis             100111111211111111100-11111101131120---
+    Machilontus_phami                 100121101011111101101101111101121120---
+  ;
+END;
+

@@ -1,0 +1,82 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=74 NCHAR=24;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Ficus_brunneoaurata         01010000100-0000(0,1)--1-101
+    Ficus_fulva                 -1011000100-00001--0-101
+    Ficus_hirta                 -1011000100-00001--01101
+    Ficus_padana                -1011001100-00001--0-101
+    Ficus_carica                -1001000000-00001--1-000
+    Ficus_austrocaledonica      -0000110000-011(0,1)0-000000
+    Ficus_callosa               10000110000-0111(0,1)--00000
+    Ficus_gigantifolia          10100110000-01100--00000
+    Ficus_magnoliifolia         10000110000-011(0,1)1-000010
+    Ficus_nervosa               10000111000-01101-000000
+    Ficus_racemigera            00010110001-0?111??00000
+    Ficus_carchiana             10100110000-011110010000
+    Ficus_crassivenosa          00000110000-011110010000
+    Ficus_gigantosyce           10100110000-011110010000
+    Ficus_insipida              10100110000-011110010000
+    Ficus_maxima                -(0,1)000110000-011110010000
+    Ficus_torresiana            -0100110000-011110010000
+    Ficus_subulata              -100101000(0,1)00000(0,1)--1-100
+    Ficus_virgata               -000011000(0,1)000001--0-100
+    Ficus_elmeri                -101000000(0,1)-00001--0-110
+    Ficus_exasperata            11011000000-00001--0-100
+    Ficus_subincisa             -1010000000-000(0,1)1--0-110
+    Ficus_deltoidea             -0000111000-00001--1-000
+    Ficus_formosana             -(0,1)000010000-00001--0-000
+    Ficus_ischnopoda            -0000010000-000(0,1)1--0-000
+    Ficus_oleifolia             -0000111000-00000--1-000
+    Ficus_pedunculosa           -(0,1)000010000-00001--0-000
+    Ficus_vaccinioides          -0000010000-00011--0-000
+    Ficus_adenosperma           -(0,1)01001000(0,1)110000--0-110
+    Ficus_minahassae            -1010001001110000--0-110
+    Ficus_rivularis             -0000110000-10000110-100
+    Ficus_semicordata           -1010000001110000--0-110
+    Ficus_variegata             10000000001110000??0-110
+    Ficus_pritchardii           -0000010001110000110-110
+    Ficus_hispida               -101000100111000(0,1)110-111
+    Ficus_septica               01000001000-1000(0,1)110-111
+    Ficus_racemosa              00000000001110000000-110
+    Ficus_sycomorus             01010001001110000000-100
+    Ficus_aurantiacea           -(0,1)00011000(0,1)1000110-0-000
+    Ficus_ruginervia            -(0,1)00011(0,1)00(0,1)1000110-0-000
+    Ficus_pumila                -1010110000-00001--0-110
+    Ficus_sagittata             -1010111000-00001?-0-000
+    Ficus_villosa               -1010110000-00001?-0-000
+    Ficus_trichocarpa           -1010110(0,1)0(0,1)-000101-0-010
+    Ficus_aurea                 -000011-000-00101--01000
+    Ficus_citrifolia            -000011-000-00101--01000
+    Ficus_nymphaeifolia         -000011-000-00101--01000
+    Ficus_obtusifolia           -000011-000-00101--01000
+    Ficus_schultesi             -101011-000-00101--01000
+    Ficus_cordatula             -001011-000-00101?-0-1(0,1)0
+    Ficus_elastica              -010011-000-00111--0-1(0,1)0
+    Ficus_forstenii             -(0,1)00011-000-00111--0-110
+    Ficus_glaberrima            -000011-000-00101--0-1(0,1)0
+    Ficus_microcarpa            -000011-000-00101--01110
+    Ficus_cyathistipula         -000011-000-01101--0-100
+    Ficus_laurifolia            -(0,1)0(0,1)011-00(0,1)0011(0,1)1--0-100
+    Ficus_saussureana           -(0,1)11011-000-01101--0-100
+    Ficus_lyrata                -010011-000-01101--01100
+    Ficus_natalensis            -00(0,1)011-000-01101--0-100
+    Ficus_ottonifolia           -000011-00(0,1)001101--0-100
+    Ficus_glandifera            -010011-000-01111--0-100
+    Ficus_macrophylla           -011011-000-01111--0-100
+    Ficus_obliqua               -001011-000-01111--0-100
+    Ficus_rubiginosa            -011011-000-01111--0-100
+    Ficus_watkinsiana           -010011-000-01111--0-100
+    Ficus_caulocarpa            -000011-011-00100-?01110
+    Ficus_prolixa               -000011-010-00100-?0-110
+    Ficus_religiosa             -000011-010-00100--0-110
+    Ficus_salicifolia           0000011-01(0,1)-00100--0-110
+    Ficus_saxophila             -001011-010-00100-?0-110
+    Antiaris                    1101000-11(0,1)0--0-1--10-10
+    Morus                       -000000-000---0-1--10-00
+    Artocarpus                  1011010-000---(0,1)-11-10-00
+    Sparattosyce                -000011-100---0-1--00-00
+  ;
+END;
+

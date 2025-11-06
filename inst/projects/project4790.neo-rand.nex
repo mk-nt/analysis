@@ -1,0 +1,24 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=16 NCHAR=11;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Acanthograptus       ?11?1000?01
+    Koremagraptus        ??1?1000?01
+    Anisograptus         111?1110101
+    Rhabdinopora         111?1110101
+    Dictyonema           ?11?1010?01
+    Dendrograptus        111?1000101
+    Mastigograptus       ?11?1000001
+    Reticulograptus      ??1?1010111
+    Kozlowskitubus       11110000?01
+    Dendrotubus          ??1?0000101
+    Bulmanicrusta        01110001101
+    Bithecocamara        ??1?0001101
+    Cysticamara          ??000001100
+    Epigraptus           001?0000111
+    Rhabdopleura         00110000000
+    Cephalodiscus_       0-000000000
+  ;
+END;
+

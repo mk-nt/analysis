@@ -1,0 +1,64 @@
+print("Timestamp:", time("year"), time("day"), time("seconds") / 60 / 60)
+seed(0)
+
+
+
+
+
+
+
+neo <- readDiscreteCharacterData("%MATRIXBASE.%neo.nex")
+trans <- readDiscreteCharacterData("%MATRIXBASE.%trans.nex")
+logFile = "%PID%_%SCRIPT%.log"
+timingFile = "%PID%_%SCRIPT%.time.log"
+paramFile = "%PID%_%SCRIPT%.p.log"
+treeFile = "%PID%_%SCRIPT%.trees"
+ckpFile = "%PID%_%SCRIPT%.ckp"
+source("%SCRIPT%.Rev")
+checkFreq = 100
+
+monitors.append( mnModel(filename = logFile, printgen = 36) )
+monitors.append( mnModel(filename = paramFile, printgen = 6,
+                         stochasticOnly = TRUE, exclude = ["rel_br_lengths"]) )
+monitors.append( mnFile(filename = treeFile, printgen = 12, phylogeny) )
+
+
+
+
+mymc3 = mcmcmc(
+  mymodel, monitors, moves,
+  nruns = 2,
+  nchains = 8,
+  tuneHeat = TRUE,
+  swapMethod = "both",
+  swapMode = "multiple",
+  combine = "none"
+)
+
+
+
+if (fileExists("%PID%_%SCRIPT%_run_1_chain_0.ckp")) {
+  print("   Initializing from checkpoint")
+  mymc3.initializeFromCheckpoint(ckpFile)
+  
+} else {
+  print("   No checkpoint found; aborting timed run")
+  q()
+  
+}
+
+pTrace = readTrace(scriptBase + "_run_1.log")
+gensVec = pTrace[1].getValues()
+gensIn = gensVec[gensVec.size()]
+gensTarget = gensIn + 144
+
+print("   Commencing MCMCMC run at",
+      time("year"), time("day"), time("seconds") / 60 / 60)
+write(time("fromBeginning"), "\n", filename = timingFile, append = FALSE)
+mymc3.run(generations = gensTarget, checkpointFile = ckpFile,
+          checkpointInterval = checkFreq, verbose = 0)
+write(time("fromBeginning"), "\n", filename = timingFile, append = TRUE)
+
+print("  # # # RUN COMPLETE # # #  ")
+print("Timestamp:", time("year"), time("day"), time("seconds") / 60 / 60)
+q()

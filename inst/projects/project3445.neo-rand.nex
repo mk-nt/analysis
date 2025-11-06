@@ -1,0 +1,38 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=30 NCHAR=15;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Cryptopygus_antarcticus           010-000-000-00-
+    Campodea_fragilis                 010-000-000-01-
+    Tricholepidion_gertschi           0110110-0?0-010
+    Lepisma_saccharina                1100110-0?0--10
+    Dasyleptus_brongniarti            0110110?1?0-?0?
+    Dasyleptus_sharovi                0110110?1????0?
+    Dasyleptus_triassicus             01??110-1????0?
+    Ditrigoniophthalmus_verae         111111001010010
+    Charimachilis_caucasicus          101111001010010
+    Turquimachilis_mendesi            101111001010010
+    Mesomachilis_nearctica            101111001111010
+    Gigamachilis_triassicus           101?11001?1001?
+    Praemachilis_excelsior            101111001010010
+    Allopsontus_asiaticus             101111001110010
+    Lepismachilis_ysignata            101111001110010
+    Songmachilis_xinxiangensis        101111001110010
+    Trigoniophthalmus_alternatus      101111001110010
+    Pedetontinus_luanchuanensis       101111001010010
+    Petrobius_brevistylis             101111001010010
+    Petrobiellus_takunagae            111111001010010
+    Cretaceomachilis_longa            11111110101011?
+    Unimeinertellus_abundus           1111111?101111?
+    Nullmeinertellus_wenxuani         1111111?100-11?
+    Neomachilellus_dominicanus        1111111?100-111
+    Neomachilellus_szeptyckii         11111111100-111
+    Meinertellus_adisi                11111111100-111
+    Nesomachilis_australica           111111111010111
+    Allomachilis_froggatti            111111111010111
+    Machilinus_oaxacensis             11111111100-111
+    Machilontus_phami                 111111111011111
+  ;
+END;
+

@@ -1,0 +1,52 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=44 NCHAR=35;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Paiwarria_telemus          111100-0100---00--00030-1---0000010
+    Annamaria_draudti          334501-0100003100-0003121---2000100
+    Evenus_regalis             334500-00--003100-0003021---2000010
+    Brangas_caranus            547720010--11110310001210-00400001?
+    Brangas_getus              547720010--11110310001210-004000010
+    Pseudolycaena_marsyas      646610-0132210102010022103101320110
+    Pseudolycaena_damo         646610-0132210102010022103101320110
+    Atlides_halesus            547721100-----00--00----0-104220110
+    Atlides_polybe             445401100-----00--00----0-104220110
+    Atlides_cosa               54770110111332105100----0-104220110
+    Arcas_imperialis           000001-00-----00--01133-00211010211
+    Arcas_ducalis              000021-00-----00--01133-00211010211
+    Arcas_cypria               000021-00-----00--10033200211010211
+    Arcas_delphia              000000-00-----01--0003120-211010211
+    Arcas_tuneta               000000-00-----01--1003120-211010211
+    Arcas_gozmanyi             000000-00-0---00--10031200211010211
+    Arcas_splendor             000000-0100---00--10031200211010211
+    Arcas_jivaro               000000-00-----00--10031200211010211
+    Arcas_alleluia             000000-00-0---00--10031200211010211
+    Theritas_mavors            223301-00-1003100000031000101020110
+    Theritas_triquetra         223301-00-1003100000031000103020110
+    Theritas_paupera           223300-0101003101000030000101110110
+    Theritas_harrietta         243301-0101003101000030000101110???
+    Theritas_drucei            223301-0101003100000030000101110110
+    Lucilda_margaritacea       252201-00-----100-00----0-104111100
+    Lucilda_danaus             252201-00-----100-00----0-104111100
+    Lucilda_dabrerus           227701-012?004?0?-0003420?1041????0
+    Lucilda_boliboyerus        227701-012?004?0?-0003420-10311110?
+    Lucilda_crines             222220-0151---100-0003220-104020001
+    Denivia_hemon              222200-0101026100-00002002104000110
+    Denivia_phegeus            223300-0101026100-00002000104000110
+    Denivia_augustula          222200-0111025100-00002000104100110
+    Denivia_arene              222200-0111025100-00002000103100110
+    Denivia_monica             222220-0111025100-00002002103100110
+    Denivia_acontius           222200-0111026104-00002000104000110
+    Denivia_chaluma            222200-0111026104-00002001104100110
+    Denivia_deniva             227700-0111002100-00032-00104120110
+    Denivia_curitibaensis      227720-00--002100-00032-0-10312011?
+    Denivia_augustinula        227720-00--025104200002001103120110
+    Denivia_theocritus         227720-0143025104200002000103020110
+    Denivia_viresco            222220-0111026100-00002000104010110
+    Denivia_espiritosanto      222200-0111026100-00002001101110110
+    Denivia_silma              252220-0111026100-00002001101000110
+    Denivia_lisus              222220-0111026100-00002000101010{0,1}11
+  ;
+END;
+

@@ -1,0 +1,46 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=38 NCHAR=7;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Aphrodita_aculeata                 0000000
+    Palmyra_aurifera                   0000101
+    Harmothoe_imbricata                0000000
+    Lepidonotus_squamatus              0000000
+    Ceratonereis_longiceratophora      0111110
+    Ceratocephale_loveni               0111110
+    Nereimyra_punctata                 0111110
+    Ophiodromus_flexuosus              0111110
+    Sirsoe_methanicola                 1111110
+    Eulalia_viridis                    0001300
+    Notophyllum_foliosum               0001300
+    Eteone_picta                       0001300
+    Eusyllis_blomstrandi               0111100
+    Pionosyllis_enigmatica             0111100
+    Streptosyllis_bidentata            0111100
+    Syllides_fulvus                    0111100
+    Synmerosyllis                      0111100
+    sp_one                             0111210
+    Chrysopetalum_debile               0111210
+    Arichlidon_reyssi                  0111210
+    B_heterosetosa                     0111210
+    Paleanotus_sp                      0111210
+    Dysponetus_populonectens           0111211
+    Dysponetus_bulbosus                0111211
+    Dysponetus_sp                      ?111211
+    Dysponetus_caecus_1                1111211
+    Dysponetus_caecus_2                1111211
+    Vigtorniella_sp                    1111210
+    Vigtorniella_ardabilia             0111210
+    Vigtorniella_flokati               1111210
+    Calamyzas_amphictenicola           1?10101
+    sp                                 111?201
+    Iheyomytilidicola_lauensis         1111201
+    Laubierus_alvini                   1111201
+    Natsushima_bifurcata               1110201
+    Natsushima_sashai                  1110201
+    Shinkai_longipedata                1110201
+    Shinkai_fontefridae                1110201
+  ;
+END;
+
