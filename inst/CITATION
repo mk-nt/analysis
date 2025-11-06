@@ -1,0 +1,15 @@
+bibentry(
+  bibtype = "Article",
+  key = "Smith2026",
+  title = "Directional Biases in Morphological Evolution: Implications for Phylogenetic Models",
+  author = c(person(c("Martin", "R."), "Smith", email = "martin.smith@durham.ac.uk"),
+             person("Bo", "Yang")),
+  year = 2026,
+  journal = "Systematic Biology",
+  pages = "under review",
+  textVersion = paste0(
+    "Smith, M.R. & Yang, B. (20XX). Directional Biases in Morphological ",
+    "Evolution: Implications for Phylogenetic Models. ",
+    "Systematic Biology, under review."
+  )
+)
