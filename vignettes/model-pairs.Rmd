@@ -32,7 +32,7 @@ stdErr <- attr(marginals, "stdErr")
 bestModel <- table(nonRm[apply(marginals[nonRm, ], 2, which.max)])
 ```
 
-```{r model-comparison, fig.width = 6, fig.height = 3.01}
+```{r model-comparison, fig.width = 6, fig.height = 12.04}
 wd <- 6
 mfr <- c(4, 2)
 spaceForOma <- 1.02
