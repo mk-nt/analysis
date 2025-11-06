@@ -1,0 +1,44 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=36 NCHAR=33;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Dolophilodes                       00000-000000000010010000000000100
+    Hydropsyche                        01000-000000000001011100000000100
+    Seresilepidopteron                 ???00-??????101?{0,1}110000?????0?1??
+    Mesokristensenia                   ???00-???????01?1110{0,1}00?????0?1??
+    Ascololepidopterix                 ???00-???????0??{0,1}11111??????0?1??
+    Micropterix_schaefferi             00000-000010101110100001000000000
+    Sabatinca_calliarcha               00000-000010101111100100000000000
+    Paramartyria_jinggangana           00000-000010101111100100000000000
+    Agathiphaga_queenslandensis        01100-000110101110100100000000100
+    Heterobathmia_pseuderiocrania      00100-000010101100111100000000010
+    Dyseriocrania_griseocapitella      001110100010001011110100000011110
+    Eriocrania_semipurpurella          001110100010001000110100000011110
+    Acanthopteroctetes_bimaculata      011110100000001000-10001010010110
+    Aenigmatinea_glatzella             00011111?001101?0-110100?10010110
+    Lophocorona_pediasia               110110111010001011110100000?10?1?
+    Lophocorona_melanora               110110111010001011110100000?10?1?
+    Acanthocorona_skalskii             ?10110??????101?1111110?????1????
+    Synempora_andesae                  0111101110111010100101010001?011?
+    Neopseustis_archiphenax            0111101110111010100101010001?011?
+    Mnesarchaea_paracosma              111110110110101001110101101100011
+    Ogygioses_eurata                   110111110110001001110101101100011
+    Prototheora_petrosema              110111110110101011111101101100011
+    Paratheora_speideli                110111110110101011111101101100011
+    Anomoses_hylecoetes                110111110110001011111101101100011
+    Hepialus_xiaojinensis              110111110110101001111101101100011
+    Abantiades_hyaliantus              110111110110101001111101101100011
+    Scardia_anatomella                 010110111111111000110011100100111
+    Caloptilia_stigmatella             010110111111011000011011100100111
+    Dichomeris_oceanis                 000110111111111000110011100100111
+    Psilacantha_pryeri                 001110111111111001110011100100111
+    Pseudodavara_haemaphoralis         001110111111111000110011100100111
+    Geometra_papilionaria              011110111111111001110011100100111
+    Diachrysia_chrysitis               000110111111111001-10011100100111
+    Acanthocorona_hedida               ?101101??0??101?1111110??0??1?1??
+    Acanthocorona_venulosa             ?101101?????101?1111110??0??1????
+    cnu-lep-ma-2016035                 ?101101??0??101?1111110?????1?1??
+  ;
+END;
+

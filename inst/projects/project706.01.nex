@@ -1,0 +1,17 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=9 NCHAR=20;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Glyptolepis         01100000000011111111
+    Eusthenopteron      01010000000101111111
+    Barameda            01001000000110111111
+    Panderichthys       01000100000111011111
+    Acanthostega        01000010000111101111
+    Ichthyostega        01000001000111110111
+    Tiktaalik           01000000100111111011
+    Gogonasus           01000000010111111101
+    Onychodus           01000000001111111110
+  ;
+END;
+

@@ -1,0 +1,65 @@
+Package: neotrans
+Title: Modelling the evolution of neomorphic characters
+Version: 2025-11-06
+Authors@R: c(
+  person("Martin R.", 'Smith', role = c("aut", "cre", "cph"), 
+         email = "martin.smith@durham.ac.uk",
+         comment = c(ORCID = "0000-0001-5660-1727"))
+  )
+License: GPL (>= 3)
+Description: Conduct and analyse phylogenetic inference using custom models of
+  morphological evolution
+URL: https://ms609.github.io/neotrans/, https://github.com/ms609/neotrans/
+BugReports: https://github.com/ms609/neotrans/issues/
+SystemRequirements: C++17
+Depends:
+  R (>= 4.4.0),
+Imports:
+  ape,
+  colorspace,
+  cli,
+  curl,
+  digest,
+  e1071,
+  gridExtra,
+  MASS,
+  mcmcse,
+  parallel,
+  PlotTools,
+  ppcor,
+  Quartet,
+  Rdpack (>= 2.3),
+  readxl,
+  RevBayes,
+  Rogue,
+  rphylopic,
+  ssh,
+  stringi,
+  TreeDist,
+  TreeSearch,
+  TreeTools (> 1.13.0),
+  treess,
+  vioplot,
+  VSURF,
+Suggests:
+  dplyr,
+  DT,
+  htmltools,
+  htmlwidgets,
+  knitr,
+  markdown,
+  spelling,
+  randomForest,
+  rmarkdown,
+  testthat (>= 3.0),
+Remotes:
+  afmagee/treess,
+  ms609/RevBayesR
+Config/testthat/parallel: false
+Config/testthat/edition: 3
+RdMacros: Rdpack
+Encoding: UTF-8
+Language: en-GB
+VignetteBuilder: knitr
+RoxygenNote: 7.3.3
+Roxygen: list(markdown = TRUE)

@@ -1,0 +1,55 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=47 NCHAR=41;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Mongoloraphidia_harmandi                   0010200100000020--000000000000---00001010
+    Agulla_arizonica                           000010010000002000-0------0100---11001010
+    Xanthostigma_gobicola                      001020010000002000000000000000---00101010
+    Amurinocellia_sinensis                     0111-110101---0110000000201100---01010011
+    Amurinocellia_calida                       0211-110101---0110000000201100---01010011
+    Amurinocellia_sinica                       0211-110101---0110000000201100---01010011
+    Fibla_hesperica                            020001101000011-101100001010000100000110-
+    Fibla_maclachlani                          020001100000011-101100001010000100100010-
+    Fibla_pasiphae                             020001101000011-101100001010001101110100-
+    Fibla_peyerimhoffi                         020001100000011-101100001010000100000100-
+    Indianoinocellia_mayana                    1111-1100001001-10110000111100---1000000-
+    Indianoinocellia_pilicornis                1-11-1100001001-10110000110100---1000000-
+    Inocellia_bhutana                          0111-1102011001-101001001001000100???????
+    Inocellia_bilobata                         01?1-1101101031-101002001011000100???????
+    Inocellia_biprocessus                      0111-1100101121-10101000101101---00001111
+    Inocellia_cheni                            0101-1102001021-1010010010110001000101111
+    Inocellia_cornuta                          0101-1101101101-1010020010110001001001111
+    Inocellia_crassicornis                     0(1,2)11-1100101101-10101000101100---01001111
+    Inocellia_digitiformis                     01?1-1100101101-10101200101100---01000111
+    Inocellia_elegans                          0211-1102101021-1010010010110001100100111
+    Inocellia_fujiana                          0111-1100101121-10101200101100---01001111
+    Inocellia_fulvostigmata_fulvostigmata      0201-1101101021-101002001011000100100110-
+    Inocellia_fulvostigmata_nigrostigmata      0(1,2)01-1101101021-101002001011000100100110-
+    Inocellia_hainanica                        0111-1102001021-101001001011000100000010-
+    Inocellia_hamata                           0111-1101101031-1110021010110001001000111
+    Inocellia_indica                           0111-1102111021-1110010010110001001000111
+    Inocellia_japonica                         0(1,2)11-1100101121-10101000101101---01001111
+    Inocellia_longispina                       01?1-1101101001-101002001011000100???????
+    Inocellia_nigra                            01?1-1100101121-10101000101100---0???????
+    Inocellia_obtusangularis                   01?1-1101101031-101001001011000100???????
+    Inocellia_occidentalis                     01?1-1100101121-10101200101100---0???????
+    Inocellia_rara                             01?1-1101001031-111002101011000100???????
+    Inocellia_shinohara                        01?1-1100101101-10101200101100---0???????
+    Inocellia_aspouckorum                      0111-1101001001-1110021010110001000001111
+    Inocellia_striata                          0101-1101101031-101002001011000100000110-
+    Inocellia_taiwana                          0211-1100101121-10101000101100---00101111
+    Inocellia_tibetana                         0111-1101101001-101002001011000100110010-
+    Inocellia_yunnanica                        0111-1102101001-1010010010110001000101111
+    Negha_inflata                              0(1,2)11-1100000001-101100001000000001000000-
+    Negha_longicornis                          0(1,2)11-1100000001-101100001000000001000000-
+    Negha_meridionalis                         0(1,2)11-1100000001-101100001000000001000100-
+    Parainocellia_bicolor                      0211-110010---0010100201201100---0000010-
+    Parainocellia_braueri                      0201-110010---0010100200201100---0000010-
+    Epinocellia_burmana                        0111-110110---0011100100101110---0110110-
+    Parainocellia_ressli                       0211-110000---0010100201201100---0000110-
+    Epinocellia_weii                           0101-110110---0011100100101110---01001111
+    Sininocellia_gigantos                      010001100001121-1011000010110011100000011
+  ;
+END;
+

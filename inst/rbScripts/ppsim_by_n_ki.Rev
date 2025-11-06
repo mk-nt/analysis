@@ -1,0 +1,51 @@
+print("Timestamp:", time("year"), time("day"), time("seconds"))
+seed(0)
+
+pid = args[1]
+script = "by_n_ki"
+scriptBase = pid + "_" + script
+burnin = args[2]
+thin = 24
+
+for (runID in 1:2) {
+  runBase = scriptBase + "_run_" + runID
+  print("Reading run:", runBase)
+  
+  trees = readTreeTrace(runBase + ".trees", burnin = burnin,
+                        thinning = thin).getTrees()
+  params = readTrace(scriptBase + ".p_run_" + runID + ".log",
+                     burnin = burnin, thinning = thin)
+  p_rate_log_sd = params[5].getValues()
+  p_rate_loss = abs(params[6].getValues())
+  p_tree_length = params[7].getValues()
+  
+  n_iter = min(v(p_rate_loss.size(), trees.size()))
+  for (i in 1:n_iter) {
+    rate_log_sd = p_rate_log_sd[i]
+    rate_loss = p_rate_loss[i]
+    rate_categories := fnDiscretizeDistribution( dnLognormal( 0, rate_log_sd ), 6)
+    rate01 := 2 / (1 + rate_loss)
+    rate10 := 2 * rate_loss / (1 + rate_loss)
+    rates := [ [0.0, rate01],
+               [rate10, 0.0] ]
+    neoQ := fnFreeK(rates)
+    stationaryDist := Simplex( rate10, rate01 )
+    
+    m_neo ~ dnPhyloCTMC(
+      tree = trees[i],
+      siteRates = rate_categories,
+      Q = neoQ,
+      nSites = 1024,
+      rootFrequencies = stationaryDist,
+      type = "Standard",
+      coding = "informative"
+    )
+    print("Simulated matrix #", i)
+    # Export simulated matrix by printing to stdout
+    # It would perhaps have been better to do writeNexus(someFile, m_neo)
+    m_neo.show()
+  }
+}
+print("Simulated matrix #", "# # # END # # #")
+print("Timestamp:", time("year"), time("day"), time("seconds"))
+q()

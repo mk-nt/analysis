@@ -1,6 +1,70 @@
-#' @param pID Character giving pID identifier, e.g. "123"
-#' @param overwrite Logical; should existing files be overwritten?
-PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
+#' Prepare matrices for phylogenetic analysis
+#'
+#' `PrepareMatrix()` constructs a processed morphological matrix and its
+#' derivatives for downstream phylogenetic analysis.  
+#' It reads a raw character matrix and corresponding metadata spreadsheet
+#' from the directory specifed in `.config$matrixDir` (default: `/matrices`),
+#' applies standardization rules, re-codes characters according to the
+#' annotation patterns, and outputs curated NEXUS files for use in
+#' subsequent inference.
+#'
+#' Each character is categorized as *neomorphic* (presence/absence),
+#' *transformational* (multi-state), or *ignored* according to the pattern
+#' specified in the metadata file.  
+#' Inapplicable tokens in neomorphic characters are converted to absences
+#' (0) following \insertCite{Brazeau2011}{neotrans}.  
+#' Characters may also be translated according to custom mapping patterns
+#' defined in the spreadsheet.
+#'
+#' The function creates four main output files at the path specified by
+#' `MatrixFile(pID)`:
+#' \describe{
+#'   \item{`*.nex`}{Full processed matrix.}
+#'   \item{`*-neo.nex`}{Subset containing informative neomorphic characters.}
+#'   \item{`*-trans.nex`}{Subset containing informative transformational characters.}
+#'   \item{`*-neo-rand.nex`, `*-trans-rand.nex`}{Matched random subsets for
+#'   comparative analysis.}
+#' }
+#'
+#' @param pID Character giving the project identifier, e.g. `"1210"` for
+#' [MorphoBank project 1210](https://www.morphobank.org/index.php/Projects/ProjectOverview/project_id/1210).  
+#' Identifiers beginning with `"072"` refer to matrices from
+#' \doi{10.1093/sysbio/syab072}, corresponding to files named
+#' `syab<pID>.nex`.
+#'
+#' @param overwrite Logical; whether to overwrite existing processed files.
+#' Defaults to `FALSE`.
+#'
+#' @details
+#' The function expects metadata spreadsheets formatted according to the
+#' \link[=matrix-processing]{matrix-processing vignette}, containing at least
+#' the columns `"Character Pattern"` and `"Unseen States"`.  
+#' Character patterns define how tokens are grouped and interpreted;
+#' invalid or mismatched patterns will trigger diagnostic errors.  
+#' Parsimony-uninformative characters (which define no non-trivial bipartitions)
+#' are excluded from subset matrices.
+#'
+#' The function automatically sanitizes taxon names for NEXUS compatibility
+#' and ensures that neomorphic characters are strictly binary (`0`, `1`).
+#' Multi-state characters are re-encoded so that their state tokens form a
+#' contiguous sequence starting from zero.
+#'
+#' @return
+#' `PrepareMatrix()` invisibly returns `TRUE` if processing succeeds, or
+#' `FALSE` if matrix preparation cannot proceed (e.g., due to missing
+#' informative characters).  
+#' The function is called primarily for its side-effect of producing
+#' standardized NEXUS matrix files in the appropriate output directory.
+#'
+#' @references
+#' \insertAllCited{}
+#' 
+#' @importFrom ape write.nexus.data
+#' @importFrom Rdpack reprompt
+#' @importFrom TreeTools ReadCharacters
+#' @importFrom readxl read_xlsx
+#' @export
+PrepareMatrix <- function(pID, overwrite = FALSE) {
   projectID <- sprintf("pID%s", pID)
   nexusFile <- MatrixFile(pID, "nex")
   outDir <- dirname(nexusFile)
@@ -10,7 +74,13 @@ PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
   
   if (overwrite || !file.exists(nexusFile)) {
     
-    meta <- readxl::read_xlsx(paste0(matrixDir, "/", metaFile))
+    metaFile <- grep(sprintf(.config$metaPattern, pID),
+                     list.files(.config$matrixDir, "*.xlsx"),
+                     value = TRUE, perl = TRUE)
+    if (length(metaFile) != 1) {
+      stop("Couldn't identify metafile for project ", pID)
+    }
+    meta <- read_xlsx(paste0(.config$matrixDir, "/", metaFile))
     patterns <- meta[["Character Pattern"]]
     if (any(is.na(patterns))) {
       stop("No pattern specified for character ",
@@ -23,8 +93,7 @@ PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
     unseen[toupper(unseen) == "NO"] <- noUnseen
     unseen <- as.numeric(unseen)
     
-    chars <- TreeTools::ReadCharacters(paste0(matrixDir, "/",
-                                              basename(nexusFile)))
+    chars <- ReadCharacters(paste0(.config$matrixDir, "/", basename(nexusFile)))
     nTax <- dim(chars)[[1]]
     nChars <- dim(chars)[[2]]
     taxa <- rownames(chars)
@@ -61,11 +130,16 @@ PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
         
         
         # Return:
-        list(type = newType, k = newK, n = nNew,
-             from = vapply(translate, "[[", character(1), 1),
-             to = vapply(translate,
-                         function(x) strsplit(trimws(x[[2]]), "")[[1]],
-                         character(nNew)))
+        tryCatch(
+          list(type = newType, k = newK, n = nNew,
+               from = vapply(translate, "[[", character(1), 1),
+               to = vapply(translate,
+                           function(x) strsplit(trimws(x[[2]]), "")[[1]],
+                           character(nNew))),
+          error = function(e) {
+            stop("Failed to parse translation pattern ", pat)
+          }
+        )
       }
     })
     nNew <- rep(1, nChars)
@@ -75,11 +149,7 @@ PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
     type[index[neo]] <- "n"
     type[index[trans]] <- "t"
     nowSpecial <- type == ""
-    k <- numeric(sum(nNew))
     
-    k[index[trans]] <- unseen[trans]
-    k[index[neo]] <- NA
-    k[type == ""] <- unlist(lapply(translations, "[[", "k"))
     type[type == ""] <- unlist(lapply(translations, "[[", "type"))
     
     toRewrite <- special & !ignored
@@ -109,58 +179,55 @@ PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
     # Check neomorphic characters only contain 0, 1
     illegalNeomorphic <- grepl("[23456789]", ret[, type == "n"])
     if (any(illegalNeomorphic)) {
+      # Decipher where the illegal characters are
       illegalMat <- matrix(illegalNeomorphic, nrow(ret))
-      chars <- colSums(illegalMat) > 0
+      charID <- colSums(illegalMat) > 0
       taxa <- rowSums(illegalMat) > 0
-      stop("Illegal neomorphic characters in char ",
-           paste(which(type == "n")[chars], collapse = ", "),
-           ", taxa ",
+      stop("Illegal neomorphic characters in pID ", pID, ", char ",
+           paste(which(type == "n")[charID], collapse = ", "),
+           ", from input char ", 
+           paste(match(which(type == "n")[charID], index), collapse = ", "),
+           ";\n   taxa ",
            paste(rownames(ret)[taxa], collapse = ", ")
       )
+      ret[taxa, type == "n"][, charID]
     }
     
-    # MrBayes handles up to 10 states
-    k[k == hasUnseen] <- 10
-    lacksUnseen <- !is.na(k) & k == noUnseen
-    if (any(lacksUnseen)) {
-      suppressWarnings(
-        # If a character is solely "?"s then we might encounter a warning.
-        # "?" is not numeric but is less than numbers
-        k[lacksUnseen] <- as.numeric(apply(ret[, lacksUnseen, drop = FALSE], 2,
-                                           sort, decreasing = TRUE)[1, ]) + 1
-      )
-    }
-    kRet <- ret
-    newTrans <- type == "t"
-    kRet[, newTrans] <- vapply(seq_len(sum(newTrans)), function(i) {
-      n <- which(newTrans)[[i]]
-      x <- kRet[, n]
-      tokens <- unique(unlist(strsplit(gsub("\\D", "", paste0(x)), "")))
-      if (length(tokens)) {
-        for (j in seq_along(tokens)) {
-          x <- gsub(tokens[[j]], letters[[j]], x, fixed = TRUE)
-        }
-        for (j in seq_len(length(tokens) - 1)) {
-          x <- gsub(letters[[j]], j - 1, x, fixed = TRUE)
-        }
-        gsub(letters[[length(tokens)]], k[[n]] - 1L, x, fixed = TRUE)
-      } else {
-        x
+    # Compress tokens so only k tokens are used for a k-state character
+    # e.g. a character that only uses the tokens 1 and 3 will be recoded to
+    # use tokens 0 and 1.
+    ret <- apply(ret, 2, function(x) {
+      tokens <- 0:9
+      used <- vapply(tokens, grepl, TRUE, paste0(x, collapse = ""))
+      for (i in seq_len(sum(used))) {
+        x <- gsub(tokens[used][[i]], tokens[[i]], x, fixed = TRUE)
       }
-    }, character(nTax))
-    informative <- apply(kRet, 2, function(x) {
+      x
+    })
+    
+    informative <- apply(ret, 2, function(x) {
       tab <- table(x[nchar(x) == 1 & x %in% 0:9])
       length(tab[tab > 1]) > 1
     })
+    kObs <- apply(ret, 2, function(x) {
+      tokens <- unique(strsplit(paste(x, collapse = ""), "")[[1]])
+      length(tokens[tokens %in% 0:9])
+    })
+    just01 <- apply(ret, 2, function(x) {
+      tokens <- unique(strsplit(paste(x, collapse = ""), "")[[1]])
+      length(tokens[tokens %in% 0:1]) == 2 &&
+        length(tokens[tokens %in% 2:9]) == 0
+    })
     
     
-    neoFile <-  MatrixFile(pID, "neo.nex")
-    transFile <-  MatrixFile(pID, "trans.nex")
+    neoFile <- MatrixFile(pID, "neo.nex")
+    transFile <- MatrixFile(pID, "trans.nex")
+    neoRandFile <- MatrixFile(pID, "neo-rand.nex")
+    transRandFile <- MatrixFile(pID, "trans-rand.nex")
     
     # Write characters to file
     .WriteChars <- function(chars, path) {
-      ape::write.nexus.data(chars, path, interleaved = FALSE,
-                            format = "STANDARD")
+      write.nexus.data(chars, path, interleaved = FALSE, format = "STANDARD")
       # Remove ape comment - timestamp causes unnecessary commits
       writeLines(readLines(path)[-2], path)
     }
@@ -169,6 +236,29 @@ PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
         any(informative & type == "t")) {
       .WriteChars(ret[, informative & type == "n"], neoFile)
       .WriteChars(ret[, informative & type == "t"], transFile)
+      nNeo <- sum(informative & type == "n")
+      
+      # One approach would be to select two-state characters and relabel them
+      # to use the states 0 and 1.
+      # But a character with states 1 and 2 would otherwise be treated with M3.
+      # .RelabelStates <- function(x) {
+      #   tokens <- unique(strsplit(paste(x, collapse = ""), "")[[1]])
+      #   starts <- tokens[tokens %in% 0:9]
+      #   stopifnot(length(starts) == 2)
+      #   x <- gsub(starts[[1]], "!ZERO!", x, fixed = TRUE)
+      #   x <- gsub(starts[[2]], "!ONE!", x, fixed = TRUE)
+      #   x <- gsub("!ZERO!", 0, x, fixed = TRUE)
+      #   x <- gsub("!ONE!", 1, x, fixed = TRUE)
+      #   x
+      # }
+      # randomNeo <- sort(sample(which(informative & kObs == 2), nNeo))
+      # .WriteChars(apply(ret[, randomNeo], 2, .RelabelStates), neoRandFile)
+      
+      set.seed(pID)
+      randomNeo <- sort(sample(which(informative & just01), nNeo))
+      .WriteChars(ret[, randomNeo], neoRandFile)
+      .WriteChars(ret[, informative & !tabulate(randomNeo, length(informative))]
+                  , transRandFile)
     } else {
       message("Need informative neomorphic and transformational characters")
       if (createdOutDir) {
@@ -181,7 +271,7 @@ PrepareMatrix <- function(pID, metaFile, overwrite = FALSE) {
       }
       return(FALSE)
     }
-    
+
   } else {
     message(nexusFile, " already exists")
   }

@@ -1,0 +1,53 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=45 NCHAR=19;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Osmundastrum_cinnamomeum        0010-000000000-0-00
+    Angiopteris_evecta              01011101000110-1101
+    Angiopteris_angustifolia        01011101000110-1101
+    Christensenia_aesculifolia      00010101000010-1011
+    Danaea_sellowiana               00110101000010-0101
+    Eupodium_kaulfussii             0101111100011100111
+    Ptisana_novoguineensis          0101111100011101101
+    Marattia_cicutifolia            010111110001110?111
+    Marattia_laxa                   0101111100011111101
+    Marattiopsis_aganzhenensis      ?????1?1000?100?1?0
+    Marattiopsis_asiatica           ?????101000?100?1?1
+    Marattiopsis_anglica            ?????101000?10??1??
+    Marattiopsis_vodrazkae          ?????1?1000?110?1??
+    Marattiopsis_patagonica         ?????1?1000?110?1??
+    Angiopteris_blackii             ?????111000?10-?1?1
+    Qasimia_schyfsmae               ?????10(0,1)000?10-?1??
+    Qasimia_lanceolata              ?????101000?10-?1??
+    Scolecopteris_minor             1010?100110?111?01?
+    Scolecopteris_majopsis          1010?100100?110?00?
+    Scolecopteris_illinoensis       1010?100100?110?01?
+    Acaulangium_bulbaceum           1010?100100?111?01?
+    Scolecopteris_latifolia         1010?100111?110?00?
+    Scolecopteris_mamayi            1010?100111?110?01?
+    Scolecopteris_antarctica        ?????10011??11??01?
+    Scolecopteris_globiforma        ??1??100110?11??00?
+    Scolecopteris_calicifolia       1010?100111?11??00?
+    Scolecopteris_gnoma             0010?100110?111?01?
+    Eoangiopteris_goodii            ?01??100100?111?10?
+    Eoangiopteris_andrewsii         ?01??100100?110?100
+    Acitheca_polymorpha             1010?100100?111?0??
+    Acitheca_adaensis               ?????100110?111?01?
+    Millaya_tularosana              ?????100000?10-?11?
+    Danaeites_rigida                ?????1?0000?10-?1??
+    Radstockia_kidstonii            ?????0?(0,1)-00?10-?1??
+    Sydneia_manleyi                 ?????0?(0,1)-00?10-?1??
+    Zhutheca_densata                ?????1?0000?110?0?1
+    Taiyuanitheca_tetralinea        ?????1?0100?10-?0??
+    Grandeuryella_renaultii         ?????1?0100?110?11?
+    Araiangium_pygmaeum             ?????1?0000?110?00?
+    Buritiranopteris_costata        1010?100110?10-?0?1
+    Danaeopsis_fecunda              ?????101000?00-?-01
+    Danaeopsis_marantacea           ?????101000?00-?-01
+    Marantoidea_acara               ?????10(0,1)000?00-?-??
+    Pectinangium_lanceolatum        ?????100100?10-?1??
+    Gemellitheca_saudica            ?????1?0110?10-?1?1
+  ;
+END;
+

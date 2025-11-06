@@ -1,0 +1,21 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=13 NCHAR=5;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Acrospiriferinae        11010
+    Costispiriferinae       11100
+    Cyrinopsinae            00001
+    Delthyridinae           10000
+    Elymopiriferinae        1?100
+    Gasepspiriferinae       10010
+    Howellelinae            10000
+    Hysterolitinae          1?010
+    Kozlowskiellininae      00001
+    Mucrospiriferinae       11112
+    Paraspiriferinae        10000
+    Tylothyridinae          110?2
+    Eospiriferinae          00?00
+  ;
+END;
+

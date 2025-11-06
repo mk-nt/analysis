@@ -1,0 +1,71 @@
+clear() # Just whilst debugging
+
+# Initialize variables
+moves = VectorMoves()
+
+# Load character data
+chars <- readDiscreteCharacterData("simmat/k5obs4.nex")
+taxa <- chars.names()
+outgroup <- clade(taxa[1])
+nTaxa <- chars.size()
+nEdge <- 2 * nTaxa - 3
+print("Read", chars.nchar(), "characters for", nTaxa, "taxa, with outgroup", taxa[1])
+
+# Uniform prior on tree topologies
+topology ~ dnUniformTopology(taxa, outgroup = outgroup)
+moves.append( mvNNI(topology, weight = nEdge/2.0, tuneTarget = 0.26) )
+moves.append( mvSPR(topology, weight = nEdge/10.0, tuneTarget = 0.26) )
+
+# Compound dirichlet prior on edge length variability
+# See https://revbayes.github.io/tutorials/ctmc/
+gamma_shape <- 2
+exp_steps <- 3 # Expected changes per site across the tree
+tree_length ~ dnGamma(shape = gamma_shape, rate = gamma_shape / exp_steps)
+moves.append( mvScale(tree_length, lambda = 1) )
+
+rel_br_lengths ~ dnDirichlet( rep(1.0, nEdge) )
+moves.append( mvBetaSimplex(rel_br_lengths, weight = nEdge / 5.0, tuneTarget = 0.26) )
+moves.append( mvDirichletSimplex(rel_br_lengths, weight = nEdge / 40.0, tuneTarget = 0.26) )
+br_lengths := rel_br_lengths * tree_length
+
+phylogeny := treeAssembly(topology, br_lengths)
+
+u ~ dnGamma( shape = 1, rate = 1 )
+moves.append( mvScale( u, lambda = 1, weight = 1.0) )
+
+rates := [ [0, u, 1, 1],
+           [u, 0, u, 1],
+           [1, u, 0, u],
+           [1, 1, u, 0] ]
+
+qAsVariable := fnFreeK(rates)
+m_morph[1] ~ dnPhyloCTMC(
+    tree = phylogeny,
+    Q = qAsVariable,
+    type = "Standard",
+    coding = "informative"
+)
+m_morph[1].clamp(chars)
+
+function qAsFunction(rates) {
+  return fnFreeK(rates)
+}
+
+m_morph[2] ~ dnPhyloCTMC(
+    tree = phylogeny,
+    Q = qAsFunction(rates),
+    type = "Standard",
+    coding = "informative"
+)
+m_morph[2].clamp(chars)
+
+mymodel = model(phylogeny)
+mymodel.graph("myModel.dot")
+
+monitors = VectorMonitors()
+monitors.append( mnScreen(printgen = 10, u) )
+
+# Prepare MCMCMC analysis
+mymcmc = mcmc(mymodel, monitors, moves, nruns = 2)
+mymcmc.run(generations = 100)
+" # # # END # # # "

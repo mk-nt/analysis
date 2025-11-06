@@ -1,0 +1,51 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=43 NCHAR=11;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Nucleopygus                      01000000001
+    Pygopistes                       01001000??1
+    Plagiochasma                     01001000??0
+    Amblypygus                       01001000??0
+    Catopygus                        01000100??1
+    Parapygus                        00000100001
+    Zuffardia                        00000?00101
+    Faujasia                         00000?00111
+    Domechinus                       00000?00101
+    Oolopygus                        11100100111
+    Studeria                         11100100001
+    Pisolampas                       11100000000
+    Petalobrissus_petalobrissus      00000100001
+    Petalobrissus_paralampas         00000100011
+    Harduinia_mortonis               00100?00100
+    Harduinia_kellumi                00100?00100
+    Gongrochanus                     00010?0011?
+    Platypygus                       00010?00111
+    Stigmatopygus                    00000?00111
+    Rhynchopygus                     11110?00110
+    Procassidulus                    00100?00110
+    Rhyncholampas                    00000100001
+    Eurhodia                         00000100001
+    Cassidulus                       00000100000
+    Pygurostoma                      00000?0000?
+    Clypeolampas                     0100010000?
+    Vologesia                        01000000001
+    Gitolampas_abiadensis            01000000000
+    Gitolampas_tunetanus             00000000001
+    Neocatopygus                     00000000001
+    Arnaudaster                      00000000001
+    Echinolampas_alta                01000000001
+    Echinolampas_leymeriei           00000000001
+    Plesiolampas                     01000010001
+    Apatopygus                       01000010001
+    Oriolampas                       01000000001
+    Termieria                        00000000000
+    Pseudopygaulus                   00000000001
+    Conoclypeus                      01000011000
+    Oligopygus                       01000011000
+    Haimea                           01000011000
+    Togocyamus                       010000??000
+    Nucleolites                      01000000??1
+  ;
+END;
+

@@ -1,0 +1,72 @@
+print("Timestamp:", time("year"), time("day"), time("seconds"))
+seed(0)
+
+dummy <- readDiscreteCharacterData("project%PID%.01.nex")
+
+nTaxa <- dummy.size()
+nChar <- dummy.nchar()
+
+# TODO reduce thinning
+thin = 24
+trees = readTreeTrace("%SCRIPTBASE%_run_%RUN%.trees", burnin = %BURNIN%, thinning = thin).getTrees()
+params = readTrace("%SCRIPTBASE%_run_%RUN%.treep", burnin = %BURNIN%, thinning = thin)
+rate_log_sd = params[5].getValues()
+rate_loss = abs(params[6].getValues())
+tree_lengths = params[7].getValues()
+
+if (trees.size() != tree_lengths.size()) {
+  write("Number of trees and parameters do not match",
+        trees.size(), "!=", tree_lengths.size())
+  q()
+}
+
+logFile = "%SCRIPTBASE%_run_%RUN%.pinv.log"
+
+write("p0", "p1", "pInv\n", filename = logFile, append = FALSE)
+for (i in 1:trees.size()) {
+  rate_categories := fnDiscretizeDistribution( dnLognormal( 0, rate_log_sd[i] ), 6);
+  
+  rate01 := 2 / (1 + rate_loss[i]);
+  rate10 := 2 * rate_loss[i] / (1 + rate_loss[i]);
+  rates := [ [0.0, rate01],
+             [rate10, 0.0] ];
+  neoQ := fnFreeK(rates);
+  stationaryDist := Simplex( rate10, rate01 );
+  
+  if (abs(tree_lengths[i] - trees[i].treeLength()) > 0.001) {
+    write("Error: ", tree_lengths[i], "!=", trees[i].treeLength(), "at i = ", i)
+  } else {
+    m_morph ~ dnPhyloCTMC(
+      tree = trees[i],
+      siteRates = rate_categories,
+      Q = neoQ,
+      rootFrequencies = stationaryDist,
+      type = "Standard",
+      coding = "all"
+    );
+    
+    dummy.excludeAll();
+    dummy.includeCharacter(1);
+    m_morph.setValue(dummy);
+    p0 = m_morph.probability();
+    
+    dummy.excludeAll();
+    dummy.includeCharacter(2);
+    m_morph.setValue(dummy);
+    p1 = m_morph.probability();
+    
+    p = p0 + p1;
+    for (char in 3:nChar) {
+      dummy.excludeAll();
+      dummy.includeCharacter(char);
+      m_morph.setValue(dummy);
+      p += m_morph.probability();
+    }
+    screenFreq = 25
+    if (floor(i / screenFreq) == i / screenFreq) {
+      write(i, trees.size(), p0, p1, p)
+    }
+    write(p0, p1, p, "\n", filename = logFile, append = TRUE)
+  }
+}
+q()

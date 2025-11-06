@@ -1,0 +1,61 @@
+print("Timestamp:", time("year"), time("day"), time("seconds") / 60 / 60)
+burninGen = 12000
+runGen = 2000
+steps = 128
+
+ppFile = "%PID%_%SCRIPT%.pp"
+ppOut = "%PID%_%SCRIPT%.out.pp"
+
+
+if (fileExists(ppOut)) {
+  write(ppOut, "already exists")
+  prevSteps = readDelimitedDataFile(ppOut, FALSE, "")[1][5]
+  if (prevSteps < steps) {
+    write("Previously run for", prevSteps, "steps; running now for", steps)
+  } else {
+    q()
+  }
+}
+
+neo <- readDiscreteCharacterData("%MATRIXBASE.%neo.nex")
+trans <- readDiscreteCharacterData("%MATRIXBASE.%trans.nex")
+source("%SCRIPT%.Rev")
+
+# In RevBayes <= 1.2.5, nSteps = cats + 1 - see #673
+power_p = powerPosterior(mymodel, monitors, moves, ppFile, cats = steps - 1)
+print("  - Created powerPosterior object")
+
+
+power_p.burnin(generations = burninGen, tuningInterval = 1000)
+print("  - Commencing powerPosterior run at", time("year"), time("day"),
+      time("seconds") / 60 / 60)
+power_p.run(generations = runGen)
+print("  - Completed powerPosterior run at", time("year"), time("day"),
+      time("seconds") / 60 / 60)
+
+
+ss = steppingStoneSampler(
+  file = ppFile,
+  powerColumnName = "power",
+  likelihoodColumnName = "likelihood"
+)
+write(ss.marginal(), file = ppOut)
+print("  Stepping stone marginal likelihood:", ss.marginal(),
+      "; SE: ", ss.stdError())
+
+ps = pathSampler(
+  file = ppFile,
+  powerColumnName = "power",
+  likelihoodColumnName = "likelihood"
+)
+write(ss.marginal(), ps.marginal(), burninGen, runGen, steps,
+      ss.stdError(), ps.stdError(),
+      ss.stdError(bootstrap = TRUE), ps.stdError(bootstrap = TRUE),
+      "\n", file = ppOut)
+print("  Path sampler marginal likelihood:", ps.marginal(),
+      "; SE: ", ps.stdError())
+
+
+print("  # # # RUN COMPLETE # # #  ")
+print("Timestamp:", time("year"), time("day"), time("seconds"))
+q()

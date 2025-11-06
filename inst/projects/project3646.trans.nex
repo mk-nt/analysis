@@ -1,0 +1,77 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=69 NCHAR=15;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Actocharis_readingii            -010000----?1-0
+    Aleochara_curtula               -00-100-1010101
+    Aleochara_moerens               -00010001010101
+    Aleochara_sp_Myanmar            -00-100-1010101
+    Amarochara_forticornis          -00010011-10100
+    Atheta_monticola                -000000-00-0100
+    Autalia_longicornis             -000-000-0-00-1
+    Baeostethus_chiltoni            -0201000---?0--
+    Bolitochara_pulchra             -000-00100101-1
+    Colle_campbellensis             -0001000-0-?10-
+    Cordalia_obscura                -000000000-0100
+    Crataraea_suturalis             -000100100-000-
+    Cyllophallia_dauphinensis       -000-00100-0000
+    Cypha_longicornis               -000100-1-1-000
+    Cyphea_latiuscula               -000000000-00-0
+    Deinopsis_erosa                 101--1001-0101-
+    Demerina_bickmanni              -000-00-1--?100
+    Diestota_testacea               -000-000-010000
+    Diglotta_mersa                  -0110000---?1-0
+    Dinaraea_linearis               -00000000--0100
+    Dinarda_dentata                 -000000000-000-
+    Dioxeuta_sp                     -020000-0?10100
+    Drusilla_canaliculata           -00010000--?100
+    Ecitogaster_sp                  -000-00-0-10-00
+    Ecitomorpha_arachnoides         -000-00000-0100
+    Geostiba_circellaris            -000000000-?100
+    Gnypeta_carbonaria              -000-000-0-0100
+    Gymnusa_variegata               -11-010011010--
+    Gyrophaena_congrua              -001-0000-10100
+    Habrocerus_capillaricornis      1000-10-011-???
+    Halobrecta_flavipes             -000100100-0000
+    Haploglossa_marginalis          -000100100-0?0?
+    Homalota_plana                  -000000-0--0100
+    Hoplandria_lateralis            -000100000-0100
+    Hygronoma_dimidiata             -00000000--0000
+    Leptusa_antarctica              -000-0000?-?100
+    Leptusa_pulchella               -000-0010-100-0
+    Leucocraspedum_scorpio          -1001000--10-00
+    Lomechusa_emarginata            -00010001010100
+    Masuria_plumbea                 -11--0011-10000
+    Meotica_filiformis              -0000000---0001
+    Myllaena_elongata               -110-0010-10010
+    Neodioxeuta_sp                  -020100-0?1?100
+    Oligota_pumilio                 -00--??01-1-000
+    Olisthaerus_megacephalus        0000111-11011--
+    Orphnebius_draco                -000100-1-10?00
+    Oxypoda_longipes                -000100100-000-
+    Oxypodinus_anxius               -11--001--10??0
+    Paraconosoma_polita             1010-01--11001-
+    Phloeocharis_subtilissima       -000-11-0-111--
+    Phloeopora_corticalis           -000000000-01-0
+    Phyllodinarda_xenocephala       -000100-0010100
+    Phytosus_spinifer               -0000000-0-01-0
+    Piochardia_schaumii             -00010001-10101
+    Placusa_incompleta              -020-0000010100
+    Pronomaea_picea                 -02--001--10001
+    Pseudosemiris_circassica        -000000000-0100
+    Silusa_rubiginosa               -000100100101-0
+    Stylogymnusa_subantarctica      1---0?-0-?1?0--
+    Tachinus_proximus               0000111-1101---
+    Tachyusa_objecta                -000-000-0-?100
+    Termitobaena_bryanti            -000-00-0-10000
+    Termitodiscus_heimi             -000000---10101
+    Termitusa_sjoestedti            -010-?0--?1?-10
+    Thamiaraea_cinnamomea           -000100000-0000
+    Trichophya_pilicornis           1000--00111-1--
+    Typhloponemys_sp_Israel         -000100-1-10100
+    Typhloponemys_sp_Tanzania       -000100-1-10100
+    Zyras_collaris                  -000100000-0100
+  ;
+END;
+

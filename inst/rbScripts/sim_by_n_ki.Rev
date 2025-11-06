@@ -1,0 +1,68 @@
+print("Timestamp:", time("year"), time("day"), time("seconds") / 3600)
+seed(12345)
+
+# --- Filenames and I/O -------------------------------------------------------
+
+neo <- readDiscreteCharacterData("%MATRIXBASE.%neo.nex")
+logFile <- "%PID%_%SCRIPT%.p.log"
+treeFile <- "%PID%_%SCRIPT%.trees"
+
+
+# --- Load posterior means from MCMC -----------------------------------------
+# You could instead sample a posterior draw per replicate if you want uncertainty
+
+posterior_table <- readMatrix(logFile)
+mean_rate_loss <- mean(posterior_table["rate_loss"])
+mean_tree_length <- mean(posterior_table["tree_length"])
+mean_rate_log_sd <- mean(posterior_table["rate_log_sd"])
+
+# --- Load the MAP or last tree from posterior --------------------------------
+trees <- readTrees(treeFile)
+phylogeny <- trees[trees.size() - 1]
+
+print("Loaded tree with", phylogeny.ntips(), "taxa")
+
+# --- Reconstruct model parameters -------------------------------------------
+
+# Discretize lognormal rate variation
+rate_categories := fnDiscretizeDistribution(
+  dnLognormal(0, mean_rate_log_sd),
+  6
+)
+
+# Transition rates from posterior mean rate_loss
+rate01 := 2 / (1 + mean_rate_loss)
+rate10 := 2 * mean_rate_loss / (1 + mean_rate_loss)
+rates := [[0.0, rate01],
+          [rate10, 0.0]]
+neoQ := fnFreeK(rates)
+stationaryDist := Simplex(rate10, rate01)
+
+# --- Simulate data -----------------------------------------------------------
+
+n_sim <- 10000
+neo_sim ~ dnPhyloCTMC(
+  tree = phylogeny,
+  siteRates = rate_categories,
+  Q = neoQ,
+  rootFrequencies = stationaryDist,
+  type = "Standard",
+  nSites = n_sim,
+  coding = "all"   # we want to see both informative and uninformative characters
+)
+
+sim_data <- neo_sim.simulate()
+
+print("Simulated", n_sim, "characters")
+
+# --- Write to file -----------------------------------------------------------
+outfile <- "%PID%_%SCRIPT%_simulated.nex"
+writeDiscreteCharacterData(sim_data, outfile)
+print("Wrote simulated data to", outfile)
+
+# --- Optionally: check how many are informative ------------------------------
+sim_data.removeConstantSites()
+sim_data.removeUninformativeSites()
+print("Parsimony-informative characters:", sim_data.nchar())
+
+q()

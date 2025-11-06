@@ -1,0 +1,56 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=48 NCHAR=5;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Orbicella_annularis                 110?0
+    Acanthastrea_echinata               00011
+    Acanthastrea_subechinata            000??
+    Acanthastrea_hemprichii             00011
+    Acanthastrea_pachysepta             00011
+    Acanthastrea_rotundoflora           00011
+    Australophyllia_wilsoni             01001
+    Cynarina_lacrymalis                 00011
+    Echinophyllia_aspera                1-0-1
+    Echinophyllia_glabra                1-0-1
+    Echinophyllia_echinoporoides        1-0-1
+    Echinophyllia_orpheensis            1-0-1
+    Echinophyllia_tarae                 1-0??
+    Echinophyllia_patula                1-0??
+    Echinophyllia_gallii                1-0-?
+    Echinophyllia_bulbosa               1-0-?
+    Oxypora_convoluta                   1-0??
+    Oxypora_lacera                      1-0-1
+    Oxypora_echinata                    1-0-1
+    Oxypora_crassispinosa               1-0??
+    Paraechinophyllia_variabilis_1      1-0-1
+    Paraechinophyllia_variabilis_2      1-0-1
+    Homophyllia_australis               01001
+    Homophyllia_bowerbanki              01001
+    Lobophyllia_agaricia                0-111
+    Lobophyllia_corymbosa               0-111
+    Lobophyllia_costata                 0-111
+    Lobophyllia_diminuta                0011?
+    Lobophyllia_erythraea               0-1??
+    Lobophyllia_flabelliformis          001??
+    Lobophyllia_hataii                  0-111
+    Lobophyllia_hemprichii              0-111
+    Lobophyllia_ishigakiensis           0-111
+    Lobophyllia_radians                 0-111
+    Lobophyllia_recta                   0-111
+    Lobophyllia_robusta                 0-111
+    Lobophyllia_rowleyensis             0-11?
+    Lobophyllia_valenciennesi           0-111
+    Lobophyllia_vitiensis               0-111
+    Lobophyllia_hassi                   0-1??
+    Micromussa_amakusensis              01000
+    Micromussa_indiana                  01000
+    Micromussa_lordhowensis             01000
+    Micromussa_multipunctata            01000
+    Micromussa_pacifica                 01000
+    Moseleya_latistellata               00011
+    Sclerophyllia_margariticola         0101?
+    Sclerophyllia_maxima                01011
+  ;
+END;
+

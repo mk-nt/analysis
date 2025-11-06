@@ -1,0 +1,86 @@
+---
+title: "Compuational cost of models"
+author: "Martin R. Smith <martin.smith@durham.ac.uk>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
+csl: ../inst/apa-old-doi-prefix.csl
+vignette: >
+  %\VignetteIndexEntry{Compuational cost of models}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This crude analysis summarizes the typical computational resources
+associated with each model.
+The results lack rigour, but accord with qualitative observations that
+heterogeneous models require substantially more time and memory to converge.
+
+```{r setup, message = FALSE}
+library("neotrans")
+library("caret")
+library("dplyr")
+```
+
+
+Simple summary statistics capture the headline trend, but because data are not
+universally available, include some biases:
+
+```{r}
+db <- SlurmLog()
+db <- db[which(db$State == "COMPLETED" & db$seconds > 60 &
+               db$task == "marginal" & (db$inf == "ki") &
+               db$pID %in% AllProjects()), ]
+db$sPerCore <- db$seconds / db$nCPU
+db$coreSeconds <- db$seconds * db$nCPU
+
+tcoef <- summary(lm(log(seconds) ~ pID + model + nCPU, data = db))$coeff
+tpcoef <- summary(lm(log(sPerCore) ~ pID + model, data = db))$coeff
+tbycoef <- summary(lm(log(coreSeconds) ~ pID + model, data = db))$coeff
+memcoef <- summary(lm(log(maxRSS) ~ pID + model, data = db))$coeff
+modelRows <- rownames(tcoef)[startsWith(rownames(tcoef), "model")]
+cbind(
+  time = exp(tcoef[modelRows, "Estimate"]),
+  tPerCore = exp(tpcoef[modelRows, "Estimate"]),
+  coreSeconds = exp(tbycoef[modelRows, "Estimate"]),
+  mem = exp(memcoef[modelRows, "Estimate"])
+) |> `rownames<-`(ModelLabel(paste0(gsub("model", "", fixed = TRUE, modelRows), "_ki")))
+```
+
+It is more representative to explore how time and memory usage can be
+predicted after accounting for the datasets for which each model has resource
+data available:
+
+```{r cross-validation}
+train_control <- trainControl(method = "cv", number = 10)
+model1_cv <- train(log(seconds) ~ pID + model + nCPU, data = db,
+                   trControl = train_control, method = "lm")
+
+model2_cv <- train(log(seconds) ~ pID + model, data = db, 
+                   trControl = train_control, method = "lm")
+
+cat(paste("Model 1 CV RMSE:", signif(model1_cv$results$RMSE)))
+cat(paste("Model 2 CV RMSE:", signif(model2_cv$results$RMSE)))
+
+has_by <- group_by(db, pID) |> 
+  filter(any(model == "by")) |>
+  ungroup() |>
+  pull(pID)
+
+
+norm <- db |>
+  filter(pID %in% has_by) |>
+  group_by(pID) |> 
+  mutate(
+    ref_s = sPerCore[model == "by"],
+    ref_mem = maxRSS[model == "by"],
+    norm_s = sPerCore / ref_s, norm_mem = maxRSS / ref_mem) |>
+  ungroup()
+
+norm |>
+  group_by(scriptID) |>
+  summarize(time = mean(norm_s), mem = mean(norm_mem), n = n()) |>
+  mutate(model = ModelLabel(scriptID)) |>
+  relocate(model, .before = scriptID) |>
+  print(n = 100)
+```

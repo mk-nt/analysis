@@ -1,0 +1,77 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=69 NCHAR=1;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Bernissartia_fagesii                  ?
+    Iharkutosuchus_makadii                ?
+    Hylaeochampsa_vectiana                ?
+    Allodaposuchus_precedens              ?
+    Eothoracosaurus_mississippiensis      ?
+    Eosuchus_lerichei                     ?
+    Eosuchus_minor                        0
+    Ocepesuchus_eoafricanus               ?
+    Thoracosaurus_macrorhynchus           ?
+    Thoracosaurus_neocesariensis          ?
+    Aktiogavialis_portoricensis           ?
+    Eogavialis_africanum                  ?
+    Argochampsa_krebsi                    ?
+    Piscogavialis_jugaliperforatus        ?
+    Ikanogavialis_gameroi                 ?
+    Siquisiquesuchus_venezuelensis        0
+    Gryposuchus_colombianus               1
+    Gavialis_gangeticus                   0
+    Siwalik_gavialis                      ?
+    Borealosuchus_sternbergii             ?
+    Borealosuchus_wilsoni                 0
+    Borealosuchus_formidabilis            0
+    Leidyosuchus_canadensis               ?
+    Diplocynodon_darwini                  ?
+    Caiman_crocodilus                     0
+    Alligator_mississippiensis            1
+    Brachychampsa_montana                 ?
+    Stangerochampsa_mccabei               ?
+    Planocrania_hengdongensis             ?
+    Planocrania_datangensis               ?
+    Boverisuchus_vorax                    ?
+    Asiatosuchus_germanicus               ?
+    Prodiplocynodon_langi                 ?
+    Crocodylus_depressifrons              ?
+    Crocodylus_affinis                    1
+    Crocodylus_acer                       ?
+    Brachyuranochampsa_eversolei          ?
+    Crocodylus_megarhinus                 ?
+    Harpacochampsa_camfieldensis          ?
+    Kambara                               ?
+    Australosuchus_clarkae                ?
+    Mecistops_cataphractus                1
+    Crocodylus_porosus                    1
+    Crocodylus_niloticus                  1
+    Crocodylus_rhombifer                  1
+    Crocodylus_palaeindicus               1
+    Rimasuchus_lloydi                     ?
+    Voay_robustus                         1
+    Osteolaemus_tetraspis                 1
+    Euthecodon_brumpti                    ?
+    Euthecodon_arambourgi                 ?
+    Maroccosuchus_zennaroi                ?
+    Kentisuchus_spenceri                  ?
+    Megadontosuchus_arduini               ?
+    Dollosuchoides_densmorei              ?
+    Thecachampsa_carolinensis             ?
+    Thecachampsa_antiqua                  1
+    Penghusuchus_pani                     ?
+    Yage_tomisotomine                     ?
+    Toyotamaphimeia_machikanensis         ?
+    Tomistoma_cairense                    ?
+    Tomistoma_coppensi                    ?
+    Paratomistoma_courti                  ?
+    Tomistoma_schlegelii                  0
+    Tomistoma_lusitanica                  ?
+    Gavialosuchus_eggenburgensis          ?
+    Xaymacachampsa_kugleri                ?
+    Kentisuchus_astrei                    ?
+    Maomingosuchus_petrolica              0
+  ;
+END;
+

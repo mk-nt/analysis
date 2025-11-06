@@ -1,0 +1,79 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=71 NCHAR=13;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Clypeus                 001110000-0-0
+    Astrolampas             001010000-0-0
+    Bothryopneustes         001010000-0-0
+    Pseudopygurus           001010000-0-0
+    Pygurus_mepygurus       001010000-0-0
+    Pygurus_pygurus         001010000-0-0
+    Pygurus_pyguropsis      00101001110-0
+    Nucleolites             00(0,1)(0,1)10000-0-0
+    Catopygus               00(0,1)010000-0-0
+    Hemicara                001010000-000
+    Hypopygurus             00101000100-0
+    Oolopygus               00101001100-0
+    Phyllobrissus           000010000-0-0
+    Plagiochasma            001010000-0-0
+    Pygaulus                001000000-0-0
+    Pygopistes              001010000-0-0
+    Pygorhynchus            001000000-0-0
+    Rhopostoma              001000000-0-0
+    Apatopygus              000000000-0-0
+    Porterpygus             000010000-0-0
+    Archiacia               101010000-0-0
+    Claviaster              101010000-0-0
+    Acriaster               101010000-0-0
+    Gentilia                001010000-0-0
+    Faujasia                0110100111000
+    Australanthus           0110100110100
+    Domechinus              0110100111000
+    Gongrochanus            0010100011000
+    Hardouinia              0010000110(0,1)00
+    Lefortia                0010100111000
+    Petalobrissus           0010100010(0,1)00
+    Pygidiolampas           0010100110000
+    Pygurostoma             0010100010100
+    Stigmatopygus           0010100010100
+    Cassidulus              0110100010110
+    Eurhodia                0110100010110
+    Hypsopygaster           0110100011010
+    Nucleopygus             0010100?10000
+    Ochetes                 000010010-110
+    Oligopodia              0110100110110
+    Rhyncholampas           0110100010110
+    Rhynchopygus            0110000110110
+    Echinolampas            0110100010000
+    Arnaudaster             0010100110000
+    Conolampas              0110100010000
+    Parapygus               0010100010000
+    Plesiolampas            0110100?10000
+    Conoclypus              0110100010000
+    Clypeolampas            0110100010000
+    Vologesia               0010100010000
+    Pliolampas              01101001100-0
+    Gitolampas              01101000100-0
+    Ilarionia               01101011100-0
+    Kephrenia               01101000110-0
+    Neocatopygus            01101010100-0
+    Pseudopygaulus          01100001100-0
+    Santeelampas            01101000100-0
+    Studeria                01101001100-0
+    Termieria               01100001100-0
+    Zuffardia               01101000110-0
+    Neolampas               01100000100-0
+    Nannolampas             0000110-1-0-0
+    Pisolampas              01100000100-0
+    Tropholampus            0110110-1-0-0
+    Oligopygus              0110000-1-0-0
+    Haimea                  0110100-1-0-0
+    Togocyamus              01?0010-1-0-0
+    Clypeaster              0110010-1-0-1
+    Laganum                 0110010-1-0-1
+    Galeropygus             000010000-0-0
+    Hyboclypus              000100000-0-0
+  ;
+END;
+

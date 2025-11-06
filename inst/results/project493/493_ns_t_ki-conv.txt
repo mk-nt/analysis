@@ -1,0 +1,2 @@
+"burnin" "psrf" "ess" "frechetCorrelationESS" "medianPseudoESS"
+"1" 0 1.00598257044653 723.375144508998 1839.23087223455 1999.99999999999

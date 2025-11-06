@@ -1,4 +1,6 @@
 Version: 1.0
+ProjectId: USYB-2025-278
+ProjectName: Mk-nt analysis
 
 RestoreWorkspace: No
 SaveWorkspace: No
@@ -14,4 +16,7 @@ LaTeX: pdfLaTeX
 
 QuitChildProcessesOnExit: Yes
 
-ProjectName: Mk-nt analysis
+BuildType: Package
+PackageUseDevtools: Yes
+PackageInstallArgs: --no-multiarch --with-keep.source
+PackageRoxygenize: rd,collate,namespace

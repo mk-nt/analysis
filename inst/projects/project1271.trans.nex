@@ -1,0 +1,33 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=25 NCHAR=6;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Oistoceras_figulinum           0--??0
+    Amaltheus_bifurcus             10-??0
+    Amaltheus_stokesi              10-??0
+    Amaltheus_talrosei             00-??0
+    Amaltheus_subbifurvus          00-??0
+    Amaltheus_repressus            00-??0
+    Amaltheus_conspectus           00-??0
+    Amaltheus_viligaensis          00-??0
+    Amaltheus_wertheri             10-??0
+    Amauroceras_ferruginum         10-??0
+    Amaltheus_subnodosus           10-1?0
+    Amaltheus_striatus             10-020
+    Amaltheus_gloriosus            10-120
+    Amaltheus_gloriosus_W          10-120
+    Amaltheus_gibbosus             10-120
+    Amaltheus_salebrosus           10-110
+    Pleuroceras_becheteri          11-111
+    Pleuroceras_transiens          11-201
+    Pleuroceras_solare             11-201
+    Pleuroceras_quadratum          11-201
+    Pleuroceras_apyrenum           110?01
+    Pleuroceras_spinatum           1113?1
+    Pleuroceras_hawskerense        1102?1
+    Pleuroceras_paucicostatum      1113?1
+    Pleuroceras_yeovilense         1113?1
+  ;
+END;
+

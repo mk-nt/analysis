@@ -1,0 +1,179 @@
+---
+title: "Annotate matrices"
+author: "Martin R. Smith <martin.smith@durham.ac.uk>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
+csl: ../inst/apa-old-doi-prefix.csl
+vignette: >
+  %\VignetteIndexEntry{Annotate matrices}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This project draws on a subset of annotated matrices obtained from MorphoBank.
+
+## Creating a local copy of the existing repository
+
+If you have already [installed the neotrans package](install.html), then your
+`neotrans` folder will contain a directory called `matrices`.
+
+The matrices directory is a git 'submodule', which is to say,
+it is linked to a standalone repository
+[neo-trans/matrices](http://github.com/neo-trans/matrices).
+
+You will want to replace this default directory with one of our own.
+A good way to do this is to create a GitHub account and use
+the "Fork" option at [neo-trans/matrices](http://github.com/neo-trans/matrices)
+to create a linked copy of this repository, which will be associated with
+your own account.
+
+This linked repository can then be edited on a local computer by downloading
+[GitHub Desktop](https://desktop.github.com/download/) and using the
+"File→Clone Repository" option.  Clone the repository into
+`path/to/neotrans/` such that you create a new `matrices` directory in that
+folder, having deleted the directory that was there already.
+
+(If you have already cloned the `matrices` directory elsewhere on your
+computer, then you can move that directory and update GitHub desktop to point
+to its new location within the `neotrans` directory.)
+
+
+## Editing your own copy of the repository
+
+To view the local version of your repository, use GitHub Desktop's
+"Repository" menu to "Show in Explorer". Any changes to these local files
+will be tracked in GitHub Desktop.
+
+Modifications to files can be selected and "committed" to be locally recorded.
+Once changes have been committed, the "Push origin" option will update the
+forked copy of the repository on the GitHub server with your committed changes.
+
+
+## What is in the `matrices` repository
+
+The directory contains Nexus files corresponding to morphological matrices,
+named e.g. `project1210.nex`.
+
+You can find the corresponding project on MorphoBank to inspect the original
+character state information, e.g. https://www.morphobank.org/index.php/Projects/ProjectOverview/project_id/1210
+
+For a subset of these matrices there is a corresponding Excel spreadsheet
+named, for example, `Project1210_D. A. Janies(2011).xlsx`.
+(Note that the file names are used to link the matrices to the spreadsheets
+and should begin `project####`.)
+
+You can see the format required of the Excel spreadsheets that annotate the character types by looking at those already in the repository. You should be able to copy and paste the 'charlabels' column directly from the nexus file (which you can open with a text editor such as e.g. Notepad++).
+
+The important thing is that the file has three columns with the names "Charlabels", "Character Pattern", and "Unseen States" (case sensitive); this will allow the files to be processed by R later on.
+
+
+A subset of characters may require reformulating, per @Brazeau2011.
+The method for reformulating a character can be thought of as encoding a table.
+For example:
+
+> Old character: Tail. States: `0`, absent; `1`, present, red; `2`, present, blue
+
+Preferred formulation [per @Brazeau2011; @Brazeau2019]:
+
+> New character 1: Tail presence (Neomorphic): `0`, absent; `1` present 
+>
+> New character 2: Tail colour (Transformational, unknown number of possible states): `1`, red; `2`, blue
+
+The following table records how each state in the old character can be
+translated into equivalent states into the two characters in our preferred
+reformulation.
+
+|  Old character  | New character 1 | New character 2 |
+| --------------- | --------------- | --------------- |
+| | Neomorphic = **N** |  Transformational = **T** <br> Unknown number of states = **?** |
+| Token `0` = | `0` | `-` |
+| Token `1` = | `1` | `1` |
+| Token `2` = | `1` | `2` |
+
+
+We encode this table, using a semicolon `;` to separate the rows, producing:
+
+`NT?;0=0-;1=11;2=12`
+
+This coding is then recorded in the "Character Pattern" column in the Excel
+spreadsheet.  This will allow us to replace the original character with its
+'corrected' replacements.
+
+We can use the same method to relabel the states of a character.
+For example, `N;0=1;1=0` would relabel
+
+> Trait: `0`, present; `1`, absent
+
+such that `0` denotes the absent state.
+
+
+## Creating relabelled matrices
+
+Once the annotation spreadsheet is complete, the next step is to create
+clean versions of the matrices in which the characters have been relabelled
+according to our desired formulations.
+
+To do this you'll need to [install the neotrans package](install.html).
+
+Then you can run `PrepareMatrix("1210")` to create new matrix files in the
+`projects` subfolder of your `neotrans` directory.
+The key output is:
+
+- `projects/project1210.nex`: a relabelled dataset, in Nexus format;
+- `projects/project1210.neo.nex`: The relabelled neomorphic characters;
+- `projects/project1210.trans.nex`: The relabelled transformational characters.
+
+Typing `?PrepareMatrix()` in the console will launch the help page with
+complete information about this function and its output.
+
+
+## Working locally with relabelled matrices
+
+It is simplest to launch the "neotrans" R project in [RStudio](https://posit.co/download/rstudio-desktop/), via the file
+`neotrans.Rproj` in the neotrans directory
+
+Otherwise, your working directory (`getwd()`) may not correspond to the
+`neotrans` project root, and you will need to amend `R/FilePaths.R` and
+re-build the package accordingly.
+
+Once you've done this, you can conduct simple analyses using R scripts.
+For example, to conduct equal weights parsimony on just the neomorphic
+characters you just created, you can run
+
+```r
+library("TreeSearch")
+
+# Load data
+neo1210file <- MatrixFile("1210", "neo.nex")
+neo1210 <- TreeTools::ReadAsPhyDat(neo1210file)
+
+# Conduct (quick) tree search
+neo1210Trees <- MaximizeParsimony(neo1210)
+
+# View first tree
+tree1 <- neo1210Trees[[1]]
+oPar <- par(mar = rep(0.4, 4), cex = 0.8) # Set up plotting area
+plot(tree1)
+par(oPar) # Restore plotting defaults
+
+# Calculate extra length of each character on the tree
+CharacterLength(tree1, neo1210) - MinimumLength(neo1210)
+```
+
+You may wish to read `?MaximizeParsimony` and the accompanying [vignette](
+https://ms609.github.io/TreeSearch/articles/tree-search.html#command-line-tree-search)
+for more complete and reliable results.
+
+
+## Working remotely with matrices
+
+It may be convenient to run more sophisticated or time-consuming analyses on a
+remote computing cluster.
+
+RevBayes scripts that are added to `rbScripts` can be executed remotely for
+inference or for marginal likelihood estimation using the `EnqueueML()` and
+`EnqueueMC()` functions; see their help pages for setup documentation.
+
+
+# References

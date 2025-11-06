@@ -1,0 +1,398 @@
+---
+title: "Parameter value summary"
+author: "Martin R. Smith <martin.smith@durham.ac.uk>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
+csl: ../inst/apa-old-doi-prefix.csl
+vignette: >
+  %\VignetteIndexEntry{Parameter value summary}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, message = FALSE}
+library("neotrans")
+modelsT <- c("by_ki", "by_n_ki", "by_t_ki", "by_nt_ki", "rm_by_t_ki")
+```
+
+
+```{r load-values, message = FALSE}
+rateT <- data.frame(
+  by_t_ki = vapply(KiProjects(), function(pID) {
+  1 / ExistingResults(pID, "by_t_ki",
+                      checkRemote = FALSE)[["parameters"]]["50%", "rate_neo"]
+  }, double(1)),
+  by_nt_ki = vapply(KiProjects(), function(pID) {
+  1 / ExistingResults(pID, "by_nt_ki",
+                      checkRemote = FALSE)[["parameters"]]["50%", "rate_neo"]
+  }, double(1)),
+  ns_t_ki = vapply(KiProjects(), function(pID) {
+  1 / ExistingResults(pID, "ns_t_ki",
+                      checkRemote = TRUE)[["parameters"]]["50%", "rate_neo"] %||% {
+                        MakeSlurm(pID, "ns_t_ki"); NA_real_}
+  }, double(1)),
+  ns_nt_ki = vapply(KiProjects(), function(pID) {
+  1 / ExistingResults(pID, "ns_nt_ki",
+                      checkRemote = TRUE)[["parameters"]]["50%", "rate_neo"] %||% {
+                        MakeSlurm(pID, "ns_nt_ki"); NA_real_}
+  }, double(1))
+)
+
+root0 <- data.frame(
+  ns_ki = vapply(KiProjects(), function(pID) {
+    ExistingResults(pID, "ns_ki")[["parameters"]]["50%", "root_freqs.1."] %||%
+      NA_real_
+  }, double(1)),
+  ns_n_ki = vapply(KiProjects(), function(pID) {
+    ExistingResults(pID, "ns_n_ki")[["parameters"]]["50%", "root_freqs.1."] %||% {
+      MakeSlurm(pID, "ns_n_ki"); NA_real_}
+  }, double(1)),
+  ns_t_ki = vapply(KiProjects(), function(pID) {
+    ExistingResults(pID, "ns_n_ki")[["parameters"]]["50%", "root_freqs.1."] %||% {
+      MakeSlurm(pID, "ns_n_ki"); NA_real_}
+  }, double(1)),
+  ns_nt_ki = vapply(KiProjects(), function(pID) {
+    ExistingResults(pID, "ns_nt_ki")[["parameters"]]["50%", "root_freqs.1."] %||% {
+      MakeSlurm(pID, "ns_nt_ki"); NA_real_}
+  }, double(1))
+)
+a0 <- root0 / (1 - root0)
+
+rate01 <- data.frame(
+  by_n_ki = vapply(KiProjects(), function(pID) {
+    x <- ExistingResults(pID, "by_n_ki")[["parameters"]]
+    if (is.null(x)) {
+      rep(NA_real_, 1)
+    } else {
+      1 / x["50%", "rate_loss"]
+    }
+  }, double(1)),
+  by_nn_ki = vapply(KiProjects(), function(pID) {
+    x <- ExistingResults(pID, "by_nn_ki")[["parameters"]]
+    if (is.null(x)) {
+      rep(NA_real_, 1)
+    } else {
+      x["50%", "rate01"]
+    }
+  }, double(1)),
+  by_nt_ki = vapply(KiProjects(), function(pID) {
+    x <- ExistingResults(pID, "by_nt_ki")[["parameters"]]
+    if (is.null(x)) {
+      rep(NA_real_, 1)
+    } else {
+      1 / x["50%", "rate_loss"]
+    }
+  }, double(1)),
+  ns_n_ki = vapply(KiProjects(), function(pID) {
+    x <- ExistingResults(pID, "ns_n_ki")[["parameters"]]
+    if (is.null(x)) {
+      rep(NA_real_, 1)
+    } else {
+      1 / x["50%", "rate_loss"]
+    }
+  }, double(1)),
+  ns_nt_ki = vapply(KiProjects(), function(pID) {
+    x <- ExistingResults(pID, "ns_nt_ki")[["parameters"]]
+    if (is.null(x)) {
+      rep(NA_real_, 1)
+    } else {
+      1 / x["50%", "rate_loss"]
+    }
+  }, double(1)),
+  hg_ki = vapply(KiProjects(), function(pID) {
+    ExistingResults(pID, "hg_ki")[["parameters"]]["50%", "mean_n"]
+  }, double(1)),
+  hg_b_ki = vapply(KiProjects(), function(pID) {
+    ExistingResults(pID, "hg_b_ki")[["parameters"]]["50%", "mean_n"] %||% NA_real_
+  }, double(1)))
+```
+
+```{r plot-values, fig.width = 7.2, fig.height = 6}
+OutputPlot("param_values", width = 7.2, height = 6, function() {
+  layout(cbind(c(1, 3), c(2, 3)), heights = c(1, 1))
+  par(mar = c(2.6, 4, 1, 0.4))
+  SpindlePlot(rateT, log = TRUE,
+              ylab = expression("Relative transformational rate," ~
+                                  italic(t)),
+              Behind = function() abline(h = 1, lty = "dashed", col = "grey70"))
+  Panel(1, 4, -1.5)
+  SpindlePlot(a0, log = TRUE,
+              ylab = expression("Proportion of absences at root," ~ italic("a")[0]),
+              Behind = function() abline(h = 1, lty = "dashed", col = "grey70"))
+  Panel(2, 4, -1.5)
+  SpindlePlot(rate01, frame.plot = FALSE,
+              ylab = expression("Rate of gain relative to loss," ~ italic("n")),
+              log = "y", width = 2.1,
+              Behind = function() abline(h = 1, lty = "dashed", col = "grey70")
+              )
+  Panel(3, 4, -1)
+})
+```
+## Summarize values of $a_0$
+
+```{r report-values}
+nsModels <- colnames(root0)
+nsBF <- GetMarginals(KiProjects(), nsModels)
+bestNS <- apply(nsBF, 2, which.max)
+a0Best <- a0[cbind(seq_along(bestNS), bestNS)]
+shapiro.test(log(a0Best))
+e1071::skewness(log(a0Best))
+mean(a0Best)
+exp(mean(log(a0Best))) # log-mean
+median(a0Best)
+mad(a0Best)
+t.test(a0Best)
+```
+
+<!--
+
+# TODO the below needs updating to correctly convert parameters to _n_ equivalent.
+modelsP <- c("by_ki", "by_n_ki", "by_nn_ki", "by_t_ki", "by_nt_ki", "ns_ki",
+             "ns_n_ki", "ns_nt_ki", "hg_ki", "hg2_ki")
+marginals <- GetMarginals(KiProjects(), modelsP)
+stdErr <- attr(marginals, "stdErr")
+
+nModels <- c("by_n_ki", "by_nn_ki", "by_nt_ki")
+mlAvailable <- ModelBF(marginals, nModels)
+projects <- colnames(mlAvailable)
+unavailable <- setdiff(KiProjects(), projects)
+if (length(unavailable)) {
+  warning("Not plotting ", paste0(unavailable, collapse = ", "),
+          ": some results unavailable")
+}
+whichModel <- nModels[apply(mlAvailable, 2, which.max)]
+
+nullParam <- c(`2.5%` = NA_real_, `25%` = NA_real_, `50%` = NA_real_,
+               `75%` = NA_real_, `97.5%` = NA_real_, mad = NA_real_)
+
+# Estimated values of n under by_n_ki
+nVal <- lapply(nModels, function(model) {
+  sapply(KiProjects(), function(pID) {
+    res <- ExistingResults(pID, model, checkRemote = FALSE)[["parameters"]][, "rate_loss"]
+    if (is.null(res)) {
+      message("Need results for ", pID, "_", model)
+      UpdateRecords(pID, model)
+      res <- ExistingResults(pID, model, checkRemote = TRUE)[["parameters"]]
+      if (!HasConverged(pID, model)) {
+        MakeSlurm(pID, model, ml = FALSE)
+      }
+    }
+    res %||% nullParam
+  })
+}) |> setNames(nModels)
+
+stationaryN <- matrix(NA, nrow = 6, ncol = length(projects), dimnames = list(
+  c("2.5%", "25%", "50%", "75%", "97.5%", "mad"),
+  projects))
+nonStatN <- stationaryN
+
+
+# Compare estimated values of n
+# Beware: rate_loss = 1 / n
+nModels <- c("by_n_ki", "by_nt_ki")
+stationaryN <- matrix(NA, nrow = 6, ncol = length(projects), dimnames = list(
+  c("2.5%", "25%", "50%", "75%", "97.5%", "mad"),
+  projects))
+nonStatN <- stationaryN
+nModelBF <- numeric(length(projects))
+nsModelBF <- nModelBF
+nModelErr <- nModelBF
+nsModelErr <- nModelErr
+
+for (model in nModels) {
+  usesModel <- whichModel == model
+  modProjects <- projects[usesModel]
+  nsModel <- sub("by_", "ns_", model, fixed = TRUE)
+  cfModel <- c("by_n_ki" = "by_ki", "by_nt_ki" = "by_t_ki")[model]
+  
+  # Estimated value of n using the best available stationary model
+  stationaryN[, usesModel] <- sapply(modProjects, function(pID) {
+    res <- ExistingResults(pID, model, checkRemote = FALSE)[["parameters"]][, "rate_loss"]
+    if (is.null(res)) {
+      message("Need results for ", pID, "_", model)
+      UpdateRecords(pID, model)
+      res <- ExistingResults(pID, model, checkRemote = TRUE)[["parameters"]]
+      if (!HasConverged(pID, model)) {
+        MakeSlurm(pID, model, ml = FALSE)
+      }
+    }
+    
+    res %||% nullParam
+  })
+  nModelBF[usesModel] <- marginals[model, modProjects] -
+    marginals[cfModel, modProjects]
+  nModelErr[usesModel] <- .DiffErr(stdErr[model, modProjects],
+                                   stdErr[cfModel, modProjects])
+  
+  # Estimated value of n using the best available non-stationary model
+  nonStatN[,usesModel] <- sapply(modProjects, function(pID) {
+    ExistingResults(pID, nsModel, checkRemote = FALSE)[["parameters"]][, "rate_loss"] %||% rep(NA, 6)
+  })
+  nsModelBF[usesModel] <- marginals[nsModel, modProjects] -
+    marginals[cfModel, modProjects]
+  nsModelErr[usesModel] <- stdErr[nsModel, modProjects] +
+    stdErr[cfModel, modProjects]
+}
+
+mean(log(1 / stationaryN["50%", ]), na.rm = TRUE)
+sd(log(1 / stationaryN["50%", ]), na.rm = TRUE)
+median(log(1 / stationaryN["50%", ]), na.rm = TRUE)
+mad(log(1 / stationaryN["50%", ]), na.rm = TRUE)
+
+
+# Estimate the equivalent of n using the neomorphic-heterogeneous model
+hgN <- sapply(projects, function(pID) {
+  res <- ExistingResults(pID, "hg_ki", checkRemote = FALSE)[["parameters"]][, "mean_n"]
+  if (is.null(res)) {
+    message("Need results for ", pID, "_", model)
+    RevBayes(pID, model)
+    MakeSlurm(pID, model, ml = FALSE)
+  }
+  res %||% nullParam
+})
+length(which(hgN["2.5%", ] > 1))
+length(which(hgN["97.5%", ] < 1))
+sum(!is.na(hgN["97.5%", ]))
+
+h50 <- log(hgN["50%", ])
+vioplot::vioplot(h50)
+shapiro.test(h50)
+
+message(
+  sprintf("value of log(_n_) is %.3f (%.3f) and %.3f (%.3f)",
+          mean(h50, na.rm = TRUE), sd(h50, na.rm = TRUE),
+          median(h50, na.rm = TRUE), mad(h50, na.rm = TRUE))
+)
+
+
+hgModelBF <- marginals["hg_ki", projects] - marginals["by_ki", projects]
+hgModelErr <- stdErr["hg_ki", projects] + stdErr["by_ki", projects]
+hg2N <- 1 / sapply(projects, function(pID) {
+  tryCatch(
+  ExistingResults(pID, "hg2_ki", checkRemote = FALSE
+                  )[["parameters"]][, "mean_n"] %||% nullParam,
+  error = function(e) {
+    MakeSlurm(pID, "hg2_ki", ml = FALSE)
+    return(nullParam)
+  })
+})
+hg2ModelBF <- marginals["hg2_ki", projects] - marginals["by_ki", projects]
+hg2ModelErr <- stdErr["hg2_ki", projects] + stdErr["by_ki", projects]
+
+xLim <- c(1 / 140, 140)
+
+{
+par(mfrow = c(3, 2))
+plot(stationaryN["50%", ], nModelBF,
+     type = "n", # just whilst texting
+     xlab = "Inferred 'n': best stationary model", ylab = "Model BF", xpd = NA,
+     frame.plot = FALSE, pch = 4, log = "x", xlim = xLim)
+confidenceCol <- gray.colors(256)
+iqr <- log(stationaryN["75%", ]) - log(stationaryN["25%", ])
+segments(stationaryN["2.5%", ], nModelBF, stationaryN["97.5%", ], xpd = NA,
+         col = confidenceCol[cut(iqr, breaks = 256)])
+text(stationaryN["50%", ], nModelBF, colnames(stationaryN), cex = 0.7, font = 2)
+abline(v = 1, lty = 2)
+abline(h = c(-1, 1) * log(10), lty = 2)
+
+plot(nonStatN["50%", ], nsModelBF,
+     type = "n", # just whilst texting
+     xlab = "Inferred 'n': best non-stationary model", ylab = "Model BF", xpd = NA,
+     frame.plot = FALSE, pch = 4, log = "x", xlim = xLim)
+iqr <- log(nonStatN["75%", ]) - log(nonStatN["25%", ])
+segments(nonStatN["2.5%", ], nsModelBF, nonStatN["97.5%", ], xpd = NA,
+         col = confidenceCol[cut(iqr, breaks = 256)])
+text(nonStatN["50%", ], nsModelBF, colnames(nonStatN), cex = 0.7, font = 2)
+abline(v = 1, lty = 2)
+abline(h = c(-1, 1) * log(10), lty = 2)
+
+HetNPlot(hgN, hgModelBF, "hg_ki")
+HetNPlot(hg2N, hg2ModelBF, "hg2_ki")
+
+}
+
+dev.new()
+mod2plot <- .OutwithError(nModelBF, nModelErr, epsBF)
+{
+  pch <- c(17, 16, 15)
+plot(stationaryN["50%", mod2plot], nonStatN["50%", mod2plot],
+     frame.plot = FALSE, asp = 1,
+     pch = pch[[1]], col = durham$purple, log = "xy",
+#     xlim = c(0, 20), ylim = c(0, 20),
+     xlab = "median value of _n_, stationary model",
+     ylab = "median value of _n_, comparator model")
+legend("topleft", c("ns_n", "hg", "hg2"), bty = "n", cex = 1.4,
+       pch = pch,
+       col = unlist(durham[c("purple", "gold", "red")]))
+points(stationaryN["50%", mod2plot], hgN["50%", mod2plot],
+       col = durham$gold, pch = pch[[2]], xpd = NA)
+points(stationaryN["50%", mod2plot], hg2N["50%", mod2plot],
+       col = durham$red, pch = pch[[3]], xpd = NA)
+abline(a = 0, b = 1, lty = 2, col = durham$concrete)
+abline(h = 1, lty = 2, col = durham$concrete)
+abline(v = 1, lty = 2, col = durham$concrete)
+}
+
+
+# Non-stationary models: distribution at root
+rfMk <- sapply(KiProjects(), function(pID) {
+  ExistingResults(pID, "ns_ki", checkRemote = FALSE
+                  )[["parameters"]][, "root_freqs.1."] %||% nullParam
+})
+which(rfMk["50%", ] - rfMk["mad", ] - rfMk["mad", ] > 0.5)
+length(which(rfMk["2.5%", ] > 0.5))
+which(rfMk["50%", ] + rfMk["mad", ] + rfMk["mad", ] < 0.5)
+length(which(rfMk["97.5%", ] < 0.5))
+sum(!is.na(rfMk["50%", ]))
+
+plot(rep(marginals["ns_ki", ] - marginals["by_ki", ], each = 2),
+     rfMk[c("2.5%", "97.5%"), ],
+     frame.plot = FALSE, pch = 3, col = durham$purple,
+     xlim = c(-20, 80), xlab = "Bayes Factor in favour of Non-Stationary model",
+     ylab = "Frequency of Absent state at root",
+     type = "n"
+     )
+.ErrCompare <- function(mod1, mod2, eps = epsBF) {
+  .OutwithError(marginals[mod1, ] - marginals[mod2, ],
+                .DiffErr(stdErr[mod1, ], stdErr[mod2, ]), eps)
+}
+nsDiffers <- .ErrCompare("ns_ki", "by_ki", epsBF) | 
+  .ErrCompare("by_ki", "ns_ki", epsBF)
+segments(marginals["ns_ki", ] - marginals["by_ki", ],
+         y0 = rfMk["2.5%", ], y1 = rfMk["97.5%", ],
+         col = ifelse(nsDiffers, durham$purple, durham$heather))
+points(marginals["ns_ki", ] - marginals["by_ki", ], rfMk["50%", ],
+       col = ifelse(nsDiffers, durham$purple, durham$heather),
+       pch = 4)
+abline(h = 0.5, lty = "dotted")
+EpsLine(v = TRUE)
+  
+rfN <- sapply(projects, function(pID) {
+  ExistingResults(pID, "ns_n_ki", checkRemote = FALSE
+                  )[["parameters"]][, "root_freqs.1."] %||% nullParam
+})
+which(rfN["50%", ] - rfN["mad", ] - rfN["mad", ] > 0.5)
+length(which(rfN["2.5%", ] > 0.5))
+which(rfN["50%", ] + rfN["mad", ] + rfN["mad", ] < 0.5)
+length(which(rfN["97.5%", ] < 0.5))
+sum(!is.na(rfN["50%", ]))
+
+plot(rep(marginals["ns_n_ki", ] - marginals["by_n_ki", ], each = 2),
+     rfN[c("2.5%", "97.5%"), ],
+     frame.plot = FALSE, pch = 3, col = durham$purple,
+     xlim = c(-20, 80), xlab = "Bayes Factor in favour of Non-Stationary model",
+     ylab = "Frequency of Absent state at root",
+     type = "n"
+)
+nsnDiffers <- .ErrCompare("ns_n_ki", "by_n_ki", eps) |
+  .ErrCompare("by_n_ki", "ns_n_ki", eps)
+segments(marginals["ns_n_ki", ] - marginals["by_n_ki", ],
+         y0 = rfN["2.5%", ], y1 = rfN["97.5%", ],
+         col = ifelse(nsnDiffers, durham$purple, durham$heather))
+points(marginals["ns_n_ki", ] - marginals["by_n_ki", ], rfN["50%", ],
+         col = ifelse(nsnDiffers, durham$purple, durham$heather),
+       pch = 4)
+abline(h = 0.5, lty = "dotted")
+EpsLine(v = TRUE)
+-->

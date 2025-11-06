@@ -1,0 +1,147 @@
+---
+title: "Comparison to well-corroborated trees"
+author: "Martin R. Smith <martin.smith@durham.ac.uk>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
+csl: ../inst/apa-old-doi-prefix.csl
+vignette: >
+  %\VignetteIndexEntry{Comparison to well-corroborated trees}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library("neotrans")
+models7 <- c("by_kv", "ns_kv", "by_n_kv", "ns_n_kv", "by_nt_kv", "ns_nt_kv",
+             "hg_kv", "hg_b_kv", "hg2_kv")
+projects <- Config()$syab
+marginals7 <- GetMarginals(projects, models7)
+
+# uuids for PhyloPic silhouettes
+sil <- c(
+  "07200" = "6affa688-6da7-400b-8a28-ea2b4e5a02ba",
+  "07202" = "eedde61f-3402-4f7c-9350-49b74f5e1dba",
+  "07203" = "a89e224a-e374-4be0-a9bb-3481b16f87fb",
+  "07204" = "822c549b-b29b-47eb-9fe3-dc5bbb0abccb",
+  "07205" = "822c549b-b29b-47eb-9fe3-dc5bbb0abccb",
+  "07206" = "e191c6d0-184c-4bb5-9e49-8b354f4e0014"
+)
+```
+
+```{r, fig.width = 7.3, fig.height = 7}
+OutputPlot("tr_similar", 7.3, 7, function() {
+  layout(rbind(1:5, 6:10, 11:15), widths = c(1, 0.6, 0.14, 1, 0.6))
+  gap <- TRUE
+  panel <- 1
+  for (pID in projects[c(1:3, 6:4)]) {
+    TreeSimSpindleRow(pID, marginals7, models7, sil[[pID]],
+                      Annotate1 = function() Panel(panel, -1.8, 0))
+    panel <- panel + 1
+    if (gap) {
+      oPar <- par(mar = rep(0, 4))
+      plot.new()
+      par(oPar)
+    }
+    gap <- !gap
+  }
+})
+```
+
+```{r}
+statV <- c("by_kv", "by_n_kv", "by_nt_kv")
+nsV <- c("ns_kv", "ns_n_kv", "ns_nt_kv")
+freeNTV <- c("by_nt_kv", "ns_nt_kv")
+freeNV <- c("by_n_kv", "ns_n_kv")
+fixedNV <- c("by_kv", "ns_kv")
+homoV <- c(statV, nsV)
+hetV <- setdiff(models7, homoV)
+
+# Field et al. 2020
+mean0 <- sapply(TreeSimilarities("07200", models7, "MCI"), mean)
+range(mean0[homoV])
+mean0[hetV]
+
+# Pattinson et al. 2015
+mean2 <- sapply(TreeSimilarities("07202", models7, "MCI"), mean)
+mean2[nsV] - mean2[statV]
+range(mean2)
+mean2[freeNV] - mean2[fixedNV]
+mean2[freeNTV] - mean2[freeNV]
+
+# Asher 2007
+mean3 <- sapply(TreeSimilarities("07203", models7, "MCI"), mean)
+signif(mean3, 3)
+mean3[nsV] - mean3[statV]
+range(mean3)
+mean3[freeNV] - mean2[fixedNV]
+mean3[freeNTV] - mean2[freeNV]
+
+# Huttenlocker et al. 2018
+mean6 <- sapply(TreeSimilarities("07206", models7, "MCI"), mean)
+range(mean6[-(1:2)])
+marginals7[, "07206"] - marginals7["ns_kv", "07206"]
+
+# Halliday All 
+mean5 <- sapply(TreeSimilarities("07205", models7, "MCI"), mean)
+signif(mean5, 2)
+signif(mean5[nsV], 2)
+signif(mean5[statV], 2)
+signif(mean5[hetV], 2)
+
+# Halliday Reduced 
+mean4 <- sapply(TreeSimilarities("07204", models7, "MCI"), mean)
+signif(mean4, 3)
+stat4 <- mean4[statV]
+ns4 <- mean4[nsV]
+signif(ns4 - stat4, 2)
+signif(range(mean4[hetV]), 3)
+```
+
+<!--
+TreeSimBox("07200", models7, "data/trueTree/%s_%s.png", method = "qt")
+TreeSimBox("07202", models7, "data/trueTree/%s_%s.png", method = "qt")
+TreeSimBox("07203", models7, "data/trueTree/%s_%s.png", method = "qt")
+TreeSimBox("07204", models7, "data/trueTree/%s_%s.png", method = "qt")
+TreeSimBox("07205", models7, "data/trueTree/%s_%s.png", method = "qt")
+TreeSimBox("07206", models7, "data/trueTree/%s_%s.png", method = "qt")
+
+# Same overall patterns
+TreeSimBox("07200", models7, "data/trueTree/%s_%s.png", method = "mci")
+TreeSimBox("07202", models7, "data/trueTree/%s_%s.png", method = "mci")
+TreeSimBox("07203", models7, "data/trueTree/%s_%s.png", method = "mci")
+TreeSimBox("07204", models7, "data/trueTree/%s_%s.png", method = "mci")
+TreeSimBox("07205", models7, "data/trueTree/%s_%s.png", method = "mci")
+TreeSimBox("07206", models7, "data/trueTree/%s_%s.png", method = "mci")
+
+
+modToPlot <- c("by_kv", "by_n_kv", "ns_n_kv", "hg_kv", "hg2_kv")
+
+# HetB, Het1P: Shallowish nodes similar; deep nodes more different
+DiffDepth("07200", models7, "data/trueTree/07200_depth.pdf", sampleSize = 256)
+# HetB, Het1P: Shallowish nodes worse; deep nodes better
+DiffDepth("07202", models7, "data/trueTree/07202_depth.pdf", sampleSize = 256)
+# HetB, Het1P: Shallowish nodes similar; deep nodes more different
+DiffDepth("07203", models7, "data/trueTree/07203_depth.pdf", sampleSize = 256)
+# HetB, Het1P: Deepest and some intermediate nodes more similar;
+# shallowest more different
+DiffDepth("07204", models7, "data/trueTree/07204_depth.pdf", sampleSize = 256)
+# HetB, Het1P: Shallowest nodes different; deep nodes more similar
+DiffDepth("07205", models7, "data/trueTree/07205_depth.pdf", sampleSize = 256)
+# Mk: Shallowest nodes more similar; Het: Slightly worse at deepest nodes
+DiffDepth("07206", models7, "data/trueTree/07206_depth.pdf", sampleSize = 256)
+
+
+TreeSimPlot("07200", modToPlot, "data/trueTree/07200.pdf", sampleSize = 256)
+TreeSimPlot("07202", modToPlot, "data/trueTree/07202.pdf", sampleSize = 256)
+TreeSimPlot("07203", modToPlot, "data/trueTree/07203.pdf", sampleSize = 256)
+TreeSimPlot("07204", modToPlot, "data/trueTree/07204.pdf", sampleSize = 256)
+TreeSimPlot("07205", modToPlot, "data/trueTree/07205.pdf", sampleSize = 256)
+TreeSimPlot("07206", modToPlot, "data/trueTree/07206.pdf", sampleSize = 256)
+
+TreeSimPlot("07200", models7, "data/trueTree/07200_9.pdf", sampleSize = 64)
+TreeSimPlot("07202", models7, "data/trueTree/07202_9.pdf", sampleSize = 64)
+TreeSimPlot("07203", models7, "data/trueTree/07203_9.pdf", sampleSize = 64)
+TreeSimPlot("07205", models7, "data/trueTree/07205_9.pdf", sampleSize = 64)
+TreeSimPlot("07206", models7, "data/trueTree/07206_9.pdf", sampleSize = 64)
+-->

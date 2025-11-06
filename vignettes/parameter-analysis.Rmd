@@ -1,0 +1,1047 @@
+---
+title: "Parameter analysis"
+author: "Martin R. Smith <martin.smith@durham.ac.uk>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+bibliography: ../inst/REFERENCES.bib
+csl: ../inst/apa-old-doi-prefix.csl
+vignette: >
+  %\VignetteIndexEntry{Parameter analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Analysis of parameter values and properties.
+
+## Prepare analysis environment
+
+```{r setup-vignette, message = FALSE, include = FALSE}
+knitr::opts_chunk$set(
+  fig.width = 7,
+  fig.height = 5
+)
+```
+
+```{r setup, message = FALSE}
+library("randomForest")
+library("neotrans")
+
+.meta <- Metadata()
+.config <- Config()
+epsBF <- log(10) # "Strong" support, per Jeffries 1939
+```
+
+## Models with a free _t_ parameter
+
+### Review accuracy of marginal likelihood estimates
+
+```{r}
+modelsT <- c("by_ki", "by_n_ki", "by_t_ki", "by_nt_ki", "rm_by_t_ki")
+marginals <- GetMarginals(KiProjects(), modelsT)
+stdErr <- attr(marginals, "stdErr")
+mds <- MarginalDiffs(KiProjects(), modelsT)
+hist(abs(mds), breaks = ceiling(max(abs(mds), na.rm = TRUE) * 2), xpd = NA)
+plot(stdErr, mds, frame.plot = FALSE, xlab = "Standard error of estimate",
+     ylab = "Difference, stepping stone vs path sampling estimates",
+     col = ModelCol(modelsT), pch = 16)
+abline(h = 0, lty = "dashed", col = "grey70")
+abline(0, 1, lty = "dashed", col = "grey70")
+legend("topleft", ModelLabel(modelsT), pch = 16, col = ModelCol(modelsT),
+       bty = "N")
+```
+
+### When is a partitioned model preferred?
+
+```{r t-bf-support}
+part <- EvaluatePartitioning(marginals)
+tSupport <- part["by_t_ki", ] - part["by_ki", ]
+tErr <- .DiffErr(stdErr["by_t_ki", ], stdErr["by_ki", ])
+tFitsBest <- .OutwithError(tSupport, tErr)
+sum(tFitsBest)
+tCol <- hcl.colors(6, "Red-Green")[c(2, 2, 5, 5)][
+  cut(tSupport, breaks = c(-Inf, -epsBF, 0, epsBF, Inf))]
+
+par(mar = c(4, 4, 0.4, 0.4))
+plot(.meta$nChar["trans", ], .meta$nChar["neo", ],
+     pch = ifelse(tFitsBest | .OutwithError(-tSupport, tErr), 16, 1),
+     col = tCol,
+     xlab = "Transformational characters", ylab = "Neomorphic characters",
+     log = "xy",
+     asp = 1, frame.plot = FALSE)
+abline(0, 1, lty = "dashed")
+legend("topleft", bty = "n", title = expression(italic(t) ~ "parameter:"),
+       legend = c("Free preferred",
+                  "Fixed preferred",
+                  paste0("BF > ", signif(epsBF, 3)), 
+                  paste0("BF < ", signif(epsBF, 3))),
+       pch = c(15, 15, 16, 1),
+       pt.cex = 1.2,
+       col = c(hcl.colors(6, "Red-Green")[5],
+               hcl.colors(6, "Red-Green")[2],
+               "grey10", "grey10"))
+```
+
+```{r compare-t-estimate}
+# Compare estimated values of t
+bestTModel <- ifelse(marginals["by_t_ki", ] > marginals["by_nt_ki", ],
+                     "by_t_ki", "by_nt_ki")
+tProjects <- names(bestTModel)[!is.na(bestTModel)]
+
+# Estimated value of t using the best available stationary model
+stationaryT <- sapply(tProjects, function(pID) {
+  exRes <- ExistingResults(pID, bestTModel[[pID]], checkRemote = FALSE)
+  if (exRes[["convergence"]][["ess"]] < .config$essThreshold) {
+    message("Extending run for ", pID, "_", bestTModel[pID])
+    MakeSlurm(pID, bestTModel[pID], ml = FALSE)
+  }
+  res <- exRes[["parameters"]][, "rate_neo"]
+  # partition_rate := [ rate_neo / (1 + rate_neo), (1 / (1 + rate_neo)) ]
+  # MS defines t = rate_t / rate_n
+
+  if (is.null(res)) {
+    message("Need results for ", pID, "_", bestTModel[pID])
+    RevBayes(pID, bestTModel[pID])
+    MakeSlurm(pID, bestTModel[pID], ml = FALSE)
+    setNames(rep(NA, 6), c("2.5%", "25%", "50%", "75%", "97.5%", "mad"))
+  } else {
+    # Convert from rate_neo to rate_trans
+    1 / res
+  }
+})
+shapiro.test(log(stationaryT["50%", ]))
+t.test(log(stationaryT["50%", ]))
+signif(exp(median(log(stationaryT["50%", ]))), 3)
+signif(exp(mad(log(stationaryT["mad", ]))), 3)
+signif(mad(stationaryT["mad", ]), 3)
+signif(exp(mean(log(stationaryT["50%", ]))), 3)
+round(sd(log(stationaryT["50%", ])), 3)
+
+# Because of the conversion, the 2.5%ile is "high" and the 97.5%ile is "low"
+message(
+  "Median: ", signif(median(stationaryT["50%", ], na.rm = TRUE), 3),
+  " (= 1/", signif(1 / median(stationaryT["50%", ], na.rm = TRUE), 3),
+  "), mad ", signif(mad(stationaryT["50%", ], na.rm = TRUE), 3),
+  "; LogMean: ", signif(exp(mean(log(stationaryT["50%", ]), na.rm = TRUE)), 3),
+  ", sd ", signif(exp(sd(log(stationaryT["50%", ]), na.rm = TRUE)), 3)
+)
+tNotOne <- stationaryT["97.5%", ] > 1 | stationaryT["2.5%", ] < 1
+message("Different from 1: ", sum(tNotOne, na.rm = TRUE),
+        " / ", sum(!is.na(tNotOne)), ": ",
+        sum(stationaryT["97.5%", ] > 1, na.rm = TRUE), " > 1; ",
+        sum(stationaryT["2.5%", ] < 1, na.rm = TRUE), " < 1")
+```
+
+```{r}
+ntBest <- (bestTModel == "by_nt_ki")[!is.na(bestTModel)]
+tModelBF <- setNames(numeric(length(tProjects)), tProjects)
+tModelBF[ntBest] <- marginals["by_nt_ki", tProjects[ntBest]] - 
+  marginals["by_n_ki", tProjects[ntBest]]
+tModelBF[!ntBest] <- marginals["by_t_ki", tProjects[!ntBest]] - 
+  marginals["by_ki", tProjects[!ntBest]]
+tColBin <- ifelse(tModelBF < 0, 
+                  ifelse(tModelBF < pmin(-epsBF, -tErr), 1, 2),
+                  ifelse(tModelBF > pmax(epsBF, tErr), 4, 3))
+tCol <- hcl.colors(6, "Red-Green")[2:5][tColBin]
+
+{
+  par(mfrow = c(1, 1))
+  plot(stationaryT["50%", ], tModelBF,
+       xlab = expression("Inferred" ~ italic("t")), # under best stationary model
+       ylab = "log(Model BF)", xpd = NA,
+       frame.plot = FALSE, pch = 4, log = "x")
+  confidenceCol <- gray.colors(256)
+  iqr <- log(stationaryT["75%", ]) - log(stationaryT["25%", ])
+  segments(stationaryT["2.5%", ], tModelBF, stationaryT["97.5%", ], xpd = NA,
+           col = confidenceCol[cut(iqr, breaks = 256)])
+  points(stationaryT["50%", ], tModelBF, col = tCol,
+         pch = 4, cex = 1.5, lwd = 2)
+  abline(v = 1, lty = 2)
+  EpsLine()
+}
+```
+
+### Predict which projects will favour a free _t_
+
+```{r, message = FALSE}
+# Can we predict which projects will benefit from a free t parameter?
+tProj <- names(tSupport)
+tMeta <- data.frame(
+  tSupport,
+  nChar = colSums(.meta$nChar[, tProj]),
+  nTrans = .meta$nChar["trans", tProj],
+  nNeo = .meta$nChar["neo", tProj],
+  logNTRatio = log(.meta$nChar["neo", tProj] / .meta$nChar["trans", tProj]),
+  charPerTax = colSums(.meta$nChar[, tProj]) / .meta$nTaxa[tProj],
+  taxon = .meta$taxon[tProj],
+  rank = .meta$rank[tProj],
+  nTaxa = .meta$nTaxa[tProj],
+  tValue = log(t(stationaryT[, tProj]))
+)
+
+tPredictors <- c("nChar", "logNTRatio", "charPerTax", "taxon", "rank", "nTaxa",
+                 "tValue.50.")
+vsurfBF <- VSURF::VSURF(tMeta[, tPredictors], tSupport, verbose = FALSE)
+predBF <- tPredictors[vsurfBF[["varselect.pred"]]]
+if (!length(predBF)) {
+  predBF <- tPredictors[vsurfBF[["varselect.interp"]]]
+}
+cat(paste0(predBF, collapse = ", "))
+```
+
+```{r rf-t}
+rfBF <- randomForest(tMeta[, predBF, drop = FALSE], tSupport,
+                     ntree = 10000, importance = TRUE)
+importance(rfBF)
+varImpPlot(rfBF, frame.plot = FALSE)
+nPred <- length(predBF)
+
+par(mfrow = c(nPred, 2))
+for (predictor in predBF) {
+  partialPlot(rfBF, tMeta[, tPredictors], as.character(predictor),
+              rug = TRUE, frame.plot = FALSE, main = "",
+              xlab = Decrypt(predictor),
+              ylab = "Impact on predicted log(BF)")
+}
+```
+
+
+### Does metadata predict the value of _t_?
+
+```{r predict-t-from-meta, message = FALSE}
+# Can we predict the value of t from the metadata?
+metaT <- tMeta[!is.na(tMeta[, "tValue.50."]), ]
+t50 <- metaT[, "tValue.50."]
+summary(t50)
+sd(t50)
+shapiro.test(t50)
+t.test(t50)
+vsurfT <- VSURF::VSURF(metaT[, setdiff(tPredictors, "tValue.50.")], t50,
+                       verbose = FALSE)
+predT <- tPredictors[vsurfT[["varselect.pred"]]]
+cat(paste(predT, collapse = ", "))
+```
+
+```{r, fig.width = 6, fig.height = 6}
+# Surprisingly, yes.  Why might this be?
+rfT <- randomForest(metaT[, predT, drop = FALSE], t50, ntree = 10000,
+                    importance = TRUE)
+
+varImpPlot(rfT, frame.plot = FALSE)
+par(mfrow = c(2, 1))
+partialPlot(rfT, metaT, logNTRatio)
+plot(t50 ~ metaT$logNTRatio, frame.plot = FALSE)
+abline(h = 1, lty = "dotted")
+
+partialPlot(rfT, metaT, nTaxa)
+plot(t50 ~ metaT$nTaxa, frame.plot = FALSE)
+abline(h = 1, lty = "dotted")
+
+
+boxplot(part["by_t_ki", ] - part["by_ki", ] ~ .meta$taxon[colnames(part)], las = 2,
+        frame.plot = FALSE, cex = 0.8, ylab = "by_t > by", notch = TRUE,
+        ylim = c(-14, 16), eps = NA,
+        col = TaxonCol())
+EpsLine()
+
+tPref <- part["by_t_ki", ] - part["by_ki", ]
+plot(.meta$nTaxa[names(tPref)], tPref,
+     log = "x",
+     frame.plot = FALSE, xlab = "Number of taxa", ylab = "by_t > by")
+  EpsLine()
+points(.meta$nTaxa[names(tPref)], part["by_t_ki", ] - part["rm_by_t_ki", ],
+       col = 2, pch = 3)
+```
+
+
+## Free _n_ parameter (gain to loss ratio)
+
+```{r initialize-n}
+modelsN <- c("by_ki",
+             "by_n_ki", "by_nn_ki", "by_t_ki", "by_nt_ki",
+             "ns_ki", "ns_n_ki", "ns_nt_ki",
+             "rm_by_n_ki", "rm_by_nt_ki")
+
+marginals <- GetMarginals(KiProjects(), modelsN)
+stdErr <- attr(marginals, "stdErr")
+mds <- MarginalDiffs(KiProjects(), modelsN)
+hist(abs(mds), breaks = ceiling(max(abs(mds), na.rm = TRUE) * 2), xpd = NA)
+plot(stdErr, mds, frame.plot = FALSE, xlab = "Standard error of estimate",
+     ylab = "Difference, stepping stone vs path sampling estimates",
+     col = ModelCol(modelsN), pch = 16)
+abline(h = 0, lty = "dashed", col = "grey70")
+abline(0, 1, lty = "dashed", col = "grey70")
+legend("topleft", ModelLabel(modelsN), pch = 16, col = ModelCol(modelsN),
+       bty = "n")
+```
+
+```{r}
+# Number in which StN outperforms StMk
+.ErrCompare <- function(mod1, mod2, eps = epsBF) {
+  .OutwithError(marginals[mod1, ] - marginals[mod2, ],
+                .DiffErr(stdErr[mod1, ], stdErr[mod2, ]), eps)
+}
+stnWins <- .ErrCompare("by_n_ki", "by_ki")
+message("outperforms StMk in ", sum(stnWins), " of ", dim(marginals)[[2]])
+# ... and number in which StN outperforms StN-shuffled
+stnBeatsRandom <- stnWins & .ErrCompare("by_n_ki", "rm_by_n_ki")
+message(sum(stnBeatsRandom, na.rm = TRUE), " of these ",
+        sum(stnWins & !is.na(stnBeatsRandom)))
+message(
+  "StMk was preferred in ",
+  # Number in which StMk outperforms StN
+  sum(.ErrCompare("by_n_ki", "by_ki")),
+  " of ", # Number of datasets for which data are available
+  sum(!is.na(marginals["by_n_ki", ] < marginals["by_ki", ])),
+  " datasets.")
+
+stNt <- .ErrCompare("by_nt_ki", "by_t_ki")
+message(
+  "StNT outperforms StT in ", sum(stNt), "/", sum(!is.na(stNt)),
+  " datasets, and underperforms in ",
+  sum(.ErrCompare("by_t_ki", "by_nt_ki")))
+stnWithT <- .ErrCompare("by_nt_ki", "by_t_ki") & .ErrCompare("by_t_ki", "by_ki")
+message("StNT beats StT in ", sum(stnWithT), " of ", 
+        sum(.ErrCompare("by_t_ki", "by_ki")),
+        " cases where free t param is supported")
+
+
+
+EvaluateMk2 <- function(marginals, stdErr, epsBF = 1, suffix = "_ki") {
+  
+  models <- c("by", "by_n", "by_t", "by_nt") |> paste0(suffix) |>
+    setNames(c("base", "n", "t", "nt"))
+  mk2 <- ModelBF(marginals, models)
+  baseMarginal <- marginals[models[c("base", "t")], ]
+  colSelect <- !is.na(baseMarginal[1, ])
+  baseRow <- apply(baseMarginal[, colSelect], 2, which.max)
+  baseModel <- models[c("base", "t")[baseRow]]
+  nModel <- models[c("n", "nt")[baseRow]]
+  
+  baseMarginal <- marginals[cbind(baseModel, names(baseRow))]
+  nMarginal <- marginals[cbind(nModel, names(baseRow))]
+  
+  baseErr <- stdErr[cbind(baseModel, names(baseRow))]
+  nErr <- stdErr[cbind(nModel, names(baseRow))]
+  
+  nImprovement <- nMarginal - baseMarginal
+  
+  good <- .OutwithError(nImprovement, .DiffErr(baseErr, nErr), epsBF)
+  bad <- .OutwithError(-nImprovement, .DiffErr(baseErr, nErr), epsBF)
+  ugly <- !good & !bad
+  
+  message("Mk2 improves in ", sum(good, na.rm = TRUE),
+          ", indifferent in ", sum(ugly, na.rm = TRUE),
+          "; deleterious in ", sum(bad, na.rm = TRUE), " / ",
+          sum(!is.na(nImprovement)), " projects.")
+  
+  invisible(structure(
+    nImprovement,
+    names = names(baseRow),
+    nBetter = good,
+    nWorse = bad,
+    err = nErr))
+}
+
+mk2 <- EvaluateMk2(marginals, stdErr, eps = epsBF)
+betterNames <- names(mk2)[which(attr(mk2, "nBetter"))]
+rm <- marginals[c("by_n_ki", "rm_by_n_ki"), betterNames]
+rm <- rm[, colSums(is.na(rm)) == 0]
+message(sum(rm[2, ] < rm[1, ]), " (",
+        sum(.OutwithError(rm[2, ] - rm[1, ],
+                          .DiffErr(stdErr["by_n_ki", colnames(rm)],
+                                   stdErr["rm_by_n_ki", colnames(rm)]))),
+        " by eps) / ", ncol(rm), " projects prefer by_n_ki to rm_by_n_ki")
+
+# Equivalent numbers under non-stationary model
+# Number in which NstN outperforms NstMk
+nstnWins <- .ErrCompare("ns_n_ki", "ns_ki")
+length(which(nstnWins))
+sum(!is.na(nstnWins))
+# Number in which StMk outperforms StN
+length(which(.ErrCompare("ns_ki", "ns_ki")))
+# Number of datasets for which data are available
+sum(!is.na(marginals["ns_n_ki", ] < marginals["ns_ki", ]))
+# Summary: very similar, with slightly more preferring free n
+```
+
+```{r}
+mk2Col <- hcl.colors(6, "Red-Green")[c(2, 2, 5, 5)][
+  cut(mk2, breaks = c(-Inf, -epsBF, 0, epsBF, Inf))]
+
+plot(.meta$nChar["neo", names(mk2)] / .meta$nChar["trans", names(mk2)], mk2,
+     log = "x", col = mk2Col, pch = 3,
+     frame.plot = FALSE, xlab = "Neo:Trans", ylab = "Mk2 BF")
+EpsLine()
+abline(v = 1)
+
+plot(colSums(.meta$nChar[, names(mk2)]), mk2,
+     log = "x", col = mk2Col, pch = 3,
+     frame.plot = FALSE, xlab = "Number of characters", ylab = "Mk2 BF")
+EpsLine()
+abline(v = 1)
+
+plot(.meta$nTaxa[names(mk2)], mk2, 
+     log = "x", col = mk2Col, pch = 3,
+     frame.plot = FALSE, xlab = "Number of taxa", ylab = "Mk2 BF")
+EpsLine()
+```
+
+```{r}
+EvaluateNonStat <- function(marginals, se, epsBF = 1, suffix = "_ki") {
+  
+  models <- c("by", "by_n", "ns", "ns_n") |> paste0(suffix) |>
+    setNames(c("s", "sn", "ns", "nsn"))
+  ml <- ModelBF(marginals, models)
+  
+  ns_helps <- .OutwithError(ml[models[["ns"]], ] - ml[models[["s"]], ],
+                            .DiffErr(se[models[["ns"]], ], se[models[["s"]], ]),
+                            epsBF)
+  ns_hinders <- .OutwithError(ml[models[["s"]], ] - ml[models[["ns"]], ],
+                              .DiffErr(se[models[["ns"]], ], se[models[["s"]], ]),
+                              epsBF)
+  mk2_helps <- .OutwithError(ml[models[["sn"]], ] - ml[models[["s"]], ],
+                             .DiffErr(se[models[["sn"]], ], se[models[["s"]], ]),
+                             epsBF)
+  mk2_hinders <- .OutwithError(ml[models[["s"]], ] - ml[models[["sn"]], ],
+                               .DiffErr(se[models[["s"]], ], se[models[["sn"]], ]),
+                               epsBF)
+  both_beat_ns <- ns_helps & .OutwithError(
+    ml[models[["nsn"]], ] - ml[models[["ns"]], ],
+    .DiffErr(se[models[["nsn"]], ], se[models[["ns"]], ]),
+    epsBF)
+  both_beat_mk2 <- mk2_helps & .OutwithError(
+    ml[models[["nsn"]], ] - ml[models[["sn"]], ],
+    .DiffErr(se[models[["nsn"]], ], se[models[["sn"]], ]),
+    epsBF)
+  
+  message("Non-stat improves in ", sum(ns_helps), "/", ncol(ml),
+          " (worse in ", sum(ns_hinders),
+          "), of which Mk2 further improves ", sum(both_beat_ns), ".")
+  message("Mk2 improves in ", sum(mk2_helps), "/", ncol(ml), 
+          " (worse in ", sum(mk2_hinders),
+          "), of which Non-stat further improves ", sum(both_beat_mk2), ".")
+  
+  invisible(ml)
+}
+
+EvaluateNonStat(marginals, stdErr, eps = epsBF)
+ns <- marginals["ns_ki", ] - marginals["by_ki", ]
+ns_n <- marginals["ns_n_ki", ] - marginals["by_ki", ]
+by_n <- marginals["by_n_ki", ] - marginals["by_ki", ]
+plot(ns ~ by_n, asp = 1, frame.plot = FALSE)
+EpsLine(diag = TRUE)
+plot(ns_n ~ by_n, asp = 1, frame.plot = FALSE, 
+     xlab = "Mkn - Mk", ylab = "ns_n - Mk")
+EpsLine(vert = TRUE, diag = TRUE)
+plot(marginals["ns_n_ki", ] - marginals["ns_ki", ],
+     marginals["by_n_ki", ] - marginals["by_ki", ],
+     xlab = "+n, non-stat", ylab = "+n, stationary",
+     asp = 1, frame.plot = FALSE)
+EpsLine(vert = TRUE, diag = TRUE)
+```
+
+
+```{r}
+# Compare estimated values of n
+bestNModel <- ifelse(marginals["by_n_ki", ] > marginals["by_nt_ki", ],
+                     "by_n_ki", "by_nt_ki")
+nProjects <- names(bestNModel)[!is.na(bestNModel)]
+
+# Estimated value of n using the best available stationary model
+# Strictly, this vector stores 1 / n, i.e. rate_loss not rate_gain
+stationaryN <- sapply(nProjects, function(pID) {
+  res <- ExistingResults(pID, bestNModel[pID],
+                  checkRemote = FALSE)[["parameters"]][, "rate_loss"]
+  if (is.null(res)) {
+    message("Need results for ", pID, "_", bestNModel[pID])
+    RevBayes(pID, bestNModel[pID])
+    MakeSlurm(pID, bestNModel[pID], ml = FALSE)
+  }
+  res %||% setNames(rep(NA, 6), c("2.5%", "25%", "50%", "75%", "97.5%", "mad"))
+})
+
+nNotOne <- stationaryN["97.5%", ] < 1 | stationaryN["2.5%", ] > 1
+# convert 1 / rate_loss yields rate_gain
+n50 <- 1 / stationaryN["50%", ]
+exp(summary(log(n50)))
+# vioplot::vioplot(log(t50), log(n50),
+#                  names = c("log(t)", "log(n)"),
+#                  frame.plot = FALSE)
+shapiro.test(log(n50))
+t.test(log(n50))
+sd(log(n50))
+message(
+  "LogMean: ", signif(exp(mean(log(n50), na.rm = TRUE)), 3),
+  ", sd ", paste0(signif(exp(mean(log(n50)) + c(-1, 1) * sd(log(n50), na.rm = TRUE)), 3), collapse = ", "),
+  "; Median: ", signif(median(n50, na.rm = TRUE), 3),
+  ", mad ", signif(mad(n50, na.rm = TRUE), 3)
+)
+message("Different from 1: ", sum(nNotOne, na.rm = TRUE),
+        " / ", sum(!is.na(nNotOne)), ": ",
+        sum(1 / stationaryN["97.5%", ] > 1, na.rm = TRUE), " > 1; ",
+        sum(1 / stationaryN["2.5%", ] < 1, na.rm = TRUE), " < 1")
+
+ntBest <- (bestNModel == "by_nt_ki")[!is.na(bestNModel)]
+nModelBF <- setNames(numeric(length(nProjects)), nProjects)
+nModelBF[ntBest] <- marginals["by_nt_ki", nProjects[ntBest]] - 
+  marginals["by_t_ki", nProjects[ntBest]]
+nModelBF[!ntBest] <- marginals["by_n_ki", nProjects[!ntBest]] - 
+  marginals["by_ki", nProjects[!ntBest]]
+nCol <- hcl.colors(6, "Red-Green")[2:5][
+  cut(nModelBF, breaks = c(-Inf, -epsBF, 0, epsBF, Inf))]
+
+{
+  par(mfrow = c(1, 1))
+  plot(stationaryN["50%", ], nModelBF,
+       xlab = "Inferred 'n': best stationary model",
+       ylab = "log(Model BF)", xpd = NA,
+       frame.plot = FALSE, pch = 4, log = "x")
+  confidenceCol <- gray.colors(256)
+  iqr <- log(stationaryN["75%", ]) - log(stationaryN["25%", ])
+  segments(stationaryN["2.5%", ], nModelBF, stationaryN["97.5%", ], xpd = NA,
+           col = confidenceCol[cut(iqr, breaks = 256)])
+  points(stationaryN["50%", ], nModelBF, col = nCol,
+         pch = 4, cex = 1.5, lwd = 2)
+  abline(v = 1, lty = 2)
+  EpsLine()
+}
+```
+
+```{r}
+bestNSNModel <- ifelse(marginals["ns_n_ki", ] > marginals["ns_nt_ki", ],
+                       "ns_n_ki", "ns_nt_ki")
+nsPreferred <- pmax(marginals["ns_n_ki", ], marginals["ns_nt_ki", ]) >
+  pmax(marginals["by_n_ki", ], marginals["by_nt_ki", ])
+nsPreferredEps <- pmax(marginals["ns_n_ki", ], marginals["ns_nt_ki", ]) >
+  pmax(marginals["by_n_ki", ], marginals["by_nt_ki", ]) + epsBF
+nsnProjects <- names(bestNSNModel)[!is.na(bestNSNModel)]
+
+# Estimated value of 1/n and a0 using the best available non-stationary model
+nsnCols <- c("root_freqs.1.", "rate_loss")
+nsnRet <- matrix(NA_real_, 6, 2, dimnames = list(
+  c("2.5%", "25%", "50%", "75%", "97.5%", "mad"), nsnCols))
+nsnParams <- vapply(nsnProjects, function(pID) {
+  params <- ExistingResults(pID, bestNSNModel[[pID]],
+                            checkRemote = FALSE)[["parameters"]]
+  if (is.null(params)) {
+    message("Need results for ", pID, "_", bestNSNModel[pID])
+    MakeSlurm(pID, bestNSNModel[[pID]], ml = FALSE)
+  }
+  params[, nsnCols] %||% nsnRet
+}, nsnRet)
+nsN <- 1 / nsnParams["50%", "rate_loss", ]
+ns25 <- 1 / nsnParams["25%", "rate_loss", ]
+ns75 <- 1 / nsnParams["75%", "rate_loss", ]
+
+nsA0 <- nsnParams["50%", "root_freqs.1.", ]
+plot(1 / (1 + nsN), nsA0, frame.plot = FALSE,
+     xlab = "% absent at stationary distribution", ylab = "% absent at root",
+     asp = 1, col = 1 + nsPreferred[nsnProjects] + nsPreferredEps[nsnProjects])
+segments(1 / (1 + nsN), nsnParams["25%", "root_freqs.1.", ],
+         1 / (1 + nsN), nsnParams["75%", "root_freqs.1.", ],
+         col = 1 + nsPreferred[nsnProjects] + nsPreferredEps[nsnProjects])
+segments(1 / (1 + ns25), nsA0, 1 / (1 + ns75),
+         col = 1 + nsPreferred[nsnProjects] + nsPreferredEps[nsnProjects])
+abline(0, 1, lty = "dashed", col = 4)
+legend("bottomleft", pch = 3, col = 1:3, bty = "n",
+       legend = c("Stat pref.", "NS pref, < eps", "Non-Stat pref, > eps"))
+
+plot(nsA0, frame.plot = FALSE)
+```
+
+```{r, message = FALSE}
+# Which variables predict support for a model with a free n?
+nProj <- names(nModelBF)
+meta <- data.frame(
+  nModelBF,
+  nChar = colSums(.meta$nChar[, nProj]),
+  nTrans = .meta$nChar["trans", nProj],
+  nNeo = .meta$nChar["neo", nProj],
+  logNTRatio = log(.meta$nChar["neo", nProj] / .meta$nChar["trans", nProj]),
+  charPerTax = colSums(.meta$nChar[, nProj]) / .meta$nTaxa[nProj],
+  taxon = .meta$taxon[nProj],
+  rank = .meta$rank[nProj],
+  nTaxa = .meta$nTaxa[nProj],
+  inferredN = t(stationaryN[, nProj])
+)
+
+nPredictors <- c("nChar", "logNTRatio", "charPerTax", "taxon", "rank", "nTaxa",
+                 "inferredN.50.")
+vsurfBF <- VSURF::VSURF(meta[, nPredictors], nModelBF, verbose = FALSE)
+
+predBF <- nPredictors[vsurfBF[["varselect.interp"]]]
+cat(paste0(predBF, collapse = ", "))
+```
+
+```{r, fig.width = 6, fig.height = 6}
+rfBF <- randomForest(meta[, predBF, drop = FALSE], nModelBF,
+                     ntree = 10000, importance = TRUE)
+importance(rfBF)
+varImpPlot(rfBF, frame.plot = FALSE)
+nPred <- length(predBF)
+
+par(mfrow = c(nPred, 2))
+for (predictor in predBF) {
+  partialPlot(rfBF, meta[, nPredictors], as.character(predictor),
+              frame.plot = FALSE, xlab = as.character(predictor))
+  plot(nModelBF ~ meta[, predictor], frame.plot = FALSE, xlab = predictor)
+  EpsLine()
+}
+
+
+metaN <- meta[!is.na(meta[, "inferredN.50."]), ]
+n50 <- metaN[, "inferredN.50."]
+vsurfN <- VSURF::VSURF(metaN[, nPredictors], log(n50), verbose = FALSE)
+predN <- nPredictors[vsurfN[["varselect.interp"]]]
+
+message(paste(predN, collapse = ", "))
+# Expect this to be zero, or perhaps higher taxon
+rfT <- randomForest(metaT[, tPredictors[vsurfT[["varselect.pred"]]]],
+                    t50,
+                    ntree = 10000, importance = TRUE)
+
+varImpPlot(rfT, frame.plot = FALSE)
+par(mfrow = c(2, 1))
+partialPlot(rfT, metaT, logNTRatio)
+plot(t50 ~ metaT$logNTRatio, frame.plot = FALSE, log = "y")
+abline(h = 1, lty = "dotted")
+
+partialPlot(rfT, metaT, nTaxa)
+plot(t50 ~ metaT$nTaxa, frame.plot = FALSE, log = "y")
+abline(h = 1, lty = "dotted")
+```
+
+```{r, fig.width = 6, fig.height = 6}
+par(mfrow = c(1, 1))
+plot(.meta$nChar["trans", ], .meta$nChar["neo", ],
+     pch = ifelse(abs(mk2) > epsBF, 16, 1),
+     col = mk2Col,
+     xlab = "Transformational characters", ylab = "Neomorphic characters",
+     log = "xy",
+     asp = 1, frame.plot = FALSE)
+abline(0, 1, lty = "dashed")
+legend("topleft", bty = "n",
+       legend = c("mk2 preferred", "> eps", "<= eps",  "mk preferred"),
+       pch = c(16, 1, 1, 16), pt.cex = 1.2,
+       col = hcl.colors(6, "Red-Green")[c(5, 5, 2, 2)])
+
+plot(colSums(.meta$nChar), .meta$nTaxa,
+     pch = ifelse(abs(mk2) > epsBF, 16, 1),
+     col = mk2Col,
+     xlab = "Characters", ylab = "Taxa",
+     log = "xy", frame.plot = FALSE)
+abline(0, 1, type = "dashed")
+legend("topleft", bty = "n",
+       legend = c("mk preferred", "<eps", "<eps", "mk2 preferred"),
+       pch = c(16, 1, 1, 16), pt.cex = 1.2,
+       col = hcl.colors(6, "Red-Green")[2:5])
+```
+
+```{r}
+boxplot(mk2 ~ .meta$taxon[names(mk2)], las = 2,
+        frame.plot = FALSE, cex = 0.8, ylab = "MK2 BF", notch = TRUE,
+        col = TaxonCol())
+EpsLine()
+```
+
+```{r}
+SpindleCompare("by_nn_ki", "by_n_ki", marginals, stdErr)
+abline(h = 0, lty = 2, lwd = 1, col = "grey70")
+
+nnWins <- .OutwithError(marginals["by_nn_ki", ] -
+                          marginals["by_n_ki", ],
+                        stdErr["by_nn_ki", ], stdErr["by_n_ki", ])
+nWins <- .OutwithError(marginals["by_n_ki", ] -
+                         marginals["by_nn_ki", ],
+                       stdErr["by_nn_ki", ], stdErr["by_n_ki", ])
+
+sum(nnWins)
+sum(nWins)
+```
+
+```{r}
+.OutwithError(marginals["by_nt_ki", ] - marginals["by_n_ki", ],
+              .DiffErr(stdErr["by_nt_ki", ], stdErr["by_n_ki", ])) |>
+  sum() # Similar to by_t_ki vs by_ki
+
+
+.OutwithError(marginals["by_nt_ki", ] - marginals["by_nn_ki", ],
+              .DiffErr(stdErr["by_nt_ki", ], stdErr["by_nn_ki", ]))
+
+.OutwithError(marginals["by_nn_ki", ] - marginals["by_n_ki", ],
+              .DiffErr(stdErr["by_nn_ki", ], stdErr["by_n_ki", ])) |>
+  sum()
+.OutwithError(marginals["by_n_ki", ] - marginals["by_nn_ki", ],
+              .DiffErr(stdErr["by_nn_ki", ], stdErr["by_n_ki", ])) |>
+  sum()
+```
+
+```{r}
+plot(marginals["by_nn_ki", ] - marginals["by_n_ki", ] ~
+       I(2 * stdErr["by_nn_ki", ]), frame = 0); abline(h = 0, lty = 2); abline(0, 1, lty = 3); abline(0, -1, lty = 3)
+plot(marginals["by_nn_ki", ] - marginals["by_ki", ],
+     marginals["by_nn_ki", ] - marginals["by_n_ki", ],
+     frame = 0,
+     col = ModelCol("by_nn_ki"), pch = 16,
+     xlim = range(t(marginals) - marginals["by_ki", ], na.rm = TRUE),
+     xlab = "Advantage over StMk")
+abline(h = 0)
+
+rate01 <- vapply(KiProjects(), function(pID) {
+  x <- ExistingResults(pID, "by_nn_ki")[["parameters"]]
+  if (is.null(x)) {
+    rep(NA_real_, 6)
+  } else {
+    x[, "rate01"]
+  }
+}, ExistingResults(450, "by_nn_ki")[["parameters"]][, "rate01"])
+medN <- rate01["50%", ]
+hist(log(medN))
+abline(v = 0, lwd = 3)
+1 / median(medN, na.rm = TRUE)
+
+shapiro.test(log(medN))
+summary(log(medN), digits = 3)
+signif(sd(log(medN), na.rm = TRUE), 3)
+signif(mad(log(medN), na.rm = TRUE), 3)
+t.test(log(medN))
+
+#sum(rate01["97.5%", ] < 1, na.rm = TRUE)
+message("_n_ differs from unity (w/ pp > 95%) in ",
+        sum(rate01["97.5%", ] < 1 | rate01["2.5%", ] > 1, na.rm = TRUE),
+        " of ", sum(!is.na(medN)),
+        " datasets, and is less than one in ", 
+        sum(rate01["97.5%", ] < 1, na.rm = TRUE),
+        " of these")
+```
+
+
+
+
+## Non-stationarity
+
+```{r setup-ns}
+modelsNS <- c("by_ki", "by_n_ki", "by_nt_ki",
+              "ns_ki", "ns_n_ki", "ns_nt_ki")
+marginals <- GetMarginals(KiProjects(), modelsNS)
+stdErr <- attr(marginals, "stdErr")
+mds <- MarginalDiffs(KiProjects(), modelsNS)
+hist(abs(mds), breaks = ceiling(max(abs(mds), na.rm = TRUE) * 2), xpd = NA)
+plot(stdErr, mds, frame.plot = FALSE, xlab = "Standard error of estimate",
+     ylab = "Difference, stepping stone vs path sampling estimates",
+     col = ModelCol(modelsNS), pch = 16)
+abline(h = 0, lty = "dashed", col = "grey70")
+abline(0, 1, lty = "dashed", col = "grey70")
+legend("topleft", ModelLabel(modelsNS), pch = 16, col = ModelCol(modelsNS),
+       bty = "N")
+```
+
+```{r}
+sum(.ErrCompare("ns_nt_ki", "by_nt_ki"), na.rm = TRUE)
+sum(.ErrCompare("by_ki", "ns_ki"))
+
+bestS <- apply(marginals[1:3, ], 2, which.max)
+bestNS <- apply(marginals[4:6, ], 2, which.max)
+
+bestML_S  <- marginals[cbind(bestS,  seq_len(ncol(marginals)))]
+bestML_NS <- marginals[cbind(3 + bestNS, seq_len(ncol(marginals)))]
+
+bestSE_S  <- stdErr[cbind(bestS,  seq_len(ncol(stdErr)))]
+bestSE_NS <- stdErr[cbind(3 + bestNS, seq_len(ncol(stdErr)))]
+
+# When does the best non-stationary model outperform the best stat?
+sum(.OutwithError(bestML_NS - bestML_S, .DiffErr(bestSE_S, bestSE_NS)))
+# When does the best stationary model outperform the best non-stat?
+sum(.OutwithError(bestML_S - bestML_NS, .DiffErr(bestSE_S, bestSE_NS)))
+sum(!is.na(bestML_NS - bestML_S))
+
+rowSums(.OutwithError(marginals[4:6, ] - marginals[1:3, ],
+                      .DiffErr(stdErr[1:3, ], stdErr[4:6, ])), na.rm = TRUE)
+rowSums(.OutwithError(marginals[1:3, ] - marginals[4:6, ],
+                      .DiffErr(stdErr[1:3, ], stdErr[4:6, ])), na.rm = TRUE)
+```
+
+
+```{r}
+# For which analyses are results available?
+allIn <- colSums(is.na(marginals)) == 0
+someIn <- colSums(!is.na(marginals[1:3, ])) > 0 &
+  colSums(!is.na(marginals[4:6, ])) > 0
+
+# Take parameter values from the best non-stationary and stationary models
+nsPref <- `names<-`(bestML_NS - bestML_S, colnames(marginals))
+nullParam <- c(`2.5%` = NA_real_, `25%` = NA_real_, `50%` = NA_real_,
+               `75%` = NA_real_, `97.5%` = NA_real_, mad = NA_real_)
+
+nsValue <- sapply(seq_along(bestS), function(i) {
+  ExistingResults(names(bestNS)[i], modelsNS[3 + bestNS[i]]
+                  )[["parameters"]][, "root_freqs.1."] %||% nullParam
+})
+colnames(nsValue) <- names(bestS)
+```
+
+```{r}
+# Is the median root frequency different from zero?
+# For results that include also ns_t_ki, see 5_Parameters.R
+# The values there (not here) are used for publication
+ns50 <- nsValue["50%", ]
+a0 <- nsValue / (1 - nsValue)
+f01 <- log(a0["50%", ])
+exp(summary(f01))
+sd(f01, na.rm = TRUE)
+mad(f01, na.rm = TRUE)
+vioplot::vioplot(f01, frame.plot = FALSE)
+abline(h = 0)
+shapiro.test(f01)
+e1071::skewness(f01, na.rm = TRUE)
+t.test(f01)
+```
+
+```{r best-ns-summary}
+# Summary statistics for best model
+a2.5 <- a0["2.5%", ]
+a97.5 <- a0["97.5%", ]
+sum(a2.5 > 1, na.rm = TRUE)
+sum(a97.5 < 1, na.rm = TRUE)
+sum(a2.5 > 1 | a97.5 < 1, na.rm = TRUE)
+sum(!is.na(a2.5) & !is.na(a97.5))
+```
+
+```{r best-nstmk-summary}
+# Repeat, using a single model throughout.  The results turn out to be similar.
+# Take parameter values from NstMk
+nsValue <- sapply(KiProjects(), function(pID) {
+  ExistingResults(pID, "ns_ki"
+                  )[["parameters"]][, "root_freqs.1."] %||% nullParam
+})
+
+ns2.5 <- nsValue["2.5%", ]
+ns50 <- nsValue["50%", ]
+ns97.5 <- nsValue["97.5%", ]
+a2.5 <- log(ns2.5 / (1 - ns2.5))
+a50 <- log(ns50 / (1 - ns50))
+a97.5 <- log(ns97.5 / (1 - ns97.5))
+sum(a2.5 > 1, na.rm = TRUE)
+sum(a97.5 < 1, na.rm = TRUE)
+sum(a2.5 > 1 | a97.5 < 1, na.rm = TRUE)
+sum(!is.na(a2.5) & !is.na(a97.5))
+
+1 / median(ns50, na.rm = TRUE)
+median(a50, na.rm = TRUE)
+```
+
+```{r nstn-param-vals}
+# Take parameter values from NstN
+nsnValue <- sapply(KiProjects(), function(pID) {
+  ExistingResults(pID, "ns_n_ki"
+                  )[["parameters"]][, "root_freqs.1."] %||% nullParam
+})
+
+nsn2.5 <- nsnValue["2.5%", ]
+nsn50 <- nsnValue["50%", ]
+nsn97.5 <- nsnValue["97.5%", ]
+an2.5 <- log(nsn2.5 / (1 - nsn2.5))
+an50 <- log(nsn50 / (1 - nsn50))
+an97.5 <- log(nsn97.5 / (1 - nsn97.5))
+sum(an2.5 > 1, na.rm = TRUE)
+sum(an97.5 < 1, na.rm = TRUE)
+sum(an2.5 > 1 | an97.5 < 1, na.rm = TRUE)
+sum(!is.na(an2.5) & !is.na(an97.5))
+
+1 / median(ns50, na.rm = TRUE)
+median(a50, na.rm = TRUE)
+```
+
+```{r predict-non-stat, message = FALSE}
+# Can we predict which projects will benefit from a non-stationary model?
+nsProj <- intersect(names(nsPref), names(bestS)[!is.na(nsValue[1, ])])
+nsMeta <- data.frame(
+  nsProj = nsPref[nsProj],
+  nChar = colSums(.meta$nChar[, nsProj]),
+  nTrans = .meta$nChar["trans", nsProj],
+  nNeo = .meta$nChar["neo", nsProj],
+  logNTRatio = log(.meta$nChar["neo", nsProj] / .meta$nChar["trans", nsProj]),
+  charPerTax = colSums(.meta$nChar[, nsProj]) / .meta$nTaxa[nsProj],
+  rank = .meta$rank[nsProj],
+  taxon = .meta$taxon[nsProj],
+  nTaxa = .meta$nTaxa[nsProj],
+  # nsValue = t(nsValue[, nsProj]), --> a0Value
+  a0Value = nsValue["50%", nsProj] / (1 - nsValue["50%", nsProj])
+)
+
+nsPredictors <- c("nChar", "logNTRatio", "charPerTax", "rank",
+                  "taxon", "nTaxa", "a0Value")
+vsurfBF <- VSURF::VSURF(nsMeta[, nsPredictors], nsPref[nsProj], verbose = FALSE)
+predBF <- nsPredictors[vsurfBF[["varselect.interp"]]]
+cat(paste0(predBF, collapse = ", "))
+```
+
+```{r}
+rfBF <- randomForest(nsMeta[, predBF, drop = FALSE], nsPref[nsProj],
+                     ntree = 10000, importance = TRUE)
+importance(rfBF)
+varImpPlot(rfBF, frame.plot = FALSE)
+nPred <- length(predBF)
+
+# Values of the root distribution that are uneven correspond to better support
+# for non-stationary models.  This matches intuition.
+# There is a prominent step where >250 characters suddenly give strong
+# support for NS models.
+par(mfrow = c(nPred, 2))
+for (predictor in predBF) {
+  partialPlot(rfBF, nsMeta[, nsPredictors], as.character(predictor))
+  plot(nsPref[nsProj] ~ nsMeta[, predictor], frame.plot = FALSE, xlab = predictor)
+  EpsLine()
+}
+```
+
+## Heterogeneous models
+
+```{r setup-het}
+modelsHet <- c("by_ki", "by_n_ki", "by_nt_ki",
+               "ns_ki", "ns_n_ki", "ns_nt_ki",
+               "hg_ki", "hg2_ki", "hg_b_ki", "hg_m_ki", "hg_bm_ki")
+marginals <- GetMarginals(KiProjects(), modelsHet)
+stdErr <- attr(marginals, "stdErr")
+mds <- MarginalDiffs(KiProjects(), modelsHet)
+hist(abs(mds), breaks = ceiling(max(abs(mds), na.rm = TRUE) * 2), xpd = NA)
+plot(stdErr, mds, frame.plot = FALSE, xlab = "Standard error of estimate",
+     ylab = "Difference, stepping stone vs path sampling estimates",
+     col = ModelCol(modelsHet), pch = 16)
+abline(h = 0, lty = "dashed", col = "grey70")
+abline(0, 1, lty = "dashed", col = "grey70")
+legend("topleft", ModelLabel(modelsHet), pch = 16, col = ModelCol(modelsHet),
+       bty = "N")
+```
+
+```{r clean}
+# Which analyses are complete and have results available?
+someIn <- colSums(!is.na(marginals[1:6, ])) > 0 &
+  colSums(!is.na(marginals[6 + (1:5), ])) > 0
+bestNH <- apply(marginals[1:6, someIn], 2, which.max)
+bestHet <- apply(marginals[6 + (1:5), someIn], 2, which.max)
+hetPref <- sapply(seq_along(bestHet), function(i) {
+  marginals[6 + bestHet[[i]], someIn][[i]] - marginals[bestNH[i], someIn][[i]]
+})
+hetErr <- sapply(seq_along(bestHet), function(i) {
+  .DiffErr(stdErr[6 + bestHet[[i]], someIn], stdErr[bestNH[i], someIn])[[i]]
+})
+```
+
+
+```{r het-eval}
+# Does the best het model beat the best homogeneous?
+sum(.OutwithError(hetPref, hetErr, epsBF))
+sum(.OutwithError(-hetPref, hetErr, epsBF))
+length(hetPref)
+
+# Does allowing heterogeneity in transformational improve fit?
+sum(.ErrCompare("hg2_ki", "hg_ki"), na.rm = TRUE)            # 28
+sum(.ErrCompare("hg_ki", "hg2_ki"), na.rm = TRUE)            # 4
+length(!is.na(marginals["hg2_ki", ] - marginals["hg_ki", ])) # 64
+
+# Does modelling distinct heterogeneity behaviour in Neo vs Trans improve fit?
+hg2s <- c("hg_b_ki", "hg_m_ki", "hg_bm_ki")
+# Which analyses have results available?
+hgsIn <- colSums(is.na(marginals[c("hg2_ki", hg2s), ])) == 0
+sum(hgsIn)
+hbPref <- .ErrCompare("hg_b_ki", "hg2_ki")[hgsIn]
+hmPref <- .ErrCompare("hg_m_ki", "hg2_ki")[hgsIn]
+hbmPref <- .ErrCompare("hg_bm_ki", "hg2_ki")[hgsIn]
+# Which of the bm models are best?
+table(hg2s[apply(marginals[hg2s, hgsIn], 2, which.max)])
+
+# How often does the best bm model outperform hg2?
+hg2Pref <- hbPref | hmPref | hbmPref
+sum(hg2Pref)
+
+# How often does hg2 outperform all bm models?
+hbXPref <- .ErrCompare("hg2_ki", "hg_b_ki")[hgsIn]
+hmXPref <- .ErrCompare("hg2_ki", "hg_m_ki")[hgsIn]
+hbmXPref <- .ErrCompare("hg2_ki", "hg_bm_ki")[hgsIn]
+sum(hbXPref & hmXPref & hbmXPref)
+
+
+hg1Best <- sum(
+  .ErrCompare("hg2_ki", "hg_b_ki")[hgsIn] &
+  .ErrCompare("hg2_ki", "hg_m_ki")[hgsIn] &
+  .ErrCompare("hg2_ki", "hg_bm_ki")[hgsIn]
+)
+sum(hg1Best)
+hg1Pref <- sum(
+  .ErrCompare("hg2_ki", "hg_b_ki")[hgsIn] |
+  .ErrCompare("hg2_ki", "hg_m_ki")[hgsIn] |
+  .ErrCompare("hg2_ki", "hg_bm_ki")[hgsIn]
+)
+sum(hg1Pref)
+length(hg2Pref)
+```
+
+```{r a-best}
+ABest <- function(a) {
+  contenders <- setdiff(c("hg_b_ki", "hg_m_ki", "hg_bm_ki"), a)
+  betterThanB <- .ErrCompare(a, contenders[[1]])[hgsIn]
+  betterThanC <- .ErrCompare(a, contenders[[2]])[hgsIn]
+  worseThanB <- .ErrCompare(contenders[[1]], a)[hgsIn]
+  worseThanC <- .ErrCompare(contenders[[2]], a)[hgsIn]
+  message(a, " is best in ",
+          sum(betterThanB | betterThanC & !(worseThanB | worseThanC)),
+          " and worst in ",
+          sum(worseThanB | worseThanC & !(betterThanB | betterThanC))
+  )
+}
+ABestStrict <- function(a) {
+  contenders <- setdiff(c("hg_b_ki", "hg_m_ki", "hg_bm_ki"), a)
+  betterThanB <- .ErrCompare(a, contenders[[1]])[hgsIn]
+  betterThanC <- .ErrCompare(a, contenders[[2]])[hgsIn]
+  worseThanB <- .ErrCompare(contenders[[1]], a)[hgsIn]
+  worseThanC <- .ErrCompare(contenders[[2]], a)[hgsIn]
+  message(a, " is best in ",
+          sum(betterThanB & betterThanC),
+          " and worst in ",
+          sum(worseThanB & worseThanC)
+  )
+}
+
+sum(!(.ErrCompare("hg_b_ki", "hg_m_ki") |
+.ErrCompare("hg_b_ki", "hg_bm_ki") |
+.ErrCompare("hg_m_ki", "hg_b_ki") |
+.ErrCompare("hg_m_ki", "hg_bm_ki") |
+.ErrCompare("hg_bm_ki", "hg_m_ki") |
+.ErrCompare("hg_bm_ki", "hg_b_ki"))[hgsIn])
+
+ABest("hg_b_ki")
+ABest("hg_bm_ki")
+ABest("hg_m_ki")
+
+ABestStrict("hg_b_ki")
+ABestStrict("hg_bm_ki")
+ABestStrict("hg_m_ki")
+
+sum(.ErrCompare("hg_b_ki", "hg_m_ki")[hgsIn])
+sum(.ErrCompare("hg_m_ki", "hg_b_ki")[hgsIn])
+sum(.ErrCompare("hg_b_ki", "hg_bm_ki")[hgsIn])
+sum(.ErrCompare("hg_bm_ki", "hg_b_ki")[hgsIn])
+sum(.ErrCompare("hg_m_ki", "hg_bm_ki")[hgsIn])
+sum(.ErrCompare("hg_bm_ki", "hg_m_ki")[hgsIn])
+
+sum(.ErrCompare("hg_b_ki", "hg_m_ki")[hgsIn])
+sum(.ErrCompare("hg_m_ki", "hg_b_ki")[hgsIn])
+sum(.ErrCompare("hg_b_ki", "hg_bm_ki")[hgsIn])
+sum(.ErrCompare("hg_bm_ki", "hg_b_ki")[hgsIn])
+sum(.ErrCompare("hg_m_ki", "hg_bm_ki")[hgsIn])
+sum(.ErrCompare("hg_bm_ki", "hg_m_ki")[hgsIn])
+
+hg2Same <- .ErrCompare("hg_b_ki", "hg_m_ki")[hgsIn] |
+  .ErrCompare("hg_m_ki", "hg_b_ki")[hgsIn] |
+  .ErrCompare("hg_b_ki", "hg_bm_ki")[hgsIn] |
+  .ErrCompare("hg_bm_ki", "hg_b_ki")[hgsIn] |
+  .ErrCompare("hg_m_ki", "hg_bm_ki")[hgsIn] |
+  .ErrCompare("hg_bm_ki", "hg_m_ki")[hgsIn]
+
+message("HG b/m models indistinguishable from one another in ",
+        sum(hg2Same), " / ", length(hgsIn))
+
+table(hg2s[apply(marginals[hg2s, hgsIn][, !hg2Same], 2, which.max)])
+table(hg2s[apply(marginals[hg2s, hgsIn][, !hg2Same], 2, which.min)])
+```

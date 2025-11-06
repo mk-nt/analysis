@@ -1,0 +1,77 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=69 NCHAR=15;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Actocharis_readingii            1000?110000-001
+    Aleochara_curtula               100000000011101
+    Aleochara_moerens               100000001011001
+    Aleochara_sp_Myanmar            100000000011001
+    Amarochara_forticornis          100000001011001
+    Atheta_monticola                10000000000-011
+    Autalia_longicornis             10000010100-100
+    Baeostethus_chiltoni            10001210100-000
+    Bolitochara_pulchra             100000101011101
+    Colle_campbellensis             10000010100-?01
+    Cordalia_obscura                10000000100-011
+    Crataraea_suturalis             10001000100-100
+    Cyllophallia_dauphinensis       10000010100-000
+    Cypha_longicornis               100100000011000
+    Cyphea_latiuscula               10000010100-000
+    Deinopsis_erosa                 101101001110100
+    Demerina_bickmanni              1000?000000-111
+    Diestota_testacea               100000101011000
+    Diglotta_mersa                  10010110100-101
+    Dinaraea_linearis               10000000100-011
+    Dinarda_dentata                 10010000100-100
+    Dioxeuta_sp                     100012000011001
+    Drusilla_canaliculata           11000000100-001
+    Ecitogaster_sp                  10011000001110-
+    Ecitomorpha_arachnoides         10001000100-?11
+    Geostiba_circellaris            10000000100-011
+    Gnypeta_carbonaria              10000000100-011
+    Gymnusa_variegata               101001001110100
+    Gyrophaena_congrua              100000101011001
+    Habrocerus_capillaricornis      00100000011100?
+    Halobrecta_flavipes             10000010100-000
+    Haploglossa_marginalis          10001000100-10?
+    Homalota_plana                  10000010000-001
+    Hoplandria_lateralis            10000000100-101
+    Hygronoma_dimidiata             10000000100-010
+    Leptusa_antarctica              10000010100-101
+    Leptusa_pulchella               100000101011100
+    Leucocraspedum_scorpio          10000010101100-
+    Lomechusa_emarginata            100110001011111
+    Masuria_plumbea                 100011101011100
+    Meotica_filiformis              10000000100-000
+    Myllaena_elongata               100011101011000
+    Neodioxeuta_sp                  000012000011001
+    Oligota_pumilio                 100110001011000
+    Olisthaerus_megacephalus        001010010110101
+    Orphnebius_draco                11001000001111?
+    Oxypoda_longipes                00000000100-100
+    Oxypodinus_anxius               10000110101100?
+    Paraconosoma_polita             001001000011100
+    Phloeocharis_subtilissima       101000010111101
+    Phloeopora_corticalis           10001000100-101
+    Phyllodinarda_xenocephala       1?0100000011011
+    Phytosus_spinifer               10000010100-001
+    Piochardia_schaumii             100000001011001
+    Placusa_incompleta              100002101011001
+    Pronomaea_picea                 100012101011100
+    Pseudosemiris_circassica        10000000100-011
+    Silusa_rubiginosa               100000101011101
+    Stylogymnusa_subantarctica      10110-101111100
+    Tachinus_proximus               00100001001010-
+    Tachyusa_objecta                10000000100-011
+    Termitobaena_bryanti            100110000011110
+    Termitodiscus_heimi             100000000011001
+    Termitusa_sjoestedti            1000?110001100-
+    Thamiaraea_cinnamomea           10000010100-010
+    Trichophya_pilicornis           001000001011001
+    Typhloponemys_sp_Israel         1000?0000011101
+    Typhloponemys_sp_Tanzania       1000?0000011101
+    Zyras_collaris                  11000000100-011
+  ;
+END;
+

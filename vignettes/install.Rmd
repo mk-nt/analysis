@@ -1,0 +1,40 @@
+---
+title: "Install the neotrans package"
+author: "Martin R. Smith <martin.smith@durham.ac.uk>"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Install the neotrans package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+To use the neotrans package, you will need to obtain a copy from GitHub.
+
+
+## Downloading the repository
+
+We recommend that you install [GitHub Desktop](https://desktop.github.com/download/),
+then under "Current repository", "Add→clone" a copy of
+[ms609/neotrans](http://github.com/ms609/neotrans/).
+If prompted, create a fork to allow you to record your changes in your own
+GitHub account.
+
+If prompted, downloading / recursing submodules will allow you to fully
+reproduce the original study.
+This is not necessary if you will be working with
+[your own matrices](vignettes/matrix-processing.html).
+
+## Installing the package
+
+Once you have downloaded the repository, you can locate it from GitHub
+Desktop using "Repository→Show in Explorer".
+
+We recommend that you open the `neotrans.Rproj` Project file in [RStudio](https://posit.co/download/rstudio-desktop/)
+then run `devtools::install()`, or use "Install" from the "Build" tab.
+
+Run `install.packages("devtools")` if the package is not already installed.
+
+Many functions in the package assume that your working directory (`getwd()`)
+corresponds to the package root, which will be the case if you open the
+`neotrans.Rproj`.

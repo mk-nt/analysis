@@ -1,0 +1,109 @@
+# Modelled on https://revbayes.github.io/tutorials/morph_tree/V2
+
+# Separate Neomorphic partition
+partitioned[1] <- neo
+partitioned[2] <- trans
+nChar <- v(neo.nchar(), trans.nchar())
+
+# Dataset properties
+taxa <- neo.names()
+nTaxa <- neo.size()
+nEdge <- 2 * nTaxa - 3
+
+moves = VectorMoves()
+
+# Uniform prior on tree topologies
+topology ~ dnUniformTopology(taxa)
+moves.append( mvNNI(topology, weight = nEdge / 2.0) )
+moves.append( mvSPR(topology, weight = nEdge / 8.0) )
+
+
+# Compound dirichlet prior on edge length variability
+# See https://revbayes.github.io/tutorials/ctmc/
+# Prior mean tree length should be within a couple of orders of magnitude of the
+# true value (Zhang, Rannala & Yang, 2012); one change per site should be okay?
+
+gamma_shape <- 2
+exp_steps <- 1 # Expected changes per site across the tree.
+tree_length ~ dnGamma(shape = gamma_shape, rate = gamma_shape / exp_steps)
+moves.append( mvScale(tree_length, weight = 1.0) )
+
+rel_br_lengths ~ dnDirichlet( rep(1.0, nEdge) )
+moves.append( mvBetaSimplex(rel_br_lengths, weight = nEdge / 3.0) )
+moves.append( mvDirichletSimplex(rel_br_lengths, weight = nEdge / 20.0) )
+br_lengths := rel_br_lengths * tree_length
+
+phylogeny := treeAssembly(topology, br_lengths)
+
+
+# Log-normal distributed rate variation (Wagner 2012, doi: 10.1098/rsbl.2011.0523)
+rate_log_sd ~ dnGamma( 1, 1 )
+moves.append( mvScale(rate_log_sd, weight = 1.5) )
+
+# Mean = 1, so that tree length ~ character changes
+# 6 categories (see Wright & Wynd 2024,
+# https://www.biorxiv.org/content/10.1101/2024.06.26.600858v1)
+rate_categories := fnDiscretizeDistribution( dnLognormal( 0, rate_log_sd ), 6)
+
+
+# Neomorphic partition may have different rate to transformational
+rate_neo ~ dnLognormal(mean = 0, sd = 2)
+moves.append( mvScale(rate_neo, weight = 0.5) )
+# From https://revbayes.github.io/tutorials/partition/
+partition_rate := [ rate_neo / (1 + rate_neo), (1 / (1 + rate_neo)) ] / nChar * sum(nChar)
+
+# Forward changes may have different rate to reverse
+rate_loss ~ dnLognormal(mean = 0, sd = 2)
+moves.append( mvScale(rate_loss, lambda = 1, weight = 0.5) )
+
+# Make Q matrix from rates, with mean = rate_neo
+# https://revbayes.github.io/tutorials/morph/morph_more.html
+rate01 := 2 / (1 + rate_loss)
+rate10 := 2 * rate_loss / (1 + rate_loss)
+rates := [ [0.0, rate01],
+           [rate10, 0.0] ]
+neoQ := fnFreeK(rates)
+stationaryDist := Simplex( rate10, rate01 )
+
+m_morph[1] ~ dnPhyloCTMC(
+  tree = phylogeny,
+  branchRates = partition_rate[1],
+  siteRates = rate_categories,
+  Q = neoQ,
+  rootFrequencies = stationaryDist,
+  type = "Standard",
+  coding = "informative"
+)
+m_morph[1].clamp(neo)
+
+# Partition transformational characters by number of states (k)
+maxK = 10
+idx = 1
+for (k in 2:maxK) {
+  transByState[k - 1] <- partitioned[2]
+  transByState[k - 1].setNumStatesPartition(k)
+  # Reduce memory footprint, per https://github.com/revbayes/revbayes/issues/552
+  transByState[k - 1].removeExcludedCharacters()
+  nc = transByState[k - 1].nchar()
+  
+  if (nc > 0) {
+    print(nc, "characters in partition with", k, "states")
+    q[idx] <- fnJC(k) # Generate Q allChars based on Mk model
+    m_morph[idx + 1] ~ dnPhyloCTMC(
+      tree = phylogeny,
+      branchRates = partition_rate[2],
+      siteRates = rate_categories,
+      Q = q[idx],
+      type = "Standard",
+      coding = "informative"
+    )
+    m_morph[idx + 1].clamp(transByState[k - 1])
+    idx = idx + 1
+  }
+}
+
+# Conduct MCMC analysis
+mymodel = model(phylogeny)
+
+monitors = VectorMonitors()
+monitors.append( mnScreen(printgen = 300, prior = FALSE, posterior = FALSE, rate_neo, rate_loss) )

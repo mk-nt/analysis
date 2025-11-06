@@ -1,0 +1,127 @@
+# Modelled on https://revbayes.github.io/tutorials/morph_tree/V2
+
+# Separate Neomorphic partition
+partitioned[1] <- neo
+partitioned[2] <- trans
+
+
+# Dataset properties
+taxa <- neo.names()
+nTaxa <- neo.size()
+nEdge <- 2 * nTaxa - 3
+
+moves = VectorMoves()
+
+# Uniform prior on tree topologies
+topology ~ dnUniformTopology(taxa)
+moves.append( mvNNI(topology, weight = nEdge / 2.0) )
+moves.append( mvSPR(topology, weight = nEdge / 8.0) )
+
+
+# Compound dirichlet prior on edge length variability
+# See https://revbayes.github.io/tutorials/ctmc/
+# Prior mean tree length should be within a couple of orders of magnitude of the
+# true value (Zhang, Rannala & Yang, 2012); one change per site should be okay?
+
+gamma_shape <- 2
+exp_steps <- 1 # Expected changes per site across the tree.
+tree_length ~ dnGamma(shape = gamma_shape, rate = gamma_shape / exp_steps)
+moves.append( mvScale(tree_length, weight = 1.0) )
+
+rel_br_lengths ~ dnDirichlet( rep(1.0, nEdge) )
+moves.append( mvBetaSimplex(rel_br_lengths, weight = nEdge / 3.0) )
+moves.append( mvDirichletSimplex(rel_br_lengths, weight = nEdge / 20.0) )
+br_lengths := rel_br_lengths * tree_length
+
+phylogeny := treeAssembly(topology, br_lengths)
+
+
+# Log-normal distributed rate variation (Wagner 2012, doi: 10.1098/rsbl.2011.0523)
+rate_log_sd ~ dnGamma( 1, 1 )
+moves.append( mvScale(rate_log_sd, weight = 1.5) )
+
+# Mean = 1, so that tree length ~ character changes
+# 6 categories (see Wright & Wynd 2024,
+# https://www.biorxiv.org/content/10.1101/2024.06.26.600858v1)
+rate_categories := fnDiscretizeDistribution( dnLognormal( 0, rate_log_sd ), 6)
+
+# Modelled on https://revbayes.github.io/tutorials/morph_tree/V2#subsubsec_relaxing
+beta_scale ~ dnLognormal(0, sd = 2 * 0.587405)
+moves.append( mvScale(beta_scale, weight = 1.0 ) )
+
+n_beta_categories = 4
+
+# It would be more robust to replace this with 
+# fnDiscretizeDistribution( dnBeta (beta_scale, beta_scale), n_beta_categories)
+# See: https://github.com/revbayes/revbayes/issues/167
+# This came to light midway through analyses, so for consistent results,
+# we have retained:
+beta_categories := fnDiscretizeBeta(beta_scale, beta_scale, n_beta_categories)
+
+neo_matrix_probs ~ dnDirichlet( rep(1, n_beta_categories) )
+moves.append( mvBetaSimplex( neo_matrix_probs, weight = 1.0 ) )
+moves.append( mvDirichletSimplex ( neo_matrix_probs, weight = 1.0 ) )
+
+two_matrix_probs ~ dnDirichlet( rep(1, n_beta_categories) )
+moves.append( mvBetaSimplex( two_matrix_probs, weight = 1.0 ) )
+moves.append( mvDirichletSimplex ( two_matrix_probs, weight = 1.0 ) )
+
+for (i in 1:n_beta_categories) {
+  neoQ[i] := fnF81( Simplex(abs(1 - beta_categories[i]), beta_categories[i]) )
+}
+
+m_morph[1] ~ dnPhyloCTMC(
+  tree = phylogeny,
+  
+  siteRates = rate_categories,
+  Q = neoQ,
+  siteMatrices = neo_matrix_probs,
+  type = "Standard",
+  coding = "informative"
+)
+m_morph[1].clamp(neo)
+
+twoState <- trans
+twoState.setNumStatesPartition(2)
+twoState.removeExcludedCharacters()
+m_morph[2] ~ dnPhyloCTMC(
+  tree = phylogeny,
+
+  siteRates = rate_categories,
+  Q = neoQ,
+  siteMatrices = two_matrix_probs,
+  type = "Standard",
+  coding = "informative"
+)
+m_morph[2].clamp(twoState)
+
+# Partition transformational characters by number of states (k)
+maxK = 10
+idx = 1
+for (k in 3:maxK) {
+  transByState[k - 2] <- trans
+  transByState[k - 2].setNumStatesPartition(k)
+  transByState[k - 2].removeExcludedCharacters()
+  nc = transByState[k - 2].nchar()
+  
+  if (nc > 0) {
+    print(nc, "characters in partition with", k, "states")
+    q[idx] <- fnJC(k) # Generate Q allChars based on Mk model
+    m_morph[idx + 2] ~ dnPhyloCTMC(
+      tree = phylogeny,
+      
+      siteRates = rate_categories,
+      Q = q[idx],
+      type = "Standard",
+      coding = "informative"
+    )
+    m_morph[idx + 2].clamp(transByState[k - 2])
+    idx = idx + 1
+  }
+}
+
+# Conduct MCMC analysis
+mymodel = model(phylogeny)
+
+monitors = VectorMonitors()
+monitors.append( mnScreen(printgen = 300, prior = FALSE, posterior = FALSE, beta_scale) )

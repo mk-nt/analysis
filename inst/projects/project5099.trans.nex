@@ -1,0 +1,61 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=53 NCHAR=7;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Coscinium             0-00000
+    Anamirta              0-00200
+    Arcangelisia          0-00000
+    Calycocarpum          1-01200
+    Disciphania           10(0,1)1200
+    Aspidocarya           1011200
+    Parabaena             1?01200
+    Tinomiscium           1-01200
+    Borismene             1-11100
+    Fibraurea             1-01200
+    Penianthus            1-11322
+    Sphenocentrum         1-11322
+    Burasaia              1-01100
+    Dioscoreophyllum      1001(1,2)00
+    Kolobopetalum         1001100
+    Tinospora             1?01(1,2)00
+    Chasmanthera          1001100
+    Desmonema             1001(1,2)00
+    Odontocarya           1001100
+    Syntriandrium         1001100
+    Sinomenium            0100211
+    Menispermum           0100211
+    Diploclisia           0100211
+    Pericampylus          0101211
+    Sarcopetalum          010?2?2
+    Abuta                 0-00011
+    Anomospermum          0-0?012
+    Orthomene             1-00012
+    Caryomene             0-00012
+    Elephantomene         0-00012
+    Telitoxicum           0-00012
+    Legnephora            000?2??
+    Parapachygone         000?3??
+    Hypserpa              0-00212
+    Limacia               0000212
+    Stephania             0101211
+    Perichasma            0001211
+    Antizoma              0001211
+    Cyclea                0101211
+    Cissampelos           0101211
+    Haematocarpus         0?0?322
+    Hyperbaena            0-003(0,1)2
+    Pachygone             0?0?322
+    Cocculus              0100211
+    Strychnopsis          0110322
+    Chondrodendron        0-10322
+    Curarea               0-1032?
+    Carronia              0100322
+    Pycnarrhena           0?(0,1)(0,1)322
+    Triclisia             0100322
+    Tiliacora             0?00011
+    Beirnaertia           0100322
+    Albertisia            0-(0,1)0322
+  ;
+END;
+

@@ -1,0 +1,67 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=59 NCHAR=37;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Scutigera_coleoptrata                         0-0200100---000000?000010-01420--00--
+    Anopsobius_neozelanicus                       3-1002211001122001??01?0001??01--0000
+    Dichelobius_flavens                           3-110(1,2)101???????????01?00010-01--0000
+    Henicops_dentatus                             2-1211010???????10001??04100--1--0000
+    Lamyctes_africanus                            2-1211121001102000?111110100--1--0000
+    Paralamyctes_validus                          2-1202120101102000?111102100--1--0000
+    Arenobius_manegitus                           1201112211000120101102002101310120101
+    Australobius_scabrior                         12211(1,2)10100?0111101002102101010--0011
+    Bothropolys_multidentatus                     120112211?0?010010??02?0310??10??0011
+    Disphaerobius_loricatus                       1001110011-30121101102100101010110001
+    Ethopolys_xanti                               120112221???????????????210??10020?11
+    Eupolybothrus_fasciatus                       1202121111100100101102?0310101011000-
+    Eupolybothrus_grossipes                       120212111110010010110210310101012000-
+    Harpolithobius_anodus                         120211121101110110?102?12100-40100011
+    Sozibius_tuobukus                             12021222101011001011021111013101200(2,3)1
+    Lithobius__ezembius__giganteus                1001110011-30121101102110101010110001
+    Lithobius__lithobius__agilis                  1202111011001110100002112101110--0011
+    Lithobius__lithobius__atkinsoni               1202120211000100100002?02101010100011
+    Lithobius__lithobius__borealis                1202111011101120101002111101050--0011
+    Lithobius__lithobius__castaneus               1202112211000120101102000101310--0021
+    Lithobius__lithobius__cyrtopus                1202111010011101101102111101010020011
+    Lithobius__lithobius__dentatus                1202111011001121101102012101010100011
+    Lithobius__lithobius__erythrocephalus         1202111011001121100102012101110--0011
+    Lithobius__lithobius__forficatus              1202122211000101101102002101010110011
+    Lithobius__lithobius__glacialis               120211201?011?2110010??11100-10?00001
+    Lithobius__lithobius__lapidicola              1202112010001?21101102011100-10--0011
+    Lithobius__lithobius__latro                   1202111011001121100102110101010000011
+    Lithobius__lithobius__lucifugus               1202111011101121100102010101010--0011
+    Lithobius__lithobius__lusitanus               12021120110????0101102?01101010--0011
+    Lithobius__lithobius__macilentus              1002111211001111101?0?012101010120011
+    Lithobius__lithobius__melanops                120211101??01??0101102?12101010--0011
+    Lithobius__lithobius__mutabilis               1202111010001121101102012101010100011
+    Lithobius__lithobius__muticus                 12021110100001011001???10101010--0111
+    Lithobius__lithobius__nodulipes               1202110211001?11101102?12100-40--1011
+    Lithobius__lithobius__obscurus                120211201???????101002?02101010--1011
+    Lithobius__lithobius__pelidnus                1202111011011101101102?12101010120111
+    Lithobius__lithobius__peregrinus              1202122211020100100102012101110110011
+    Lithobius__lithobius__piceus                  1202112011000120100102012101110--0021
+    Lithobius__lithobius__pilicornis              1002112211020101101102001101210--0011
+    Lithobius__lithobius__pygmaeus                120211001?011?01101102002100-40100011
+    Lithobius__lithobius__schuleri                120211221100111110?102102101110--0011
+    Lithobius__lithobius__silvivagus              1202111011?0110?101102?141010401001(1,2)1
+    Lithobius__lithobius__stygius                 1202112011001120100002?00101310--0011
+    Lithobius__lithobius__tenebrosus              120211201010112?100102112101040--0011
+    Lithobius__lithobius__setiger                 1202111211001121111102?12101040120011
+    Lithobius__lithobius__tricuspis               1202112211000?20100102012101110--0011
+    Lithobius__lithobius__validus                 1202122011000101101102003101010120011
+    Lithobius__lithobius__variegatus              120212221????????0??0??04101010--0011
+    Lithobius__lithobius__rubriceps               120212221???????????0??02101010--0001
+    Lithobius__lithobius__viriatus                12021(1,2)2211?00100100102102101310--0011
+    Lithobius__monotarsobius__aeruginosus         1101111010001121100102000101040--0011
+    Lithobius__monotarsobius__austriacus          110111101000111110??02000101040--0011
+    Lithobius__monotarsobius__crassipes           1201112011001121101102010101010--0011
+    Lithobius__monotarsobius__crassipesoides      120111221?00112?10(0,1)102?10101010--0011
+    Lithobius__monotarsobius__curtipes            10011112110001111???02010101010--1011
+    Lithobius__monotarsobius__holstii             120111101001022110?102010101010--0001
+    Lithobius__sigibius__burzenlandicus           1(0,1)021122100011?0100102010101030--0011
+    Lithobius__sigibius__carinthiacus             120211221?001???100102?00101040--0011
+    Lithobius__sigibius__microps                  1102112210011120100002?10100-40--0011
+  ;
+END;
+

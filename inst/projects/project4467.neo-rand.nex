@@ -1,0 +1,55 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=47 NCHAR=7;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Mongoloraphidia_harmandi                   0100000
+    Agulla_arizonica                           00000-0
+    Xanthostigma_gobicola                      01000-0
+    Amurinocellia_sinensis                     1011-10
+    Amurinocellia_calida                       1111-10
+    Amurinocellia_sinica                       1111-10
+    Fibla_hesperica                            1010000
+    Fibla_maclachlani                          1010000
+    Fibla_pasiphae                             1010000
+    Fibla_peyerimhoffi                         1010000
+    Indianoinocellia_mayana                    1010000
+    Indianoinocellia_pilicornis                1010000
+    Inocellia_bhutana                          111000?
+    Inocellia_bilobata                         111010?
+    Inocellia_biprocessus                      1110010
+    Inocellia_cheni                            1010000
+    Inocellia_cornuta                          1110000
+    Inocellia_crassicornis                     1110010
+    Inocellia_digitiformis                     1010010
+    Inocellia_elegans                          1110010
+    Inocellia_fujiana                          1010010
+    Inocellia_fulvostigmata_fulvostigmata      1010000
+    Inocellia_fulvostigmata_nigrostigmata      1(0,1)10000
+    Inocellia_hainanica                        1110010
+    Inocellia_hamata                           1110110
+    Inocellia_indica                           1110000
+    Inocellia_japonica                         1(0,1)10000
+    Inocellia_longispina                       111000?
+    Inocellia_nigra                            111000?
+    Inocellia_obtusangularis                   111010?
+    Inocellia_occidentalis                     111000?
+    Inocellia_rara                             111011?
+    Inocellia_shinohara                        111000?
+    Inocellia_aspouckorum                      1110010
+    Inocellia_striata                          1110100
+    Inocellia_taiwana                          1110000
+    Inocellia_tibetana                         1110000
+    Inocellia_yunnanica                        1110010
+    Negha_inflata                              1110001
+    Negha_longicornis                          1110001
+    Negha_meridionalis                         1110001
+    Parainocellia_bicolor                      1111-10
+    Parainocellia_braueri                      1(0,1)11-00
+    Epinocellia_burmana                        1111-00
+    Parainocellia_ressli                       1111-00
+    Epinocellia_weii                           1111-01
+    Sininocellia_gigantos                      1010000
+  ;
+END;
+
