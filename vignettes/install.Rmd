@@ -16,7 +16,7 @@ To use the neotrans package, you will need to obtain a copy from GitHub.
 
 We recommend that you install [GitHub Desktop](https://desktop.github.com/download/),
 then under "Current repository", "Add→clone" a copy of
-[ms609/neotrans](http://github.com/ms609/neotrans/).
+[mk-nt/analysis](http://github.com/mk-nt/analysis/).
 If prompted, create a fork to allow you to record your changes in your own
 GitHub account.
 
@@ -30,11 +30,13 @@ This is not necessary if you will be working with
 Once you have downloaded the repository, you can locate it from GitHub
 Desktop using "Repository→Show in Explorer".
 
-We recommend that you open the `neotrans.Rproj` Project file in [RStudio](https://posit.co/download/rstudio-desktop/)
-then run `devtools::install()`, or use "Install" from the "Build" tab.
+We recommend that you open the `Mk-nt.Rproj` Project file in [RStudio](https://posit.co/download/rstudio-desktop/)
+then run `pkgload::load_all()`.
 
-Run `install.packages("devtools")` if the package is not already installed.
+Run `install.packages("pkgload")` if the package is not already installed.
+If prompted, do not build required packages from source - using the
+pre-compiled binaries avoids the requirement to install RTools on Windows.
 
 Many functions in the package assume that your working directory (`getwd()`)
 corresponds to the package root, which will be the case if you open the
-`neotrans.Rproj`.
+`Mk-nt.Rproj`.
