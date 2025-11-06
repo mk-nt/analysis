@@ -1,3 +1,0 @@
-[submodule "inst/matrices"]
-	path = inst/matrices
-	url = https://github.com/neo-trans/matrices.git
