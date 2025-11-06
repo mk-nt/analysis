@@ -30,7 +30,6 @@ Imports:
   Quartet,
   Rdpack (>= 2.3),
   readxl,
-  RevBayes,
   Rogue,
   rphylopic,
   ssh,
@@ -52,9 +51,7 @@ Suggests:
   randomForest,
   rmarkdown,
   testthat (>= 3.0),
-Remotes:
-  afmagee/treess,
-  ms609/RevBayesR
+Remotes: afmagee/treess
 Config/testthat/parallel: false
 Config/testthat/edition: 3
 RdMacros: Rdpack
