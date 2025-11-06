@@ -2,6 +2,7 @@
 % Please edit documentation in R/fnDiscretizeBeta.R
 \name{incompleteBeta}
 \alias{incompleteBeta}
+\alias{fnDiscretizeBeta}
 \title{Discretized beta distribution
 R implementation of the RevBayes function fnDiscretizeBeta}
 \source{
@@ -11,6 +12,8 @@ Martin R. Smith
 }
 \usage{
 incompleteBeta(a, b, x)
+
+fnDiscretizeBeta(alpha, beta, nCats, median = FALSE)
 }
 \description{
 Discretized beta distribution
