@@ -85,7 +85,7 @@ delta <- rootFreqCf["a0", ] - rootFreqCf["pi0", ]
 kiNeoChar <- .meta$nChar["neo", KiProjects()]
 ```
 
-```{r plot-stationarity, fig.width = 7.2, fig.height = 7}
+```{r plot-stationarity, fig.width = 7.2, fig.height = 7, eval = FALSE}
 OutputPlot("stationarity", 7.2, 7, function() {
   layout(rbind(1:2, 3:4, c(5, 5)), heights = c(1, 1, 1/4))
   par(mar = c(4.2, 4.2, 0.4, 0.4))
@@ -144,7 +144,7 @@ OutputPlot("stationarity", 7.2, 7, function() {
 })
 ```
 
-```{r supplementary-plots}
+```{r supplementary-plots, eval = FALSE}
 dStat <- p1["obs", ] - nsP1AtStat["sim.50%", ]
 dObs <- p1["obs", ] - nsP1AtObs["sim.50%", ]
 
@@ -181,14 +181,14 @@ ColErrPlot(
   colBy = .meta$taxon[KiProjects()], pal = palette.colors(5)[-1])
 ```
 
-```{r}
+```{r, eval = FALSE}
 # The proportion of present states at the root deviates from the stationary distribution by > 0.1 in 20 of 64 datasets, and is 0.1 less than the stationary distribution in 20 datasets.
 sum(delta > 0.1, na.rm = TRUE)
 sum(delta < -0.1, na.rm = TRUE)
 sum(!is.na(delta))
 ```
 
-```{r root-versus-leaf, fig.width = 5, fig.height = 5}
+```{r root-versus-leaf, fig.width = 5, fig.height = 5, eval = FALSE}
 OutputPlot("rootVsLeaf", 5, 5, function() {
   par(mar = c(4, 4, 0.4, 0.4), cex = 0.8)
   ColErrPlot(
@@ -212,7 +212,7 @@ OutputPlot("rootVsLeaf", 5, 5, function() {
 ```
 
 
-```{r leaf-root-prediction}
+```{r leaf-root-prediction, eval = FALSE}
 moreAtLeaves <- ns1["obs1", ] - ns1["root1.97.5%", ] > 0
 moreAtRoot <- ns1["obs1", ] - ns1["root1.2.5%", ] < 0
 sum(moreAtLeaves, na.rm = TRUE)
