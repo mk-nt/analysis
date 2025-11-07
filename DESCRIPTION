@@ -42,6 +42,7 @@ Imports:
   vioplot,
   VSURF,
 Suggests:
+  caret,
   dplyr,
   DT,
   htmltools,
@@ -53,6 +54,7 @@ Suggests:
   rmarkdown,
   testthat (>= 3.0),
 Remotes: afmagee/treess
+Config/Needs/website: caret, pkgdown
 Config/testthat/parallel: false
 Config/testthat/edition: 3
 RdMacros: Rdpack
