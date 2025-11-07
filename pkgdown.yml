@@ -1,0 +1,16 @@
+pandoc: 3.1.11
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  compare-trees: compare-trees.html
+  install: install.html
+  matrix-processing: matrix-processing.html
+  model-cost: model-cost.html
+  model-pairs: model-pairs.html
+  parameter-analysis: parameter-analysis.html
+  parameter-values: parameter-values.html
+  predictions: predictions.html
+  prior-posterior: prior-posterior.html
+  stationarity: stationarity.html
+  wct-comparison: wct-comparison.html
+last_built: 2025-11-07T11:31Z
