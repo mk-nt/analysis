@@ -33,7 +33,7 @@ Get started by checking out this repository from GitHub.
 Instructions are in the [installation vignette](https://mk-nt.github.io/analysis/articles/install.html)
 
 Details of how to configure matrices for analysis are given in the 
-[mattrix processing vignette](https://mk-nt.github.io/analysis/articles/matrix-processing.html)
+[matrix processing vignette](https://mk-nt.github.io/analysis/articles/matrix-processing.html)
 
 A workflow to begin analysis can then be followed using [`?EnqueueMC`](https://mk-nt.github.io/analysis/reference/EnqueueMC)
 
