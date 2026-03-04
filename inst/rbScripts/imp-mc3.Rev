@@ -1,0 +1,143 @@
+# Expected arguments:
+simDir = "inst/simulation/sim1/"  # Output directory
+script = "sp_ki"
+minEss = 333
+
+if (args.size() == 0) {
+  args[1] = simDir
+}
+if (args.size() == 1) {
+  args[2] = script
+}
+if (args.size() == 2) {
+  args[3] = minEss
+}
+
+simDir = args[1]
+script = args[2]
+minEss = args[3]
+
+# Convert day of year to month/day
+year <- time("year")
+dayOfYear <- time("day")
+daysInMonth <- [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+  daysInMonth[2] = 29  # leap year
+}
+month <- 1
+day <- dayOfYear
+for (i in 1:12) {
+  if (day > daysInMonth[i]) {
+    day <- day - daysInMonth[i]
+    month <- month + 1
+  } else {
+    i <- 12  # break
+  }
+}
+sec <- time("seconds")
+hours <- floor(sec / 3600)
+minutes <- floor((sec - hours * 3600) / 60)
+print("Timestamp:", year + "-" + month + "-" + day, hours + ":" + minutes)
+seed(0)
+
+maxPSRF = 1.01
+
+write(getwd())
+neo <- readDiscreteCharacterData(simDir + "/imp_neo.nex")
+trans <- readDiscreteCharacterData(simDir + "/imp_trans.nex")
+filePrefix = simDir + "/imp_" + script
+ckpFile = filePrefix + ".ckp"
+paramFile = filePrefix + ".p.log"
+
+source("inst/rbScripts/" + script + ".Rev")
+checkFreq = 100
+
+if (script == "sp_kv") {
+  monitors.append( mnJointConditionalAncestralState(
+    tree = phylogeny,
+    ctmc = m_morph,
+    filename = filePrefix + ".states",
+    type = "Standard",
+    printgen = 36,
+    withTips = TRUE,
+    withStartStates = FALSE )
+  )
+} else {
+  monitors.append( mnJointConditionalAncestralState(
+    tree = phylogeny,
+    ctmc = m_morph[1],
+    filename = filePrefix + ".neo.states",
+    type = "Standard",
+    printgen = 36,
+    withTips = TRUE,
+    withStartStates = FALSE )
+  )
+  monitors.append( mnJointConditionalAncestralState(
+    tree = phylogeny,
+    ctmc = m_morph[2],
+    filename = filePrefix + ".trans.states",
+    type = "Standard",
+    printgen = 36,
+    withTips = TRUE,
+    withStartStates = FALSE )
+  )
+}
+monitors.append( mnModel(filename = filePrefix + ".log", printgen = 36) )
+monitors.append( mnModel(filename = paramFile, printgen = 6,
+                         stochasticOnly = TRUE, exclude = ["rel_br_lengths"]) )
+monitors.append( mnFile(filename = filePrefix + ".trees", printgen = 12,
+                        phylogeny) )
+
+# mymodel.graph(filePrefix + ".dot")
+mymc3 = mcmcmc(
+  mymodel, monitors, moves,
+  nruns = 2,
+  nchains = 8,
+  tuneHeat = TRUE,
+  swapMethod = "both",
+  swapMode = "multiple",
+  combine = "none"
+)
+print("   Created MCMCMC object")
+
+
+if (fileExists(filePrefix + "_run_1_chain_0.ckp")) {
+  print("   Initializing from checkpoint")
+  mymc3.initializeFromCheckpoint(ckpFile)
+  runHours = 23
+} else {
+  mymc3.burnin(generations = 1200, tuningInterval = checkFreq * 3)
+  runHours = 23
+}
+
+stopping_rules[1] = srMaxTime(runHours, "hours")
+stopping_rules[2] = srMinESS(minEss, paramFile, checkFreq, "ESS")
+stopping_rules[3] = srGelmanRubin(maxPSRF, paramFile, checkFreq)
+
+print("   Commencing MCMCMC run with " + script + " at",
+      time("year"), time("day"), time("seconds") / 60 / 60)
+mymc3.run(rules = stopping_rules, checkpointFile = ckpFile, checkpointInterval = checkFreq, verbose = 1)
+
+print("  # # # RUN COMPLETE # # #  ")
+# Convert day of year to month/day
+year <- time("year")
+dayOfYear <- time("day")
+daysInMonth <- [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+  daysInMonth[2] = 29  # leap year
+}
+month <- 1
+day <- dayOfYear
+for (i in 1:12) {
+  if (day > daysInMonth[i]) {
+    day <- day - daysInMonth[i]
+    month <- month + 1
+  } else {
+    i <- 12  # break
+  }
+}
+sec <- time("seconds")
+hours <- floor(sec / 3600)
+minutes <- floor((sec - hours * 3600) / 60)
+print("Timestamp:", year + "-" + month + "-" + day, hours + ":" + minutes)
+q()

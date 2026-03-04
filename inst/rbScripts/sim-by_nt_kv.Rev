@@ -1,0 +1,97 @@
+# Construct a random tree, write to `tree.nwk`.
+# Then simulate characters on it using an M2-nt model,
+# and write to `neo.nex` and `trans.nex`
+
+# Expected arguments:
+outDir  = "inst/simulation/sim1/"  # Output directory
+n_taxa  = 54                       # Number of taxa
+n_neo   = 42                       # Neomorphic characters to simulate
+n_trans = 54                       # Transformational characters to simulate
+n       = 0.497                    # Gain to loss rate ratio
+t       = 2.47                     # How much faster transformationals evolve
+length  = 1.43                     # Length of tree
+seed_v  = 1                        # Random seed
+
+if (args.size() == 0) {
+  args = outDir
+}
+if (args.size() == 1) {
+  args.append(n_taxa)
+}
+if (args.size() == 2) {
+  args.append(n_neo)
+}
+if (args.size() == 3) {
+  args.append(n_trans)
+}
+if (args.size() == 4) {
+  args.append(n)
+}
+if (args.size() == 5) {
+  args.append(t)
+}
+if (args.size() == 6) {
+  args.append(length)
+}
+if (args.size() == 7) {
+  args.append(seed_v)
+}
+
+outDir     = args[1]
+n_taxa     = args[2]
+n_neo      = args[3]
+n_trans    = args[4]
+rate_loss  = 1 / args[5] # 1 / n
+rate_neo   = 1 / args[6] # 1 / t
+length     = args[7]
+seed_v     = args[8]
+
+n_char <- v(n_neo, n_trans)
+
+write("Writing output files to", outDir)
+
+seed(seed_v)
+for (i in 1:n_taxa) {
+  taxa[i] = taxon("tip_" + i);
+}
+
+# Draw a tree from the uniform distribution
+# Branch lengths are drawn from exponential(1)
+n_edge = 2 * n_taxa - 3
+rel_br_lengths ~ dnDirichlet(rep(1.0, n_edge))
+br_lengths := rel_br_lengths * length
+topology ~ dnUniformTopology(taxa, clade(taxa[1]))
+tr := treeAssembly(topology, br_lengths)
+write(tr, filename = outDir + "/tree.nwk")
+
+partition_rate := [ rate_neo / (1 + rate_neo), (1 / (1 + rate_neo)) ] / n_char * sum(n_char)
+rate01 := 2 / (1 + rate_loss)
+rate10 := 2 * rate_loss / (1 + rate_loss)
+rates := [ [0.0, rate01],
+           [rate10, 0.0] ]
+neoQ := fnFreeK(rates)
+stationaryDist := Simplex( rate10, rate01 )
+
+# Simulate neomorphic characters
+neo_chars ~ dnPhyloCTMC(
+  tree = tr,
+  Q = neoQ,
+  rootFrequencies = stationaryDist,
+  branchRates = partition_rate[1],
+  coding = "variable",
+  nSites = n_neo,
+  type = "Standard"
+)
+writeNexus(filename = outDir + "/neo.nex", neo_chars)
+
+# Simulate transformational characters
+trans_chars ~ dnPhyloCTMC(
+  tree = tr,
+  Q = fnJC(2),
+  branchRates = partition_rate[2],
+  coding = "variable",
+  nSites = n_trans,
+  type = "Standard"
+)
+
+writeNexus(filename = outDir + "/trans.nex", trans_chars)

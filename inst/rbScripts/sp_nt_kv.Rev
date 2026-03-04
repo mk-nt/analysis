@@ -1,0 +1,68 @@
+# Separate Neomorphic partition
+nChar <- v(neo.nchar(), trans.nchar())
+
+# Dataset properties
+taxa <- neo.names()
+nTaxa <- neo.size()
+nEdge <- 2 * nTaxa - 3
+
+moves = VectorMoves()
+
+# Uniform prior on tree topologies
+topology ~ dnUniformTopology(taxa)
+moves.append( mvNNI(topology, weight = nEdge / 2.0) )
+moves.append( mvSPR(topology, weight = nEdge / 8.0) )
+
+gamma_shape <- 2
+exp_steps <- 1 # Expected changes per site across the tree.
+tree_length ~ dnGamma(shape = gamma_shape, rate = gamma_shape / exp_steps)
+moves.append( mvScale(tree_length, weight = 1.0) )
+
+rel_br_lengths ~ dnDirichlet( rep(1.0, nEdge) )
+moves.append( mvBetaSimplex(rel_br_lengths, weight = nEdge / 3.0) )
+moves.append( mvDirichletSimplex(rel_br_lengths, weight = nEdge / 20.0) )
+br_lengths := rel_br_lengths * tree_length
+
+phylogeny := treeAssembly(topology, br_lengths)
+
+# Neomorphic partition may have different rate to transformational
+rate_neo ~ dnLognormal(mean = 0, sd = 2)
+moves.append( mvScale(rate_neo, weight = 0.5) )
+partition_rate := [ rate_neo / (1 + rate_neo), (1 / (1 + rate_neo)) ] / nChar * sum(nChar)
+
+# Forward changes may have different rate to reverse
+rate_loss ~ dnLognormal(mean = 0, sd = 2)
+moves.append( mvScale(rate_loss, lambda = 1, weight = 0.5) )
+
+# Make Q matrix from rates, with mean = rate_neo
+# https://revbayes.github.io/tutorials/morph/morph_more.html
+rate01 := 2 / (1 + rate_loss)
+rate10 := 2 * rate_loss / (1 + rate_loss)
+rates := [ [0.0, rate01],
+           [rate10, 0.0] ]
+neoQ := fnFreeK(rates)
+stationaryDist := Simplex( rate10, rate01 )
+
+m_morph[1] ~ dnPhyloCTMC(
+  tree = phylogeny,
+  branchRates = partition_rate[1],
+  Q = neoQ,
+  rootFrequencies = stationaryDist,
+  type = "Standard",
+  coding = "variable"
+)
+m_morph[1].clamp(neo)
+
+m_morph[2] ~ dnPhyloCTMC(
+  tree = phylogeny,
+  branchRates = partition_rate[2],
+  Q = fnJC(2),
+  type = "Standard",
+  coding = "variable"
+)
+m_morph[2].clamp(trans)
+
+# Conduct MCMC analysis
+mymodel = model(phylogeny)
+monitors = VectorMonitors()
+monitors.append( mnScreen(printgen = 300, prior = FALSE, posterior = FALSE, rate_neo, rate_loss) )
