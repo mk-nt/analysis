@@ -13,7 +13,8 @@
 #' @export
 ConnectSSH <- function() {
   if (Sys.getenv("sshLogin") == "") {
-    stop("sshLogin environment variable not set in ConnectSSH()")
+    warning("sshLogin environment variable not set in ConnectSSH()")
+    return(NULL)
   }
   tryCatch(
     ssh_connect(Sys.getenv("sshLogin"), keyfile = Sys.getenv("sshKey"),
