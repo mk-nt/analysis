@@ -143,7 +143,7 @@ PresencePlot <- function(scriptID) {
   
   plot(range(x_lo, x_hi, na.rm = TRUE),
        range(y_lo, y_hi, na.rm = TRUE),
-       type = "n", xlab = "Stationary p(present)", ylab = "Observed p(present)",
+       type = "n", xlab = "Stationary Pr(present)", ylab = "Observed Pr(present)",
        asp = 1, frame.plot = FALSE,
        xlim=c(0,1), ylim=c(0,1))
   abline(0, 1, col = "grey70", lty = 2)  # 1:1 line
