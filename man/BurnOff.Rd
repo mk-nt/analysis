@@ -12,7 +12,7 @@ BurnOff(values, burnin)
 \item{burnin}{fraction or number of samples to omit from start}
 }
 \value{
-\verb{BurnOff() returns }values\verb{, without the first }burnin` samples
+\code{BurnOff()} returns \code{values}, without the first \code{burnin} samples
 }
 \description{
 Remove burnin

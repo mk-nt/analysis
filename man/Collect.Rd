@@ -4,11 +4,17 @@
 \alias{Collect}
 \title{Process analyses that have completed on remote server}
 \usage{
-Collect(days = 1)
+Collect(days = 1, searchRemote = FALSE)
 }
 \arguments{
 \item{days}{Numeric specifying how many days since last collection to
 retrieve}
+
+\item{searchRemote}{Logical specifying whether to aggressively pull any
+uncommitted results found on the remote server.
+This can pull through results that didn't commit due to a run timing out
+before it could execute its git proceedings: but in rare cases this seems
+to introduce conflicts or issues, so needs keeping a careful eye on.}
 }
 \value{
 \code{Collect()} is called for its side effects of pulling remote results

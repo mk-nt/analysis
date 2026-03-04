@@ -18,6 +18,9 @@ should we check for uncommitted changes on the remote host?}
 
 \item{forgetCache}{Logical: if no new results are found, should we
 recalculate cached statistics anyway?}
+
+\item{makeSlurm}{Logical: If existing results have not yet converged or are
+not available, should we queue a continuation run?}
 }
 \description{
 If new MCMCMC result are available, compute and cache convergence statistics.

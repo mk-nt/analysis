@@ -8,6 +8,8 @@ Panel(i, xOffset = 3, yOffset = 0)
 }
 \arguments{
 \item{i}{Index of label (1 = "(a)", or string to print}
+
+\item{xOffset}{Numeric; how many units to the LEFT to offset in \emph{x} direction}
 }
 \description{
 Add label for plot region

@@ -6,6 +6,18 @@
 \usage{
 ConnectSSH()
 }
+\value{
+\code{ConnectSSH()} is called for its side effect of launching an SSH
+session.
+}
 \description{
-Connect to remote server via SSH
+Store SSH credentials for this project with \code{file.edit(".Renviron")},
+or globally with \code{file.edit("~/.Renviron")}.
+}
+\details{
+Set \code{sshLogin=username@server.url}, \code{sshKey=path/to/keyfile} and
+\code{sshPass=keepFilePassword}.  Restart R for these to take effect.
+}
+\seealso{
+To store the session for future use, see \code{SshSession()}.
 }
