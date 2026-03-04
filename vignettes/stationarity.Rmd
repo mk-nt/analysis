@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 library("neotrans")
 ```
 
-```{r compute-statistics, message = FALSE}
+```{r compute-statistics, message = FALSE, warn = FALSE}
 p1 <- vapply(KiProjects(), function(pID) {
   neo <- InfNeo(pID)
   p1Taxa <- neo[["1"]] / (neo[["0"]] + neo[["1"]])
@@ -93,15 +93,15 @@ OutputPlot("stationarity", 7.2, 7, function() {
   # Results of posterior predictive samples.
   # These are not particularly illuminating.
   ColErrPlot(
-    "Observed p(present)", p1["obs", ], p1["obs.25%", ], p1["obs.75%", ],
-    "p(present), NstN, stationary root",
+    "Observed Pr(present)", p1["obs", ], p1["obs.25%", ], p1["obs.75%", ],
+    "Pr(present), NstN, stationary root",
     nsP1AtStat["sim.50%", ], nsP1AtStat["sim.2.5%", ], nsP1AtStat["sim.97.5%", ],
     lgdTitle = "Characters", colBy = kiNeoChar,
     text = TRUE)
   
   ColErrPlot(
-    "Observed p(present)", p1["obs", ], p1["obs.25%", ], p1["obs.75%", ],
-    "p(present), NstN, inferred root frequencies",
+    "Observed Pr(present)", p1["obs", ], p1["obs.25%", ], p1["obs.75%", ],
+    "Pr(present), NstN, inferred root frequencies",
     nsP1AtObs["sim.50%", ], nsP1AtObs["sim.2.5%", ], nsP1AtObs["sim.97.5%", ],
     lgdTitle = "Characters", colBy = kiNeoChar,
     text = TRUE)
@@ -116,8 +116,8 @@ OutputPlot("stationarity", 7.2, 7, function() {
   
   
   ColErrPlot(
-    "Observed p(present)", p1["obs", ], p1["obs.25%", ], p1["obs.75%", ],
-    "p(present), NstN, inferred root frequencies - stationary root",
+    "Observed Pr(present)", p1["obs", ], p1["obs.25%", ], p1["obs.75%", ],
+    "Pr(present), NstN, inferred root frequencies - stationary root",
     nsP1AtObs["sim.50%", ] - nsP1AtStat["sim.50%", ],
     nsP1AtObs["sim.50%", ] - nsP1AtStat["sim.50%", ],
     nsP1AtObs["sim.50%", ] - nsP1AtStat["sim.50%", ],
@@ -126,17 +126,17 @@ OutputPlot("stationarity", 7.2, 7, function() {
     text = TRUE)
   
   ColErrPlot(
-    "Root p(present)",
+    "Root Pr(present)",
     ns1["root1.50%", ], ns1["root1.2.5%", ], ns1["root1.97.5%", ],
-    "Leaf p(present)",
+    "Leaf Pr(present)",
     ns1["obs1", ], ns1["obs1.25%", ],  ns1["obs1.75%", ],
     lgdTitle = "Characters", colBy = kiNeoChar, text = TRUE)
   
-  ColErrPlot("Stationary p(present)",
+  ColErrPlot("Stationary Pr(present)",
              1 - rootFreqCf["pi0", ],
              1 - rootFreqCf["pi0", ],
              1 - rootFreqCf["pi0", ],
-             "Excess p(present) at root relative to stationary distribution",
+             "Excess Pr(present) at root relative to stationary distribution",
              delta, delta, delta,
              line = "h", ylim = c(-0.5, 0.5),
              col = kiNeoChar)
@@ -148,34 +148,34 @@ OutputPlot("stationarity", 7.2, 7, function() {
 dStat <- p1["obs", ] - nsP1AtStat["sim.50%", ]
 dObs <- p1["obs", ] - nsP1AtObs["sim.50%", ]
 
-ColErrPlot("Difference in p(present), observed vs sim from stationary root",
+ColErrPlot("Difference in Pr(present), observed vs sim from stationary root",
            dStat, dStat, dStat,
-           "Difference in p(present), observed vs sim from observed root",
+           "Difference in Pr(present), observed vs sim from observed root",
            dObs, dObs, dObs,
            line = c("h", "v"), xlim = range(c(dStat, dObs), na.rm = TRUE),
            lgdTitle = "Characters", col = kiNeoChar, text= TRUE)
 
 
 ColErrPlot(
-  "p(present), NstN, inferred root frequencies",
+  "Pr(present), NstN, inferred root frequencies",
   nsP1AtObs["sim.50%", ], nsP1AtObs["sim.2.5%", ], nsP1AtObs["sim.97.5%", ],
-  "p(present), NstN, stationary root",
+  "Pr(present), NstN, stationary root",
   nsP1AtStat["sim.50%", ], nsP1AtStat["sim.2.5%", ], nsP1AtStat["sim.97.5%", ],
   lgdTitle = "Characters", colBy = kiNeoChar,
   text = TRUE)
 
 
 ColErrPlot(
-  "Leaf p(present)",
+  "Leaf Pr(present)",
   ns1["obs1", ], ns1["obs1.25%", ],  ns1["obs1.75%", ],
-  "Root p(present)",
+  "Root Pr(present)",
   ns1["root1.50%", ], ns1["root1.2.5%", ], ns1["root1.97.5%", ],
   colBy = droplevels(.meta$rank[KiProjects()]))
 
 ColErrPlot(
-  "Leaf p(present)",
+  "Leaf Pr(present)",
   ns1["obs1", ], ns1["obs1.25%", ],  ns1["obs1.75%", ],
-  "Root p(present)",
+  "Root Pr(present)",
   ns1["root1.50%", ], ns1["root1.2.5%", ], ns1["root1.97.5%", ],
   lgdTitle = "Taxon",
   colBy = .meta$taxon[KiProjects()], pal = palette.colors(5)[-1])
@@ -192,9 +192,9 @@ sum(!is.na(delta))
 OutputPlot("rootVsLeaf", 5, 5, function() {
   par(mar = c(4, 4, 0.4, 0.4), cex = 0.8)
   ColErrPlot(
-    expression(italic("p(present)") ~ "at root"),
+    expression("Pr(" * italic("present") * ") at root"),
     ns1["root1.50%", ], ns1["root1.2.5%", ], ns1["root1.97.5%", ],
-    expression("Excess" ~ italic("p(present)") ~ "at leaves"),
+    expression("Excess Pr(" * italic("present") * ") at leaves"),
     ns1["obs1", ] - ns1["root1.50%", ],
     ns1["obs1", ] - ns1["root1.97.5%", ],
     ns1["obs1", ] - ns1["root1.2.5%", ],
