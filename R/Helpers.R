@@ -1,7 +1,7 @@
 #' Remove burnin
 #' @param values series of parameter estimates
 #' @param burnin fraction or number of samples to omit from start
-#' @return `BurnOff() returns `values`, without the first `burnin` samples
+#' @return `BurnOff()` returns `values`, without the first `burnin` samples
 #' @export
 BurnOff <- function(values, burnin) {
   .Keep <- function(n, burnin) {

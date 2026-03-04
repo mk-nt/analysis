@@ -80,7 +80,7 @@ InformationGain <- function(projects = KiProjects(), scripts, parameter,
   post$nCoded <- .meta$nCoded[match(projects, names(.meta$nCoded))]
   post$nNeoCoded <- .meta$nNeoCoded[match(projects, names(.meta$nNeoCoded))]
   
-  .Decode <- function(x) switch (x,
+  .Decode <- function(x) switch(x,
     neoCells = "Neomorphic cells (characters × taxa)",
     cells = "Total cells (characters × taxa)",
     "nTaxa" = "Taxa",
@@ -88,11 +88,19 @@ InformationGain <- function(projects = KiProjects(), scripts, parameter,
     "nNeo" = "Neomorphic characters",
     "nNeoCoded" = "Non-ambiguous neomorphic cells",
     "nCoded" = "Non-ambiguous cells",
-    "root_freqs.1." = "P(absent) at root",
-    "rate_loss" = "n",
-    "rate_neo" = "t",
+    "root_freqs.1." = "Pr(absent) at root",
+    "rate_loss" = expression(italic(n)),
+    "rate_neo" = expression(italic(t)),
     Decrypt(x)
   )
+  .DecodeYLab <- function(prefix, x) {
+    decoded <- .Decode(x)
+    if (is.expression(decoded)) {
+      bquote(.(prefix) ~ .(decoded[[1]]))
+    } else {
+      paste(prefix, decoded)
+    }
+  }
   
   
   for (i in which(is.na(post$Rratio))) {
@@ -107,7 +115,7 @@ InformationGain <- function(projects = KiProjects(), scripts, parameter,
        frame.plot = FALSE, pch = 16,
        col = ModelCol(post$scriptID),
        xlab = .Decode(metaEntry),
-       ylab = paste("Prior / posterior SD: ", .Decode(parameter)))
+       ylab = .DecodeYLab("Prior / posterior SD:", parameter))
   if (any(iffy)) {
     text(post[[metaEntry]][iffy], post$Rratio[iffy], post$pID[iffy],
          cex = 0.8, xpd = NA)

@@ -111,6 +111,8 @@ ExtendRun <- function(pID, scriptID, proportion, buffer = 1.15) {
 #' should we check for uncommitted changes on the remote host?
 #' @param forgetCache Logical: if no new results are found, should we
 #' recalculate cached statistics anyway?
+#' @param makeSlurm Logical: If existing results have not yet converged or are
+#' not available, should we queue a continuation run?
 #' @importFrom cli cli_progress_message cli_progress_done
 #' @importFrom parallel detectCores
 #' @importFrom tools md5sum
@@ -404,7 +406,7 @@ ValidateStone <- function(pID, scriptID) {
     stoneData <- strsplit(readLines(stone), "\t")[[1]]
     if (length(stoneData) == 5 || stoneData[[9]] == "NA") {
       if (Sys.getenv("rb.exe") == "") {
-        warning(stone, "outdated, but Sys.getenv('rb.exe') not set.")
+        warning(stone, " outdated, but Sys.getenv('rb.exe') not set.")
         return(stone)
       }
       
@@ -424,7 +426,8 @@ ValidateStone <- function(pID, scriptID) {
         return(NULL)
       }
       
-      rbArgs <- paste("-c", file.path(getwd(), "rbScripts/marginalSE.Rev"),
+      rbArgs <- paste("-c", file.path(system.file("rbScripts/marginalSE.Rev",
+                                                  package = "neotrans")),
                       file.path(revDir, ppFile), tmpFile)
       system2(Sys.getenv("rb.exe"), rbArgs, stdout = "rb.stdout")
       

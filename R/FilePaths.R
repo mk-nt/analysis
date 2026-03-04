@@ -73,7 +73,8 @@ SlurmDir <- function() {
 #' @rdname OutputDir
 #' @export
 RemoteDir <- function() {
-  getOption("ntRemoteDir") %||% "/nobackup/$USER"
+  getOption("ntRemoteDir") %||%
+    paste0("/nobackup/", sub("@.*", "", Sys.getenv("sshLogin")))
 }
 
 #' @rdname OutputDir

@@ -1,7 +1,20 @@
 #' Connect to remote server via SSH
+#' 
+#' Store SSH credentials for this project with `file.edit(".Renviron")`,
+#' or globally with `file.edit("~/.Renviron")`.
+#' 
+#' Set `sshLogin=username@server.url`, `sshKey=path/to/keyfile` and 
+#' `sshPass=keepFilePassword`.  Restart R for these to take effect.
+#' 
+#' @returns `ConnectSSH()` is called for its side effect of launching an SSH
+#' session.
+#' @seealso To store the session for future use, see `SshSession()`.
 #' @importFrom ssh ssh_connect
 #' @export
 ConnectSSH <- function() {
+  if (Sys.getenv("sshLogin") == "") {
+    stop("sshLogin environment variable not set in ConnectSSH()")
+  }
   tryCatch(
     ssh_connect(Sys.getenv("sshLogin"), keyfile = Sys.getenv("sshKey"),
                 passwd = Sys.getenv("sshPass")),
@@ -29,11 +42,14 @@ ReadSacct <- function(lines) {
 
 Sacct <- function(slurmID = NULL, state = NULL, time = "now-24hours") {
   session <- SshSession()
+  if (isFALSE(session)) {
+    stop("Could not connect via SSH: ", attr(session, "e"))
+  }
   result <- ssh_exec_internal(
     session,
     paste("sacct", 
           if (!is.null(slurmID)) sprintf("-j %s", slurmID),
-          "--format=\"JobID%20,JobName%24,State%16,Elapsed,End,AllocCPUS,ReqMem,MaxRSS,NodeList%12\"",
+          "--format=\"JobID%20,JobName%24,State%16,Elapsed,End,AllocCPUS,ReqMem,MaxRSS%14,NodeList%12\"",
           if (!is.null(time)) {
             if (length(time) < 2) time[[2]] <- "now"
             paste("--starttime", time[[1]], "--endtime", time[[2]])
@@ -77,13 +93,23 @@ Sacct <- function(slurmID = NULL, state = NULL, time = "now-24hours") {
     .HMSToS(gsub("\\d+\\-", "", times))
 }
 
+.RecognizedScript <- function(scriptID) {
+  grepl("\\w+_k[iv]$", scriptID, perl = TRUE) &&
+    !grepl("^sp_", scriptID)
+}
+
 #' Process analyses that have completed on remote server
 #' @param days Numeric specifying how many days since last collection to
 #' retrieve
+#' @param searchRemote Logical specifying whether to aggressively pull any
+#' uncommitted results found on the remote server.
+#' This can pull through results that didn't commit due to a run timing out
+#' before it could execute its git proceedings: but in rare cases this seems
+#' to introduce conflicts or issues, so needs keeping a careful eye on.
 #' @return `Collect()` is called for its side effects of pulling remote results
 #' from the server, and updating the local cache accordingly.
 #' @export
-Collect <- function(days = 1) {
+Collect <- function(days = 1, searchRemote = FALSE) {
   sacct.csv <- file.path(OutputDir(), "sacct.csv")
   database <- if (file.exists(sacct.csv)) {
     read.csv(sacct.csv, stringsAsFactors = FALSE, 
@@ -114,6 +140,12 @@ Collect <- function(days = 1) {
   window <- format(startTime + c(1, days * sPerDay),  "%Y-%m-%dT%H:%M:%S")
   
   toDB <- .Filter3(Sacct(state = "TO,OOM,CD", time = window))
+  
+  # Rm irrelevant jobs
+  # TODO a positive filter would be more sustainable
+  toDB <- toDB[!startsWith(toDB$JobName, "gam") &
+                 vapply(toDB$scriptID, .RecognizedScript, logical(1)), ]
+  
   if (nrow(toDB) == 0) {
     if (window[[2]] < as.POSIXct(Sys.Date())) {
       message("No entries; extending period \U1F551")
@@ -141,7 +173,7 @@ Collect <- function(days = 1) {
           )$status, error = function(e) 99) == 0) {
           if (is.null(updated[[row$JobName]])) {
             if (!file.exists(StoneFile(row$pID, row$scriptID))) {
-              UpdateRecords(row$pID, row$scriptID, searchRemote = TRUE)
+              UpdateRecords(row$pID, row$scriptID, searchRemote = searchRemote)
             }
             if (!file.exists(StoneFile(row$pID, row$scriptID))) {
               stop("File.out.pp exists on remote but not updated locally: ", row$JobName)
@@ -160,7 +192,7 @@ Collect <- function(days = 1) {
           warning(row$JobID, ": ", row$JobName, " succeeded in < 60 s")
         }
       } else {
-        if (!UpdateRecords(row$pID, row$scriptID, searchRemote = TRUE)) {
+        if (!UpdateRecords(row$pID, row$scriptID, searchRemote = searchRemote)) {
           warning(row$JobID, ": ", row$JobName, " succeeded in < 60 s")
         }
       }
@@ -169,7 +201,7 @@ Collect <- function(days = 1) {
     toDB[i, "tmpUsed"] <- TmpUsed(row$pID, row$scriptID, row$task == "marginal")
     if (is.null(updated[[row$JobName]])) {
       updated[[row$JobName]] <- UpdateRecords(row$pID, row$scriptID,
-                                              searchRemote = TRUE)
+                                              searchRemote = searchRemote)
     }
   }
   
@@ -191,7 +223,7 @@ Collect <- function(days = 1) {
     on.exit(
       add = TRUE,
       apply(timeout, 1, function(row) {
-        if (!UpdateRecords(row[["pID"]], row[["scriptID"]], searchRemote = TRUE,
+        if (!UpdateRecords(row[["pID"]], row[["scriptID"]], searchRemote = searchRemote,
                            makeSlurm = TRUE)) {
           message(row[["JobID"]], ": ", row[["JobName"]], " needs more time")
         }
@@ -513,7 +545,9 @@ PredictResource <- function(pID, scriptID, ml = TRUE, cores = 16,
   tooWee <- if (nrow(ooms) > 0 && any(!is.na(ooms[["ReqMem"]]))) {
     reqMem <- as.numeric(sub("K", "e3", fixed = TRUE,
                              sub("M", "e6", fixed = TRUE,
-                                 sub("G", "e9", fixed = TRUE, ooms[["ReqMem"]]))))
+                                 sub("G", "e9", fixed = TRUE, 
+                                     sub("T", "e12", fixed = TRUE,
+                                         ooms[["ReqMem"]])))))
     max(reqMem, na.rm = TRUE)
   } else {
     0

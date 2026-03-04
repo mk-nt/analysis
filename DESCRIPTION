@@ -18,9 +18,9 @@ Imports:
   ape,
   colorspace,
   cli,
-  curl,
   digest,
   e1071,
+  grDevices,
   gridExtra,
   MASS,
   mcmcse,
@@ -31,6 +31,7 @@ Imports:
   R.utils,
   Rdpack (>= 2.3),
   readxl,
+  RevBayes,
   Rogue,
   rphylopic,
   ssh,
@@ -39,8 +40,6 @@ Imports:
   TreeSearch,
   TreeTools (> 1.13.0),
   treess,
-  vioplot,
-  VSURF,
 Suggests:
   caret,
   dplyr,
@@ -53,7 +52,11 @@ Suggests:
   randomForest,
   rmarkdown,
   testthat (>= 3.0),
-Remotes: afmagee/treess
+  vioplot,
+  VSURF,
+Remotes:
+  afmagee/treess,
+  ms609/RevBayesR
 Config/Needs/website: caret, pkgdown
 Config/testthat/parallel: false
 Config/testthat/edition: 3

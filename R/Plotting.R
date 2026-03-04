@@ -132,8 +132,8 @@ SpindlePlot <- function(x, nBin = 20, width = 1, xlab = "",
     segments(centres[i], xIQR[[1]],
              centres[i], xIQR[[2]],
              col = "#000000aa", lwd = 2)
-    points(centres[i], xMed, pch = 21, col = 1, bg = "white", lwd = 2, cex = 1.4)
-    points(centres[i] + 0.1, xBar, pch = 3, lwd = 2, col = 1, cex = 1.6)
+    points(centres[i], xMed, pch = 95, lwd = 2, col = 1, cex = 1.8)
+    points(centres[i], xBar, pch = 21, col = 1, bg = "white", lwd = 2, cex = 1.4)
   }
 }
 
@@ -748,6 +748,7 @@ DiffDepth <- function(pID, models, pdf = FALSE, sampleSize = 128,
 
 #' Add label for plot region
 #' @param i Index of label (1 = "(a)", or string to print
+#' @param xOffset Numeric; how many units to the LEFT to offset in _x_ direction
 #' @export
 Panel <- function(i, xOffset = 3, yOffset = 0) {
   if (is.numeric(i)) {
