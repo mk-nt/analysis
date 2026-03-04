@@ -65,27 +65,27 @@ OutputPlot("modelCmp", wd, wd * mfr[1] / mfr[2] * spaceForOma, function() {
   
   par(mar = c(2, 4, 2, 0.4))
   SpindleCompare(
-    modelA = c("by_t_ki", "by_nt_ki", "ns_t_ki", "ns_nt_ki"),
-    modelB = c("by_ki", "by_n_ki", "ns_ki", "ns_n_ki"),
-    marginals = marginals,
-    stdErr = stdErr
-  )
-  Panel(3)
-  text(2.5, 13, expression("\U2191 Free" ~ italic("t") ~ "improves ML"))
-  text(2.5, -9.6, expression("\U2193 Fixed" ~ italic("t") ~ "improves ML"))
-  
-  SpindleCompare(
     modelA = c("by_n_ki", "by_nt_ki", "ns_n_ki", "ns_nt_ki"),
     modelB = c("by_ki", "by_t_ki", "ns_ki", "ns_t_ki"),
     marginals = marginals,
     stdErr = stdErr
   )
-  Panel(4, 4)
-  text(2.5, 70, expression("\U2191 Free" ~ italic("n") ~ "improves ML"))
-  text(2.5, -16.35, expression("\U2193 Fixed" ~ italic("n") ~ "improves ML"), xpd = NA)
+  Panel(3, 4)
+  text(2.5, 70, "\U2191 gain:loss asymmetry improves ML")
+  text(2.5, -16.35, "\U2193 gain:loss symmetry improves ML", xpd = NA)
   
   SpindleCompare("by_nn_ki", "by_n_ki", marginals, stdErr)
+  Panel(4)
+  
+  SpindleCompare(
+    modelA = c("by_t_ki", "by_nt_ki", "ns_t_ki", "ns_nt_ki"),
+    modelB = c("by_ki", "by_n_ki", "ns_ki", "ns_n_ki"),
+    marginals = marginals,
+    stdErr = stdErr
+  )
   Panel(5)
+  text(2.5, 13, expression("\U2191 Unlinking" ~ italic("t") ~ "improves ML"))
+  text(2.5, -9.6, expression("\U2193 Linking" ~ italic("t") ~ "improves ML"))
   
   SpindleCompare(
     modelA = c("ns_ki", "ns_t_ki", "ns_n_ki", "ns_nt_ki"),
