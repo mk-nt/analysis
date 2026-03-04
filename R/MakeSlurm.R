@@ -48,7 +48,7 @@ MakeSlurm <- function(pID, scriptID, ml = FALSE, ess = EssTarget(pID, scriptID),
     return(structure(FALSE, reason = "ML for _ki is futile"))
   }
   session <- SshSession()
-  if (is.null(session) || isFALSE(session)) {
+  if (isFALSE(session)) {
     return(structure(FALSE, reason = attr(session, "e")))
   }
   squeue <- SlurmQueue(session)
