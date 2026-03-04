@@ -9,7 +9,7 @@
 1. Log in to Hamilton using PuTTY
 1. Navigate to your storage drive: `cd /nobackup/$USER/`
 1. Download RevBayes Singularity image, built with MPI
-   - Execute `wget https://github.com/revbayes/revbayes/releases/download/v1.2.4/revbayes-v1.2.4-linux64-singularity.simg`
+   - Execute `wget https://github.com/revbayes/revbayes/releases/download/v1.3.1/revbayes-v1.3.1-linux64-singularity.simg`
 1. Load compiler and OpenMPI modules
    - `module load gcc/11.2 openmpi/4.1.1`
 1. Navigate to `cd neotrans`
