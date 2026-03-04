@@ -109,7 +109,7 @@
 <a href="mailto:martin.smith@durham.ac.uk" class="email">martin.smith@durham.ac.uk</a>
 </h4>
             
-            <h4 data-toc-skip class="date">2025-11-07</h4>
+            <h4 data-toc-skip class="date">2026-03-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ms609/neotrans/blob/main/vignettes/parameter-analysis.Rmd" class="external-link"><code>vignettes/parameter-analysis.Rmd</code></a></small>
       <div class="hidden name"><code>parameter-analysis.Rmd</code></div>
@@ -142,7 +142,7 @@
 <span><span class="va">stdErr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">marginals</span>, <span class="st">"stdErr"</span><span class="op">)</span></span>
 <span><span class="va">mds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MarginalDiffs.html">MarginalDiffs</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">modelsT</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-1-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-1-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">stdErr</span>, <span class="va">mds</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Standard error of estimate"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Difference, stepping stone vs path sampling estimates"</span>,</span>
@@ -151,7 +151,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsT</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsT</span><span class="op">)</span>,</span>
 <span>       bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-1-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-1-2.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="when-is-a-partitioned-model-preferred">When is a partitioned model preferred?<a class="anchor" aria-label="anchor" href="#when-is-a-partitioned-model-preferred"></a>
@@ -189,7 +189,7 @@
 <span>       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Red-Green"</span><span class="op">)</span><span class="op">[</span><span class="fl">5</span><span class="op">]</span>,</span>
 <span>               <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Red-Green"</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
 <span>               <span class="st">"grey10"</span>, <span class="st">"grey10"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/t-bf-support-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/t-bf-support-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare estimated values of t</span></span>
 <span><span class="va">bestTModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_t_ki"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_nt_ki"</span>, <span class="op">]</span>,</span>
@@ -295,7 +295,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="predict-which-projects-will-favour-a-free-t">Predict which projects will favour a free <em>t</em><a class="anchor" aria-label="anchor" href="#predict-which-projects-will-favour-a-free-t"></a>
@@ -335,7 +335,7 @@
 <span><span class="co">## logNTRatio 56.94737      367.3868</span></span></code></pre>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfBF</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/rf-t-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/rf-t-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nPred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">predBF</span><span class="op">)</span></span>
 <span></span>
@@ -346,7 +346,7 @@
 <span>              xlab <span class="op">=</span> <span class="fu"><a href="../reference/Decrypt.html">Decrypt</a></span><span class="op">(</span><span class="va">predictor</span><span class="op">)</span>,</span>
 <span>              ylab <span class="op">=</span> <span class="st">"Impact on predicted log(BF)"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/rf-t-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/rf-t-2.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="does-metadata-predict-the-value-of-t">Does metadata predict the value of <em>t</em>?<a class="anchor" aria-label="anchor" href="#does-metadata-predict-the-value-of-t"></a>
@@ -393,18 +393,18 @@
 <span>                    importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfT</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">rfT</span>, <span class="va">metaT</span>, <span class="va">logNTRatio</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">t50</span> <span class="op">~</span> <span class="va">metaT</span><span class="op">$</span><span class="va">logNTRatio</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-2.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-2.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">rfT</span>, <span class="va">metaT</span>, <span class="va">nTaxa</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">t50</span> <span class="op">~</span> <span class="va">metaT</span><span class="op">$</span><span class="va">nTaxa</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-3.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-3.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">part</span><span class="op">[</span><span class="st">"by_t_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">part</span><span class="op">[</span><span class="st">"by_ki"</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">.meta</span><span class="op">$</span><span class="va">taxon</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">part</span><span class="op">)</span><span class="op">]</span>, las <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>        frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, cex <span class="op">=</span> <span class="fl">0.8</span>, ylab <span class="op">=</span> <span class="st">"by_t &gt; by"</span>, notch <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -422,7 +422,7 @@
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">.meta</span><span class="op">$</span><span class="va">nTaxa</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tPref</span><span class="op">)</span><span class="op">]</span>, <span class="va">part</span><span class="op">[</span><span class="st">"by_t_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">part</span><span class="op">[</span><span class="st">"rm_by_t_ki"</span>, <span class="op">]</span>,</span>
 <span>       col <span class="op">=</span> <span class="fl">2</span>, pch <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-4.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-4-4.png" class="r-plt" alt="" width="576"></p>
 </div>
 </div>
 <div class="section level2">
@@ -438,7 +438,7 @@
 <span><span class="va">stdErr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">marginals</span>, <span class="st">"stdErr"</span><span class="op">)</span></span>
 <span><span class="va">mds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MarginalDiffs.html">MarginalDiffs</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">modelsN</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/initialize-n-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/initialize-n-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">stdErr</span>, <span class="va">mds</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Standard error of estimate"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Difference, stepping stone vs path sampling estimates"</span>,</span>
@@ -447,7 +447,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsN</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsN</span><span class="op">)</span>,</span>
 <span>       bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/initialize-n-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/initialize-n-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Number in which StN outperforms StMk</span></span>
 <span><span class="va">.ErrCompare</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">mod1</span>, <span class="va">mod2</span>, <span class="va">eps</span> <span class="op">=</span> <span class="va">epsBF</span><span class="op">)</span> <span class="op">{</span></span>
@@ -562,20 +562,20 @@
 <span>     frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Neo:Trans"</span>, ylab <span class="op">=</span> <span class="st">"Mk2 BF"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-6-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">.meta</span><span class="op">$</span><span class="va">nChar</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">mk2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, <span class="va">mk2</span>,</span>
 <span>     log <span class="op">=</span> <span class="st">"x"</span>, col <span class="op">=</span> <span class="va">mk2Col</span>, pch <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>     frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Number of characters"</span>, ylab <span class="op">=</span> <span class="st">"Mk2 BF"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-6-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-6-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">.meta</span><span class="op">$</span><span class="va">nTaxa</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">mk2</span><span class="op">)</span><span class="op">]</span>, <span class="va">mk2</span>, </span>
 <span>     log <span class="op">=</span> <span class="st">"x"</span>, col <span class="op">=</span> <span class="va">mk2Col</span>, pch <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>     frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Number of taxa"</span>, ylab <span class="op">=</span> <span class="st">"Mk2 BF"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-6-3.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-6-3.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">EvaluateNonStat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">marginals</span>, <span class="va">se</span>, <span class="va">epsBF</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">suffix</span> <span class="op">=</span> <span class="st">"_ki"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
@@ -623,19 +623,19 @@
 <span><span class="va">by_n</span> <span class="op">&lt;-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_ki"</span>, <span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ns</span> <span class="op">~</span> <span class="va">by_n</span>, asp <span class="op">=</span> <span class="fl">1</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span>diag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">ns_n</span> <span class="op">~</span> <span class="va">by_n</span>, asp <span class="op">=</span> <span class="fl">1</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>     xlab <span class="op">=</span> <span class="st">"Mkn - Mk"</span>, ylab <span class="op">=</span> <span class="st">"ns_n - Mk"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span>vert <span class="op">=</span> <span class="cn">TRUE</span>, diag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-7-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-7-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"ns_n_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"ns_ki"</span>, <span class="op">]</span>,</span>
 <span>     <span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_ki"</span>, <span class="op">]</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"+n, non-stat"</span>, ylab <span class="op">=</span> <span class="st">"+n, stationary"</span>,</span>
 <span>     asp <span class="op">=</span> <span class="fl">1</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span>vert <span class="op">=</span> <span class="cn">TRUE</span>, diag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-7-3.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-7-3.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare estimated values of n</span></span>
 <span><span class="va">bestNModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_nt_ki"</span>, <span class="op">]</span>,</span>
@@ -726,7 +726,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bestNSNModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"ns_n_ki"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"ns_nt_ki"</span>, <span class="op">]</span>,</span>
 <span>                       <span class="st">"ns_n_ki"</span>, <span class="st">"ns_nt_ki"</span><span class="op">)</span></span>
@@ -765,10 +765,10 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"bottomleft"</span>, pch <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, bty <span class="op">=</span> <span class="st">"n"</span>,</span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Stat pref."</span>, <span class="st">"NS pref, &lt; eps"</span>, <span class="st">"Non-Stat pref, &gt; eps"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nsA0</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-9-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-9-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Which variables predict support for a model with a free n?</span></span>
 <span><span class="va">nProj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">nModelBF</span><span class="op">)</span></span>
@@ -802,7 +802,7 @@
 <span><span class="co">## logNTRatio    52.96062      7281.780</span></span></code></pre>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfBF</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nPred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">predBF</span><span class="op">)</span></span>
 <span></span>
@@ -813,7 +813,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nModelBF</span> <span class="op">~</span> <span class="va">meta</span><span class="op">[</span>, <span class="va">predictor</span><span class="op">]</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="va">predictor</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-2.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-2.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">metaN</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">meta</span><span class="op">[</span>, <span class="st">"inferredN.50."</span><span class="op">]</span><span class="op">)</span>, <span class="op">]</span></span>
 <span><span class="va">n50</span> <span class="op">&lt;-</span> <span class="va">metaN</span><span class="op">[</span>, <span class="st">"inferredN.50."</span><span class="op">]</span></span>
@@ -829,7 +829,7 @@
 <span>                    ntree <span class="op">=</span> <span class="fl">10000</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfT</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-3.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-3.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">rfT</span>, <span class="va">metaT</span>, <span class="va">logNTRatio</span><span class="op">)</span></span>
@@ -838,7 +838,7 @@
 <span><span class="co">## logarithmic plot</span></span></code></pre>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-4.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-4.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">rfT</span>, <span class="va">metaT</span>, <span class="va">nTaxa</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">t50</span> <span class="op">~</span> <span class="va">metaT</span><span class="op">$</span><span class="va">nTaxa</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, log <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span></span></code></pre></div>
@@ -846,7 +846,7 @@
 <span><span class="co">## logarithmic plot</span></span></code></pre>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-5.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-11-5.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">.meta</span><span class="op">$</span><span class="va">nChar</span><span class="op">[</span><span class="st">"trans"</span>, <span class="op">]</span>, <span class="va">.meta</span><span class="op">$</span><span class="va">nChar</span><span class="op">[</span><span class="st">"neo"</span>, <span class="op">]</span>,</span>
@@ -860,7 +860,7 @@
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mk2 preferred"</span>, <span class="st">"&gt; eps"</span>, <span class="st">"&lt;= eps"</span>,  <span class="st">"mk preferred"</span><span class="op">)</span>,</span>
 <span>       pch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">16</span><span class="op">)</span>, pt.cex <span class="op">=</span> <span class="fl">1.2</span>,</span>
 <span>       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Red-Green"</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-12-1.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-12-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">.meta</span><span class="op">$</span><span class="va">nChar</span><span class="op">)</span>, <span class="va">.meta</span><span class="op">$</span><span class="va">nTaxa</span>,</span>
 <span>     pch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mk2</span><span class="op">)</span> <span class="op">&gt;</span> <span class="va">epsBF</span>, <span class="fl">16</span>, <span class="fl">1</span><span class="op">)</span>,</span>
@@ -875,7 +875,7 @@
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mk preferred"</span>, <span class="st">"&lt;eps"</span>, <span class="st">"&lt;eps"</span>, <span class="st">"mk2 preferred"</span><span class="op">)</span>,</span>
 <span>       pch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">16</span><span class="op">)</span>, pt.cex <span class="op">=</span> <span class="fl">1.2</span>,</span>
 <span>       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Red-Green"</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-12-2.png" width="576"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-12-2.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">mk2</span> <span class="op">~</span> <span class="va">.meta</span><span class="op">$</span><span class="va">taxon</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">mk2</span><span class="op">)</span><span class="op">]</span>, las <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>        frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, cex <span class="op">=</span> <span class="fl">0.8</span>, ylab <span class="op">=</span> <span class="st">"MK2 BF"</span>, notch <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -884,14 +884,14 @@
 <span><span class="co">## notches went outside hinges ('box'): maybe set notch=FALSE</span></span></code></pre>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-13-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-13-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/SpindleCompare.html">SpindleCompare</a></span><span class="op">(</span><span class="st">"by_nn_ki"</span>, <span class="st">"by_n_ki"</span>, <span class="va">marginals</span>, <span class="va">stdErr</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##          better worse  n</span></span>
 <span><span class="co">## by_nn_ki      8     7 64</span></span></code></pre>
 <div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-14-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-14-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nnWins</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_nn_ki"</span>, <span class="op">]</span> <span class="op">-</span></span>
 <span>                          <span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span>,</span>
@@ -936,7 +936,7 @@
 <div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_nn_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span> <span class="op">~</span></span>
 <span>       <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="va">stdErr</span><span class="op">[</span><span class="st">"by_nn_ki"</span>, <span class="op">]</span><span class="op">)</span>, frame <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="op">-</span><span class="fl">1</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-16-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_nn_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_ki"</span>, <span class="op">]</span>,</span>
 <span>     <span class="va">marginals</span><span class="op">[</span><span class="st">"by_nn_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span>,</span>
@@ -945,7 +945,7 @@
 <span>     xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">)</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_ki"</span>, <span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>     xlab <span class="op">=</span> <span class="st">"Advantage over StMk"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-16-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-16-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rate01</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"by_nn_ki"</span><span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span></span>
@@ -958,7 +958,7 @@
 <span><span class="va">medN</span> <span class="op">&lt;-</span> <span class="va">rate01</span><span class="op">[</span><span class="st">"50%"</span>, <span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">medN</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fl">0</span>, lwd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-16-3.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-16-3.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">medN</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 2.422601</span></span></code></pre>
@@ -1012,7 +1012,7 @@
 <span><span class="va">stdErr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">marginals</span>, <span class="st">"stdErr"</span><span class="op">)</span></span>
 <span><span class="va">mds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MarginalDiffs.html">MarginalDiffs</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">modelsNS</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/setup-ns-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/setup-ns-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">stdErr</span>, <span class="va">mds</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Standard error of estimate"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Difference, stepping stone vs path sampling estimates"</span>,</span>
@@ -1021,7 +1021,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsNS</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsNS</span><span class="op">)</span>,</span>
 <span>       bty <span class="op">=</span> <span class="st">"N"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/setup-ns-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/setup-ns-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"ns_nt_ki"</span>, <span class="st">"by_nt_ki"</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 14</span></span></code></pre>
@@ -1093,7 +1093,7 @@
 <div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">vioplot</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/vioplot/man/vioplot.html" class="external-link">vioplot</a></span><span class="op">(</span><span class="va">f01</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-19-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-19-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html" class="external-link">shapiro.test</a></span><span class="op">(</span><span class="va">f01</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
@@ -1225,7 +1225,7 @@
 <span><span class="co">## logNTRatio 26.13554      441.3499</span></span></code></pre>
 <div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfBF</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-20-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-20-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nPred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">predBF</span><span class="op">)</span></span>
 <span></span>
@@ -1239,7 +1239,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nsPref</span><span class="op">[</span><span class="va">nsProj</span><span class="op">]</span> <span class="op">~</span> <span class="va">nsMeta</span><span class="op">[</span>, <span class="va">predictor</span><span class="op">]</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="va">predictor</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-20-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/unnamed-chunk-20-2.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level2">
 <h2 id="heterogeneous-models">Heterogeneous models<a class="anchor" aria-label="anchor" href="#heterogeneous-models"></a>
@@ -1252,7 +1252,7 @@
 <span><span class="va">stdErr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="va">marginals</span>, <span class="st">"stdErr"</span><span class="op">)</span></span>
 <span><span class="va">mds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MarginalDiffs.html">MarginalDiffs</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">modelsHet</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/setup-het-1.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/setup-het-1.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">stdErr</span>, <span class="va">mds</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Standard error of estimate"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Difference, stepping stone vs path sampling estimates"</span>,</span>
@@ -1261,7 +1261,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsHet</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsHet</span><span class="op">)</span>,</span>
 <span>       bty <span class="op">=</span> <span class="st">"N"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-analysis_files/figure-html/setup-het-2.png" width="672"></p>
+<p><img src="parameter-analysis_files/figure-html/setup-het-2.png" class="r-plt" alt="" width="672"></p>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Which analyses are complete and have results available?</span></span>
 <span><span class="va">someIn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span></span>
@@ -1467,7 +1467,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

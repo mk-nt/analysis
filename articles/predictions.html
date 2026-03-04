@@ -109,7 +109,7 @@
 <a href="mailto:martin.smith@durham.ac.uk" class="email">martin.smith@durham.ac.uk</a>
 </h4>
             
-            <h4 data-toc-skip class="date">2025-11-07</h4>
+            <h4 data-toc-skip class="date">2026-03-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ms609/neotrans/blob/main/vignettes/predictions.Rmd" class="external-link"><code>vignettes/predictions.Rmd</code></a></small>
       <div class="hidden name"><code>predictions.Rmd</code></div>
@@ -202,7 +202,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">tRFBF</span>, <span class="va">tMeta</span><span class="op">[</span>, <span class="va">tPredictors</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">predictor</span><span class="op">)</span>,</span>
 <span>              rug <span class="op">=</span> <span class="cn">TRUE</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="predictions_files/figure-html/unnamed-chunk-1-1.png" width="576"></p>
+<p><img src="predictions_files/figure-html/unnamed-chunk-1-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Can we predict the value of t from the metadata?</span></span>
 <span><span class="va">metaT</span> <span class="op">&lt;-</span> <span class="va">tMeta</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">tMeta</span><span class="op">[</span>, <span class="st">"tValue.50."</span><span class="op">]</span><span class="op">)</span>, <span class="op">]</span></span>
@@ -231,7 +231,7 @@
 <span>     ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Inferred"</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"t"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">rfT</span>, <span class="va">metaT</span>, <span class="va">nTaxa</span>, rug <span class="op">=</span> <span class="cn">FALSE</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dotted"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="predictions_files/figure-html/predict-t-1.png" width="700"></p>
+<p><img src="predictions_files/figure-html/predict-t-1.png" class="r-plt" alt="" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare estimated values of n</span></span>
 <span><span class="va">bestNModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_nt_ki"</span>, <span class="op">]</span>,</span>
@@ -294,7 +294,7 @@
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">nRFBF</span>, <span class="va">nMeta</span><span class="op">[</span>, <span class="va">nPredictors</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">predictor</span><span class="op">)</span>,</span>
 <span>              rug <span class="op">=</span> <span class="cn">FALSE</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><img src="predictions_files/figure-html/n-values-1.png" width="576"></p>
+<p><img src="predictions_files/figure-html/n-values-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">metaN</span> <span class="op">&lt;-</span> <span class="va">nMeta</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">nMeta</span><span class="op">[</span>, <span class="st">"inferredN.50."</span><span class="op">]</span><span class="op">)</span>, <span class="op">]</span></span>
 <span><span class="va">ln50</span> <span class="op">&lt;-</span> <span class="va">metaN</span><span class="op">[</span>, <span class="st">"inferredLogN.50."</span><span class="op">]</span></span>
@@ -388,7 +388,7 @@
 <pre><code><span><span class="co">##       ... Correlated (p = 0.029): pcor ~ 0.28</span></span></code></pre>
 <pre><code><span><span class="co">## rank: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<p><img src="predictions_files/figure-html/plot-value-predicions-1.png" width="691.2"></p>
+<p><img src="predictions_files/figure-html/plot-value-predicions-1.png" class="r-plt" alt="" width="691.2"></p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">predN</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "logNTRatio" "nChar"      "rank"</span></span></code></pre>
@@ -415,7 +415,7 @@
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## nTaxa: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<p><img src="predictions_files/figure-html/plot-value-predicions-2.png" width="691.2"></p>
+<p><img src="predictions_files/figure-html/plot-value-predicions-2.png" class="r-plt" alt="" width="691.2"></p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">predA</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "logNTRatio" "nChar"</span></span></code></pre>
@@ -442,7 +442,7 @@
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## Warning in xy.coords(x, y): NAs introduced by coercion</span></span></code></pre>
 <pre><code><span><span class="co">## taxon: No significant correlation</span></span></code></pre>
-<p><img src="predictions_files/figure-html/plot-value-predicions-3.png" width="691.2"></p>
+<p><img src="predictions_files/figure-html/plot-value-predicions-3.png" class="r-plt" alt="" width="691.2"></p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tPredBF</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "tValue.50." "nChar"      "logNTRatio"</span></span></code></pre>
@@ -488,7 +488,7 @@
 <span>                ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<p><img src="predictions_files/figure-html/plot-value-predicions-4.png" width="691.2"></p>
+<p><img src="predictions_files/figure-html/plot-value-predicions-4.png" class="r-plt" alt="" width="691.2"></p>
 <pre><code><span><span class="co">## inferredLogN.50.: Correlated (p = 0): Spearman's rank correlation rho ~ -0.7</span></span></code></pre>
 <pre><code><span><span class="co">##       ... Correlated (p = 1.7e-07): pcor ~ -0.62</span></span></code></pre>
 <pre><code><span><span class="co">## nChar: Correlated (p = 4.4e-05): Spearman's rank correlation rho ~ 0.49</span></span></code></pre>
@@ -518,7 +518,7 @@
 <span>                ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<p><img src="predictions_files/figure-html/plot-value-predicions-5.png" width="691.2"></p>
+<p><img src="predictions_files/figure-html/plot-value-predicions-5.png" class="r-plt" alt="" width="691.2"></p>
 <pre><code><span><span class="co">## logNTRatio: Correlated (p = 0.009): Spearman's rank correlation rho ~ 0.32</span></span>
 <span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## charPerTax: Correlated (p = 0.00083): Spearman's rank correlation rho ~ 0.41</span></span></code></pre>
@@ -533,7 +533,7 @@
 <pre><code><span><span class="co">##       ... Correlated (p = 0.023): pcor ~ 0.3</span></span></code></pre>
 <pre><code><span><span class="co">## nTaxa: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<p><img src="predictions_files/figure-html/plot-value-predicions-6.png" width="691.2"></p>
+<p><img src="predictions_files/figure-html/plot-value-predicions-6.png" class="r-plt" alt="" width="691.2"></p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/OutputPlot.html">OutputPlot</a></span><span class="op">(</span><span class="st">"predicting_nt"</span>, <span class="fl">7.2</span>, <span class="fl">6</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>, mar <span class="op">=</span> <span class="va">margins</span><span class="op">)</span></span>
@@ -563,7 +563,7 @@
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## rank: Correlated (p = 0.013): Spearman's rank correlation rho ~ -0.31</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<p><img src="predictions_files/figure-html/predicting-nt-1.png" width="691.2"></p>
+<p><img src="predictions_files/figure-html/predicting-nt-1.png" class="r-plt" alt="" width="691.2"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -581,7 +581,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
