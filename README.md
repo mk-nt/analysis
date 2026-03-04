@@ -30,13 +30,15 @@ Analyses performed by the package are also cached.
 ## Setting up
 
 Get started by checking out this repository from GitHub. 
-Instructions are in the [installation vignette](https://mk-nt.github.io/analysis/articles/install.html)
+Instructions are in the [installation vignette](
+https://mk-nt.github.io/analysis/articles/install.html).
 
 Details of how to configure matrices for analysis are given in the 
-[matrix processing vignette](https://mk-nt.github.io/analysis/articles/matrix-processing.html)
+[matrix processing vignette](
+https://mk-nt.github.io/analysis/articles/matrix-processing.html).
 
-A workflow to begin analysis can then be followed using [`?EnqueueMC`](https://mk-nt.github.io/analysis/reference/EnqueueMC)
-
+A workflow to begin analysis can then be followed using [`?EnqueueMC`](
+https://mk-nt.github.io/analysis/reference/EnqueueMC).
 Completed analyses can be retrieved from the server using 
 [`?Collect`](https://mk-nt.github.io/analysis/reference/Collect) or
 [`?UpdateRecords`](https://mk-nt.github.io/analysis/reference/UpdateRecords).
