@@ -56,7 +56,7 @@ Suggests:
   VSURF,
 Remotes:
   afmagee/treess,
-  ms609/RevBayesR
+  RevBayes=ms609/RevBayesR
 Config/Needs/website: caret, pkgdown
 Config/testthat/parallel: false
 Config/testthat/edition: 3
