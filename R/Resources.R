@@ -14,7 +14,7 @@
 ConnectSSH <- function() {
   if (Sys.getenv("sshLogin") == "") {
     warning("sshLogin environment variable not set in ConnectSSH()")
-    return(NULL)
+    return(structure(structure(FALSE, e = "sshLogin environment variable not set in ConnectSSH()")))
   }
   tryCatch(
     ssh_connect(Sys.getenv("sshLogin"), keyfile = Sys.getenv("sshKey"),
