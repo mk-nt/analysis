@@ -82,11 +82,12 @@ modelErr <- sapply(projects, function(pID) {
   stdErr[bestModel[[pID]], pID] + marginals["by_ki", pID]
 })
 dashCol <- "grey70"
+bfLab <- "Model Bayes factor"
 
 OutputPlot("treeDiff", 7.2, 7.2, function() {
-  par(mfrow = c(2, 2), mar = c(4.6, 4.6, 0.4, 0.4))
+  par(mfrow = c(2, 2), mar = c(4.2, 4.2, 0.4, 0.4))
   plot(treeChange["sil", ] ~ modelBF,
-       xlab = "Model BF", ylab = "Silhouette score",
+       xlab = bfLab, ylab = "Silhouette score",
        #pch = 16, col = ModelCol(bestModel),
        pch = 3,
        xpd = NA, frame.plot = FALSE)
@@ -95,7 +96,7 @@ OutputPlot("treeDiff", 7.2, 7.2, function() {
   Panel(1)
   
   plot(treeChange["prec", ] ~ modelBF,
-       xlab = "Model BF", ylab = "Change in precision (MAD, %)",
+       xlab = bfLab, ylab = "Change in precision (MAD, %)",
        xpd = NA, frame.plot = FALSE,
        #pch = 16, col = ModelCol(bestModel)
        pch = 3)
@@ -106,7 +107,7 @@ OutputPlot("treeDiff", 7.2, 7.2, function() {
   Panel(2)
   
   plot(treeChange["medMed", ] ~ modelBF,
-       xlab = "Model BF", ylab = "Normalized CI Distance between median trees",
+       xlab = bfLab, ylab = "Normalized CI Distance between median trees",
        type = "n",
        #pch = 16, col = ModelCol(bestModel),
        frame.plot = FALSE)
@@ -135,7 +136,7 @@ OutputPlot("treeDiff", 7.2, 7.2, function() {
                    frame.plot = FALSE, wex = 42, col = "transparent", border = NA)
   
   plot(modelBF, relLen,
-       xlab = "Model BF", ylab = "Relative tree length", xpd = NA,
+       xlab = bfLab, ylab = "Relative tree length", xpd = NA,
        log = "y", 
        #pch = 16, col = ModelCol(bestModel),
        pch = 3,

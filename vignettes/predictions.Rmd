@@ -84,6 +84,7 @@ tRFBF <- randomForest(tMeta[, tPredBF, drop = FALSE], tModelBF,
                       ntree = 10000, importance = TRUE)
 tImp <- importance(tRFBF)
 tIncMSE <- tImp[, "%IncMSE"]
+lbfLab <- "log Bayes factor"
 
 nTPred <- length(tPredBF)
 
@@ -91,7 +92,7 @@ par(mfrow = c(1, nTPred))
 for (predictor in tPredBF[order(tIncMSE, decreasing = TRUE)]) {
   plot(tModelBF ~ tMeta[, predictor], frame.plot = FALSE,
        xlab = Decrypt(predictor),
-       ylab = "log(Bayes Factor)")
+       ylab = lbfLab)
   EpsLine()
   partialPlot(tRFBF, tMeta[, tPredictors], as.character(predictor),
               rug = TRUE, add = TRUE)
@@ -181,7 +182,7 @@ par(mfrow = c(ceiling(nNPred / 3), min(3, nNPred)))
 for (predictor in nPredBF[order(nIncMSE, decreasing = TRUE)]) {
   plot(nModelBF ~ nMeta[, predictor], frame.plot = FALSE,
        xlab = Decrypt(predictor),
-       ylab = "log(Bayes Factor)")
+       ylab = lbfLab)
   EpsLine()
   partialPlot(nRFBF, nMeta[, nPredictors], as.character(predictor),
               rug = FALSE, add = TRUE)
@@ -310,7 +311,7 @@ OutputPlot("predict_t_bf", 7.2, 5, function() {
   for (predictor in tPredictors[order(importance(prfT)[, "%IncMSE"],
                                       decreasing = TRUE)]) {
     PredictWith(metaTPred, predictor, tModelBF, prfT, predictor %in% tPredBF,
-                ylab = "log(Bayes Factor)")
+                ylab = lbfLab)
   }
 })
 
@@ -323,7 +324,7 @@ OutputPlot("predict_n_bf", 7.2, 5, function() {
   for (predictor in nPredictors[order(importance(prfN)[, "%IncMSE"],
                                       decreasing = TRUE)]) {
     PredictWith(metaNPred, predictor, nModelBF, prfN, predictor %in% nPredBF,
-                ylab = "log(Bayes Factor)")
+                ylab = lbfLab)
   }
 })
 
@@ -336,7 +337,7 @@ OutputPlot("predict_a_bf", 7.2, 5, function() {
   for (predictor in aPredictors[order(importance(prfA)[, "%IncMSE"],
                                       decreasing = TRUE)]) {
     PredictWith(metaAPred, predictor, nsModelBF, prfA, predictor %in% aPredBF,
-                ylab = "log(Bayes Factor)")
+                ylab = lbfLab)
   }
 })
 ```

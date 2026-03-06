@@ -46,7 +46,7 @@ OutputPlot("priorPost", 7.2, 3.2, function() {
   message("rho = ", signif(
     InformationGain(setdiff(projects, c(1210, 3832, 3408)),
                     tModels, "rate_neo", "nCoded")$estimate, 3))
-  Panel(1)
+  Panel(1, 4)
   legend("topleft", legend = ModelLabel(tModels), bty = "n",
          col = ModelCol(tModels), pch = 16)
   message("rho = ", signif(

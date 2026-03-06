@@ -71,8 +71,8 @@ OutputPlot("modelCmp", wd, wd * mfr[1] / mfr[2] * spaceForOma, function() {
     stdErr = stdErr
   )
   Panel(3, 4)
-  text(2.5, 70, "\U2191 gain:loss asymmetry improves ML")
-  text(2.5, -16.35, "\U2193 gain:loss symmetry improves ML", xpd = NA)
+  text(2.5, 70, "\U2191 g\U2013l asymmetry improves ML")
+  text(2.5, -16.35, "\U2193 gain\U2013loss symmetry improves ML", xpd = NA)
   
   SpindleCompare("by_nn_ki", "by_n_ki", marginals, stdErr)
   Panel(4)
