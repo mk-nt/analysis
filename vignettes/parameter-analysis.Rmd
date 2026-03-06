@@ -31,7 +31,15 @@ epsBF <- log(10) # "Strong" support, per Jeffries 1939
 
 ## Models with a free _t_ parameter
 
+The parameter _t_ is the ratio of the evolution rate of transformational
+characters to that of neomorphic characters; fixing _t_ = 1 assumes both
+partitions evolve at the same rate.
+
 ### Review accuracy of marginal likelihood estimates
+
+Before interpreting Bayes factors we verify that stepping-stone and
+path-sampling marginal likelihood estimates agree, as large discrepancies
+would undermine model comparisons.
 
 ```{r}
 modelsT <- c("by_ki", "by_n_ki", "by_t_ki", "by_nt_ki", "rm_by_t_ki")
@@ -49,6 +57,10 @@ legend("topleft", ModelLabel(modelsT), pch = 16, col = ModelCol(modelsT),
 ```
 
 ### When is a partitioned model preferred?
+
+Using a threshold of log(BF) > log(10) (Jeffreys' 'strong' evidence), we
+identify datasets where a free _t_ is decisively favoured or disfavoured,
+and plot these against the character composition of each dataset.
 
 ```{r t-bf-support}
 part <- EvaluatePartitioning(marginals)
@@ -78,6 +90,10 @@ legend("topleft", bty = "n", title = expression(italic(t) ~ "parameter:"),
                hcl.colors(6, "Red-Green")[2],
                "grey10", "grey10"))
 ```
+
+We next examine the posterior distribution of _t_ under the best-fitting
+stationary model for each dataset, and test whether inferred values differ
+significantly from one.
 
 ```{r compare-t-estimate}
 # Compare estimated values of t
@@ -160,6 +176,9 @@ tCol <- hcl.colors(6, "Red-Green")[2:5][tColBin]
 
 ### Predict which projects will favour a free _t_
 
+Variable selection via VSURF, followed by a random forest, identifies which
+dataset-level properties predict whether a free _t_ is supported.
+
 ```{r, message = FALSE}
 # Can we predict which projects will benefit from a free t parameter?
 tProj <- names(tSupport)
@@ -204,6 +223,9 @@ for (predictor in predBF) {
 
 
 ### Does metadata predict the value of _t_?
+
+We ask whether the posterior median of _t_ can itself be predicted from
+dataset metadata, using the same variable-selection approach.
 
 ```{r predict-t-from-meta, message = FALSE}
 # Can we predict the value of t from the metadata?
@@ -253,6 +275,12 @@ points(.meta$nTaxa[names(tPref)], part["by_t_ki", ] - part["rm_by_t_ki", ],
 
 ## Free _n_ parameter (gain to loss ratio)
 
+The parameter _n_ is the ratio of the character gain rate to the loss rate;
+a value other than one indicates asymmetric character evolution under an Mk2
+model.
+As in the _t_-parameter section, marginal likelihood estimates are first
+checked for consistency across integration methods.
+
 ```{r initialize-n}
 modelsN <- c("by_ki",
              "by_n_ki", "by_nn_ki", "by_t_ki", "by_nt_ki",
@@ -271,6 +299,10 @@ abline(0, 1, lty = "dashed", col = "grey70")
 legend("topleft", ModelLabel(modelsN), pch = 16, col = ModelCol(modelsN),
        bty = "n")
 ```
+
+We compare models with and without a free _n_ under both stationary and
+non-stationary assumptions, checking whether gains over the symmetric Mk
+model are replicated relative to randomised controls.
 
 ```{r}
 # Number in which StN outperforms StMk
@@ -362,6 +394,9 @@ sum(!is.na(marginals["ns_n_ki", ] < marginals["ns_ki", ]))
 # Summary: very similar, with slightly more preferring free n
 ```
 
+We visualise Mk2 model support as a function of dataset composition (neo:trans
+ratio, character count, taxon count) and by taxonomic group.
+
 ```{r}
 mk2Col <- hcl.colors(6, "Red-Green")[c(2, 2, 5, 5)][
   cut(mk2, breaks = c(-Inf, -epsBF, 0, epsBF, Inf))]
@@ -383,6 +418,9 @@ plot(.meta$nTaxa[names(mk2)], mk2,
      frame.plot = FALSE, xlab = "Number of taxa", ylab = "Mk2 BF")
 EpsLine()
 ```
+
+For completeness, we evaluate whether non-stationary Mk and Mk2 models
+improve on each other and on their stationary counterparts.
 
 ```{r}
 EvaluateNonStat <- function(marginals, se, epsBF = 1, suffix = "_ki") {
@@ -438,6 +476,9 @@ plot(marginals["ns_n_ki", ] - marginals["ns_ki", ],
 EpsLine(vert = TRUE, diag = TRUE)
 ```
 
+We extract the posterior distribution of _n_ under the best-fitting stationary
+model for each dataset, and test whether inferred values differ significantly
+from one.
 
 ```{r}
 # Compare estimated values of n
@@ -505,6 +546,10 @@ nCol <- hcl.colors(6, "Red-Green")[2:5][
 }
 ```
 
+For datasets where non-stationary models are preferred, we extract joint
+estimates of _n_ and the root-state frequency _a_~0~, and check whether
+the two parameters are correlated.
+
 ```{r}
 bestNSNModel <- ifelse(marginals["ns_n_ki", ] > marginals["ns_nt_ki", ],
                        "ns_n_ki", "ns_nt_ki")
@@ -546,6 +591,9 @@ legend("bottomleft", pch = 3, col = 1:3, bty = "n",
 
 plot(nsA0, frame.plot = FALSE)
 ```
+
+Variable-selection random forests identify metadata predictors of Mk2 model
+support and of the inferred value of _n_.
 
 ```{r, message = FALSE}
 # Which variables predict support for a model with a free n?
@@ -718,6 +766,11 @@ message("_n_ differs from unity (w/ pp > 95%) in ",
 
 ## Non-stationarity
 
+Non-stationary models allow the root-state frequency to differ from the
+stationary distribution implied by the gain and loss rates, with the
+departure parameterised by _a_~0~.
+As before, marginal likelihood estimates are first validated.
+
 ```{r setup-ns}
 modelsNS <- c("by_ki", "by_n_ki", "by_nt_ki",
               "ns_ki", "ns_n_ki", "ns_nt_ki")
@@ -734,10 +787,18 @@ legend("topleft", ModelLabel(modelsNS), pch = 16, col = ModelCol(modelsNS),
        bty = "n")
 ```
 
-```{r}
-sum(.ErrCompare("ns_nt_ki", "by_nt_ki"), na.rm = TRUE)
-sum(.ErrCompare("by_ki", "ns_ki"))
+We determine how often the best non-stationary model outperforms the best
+stationary model, and vice versa.
 
+```{r}
+StatCompare <- function(suffix) {
+  ns <- paste0("ns_", suffix)
+  st <- paste0("by_", suffix)
+  paste0(ModelLabel(ns), " outperforms (underperforms) ", ModelLabel(st),
+         " in ", sum(.ErrCompare(ns, st)), " (",
+         sum(.ErrCompare(st, ns)), ") datasets"
+  )
+}
 bestS <- apply(marginals[1:3, ], 2, which.max)
 bestNS <- apply(marginals[4:6, ], 2, which.max)
 
@@ -747,18 +808,22 @@ bestML_NS <- marginals[cbind(3 + bestNS, seq_len(ncol(marginals)))]
 bestSE_S  <- stdErr[cbind(bestS,  seq_len(ncol(stdErr)))]
 bestSE_NS <- stdErr[cbind(3 + bestNS, seq_len(ncol(stdErr)))]
 
-# When does the best non-stationary model outperform the best stat?
-sum(.OutwithError(bestML_NS - bestML_S, .DiffErr(bestSE_S, bestSE_NS)))
-# When does the best stationary model outperform the best non-stat?
-sum(.OutwithError(bestML_S - bestML_NS, .DiffErr(bestSE_S, bestSE_NS)))
-sum(!is.na(bestML_NS - bestML_S))
+paste(
+  "the best-fitting non-stationary model outperforms the best stationary",
+  "model in",
+  sum(.OutwithError(bestML_NS - bestML_S, .DiffErr(bestSE_S, bestSE_NS))),
+  "of", sum(!is.na(bestML_NS - bestML_S)),
+  "datasets, and is outperformed in",
+  sum(.OutwithError(bestML_S - bestML_NS, .DiffErr(bestSE_S, bestSE_NS)))
+)
 
-rowSums(.OutwithError(marginals[4:6, ] - marginals[1:3, ],
-                      .DiffErr(stdErr[1:3, ], stdErr[4:6, ])), na.rm = TRUE)
-rowSums(.OutwithError(marginals[1:3, ] - marginals[4:6, ],
-                      .DiffErr(stdErr[1:3, ], stdErr[4:6, ])), na.rm = TRUE)
+StatCompare("ki")
+StatCompare("n_ki")
+StatCompare("nt_ki")
 ```
 
+We extract the root-frequency parameter _a_~0~ from the best-fitting
+non-stationary model for each dataset.
 
 ```{r}
 # For which analyses are results available?
@@ -777,6 +842,9 @@ nsValue <- sapply(seq_along(bestS), function(i) {
 })
 colnames(nsValue) <- names(bestS)
 ```
+
+We test whether the log-odds root frequency departs significantly from zero
+(i.e. from equal root-state probabilities).
 
 ```{r}
 # Is the median root frequency different from zero?
@@ -804,6 +872,9 @@ sum(a97.5 < 1, na.rm = TRUE)
 sum(a2.5 > 1 | a97.5 < 1, na.rm = TRUE)
 sum(!is.na(a2.5) & !is.na(a97.5))
 ```
+
+For robustness, we repeat using a single fixed model (NstMk) throughout
+rather than the best-fitting non-stationary model for each dataset.
 
 ```{r best-nstmk-summary}
 # Repeat, using a single model throughout.  The results turn out to be similar.
@@ -850,6 +921,9 @@ sum(!is.na(an2.5) & !is.na(an97.5))
 median(a50, na.rm = TRUE)
 ```
 
+Variable-selection random forests identify metadata predictors of support
+for non-stationary models.
+
 ```{r predict-non-stat, message = FALSE}
 # Can we predict which projects will benefit from a non-stationary model?
 nsProj <- intersect(names(nsPref), names(bestS)[!is.na(nsValue[1, ])])
@@ -895,6 +969,11 @@ for (predictor in predBF) {
 
 ## Heterogeneous models
 
+Heterogeneous models allow the 0↔1 rate to vary among characters, with
+variants differing in whether rate heterogeneity is shared across all
+two-state characters (Het1) or partitioned between neomorphic and
+transformational characters (Het, HetB, HetM, HetBM).
+
 ```{r setup-het}
 modelsHet <- c("by_ki", "by_n_ki", "by_nt_ki",
                "ns_ki", "ns_n_ki", "ns_nt_ki",
@@ -912,6 +991,9 @@ legend("topleft", ModelLabel(modelsHet), pch = 16, col = ModelCol(modelsHet),
        bty = "N")
 ```
 
+We identify datasets with complete results for both model families and
+select the best-fitting homogeneous and heterogeneous model for each.
+
 ```{r clean}
 # Which analyses are complete and have results available?
 someIn <- colSums(!is.na(marginals[1:6, ])) > 0 &
@@ -926,6 +1008,10 @@ hetErr <- sapply(seq_along(bestHet), function(i) {
 })
 ```
 
+We test whether the best heterogeneous model outperforms the best
+homogeneous model, and evaluate the added benefit of progressively finer
+partitioning of rate heterogeneity between neomorphic and transformational
+characters.
 
 ```{r het-eval}
 # Does the best het model beat the best homogeneous?
@@ -994,6 +1080,10 @@ hg1Pref <- sum(
 sum(hg1Pref)
 length(hg2Pref)
 ```
+
+Using a strict criterion (a model must outperform both competitors), we
+identify which of HetB, HetM and HetBM most consistently achieves the
+best fit.
 
 ```{r a-best-strict}
 ABestStrict <- function(a) {
