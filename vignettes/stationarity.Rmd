@@ -23,71 +23,71 @@ library("neotrans")
 ```
 
 ```{r compute-statistics, message = FALSE, warn = FALSE}
-p1 <- vapply(KiProjects(), function(pID) {
-  neo <- InfNeo(pID)
-  p1Taxa <- neo[["1"]] / (neo[["0"]] + neo[["1"]])
-  p1Obs <- sum(neo[["1"]]) / sum(neo[["0"]], neo[["1"]])
+.sim_available <- !isFALSE(Simulated01s(KiProjects()[[1]], "by_n_ki"))
+.cache <- system.file("extdata/stationarity_data.RData", package = "neotrans")
+
+if (.sim_available) {
+  p1 <- vapply(KiProjects(), function(pID) {
+    neo <- InfNeo(pID)
+    p1Taxa <- neo[["1"]] / (neo[["0"]] + neo[["1"]])
+    p1Obs <- sum(neo[["1"]]) / sum(neo[["0"]], neo[["1"]])
+    
+    p1Sim <- Simulated01s(pID, "by_n_ki")
+    if (length(p1Sim) < 2) {
+      return(rep(NA_real_, 1 + 6 + 6))
+    }
+    cli::cli_progress_message("{pID}: Compute Sim stats")
+    p1Sim <- p1Sim["1", ] / colSums(p1Sim)
+    c(obs = p1Obs,
+      obs = quantile(p1Taxa, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
+      obs.mad = mad(p1Taxa),
+      sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
+      sim.mad = mad(p1Sim))
+  }, double(1 + 6 + 6)); cli::cli_progress_done()
   
-  p1Sim <- Simulated01s(pID, "by_n_ki")
-  if (length(p1Sim) < 2) {
-    return(c(obs = NA_real_,
-             obs = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
-             obs.mad = NA_real_,
-             sim = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
-             sim.mad = NA_real_))
-  }
-  cli::cli_progress_message("{pID}: Compute Sim stats")
-  p1Sim <- p1Sim["1", ] / colSums(p1Sim)
-  c(obs = p1Obs,
-    obs = quantile(p1Taxa, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
-    obs.mad = mad(p1Taxa),
-    sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
-    sim.mad = mad(p1Sim))
-}, double(1 + 6 + 6)); cli::cli_progress_done()
+  ns1 <- vapply(KiProjects(), function(pID) {
+    c(obs1 = InfNeo(pID)[[c("p", "1")]],
+      obs1 = quantile(InfNeo(pID)[["p1"]], c(0.25, 0.75), na.rm = TRUE),
+      root1 = ExistingResults(pID, "ns_n_ki")[["parameters"]][
+        , "root_freqs.2."] %||% rep(NA_real_, 6))
+  }, double(1 + 2 + 6))
+  
+  nsP1AtStat <- vapply(KiProjects(), function(pID) {
+    p1Sim <- Simulated01s(pID, "ns_n_ki", "stat")
+    if (length(p1Sim) < 2) {
+      return(rep(NA_real_, 6))
+    }
+    p1Sim <- p1Sim["1", ] / colSums(p1Sim)
+    c(sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
+      sim.mad = mad(p1Sim))
+  }, double(6)); cli::cli_progress_done()
+  
+  nsP1AtObs <- vapply(KiProjects(), function(pID) {
+    p1Sim <- Simulated01s(pID, "ns_n_ki", "obs")
+    if (length(p1Sim) < 2) {
+      return(rep(NA_real_, 6))
+    }
+    p1Sim <- p1Sim["1", ] / colSums(p1Sim)
+    c(sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
+      sim.mad = mad(p1Sim))
+  }, double(6)); cli::cli_progress_done()
+  
+  rootFreqCf <- vapply(KiProjects(), function(pID) {
+    par <- ExistingResults(pID, "ns_n_ki")[["parameters"]]
+    if (is.null(par)) {
+      MakeSlurm(pID, "ns_n_ki", ml = FALSE)
+      return(rep(NA_real_, 2))
+    }
+    n <- 1 / par["50%", "rate_loss"] # confusingly named?
+    c(pi0 = 1 / (1 + n), # Probability of absence at stationary distribution
+      a0 = par["50%", "root_freqs.1."])
+  }, double(2))
+  
+  delta <- rootFreqCf["a0", ] - rootFreqCf["pi0", ]
+} else {
+  load(.cache) # loads p1, ns1, nsP1AtStat, nsP1AtObs, rootFreqCf, delta, kiNeoChar
+}
 
-ns1 <- vapply(KiProjects(), function(pID) {
-  c(obs1 = InfNeo(pID)[[c("p", "1")]],
-    obs1 = quantile(InfNeo(pID)[["p1"]], c(0.25, 0.75), na.rm = TRUE),
-    root1 = ExistingResults(pID, "ns_n_ki")[["parameters"]][
-      , "root_freqs.2."] %||% setNames(rep(NA_real_, 6),
-                                       c("2.5%", "25%", "50%", "75%", "97.5%", "mad")))
-}, double(1 + 2 + 6))
-
-nsP1AtStat <- vapply(KiProjects(), function(pID) {
-  p1Sim <- Simulated01s(pID, "ns_n_ki", "stat")
-  if (length(p1Sim) < 2) {
-    return(c(sim = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
-             sim.mad = NA_real_))
-  }
-  p1Sim <- p1Sim["1", ] / colSums(p1Sim)
-  c(sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
-    sim.mad = mad(p1Sim))
-}, double(6)); cli::cli_progress_done()
-
-nsP1AtObs <- vapply(KiProjects(), function(pID) {
-  p1Sim <- Simulated01s(pID, "ns_n_ki", "obs")
-  if (length(p1Sim) < 2) {
-    return(c(sim = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
-             sim.mad = NA_real_))
-  }
-  p1Sim <- p1Sim["1", ] / colSums(p1Sim)
-  c(sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
-    sim.mad = mad(p1Sim))
-}, double(6)); cli::cli_progress_done()
-
-
-rootFreqCf <- vapply(KiProjects(), function(pID) {
-  par <- ExistingResults(pID, "ns_n_ki")[["parameters"]]
-  if (is.null(par)) {
-    MakeSlurm(pID, "ns_n_ki", ml = FALSE)
-    return(c(pi0 = NA_real_, a0 = NA_real_))
-  }
-  n <- 1 / par["50%", "rate_loss"] # confusingly named?
-  c(pi0 = 1 / (1 + n), # Probability of absence at stationary distribution
-    a0 = par["50%", "root_freqs.1."])
-}, double(2))
-
-delta <- rootFreqCf["a0", ] - rootFreqCf["pi0", ]
 .meta <- Metadata()
 kiNeoChar <- .meta$nChar["neo", KiProjects()]
 ```
