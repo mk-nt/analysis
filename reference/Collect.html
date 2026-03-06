@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">neotrans</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2025-11-06</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2026-03-06</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Collect</span><span class="op">(</span>days <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Collect</span><span class="op">(</span>days <span class="op">=</span> <span class="fl">1</span>, searchRemote <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -100,6 +100,14 @@
 <dl><dt id="arg-days">days<a class="anchor" aria-label="anchor" href="#arg-days"></a></dt>
 <dd><p>Numeric specifying how many days since last collection to
 retrieve</p></dd>
+
+
+<dt id="arg-searchremote">searchRemote<a class="anchor" aria-label="anchor" href="#arg-searchremote"></a></dt>
+<dd><p>Logical specifying whether to aggressively pull any
+uncommitted results found on the remote server.
+This can pull through results that didn't commit due to a run timing out
+before it could execute its git proceedings: but in rare cases this seems
+to introduce conflicts or issues, so needs keeping a careful eye on.</p></dd>
 
 </dl></div>
     <div id="value">

@@ -38,6 +38,7 @@
 <url><loc>/reference/EvaluatePartitioning.html</loc></url>
 <url><loc>/reference/ExistingResults.html</loc></url>
 <url><loc>/reference/ExtendRun.html</loc></url>
+<url><loc>/reference/FetchLogIfMissing.html</loc></url>
 <url><loc>/reference/FetchResults.html</loc></url>
 <url><loc>/reference/HasConverged.html</loc></url>
 <url><loc>/reference/HetNPlot.html</loc></url>
@@ -68,11 +69,13 @@
 <url><loc>/reference/ParsimonyFile.html</loc></url>
 <url><loc>/reference/PastRuns.html</loc></url>
 <url><loc>/reference/Peek.html</loc></url>
+<url><loc>/reference/PlotParamViolin.html</loc></url>
 <url><loc>/reference/PosteriorTreeSteps.html</loc></url>
 <url><loc>/reference/PrecisionIncrease.html</loc></url>
 <url><loc>/reference/PredictWith.html</loc></url>
 <url><loc>/reference/PrepareMatrix.html</loc></url>
 <url><loc>/reference/PriorVsPost.html</loc></url>
+<url><loc>/reference/QueueSim.html</loc></url>
 <url><loc>/reference/ReadTrees.html</loc></url>
 <url><loc>/reference/ResultsDir.html</loc></url>
 <url><loc>/reference/RevBayes.html</loc></url>
@@ -105,8 +108,10 @@
 <url><loc>/reference/UpdateRecords.html</loc></url>
 <url><loc>/reference/dot-DiffErr.html</loc></url>
 <url><loc>/reference/dot-LoadMetadata.html</loc></url>
+<url><loc>/reference/dot-MeanAcc.html</loc></url>
 <url><loc>/reference/dot-NCoded.html</loc></url>
 <url><loc>/reference/dot-OutwithError.html</loc></url>
+<url><loc>/reference/dot-PoolRuns.html</loc></url>
 <url><loc>/reference/incompleteBeta.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 </urlset>

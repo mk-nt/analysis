@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">neotrans</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2025-11-06</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2026-03-06</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
 <a href="mailto:martin.smith@durham.ac.uk" class="email">martin.smith@durham.ac.uk</a>
 </h4>
             
-            <h4 data-toc-skip class="date">2026-03-04</h4>
+            <h4 data-toc-skip class="date">2026-03-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ms609/neotrans/blob/main/vignettes/predictions.Rmd" class="external-link"><code>vignettes/predictions.Rmd</code></a></small>
       <div class="hidden name"><code>predictions.Rmd</code></div>
@@ -212,7 +212,7 @@
 <span></span>
 <span><span class="co"># Surprisingly, yes.  Why might this be?</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">predT</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## logNTRatio, nTaxa</span></span></code></pre>
+<pre><code><span><span class="co">## logNTRatio, nChar, nTaxa</span></span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rfT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">(</span><span class="va">metaT</span><span class="op">[</span>, <span class="va">predT</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, <span class="va">t50</span>, ntree <span class="op">=</span> <span class="fl">10000</span>,</span>
 <span>                    importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -303,7 +303,7 @@
 <span><span class="va">predN</span> <span class="op">&lt;-</span> <span class="va">nPredictors</span><span class="op">[</span><span class="va">vsurfN</span><span class="op">[[</span><span class="st">"varselect.interp"</span><span class="op">]</span><span class="op">]</span><span class="op">]</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">predN</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## logNTRatio, nChar, rank</span></span></code></pre>
+<pre><code><span><span class="co">## logNTRatio, nChar</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sMarginals</span> <span class="op">&lt;-</span> <span class="va">marginals</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span><span class="st">"ns_"</span>, <span class="st">"by_"</span>, <span class="va">predNS</span><span class="op">)</span>, <span class="op">]</span></span>
 <span><span class="va">nsMarginals</span> <span class="op">&lt;-</span> <span class="va">marginals</span><span class="op">[</span><span class="va">predNS</span>, <span class="op">]</span></span>
@@ -364,7 +364,7 @@
 <span></span>
 <span><span class="va">tvPredictors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="va">tPredictors</span>, <span class="st">"tValue.50."</span><span class="op">)</span></span>
 <span><span class="va">predT</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "logNTRatio" "nTaxa"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "logNTRatio" "nChar"      "nTaxa"</span></span></code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">metaTVPred</span> <span class="op">&lt;-</span> <span class="va">metaT</span><span class="op">[</span>, <span class="va">tvPredictors</span><span class="op">]</span></span>
 <span><span class="va">prfTV</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">(</span><span class="va">metaTVPred</span>, <span class="va">t50</span>, ntree <span class="op">=</span> <span class="fl">10000</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -376,22 +376,22 @@
 <span>                <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Inferred log "</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"t"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## logNTRatio: Correlated (p = 2.3e-10): Spearman's rank correlation rho ~ -0.69</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 1.1e-09): pcor ~ -0.69</span></span></code></pre>
-<pre><code><span><span class="co">## nTaxa: Correlated (p = 0.014): Spearman's rank correlation rho ~ -0.31</span></span></code></pre>
+<pre><code><span><span class="co">## logNTRatio: Correlated (p = 1e-09): Spearman's rank correlation rho ~ -0.67</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 5.5e-09): pcor ~ -0.67</span></span></code></pre>
+<pre><code><span><span class="co">## nTaxa: Correlated (p = 0.017): Spearman's rank correlation rho ~ -0.3</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## nChar: Correlated (p = 0.0058): Spearman's rank correlation rho ~ -0.34</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 0.022): pcor ~ -0.3</span></span></code></pre>
+<pre><code><span><span class="co">## nChar: Correlated (p = 0.0051): Spearman's rank correlation rho ~ -0.35</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 0.018): pcor ~ -0.31</span></span></code></pre>
+<pre><code><span><span class="co">## charPerTax: No significant correlation</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 0.025): pcor ~ 0.29</span></span></code></pre>
 <pre><code><span><span class="co">## Warning in xy.coords(x, y): NAs introduced by coercion</span></span></code></pre>
 <pre><code><span><span class="co">## taxon: No significant correlation</span></span></code></pre>
-<pre><code><span><span class="co">## charPerTax: No significant correlation</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 0.029): pcor ~ 0.28</span></span></code></pre>
 <pre><code><span><span class="co">## rank: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <p><img src="predictions_files/figure-html/plot-value-predicions-1.png" class="r-plt" alt="" width="691.2"></p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">predN</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "logNTRatio" "nChar"      "rank"</span></span></code></pre>
+<pre><code><span><span class="co">## [1] "logNTRatio" "nChar"</span></span></code></pre>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">metaNVPred</span> <span class="op">&lt;-</span> <span class="va">metaN</span><span class="op">[</span>, <span class="va">nvPredictors</span><span class="op">]</span></span>
 <span><span class="va">prfNV</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">(</span><span class="va">metaNVPred</span>, <span class="va">ln50</span>, ntree <span class="op">=</span> <span class="fl">10000</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -403,11 +403,11 @@
 <span>                <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Inferred log "</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## logNTRatio: Correlated (p = 3.2e-05): Spearman's rank correlation rho ~ -0.5</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 0.00019): pcor ~ -0.46</span></span></code></pre>
+<pre><code><span><span class="co">## logNTRatio: Correlated (p = 4.1e-05): Spearman's rank correlation rho ~ -0.49</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 0.00025): pcor ~ -0.46</span></span></code></pre>
 <pre><code><span><span class="co">## nChar: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## rank: Correlated (p = 0.013): Spearman's rank correlation rho ~ -0.31</span></span></code></pre>
+<pre><code><span><span class="co">## rank: Correlated (p = 0.012): Spearman's rank correlation rho ~ -0.31</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## Warning in xy.coords(x, y): NAs introduced by coercion</span></span></code></pre>
 <pre><code><span><span class="co">## taxon: No significant correlation</span></span></code></pre>
@@ -430,7 +430,7 @@
 <span>                <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Inferred log "</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## logNTRatio: Correlated (p = 0.045): Spearman's rank correlation rho ~ 0.25</span></span>
+<pre><code><span><span class="co">## logNTRatio: Correlated (p = 0.049): Spearman's rank correlation rho ~ 0.25</span></span>
 <span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## nChar: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
@@ -460,10 +460,10 @@
 <span>                ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## tValue.50.: Correlated (p = 0.0096): Spearman's rank correlation rho ~ 0.32</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 1.2e-06): pcor ~ 0.58</span></span></code></pre>
+<pre><code><span><span class="co">## tValue.50.: Correlated (p = 0.019): Spearman's rank correlation rho ~ 0.29</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 1.3e-05): pcor ~ 0.53</span></span></code></pre>
 <pre><code><span><span class="co">## logNTRatio: No significant correlation</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 3.3e-05): pcor ~ 0.51</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 0.00015): pcor ~ 0.47</span></span></code></pre>
 <pre><code><span><span class="co">## nChar: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## charPerTax: No significant correlation</span></span></code></pre>
@@ -490,16 +490,16 @@
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p><img src="predictions_files/figure-html/plot-value-predicions-4.png" class="r-plt" alt="" width="691.2"></p>
 <pre><code><span><span class="co">## inferredLogN.50.: Correlated (p = 0): Spearman's rank correlation rho ~ -0.7</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 1.7e-07): pcor ~ -0.62</span></span></code></pre>
-<pre><code><span><span class="co">## nChar: Correlated (p = 4.4e-05): Spearman's rank correlation rho ~ 0.49</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 1.1e-07): pcor ~ -0.63</span></span></code></pre>
+<pre><code><span><span class="co">## nChar: Correlated (p = 4.6e-05): Spearman's rank correlation rho ~ 0.49</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## logNTRatio: Correlated (p = 4.4e-06): Spearman's rank correlation rho ~ 0.54</span></span></code></pre>
+<pre><code><span><span class="co">## logNTRatio: Correlated (p = 6.5e-06): Spearman's rank correlation rho ~ 0.53</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## charPerTax: Correlated (p = 0.0062): Spearman's rank correlation rho ~ 0.34</span></span></code></pre>
+<pre><code><span><span class="co">## charPerTax: Correlated (p = 0.006): Spearman's rank correlation rho ~ 0.34</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## Warning in xy.coords(x, y): NAs introduced by coercion</span></span></code></pre>
 <pre><code><span><span class="co">## taxon: No significant correlation</span></span></code></pre>
-<pre><code><span><span class="co">## nTaxa: Correlated (p = 0.009): Spearman's rank correlation rho ~ 0.32</span></span></code></pre>
+<pre><code><span><span class="co">## nTaxa: Correlated (p = 0.0098): Spearman's rank correlation rho ~ 0.32</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <pre><code><span><span class="co">## rank: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
@@ -519,18 +519,18 @@
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p><img src="predictions_files/figure-html/plot-value-predicions-5.png" class="r-plt" alt="" width="691.2"></p>
-<pre><code><span><span class="co">## logNTRatio: Correlated (p = 0.009): Spearman's rank correlation rho ~ 0.32</span></span>
+<pre><code><span><span class="co">## logNTRatio: Correlated (p = 0.014): Spearman's rank correlation rho ~ 0.31</span></span>
 <span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## charPerTax: Correlated (p = 0.00083): Spearman's rank correlation rho ~ 0.41</span></span></code></pre>
+<pre><code><span><span class="co">## charPerTax: Correlated (p = 0.00086): Spearman's rank correlation rho ~ 0.41</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## nChar: Correlated (p = 0.0053): Spearman's rank correlation rho ~ 0.34</span></span></code></pre>
+<pre><code><span><span class="co">## nChar: Correlated (p = 0.0062): Spearman's rank correlation rho ~ 0.34</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## inferredLogA0.50.: Correlated (p = 0.012): Spearman's rank correlation rho ~ 0.31</span></span></code></pre>
+<pre><code><span><span class="co">## inferredLogA0.50.: Correlated (p = 0.013): Spearman's rank correlation rho ~ 0.31</span></span></code></pre>
 <pre><code><span><span class="co">##       ... Correlated (p = 0.024): pcor ~ 0.29</span></span></code></pre>
 <pre><code><span><span class="co">## Warning in xy.coords(x, y): NAs introduced by coercion</span></span></code></pre>
 <pre><code><span><span class="co">## taxon: No significant correlation</span></span></code></pre>
-<pre><code><span><span class="co">## rank: Correlated (p = 0.0034): Spearman's rank correlation rho ~ 0.36</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 0.023): pcor ~ 0.3</span></span></code></pre>
+<pre><code><span><span class="co">## rank: Correlated (p = 0.0029): Spearman's rank correlation rho ~ 0.37</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 0.018): pcor ~ 0.31</span></span></code></pre>
 <pre><code><span><span class="co">## nTaxa: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <p><img src="predictions_files/figure-html/plot-value-predicions-6.png" class="r-plt" alt="" width="691.2"></p>
@@ -551,17 +551,17 @@
 <span>    <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="va">panel</span> <span class="op">&lt;-</span> <span class="va">panel</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## logNTRatio: Correlated (p = 2.3e-10): Spearman's rank correlation rho ~ -0.69</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 1.1e-09): pcor ~ -0.69</span></span></code></pre>
-<pre><code><span><span class="co">## nTaxa: Correlated (p = 0.014): Spearman's rank correlation rho ~ -0.31</span></span></code></pre>
+<pre><code><span><span class="co">## logNTRatio: Correlated (p = 1e-09): Spearman's rank correlation rho ~ -0.67</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 5.5e-09): pcor ~ -0.67</span></span></code></pre>
+<pre><code><span><span class="co">## nTaxa: Correlated (p = 0.017): Spearman's rank correlation rho ~ -0.3</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## nChar: Correlated (p = 0.0058): Spearman's rank correlation rho ~ -0.34</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 0.022): pcor ~ -0.3</span></span></code></pre>
-<pre><code><span><span class="co">## logNTRatio: Correlated (p = 3.2e-05): Spearman's rank correlation rho ~ -0.5</span></span></code></pre>
-<pre><code><span><span class="co">##       ... Correlated (p = 0.00019): pcor ~ -0.46</span></span></code></pre>
+<pre><code><span><span class="co">## nChar: Correlated (p = 0.0051): Spearman's rank correlation rho ~ -0.35</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 0.018): pcor ~ -0.31</span></span></code></pre>
+<pre><code><span><span class="co">## logNTRatio: Correlated (p = 4.1e-05): Spearman's rank correlation rho ~ -0.49</span></span></code></pre>
+<pre><code><span><span class="co">##       ... Correlated (p = 0.00025): pcor ~ -0.46</span></span></code></pre>
 <pre><code><span><span class="co">## nChar: No significant correlation</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
-<pre><code><span><span class="co">## rank: Correlated (p = 0.013): Spearman's rank correlation rho ~ -0.31</span></span></code></pre>
+<pre><code><span><span class="co">## rank: Correlated (p = 0.012): Spearman's rank correlation rho ~ -0.31</span></span></code></pre>
 <pre><code><span><span class="co">##       ... No significant partial correlation</span></span></code></pre>
 <p><img src="predictions_files/figure-html/predicting-nt-1.png" class="r-plt" alt="" width="691.2"></p>
   </div>

@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">neotrans</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2025-11-06</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2026-03-06</span>
       </span>
     </div>
 
@@ -109,7 +109,7 @@
 <a href="mailto:martin.smith@durham.ac.uk" class="email">martin.smith@durham.ac.uk</a>
 </h4>
             
-            <h4 data-toc-skip class="date">2026-03-04</h4>
+            <h4 data-toc-skip class="date">2026-03-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ms609/neotrans/blob/main/vignettes/parameter-values.Rmd" class="external-link"><code>vignettes/parameter-values.Rmd</code></a></small>
       <div class="hidden name"><code>parameter-values.Rmd</code></div>
@@ -146,11 +146,17 @@
 <span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span>
 <span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/748_ns_t_ki'...</span></span>
 <span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span>
+<span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span>
+<span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
 <pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4867_ns_t_ki'...</span></span>
 <span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span>
 <span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4867_ns_t_ki'...</span></span>
 <span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span>
+<span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span>
+<span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">root0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  ns_ki <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_ki"</span><span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">"50%"</span>, <span class="st">"root_freqs.1."</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/Control.html" class="external-link">%||%</a></span></span>
@@ -218,30 +224,32 @@
 <span>  hg_b_ki <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="st">"50%"</span>, <span class="st">"mean_n"</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/Control.html" class="external-link">%||%</a></span> <span class="cn">NA_real_</span></span>
 <span>  <span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/OutputPlot.html">OutputPlot</a></span><span class="op">(</span><span class="st">"param_values"</span>, width <span class="op">=</span> <span class="fl">7.2</span>, height <span class="op">=</span> <span class="fl">6</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html" class="external-link">layout</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>, heights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.6</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/SpindlePlot.html">SpindlePlot</a></span><span class="op">(</span><span class="va">rateT</span>, log <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Relative transformational rate,"</span> <span class="op">~</span></span>
-<span>                                  <span class="fu">italic</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Relative transformational rate, "</span> <span class="op">~</span></span>
+<span>                                <span class="fu">italic</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>              Behind <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="op">-</span><span class="fl">1.5</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/SpindlePlot.html">SpindlePlot</a></span><span class="op">(</span><span class="va">a0</span>, log <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Proportion of absences at root,"</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Proportion of absences at root, "</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>              Behind <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="op">-</span><span class="fl">1.5</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/SpindlePlot.html">SpindlePlot</a></span><span class="op">(</span><span class="va">rate01</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Rate of gain relative to loss,"</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Rate of gain relative to loss, "</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>              log <span class="op">=</span> <span class="st">"y"</span>, width <span class="op">=</span> <span class="fl">2.1</span>,</span>
 <span>              Behind <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span>              <span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<p><img src="parameter-values_files/figure-html/plot-values-1.png" class="r-plt" alt="" width="691.2">
-## Summarize values of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>0</mn></msub><annotation encoding="application/x-tex">a_0</annotation></semantics></math></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p><img src="parameter-values_files/figure-html/plot-values-1.png" class="r-plt" alt="" width="691.2"></p>
+<div class="section level2">
+<h2 id="summarize-values-of-a_0">Summarize values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mn>0</mn></msub><annotation encoding="application/x-tex">a_0</annotation></semantics></math><a class="anchor" aria-label="anchor" href="#summarize-values-of-a_0"></a>
+</h2>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nsModels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">root0</span><span class="op">)</span></span>
 <span><span class="va">nsBF</span> <span class="op">&lt;-</span> <span class="fu">GetMarginals</span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">nsModels</span><span class="op">)</span></span>
 <span><span class="va">bestNS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">nsBF</span>, <span class="fl">2</span>, <span class="va">which.max</span><span class="op">)</span></span>
@@ -251,35 +259,35 @@
 <span><span class="co">##  Shapiro-Wilk normality test</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## data:  log(a0Best)</span></span>
-<span><span class="co">## W = 0.95781, p-value = 0.02821</span></span></code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">e1071</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html" class="external-link">skewness</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 0.6404754</span></span></code></pre>
+<span><span class="co">## W = 0.95623, p-value = 0.02343</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 3.877446</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">e1071</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html" class="external-link">skewness</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.6507743</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># log-mean</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 2.121659</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 3.874572</span></span></code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># log-mean</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 2.123345</span></span></code></pre>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 2.224176</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1.5539</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  One Sample t-test</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## data:  a0Best</span></span>
-<span><span class="co">## t = 4.9337, df = 63, p-value = 6.207e-06</span></span>
+<span><span class="co">## t = 4.9302, df = 63, p-value = 6.289e-06</span></span>
 <span><span class="co">## alternative hypothesis: true mean is not equal to 0</span></span>
 <span><span class="co">## 95 percent confidence interval:</span></span>
-<span><span class="co">##  2.306932 5.447960</span></span>
+<span><span class="co">##  2.304097 5.445047</span></span>
 <span><span class="co">## sample estimates:</span></span>
 <span><span class="co">## mean of x </span></span>
-<span><span class="co">##  3.877446</span></span></code></pre>
+<span><span class="co">##  3.874572</span></span></code></pre>
 <!--
 
 # TODO the below needs updating to correctly convert parameters to _n_ equivalent.
@@ -531,6 +539,7 @@ points(marginals["ns_n_ki", ] - marginals["by_n_ki", ], rfN["50%", ],
 abline(h = 0.5, lty = "dotted")
 EpsLine(v = TRUE)
 -->
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
