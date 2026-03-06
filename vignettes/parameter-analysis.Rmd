@@ -929,20 +929,30 @@ hetErr <- sapply(seq_along(bestHet), function(i) {
 
 ```{r het-eval}
 # Does the best het model beat the best homogeneous?
-sum(.OutwithError(hetPref, hetErr, epsBF))
-sum(.OutwithError(-hetPref, hetErr, epsBF))
-length(hetPref)
+paste("The best heterogeneous gain–loss model outperforms its best homogeneous counterpart in",
+      sum(.OutwithError(hetPref, hetErr, epsBF)),
+      "of",
+      length(hetPref),
+      "datasets, whereas a homogeneous gain–loss model is preferred in",
+      sum(.OutwithError(-hetPref, hetErr, epsBF)),
+      "datasets.")
 
 # Does allowing heterogeneity in transformational improve fit?
-sum(.ErrCompare("hg2_ki", "hg_ki"), na.rm = TRUE)            # 28
-sum(.ErrCompare("hg_ki", "hg2_ki"), na.rm = TRUE)            # 4
-length(!is.na(marginals["hg2_ki", ] - marginals["hg_ki", ])) # 64
+paste("Allowing 0↔1 heterogeneity across all two-state characters (model Het1)",
+      "improves model fit relative to modelling 0↔1 heterogeneity only in",
+      "neomorphic characters (model Het) in",
+      sum(.ErrCompare("hg2_ki", "hg_ki"), na.rm = TRUE),            # 28
+      "of",
+      length(!is.na(marginals["hg2_ki", ] - marginals["hg_ki", ])), # 64
+      "datasets and worsens it in",
+      sum(.ErrCompare("hg_ki", "hg2_ki"), na.rm = TRUE)            # 4
+)
 
 # Does modelling distinct heterogeneity behaviour in Neo vs Trans improve fit?
 hg2s <- c("hg_b_ki", "hg_m_ki", "hg_bm_ki")
 # Which analyses have results available?
 hgsIn <- colSums(is.na(marginals[c("hg2_ki", hg2s), ])) == 0
-sum(hgsIn)
+
 hbPref <- .ErrCompare("hg_b_ki", "hg2_ki")[hgsIn]
 hmPref <- .ErrCompare("hg_m_ki", "hg2_ki")[hgsIn]
 hbmPref <- .ErrCompare("hg_bm_ki", "hg2_ki")[hgsIn]
@@ -951,13 +961,23 @@ table(hg2s[apply(marginals[hg2s, hgsIn], 2, which.max)])
 
 # How often does the best bm model outperform hg2?
 hg2Pref <- hbPref | hmPref | hbmPref
-sum(hg2Pref)
 
 # How often does hg2 outperform all bm models?
 hbXPref <- .ErrCompare("hg2_ki", "hg_b_ki")[hgsIn]
 hmXPref <- .ErrCompare("hg2_ki", "hg_m_ki")[hgsIn]
 hbmXPref <- .ErrCompare("hg2_ki", "hg_bm_ki")[hgsIn]
-sum(hbXPref & hmXPref & hbmXPref)
+
+paste(
+  "Partitioning heterogeneity further by allowing distinct distributions of",
+  "0↔1 rates for neomorphic and transformational partitions (using",
+  "the best-fitting model of HetB, HetM and HetBM) offers only modest",
+  "improvements, outperforming Het1 in",
+  sum(hg2Pref),
+  "of",
+  sum(hgsIn),
+  "datasets, and underperforming in",
+  sum(hbXPref & hmXPref & hbmXPref)
+)
 
 
 hg1Best <- sum(
@@ -975,6 +995,47 @@ sum(hg1Pref)
 length(hg2Pref)
 ```
 
+```{r a-best-strict}
+ABestStrict <- function(a) {
+  contenders <- setdiff(c("hg_b_ki", "hg_m_ki", "hg_bm_ki"), a)
+  betterThanB <- .ErrCompare(a, contenders[[1]])[hgsIn]
+  betterThanC <- .ErrCompare(a, contenders[[2]])[hgsIn]
+  worseThanB <- .ErrCompare(contenders[[1]], a)[hgsIn]
+  worseThanC <- .ErrCompare(contenders[[2]], a)[hgsIn]
+  message(ModelLabel(a), " is best in ",
+          sum(betterThanB & betterThanC),
+          " and worst in ",
+          sum(worseThanB & worseThanC)
+  )
+}
+
+paste(
+  "Differences among the fit of HetB, HetM and HetBM were negligible in",
+  
+  sum(!(.ErrCompare("hg_b_ki", "hg_m_ki") |
+  .ErrCompare("hg_b_ki", "hg_bm_ki") |
+  .ErrCompare("hg_m_ki", "hg_b_ki") |
+  .ErrCompare("hg_m_ki", "hg_bm_ki") |
+  .ErrCompare("hg_bm_ki", "hg_m_ki") |
+  .ErrCompare("hg_bm_ki", "hg_b_ki"))[hgsIn]),
+  "of",
+  sum(hgsIn),
+  "datasets"
+)
+
+
+message("in the remainder, ",
+        "XXX performed better (worse) than both other models in..:")
+
+ABestStrict("hg_b_ki")
+ABestStrict("hg_bm_ki")
+ABestStrict("hg_m_ki")
+
+```
+
+
+Further fine-scale comparison between heterogeneous models:
+
 ```{r a-best}
 ABest <- function(a) {
   contenders <- setdiff(c("hg_b_ki", "hg_m_ki", "hg_bm_ki"), a)
@@ -982,39 +1043,16 @@ ABest <- function(a) {
   betterThanC <- .ErrCompare(a, contenders[[2]])[hgsIn]
   worseThanB <- .ErrCompare(contenders[[1]], a)[hgsIn]
   worseThanC <- .ErrCompare(contenders[[2]], a)[hgsIn]
-  message(a, " is best in ",
+  message(ModelLabel(a), " is best in ",
           sum(betterThanB | betterThanC & !(worseThanB | worseThanC)),
           " and worst in ",
           sum(worseThanB | worseThanC & !(betterThanB | betterThanC))
   )
 }
-ABestStrict <- function(a) {
-  contenders <- setdiff(c("hg_b_ki", "hg_m_ki", "hg_bm_ki"), a)
-  betterThanB <- .ErrCompare(a, contenders[[1]])[hgsIn]
-  betterThanC <- .ErrCompare(a, contenders[[2]])[hgsIn]
-  worseThanB <- .ErrCompare(contenders[[1]], a)[hgsIn]
-  worseThanC <- .ErrCompare(contenders[[2]], a)[hgsIn]
-  message(a, " is best in ",
-          sum(betterThanB & betterThanC),
-          " and worst in ",
-          sum(worseThanB & worseThanC)
-  )
-}
-
-sum(!(.ErrCompare("hg_b_ki", "hg_m_ki") |
-.ErrCompare("hg_b_ki", "hg_bm_ki") |
-.ErrCompare("hg_m_ki", "hg_b_ki") |
-.ErrCompare("hg_m_ki", "hg_bm_ki") |
-.ErrCompare("hg_bm_ki", "hg_m_ki") |
-.ErrCompare("hg_bm_ki", "hg_b_ki"))[hgsIn])
-
 ABest("hg_b_ki")
 ABest("hg_bm_ki")
 ABest("hg_m_ki")
 
-ABestStrict("hg_b_ki")
-ABestStrict("hg_bm_ki")
-ABestStrict("hg_m_ki")
 
 sum(.ErrCompare("hg_b_ki", "hg_m_ki")[hgsIn])
 sum(.ErrCompare("hg_m_ki", "hg_b_ki")[hgsIn])
