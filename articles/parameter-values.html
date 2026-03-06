@@ -76,6 +76,9 @@
       <a href="../articles/prior-posterior.html">Prior-posterior comparison</a>
     </li>
     <li>
+      <a href="../articles/simulations.html">Simulation study</a>
+    </li>
+    <li>
       <a href="../articles/stationarity.html">Evaluating stationarity</a>
     </li>
     <li>
@@ -175,7 +178,7 @@
 <span>      <span class="fu"><a href="../reference/MakeSlurm.html">MakeSlurm</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_nt_ki"</span><span class="op">)</span>; <span class="cn">NA_real_</span><span class="op">}</span></span>
 <span>  <span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="va">a0</span> <span class="op">&lt;-</span> <span class="va">root0</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">root0</span><span class="op">)</span></span>
+<span><span class="va">a0Val</span> <span class="op">&lt;-</span> <span class="va">root0</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">root0</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">rate01</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
 <span>  by_n_ki <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
@@ -227,18 +230,18 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/OutputPlot.html">OutputPlot</a></span><span class="op">(</span><span class="st">"param_values"</span>, width <span class="op">=</span> <span class="fl">7.2</span>, height <span class="op">=</span> <span class="fl">6</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html" class="external-link">layout</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>, heights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.6</span>, <span class="fl">4</span>, <span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.6</span>, <span class="fl">4.1</span>, <span class="fl">1</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/SpindlePlot.html">SpindlePlot</a></span><span class="op">(</span><span class="va">rateT</span>, log <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Relative transformational rate, "</span> <span class="op">~</span></span>
+<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Relative transformational rate, "</span> <span class="op">*</span></span>
 <span>                                <span class="fu">italic</span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>              Behind <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="op">-</span><span class="fl">1.5</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="../reference/SpindlePlot.html">SpindlePlot</a></span><span class="op">(</span><span class="va">a0</span>, log <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Proportion of absences at root, "</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="../reference/SpindlePlot.html">SpindlePlot</a></span><span class="op">(</span><span class="va">a0Val</span>, log <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Proportion of absences at root, "</span> <span class="op">*</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">[</span><span class="fl">0</span><span class="op">]</span><span class="op">)</span>,</span>
 <span>              Behind <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="op">-</span><span class="fl">1.5</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/SpindlePlot.html">SpindlePlot</a></span><span class="op">(</span><span class="va">rate01</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Rate of gain relative to loss, "</span> <span class="op">~</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              ylab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Rate of gain relative to loss, "</span> <span class="op">*</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"n"</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>              log <span class="op">=</span> <span class="st">"y"</span>, width <span class="op">=</span> <span class="fl">2.1</span>,</span>
 <span>              Behind <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span>              <span class="op">)</span></span>
@@ -253,7 +256,7 @@
 <code class="sourceCode R"><span><span class="va">nsModels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">root0</span><span class="op">)</span></span>
 <span><span class="va">nsBF</span> <span class="op">&lt;-</span> <span class="fu">GetMarginals</span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">nsModels</span><span class="op">)</span></span>
 <span><span class="va">bestNS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">nsBF</span>, <span class="fl">2</span>, <span class="va">which.max</span><span class="op">)</span></span>
-<span><span class="va">a0Best</span> <span class="op">&lt;-</span> <span class="va">a0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">bestNS</span><span class="op">)</span>, <span class="va">bestNS</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">a0Best</span> <span class="op">&lt;-</span> <span class="va">a0Val</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">bestNS</span><span class="op">)</span>, <span class="va">bestNS</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html" class="external-link">shapiro.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">a0Best</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  Shapiro-Wilk normality test</span></span>
@@ -492,7 +495,7 @@ sum(!is.na(rfMk["50%", ]))
 plot(rep(marginals["ns_ki", ] - marginals["by_ki", ], each = 2),
      rfMk[c("2.5%", "97.5%"), ],
      frame.plot = FALSE, pch = 3, col = durham$purple,
-     xlim = c(-20, 80), xlab = "Bayes Factor in favour of Non-Stationary model",
+     xlim = c(-20, 80), xlab = "Bayes factor in favour of Non-Stationary model",
      ylab = "Frequency of Absent state at root",
      type = "n"
      )
@@ -524,7 +527,7 @@ sum(!is.na(rfN["50%", ]))
 plot(rep(marginals["ns_n_ki", ] - marginals["by_n_ki", ], each = 2),
      rfN[c("2.5%", "97.5%"), ],
      frame.plot = FALSE, pch = 3, col = durham$purple,
-     xlim = c(-20, 80), xlab = "Bayes Factor in favour of Non-Stationary model",
+     xlim = c(-20, 80), xlab = "Bayes factor in favour of Non-Stationary model",
      ylab = "Frequency of Absent state at root",
      type = "n"
 )

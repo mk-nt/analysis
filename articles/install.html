@@ -76,6 +76,9 @@
       <a href="../articles/prior-posterior.html">Prior-posterior comparison</a>
     </li>
     <li>
+      <a href="../articles/simulations.html">Simulation study</a>
+    </li>
+    <li>
       <a href="../articles/stationarity.html">Evaluating stationarity</a>
     </li>
     <li>
@@ -124,7 +127,7 @@ GitHub.</p>
 <h2 id="downloading-the-repository">Downloading the repository<a class="anchor" aria-label="anchor" href="#downloading-the-repository"></a>
 </h2>
 <p>We recommend that you install <a href="https://desktop.github.com/download/" class="external-link">GitHub Desktop</a>, then
-under “Current repository”, “Add→clone” a copy of <a href="http://github.com/mk-nt/analysis/" class="external-link">mk-nt/analysis</a>. If
+under “Current repository”, “Add→clone” a copy of <a href="http://github.com/ms609/neotrans/" class="external-link">ms609/neotrans</a>. If
 prompted, create a fork to allow you to record your changes in your own
 GitHub account.</p>
 <p>If prompted, downloading / recursing submodules will allow you to
@@ -137,16 +140,15 @@ matrices</a>.</p>
 </h2>
 <p>Once you have downloaded the repository, you can locate it from
 GitHub Desktop using “Repository→Show in Explorer”.</p>
-<p>We recommend that you open the <code>Mk-nt.Rproj</code> Project file
-in <a href="https://posit.co/download/rstudio-desktop/" class="external-link">RStudio</a> then
-run <code><a href="https://pkgload.r-lib.org/reference/load_all.html" class="external-link">pkgload::load_all()</a></code>.</p>
-<p>Run <code>install.packages("pkgload")</code> if the package is not
-already installed. If prompted, do not build required packages from
-source - using the pre-compiled binaries avoids the requirement to
-install RTools on Windows.</p>
+<p>We recommend that you open the <code>neotrans.Rproj</code> Project
+file in <a href="https://posit.co/download/rstudio-desktop/" class="external-link">RStudio</a>
+then run <code>devtools::install()</code>, or use “Install” from the
+“Build” tab.</p>
+<p>Run <code>install.packages("devtools")</code> if the package is not
+already installed.</p>
 <p>Many functions in the package assume that your working directory
 (<code><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd()</a></code>) corresponds to the package root, which will be
-the case if you open the <code>Mk-nt.Rproj</code>.</p>
+the case if you open the <code>neotrans.Rproj</code>.</p>
 </div>
   </div>
 

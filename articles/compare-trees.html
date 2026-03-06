@@ -76,6 +76,9 @@
       <a href="../articles/prior-posterior.html">Prior-posterior comparison</a>
     </li>
     <li>
+      <a href="../articles/simulations.html">Simulation study</a>
+    </li>
+    <li>
       <a href="../articles/stationarity.html">Evaluating stationarity</a>
     </li>
     <li>
@@ -148,7 +151,8 @@
 <span><span class="va">cfLength</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="va">projects</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="fu"><a href="../reference/TreeLengths.html">TreeLengths</a></span><span class="op">(</span><span class="va">pID</span>, <span class="va">bestModel</span><span class="op">[[</span><span class="va">pID</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/Control.html" class="external-link">%||%</a></span> <span class="cn">NA_real_</span></span>
 <span><span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span>
+<span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">relLen</span> <span class="op">&lt;-</span> <span class="va">cfLength</span> <span class="op">/</span> <span class="va">kiLength</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -165,7 +169,8 @@
 <span>    prec <span class="op">=</span> <span class="va">prec</span> <span class="op"><a href="https://rdrr.io/r/base/Control.html" class="external-link">%||%</a></span> <span class="cn">NA_real_</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span>
+<span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli_progress_done</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -177,11 +182,12 @@
 <span>  <span class="va">stdErr</span><span class="op">[</span><span class="va">bestModel</span><span class="op">[[</span><span class="va">pID</span><span class="op">]</span><span class="op">]</span>, <span class="va">pID</span><span class="op">]</span> <span class="op">+</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_ki"</span>, <span class="va">pID</span><span class="op">]</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="va">dashCol</span> <span class="op">&lt;-</span> <span class="st">"grey70"</span></span>
+<span><span class="va">bfLab</span> <span class="op">&lt;-</span> <span class="st">"Model Bayes factor"</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/OutputPlot.html">OutputPlot</a></span><span class="op">(</span><span class="st">"treeDiff"</span>, <span class="fl">7.2</span>, <span class="fl">7.2</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.6</span>, <span class="fl">4.6</span>, <span class="fl">0.4</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.2</span>, <span class="fl">4.2</span>, <span class="fl">0.4</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">treeChange</span><span class="op">[</span><span class="st">"sil"</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">modelBF</span>,</span>
-<span>       xlab <span class="op">=</span> <span class="st">"Model BF"</span>, ylab <span class="op">=</span> <span class="st">"Silhouette score"</span>,</span>
+<span>       xlab <span class="op">=</span> <span class="va">bfLab</span>, ylab <span class="op">=</span> <span class="st">"Silhouette score"</span>,</span>
 <span>       <span class="co">#pch = 16, col = ModelCol(bestModel),</span></span>
 <span>       pch <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>       xpd <span class="op">=</span> <span class="cn">NA</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -190,7 +196,7 @@
 <span>  <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">treeChange</span><span class="op">[</span><span class="st">"prec"</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">modelBF</span>,</span>
-<span>       xlab <span class="op">=</span> <span class="st">"Model BF"</span>, ylab <span class="op">=</span> <span class="st">"Change in precision (MAD, %)"</span>,</span>
+<span>       xlab <span class="op">=</span> <span class="va">bfLab</span>, ylab <span class="op">=</span> <span class="st">"Change in precision (MAD, %)"</span>,</span>
 <span>       xpd <span class="op">=</span> <span class="cn">NA</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>       <span class="co">#pch = 16, col = ModelCol(bestModel)</span></span>
 <span>       pch <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
@@ -201,7 +207,7 @@
 <span>  <span class="fu"><a href="../reference/Panel.html">Panel</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">treeChange</span><span class="op">[</span><span class="st">"medMed"</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">modelBF</span>,</span>
-<span>       xlab <span class="op">=</span> <span class="st">"Model BF"</span>, ylab <span class="op">=</span> <span class="st">"Normalized CI Distance between median trees"</span>,</span>
+<span>       xlab <span class="op">=</span> <span class="va">bfLab</span>, ylab <span class="op">=</span> <span class="st">"Normalized CI Distance between median trees"</span>,</span>
 <span>       type <span class="op">=</span> <span class="st">"n"</span>,</span>
 <span>       <span class="co">#pch = 16, col = ModelCol(bestModel),</span></span>
 <span>       frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -230,7 +236,7 @@
 <span>                   frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, wex <span class="op">=</span> <span class="fl">42</span>, col <span class="op">=</span> <span class="st">"transparent"</span>, border <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">modelBF</span>, <span class="va">relLen</span>,</span>
-<span>       xlab <span class="op">=</span> <span class="st">"Model BF"</span>, ylab <span class="op">=</span> <span class="st">"Relative tree length"</span>, xpd <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>       xlab <span class="op">=</span> <span class="va">bfLab</span>, ylab <span class="op">=</span> <span class="st">"Relative tree length"</span>, xpd <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>       log <span class="op">=</span> <span class="st">"y"</span>, </span>
 <span>       <span class="co">#pch = 16, col = ModelCol(bestModel),</span></span>
 <span>       pch <span class="op">=</span> <span class="fl">3</span>,</span>
@@ -245,7 +251,7 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">relLen</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's </span></span>
-<span><span class="co">##  0.6128  0.9117  1.0132  1.0342  1.0818  1.7931       1</span></span></code></pre>
+<span><span class="co">##  0.6128  0.9104  1.0068  1.0336  1.0821  1.7931       2</span></span></code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">parsModels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"by_ki"</span>, <span class="st">"ns_ki"</span>, <span class="st">"by_t_ki"</span>, <span class="st">"by_n_ki"</span>, <span class="st">"by_nt_ki"</span>,</span>
 <span>                <span class="st">"hg_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span></span>

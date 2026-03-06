@@ -76,6 +76,9 @@
       <a href="../articles/prior-posterior.html">Prior-posterior comparison</a>
     </li>
     <li>
+      <a href="../articles/simulations.html">Simulation study</a>
+    </li>
+    <li>
       <a href="../articles/stationarity.html">Evaluating stationarity</a>
     </li>
     <li>
@@ -133,9 +136,15 @@
 <div class="section level2">
 <h2 id="models-with-a-free-t-parameter">Models with a free <em>t</em> parameter<a class="anchor" aria-label="anchor" href="#models-with-a-free-t-parameter"></a>
 </h2>
+<p>The parameter <em>t</em> is the ratio of the evolution rate of
+transformational characters to that of neomorphic characters; fixing
+<em>t</em> = 1 assumes both partitions evolve at the same rate.</p>
 <div class="section level3">
 <h3 id="review-accuracy-of-marginal-likelihood-estimates">Review accuracy of marginal likelihood estimates<a class="anchor" aria-label="anchor" href="#review-accuracy-of-marginal-likelihood-estimates"></a>
 </h3>
+<p>Before interpreting Bayes factors we verify that stepping-stone and
+path-sampling marginal likelihood estimates agree, as large
+discrepancies would undermine model comparisons.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">modelsT</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"by_ki"</span>, <span class="st">"by_n_ki"</span>, <span class="st">"by_t_ki"</span>, <span class="st">"by_nt_ki"</span>, <span class="st">"rm_by_t_ki"</span><span class="op">)</span></span>
 <span><span class="va">marginals</span> <span class="op">&lt;-</span> <span class="fu">GetMarginals</span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">modelsT</span><span class="op">)</span></span>
@@ -150,12 +159,16 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsT</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsT</span><span class="op">)</span>,</span>
-<span>       bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
+<span>       bty <span class="op">=</span> <span class="st">"N"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/unnamed-chunk-1-2.png" class="r-plt" alt="" width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="when-is-a-partitioned-model-preferred">When is a partitioned model preferred?<a class="anchor" aria-label="anchor" href="#when-is-a-partitioned-model-preferred"></a>
 </h3>
+<p>Using a threshold of log(BF) &gt; log(10) (Jeffreys’ ‘strong’
+evidence), we identify datasets where a free <em>t</em> is decisively
+favoured or disfavoured, and plot these against the character
+composition of each dataset.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">part</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/EvaluatePartitioning.html">EvaluatePartitioning</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## by_t is &gt;eps better than unpartitioned in 15 / 64 projects.</span></span></code></pre>
@@ -190,6 +203,9 @@
 <span>               <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Red-Green"</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
 <span>               <span class="st">"grey10"</span>, <span class="st">"grey10"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/t-bf-support-1.png" class="r-plt" alt="" width="672"></p>
+<p>We next examine the posterior distribution of <em>t</em> under the
+best-fitting stationary model for each dataset, and test whether
+inferred values differ significantly from one.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare estimated values of t</span></span>
 <span><span class="va">bestTModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_t_ki"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_nt_ki"</span>, <span class="op">]</span>,</span>
@@ -300,6 +316,9 @@
 <div class="section level3">
 <h3 id="predict-which-projects-will-favour-a-free-t">Predict which projects will favour a free <em>t</em><a class="anchor" aria-label="anchor" href="#predict-which-projects-will-favour-a-free-t"></a>
 </h3>
+<p>Variable selection via VSURF, followed by a random forest, identifies
+which dataset-level properties predict whether a free <em>t</em> is
+supported.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Can we predict which projects will benefit from a free t parameter?</span></span>
 <span><span class="va">tProj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">tSupport</span><span class="op">)</span></span>
@@ -352,6 +371,9 @@
 <div class="section level3">
 <h3 id="does-metadata-predict-the-value-of-t">Does metadata predict the value of <em>t</em>?<a class="anchor" aria-label="anchor" href="#does-metadata-predict-the-value-of-t"></a>
 </h3>
+<p>We ask whether the posterior median of <em>t</em> can itself be
+predicted from dataset metadata, using the same variable-selection
+approach.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Can we predict the value of t from the metadata?</span></span>
 <span><span class="va">metaT</span> <span class="op">&lt;-</span> <span class="va">tMeta</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">tMeta</span><span class="op">[</span>, <span class="st">"tValue.50."</span><span class="op">]</span><span class="op">)</span>, <span class="op">]</span></span>
@@ -429,6 +451,11 @@
 <div class="section level2">
 <h2 id="free-n-parameter-gain-to-loss-ratio">Free <em>n</em> parameter (gain to loss ratio)<a class="anchor" aria-label="anchor" href="#free-n-parameter-gain-to-loss-ratio"></a>
 </h2>
+<p>The parameter <em>n</em> is the ratio of the character gain rate to
+the loss rate; a value other than one indicates asymmetric character
+evolution under an Mk2 model. As in the <em>t</em>-parameter section,
+marginal likelihood estimates are first checked for consistency across
+integration methods.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">modelsN</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"by_ki"</span>,</span>
 <span>             <span class="st">"by_n_ki"</span>, <span class="st">"by_nn_ki"</span>, <span class="st">"by_t_ki"</span>, <span class="st">"by_nt_ki"</span>,</span>
@@ -449,6 +476,10 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsN</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsN</span><span class="op">)</span>,</span>
 <span>       bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/initialize-n-2.png" class="r-plt" alt="" width="672"></p>
+<p>We compare models with and without a free <em>n</em> under both
+stationary and non-stationary assumptions, checking whether gains over
+the symmetric Mk model are replicated relative to randomised
+controls.</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Number in which StN outperforms StMk</span></span>
 <span><span class="va">.ErrCompare</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">mod1</span>, <span class="va">mod2</span>, <span class="va">eps</span> <span class="op">=</span> <span class="va">epsBF</span><span class="op">)</span> <span class="op">{</span></span>
@@ -554,6 +585,9 @@
 <pre><code><span><span class="co">## [1] 64</span></span></code></pre>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summary: very similar, with slightly more preferring free n</span></span></code></pre></div>
+<p>We visualise Mk2 model support as a function of dataset composition
+(neo:trans ratio, character count, taxon count) and by taxonomic
+group.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mk2Col</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">6</span>, <span class="st">"Red-Green"</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span><span class="op">[</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">mk2</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="va">epsBF</span>, <span class="fl">0</span>, <span class="va">epsBF</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
@@ -577,6 +611,8 @@
 <span>     frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Number of taxa"</span>, ylab <span class="op">=</span> <span class="st">"Mk2 BF"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/unnamed-chunk-6-3.png" class="r-plt" alt="" width="672"></p>
+<p>For completeness, we evaluate whether non-stationary Mk and Mk2
+models improve on each other and on their stationary counterparts.</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">EvaluateNonStat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">marginals</span>, <span class="va">se</span>, <span class="va">epsBF</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">suffix</span> <span class="op">=</span> <span class="st">"_ki"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
@@ -637,6 +673,9 @@
 <span>     asp <span class="op">=</span> <span class="fl">1</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span>vert <span class="op">=</span> <span class="cn">TRUE</span>, diag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/unnamed-chunk-7-3.png" class="r-plt" alt="" width="672"></p>
+<p>We extract the posterior distribution of <em>n</em> under the
+best-fitting stationary model for each dataset, and test whether
+inferred values differ significantly from one.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare estimated values of n</span></span>
 <span><span class="va">bestNModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"by_n_ki"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"by_nt_ki"</span>, <span class="op">]</span>,</span>
@@ -728,6 +767,10 @@
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="672"></p>
+<p>For datasets where non-stationary models are preferred, we extract
+joint estimates of <em>n</em> and the root-state frequency
+<em>a</em><sub>0</sub>, and check whether the two parameters are
+correlated.</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bestNSNModel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"ns_n_ki"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"ns_nt_ki"</span>, <span class="op">]</span>,</span>
 <span>                       <span class="st">"ns_n_ki"</span>, <span class="st">"ns_nt_ki"</span><span class="op">)</span></span>
@@ -770,6 +813,8 @@
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nsA0</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/unnamed-chunk-9-2.png" class="r-plt" alt="" width="672"></p>
+<p>Variable-selection random forests identify metadata predictors of Mk2
+model support and of the inferred value of <em>n</em>.</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Which variables predict support for a model with a free n?</span></span>
 <span><span class="va">nProj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">nModelBF</span><span class="op">)</span></span>
@@ -1006,6 +1051,10 @@
 <div class="section level2">
 <h2 id="non-stationarity">Non-stationarity<a class="anchor" aria-label="anchor" href="#non-stationarity"></a>
 </h2>
+<p>Non-stationary models allow the root-state frequency to differ from
+the stationary distribution implied by the gain and loss rates, with the
+departure parameterised by <em>a</em><sub>0</sub>. As before, marginal
+likelihood estimates are first validated.</p>
 <div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">modelsNS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"by_ki"</span>, <span class="st">"by_n_ki"</span>, <span class="st">"by_nt_ki"</span>,</span>
 <span>              <span class="st">"ns_ki"</span>, <span class="st">"ns_n_ki"</span>, <span class="st">"ns_nt_ki"</span><span class="op">)</span></span>
@@ -1021,16 +1070,20 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, lty <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey70"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsNS</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsNS</span><span class="op">)</span>,</span>
-<span>       bty <span class="op">=</span> <span class="st">"N"</span><span class="op">)</span></span></code></pre></div>
+<span>       bty <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/setup-ns-2.png" class="r-plt" alt="" width="672"></p>
+<p>We determine how often the best non-stationary model outperforms the
+best stationary model, and vice versa.</p>
 <div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"ns_nt_ki"</span>, <span class="st">"by_nt_ki"</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 13</span></span></code></pre>
-<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"by_ki"</span>, <span class="st">"ns_ki"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 3</span></span></code></pre>
-<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">bestS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span>, <span class="fl">2</span>, <span class="va">which.max</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">StatCompare</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">suffix</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">ns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"ns_"</span>, <span class="va">suffix</span><span class="op">)</span></span>
+<span>  <span class="va">st</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"by_"</span>, <span class="va">suffix</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">ns</span><span class="op">)</span>, <span class="st">" outperforms (underperforms) "</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">st</span><span class="op">)</span>,</span>
+<span>         <span class="st">" in "</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">ns</span>, <span class="va">st</span><span class="op">)</span><span class="op">)</span>, <span class="st">" ("</span>,</span>
+<span>         <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">st</span>, <span class="va">ns</span><span class="op">)</span><span class="op">)</span>, <span class="st">") datasets"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">bestS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span>, <span class="fl">2</span>, <span class="va">which.max</span><span class="op">)</span></span>
 <span><span class="va">bestNS</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span>, <span class="fl">2</span>, <span class="va">which.max</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">bestML_S</span>  <span class="op">&lt;-</span> <span class="va">marginals</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bestS</span>,  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
@@ -1039,27 +1092,27 @@
 <span><span class="va">bestSE_S</span>  <span class="op">&lt;-</span> <span class="va">stdErr</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">bestS</span>,  <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">stdErr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">bestSE_NS</span> <span class="op">&lt;-</span> <span class="va">stdErr</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">3</span> <span class="op">+</span> <span class="va">bestNS</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">stdErr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
-<span><span class="co"># When does the best non-stationary model outperform the best stat?</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">bestML_NS</span> <span class="op">-</span> <span class="va">bestML_S</span>, <span class="fu"><a href="../reference/dot-DiffErr.html">.DiffErr</a></span><span class="op">(</span><span class="va">bestSE_S</span>, <span class="va">bestSE_NS</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 11</span></span></code></pre>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>  <span class="st">"the best-fitting non-stationary model outperforms the best stationary"</span>,</span>
+<span>  <span class="st">"model in"</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">bestML_NS</span> <span class="op">-</span> <span class="va">bestML_S</span>, <span class="fu"><a href="../reference/dot-DiffErr.html">.DiffErr</a></span><span class="op">(</span><span class="va">bestSE_S</span>, <span class="va">bestSE_NS</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="st">"of"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">bestML_NS</span> <span class="op">-</span> <span class="va">bestML_S</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="st">"datasets, and is outperformed in"</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">bestML_S</span> <span class="op">-</span> <span class="va">bestML_NS</span>, <span class="fu"><a href="../reference/dot-DiffErr.html">.DiffErr</a></span><span class="op">(</span><span class="va">bestSE_S</span>, <span class="va">bestSE_NS</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "the best-fitting non-stationary model outperforms the best stationary model in 11 of 64 datasets, and is outperformed in 6"</span></span></code></pre>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">StatCompare</span><span class="op">(</span><span class="st">"ki"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "NstMk outperforms (underperforms) StMk in 15 (3) datasets"</span></span></code></pre>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">StatCompare</span><span class="op">(</span><span class="st">"n_ki"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "NstN outperforms (underperforms) StN in 10 (6) datasets"</span></span></code></pre>
 <div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># When does the best stationary model outperform the best non-stat?</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">bestML_S</span> <span class="op">-</span> <span class="va">bestML_NS</span>, <span class="fu"><a href="../reference/dot-DiffErr.html">.DiffErr</a></span><span class="op">(</span><span class="va">bestSE_S</span>, <span class="va">bestSE_NS</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 6</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">StatCompare</span><span class="op">(</span><span class="st">"nt_ki"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "NstNT outperforms (underperforms) StNT in 13 (6) datasets"</span></span></code></pre>
+<p>We extract the root-frequency parameter <em>a</em><sub>0</sub> from
+the best-fitting non-stationary model for each dataset.</p>
 <div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">bestML_NS</span> <span class="op">-</span> <span class="va">bestML_S</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 64</span></span></code></pre>
-<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span>,</span>
-<span>                      <span class="fu"><a href="../reference/dot-DiffErr.html">.DiffErr</a></span><span class="op">(</span><span class="va">stdErr</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span>, <span class="va">stdErr</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##    ns_ki  ns_n_ki ns_nt_ki </span></span>
-<span><span class="co">##       15       10       13</span></span></code></pre>
-<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span>,</span>
-<span>                      <span class="fu"><a href="../reference/dot-DiffErr.html">.DiffErr</a></span><span class="op">(</span><span class="va">stdErr</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span>, <span class="va">stdErr</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##    by_ki  by_n_ki by_nt_ki </span></span>
-<span><span class="co">##        3        6        6</span></span></code></pre>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># For which analyses are results available?</span></span>
 <span><span class="va">allIn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span></span>
 <span><span class="va">someIn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span></span>
@@ -1075,7 +1128,9 @@
 <span>                  <span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span>, <span class="st">"root_freqs.1."</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/Control.html" class="external-link">%||%</a></span> <span class="va">nullParam</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">nsValue</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bestS</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<p>We test whether the log-odds root frequency departs significantly
+from zero (i.e. from equal root-state probabilities).</p>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Is the median root frequency different from zero?</span></span>
 <span><span class="co"># For results that include also ns_t_ki, see 5_Parameters.R</span></span>
 <span><span class="co"># The values there (not here) are used for publication</span></span>
@@ -1085,27 +1140,27 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">f01</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">##  0.3019  1.0843  2.1305  2.1308  3.1540 37.4638</span></span></code></pre>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">f01</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.9898556</span></span></code></pre>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">f01</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.8427146</span></span></code></pre>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">vioplot</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/vioplot/man/vioplot.html" class="external-link">vioplot</a></span><span class="op">(</span><span class="va">f01</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/unnamed-chunk-19-1.png" class="r-plt" alt="" width="672"></p>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html" class="external-link">shapiro.test</a></span><span class="op">(</span><span class="va">f01</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  Shapiro-Wilk normality test</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## data:  f01</span></span>
 <span><span class="co">## W = 0.95836, p-value = 0.03009</span></span></code></pre>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">e1071</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html" class="external-link">skewness</a></span><span class="op">(</span><span class="va">f01</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.6833221</span></span></code></pre>
-<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test</a></span><span class="op">(</span><span class="va">f01</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  One Sample t-test</span></span>
@@ -1118,22 +1173,25 @@
 <span><span class="co">## sample estimates:</span></span>
 <span><span class="co">## mean of x </span></span>
 <span><span class="co">## 0.7565082</span></span></code></pre>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summary statistics for best model</span></span>
 <span><span class="va">a2.5</span> <span class="op">&lt;-</span> <span class="va">a0</span><span class="op">[</span><span class="st">"2.5%"</span>, <span class="op">]</span></span>
 <span><span class="va">a97.5</span> <span class="op">&lt;-</span> <span class="va">a0</span><span class="op">[</span><span class="st">"97.5%"</span>, <span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">a2.5</span> <span class="op">&gt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 25</span></span></code></pre>
-<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">a97.5</span> <span class="op">&lt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 3</span></span></code></pre>
-<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">a2.5</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">a97.5</span> <span class="op">&lt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 28</span></span></code></pre>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">a2.5</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">a97.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 64</span></span></code></pre>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<p>For robustness, we repeat using a single fixed model (NstMk)
+throughout rather than the best-fitting non-stationary model for each
+dataset.</p>
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Repeat, using a single model throughout.  The results turn out to be similar.</span></span>
 <span><span class="co"># Take parameter values from NstMk</span></span>
 <span><span class="va">nsValue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
@@ -1149,22 +1207,22 @@
 <span><span class="va">a97.5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">ns97.5</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">ns97.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">a2.5</span> <span class="op">&gt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 5</span></span></code></pre>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">a97.5</span> <span class="op">&lt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 25</span></span></code></pre>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">a2.5</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">a97.5</span> <span class="op">&lt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 30</span></span></code></pre>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">a2.5</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">a97.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 64</span></span></code></pre>
-<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">ns50</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1.614058</span></span></code></pre>
-<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">a50</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.487682</span></span></code></pre>
-<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Take parameter values from NstN</span></span>
 <span><span class="va">nsnValue</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span></span>
@@ -1179,22 +1237,24 @@
 <span><span class="va">an97.5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">nsn97.5</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">nsn97.5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">an2.5</span> <span class="op">&gt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 5</span></span></code></pre>
-<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">an97.5</span> <span class="op">&lt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 20</span></span></code></pre>
-<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">an2.5</span> <span class="op">&gt;</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">an97.5</span> <span class="op">&lt;</span> <span class="fl">1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 25</span></span></code></pre>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">an2.5</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">an97.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 64</span></span></code></pre>
-<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">ns50</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1.614058</span></span></code></pre>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">a50</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 0.487682</span></span></code></pre>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<p>Variable-selection random forests identify metadata predictors of
+support for non-stationary models.</p>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Can we predict which projects will benefit from a non-stationary model?</span></span>
 <span><span class="va">nsProj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">intersect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">nsPref</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bestS</span><span class="op">)</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">nsValue</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">nsMeta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
@@ -1216,11 +1276,11 @@
 <span><span class="va">vsurfBF</span> <span class="op">&lt;-</span> <span class="fu">VSURF</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/VSURF/man/VSURF.html" class="external-link">VSURF</a></span><span class="op">(</span><span class="va">nsMeta</span><span class="op">[</span>, <span class="va">nsPredictors</span><span class="op">]</span>, <span class="va">nsPref</span><span class="op">[</span><span class="va">nsProj</span><span class="op">]</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in VSURF_pred.default(x = x, y = y, ntree.pred = ntree.pred, err.interp = interp$err.interp, : Unable to perform prediction step, because the interpretation step</span></span>
 <span><span class="co">## did not eliminate variables</span></span></code></pre>
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">predBF</span> <span class="op">&lt;-</span> <span class="va">nsPredictors</span><span class="op">[</span><span class="va">vsurfBF</span><span class="op">[[</span><span class="st">"varselect.interp"</span><span class="op">]</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">predBF</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## a0Value, charPerTax, logNTRatio</span></span></code></pre>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rfBF</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">(</span><span class="va">nsMeta</span><span class="op">[</span>, <span class="va">predBF</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, <span class="va">nsPref</span><span class="op">[</span><span class="va">nsProj</span><span class="op">]</span>,</span>
 <span>                     ntree <span class="op">=</span> <span class="fl">10000</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html" class="external-link">importance</a></span><span class="op">(</span><span class="va">rfBF</span><span class="op">)</span></span></code></pre></div>
@@ -1228,10 +1288,10 @@
 <span><span class="co">## a0Value    32.423864      323.9703</span></span>
 <span><span class="co">## charPerTax -1.339345      283.5464</span></span>
 <span><span class="co">## logNTRatio 14.684436      320.6024</span></span></code></pre>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfBF</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/unnamed-chunk-20-1.png" class="r-plt" alt="" width="672"></p>
-<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb218"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">nPred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">predBF</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Values of the root distribution that are uneven correspond to better support</span></span>
@@ -1249,7 +1309,11 @@
 <div class="section level2">
 <h2 id="heterogeneous-models">Heterogeneous models<a class="anchor" aria-label="anchor" href="#heterogeneous-models"></a>
 </h2>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<p>Heterogeneous models allow the 0↔︎1 rate to vary among characters,
+with variants differing in whether rate heterogeneity is shared across
+all two-state characters (Het1) or partitioned between neomorphic and
+transformational characters (Het, HetB, HetM, HetBM).</p>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">modelsHet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"by_ki"</span>, <span class="st">"by_n_ki"</span>, <span class="st">"by_nt_ki"</span>,</span>
 <span>               <span class="st">"ns_ki"</span>, <span class="st">"ns_n_ki"</span>, <span class="st">"ns_nt_ki"</span>,</span>
 <span>               <span class="st">"hg_ki"</span>, <span class="st">"hg2_ki"</span>, <span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span></span>
@@ -1258,7 +1322,7 @@
 <span><span class="va">mds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MarginalDiffs.html">MarginalDiffs</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">modelsHet</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">mds</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span>, xpd <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/setup-het-1.png" class="r-plt" alt="" width="672"></p>
-<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb220"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">stdErr</span>, <span class="va">mds</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>, xlab <span class="op">=</span> <span class="st">"Standard error of estimate"</span>,</span>
 <span>     ylab <span class="op">=</span> <span class="st">"Difference, stepping stone vs path sampling estimates"</span>,</span>
 <span>     col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsHet</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
@@ -1267,7 +1331,10 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, <span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">modelsHet</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span>, col <span class="op">=</span> <span class="fu"><a href="../reference/ModelCol.html">ModelCol</a></span><span class="op">(</span><span class="va">modelsHet</span><span class="op">)</span>,</span>
 <span>       bty <span class="op">=</span> <span class="st">"N"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="parameter-analysis_files/figure-html/setup-het-2.png" class="r-plt" alt="" width="672"></p>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<p>We identify datasets with complete results for both model families
+and select the best-fitting homogeneous and heterogeneous model for
+each.</p>
+<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Which analyses are complete and have results available?</span></span>
 <span><span class="va">someIn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span> <span class="op">&amp;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fl">6</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span></span>
@@ -1279,35 +1346,39 @@
 <span><span class="va">hetErr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_along</a></span><span class="op">(</span><span class="va">bestHet</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/dot-DiffErr.html">.DiffErr</a></span><span class="op">(</span><span class="va">stdErr</span><span class="op">[</span><span class="fl">6</span> <span class="op">+</span> <span class="va">bestHet</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, <span class="va">someIn</span><span class="op">]</span>, <span class="va">stdErr</span><span class="op">[</span><span class="va">bestNH</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">someIn</span><span class="op">]</span><span class="op">)</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
+<p>We test whether the best heterogeneous model outperforms the best
+homogeneous model, and evaluate the added benefit of progressively finer
+partitioning of rate heterogeneity between neomorphic and
+transformational characters.</p>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Does the best het model beat the best homogeneous?</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">hetPref</span>, <span class="va">hetErr</span>, <span class="va">epsBF</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 28</span></span></code></pre>
-<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="op">-</span><span class="va">hetPref</span>, <span class="va">hetErr</span>, <span class="va">epsBF</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 14</span></span></code></pre>
-<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">hetPref</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 64</span></span></code></pre>
-<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"The best heterogeneous gain–loss model outperforms its best homogeneous counterpart in"</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="va">hetPref</span>, <span class="va">hetErr</span>, <span class="va">epsBF</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      <span class="st">"of"</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">hetPref</span><span class="op">)</span>,</span>
+<span>      <span class="st">"datasets, whereas a homogeneous gain–loss model is preferred in"</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="../reference/dot-OutwithError.html">.OutwithError</a></span><span class="op">(</span><span class="op">-</span><span class="va">hetPref</span>, <span class="va">hetErr</span>, <span class="va">epsBF</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      <span class="st">"datasets."</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "The best heterogeneous gain–loss model outperforms its best homogeneous counterpart in 28 of 64 datasets, whereas a homogeneous gain–loss model is preferred in 14 datasets."</span></span></code></pre>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Does allowing heterogeneity in transformational improve fit?</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_ki"</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>            <span class="co"># 28</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 28</span></span></code></pre>
-<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_ki"</span>, <span class="st">"hg2_ki"</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>            <span class="co"># 4</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 4</span></span></code></pre>
-<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"hg2_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"hg_ki"</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="co"># 64</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 64</span></span></code></pre>
-<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Allowing 0↔1 heterogeneity across all two-state characters (model Het1)"</span>,</span>
+<span>      <span class="st">"improves model fit relative to modelling 0↔1 heterogeneity only in"</span>,</span>
+<span>      <span class="st">"neomorphic characters (model Het) in"</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_ki"</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,            <span class="co"># 28</span></span>
+<span>      <span class="st">"of"</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="st">"hg2_ki"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">marginals</span><span class="op">[</span><span class="st">"hg_ki"</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span>, <span class="co"># 64</span></span>
+<span>      <span class="st">"datasets and worsens it in"</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_ki"</span>, <span class="st">"hg2_ki"</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>            <span class="co"># 4</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "Allowing 0↔1 heterogeneity across all two-state characters (model Het1) improves model fit relative to modelling 0↔1 heterogeneity only in neomorphic characters (model Het) in 28 of 64 datasets and worsens it in 4"</span></span></code></pre>
+<div class="sourceCode" id="cb226"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Does modelling distinct heterogeneity behaviour in Neo vs Trans improve fit?</span></span>
 <span><span class="va">hg2s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span></span>
 <span><span class="co"># Which analyses have results available?</span></span>
 <span><span class="va">hgsIn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="va">hg2s</span><span class="op">)</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hgsIn</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 63</span></span></code></pre>
-<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">hbPref</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg2_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">hbPref</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg2_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span><span class="va">hmPref</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg2_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span><span class="va">hbmPref</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg2_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span><span class="co"># Which of the bm models are best?</span></span>
@@ -1315,19 +1386,28 @@
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  hg_b_ki hg_bm_ki  hg_m_ki </span></span>
 <span><span class="co">##       22       16       25</span></span></code></pre>
-<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb228"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># How often does the best bm model outperform hg2?</span></span>
 <span><span class="va">hg2Pref</span> <span class="op">&lt;-</span> <span class="va">hbPref</span> <span class="op">|</span> <span class="va">hmPref</span> <span class="op">|</span> <span class="va">hbmPref</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hg2Pref</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 9</span></span></code></pre>
-<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># How often does hg2 outperform all bm models?</span></span>
+<span></span>
+<span><span class="co"># How often does hg2 outperform all bm models?</span></span>
 <span><span class="va">hbXPref</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span><span class="va">hmXPref</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span><span class="va">hbmXPref</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hbXPref</span> <span class="op">&amp;</span> <span class="va">hmXPref</span> <span class="op">&amp;</span> <span class="va">hbmXPref</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 3</span></span></code></pre>
-<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Partitioning heterogeneity further by allowing distinct distributions of"</span>,</span>
+<span>  <span class="st">"0↔1 rates for neomorphic and transformational partitions (using"</span>,</span>
+<span>  <span class="st">"the best-fitting model of HetB, HetM and HetBM) offers only modest"</span>,</span>
+<span>  <span class="st">"improvements, outperforming Het1 in"</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hg2Pref</span><span class="op">)</span>,</span>
+<span>  <span class="st">"of"</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hgsIn</span><span class="op">)</span>,</span>
+<span>  <span class="st">"datasets, and underperforming in"</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hbXPref</span> <span class="op">&amp;</span> <span class="va">hmXPref</span> <span class="op">&amp;</span> <span class="va">hbmXPref</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "Partitioning heterogeneity further by allowing distinct distributions of 0↔1 rates for neomorphic and transformational partitions (using the best-fitting model of HetB, HetM and HetBM) offers only modest improvements, outperforming Het1 in 9 of 63 datasets, and underperforming in 3"</span></span></code></pre>
+<div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hg1Best</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span></span>
 <span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span> <span class="op">&amp;</span></span>
 <span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span> <span class="op">&amp;</span></span>
@@ -1335,7 +1415,7 @@
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hg1Best</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 3</span></span></code></pre>
-<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hg1Pref</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span></span>
 <span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span> <span class="op">|</span></span>
 <span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg2_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span> <span class="op">|</span></span>
@@ -1343,97 +1423,112 @@
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hg1Pref</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 11</span></span></code></pre>
-<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">hg2Pref</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 63</span></span></code></pre>
-<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ABest</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
+<p>Using a strict criterion (a model must outperform both competitors),
+we identify which of HetB, HetM and HetBM most consistently achieves the
+best fit.</p>
+<div class="sourceCode" id="cb236"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ABestStrict</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">contenders</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span>, <span class="va">a</span><span class="op">)</span></span>
 <span>  <span class="va">betterThanB</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">a</span>, <span class="va">contenders</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span>  <span class="va">betterThanC</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">a</span>, <span class="va">contenders</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span>  <span class="va">worseThanB</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">contenders</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">a</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
 <span>  <span class="va">worseThanC</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">contenders</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, <span class="va">a</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="va">a</span>, <span class="st">" is best in "</span>,</span>
-<span>          <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">betterThanB</span> <span class="op">|</span> <span class="va">betterThanC</span> <span class="op">&amp;</span> <span class="op">!</span><span class="op">(</span><span class="va">worseThanB</span> <span class="op">|</span> <span class="va">worseThanC</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>          <span class="st">" and worst in "</span>,</span>
-<span>          <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">worseThanB</span> <span class="op">|</span> <span class="va">worseThanC</span> <span class="op">&amp;</span> <span class="op">!</span><span class="op">(</span><span class="va">betterThanB</span> <span class="op">|</span> <span class="va">betterThanC</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="va">ABestStrict</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">contenders</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span>, <span class="va">a</span><span class="op">)</span></span>
-<span>  <span class="va">betterThanB</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">a</span>, <span class="va">contenders</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
-<span>  <span class="va">betterThanC</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">a</span>, <span class="va">contenders</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
-<span>  <span class="va">worseThanB</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">contenders</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">a</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
-<span>  <span class="va">worseThanC</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">contenders</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, <span class="va">a</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="va">a</span>, <span class="st">" is best in "</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span>, <span class="st">" is best in "</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">betterThanB</span> <span class="op">&amp;</span> <span class="va">betterThanC</span><span class="op">)</span>,</span>
 <span>          <span class="st">" and worst in "</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">worseThanB</span> <span class="op">&amp;</span> <span class="va">worseThanC</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span> <span class="op">|</span></span>
-<span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span> <span class="op">|</span></span>
-<span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span> <span class="op">|</span></span>
-<span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span> <span class="op">|</span></span>
-<span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span> <span class="op">|</span></span>
-<span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 48</span></span></code></pre>
-<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ABest</span><span class="op">(</span><span class="st">"hg_b_ki"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## hg_b_ki is best in 7 and worst in 5</span></span></code></pre>
-<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ABest</span><span class="op">(</span><span class="st">"hg_bm_ki"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## hg_bm_ki is best in 4 and worst in 8</span></span></code></pre>
-<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ABest</span><span class="op">(</span><span class="st">"hg_m_ki"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## hg_m_ki is best in 8 and worst in 6</span></span></code></pre>
-<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Differences among the fit of HetB, HetM and HetBM were negligible in"</span>,</span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span> <span class="op">|</span></span>
+<span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span> <span class="op">|</span></span>
+<span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span> <span class="op">|</span></span>
+<span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span> <span class="op">|</span></span>
+<span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span> <span class="op">|</span></span>
+<span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>  <span class="st">"of"</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hgsIn</span><span class="op">)</span>,</span>
+<span>  <span class="st">"datasets"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "Differences among the fit of HetB, HetM and HetBM were negligible in 48 of 63 datasets"</span></span></code></pre>
+<div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"in the remainder, "</span>,</span>
+<span>        <span class="st">"XXX performed better (worse) than both other models in..:"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## in the remainder, XXX performed better (worse) than both other models in..:</span></span></code></pre>
+<div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ABestStrict</span><span class="op">(</span><span class="st">"hg_b_ki"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## hg_b_ki is best in 3 and worst in 1</span></span></code></pre>
-<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## HetB is best in 3 and worst in 1</span></span></code></pre>
+<div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ABestStrict</span><span class="op">(</span><span class="st">"hg_bm_ki"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## hg_bm_ki is best in 0 and worst in 2</span></span></code></pre>
-<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## HetBM is best in 0 and worst in 2</span></span></code></pre>
+<div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ABestStrict</span><span class="op">(</span><span class="st">"hg_m_ki"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## hg_m_ki is best in 1 and worst in 1</span></span></code></pre>
-<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## HetM is best in 1 and worst in 1</span></span></code></pre>
+<p>Further fine-scale comparison between heterogeneous models:</p>
+<div class="sourceCode" id="cb246"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ABest</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">contenders</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span>, <span class="va">a</span><span class="op">)</span></span>
+<span>  <span class="va">betterThanB</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">a</span>, <span class="va">contenders</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
+<span>  <span class="va">betterThanC</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">a</span>, <span class="va">contenders</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
+<span>  <span class="va">worseThanB</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">contenders</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">a</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
+<span>  <span class="va">worseThanC</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="va">contenders</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span>, <span class="va">a</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="fu"><a href="../reference/ModelLabel.html">ModelLabel</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span>, <span class="st">" is best in "</span>,</span>
+<span>          <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">betterThanB</span> <span class="op">|</span> <span class="va">betterThanC</span> <span class="op">&amp;</span> <span class="op">!</span><span class="op">(</span><span class="va">worseThanB</span> <span class="op">|</span> <span class="va">worseThanC</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>          <span class="st">" and worst in "</span>,</span>
+<span>          <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">worseThanB</span> <span class="op">|</span> <span class="va">worseThanC</span> <span class="op">&amp;</span> <span class="op">!</span><span class="op">(</span><span class="va">betterThanB</span> <span class="op">|</span> <span class="va">betterThanC</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">ABest</span><span class="op">(</span><span class="st">"hg_b_ki"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## HetB is best in 7 and worst in 5</span></span></code></pre>
+<div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ABest</span><span class="op">(</span><span class="st">"hg_bm_ki"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## HetBM is best in 4 and worst in 8</span></span></code></pre>
+<div class="sourceCode" id="cb250"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ABest</span><span class="op">(</span><span class="st">"hg_m_ki"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## HetM is best in 8 and worst in 6</span></span></code></pre>
+<div class="sourceCode" id="cb252"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
+<div class="sourceCode" id="cb254"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 4</span></span></code></pre>
+<div class="sourceCode" id="cb256"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
+<div class="sourceCode" id="cb258"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 2</span></span></code></pre>
+<div class="sourceCode" id="cb260"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
+<div class="sourceCode" id="cb262"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 2</span></span></code></pre>
+<div class="sourceCode" id="cb264"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
+<div class="sourceCode" id="cb266"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 4</span></span></code></pre>
+<div class="sourceCode" id="cb268"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 5</span></span></code></pre>
 <div class="sourceCode" id="cb270"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 4</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 2</span></span></code></pre>
 <div class="sourceCode" id="cb272"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 5</span></span></code></pre>
 <div class="sourceCode" id="cb274"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 2</span></span></code></pre>
 <div class="sourceCode" id="cb276"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
-<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 2</span></span></code></pre>
-<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 4</span></span></code></pre>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 2</span></span></code></pre>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 5</span></span></code></pre>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_bm_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 2</span></span></code></pre>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">hg2Same</span> <span class="op">&lt;-</span> <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_m_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span> <span class="op">|</span></span>
 <span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_m_ki"</span>, <span class="st">"hg_b_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span> <span class="op">|</span></span>
 <span>  <span class="fu">.ErrCompare</span><span class="op">(</span><span class="st">"hg_b_ki"</span>, <span class="st">"hg_bm_ki"</span><span class="op">)</span><span class="op">[</span><span class="va">hgsIn</span><span class="op">]</span> <span class="op">|</span></span>
@@ -1444,12 +1539,12 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"HG b/m models indistinguishable from one another in "</span>,</span>
 <span>        <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">hg2Same</span><span class="op">)</span>, <span class="st">" / "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">hgsIn</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## HG b/m models indistinguishable from one another in 15 / 64</span></span></code></pre>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb278"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">hg2s</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="va">hg2s</span>, <span class="va">hgsIn</span><span class="op">]</span><span class="op">[</span>, <span class="op">!</span><span class="va">hg2Same</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">which.max</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  hg_b_ki hg_bm_ki  hg_m_ki </span></span>
 <span><span class="co">##       16       13       19</span></span></code></pre>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb280"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">hg2s</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">marginals</span><span class="op">[</span><span class="va">hg2s</span>, <span class="va">hgsIn</span><span class="op">]</span><span class="op">[</span>, <span class="op">!</span><span class="va">hg2Same</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">which.min</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  hg_b_ki hg_bm_ki  hg_m_ki </span></span>

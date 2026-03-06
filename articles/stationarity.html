@@ -76,6 +76,9 @@
       <a href="../articles/prior-posterior.html">Prior-posterior comparison</a>
     </li>
     <li>
+      <a href="../articles/simulations.html">Simulation study</a>
+    </li>
+    <li>
       <a href="../articles/stationarity.html">Evaluating stationarity</a>
     </li>
     <li>
@@ -121,642 +124,78 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://ms609.github.io/neotrans/" class="external-link">"neotrans"</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">neo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/InfNeo.html">InfNeo</a></span><span class="op">(</span><span class="va">pID</span><span class="op">)</span></span>
-<span>  <span class="va">p1Taxa</span> <span class="op">&lt;-</span> <span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span> <span class="op">/</span> <span class="op">(</span><span class="va">neo</span><span class="op">[[</span><span class="st">"0"</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span> <span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span>  <span class="va">p1Obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">neo</span><span class="op">[[</span><span class="st">"0"</span><span class="op">]</span><span class="op">]</span>, <span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Simulated01s.html">Simulated01s</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"by_n_ki"</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">1</span> <span class="op">+</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_message.html" class="external-link">cli_progress_message</a></span><span class="op">(</span><span class="st">"{pID}: Compute Sim stats"</span><span class="op">)</span></span>
-<span>  <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="va">p1Sim</span><span class="op">[</span><span class="st">"1"</span>, <span class="op">]</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">p1Obs</span>,</span>
-<span>    obs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Taxa</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    obs.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Taxa</span><span class="op">)</span>,</span>
-<span>    sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Sim</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    sim.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span>; <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli_progress_done</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">.sim_available</span> <span class="op">&lt;-</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/Logic.html" class="external-link">isFALSE</a></span><span class="op">(</span><span class="fu"><a href="../reference/Simulated01s.html">Simulated01s</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="st">"by_n_ki"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/104_by_n_ki'...</span></span>
 <span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
 <pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/157_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/175_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/450_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/493_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/563_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/635_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/675_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/692_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/706_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/748_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/950_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1113_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1210_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1271_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2131_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2553_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2800_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3199_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3200_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3244_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3351_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3392_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3405_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3408_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3445_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3448_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3603_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3646_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3655_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3705_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3710_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3711_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3755_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3757_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3804_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3832_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3833_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3927_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3929_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4111_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4220_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4230_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4291_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4305_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4308_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4309_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4310_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4467_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4649_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4747_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4761_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4790_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4867_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4910_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5099_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5186_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5201_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5228_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5230_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5255_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5268_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5327_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/07203_by_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ns1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>obs1 <span class="op">=</span> <span class="fu"><a href="../reference/InfNeo.html">InfNeo</a></span><span class="op">(</span><span class="va">pID</span><span class="op">)</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"p"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">]</span><span class="op">]</span>,</span>
-<span>    obs1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="fu"><a href="../reference/InfNeo.html">InfNeo</a></span><span class="op">(</span><span class="va">pID</span><span class="op">)</span><span class="op">[[</span><span class="st">"p1"</span><span class="op">]</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    root1 <span class="op">=</span> <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span><span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span></span>
-<span>      , <span class="st">"root_freqs.2."</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/Control.html" class="external-link">%||%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">.cache</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/stationarity_data.RData"</span>, package <span class="op">=</span> <span class="st">"neotrans"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">nsP1AtStat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Simulated01s.html">Simulated01s</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span>, <span class="st">"stat"</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="va">p1Sim</span><span class="op">[</span><span class="st">"1"</span>, <span class="op">]</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Sim</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    sim.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span>; <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli_progress_done</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/104_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span>
-<span><span class="co">## Warning in .GitClone(pID, scriptID): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/157_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/175_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/450_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/493_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/563_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/635_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/675_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/692_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/706_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/748_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/950_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1113_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1210_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1271_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2131_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2553_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2800_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3199_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3200_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3244_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3351_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3392_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3405_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3408_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3445_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3448_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3603_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3646_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3655_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3705_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3710_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3711_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3755_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3757_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3804_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3832_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3833_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3927_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3929_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4111_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4220_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4230_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4291_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4305_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4308_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4309_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4310_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4467_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4649_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4747_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4761_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4790_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4867_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4910_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5099_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5186_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5201_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5228_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5230_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5255_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5268_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5327_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/07203_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">nsP1AtObs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Simulated01s.html">Simulated01s</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span>, <span class="st">"obs"</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="va">p1Sim</span><span class="op">[</span><span class="st">"1"</span>, <span class="op">]</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Sim</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>    sim.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span>; <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli_progress_done</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/104_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span>
-<span><span class="co">## Warning in .GitClone(pID, scriptID): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/157_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/175_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/450_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/493_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/563_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/635_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/675_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/692_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/706_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/748_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/950_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1113_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1210_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/1271_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2131_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2553_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/2800_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3199_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3200_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3244_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3351_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3392_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3405_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3408_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3445_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3448_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3603_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3646_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3655_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3705_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3710_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3711_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3755_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3757_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3804_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3832_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3833_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3927_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/3929_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4111_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4220_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4230_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4291_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4305_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4308_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4309_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4310_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4467_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4649_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4747_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4761_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4790_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4867_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/4910_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5099_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5186_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5201_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5228_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5230_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5255_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5268_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/5327_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in .GitClone(pID, scriptID): Cloning into '/home/runner/work/_temp/Library/revbayes-repos/07203_ns_n_ki'...</span></span>
-<span><span class="co">##   fatal: could not read Username for 'https://github.com': terminal prompts disabled</span></span></code></pre>
-<pre><code><span><span class="co">## Warning in ConnectSSH(): sshLogin environment variable not set in ConnectSSH()</span></span></code></pre>
-<div class="sourceCode" id="cb387"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">rootFreqCf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">par</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span><span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">par</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="../reference/MakeSlurm.html">MakeSlurm</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span>, ml <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">}</span></span>
-<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">/</span> <span class="va">par</span><span class="op">[</span><span class="st">"50%"</span>, <span class="st">"rate_loss"</span><span class="op">]</span> <span class="co"># confusingly named?</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>pi0 <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">n</span><span class="op">)</span>, <span class="co"># Probability of absence at stationary distribution</span></span>
-<span>    a0 <span class="op">=</span> <span class="va">par</span><span class="op">[</span><span class="st">"50%"</span>, <span class="st">"root_freqs.1."</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">.sim_available</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">neo</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/InfNeo.html">InfNeo</a></span><span class="op">(</span><span class="va">pID</span><span class="op">)</span></span>
+<span>    <span class="va">p1Taxa</span> <span class="op">&lt;-</span> <span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span> <span class="op">/</span> <span class="op">(</span><span class="va">neo</span><span class="op">[[</span><span class="st">"0"</span><span class="op">]</span><span class="op">]</span> <span class="op">+</span> <span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>    <span class="va">p1Obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">neo</span><span class="op">[[</span><span class="st">"0"</span><span class="op">]</span><span class="op">]</span>, <span class="va">neo</span><span class="op">[[</span><span class="st">"1"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Simulated01s.html">Simulated01s</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"by_n_ki"</span><span class="op">)</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">1</span> <span class="op">+</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>    <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_message.html" class="external-link">cli_progress_message</a></span><span class="op">(</span><span class="st">"{pID}: Compute Sim stats"</span><span class="op">)</span></span>
+<span>    <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="va">p1Sim</span><span class="op">[</span><span class="st">"1"</span>, <span class="op">]</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">p1Obs</span>,</span>
+<span>      obs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Taxa</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      obs.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Taxa</span><span class="op">)</span>,</span>
+<span>      sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Sim</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      sim.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">6</span> <span class="op">+</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span>; <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli_progress_done</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">ns1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>obs1 <span class="op">=</span> <span class="fu"><a href="../reference/InfNeo.html">InfNeo</a></span><span class="op">(</span><span class="va">pID</span><span class="op">)</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"p"</span>, <span class="st">"1"</span><span class="op">)</span><span class="op">]</span><span class="op">]</span>,</span>
+<span>      obs1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="fu"><a href="../reference/InfNeo.html">InfNeo</a></span><span class="op">(</span><span class="va">pID</span><span class="op">)</span><span class="op">[[</span><span class="st">"p1"</span><span class="op">]</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      root1 <span class="op">=</span> <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span><span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span></span>
+<span>        , <span class="st">"root_freqs.2."</span><span class="op">]</span> <span class="op"><a href="https://rdrr.io/r/base/Control.html" class="external-link">%||%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">nsP1AtStat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Simulated01s.html">Simulated01s</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span>, <span class="st">"stat"</span><span class="op">)</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>    <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="va">p1Sim</span><span class="op">[</span><span class="st">"1"</span>, <span class="op">]</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Sim</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      sim.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span>; <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli_progress_done</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">nsP1AtObs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Simulated01s.html">Simulated01s</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span>, <span class="st">"obs"</span><span class="op">)</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>    <span class="va">p1Sim</span> <span class="op">&lt;-</span> <span class="va">p1Sim</span><span class="op">[</span><span class="st">"1"</span>, <span class="op">]</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">p1Sim</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.975</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      sim.mad <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/mad.html" class="external-link">mad</a></span><span class="op">(</span><span class="va">p1Sim</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span>; <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli_progress_done</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">rootFreqCf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply</a></span><span class="op">(</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">pID</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">par</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ExistingResults.html">ExistingResults</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span><span class="op">)</span><span class="op">[[</span><span class="st">"parameters"</span><span class="op">]</span><span class="op">]</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">par</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="../reference/MakeSlurm.html">MakeSlurm</a></span><span class="op">(</span><span class="va">pID</span>, <span class="st">"ns_n_ki"</span>, ml <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="cn">NA_real_</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>    <span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">/</span> <span class="va">par</span><span class="op">[</span><span class="st">"50%"</span>, <span class="st">"rate_loss"</span><span class="op">]</span> <span class="co"># confusingly named?</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>pi0 <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">n</span><span class="op">)</span>, <span class="co"># Probability of absence at stationary distribution</span></span>
+<span>      a0 <span class="op">=</span> <span class="va">par</span><span class="op">[</span><span class="st">"50%"</span>, <span class="st">"root_freqs.1."</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">double</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">delta</span> <span class="op">&lt;-</span> <span class="va">rootFreqCf</span><span class="op">[</span><span class="st">"a0"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">rootFreqCf</span><span class="op">[</span><span class="st">"pi0"</span>, <span class="op">]</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="va">.cache</span><span class="op">)</span> <span class="co"># loads p1, ns1, nsP1AtStat, nsP1AtObs, rootFreqCf, delta, kiNeoChar</span></span>
+<span><span class="op">}</span></span>
 <span></span>
-<span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="va">rootFreqCf</span><span class="op">[</span><span class="st">"a0"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">rootFreqCf</span><span class="op">[</span><span class="st">"pi0"</span>, <span class="op">]</span></span>
 <span><span class="va">.meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Metadata.html">Metadata</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">kiNeoChar</span> <span class="op">&lt;-</span> <span class="va">.meta</span><span class="op">$</span><span class="va">nChar</span><span class="op">[</span><span class="st">"neo"</span>, <span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
-<div class="sourceCode" id="cb388"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/OutputPlot.html">OutputPlot</a></span><span class="op">(</span><span class="st">"stationarity"</span>, <span class="fl">7.2</span>, <span class="fl">7</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html" class="external-link">layout</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>, heights <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.2</span>, <span class="fl">4.2</span>, <span class="fl">0.4</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
@@ -813,7 +252,8 @@
 <span>             col <span class="op">=</span> <span class="va">kiNeoChar</span><span class="op">)</span></span>
 <span>  </span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb389"><pre class="downlit sourceCode r">
+<p><img src="stationarity_files/figure-html/plot-stationarity-1.png" class="r-plt" alt="" width="691.2"><img src="stationarity_files/figure-html/plot-stationarity-2.png" class="r-plt" alt="" width="691.2"></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dStat</span> <span class="op">&lt;-</span> <span class="va">p1</span><span class="op">[</span><span class="st">"obs"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">nsP1AtStat</span><span class="op">[</span><span class="st">"sim.50%"</span>, <span class="op">]</span></span>
 <span><span class="va">dObs</span> <span class="op">&lt;-</span> <span class="va">p1</span><span class="op">[</span><span class="st">"obs"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">nsP1AtObs</span><span class="op">[</span><span class="st">"sim.50%"</span>, <span class="op">]</span></span>
 <span></span>
@@ -822,40 +262,47 @@
 <span>           <span class="st">"Difference in Pr(present), observed vs sim from observed root"</span>,</span>
 <span>           <span class="va">dObs</span>, <span class="va">dObs</span>, <span class="va">dObs</span>,</span>
 <span>           line <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"h"</span>, <span class="st">"v"</span><span class="op">)</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">dStat</span>, <span class="va">dObs</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>           lgdTitle <span class="op">=</span> <span class="st">"Characters"</span>, col <span class="op">=</span> <span class="va">kiNeoChar</span>, text<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="fu">ColErrPlot</span><span class="op">(</span></span>
+<span>           lgdTitle <span class="op">=</span> <span class="st">"Characters"</span>, col <span class="op">=</span> <span class="va">kiNeoChar</span>, text<span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="stationarity_files/figure-html/supplementary-plots-1.png" class="r-plt" alt="" width="672"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ColErrPlot</span><span class="op">(</span></span>
 <span>  <span class="st">"Pr(present), NstN, inferred root frequencies"</span>,</span>
 <span>  <span class="va">nsP1AtObs</span><span class="op">[</span><span class="st">"sim.50%"</span>, <span class="op">]</span>, <span class="va">nsP1AtObs</span><span class="op">[</span><span class="st">"sim.2.5%"</span>, <span class="op">]</span>, <span class="va">nsP1AtObs</span><span class="op">[</span><span class="st">"sim.97.5%"</span>, <span class="op">]</span>,</span>
 <span>  <span class="st">"Pr(present), NstN, stationary root"</span>,</span>
 <span>  <span class="va">nsP1AtStat</span><span class="op">[</span><span class="st">"sim.50%"</span>, <span class="op">]</span>, <span class="va">nsP1AtStat</span><span class="op">[</span><span class="st">"sim.2.5%"</span>, <span class="op">]</span>, <span class="va">nsP1AtStat</span><span class="op">[</span><span class="st">"sim.97.5%"</span>, <span class="op">]</span>,</span>
 <span>  lgdTitle <span class="op">=</span> <span class="st">"Characters"</span>, colBy <span class="op">=</span> <span class="va">kiNeoChar</span>,</span>
-<span>  text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="fu">ColErrPlot</span><span class="op">(</span></span>
+<span>  text <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="stationarity_files/figure-html/supplementary-plots-2.png" class="r-plt" alt="" width="672"></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ColErrPlot</span><span class="op">(</span></span>
 <span>  <span class="st">"Leaf Pr(present)"</span>,</span>
 <span>  <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1.25%"</span>, <span class="op">]</span>,  <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1.75%"</span>, <span class="op">]</span>,</span>
 <span>  <span class="st">"Root Pr(present)"</span>,</span>
 <span>  <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.50%"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.2.5%"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.97.5%"</span>, <span class="op">]</span>,</span>
-<span>  colBy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html" class="external-link">droplevels</a></span><span class="op">(</span><span class="va">.meta</span><span class="op">$</span><span class="va">rank</span><span class="op">[</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">ColErrPlot</span><span class="op">(</span></span>
+<span>  colBy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html" class="external-link">droplevels</a></span><span class="op">(</span><span class="va">.meta</span><span class="op">$</span><span class="va">rank</span><span class="op">[</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="stationarity_files/figure-html/supplementary-plots-3.png" class="r-plt" alt="" width="672"></p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ColErrPlot</span><span class="op">(</span></span>
 <span>  <span class="st">"Leaf Pr(present)"</span>,</span>
 <span>  <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1.25%"</span>, <span class="op">]</span>,  <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1.75%"</span>, <span class="op">]</span>,</span>
 <span>  <span class="st">"Root Pr(present)"</span>,</span>
 <span>  <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.50%"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.2.5%"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.97.5%"</span>, <span class="op">]</span>,</span>
 <span>  lgdTitle <span class="op">=</span> <span class="st">"Taxon"</span>,</span>
 <span>  colBy <span class="op">=</span> <span class="va">.meta</span><span class="op">$</span><span class="va">taxon</span><span class="op">[</span><span class="fu"><a href="../reference/KiProjects.html">KiProjects</a></span><span class="op">(</span><span class="op">)</span><span class="op">]</span>, pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette.colors</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb390"><pre class="downlit sourceCode r">
+<p><img src="stationarity_files/figure-html/supplementary-plots-4.png" class="r-plt" alt="" width="672"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># The proportion of present states at the root deviates from the stationary distribution by &gt; 0.1 in 20 of 64 datasets, and is 0.1 less than the stationary distribution in 20 datasets.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">&gt;</span> <span class="fl">0.1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">0.1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb391"><pre class="downlit sourceCode r">
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">&gt;</span> <span class="fl">0.1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 20</span></span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">delta</span> <span class="op">&lt;</span> <span class="op">-</span><span class="fl">0.1</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 20</span></span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 64</span></span></code></pre>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/OutputPlot.html">OutputPlot</a></span><span class="op">(</span><span class="st">"rootVsLeaf"</span>, <span class="fl">5</span>, <span class="fl">5</span>, <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">0.4</span>, <span class="fl">0.4</span><span class="op">)</span>, cex <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4.2</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span><span class="op">)</span>, cex <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span>
 <span>  <span class="fu">ColErrPlot</span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="st">"Pr("</span> <span class="op">*</span> <span class="fu">italic</span><span class="op">(</span><span class="st">"present"</span><span class="op">)</span> <span class="op">*</span> <span class="st">") at root"</span><span class="op">)</span>,</span>
 <span>    <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.50%"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.2.5%"</span>, <span class="op">]</span>, <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.97.5%"</span>, <span class="op">]</span>,</span>
@@ -874,17 +321,26 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">1.0</span>, <span class="fl">0</span>, <span class="st">"Stationary distribution"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/text.html" class="external-link">text</a></span><span class="op">(</span><span class="fl">1.0</span>, <span class="op">-</span><span class="fl">0.35</span>, <span class="st">"More absences at leaves than root \U2193"</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb392"><pre class="downlit sourceCode r">
+<p><img src="stationarity_files/figure-html/root-versus-leaf-1.png" class="r-plt" alt="" width="480"></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">moreAtLeaves</span> <span class="op">&lt;-</span> <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.97.5%"</span>, <span class="op">]</span> <span class="op">&gt;</span> <span class="fl">0</span></span>
 <span><span class="va">moreAtRoot</span> <span class="op">&lt;-</span> <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1"</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.2.5%"</span>, <span class="op">]</span> <span class="op">&lt;</span> <span class="fl">0</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">moreAtLeaves</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">moreAtRoot</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">moreAtLeaves</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">signif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">ns1</span><span class="op">[</span><span class="st">"root1.50%"</span>, <span class="va">moreAtLeaves</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">signif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">ns1</span><span class="op">[</span><span class="st">"root1.97.5%"</span>, <span class="va">moreAtLeaves</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">leafExcess</span> <span class="op">&lt;-</span> <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1"</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">moreAtLeaves</span><span class="op">)</span><span class="op">]</span> <span class="op">-</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">moreAtLeaves</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 15</span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">moreAtRoot</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 1</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">moreAtLeaves</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 64</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">signif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">ns1</span><span class="op">[</span><span class="st">"root1.50%"</span>, <span class="va">moreAtLeaves</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.14</span></span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">signif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">ns1</span><span class="op">[</span><span class="st">"root1.97.5%"</span>, <span class="va">moreAtLeaves</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.48</span></span></code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">leafExcess</span> <span class="op">&lt;-</span> <span class="va">ns1</span><span class="op">[</span><span class="st">"obs1"</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">moreAtLeaves</span><span class="op">)</span><span class="op">]</span> <span class="op">-</span> </span>
 <span>  <span class="va">ns1</span><span class="op">[</span><span class="st">"root1.50%"</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">moreAtLeaves</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="va">leafProj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">leafExcess</span><span class="op">)</span></span>
 <span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
@@ -907,12 +363,22 @@
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">predBF</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">predBF</span> <span class="op">&lt;-</span> <span class="va">leafPredictors</span><span class="op">[</span><span class="va">vsurfBF</span><span class="op">[[</span><span class="st">"varselect.interp"</span><span class="op">]</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">predBF</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/" class="external-link">"randomForest"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">rfBF</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">(</span><span class="va">meta</span><span class="op">[</span>, <span class="va">predBF</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, <span class="va">leafExcess</span>,</span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">predBF</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## neoPerTax, logNTRatio</span></span></code></pre>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/" class="external-link">"randomForest"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## randomForest 4.7-1.2</span></span></code></pre>
+<pre><code><span><span class="co">## Type rfNews() to see new features/changes/bug fixes.</span></span></code></pre>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rfBF</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html" class="external-link">randomForest</a></span><span class="op">(</span><span class="va">meta</span><span class="op">[</span>, <span class="va">predBF</span>, drop <span class="op">=</span> <span class="cn">FALSE</span><span class="op">]</span>, <span class="va">leafExcess</span>,</span>
 <span>                     ntree <span class="op">=</span> <span class="fl">10000</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html" class="external-link">importance</a></span><span class="op">(</span><span class="va">rfBF</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfBF</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html" class="external-link">importance</a></span><span class="op">(</span><span class="va">rfBF</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##             %IncMSE IncNodePurity</span></span>
+<span><span class="co">## neoPerTax  75.03455     0.5122981</span></span>
+<span><span class="co">## logNTRatio 52.33681     0.5368185</span></span></code></pre>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/varImpPlot.html" class="external-link">varImpPlot</a></span><span class="op">(</span><span class="va">rfBF</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="stationarity_files/figure-html/leaf-root-prediction-1.png" class="r-plt" alt="" width="672"></p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

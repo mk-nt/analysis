@@ -76,6 +76,9 @@
       <a href="../articles/prior-posterior.html">Prior-posterior comparison</a>
     </li>
     <li>
+      <a href="../articles/simulations.html">Simulation study</a>
+    </li>
+    <li>
       <a href="../articles/stationarity.html">Evaluating stationarity</a>
     </li>
     <li>
@@ -190,6 +193,7 @@
 <span>                      ntree <span class="op">=</span> <span class="fl">10000</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">tImp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html" class="external-link">importance</a></span><span class="op">(</span><span class="va">tRFBF</span><span class="op">)</span></span>
 <span><span class="va">tIncMSE</span> <span class="op">&lt;-</span> <span class="va">tImp</span><span class="op">[</span>, <span class="st">"%IncMSE"</span><span class="op">]</span></span>
+<span><span class="va">lbfLab</span> <span class="op">&lt;-</span> <span class="st">"log Bayes factor"</span></span>
 <span></span>
 <span><span class="va">nTPred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">tPredBF</span><span class="op">)</span></span>
 <span></span>
@@ -197,7 +201,7 @@
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">predictor</span> <span class="kw">in</span> <span class="va">tPredBF</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">tIncMSE</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">tModelBF</span> <span class="op">~</span> <span class="va">tMeta</span><span class="op">[</span>, <span class="va">predictor</span><span class="op">]</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="../reference/Decrypt.html">Decrypt</a></span><span class="op">(</span><span class="va">predictor</span><span class="op">)</span>,</span>
-<span>       ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
+<span>       ylab <span class="op">=</span> <span class="va">lbfLab</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">tRFBF</span>, <span class="va">tMeta</span><span class="op">[</span>, <span class="va">tPredictors</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">predictor</span><span class="op">)</span>,</span>
 <span>              rug <span class="op">=</span> <span class="cn">TRUE</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -289,7 +293,7 @@
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">predictor</span> <span class="kw">in</span> <span class="va">nPredBF</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">nIncMSE</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">nModelBF</span> <span class="op">~</span> <span class="va">nMeta</span><span class="op">[</span>, <span class="va">predictor</span><span class="op">]</span>, frame.plot <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>       xlab <span class="op">=</span> <span class="fu"><a href="../reference/Decrypt.html">Decrypt</a></span><span class="op">(</span><span class="va">predictor</span><span class="op">)</span>,</span>
-<span>       ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
+<span>       ylab <span class="op">=</span> <span class="va">lbfLab</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="../reference/EpsLine.html">EpsLine</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/partialPlot.html" class="external-link">partialPlot</a></span><span class="op">(</span><span class="va">nRFBF</span>, <span class="va">nMeta</span><span class="op">[</span>, <span class="va">nPredictors</span><span class="op">]</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">predictor</span><span class="op">)</span>,</span>
 <span>              rug <span class="op">=</span> <span class="cn">FALSE</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -457,7 +461,7 @@
 <span>  <span class="kw">for</span> <span class="op">(</span><span class="va">predictor</span> <span class="kw">in</span> <span class="va">tPredictors</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html" class="external-link">importance</a></span><span class="op">(</span><span class="va">prfT</span><span class="op">)</span><span class="op">[</span>, <span class="st">"%IncMSE"</span><span class="op">]</span>,</span>
 <span>                                      decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="../reference/PredictWith.html">PredictWith</a></span><span class="op">(</span><span class="va">metaTPred</span>, <span class="va">predictor</span>, <span class="va">tModelBF</span>, <span class="va">prfT</span>, <span class="va">predictor</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">tPredBF</span>,</span>
-<span>                ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
+<span>                ylab <span class="op">=</span> <span class="va">lbfLab</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## tValue.50.: Correlated (p = 0.019): Spearman's rank correlation rho ~ 0.29</span></span></code></pre>
@@ -485,7 +489,7 @@
 <span>  <span class="kw">for</span> <span class="op">(</span><span class="va">predictor</span> <span class="kw">in</span> <span class="va">nPredictors</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html" class="external-link">importance</a></span><span class="op">(</span><span class="va">prfN</span><span class="op">)</span><span class="op">[</span>, <span class="st">"%IncMSE"</span><span class="op">]</span>,</span>
 <span>                                      decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="../reference/PredictWith.html">PredictWith</a></span><span class="op">(</span><span class="va">metaNPred</span>, <span class="va">predictor</span>, <span class="va">nModelBF</span>, <span class="va">prfN</span>, <span class="va">predictor</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">nPredBF</span>,</span>
-<span>                ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
+<span>                ylab <span class="op">=</span> <span class="va">lbfLab</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p><img src="predictions_files/figure-html/plot-value-predicions-4.png" class="r-plt" alt="" width="691.2"></p>
@@ -515,7 +519,7 @@
 <span>  <span class="kw">for</span> <span class="op">(</span><span class="va">predictor</span> <span class="kw">in</span> <span class="va">aPredictors</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/importance.html" class="external-link">importance</a></span><span class="op">(</span><span class="va">prfA</span><span class="op">)</span><span class="op">[</span>, <span class="st">"%IncMSE"</span><span class="op">]</span>,</span>
 <span>                                      decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">]</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="../reference/PredictWith.html">PredictWith</a></span><span class="op">(</span><span class="va">metaAPred</span>, <span class="va">predictor</span>, <span class="va">nsModelBF</span>, <span class="va">prfA</span>, <span class="va">predictor</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">aPredBF</span>,</span>
-<span>                ylab <span class="op">=</span> <span class="st">"log(Bayes Factor)"</span><span class="op">)</span></span>
+<span>                ylab <span class="op">=</span> <span class="va">lbfLab</span><span class="op">)</span></span>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p><img src="predictions_files/figure-html/plot-value-predicions-5.png" class="r-plt" alt="" width="691.2"></p>
