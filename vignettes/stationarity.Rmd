@@ -30,7 +30,11 @@ p1 <- vapply(KiProjects(), function(pID) {
   
   p1Sim <- Simulated01s(pID, "by_n_ki")
   if (length(p1Sim) < 2) {
-    return(rep(NA_real_, 1 + 6 + 6))
+    return(c(obs = NA_real_,
+             obs = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
+             obs.mad = NA_real_,
+             sim = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
+             sim.mad = NA_real_))
   }
   cli::cli_progress_message("{pID}: Compute Sim stats")
   p1Sim <- p1Sim["1", ] / colSums(p1Sim)
@@ -52,7 +56,8 @@ ns1 <- vapply(KiProjects(), function(pID) {
 nsP1AtStat <- vapply(KiProjects(), function(pID) {
   p1Sim <- Simulated01s(pID, "ns_n_ki", "stat")
   if (length(p1Sim) < 2) {
-    return(rep(NA_real_, 6))
+    return(c(sim = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
+             sim.mad = NA_real_))
   }
   p1Sim <- p1Sim["1", ] / colSums(p1Sim)
   c(sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
@@ -62,7 +67,8 @@ nsP1AtStat <- vapply(KiProjects(), function(pID) {
 nsP1AtObs <- vapply(KiProjects(), function(pID) {
   p1Sim <- Simulated01s(pID, "ns_n_ki", "obs")
   if (length(p1Sim) < 2) {
-    return(rep(NA_real_, 6))
+    return(c(sim = setNames(rep(NA_real_, 5), c("2.5%", "25%", "50%", "75%", "97.5%")),
+             sim.mad = NA_real_))
   }
   p1Sim <- p1Sim["1", ] / colSums(p1Sim)
   c(sim = quantile(p1Sim, c(0.025, 0.25, 0.5, 0.75, 0.975), na.rm = TRUE),
@@ -74,7 +80,7 @@ rootFreqCf <- vapply(KiProjects(), function(pID) {
   par <- ExistingResults(pID, "ns_n_ki")[["parameters"]]
   if (is.null(par)) {
     MakeSlurm(pID, "ns_n_ki", ml = FALSE)
-    return(rep(NA_real_, 2))
+    return(c(pi0 = NA_real_, a0 = NA_real_))
   }
   n <- 1 / par["50%", "rate_loss"] # confusingly named?
   c(pi0 = 1 / (1 + n), # Probability of absence at stationary distribution
