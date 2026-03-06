@@ -45,7 +45,8 @@ ns1 <- vapply(KiProjects(), function(pID) {
   c(obs1 = InfNeo(pID)[[c("p", "1")]],
     obs1 = quantile(InfNeo(pID)[["p1"]], c(0.25, 0.75), na.rm = TRUE),
     root1 = ExistingResults(pID, "ns_n_ki")[["parameters"]][
-      , "root_freqs.2."] %||% rep(NA_real_, 6))
+      , "root_freqs.2."] %||% setNames(rep(NA_real_, 6),
+                                       c("2.5%", "25%", "50%", "75%", "97.5%", "mad")))
 }, double(1 + 2 + 6))
 
 nsP1AtStat <- vapply(KiProjects(), function(pID) {
@@ -85,7 +86,7 @@ delta <- rootFreqCf["a0", ] - rootFreqCf["pi0", ]
 kiNeoChar <- .meta$nChar["neo", KiProjects()]
 ```
 
-```{r plot-stationarity, fig.width = 7.2, fig.height = 7, eval = FALSE}
+```{r plot-stationarity, fig.width = 7.2, fig.height = 7}
 OutputPlot("stationarity", 7.2, 7, function() {
   layout(rbind(1:2, 3:4, c(5, 5)), heights = c(1, 1, 1/4))
   par(mar = c(4.2, 4.2, 0.4, 0.4))
