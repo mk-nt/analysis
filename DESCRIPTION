@@ -1,6 +1,6 @@
 Package: neotrans
 Title: Modelling the evolution of neomorphic characters
-Version: 2025-11-06
+Version: 2026-03-06
 Authors@R: c(
   person("Martin R.", 'Smith', role = c("aut", "cre", "cph"), 
          email = "martin.smith@durham.ac.uk",
@@ -38,7 +38,7 @@ Imports:
   stringi,
   TreeDist,
   TreeSearch,
-  TreeTools (> 1.13.0),
+  TreeTools (>= 2.1.0),
   treess,
 Suggests:
   caret,
