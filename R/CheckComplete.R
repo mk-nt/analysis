@@ -218,7 +218,8 @@ UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
     # Check on the remote
     remoteFile <- file.path(RemoteDir(), scriptBase, log1)
     session <- SshSession()
-    if (ssh_exec_wait(session, paste("test -f", remoteFile)) == 0) {
+    if (isFALSE(session) && 
+        ssh_exec_wait(session, paste("test -f", remoteFile)) == 0) {
       push <- ssh_exec_wait(
         .ssh$session,
         paste("(cd", dirname(remoteFile), "&&",

@@ -116,6 +116,20 @@ ModelLabel <- function(x) {
   ret
 }
 
+#' Axis-ready model labels
+#' Wraps \code{\link{ModelLabel}} output in \code{phantom("|")} on each side,
+#' ensuring a consistent bounding-box height for horizontal (\code{las = 1})
+#' axis labels.
+#' @inheritParams ModelLabel
+#' @return An \code{expression} vector.
+#' @export
+ModelLabelExpr <- function(x) {
+  labs <- ModelLabel(x)
+  as.expression(lapply(labs, function(l) {
+    call("*", call("*", call("phantom", "|"), l), call("phantom", "|"))
+  }))
+}
+
 #' Taxon colour
 #' Return an appropriate colour for each higher taxon
 #' @export

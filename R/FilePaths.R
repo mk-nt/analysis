@@ -52,35 +52,36 @@ KiProjects <- function() {
 #' 
 #' @export
 OutputDir <- function() {
-  getOption("ntOutDir") %||% system.file(package = "neotrans")
+  getOption("ntOutDir", system.file(package = "neotrans"))
 }
 
 #' @rdname OutputDir
 #' @export
 RepoDir <- function() {
-  getOption("ntRepoDir") %||% {
+  getOption(
+    "ntRepoDir",
     file.path(dirname(gsub("/inst$", "", perl = TRUE,
                            system.file(package = "neotrans"))), "revbayes-repos")
-  }
+  )
 }
 
 #' @rdname OutputDir
 #' @export
 SlurmDir <- function() {
-  getOption("ntSlurmDir") %||% system.file("slurm", package = "neotrans")
+  getOption("ntSlurmDir", system.file("slurm", package = "neotrans"))
 }
 
 #' @rdname OutputDir
 #' @export
 RemoteDir <- function() {
-  getOption("ntRemoteDir") %||%
-    paste0("/nobackup/", sub("@.*", "", Sys.getenv("sshLogin")))
+  getOption("ntRemoteDir",
+    paste0("/nobackup/", sub("@.*", "", Sys.getenv("sshLogin"))))
 }
 
 #' @rdname OutputDir
 #' @export
 RBScriptDir <- function() {
-  getOption("ntRBScriptDir") %||% system.file("rbScripts", package = "neotrans")
+  getOption("ntRBScriptDir", system.file("rbScripts", package = "neotrans"))
 }
 
 #' Directory containing analysis output
@@ -385,6 +386,8 @@ TreeSampleFile <- function(pID, scriptID) {
 #'
 #' Returns the path to the `.rds` file containing parsimony scores of sampled
 #' trees for a given project and script.
+#' Scores are generated and written to this path by [`PosteriorTreeSteps()`]
+#' via [`TreeSearch()`].
 #' @return Character string giving `.rds` file path.
 #' @inheritParams MakeSlurm
 #' @family file-path helpers

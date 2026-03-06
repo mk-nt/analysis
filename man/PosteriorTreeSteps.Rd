@@ -2,10 +2,39 @@
 % Please edit documentation in R/Parsimony.R
 \name{PosteriorTreeSteps}
 \alias{PosteriorTreeSteps}
-\title{Parsimony lenths of trees in posterior distribution}
+\title{Parsimony lengths of trees in posterior distribution}
 \usage{
 PosteriorTreeSteps(projects, models)
 }
+\arguments{
+\item{projects}{Character vector of project IDs to process.}
+
+\item{models}{Character vector of script/model IDs to process.}
+}
+\value{
+A data frame with columns \code{ew}, \code{k10}, \code{k1} (step-length ratios
+relative to the MPT), \code{pID}, and \code{scriptID}, with one row per posterior
+tree.
+}
 \description{
-Parsimony lenths of trees in posterior distribution
+For each project and model combination, computes the parsimony step count
+of each posterior tree (under equal weights and implied-weights concavities
+of k = 10 and k = 1) relative to the most-parsimonious tree, then caches
+the result to \code{\link[=ParsimonyFile]{ParsimonyFile()}}.
+}
+\details{
+The following must have been run before calling this function:
+\itemize{
+\item MCMC sampling and tree-sample assembly: trees must be present at
+\code{\link[=TreeSampleFile]{TreeSampleFile()}} (created via \code{\link[=UpdateRecords]{UpdateRecords()}}).
+\item Parsimony search: \code{.trees} files for k = 1, k = 10, and k = Inf must be
+present in \code{AnalysisDir(pID, "by_ki")} (fetched with \code{\link[=FetchResults]{FetchResults()}}
+or submitted via \code{\link[=TreeSearch]{TreeSearch()}}).
+\item Nexus character matrices (\code{.neo.nex} / \code{.trans.nex}) must be present in
+the same analysis directory.
+}
+}
+\seealso{
+\code{\link[=ParsimonyFile]{ParsimonyFile()}}, \code{\link[=TreeSearch]{TreeSearch()}}, \code{\link[=FetchResults]{FetchResults()}},
+\code{\link[=UpdateRecords]{UpdateRecords()}}
 }

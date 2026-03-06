@@ -30,7 +30,7 @@ ModelBF <- function(marginals, models) {
 #' 
 #' Do two estimates differ by a noteworthy amount?
 #' 
-#' @param x Value to compare; typically a Bayes Factor giving difference
+#' @param x Value to compare; typically a Bayes factor giving difference
 #' in estimated marginal likelihoods of two models
 #' @param err Standard error of comparison, perhaps computed using `.DiffErr()`
 #' @param eps Numeric; errors smaller than `eps` are not deemed noteworthy.

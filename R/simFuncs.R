@@ -19,11 +19,11 @@ PlotParamViolin <- function(loss, neo, lng, true_vals) {
     yaxt = "n",
     frame.plot = FALSE
   )
-  axis(1, at = 1:3,
-       labels = expression("Gain-loss ratio",
-                           italic("t") ~ "rate",
-                           "tree length"),
-       las = 1, lty = 0)
+  axis(1, at = 1:3, las = 1, lty = 0, labels = expression(
+    phantom("|") * "Gain-loss ratio" * phantom("|"),
+    phantom("|") * italic("t") ~ "rate" * phantom("|"),
+    "tree length")
+  )
   log_ticks <- pretty(range(log(c(loss["Median", ], neo["Median", ],
                                   lng["Median", ]))))
   axis(2, at = log_ticks, labels = round(exp(log_ticks), 2), las = 2)
@@ -172,14 +172,14 @@ FetchLogIfMissing <- function(seed, logFile) {
   simID <- sprintf("sim%03d", seed)
   localPath <- MkPath(simID, logFile)
   if (!file.exists(localPath)) {
-    remotePath <- file.path(RemoteDir(), "neotrans", "inst", "simEmpirical",
+    remotePath <- file.path(RemoteDir(), "neotrans", "data-raw", "simulations",
                             simID, logFile)
     ok <- tryCatch({
       scp_download(SshSession(), files = remotePath, to = MkPath(simID))
       file.exists(localPath)
     }, error = function(e) FALSE)
     if (!ok) {
-      remoteSimDir <- file.path(RemoteDir(), "neotrans", "inst", "simEmpirical",
+      remoteSimDir <- file.path(RemoteDir(), "neotrans", "data-raw", "simulations",
                                 simID)
       if (isTRUE(getOption("requeue", FALSE))) {
         ssh_exec_wait(SshSession(),

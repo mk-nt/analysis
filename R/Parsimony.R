@@ -1,4 +1,26 @@
-#' Parsimony lenths of trees in posterior distribution
+#' Parsimony lengths of trees in posterior distribution
+#'
+#' For each project and model combination, computes the parsimony step count
+#' of each posterior tree (under equal weights and implied-weights concavities
+#' of k = 10 and k = 1) relative to the most-parsimonious tree, then caches
+#' the result to [`ParsimonyFile()`].
+#'
+#' The following must have been run before calling this function:
+#' - MCMC sampling and tree-sample assembly: trees must be present at
+#'   [`TreeSampleFile()`] (created via [`UpdateRecords()`]).
+#' - Parsimony search: `.trees` files for k = 1, k = 10, and k = Inf must be
+#'   present in `AnalysisDir(pID, "by_ki")` (fetched with [`FetchResults()`]
+#'   or submitted via [`TreeSearch()`]).
+#' - Nexus character matrices (`.neo.nex` / `.trans.nex`) must be present in
+#'   the same analysis directory.
+#'
+#' @param projects Character vector of project IDs to process.
+#' @param models Character vector of script/model IDs to process.
+#' @return A data frame with columns `ew`, `k10`, `k1` (step-length ratios
+#'   relative to the MPT), `pID`, and `scriptID`, with one row per posterior
+#'   tree.
+#' @seealso [`ParsimonyFile()`], [`TreeSearch()`], [`FetchResults()`],
+#'   [`UpdateRecords()`]
 #' @importFrom ape read.tree
 #' @importFrom TreeTools MatrixToPhyDat ReadCharacters RootTree
 #' @importFrom TreeSearch TreeLength

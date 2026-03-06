@@ -80,7 +80,7 @@ Config <- function() .config
   .config$psrfThreshold <- 1.02
   # Minimum estimated sample size to employ
   .config$essThreshold <- 256
-  # Minimum difference between log(Bayes Factors) to consider noteworthy
+  # Minimum difference between log(Bayes factors) to consider noteworthy
   .config$eps <- log(10)
   
   .LoadMetadata()

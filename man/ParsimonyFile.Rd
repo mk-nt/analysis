@@ -17,6 +17,8 @@ Character string giving \code{.rds} file path.
 \description{
 Returns the path to the \code{.rds} file containing parsimony scores of sampled
 trees for a given project and script.
+Scores are generated and written to this path by \code{\link[=PosteriorTreeSteps]{PosteriorTreeSteps()}}
+via \code{\link[=TreeSearch]{TreeSearch()}}.
 }
 \seealso{
 Other file-path helpers: 

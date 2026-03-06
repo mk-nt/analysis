@@ -95,7 +95,7 @@ SpindlePlot <- function(x, nBin = 20, width = 1, xlab = "",
        xlim = c(0.5, ncol(x) + 0.5), ylim = range(clipped, na.rm = TRUE),
        log = if (logY) "y" else "", ...)
   axis(1, at = centres, labels = ModelLabel(scripts), las = 2, lwd = 0, line = -1)
-  axis(2, las = 2)
+  axis(2, las = 2, xpd = NA)
   logged <- if (logY) log(clipped) else clipped
   
   Behind()
@@ -192,7 +192,7 @@ TreeSimSpindleRow <- function(pID, marginals, models, silID,
   noBF <- is.na(marginals[models, pID])
   text(seq_along(models)[noBF] - 0.5, par("usr")[[4]] * 0.2, "?",
        col = ModelCol(models[noBF]), font = 2)
-  mtext("log Bayes Factor", 2, line = 2, cex = rowCex)
+  mtext("log Bayes factor", 2, line = 2, cex = rowCex)
   par(oPar)
   
   # Quartet results are not materially different from MCI.
@@ -453,8 +453,8 @@ ModelHeatmap <- function(marginals, stdErr) {
   }
   
   #box()
-  mtext("Model B", side = 1, line = 4)
-  mtext("Model A", side = 2, line = 4)
+  mtext("Model B", side = 1, line = 4, cex = 0.9)
+  mtext("Model A", side = 2, line = 4, cex = 0.9)
 }
 
 #' Box plot of tree similarity
@@ -783,6 +783,11 @@ Panel <- function(i, xOffset = 3, yOffset = 0) {
 #' @export
 OutputPlot <- function(figName, width, height, Plot) {
   outputType <- trimws(tolower(getOption("ntOutput") %||% "device"))
+  if (outputType != "pdf" && isTRUE(getOption("alwaysPDF", FALSE))) {
+    o <- options(ntOutput = "pdf")
+    on.exit(o)
+    OutputPlot(figName, width, height, Plot)
+  }
   switch(outputType,
          pdf = cairo_pdf(file.path(OutputDir(), "figures",
                                    sprintf("%s.pdf", figName)),
