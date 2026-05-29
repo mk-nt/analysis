@@ -13,18 +13,41 @@ chain with dimensions samples × parameters.}
 \item{burnin}{Integer giving the number of initial samples to discard.}
 }
 \value{
-\code{PSRF()} returns a numeric vector giving the PSRF for each parameter.
+\code{PSRF()} returns a data frame with one row per parameter and columns:
+\describe{
+\item{\code{psrf}}{Squared potential scale reduction factor (\eqn{\hat{R}^2})
+per Vats & Knudson (2021).}
+\item{\code{upper95}}{Upper bound of the 95\% confidence interval on the
+squared PSRF, following Brooks & Gelman (1998).}
+}
 }
 \description{
 Computes the univariate potential scale reduction factor (PSRF) for assessing
-MCMC convergence across multiple chains.
+MCMC convergence across multiple chains, with an upper 95\% confidence
+interval following Brooks & Gelman (1998).
 }
 \details{
 The PSRF compares between-chain and within-chain variances to assess whether
 chains have mixed adequately. Values near 1 indicate convergence.
 This implementation follows Equation 4 of Vats & Knudson (2021),
 \emph{Statistical Science}, \doi{10.1214/20-STS812}.
+
+The returned \code{psrf} column is the squared potential scale reduction factor
+(\eqn{\hat{R}^2}). The \code{upper95} column gives the upper bound of the
+95\% confidence interval on the \emph{squared} PSRF, derived from the
+F-distribution approximation of Brooks & Gelman (1998). Both columns are on
+the squared scale, consistent with the existing \code{psrf} values; \eqn{\hat{R}}
+(the more commonly quoted diagnostic) is \code{sqrt(psrf)}.
+}
+\references{
+Brooks, S.P. & Gelman, A. (1998). General methods for monitoring convergence
+of iterative simulations. \emph{Journal of Computational and Graphical Statistics},
+\strong{7}, 434–455. \doi{10.1080/10618600.1998.10474787}
+
+Vats, D. & Knudson, C. (2021). Revisiting the Gelman–Rubin diagnostic.
+\emph{Statistical Science}, \strong{36}, 518–529. \doi{10.1214/20-STS812}
 }
 \seealso{
+\code{\link[=MultivariatePSRF]{MultivariatePSRF()}} for the multivariate scalar diagnostic;
 \code{\link[=ESS]{ESS()}} for assessing effective sample sizes.
 }

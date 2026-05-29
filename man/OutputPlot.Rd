@@ -14,7 +14,7 @@ OutputPlot(figName, width, height, Plot)
 \item{Plot}{function to execute, which should produce a plot.}
 }
 \value{
-\code{OutputPlot()} is called for its side-effecits: it launches a new
+\code{OutputPlot()} is called for its side-effects: it launches a new
 device of the type specified by \code{getOption("ntOutput")}
 (supported: "png", "pdf", "device", where the latter
 is the default and plots to the active graphics device).

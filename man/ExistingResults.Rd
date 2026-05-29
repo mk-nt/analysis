@@ -12,7 +12,7 @@ ExistingResults(pID, scriptID, checkRemote = FALSE)
 
 \item{scriptID}{Character specifying the script to run}
 
-\item{`checkRemote`}{Logical. If results do not exist locally, should we
+\item{checkRemote}{Logical. If results do not exist locally, should we
 attempt to retrieve them from the remote server?}
 }
 \description{

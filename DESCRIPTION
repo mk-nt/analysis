@@ -1,6 +1,6 @@
 Package: neotrans
 Title: Modelling the evolution of neomorphic characters
-Version: 2026-03-06
+Version: 2026-05-29
 Authors@R: c(
   person("Martin R.", 'Smith', role = c("aut", "cre", "cph"), 
          email = "martin.smith@durham.ac.uk",
@@ -11,7 +11,6 @@ Description: Conduct and analyse phylogenetic inference using custom models of
   morphological evolution
 URL: https://ms609.github.io/neotrans/, https://github.com/ms609/neotrans/
 BugReports: https://github.com/ms609/neotrans/issues/
-SystemRequirements: C++17
 Depends:
   R (>= 4.4.0),
 Imports:
@@ -56,13 +55,13 @@ Suggests:
   VSURF,
 Remotes:
   afmagee/treess,
-  RevBayes=ms609/RevBayesR
+  RevBayes=ms609/RevBayesR,
 Config/Needs/website: caret, pkgdown
+Config/roxygen2/version: 8.0.0
 Config/testthat/parallel: false
 Config/testthat/edition: 3
 RdMacros: Rdpack
 Encoding: UTF-8
 Language: en-GB
 VignetteBuilder: knitr
-RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)

@@ -28,9 +28,9 @@ distances, and silhouette width, for a distance matrix computed by
 \code{\link{TreeDistances}}.
 }
 \seealso{
-Other tree-comparisons: 
-\code{\link{PrecisionIncrease}()},
-\code{\link{TreeDistances}()},
-\code{\link{TreeLengths}()}
+Other tree-comparisons:
+\code{\link[=PrecisionIncrease]{PrecisionIncrease()}},
+\code{\link[=TreeDistances]{TreeDistances()}},
+\code{\link[=TreeLengths]{TreeLengths()}}
 }
 \concept{tree-comparisons}

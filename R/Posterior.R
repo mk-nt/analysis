@@ -38,7 +38,7 @@ PriorVsPost <- function(pID, scriptID, parameter, priorMean = 0, priorSD = 2) {
 #' @inheritParams PriorVsPost
 #' @param projects Which projects to use
 #' @param metaEntry Metadata item to regress with `parameter`
-#' @param yTop Numeric; if not `NULL`, add extra space to yLim[2], to clear
+#' @param yTop Numeric; if not `NULL`, add extra space to `yLim[2]`, to clear
 #' room for legend
 #' @returns `InformationGain()` returns the spearman's correlation of
 #' `metaEntry` with `parameter`

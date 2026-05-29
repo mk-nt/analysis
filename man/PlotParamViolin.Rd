@@ -4,7 +4,7 @@
 \alias{PlotParamViolin}
 \title{Violin plot of posterior parameter medians with exp-scale y-axis}
 \usage{
-PlotParamViolin(loss, neo, lng, true_vals)
+PlotParamViolin(loss, neo, lng, mkLng, true_vals)
 }
 \arguments{
 \item{loss, neo, lng}{Summary matrices (rows = summary stats, cols = replicates)

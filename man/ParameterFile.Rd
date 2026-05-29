@@ -18,28 +18,28 @@ Character string giving file path.
 Returns path to the \code{.rds} file containing summarized parameter estimates.
 }
 \seealso{
-Other file-path helpers: 
-\code{\link{AnalysisDir}()},
-\code{\link{ConvergenceFile}()},
-\code{\link{DiskFile}()},
-\code{\link{DistanceFile}()},
-\code{\link{DummyFile}()},
-\code{\link{MarginalFile}()},
-\code{\link{MatrixFile}()},
-\code{\link{MemFile}()},
-\code{\link{PFiles}()},
-\code{\link{PPSamplerFile}()},
-\code{\link{ParsEvalFile}()},
-\code{\link{ParsimonyFile}()},
-\code{\link{ResultsDir}()},
-\code{\link{ScriptBase}()},
-\code{\link{ScriptFile}()},
-\code{\link{SlurmFile}()},
-\code{\link{SlurmTemplate}()},
-\code{\link{StoneFile}()},
-\code{\link{StoneOrigin}()},
-\code{\link{TimeFile}()},
-\code{\link{TreeFiles}()},
-\code{\link{TreeSampleFile}()}
+Other file-path helpers:
+\code{\link[=AnalysisDir]{AnalysisDir()}},
+\code{\link[=ConvergenceFile]{ConvergenceFile()}},
+\code{\link[=DiskFile]{DiskFile()}},
+\code{\link[=DistanceFile]{DistanceFile()}},
+\code{\link[=DummyFile]{DummyFile()}},
+\code{\link[=MarginalFile]{MarginalFile()}},
+\code{\link[=MatrixFile]{MatrixFile()}},
+\code{\link[=MemFile]{MemFile()}},
+\code{\link[=PFiles]{PFiles()}},
+\code{\link[=PPSamplerFile]{PPSamplerFile()}},
+\code{\link[=ParsEvalFile]{ParsEvalFile()}},
+\code{\link[=ParsimonyFile]{ParsimonyFile()}},
+\code{\link[=ResultsDir]{ResultsDir()}},
+\code{\link[=ScriptBase]{ScriptBase()}},
+\code{\link[=ScriptFile]{ScriptFile()}},
+\code{\link[=SlurmFile]{SlurmFile()}},
+\code{\link[=SlurmTemplate]{SlurmTemplate()}},
+\code{\link[=StoneFile]{StoneFile()}},
+\code{\link[=StoneOrigin]{StoneOrigin()}},
+\code{\link[=TimeFile]{TimeFile()}},
+\code{\link[=TreeFiles]{TreeFiles()}},
+\code{\link[=TreeSampleFile]{TreeSampleFile()}}
 }
 \concept{file-path helpers}

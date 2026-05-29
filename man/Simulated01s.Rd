@@ -4,7 +4,7 @@
 \alias{Simulated01s}
 \title{Retrieve counts of 0s and 1s from simulation output}
 \usage{
-Simulated01s(pID, scriptID, prefix = "stat")
+Simulated01s(pID, scriptID, prefix = "stat", embraceDanger = FALSE)
 }
 \arguments{
 \item{pID}{Character specifying the project identifier to analyse}
@@ -13,6 +13,12 @@ Simulated01s(pID, scriptID, prefix = "stat")
 
 \item{prefix}{chr File-name prefix used when looking up the log; defaults to
 \code{"stat"}.}
+
+\item{embraceDanger}{logical Opt-in last-resort fallback: when all earlier
+retrieval paths have failed but the remote log still exists, stream it
+over SSH (\code{cat}) into memory and parse it without writing to disk.
+Off by default because it bypasses git tracking and can return a partial
+read if the job is still writing.}
 }
 \value{
 'Simulated01s()' returns a numeric matrix whose rows are named \code{"0"}

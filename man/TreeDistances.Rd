@@ -27,9 +27,9 @@ using \code{MakeSlurm()}, and if both are available, it computes and stores the
 distance matrix.
 }
 \seealso{
-Other tree-comparisons: 
-\code{\link{Dispersion}()},
-\code{\link{PrecisionIncrease}()},
-\code{\link{TreeLengths}()}
+Other tree-comparisons:
+\code{\link[=Dispersion]{Dispersion()}},
+\code{\link[=PrecisionIncrease]{PrecisionIncrease()}},
+\code{\link[=TreeLengths]{TreeLengths()}}
 }
 \concept{tree-comparisons}

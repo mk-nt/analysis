@@ -22,9 +22,9 @@ and returns the total branch length for each tree. If the sample file does
 not exist, a \code{MakeSlurm()} job is initiated to generate it.
 }
 \seealso{
-Other tree-comparisons: 
-\code{\link{Dispersion}()},
-\code{\link{PrecisionIncrease}()},
-\code{\link{TreeDistances}()}
+Other tree-comparisons:
+\code{\link[=Dispersion]{Dispersion()}},
+\code{\link[=PrecisionIncrease]{PrecisionIncrease()}},
+\code{\link[=TreeDistances]{TreeDistances()}}
 }
 \concept{tree-comparisons}

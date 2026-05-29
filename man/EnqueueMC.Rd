@@ -36,7 +36,7 @@ For each project in \code{projects}, \code{EnqueueMC()}:
 }
 
 The function uses \code{\link[cli:cli_progress_message]{cli::cli_progress_message()}} to display progress and
-finishes with \code{\link[cli:cli_progress_bar]{cli::cli_progress_done()}}.
+finishes with \code{\link[cli:cli_progress_done]{cli::cli_progress_done()}}.
 }
 \seealso{
 \code{\link[=EnqueueML]{EnqueueML()}} for marginal likelihood estimation,

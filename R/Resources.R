@@ -451,6 +451,36 @@ TmpUsed <- function(pID, scriptID, ml = TRUE) {
   }
 }
 
+#' Predict resource requirements for a SLURM job
+#'
+#' Fits linear models to the log of completed runs (from [SlurmLog()]) to
+#' predict wall-clock time, peak RAM, and temporary disk usage for a new job.
+#'
+#' When previous runs timed out, the function reads the job's stdout file on
+#' the remote server to estimate the fraction of work completed, then
+#' rescales the observed run time to the number of cores requested.
+#' When previous runs were killed for exceeding memory, the largest previously
+#' requested memory is used as a floor.
+#'
+#' Predictors used are `pID`, `model`, `inf` (ki/kv), `task`, and `nCPU`,
+#' with graceful fallback to simpler formulae when a predictor has insufficient
+#' coverage in the completed-jobs data.
+#'
+#' @inheritParams MakeSlurm
+#' @param cores Integer: number of CPU cores to request.
+#' @param verbose Logical; reserved for future diagnostic output.
+#' @return A numeric matrix with three rows (`mem`, `time`, `tmp`) and three
+#'   columns (`fit`, `lwr`, `upr`), giving a point estimate and 99% confidence
+#'   bounds for each resource:
+#'   \describe{
+#'     \item{`mem`}{Peak RAM in bytes (comparable to `MaxRSS`).}
+#'     \item{`time`}{Wall-clock time in seconds.}
+#'     \item{`tmp`}{Temporary disk usage in megabytes.}
+#'   }
+#'   Values are floored at sensible minima (prior OOM memory, 300 s, etc.).
+#' @seealso [Cores()] uses these predictions to choose core count and request
+#'   time; [SlurmLog()] supplies the historical data.
+#' @export
 PredictResource <- function(pID, scriptID, ml = TRUE, cores = 16,
                             verbose = FALSE) {
   df <- SlurmLog()

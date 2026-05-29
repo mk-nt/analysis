@@ -7,7 +7,7 @@
 .OutwithError(x, err, eps = epsBF)
 }
 \arguments{
-\item{x}{Value to compare; typically a Bayes Factor giving difference
+\item{x}{Value to compare; typically a Bayes factor giving difference
 in estimated marginal likelihoods of two models}
 
 \item{err}{Standard error of comparison, perhaps computed using \code{.DiffErr()}}

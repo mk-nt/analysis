@@ -10,7 +10,8 @@ InformationGain(
   parameter,
   metaEntry,
   priorMean = 0,
-  priorSD = 2
+  priorSD = 2,
+  yTop = NULL
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ InformationGain(
 \item{metaEntry}{Metadata item to regress with \code{parameter}}
 
 \item{priorMean, priorSD}{Mean and SD of a normal prior on \code{parameter}.}
+
+\item{yTop}{Numeric; if not \code{NULL}, add extra space to \code{yLim[2]}, to clear
+room for legend}
 }
 \value{
 \code{InformationGain()} returns the spearman's correlation of

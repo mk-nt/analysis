@@ -25,9 +25,9 @@ on whether improvement is expected to correspond to an increase or decrease
 relative to a baseline.
 }
 \seealso{
-Other tree-comparisons: 
-\code{\link{Dispersion}()},
-\code{\link{TreeDistances}()},
-\code{\link{TreeLengths}()}
+Other tree-comparisons:
+\code{\link[=Dispersion]{Dispersion()}},
+\code{\link[=TreeDistances]{TreeDistances()}},
+\code{\link[=TreeLengths]{TreeLengths()}}
 }
 \concept{tree-comparisons}

@@ -14,6 +14,7 @@ SpindlePlot(
  },
   clip,
   weights = NULL,
+  pad = NULL,
   ...
 )
 }
@@ -31,6 +32,8 @@ to plot.}
 
 \item{weights}{Numeric specifying weight of each observation, for a
 weighted mean.}
+
+\item{pad}{vector by which to multiply y axis limits}
 
 \item{\dots}{Additional arguments to \code{plot()}}
 
