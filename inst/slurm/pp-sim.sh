@@ -28,7 +28,7 @@ else
 fi
 
 # Run RevBayes
-module load gcc/11.2 boost
+module load gcc/13.2 boost
 start_time=$(date +%s)
 
 /nobackup/$USER/revbayes/projects/cmake/build/rb \

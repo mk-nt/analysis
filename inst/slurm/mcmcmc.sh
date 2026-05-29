@@ -27,19 +27,13 @@ else
   git checkout main
 fi
 
-# Set RevBayes run time
-sed -i 's/runHours = [0-9]\+/runHours = 71/' mcmcmc.Rev
-
 # Run RevBayes
-module load gcc/11.2 boost openmpi/4.1.1
+module load gcc/13.2 boost openmpi/4.1.8
 start_time=$(date +%s)
-mpirun /nobackup/$USER/revbayes/projects/cmake/build-mpi/rb-mpi mcmcmc.Rev --args 333
+mpirun /nobackup/$USER/revbayes/projects/cmake/build-mpi/rb-mpi mcmcmc.Rev 333 71
 
 end_time=$(date +%s)
 echo "RevBayes job terminated at $end_time."
-
-# Restore original .Rev script to avoid conflicts
-git restore mcmcmc.Rev
 
 # Sync repo with any changes that have happened remotely during the run
 git fetch --depth 1 origin
@@ -50,10 +44,8 @@ if ls *.trees 1> /dev/null 2>&1; then
   done
   
   # Commit output files to git
-  git add %SCRIPTBASE%*.ckp %SCRIPTBASE%*.log %SCRIPTBASE%*.var %SCRIPTBASE%*.tar.gz
-  git commit -m "MCMCMC output files"
-  git rebase main
-  git push origin main
+  git add %SCRIPTBASE%*.ckp %SCRIPTBASE%*.log %SCRIPTBASE%*.tar.gz
+  git commit -m "MCMCMC output files" && git rebase main && git push origin main
 else 
   echo "No .trees files found. No output to commit."
 fi

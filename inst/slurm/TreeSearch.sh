@@ -22,7 +22,7 @@ array_index=$SLURM_ARRAY_TASK_ID
 k_value=${k_values[$((array_index - 1))]}
 
 module load r/4.1.2
-Rscript "../neotrans/rScripts/TreeSearch.R" "$k_value"
+Rscript "../neotrans/inst/rScripts/TreeSearch.R" "$k_value"
 
 # Record usage of tmpDir
 du -hs $TMPDIR > /nobackup/$USER/%SCRIPTBASE%/ts-tmpdir_usage.log

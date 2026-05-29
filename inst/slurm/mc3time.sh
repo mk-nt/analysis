@@ -31,7 +31,7 @@ fi
 sed -i 's/runHours = [0-9]\+/runHours = 71/' mcmcmc.Rev
 
 # Run RevBayes
-module load gcc/11.2 boost
+module load gcc/13.2 boost
 start_time=$(date +%s)
 
 /usr/bin/time -v -o /nobackup/$USER/%SCRIPTBASE%/%SCRIPTBASE%.mem.log \

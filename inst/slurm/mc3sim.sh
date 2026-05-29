@@ -19,7 +19,7 @@ cd /nobackup/$USER/neotrans/
 git pull origin main --rebase
 
 # Run RevBayes
-module load gcc/11.2 boost openmpi/4.1.1
+module load gcc/13.2 boost openmpi/4.1.8
 start_time=$(date +%s)
 mpirun /nobackup/$USER/revbayes/projects/cmake/build-mpi/rb-mpi inst/rbScripts/sim-mc3.Rev inst/%SIMDIR1%/%SIMDIR2% %SCRIPTID% 333
 end_time=$(date +%s)

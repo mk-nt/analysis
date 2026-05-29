@@ -49,7 +49,7 @@ git checkout main
 git pull origin main --rebase
 
 # Run RevBayes
-module load gcc/11.2 boost
+module load gcc/13.2 boost
 start_time=$(date +%s)
 ../revbayes/projects/cmake/build/rb mc3serial.Rev --args 333
 

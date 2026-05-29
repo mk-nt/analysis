@@ -31,7 +31,7 @@ else
 fi
 
 # Run RevBayes
-module load gcc/11.2 boost openmpi/4.1.1
+module load gcc/13.2 boost openmpi/4.1.8
 mpirun /nobackup/$USER/revbayes/projects/cmake/build-mpi/rb-mpi marginal.Rev
 
 echo "RevBayes job has terminated. Syncing repo:"
