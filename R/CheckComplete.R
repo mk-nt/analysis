@@ -36,7 +36,8 @@ ESS <- function(values, burnin, Summarize = min) {
 #' Potential scale reduction factor (PSRF)
 #'
 #' Computes the univariate potential scale reduction factor (PSRF) for assessing
-#' MCMC convergence across multiple chains.
+#' MCMC convergence across multiple chains, with an upper 95% confidence
+#' interval following Brooks & Gelman (1998).
 #'
 #' @param runs A list of numeric matrices, each representing an independent MCMC
 #'   chain with dimensions samples × parameters.
@@ -48,11 +49,34 @@ ESS <- function(values, burnin, Summarize = min) {
 #' This implementation follows Equation 4 of Vats & Knudson (2021),
 #' *Statistical Science*, \doi{10.1214/20-STS812}.
 #'
+#' The returned `psrf` column is the squared potential scale reduction factor
+#' (\eqn{\hat{R}^2}). The `upper95` column gives the upper bound of the
+#' 95% confidence interval on the *squared* PSRF, derived from the
+#' F-distribution approximation of Brooks & Gelman (1998). Both columns are on
+#' the squared scale, consistent with the existing `psrf` values; \eqn{\hat{R}}
+#' (the more commonly quoted diagnostic) is `sqrt(psrf)`.
+#'
 #' @return
-#' `PSRF()` returns a numeric vector giving the PSRF for each parameter.
+#' `PSRF()` returns a data frame with one row per parameter and columns:
+#' \describe{
+#'   \item{`psrf`}{Squared potential scale reduction factor (\eqn{\hat{R}^2})
+#'     per Vats & Knudson (2021).}
+#'   \item{`upper95`}{Upper bound of the 95% confidence interval on the
+#'     squared PSRF, following Brooks & Gelman (1998).}
+#' }
 #'
-#' @seealso [ESS()] for assessing effective sample sizes.
+#' @references
+#' Brooks, S.P. & Gelman, A. (1998). General methods for monitoring convergence
+#' of iterative simulations. *Journal of Computational and Graphical Statistics*,
+#' **7**, 434–455. \doi{10.1080/10618600.1998.10474787}
 #'
+#' Vats, D. & Knudson, C. (2021). Revisiting the Gelman–Rubin diagnostic.
+#' *Statistical Science*, **36**, 518–529. \doi{10.1214/20-STS812}
+#'
+#' @seealso [MultivariatePSRF()] for the multivariate scalar diagnostic;
+#'   [ESS()] for assessing effective sample sizes.
+#'
+#' @importFrom stats qf var
 #' @export
 PSRF <- function(runs, burnin) {
   if (!is.list(runs)) {
@@ -65,20 +89,170 @@ PSRF <- function(runs, burnin) {
   }
   nSample <- dim(samples[[1]])[[1]]
   nPar <- dim(samples[[1]])[[2]]
-  
-  chainMean <- vapply(samples, colMeans, double(nPar)) # Xbari
-  chainVar <- vapply(samples, apply, double(nPar), 2, var) #s2i
-  allMean <- rowMeans(chainMean) # muHat
+
+  # chainMean: nPar × nRun matrix of per-chain column means
+  chainMean <- matrix(
+    vapply(samples, colMeans, double(nPar)),
+    nrow = nPar, ncol = nRun
+  )
+  # chainVar: nPar × nRun matrix of per-chain column variances
+  chainVar <- matrix(
+    vapply(samples, apply, double(nPar), 2, var),
+    nrow = nPar, ncol = nRun
+  )
   varOfMeans <- apply(chainMean, 1, var) # B / n
   # equivalently, varOfMeans <- rowSums((chainMean - allMean) ^ 2) / (nRun - 1)
-  meanChainVar <- rowMeans(chainVar) # s2
-  
+  meanChainVar <- rowMeans(chainVar) # s2 = W
+
   sigmaHat2 <- ((nSample - 1) / nSample * meanChainVar) + varOfMeans
   # Eqn 4 in Vats & Knudson 2021, doi:10.1214/20-STS812
   psrf <- sigmaHat2 / meanChainVar
-  # StratoBayes#133: Replace this calculation with Vats & Knudson's univariate PSRF
-  
-  psrf
+
+  # Upper 95% CI on the squared PSRF following Brooks & Gelman (1998).
+  # PSRF^2 = (n-1)/n + (B/n)/W, where B/n = varOfMeans.
+  # B/n is estimated with (nRun - 1) between-chain df; W carries dfW
+  # within-chain df estimated by a chi-squared moment match.
+  # The F-distribution approximation matches coda::gelman.diag.
+  bOverW <- varOfMeans / meanChainVar       # (B/n) / W
+  varW <- apply(chainVar, 1, var) / nRun    # sampling variance of W
+  dfW <- ifelse(varW > 0, 2 * meanChainVar^2 / varW, Inf)
+  dfBetween <- nRun - 1L
+  # upper95 on the R^2 scale: (n-1)/n + F_0.975(m-1, dfW) * (m+1)/(m*n) * (B/n)/W
+  upper95 <- (nSample - 1) / nSample +
+    qf(0.975, dfBetween, dfW) * ((nRun + 1) / nRun) * bOverW / nSample
+
+  data.frame(psrf = psrf, upper95 = upper95,
+             row.names = colnames(samples[[1]]))
+}
+
+#' Multivariate potential scale reduction factor
+#'
+#' Computes the multivariate potential scale reduction factor (mPSRF) for
+#' assessing MCMC convergence across multiple chains simultaneously, returning
+#' a single scalar diagnostic.
+#'
+#' @param chains A list of numeric matrices, each representing an independent
+#'   MCMC chain with dimensions samples × parameters.  All matrices must have
+#'   the same number of columns (parameters); they need not have the same number
+#'   of rows.
+#' @param burnin Integer or fraction giving the number of initial samples to
+#'   discard from each chain before computing the diagnostic (passed to
+#'   [BurnOff()]).
+#'
+#' @details
+#' The multivariate PSRF is the scalar diagnostic of Vats & Knudson (2021),
+#' derived from the *p*-dimensional generalisation of the Gelman–Rubin
+#' between/within-chain decomposition.  For *m* chains of *n* post-burn-in
+#' samples each and *p* parameters:
+#'
+#' \enumerate{
+#'   \item Compute the within-chain covariance estimator
+#'     \eqn{\mathbf{W} = \frac{1}{m}\sum_{i=1}^{m} S_i}, where \eqn{S_i} is
+#'     the \eqn{p \times p} sample covariance matrix of chain *i*.
+#'   \item Compute the between-chain estimator
+#'     \eqn{\mathbf{B}/n = \frac{1}{m-1}\sum_{i=1}^m
+#'     (\bar{x}_i - \bar{x})(\bar{x}_i - \bar{x})^\top}.
+#'   \item Form the marginal posterior variance estimator
+#'     \eqn{\hat{\Sigma} = \frac{n-1}{n}\mathbf{W} + \frac{\mathbf{B}}{n}}.
+#'   \item Return
+#'     \eqn{\hat{R}_{\mathrm{mv}} =
+#'       \sqrt{\det(\mathbf{W}^{-1}\hat{\Sigma})^{1/p}}}.
+#' }
+#'
+#' This equals \eqn{\sqrt{\hat{R}^2}} from the univariate [PSRF()] when
+#' *p* = 1 (within numerical precision).
+#'
+#' **Singular \eqn{\mathbf{W}}**: when parameters are perfectly collinear
+#' (or when *n* is small relative to *p*), \eqn{\mathbf{W}} may be singular.
+#' In that case `solve(W)` is replaced by `MASS::ginv(W)` (Moore–Penrose
+#' pseudo-inverse) and a warning is issued.  If the pseudo-inverse also fails,
+#' the function returns `Inf` with a warning, signalling non-convergence.
+#'
+#' @return A single numeric scalar: the multivariate PSRF (\eqn{\hat{R}_\mathrm{mv}})
+#'   on the \eqn{\hat{R}} (rooted) scale.  The conventional \eqn{\hat{R} < 1.01}
+#'   threshold applies.  Note that `PSRF()$psrf` is on the *squared*
+#'   (\eqn{\hat{R}^2}) scale; the two functions are not directly comparable
+#'   against the same numeric threshold.
+#'
+#' @references
+#' Vats, D. & Knudson, C. (2021). Revisiting the Gelman–Rubin diagnostic.
+#' *Statistical Science*, **36**, 518–529. \doi{10.1214/20-STS812}
+#'
+#' @seealso [PSRF()] for the per-parameter univariate diagnostic;
+#'   [ESS()] for effective sample sizes.
+#'
+#' @examples
+#' set.seed(1)
+#' # Four chains, 200 iterations, 3 parameters — converged
+#' chains <- replicate(4, matrix(rnorm(200 * 3), 200, 3), simplify = FALSE)
+#' MultivariatePSRF(chains, burnin = 0)  # near 1
+#'
+#' # Four chains from different distributions — not converged
+#' means <- c(-5, 0, 5, 10)
+#' chains2 <- lapply(means, function(mu) matrix(rnorm(200 * 3, mu), 200, 3))
+#' MultivariatePSRF(chains2, burnin = 0)  # >> 1
+#'
+#' @importFrom MASS ginv
+#' @importFrom stats cov
+#' @export
+MultivariatePSRF <- function(chains, burnin = 0) {
+  if (!is.list(chains)) {
+    stop("`chains` must be a list in which each element corresponds to a chain")
+  }
+  samples <- lapply(chains, BurnOff, burnin)
+  if (is.null(dim(samples[[1]]))) {
+    samples <- lapply(samples, matrix)
+  }
+  nPar <- dim(samples[[1]])[[2L]]
+
+  # ---- Within-chain covariance estimator (W) ---------------------------
+  # Mean of per-chain sample covariance matrices
+  chainCovs <- lapply(samples, cov)
+  W <- Reduce("+", chainCovs) / length(chainCovs)
+
+  # ---- Between-chain variance contribution (B / n) --------------------
+  nRun <- length(samples)
+  chainMeans <- lapply(samples, colMeans)  # list of p-vectors
+  allMean <- Reduce("+", chainMeans) / nRun
+  deviations <- lapply(chainMeans, function(mu) mu - allMean)
+  BoverN <- Reduce("+", lapply(deviations, tcrossprod)) / (nRun - 1L)
+
+  # nSample: use the mean number of post-burnin iterations across chains
+  nSample <- mean(vapply(samples, nrow, integer(1L)))
+
+  # ---- Marginal posterior variance estimator (SigmaHat) ---------------
+  SigmaHat <- ((nSample - 1) / nSample) * W + BoverN
+
+  # ---- det(W^{-1} SigmaHat)^{1/p} ------------------------------------
+  # Try solve() first; fall back to MASS::ginv() if W is numerically singular.
+  WinvSigma <- tryCatch(
+    solve(W, SigmaHat),
+    error = function(e) {
+      warning("W is numerically singular; falling back to MASS::ginv(). ",
+              "Interpret the result with caution.")
+      tryCatch(
+        MASS::ginv(W) %*% SigmaHat,
+        error = function(e2) {
+          warning("MASS::ginv() also failed; returning Inf.")
+          NULL
+        }
+      )
+    }
+  )
+  if (is.null(WinvSigma)) {
+    return(Inf)
+  }
+
+  eigs <- eigen(WinvSigma, symmetric = FALSE, only.values = TRUE)[["values"]]
+  # Use real parts only; imaginary parts are numerical noise for
+  # positive-definite inputs.
+  # det(W^{-1} SigmaHat)^{1/p} = geometric mean of eigenvalues.
+  detRatio <- prod(Re(eigs))^(1 / nPar)
+
+  # mPSRF = sqrt( det(W^{-1} SigmaHat)^{1/p} )
+  # In the univariate case this equals sqrt(SigmaHat/W) = sqrt(psrf),
+  # where psrf is the squared PSRF returned by PSRF().
+  sqrt(detRatio)
 }
 
 #' Submit a continuation job
@@ -264,7 +438,7 @@ UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
     fileContents <- lapply(fileContents, function(x) {x[["Iteration"]] <- NULL; x})
     
     burnins <- seq(0.0, 0.95, by = 0.05)
-    psrf <- sapply(burnins, function(b) PSRF(fileContents, b))
+    psrf <- sapply(burnins, function(b) PSRF(fileContents, b)[["psrf"]])
     converged <- apply(psrf < .config$psrfThreshold, 2, all)
     converged[is.na(converged)] <- FALSE
     if (!any(converged)) {
