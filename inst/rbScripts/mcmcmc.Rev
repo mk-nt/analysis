@@ -5,6 +5,11 @@ if (args.size() == 0) {
 } else {
   minEss = args[1]
 }
+if (args.size() < 2) {
+  runHours = 71
+} else {
+  runHours = args[2]
+}
 maxPSRF = 1.01
 
 neo <- readDiscreteCharacterData("%MATRIXBASE.%neo.nex")
@@ -36,13 +41,11 @@ mymc3 = mcmcmc(
 print("   Created MCMCMC object")
 
 
-if (fileExists("%PID%_%SCRIPT%_run_1_chain_0.ckp")) {
+if (fileExists(scriptBase + "_run_1_chain_0.ckp")) {
   print("   Initializing from checkpoint")
   mymc3.initializeFromCheckpoint(ckpFile)
-  runHours = 71
 } else {
   mymc3.burnin(generations = 1200, tuningInterval = checkFreq * 3)
-  runHours = 71
 }
 
 stopping_rules[1] = srMaxTime(runHours, "hours")
