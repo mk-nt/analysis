@@ -38,10 +38,10 @@ Metadata <- function() as.list(.meta)
                                     "character", "factor", "character"))
     setNames(
       factor(meta[["rank"]], ordered = TRUE,
-             levels = c("Species", "Subgenus", "Genus", "Subtribe", "Tribe",
-                        "Subfamily", "Family", "Superfamily",
+             levels = c("Species", "Section", "Subgenus", "Genus", "Subtribe",
+                        "Tribe", "Subfamily", "Family", "Superfamily",
                         "Infraclass", "Subclass", "Class", "Superclass",
-                        "Infraorder", "Suborder", "Order",
+                        "Infraorder", "Suborder", "Order", "Superorder",
                         "Subphylum", "Phylum", "Superphylum",
                         "Kingdom"))[
                           match(AllProjects(), meta[["project"]])],

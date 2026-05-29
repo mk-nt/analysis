@@ -9,32 +9,46 @@
 #' @param true_vals Named numeric vector of true simulation values, in order
 #'   \code{c(n, t, length)}.
 #' @export
-PlotParamViolin <- function(loss, neo, lng, true_vals) {
+PlotParamViolin <- function(loss, neo, lng, mkLng, true_vals) {
   vioplot::vioplot(
-    log(loss["Median", ]), log(neo["Median", ]), log(lng["Median", ]),
-    names = c("", "", ""),
-    col = 5:3,
+    log(mkLng["Median", ]),
+    log(lng["Median", ]),
+    log(loss["Median", ]),
+    log(neo["Median", ]),
+    names = rep("", 4),
+    col = c(paste0(palette()[[3]], "44"), palette()[3:5]),
     axes = FALSE,
     xaxt = "n",
     yaxt = "n",
     frame.plot = FALSE
   )
-  axis(1, at = 1:3, las = 1, lty = 0, labels = expression(
+  axis(1, at = 1:4, las = 1, lty = 0, line = -1, labels = expression(
+    "tree length",
+    "length",
     phantom("|") * "Gain-loss ratio" * phantom("|"),
-    phantom("|") * italic("t") ~ "rate" * phantom("|"),
-    "tree length")
+    phantom("|") * italic("t") ~ "rate" * phantom("|")
+    )
   )
-  log_ticks <- pretty(range(log(c(loss["Median", ], neo["Median", ],
-                                  lng["Median", ]))))
+  yBtm <- par("usr")[[3L]] - diff(par("usr")[3:4]) * 0.06
+  segments(0.6, yBtm, 1.4, xpd = NA, lwd = 3, col = ModelCol("by_ki")) # StMk
+  segments(1.6, yBtm, 4.4, xpd = NA, lwd = 3, col = ModelCol("by_nt_ki")) # StNT group
+  
+  axis(1, at = c(1, 3), las = 1, lty = 0, line = 1, labels = c("StMk", "StNT"))
+  
+  log_ticks <- pretty(range(log(c(
+    mkLng["Median", ], lng["Median", ],
+    loss["Median", ], neo["Median", ]
+    ))))
   axis(2, at = log_ticks, labels = round(exp(log_ticks), 2), las = 2)
   abline(h = 0, lty = "dashed", col = "#888888")
-  points(1:3, log(true_vals), pch = 95, cex = 2, col = 2, lwd = 3)
-  points(1:3, c(median(log(loss["Median", ])),
-                median(log(neo["Median", ])),
-                median(log(lng["Median", ]))),
-         pch = 20, cex = 0.8, col = "white")
-  # segments(1:3 - 0.5, log(true_vals), 1:3 + 0.5,
-  #          col = "white", lwd = 2, lty = "dashed")
+  points(1:4, log(true_vals[c(3, 3, 1, 2)]),
+         pch = 95, cex = 2, col = 2, lwd = 3)
+  points(1:4, c(
+    median(log(mkLng["Median", ])),
+    median(log(lng["Median", ])),
+    median(log(loss["Median", ])),
+    median(log(neo["Median", ]))
+  ), pch = 20, cex = 0.8, col = "white")
 }
 
 #' @export
@@ -72,9 +86,10 @@ QueueSim <- function(seed, scriptID, cores = 16,
   }
   squeue <- SlurmQueue(session)
   simID <- sprintf("sim%03d", seed)
-  
-  if (sprintf("%s_%s_%s", basename(MkPath()), simID,
-              scriptID) %in% squeue[["JobName"]]) {
+  jobName <- paste0(gsub("sim", "", paste0(basename(MkPath()), simID), fixed = TRUE),
+                    "_", scriptID)
+
+  if (jobName %in% squeue[["JobName"]]) {
     if (isTRUE(replace)) {
       ssh_exec_wait(
         session,

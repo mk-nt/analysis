@@ -38,6 +38,8 @@ PriorVsPost <- function(pID, scriptID, parameter, priorMean = 0, priorSD = 2) {
 #' @inheritParams PriorVsPost
 #' @param projects Which projects to use
 #' @param metaEntry Metadata item to regress with `parameter`
+#' @param yTop Numeric; if not `NULL`, add extra space to yLim[2], to clear
+#' room for legend
 #' @returns `InformationGain()` returns the spearman's correlation of
 #' `metaEntry` with `parameter`
 #' @importFrom stats cor.test
@@ -46,7 +48,8 @@ PriorVsPost <- function(pID, scriptID, parameter, priorMean = 0, priorSD = 2) {
 #' SD ratio and the requested `metaEntry`.
 #' @export
 InformationGain <- function(projects = KiProjects(), scripts, parameter,
-                            metaEntry, priorMean = 0, priorSD = 2) {
+                            metaEntry, priorMean = 0, priorSD = 2,
+                            yTop = NULL) {
   
   post <- do.call(rbind, lapply(scripts, function(scriptID) {
     scriptPost <- vapply(projects, function(pID) {
@@ -107,14 +110,19 @@ InformationGain <- function(projects = KiProjects(), scripts, parameter,
     UpdateRecords(post[i, "pID"], post[i, "scriptID"], searchRemote = TRUE)
   }
   post <- post[!is.na(post$Rratio), ]
-  
   iffy <- post$Rratio < sqrt(.Machine$double.eps)
+  yRange <- range(post$Rratio)
   plot(post[[metaEntry]], post$Rratio,
        log = "xy", xpd = NA,
        cex = ifelse(iffy, 0.001, 1),
        frame.plot = FALSE, pch = 16,
        col = ModelCol(post$scriptID),
        xlab = .Decode(metaEntry),
+       ylim = if(is.null(yTop))
+         yRange
+       else
+         c(min(yRange[[1]], 1 / yRange[[2]]),
+           max(yRange[[2]], 1 / yRange[[1]])),
        ylab = .DecodeYLab("Prior / posterior SD:", parameter))
   if (any(iffy)) {
     text(post[[metaEntry]][iffy], post$Rratio[iffy], post$pID[iffy],

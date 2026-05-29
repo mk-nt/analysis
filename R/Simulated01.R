@@ -12,6 +12,11 @@
 #' @inheritParams MakeSlurm
 #' @param prefix chr File-name prefix used when looking up the log; defaults to
 #'   \code{"stat"}.
+#' @param embraceDanger logical Opt-in last-resort fallback: when all earlier
+#'   retrieval paths have failed but the remote log still exists, stream it
+#'   over SSH (`cat`) into memory and parse it without writing to disk.
+#'   Off by default because it bypasses git tracking and can return a partial
+#'   read if the job is still writing.
 #'
 #' @return
 #' 'Simulated01s()' returns a numeric matrix whose rows are named \code{"0"}
@@ -33,7 +38,8 @@
 #' @importFrom stringi stri_count_fixed
 #' @importFrom R.utils gunzip
 #' @export
-Simulated01s <- function(pID, scriptID, prefix = "stat") {
+Simulated01s <- function(pID, scriptID, prefix = "stat",
+                         embraceDanger = FALSE) {
   simOut <- file.path(AnalysisDir(pID, scriptID),
                       sprintf("%s-%s_%s.out", prefix, pID, scriptID))
   if (!file.exists(simOut)) {
@@ -80,6 +86,12 @@ Simulated01s <- function(pID, scriptID, prefix = "stat") {
           rawToChar(git$stderr)
           gunzip(file.path(AnalysisDir(pID, scriptID),
                            basename(remoteZip)))
+        } else if (mb > 0) {
+          # Fallback for when FetchResults() misses a remote log it should
+          # have pulled via git (silent stderr detection, divergence, etc.).
+          cli::cli_progress_message("{pID}: Downloading remote log ({signif(mb, 2)} MB)")
+          scp_download(session, files = remoteLog,
+                       to = AnalysisDir(pID, scriptID))
         }
       } else {
         warning(pID, " file size unavailable ", rawToChar(fileSize$stderr))
@@ -122,7 +134,32 @@ Simulated01s <- function(pID, scriptID, prefix = "stat") {
         }
       }
     }
-    return(structure(FALSE, reason = paste(pID, "_", scriptID, "running now")))
+    gotRemote <- FALSE
+    if (embraceDanger && !file.exists(simOut) && remoteExists == 0) {
+      on.exit(cli::cli_progress_done(), add = TRUE)
+      cli::cli_progress_message("{pID}: Streaming remote file")
+      catResult <- ssh_exec_internal(session, paste("cat", remoteLog),
+                                     error = FALSE)
+      if (catResult[["status"]] == 0 && length(catResult[["stdout"]]) > 0) {
+        cli::cli_progress_message("{pID}: Parsing remote file")
+        remoteLines <- unlist(strsplit(rawToChar(catResult[["stdout"]]),
+                                       "\r\n|\r|\n"))
+        gotRemote <- length(remoteLines) > 0
+      }
+    }
+    if (!looksGood && !gotRemote && !file.exists(simOut)) {
+      simSubmit <- SimSlurm(pID, scriptID, stat = prefix == "stat")
+      if (simSubmit) {
+        return(structure(FALSE, reason = paste0("Launched SimSlurm(", pID, ", \"",
+                                                scriptID, "\")")))
+      } else {
+        return(structure(FALSE, reason = paste0(
+          "SimSlurm(", pID, ", \"", scriptID, "\") failed: ",
+          attr(simSubmit, "reason"))
+          )
+        )
+      }
+    }
   }
   lines <- if (exists("remoteLines") && length(remoteLines) > 0) {
     remoteLines

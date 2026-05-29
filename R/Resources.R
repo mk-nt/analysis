@@ -100,7 +100,8 @@ Sacct <- function(slurmID = NULL, state = NULL, time = "now-24hours") {
 
 .RecognizedScript <- function(scriptID) {
   grepl("\\w+_k[iv]$", scriptID, perl = TRUE) &&
-    !grepl("^sp_", scriptID)
+    !grepl("^sp_", scriptID) &&
+    !grepl("^m[\\d]", scriptID, perl = TRUE)
 }
 
 #' Process analyses that have completed on remote server
@@ -397,13 +398,10 @@ Cores <- function(pID, scriptID, cores = 8L) {
   if (pID %in% c("3448")) {
     return(c(cores = 64L, time = .config$maxTime))
   }
-  if (pID %in% c("4817")) {
-    # Too slow even for the 'long' service
-    return(c(cores = 512L, time = .config$maxTime))
-  }
-  if (pID %in% c("3708", "3345", "3670")) {
-    # Known to require the 'long' service
-    return(c(cores = .config$maxCores, time = .config$longTime))
+  if (pID %in% c("3708", "3345", "3670", "4817")) {
+    # Known to require >3 days
+    # as of revbayes#991, can use `shared` and resume via checkpoints
+    return(c(cores = .config$maxCores, time = .config$maxTime))
   }
   time <- PredictResource(pID, scriptID, ml = TRUE, cores)["time", ]
   if (time[["upr"]] < .config$maxTime * 
@@ -464,7 +462,7 @@ PredictResource <- function(pID, scriptID, ml = TRUE, cores = 16,
                     task = ifelse(ml, "marginal", "mcmcmc"))
   .Predict <- function(lm, mem = NA_real_) {
     predict(lm, newdata = c(run, "maxRSS" = mem),
-            interval = "confidence", level = 0.99) 
+            interval = "confidence", level = 0.99)
   }
   
   tries <- df[which(df[["pID"]] == pID & df[["scriptID"]] == scriptID & 
@@ -497,16 +495,18 @@ PredictResource <- function(pID, scriptID, ml = TRUE, cores = 16,
         if (length(progressLine) == 1 && length(outLines) >= progressLine + 2) {
           progressLine <- outLines[[progressLine + 2]]
           nStars <- nchar(progressLine)
-          gensDone <- if (nStars < 68) {
-            burninGen * nStars / 68
+          gensDone <- NA_real_
+          if (nStars < 68) {
+            gensDone <- burninGen * nStars / 68
           } else {
             stepExp <- "Steps\\s+\\d+\\-\\-(\\d+)\\s+/\\s+(\\d+)\\t\\t(\\**)"
             stepsLines <- grepv(stepExp, outLines)
             if (length(stepsLines) == 0) {
-              warning("Could not read ss outfile for ", pID, "_", scriptID)
+              warning("Could not read ss outfile for ", pID, "_", scriptID,
+                      "; falling back to CPU-time projection")
               # Likely because last run was from an old marginal.Rev: update
               RevBayes(pID, scriptID)
-              gensDone <- Inf
+              # gensDone stays NA; we'll use the cpuSeconds fallback below.
             } else {
               stepsParts <- do.call(cbind,
                                     regmatches(stepsLines,
@@ -520,18 +520,24 @@ PredictResource <- function(pID, scriptID, ml = TRUE, cores = 16,
                 # but hadn't printed a * to the output yet
                 starsFound <- starsFound + 35
               }
-              burninGen + ((runGen * steps / timeouts$nCPU) * starsFound / starsNeeded)
+              gensDone <- burninGen +
+                ((runGen * steps / timeouts$nCPU) * starsFound / starsNeeded)
             }
           }
-          # Ceiling because in the final stage, some cores may sit idle
-          stages <- ceiling(steps / cores)
-          gensNeeded <- burninGen + (runGen * stages)
-          sPerGen <- timeouts$seconds / gensDone
-          tooShort <- sPerGen * gensNeeded
-          message(pID, "_", scriptID, " timed out at ",
-                  round(gensDone / gensNeeded * 100), "% after ",
-                  signif(timeouts$seconds / 60 / 60, 3), " h with ", timeouts$nCPU,
-                  " cores; need >", round(tooShort / 60 / 60), " h with ", cores)
+          if (is.na(gensDone)) {
+            tooShort <- cpuSeconds / cores
+          } else {
+            # Ceiling because in the final stage, some cores may sit idle
+            stages <- ceiling(steps / cores)
+            gensNeeded <- burninGen + (runGen * stages)
+            sPerGen <- timeouts$seconds / gensDone
+            tooShort <- sPerGen * gensNeeded
+            message(pID, "_", scriptID, " timed out at ",
+                    round(gensDone / gensNeeded * 100), "% after ",
+                    signif(timeouts$seconds / 60 / 60, 3), " h with ",
+                    timeouts$nCPU, " cores; need >",
+                    round(tooShort / 60 / 60), " h with ", cores)
+          }
         } else {
           tooShort <- cpuSeconds / cores
         }

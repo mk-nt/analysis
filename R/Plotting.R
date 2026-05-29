@@ -71,13 +71,14 @@ ColErrPlot <- function(
 #' @param nBin Integer giving number of bins
 #' @param width Numeric giving relative width of each spindle
 #' @param log Logical specifying whether to log-transform the y axis
+#' @param pad vector by which to multiply y axis limits
 #' @param weights Numeric specifying weight of each observation, for a
 #' weighted mean.
 #' @param Behind Function to be executed before drawing the spindles
 #' @export
 SpindlePlot <- function(x, nBin = 20, width = 1, xlab = "",
                         log = FALSE, Behind = function() {},
-                        clip, weights = NULL, ...) {
+                        clip, weights = NULL, pad = NULL, ...) {
   centres <- seq_len(ncol(x))
   logY <- isTRUE(log) || (is.character(log) && "y" %in% unlist(strsplit(log, "")))
   Unlog <- if (logY) exp else function(x) x
@@ -91,9 +92,12 @@ SpindlePlot <- function(x, nBin = 20, width = 1, xlab = "",
               x < quantile(x, clip[[1]], na.rm = TRUE)] <- NA
   }
   
-  plot(NULL, axes = FALSE, xlab = xlab,
-       xlim = c(0.5, ncol(x) + 0.5), ylim = range(clipped, na.rm = TRUE),
-       log = if (logY) "y" else "", ...)
+  yLim <- range(clipped, na.rm = TRUE)
+  if (!is.null(pad)) {
+    yLim <- yLim * pad
+  }
+  plot(NULL, axes = FALSE, xlab = xlab, xlim = c(0.5, ncol(x) + 0.5),
+       ylim = yLim, log = if (logY) "y" else "", ...)
   axis(1, at = centres, labels = ModelLabel(scripts), las = 2, lwd = 0, line = -1)
   axis(2, las = 2, xpd = NA)
   logged <- if (logY) log(clipped) else clipped
@@ -171,28 +175,40 @@ TreeSimSpindleRow <- function(pID, marginals, models, silID,
                     width = silScale * xWid / length(models),
                     hjust = 1, vjust = 1)
   
-  oPar <- par(mar = c(3.6, 3.2, 2.1, 0.2))
-  heights <- setNames(marginals[models, pID] -
-                        min(marginals[models, pID], na.rm = TRUE),
-                      ModelLabel(models))
+  oPar <- par(mar = c(3.2, 1.8, 2.1, 0.6))
   stdErr <- attr(marginals, "stdErr")
-  barErr <- .DiffErr(stdErr[models, pID],
-                     stdErr[models, which.min(marginals[, pID])])
-  bp <- barplot(heights, las = 2, col = ModelCol(models), border = NA,
-                space = 0)
-  
-  belowZero <- heights - barErr < 0
-  arrows(bp[!belowZero], heights[!belowZero] - barErr[!belowZero],
-         bp[!belowZero], heights[!belowZero] + barErr[!belowZero],
-         angle = 90, code = 3, length = 0.02, lwd = 1, xpd = NA)
-  
-  arrows(bp[belowZero], 0, bp[belowZero], heights[belowZero] + barErr[belowZero],
-         angle = 90, code = 2, length = 0.02, lwd = 1, xpd = NA)
-  
+
+  # Second panel: bivariate scatter — similarity (y) vs. log BF (x)
+  sims <- TreeSimilarities(pID, models, method = "MCI")
+  keep <- names(sims)
+  keep <- keep[!is.na(marginals[keep, pID])]
+  sims <- sims[keep]
+
+  simMean <- vapply(sims, mean, double(1))
+  simLo   <- vapply(sims, quantile, double(1), probs = 0.25, names = FALSE)
+  simHi   <- vapply(sims, quantile, double(1), probs = 0.75, names = FALSE)
+
+  marg  <- marginals[keep, pID]
+  se    <- stdErr[keep, pID]
+  bf    <- marg - marg[["by_kv"]]
+  bfErr <- .DiffErr(se, se[["by_kv"]])
+  col   <- ModelCol(keep)
+
+  plot(NA, type = "n", frame.plot = FALSE,
+       xlim = range(bf - bfErr, bf + bfErr, finite = TRUE),
+       ylim = range(simLo, simHi, finite = TRUE),
+       xlab = "", ylab = "")
+  mtext("log Bayes factor", 1, line = 2, cex = rowCex)
+
+  segments(bf - bfErr, simMean, bf + bfErr, simMean, col = col, lwd = 1)
+  segments(bf,         simLo,   bf,         simHi,   col = col, lwd = 1)
+  points(bf, simMean, pch = 21, bg = col, col = "#333132", cex = 0.9, lwd = 0.5)
+
   noBF <- is.na(marginals[models, pID])
-  text(seq_along(models)[noBF] - 0.5, par("usr")[[4]] * 0.2, "?",
-       col = ModelCol(models[noBF]), font = 2)
-  mtext("log Bayes factor", 2, line = 2, cex = rowCex)
+  if (any(noBF)) {
+    text(par("usr")[[1]], mean(range(simMean)), "?",
+         col = ModelCol(models[noBF])[[1]], font = 2, adj = 0)
+  }
   par(oPar)
   
   # Quartet results are not materially different from MCI.
@@ -516,7 +532,8 @@ TreeSimSpindle <- function(pID, models, output = NULL, sampleSize = 256,
   
   oPar <- par(mar = c(3.6, 4, topMar, 0.4), xpd = NA)
   SpindlePlot(similarities, width = width, nBin = nBin, clip = clip,
-              ylab = sprintf("Similarity / normalized %s", method)
+              ylab = sprintf("Similarity / normalized %s", method),
+              pad = if (pID == "07206") c(1, 1.01) else NULL
               #ylab = sprintf("%s similarity to well-corroborated tree", method)
               )
   par(oPar)
@@ -534,8 +551,8 @@ PairwiseQuartets <- function(trees, Measure = QuartetDivergence) {
 #' @importFrom MASS kde2d
 #' @importFrom Quartet QuartetStatus SimilarityToReference
 #' @importFrom Rogue QuickRogue
-#' @importFrom TreeTools Consensus DropTip KeepTip LabelSplits RootTree SortTree 
-#' SplitFrequency SupportColour TipLabels
+#' @importFrom TreeTools Consensus DropTip KeepTip LabelSplits RootTree SortTree
+#' @importFrom TreeTools SplitFrequency SupportColour TipLabels
 #' @export
 TreeSimPlot <- function(pID, models, pdf = FALSE, sampleSize = 128) {
   cli_progress_message(paste0(pID, ": Reading trees"))
@@ -776,7 +793,7 @@ Panel <- function(i, xOffset = 3, yOffset = 0) {
 #' @param width,height Figure dimensions in inches
 #' @param Plot function to execute, which should produce a plot.
 #' 
-#' @return `OutputPlot()` is called for its side-effecits: it launches a new
+#' @return `OutputPlot()` is called for its side-effects: it launches a new
 #' device of the type specified by `getOption("ntOutput")`
 #' (supported: "png", "pdf", "device", where the latter
 #' is the default and plots to the active graphics device).
@@ -785,8 +802,9 @@ OutputPlot <- function(figName, width, height, Plot) {
   outputType <- trimws(tolower(getOption("ntOutput") %||% "device"))
   if (outputType != "pdf" && isTRUE(getOption("alwaysPDF", FALSE))) {
     o <- options(ntOutput = "pdf")
-    on.exit(o)
+    on.exit(options(o))
     OutputPlot(figName, width, height, Plot)
+    options(o)
   }
   switch(outputType,
          pdf = cairo_pdf(file.path(OutputDir(), "figures",
@@ -796,7 +814,8 @@ OutputPlot <- function(figName, width, height, Plot) {
                              sprintf("%s.png", figName)),
                    width, height, units = "in", res = 300))
   if (outputType != "device") {
-    message("Creating ", sprintf("%s.%s", figName, getOption("ntOutput")))
+    message("Creating ", sprintf("%s/figures/%s.%s", OutputDir(),
+                                 figName, getOption("ntOutput")))
     on.exit(dev.off())
   }
   Plot()

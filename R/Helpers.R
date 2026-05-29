@@ -121,15 +121,19 @@ FetchResults <- function(pID, scriptID) {
       on.exit(system2("git", c("stash", "pop")), add = TRUE)
     }
     
-    fetchMsg <- system2("git", "fetch --depth 1", stdout = TRUE)
-    if (length(fetchMsg) > 1 && 
-        (grepl("forced update", fetchMsg[[2]], fixed = TRUE) ||
-         grepl("-> FETCH_HEAD", fetchMsg[[2]], fixed = TRUE)
-        )) {
-      rebase <- system2("git", "pull --rebase", stdout = TRUE)
-      if (length(rebase) && grepl("Successful", rebase[[1]])) {
+    # Capture stderr too: modern git writes fetch ref-update lines there.
+    fetchMsg <- system2("git", c("fetch", "--depth", "1"),
+                        stdout = TRUE, stderr = TRUE)
+    if (any(grepl(" -> ", fetchMsg, fixed = TRUE)) ||
+        any(grepl("forced update", fetchMsg, fixed = TRUE))) {
+      rebase <- system2("git", c("pull", "--rebase"),
+                        stdout = TRUE, stderr = TRUE)
+      if (any(grepl("Successful", rebase, fixed = TRUE))) {
         message("Fetched new results from ", pID, " ", scriptID)
         return(TRUE)
+      } else if (any(grepl("Already up to date", rebase, fixed = TRUE))) {
+        message(pID, " ", scriptID, " already up to date\n")
+        return(FALSE)
       } else {
         message("Couldn't rebase ", pID, " ", scriptID, ": \n")
         warning(paste(rebase), immediate. = TRUE)

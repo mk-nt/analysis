@@ -15,6 +15,7 @@ AllProjects <- function(indices = NULL, sort = TRUE) {
                             basename(MatrixFile(".*", "neo.nex$")))))
   x <- setdiff(x, "4173") # duplicate of 4285
   x <- setdiff(x, "4284") # Cannot get ML even for by_ki
+  x <- setdiff(x, "5529") # 5529 has no 2-state transformational characters
   x <- x[order(as.numeric(x))]
   if (is.null(indices)) x else x[indices]
 }

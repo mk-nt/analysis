@@ -21,7 +21,7 @@
 #' @importFrom parallel detectCores
 #' @importFrom TreeTools RootTree
 #' @importFrom ape read.tree
-#' @importFrom TreeDist ClusteringInfoDistance GetParallel StartParallel
+#' @importFrom TreeDist ClusteringInfoDistance
 #' @export
 TreeDistances <- function(pID, model1, model2) {
   distFile <- DistanceFile(pID, model1, model2)
@@ -46,9 +46,7 @@ TreeDistances <- function(pID, model1, model2) {
       dTrees <- c(rooted1, rooted2)
       stopifnot(length(rooted1) == length(rooted2))
       
-      if (length(GetParallel()) == 0) {
-        StartParallel(ceiling(detectCores() * 0.75))
-      }
+      options(mc.cores = min(8L, ceiling(detectCores() * 0.75)))
       d <- ClusteringInfoDistance(dTrees, normalize = TRUE)
       saveRDS(d, file = distFile)
       d
