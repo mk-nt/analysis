@@ -21,14 +21,15 @@ load(system.file("extdata", "figure_sim_data.RData", package = "neotrans"))
 
 ```{r simulation-figure, fig.width = 7.8, fig.height = 4}
 OutputPlot("simulations", 7.8, 4, function() {
-  panel_widths <- c(1.4, 1, 1)
+  panel_widths <- c(1.6, 1, 1)
   layout(matrix(1:3, nrow = 1), widths = panel_widths)
   
   # Panel 1: Posterior parameter violins (from simEmpirical.R)
-  par(mar = c(3.5, 4.5, 1, 1))
-  PlotParamViolin(loss, neo, lng, true_vals = c(n, t, length))
-  Panel(1, 4.5)
+  par(mar = c(3.5, 3.6, 0.4, 1))
+  PlotParamViolin(loss, neo, lng, mkLng, true_vals = c(n, t, length))
+  Panel(1, 4)
   
+  par(mar = c(2.5, 4.5, 1, 1))
   # Panel 2: Imputation accuracy (from simImpute.R)
   plot(NA, xlim = c(0.8, 2.2), ylim = range(accNT[-14], accV[-14]),
        xaxt = "n", xlab = NA, ylab = "Mean imputation accuracy",
@@ -38,13 +39,16 @@ OutputPlot("simulations", 7.8, 4, function() {
        lty = 0)
   segments(x0 = 1, x1 = 2, y0 = accV, y1 = accNT,
            col = ifelse(nt_better, "#2166ac66", "#d7302766"),
-           lwd = ifelse(nt_better, 1.4, 0.7))
+           lwd = 1)
   points(rep(1, length(accV)),  accV,  pch = 16, cex = 0.7,
          col = ModelCol("by_ki"))
   points(rep(2, length(accNT)), accNT, pch = 16, cex = 0.7,
          col = ModelCol("by_nt_ki"))
   points(c(0.99, 2.01), c(mean(accV), mean(accNT)), pch = 4)
   segments(1, mean(accV), 2, mean(accNT), lwd = 2, lty = "dashed")
+  message(sprintf("mean increase in accuracy: +%.1f percentage points",
+                  mean(accNT - accV) * 100))
+  wilcox.test(accV, accNT, paired = TRUE, conf.int = TRUE)
   
   # Panel 3: Tree distance (from simImpute.R)
   stillNull <- vapply(ntErr, is.null, logical(1)) |
@@ -61,7 +65,7 @@ OutputPlot("simulations", 7.8, 4, function() {
        lty = 0)
   segments(x0 = 1, x1 = 2, y0 = spMeds, y1 = ntMeds,
            col = ifelse(nt_better_tree, "#2166ac66", "#d7302766"),
-           lwd = ifelse(nt_better_tree, 1.4, 0.7))
+           lwd = 1)
   points(rep(1, length(spMeds)), spMeds, pch = 16, cex = 0.5,
          col = ModelCol("by_ki"))
   points(rep(2, length(ntMeds)), ntMeds, pch = 16, cex = 0.5,

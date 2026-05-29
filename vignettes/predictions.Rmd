@@ -103,8 +103,11 @@ for (predictor in tPredBF[order(tIncMSE, decreasing = TRUE)]) {
 # Can we predict the value of t from the metadata?
 metaT <- tMeta[!is.na(tMeta[, "tValue.50."]), ]
 t50 <- metaT[, "tValue.50."]
+set.seed(901)
 vsurfT <- VSURF::VSURF(metaT[, setdiff(tPredictors, "tValue.50.")], t50, verbose = FALSE)
-predT <- tPredictors[vsurfT[["varselect.pred"]]]
+predIdx <- vsurfT[[if (length(vsurfT[["varselect.pred"]])) "varselect.pred"
+                   else "varselect.interp"]]
+predT <- tPredictors[predIdx]
 
 # Surprisingly, yes.  Why might this be?
 message(paste(predT, collapse = ", "))
@@ -267,6 +270,8 @@ margins <- c(6, 4, 1.4, 0.4)
 tvPredictors <- setdiff(tPredictors, "tValue.50.")
 predT
 metaTVPred <- metaT[, tvPredictors]
+
+set.seed(901) # Consistent output for fig. 3
 prfTV <- randomForest(metaTVPred, t50, ntree = 10000, importance = TRUE)
 OutputPlot("predict_t_val", 7.2, 6, function() {
   par(mfrow = c(2, 3), mar = margins)
@@ -279,6 +284,8 @@ OutputPlot("predict_t_val", 7.2, 6, function() {
 
 predN
 metaNVPred <- metaN[, nvPredictors]
+
+set.seed(901)
 prfNV <- randomForest(metaNVPred, ln50, ntree = 10000, importance = TRUE)
 OutputPlot("predict_n_val", 7.2, 6, function() {
   par(mfrow = c(2, 3), mar = margins)
@@ -291,6 +298,8 @@ OutputPlot("predict_n_val", 7.2, 6, function() {
 
 predA
 metaAVPred <- metaA[, avPredictors]
+
+set.seed(901)
 prfAV <- randomForest(metaAVPred, a50, ntree = 10000, importance = TRUE)
 OutputPlot("predict_a_val", 7.2, 6, function() {
   par(mfrow = c(2, 3), mar = margins)
@@ -305,6 +314,8 @@ OutputPlot("predict_a_val", 7.2, 6, function() {
 tPredBF
 metaTPred <- metaT[, tPredictors]
 tPredBF
+
+set.seed(901)
 prfT <- randomForest(metaTPred, tModelBF, ntree = 10000, importance = TRUE)
 OutputPlot("predict_t_bf", 7.2, 5, function() {
   par(mfrow = c(2, 4), mar = margins)
@@ -317,6 +328,8 @@ OutputPlot("predict_t_bf", 7.2, 5, function() {
 
 
 metaNPred <- metaN[, nPredictors]
+
+set.seed(901)
 prfN <- randomForest(metaNPred, nModelBF, ntree = 10000, importance = TRUE)
 nPredBF
 OutputPlot("predict_n_bf", 7.2, 5, function() {
@@ -330,6 +343,8 @@ OutputPlot("predict_n_bf", 7.2, 5, function() {
 
 
 metaAPred <- metaA[, aPredictors]
+
+set.seed(901)
 prfA <- randomForest(metaAPred, nsModelBF, ntree = 10000, importance = TRUE)
 aPredBF
 OutputPlot("predict_a_bf", 7.2, 5, function() {

@@ -6,6 +6,9 @@ Figures in the manuscript are generated in the following vignettes:
 *Figure 2.* Values of <t, a_0, n>.
   parameter-values.Rmd → param_values.pdf
 
+  Associated values in the main text are calculated in
+  parameter-analysis.Rmd
+  
 *Figure 3.* Dataset properties predicting inferred partition rate multiplier t and gain–loss ratio n.
   predictions.Rmd → predicting_nt.pdf
 
@@ -27,3 +30,10 @@ Figures in the manuscript are generated in the following vignettes:
 *Figure 9.* Similarity between well-corroborated reference trees and posterior 
   wct-comparison.Rmd → tr_similar.pdf
 
+To render outputs as files, before running an `OutputPlot` chunk, set:
+- `options("ntOutput" = "png")` or `"pdf"` 
+- `options("ntOutDir" = "path/to/analytical/outputs")`.
+
+Or, to create a PDF alongside every plot, set `options("alwaysPDF" = TRUE)`.
+
+PDF or PNG files will then be created in a `/figures` subdirectory.

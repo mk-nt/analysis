@@ -27,9 +27,7 @@ homModels <- c(statModels, nsModels)
 kiModels <- c(statModels, rmModels, nsModels, hetModels)
 nonRm <- setdiff(kiModels, rmModels)
 
-if (length(TreeDist::GetParallel()) == 0) {
-  TreeDist::StartParallel(ceiling(parallel::detectCores() * 0.75))
-}
+options(mc.cores = min(8L, ceiling(parallel::detectCores() * 0.75)))
 ```
 
 ```{r load-data}

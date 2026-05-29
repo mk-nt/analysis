@@ -91,6 +91,25 @@ legend("topleft", bty = "n", title = expression(italic(t) ~ "parameter:"),
                "grey10", "grey10"))
 ```
 
+We provide an equivalent comparison for non-stationary models:
+
+```{r nst-t-comparison}
+modelsT_NS <- c("by_t_ki", "by_nt_ki", "ns_t_ki", "ns_ki", "ns_nt_ki")
+marginalsT_NS <- GetMarginals(KiProjects(), modelsT_NS)
+stdErrT_NS <- attr(marginalsT_NS, "stdErr")
+
+.ErrCompareT <- function(mod1, mod2, eps = epsBF) {
+  .OutwithError(marginalsT_NS[mod1, ] - marginalsT_NS[mod2, ],
+                .DiffErr(stdErrT_NS[mod1, ], stdErrT_NS[mod2, ]), eps)
+}
+
+nstNt <- .ErrCompareT("ns_t_ki", "ns_ki")
+message(
+  "NstT outperforms NstMk in ", sum(nstNt), "/", sum(!is.na(nstNt)),
+  " datasets, and underperforms in ",
+  sum(.ErrCompareT("ns_ki", "ns_t_ki")))
+```
+
 We next examine the posterior distribution of _t_ under the best-fitting
 stationary model for each dataset, and test whether inferred values differ
 significantly from one.
@@ -124,11 +143,12 @@ stationaryT <- sapply(tProjects, function(pID) {
 })
 shapiro.test(log(stationaryT["50%", ]))
 t.test(log(stationaryT["50%", ]))
-signif(exp(median(log(stationaryT["50%", ]))), 3)
-signif(exp(mad(log(stationaryT["mad", ]))), 3)
-signif(mad(stationaryT["mad", ]), 3)
-signif(exp(mean(log(stationaryT["50%", ]))), 3)
-round(sd(log(stationaryT["50%", ])), 3)
+sd(log(stationaryT["50%", ])) |> signif(3)
+exp(median(log(stationaryT["50%", ]))) |> signif(3)
+exp(mad(log(stationaryT["mad", ]))) |> signif(3)
+mad(stationaryT["mad", ]) |> signif(3)
+exp(mean(log(stationaryT["50%", ]))) |> signif(3)
+sd(log(stationaryT["50%", ])) |> round(3)
 
 # Because of the conversion, the 2.5%ile is "high" and the 97.5%ile is "low"
 message(
@@ -145,7 +165,7 @@ message("Different from 1: ", sum(tNotOne, na.rm = TRUE),
         sum(stationaryT["2.5%", ] < 1, na.rm = TRUE), " < 1")
 ```
 
-```{r}
+```{r t-value-vs-bf}
 ntBest <- (bestTModel == "by_nt_ki")[!is.na(bestTModel)]
 tModelBF <- setNames(numeric(length(tProjects)), tProjects)
 tModelBF[ntBest] <- marginals["by_nt_ki", tProjects[ntBest]] - 
@@ -179,7 +199,7 @@ tCol <- hcl.colors(6, "Red-Green")[2:5][tColBin]
 Variable selection via VSURF, followed by a random forest, identifies which
 dataset-level properties predict whether a free _t_ is supported.
 
-```{r, message = FALSE}
+```{r free-t-vsurf, message = FALSE}
 # Can we predict which projects will benefit from a free t parameter?
 tProj <- names(tSupport)
 tMeta <- data.frame(
@@ -197,6 +217,7 @@ tMeta <- data.frame(
 
 tPredictors <- c("nChar", "logNTRatio", "charPerTax", "taxon", "rank", "nTaxa",
                  "tValue.50.")
+set.seed(5819)
 vsurfBF <- VSURF::VSURF(tMeta[, tPredictors], tSupport, verbose = FALSE)
 predBF <- tPredictors[vsurfBF[["varselect.pred"]]]
 if (!length(predBF)) {
@@ -206,6 +227,7 @@ cat(paste0(predBF, collapse = ", "))
 ```
 
 ```{r rf-t}
+set.seed(7102)
 rfBF <- randomForest(tMeta[, predBF, drop = FALSE], tSupport,
                      ntree = 10000, importance = TRUE)
 importance(rfBF)
@@ -235,6 +257,7 @@ summary(t50)
 sd(t50)
 shapiro.test(t50)
 t.test(t50)
+set.seed(75169238)
 vsurfT <- VSURF::VSURF(metaT[, setdiff(tPredictors, "tValue.50.")], t50,
                        verbose = FALSE)
 predT <- tPredictors[vsurfT[["varselect.pred"]]]
@@ -243,6 +266,7 @@ cat(paste(predT, collapse = ", "))
 
 ```{r, fig.width = 6, fig.height = 6}
 # Surprisingly, yes.  Why might this be?
+set.seed(75128)
 rfT <- randomForest(metaT[, predT, drop = FALSE], t50, ntree = 10000,
                     importance = TRUE)
 
@@ -304,7 +328,7 @@ We compare models with and without a free _n_ under both stationary and
 non-stationary assumptions, checking whether gains over the symmetric Mk
 model are replicated relative to randomised controls.
 
-```{r}
+```{r stn-comparison}
 # Number in which StN outperforms StMk
 .ErrCompare <- function(mod1, mod2, eps = epsBF) {
   .OutwithError(marginals[mod1, ] - marginals[mod2, ],
@@ -317,12 +341,20 @@ stnBeatsRandom <- stnWins & .ErrCompare("by_n_ki", "rm_by_n_ki")
 message(sum(stnBeatsRandom, na.rm = TRUE), " of these ",
         sum(stnWins & !is.na(stnBeatsRandom)))
 message(
-  "StMk was preferred in ",
+  "By contrast, StMk was preferred in ",
   # Number in which StMk outperforms StN
-  sum(.ErrCompare("by_n_ki", "by_ki")),
+  sum(.ErrCompare("by_ki", "by_n_ki")),
   " of ", # Number of datasets for which data are available
   sum(!is.na(marginals["by_n_ki", ] < marginals["by_ki", ])),
   " datasets.")
+
+message(
+  "Model StN' performed similarly to StN (better in ",
+  # Number in which StMk outperforms StN
+  sum(.ErrCompare("by_nn_ki", "by_n_ki")),
+  " and worse in ",
+  sum(.ErrCompare("by_n_ki", "by_nn_ki")),
+  ").")
 
 stNt <- .ErrCompare("by_nt_ki", "by_t_ki")
 message(
@@ -388,7 +420,7 @@ nstnWins <- .ErrCompare("ns_n_ki", "ns_ki")
 length(which(nstnWins))
 sum(!is.na(nstnWins))
 # Number in which StMk outperforms StN
-length(which(.ErrCompare("ns_ki", "ns_ki")))
+length(which(.ErrCompare("ns_ki", "ns_n_ki")))
 # Number of datasets for which data are available
 sum(!is.na(marginals["ns_n_ki", ] < marginals["ns_ki", ]))
 # Summary: very similar, with slightly more preferring free n
@@ -480,7 +512,7 @@ We extract the posterior distribution of _n_ under the best-fitting stationary
 model for each dataset, and test whether inferred values differ significantly
 from one.
 
-```{r}
+```{r n-posterior-from-stat}
 # Compare estimated values of n
 bestNModel <- ifelse(marginals["by_n_ki", ] > marginals["by_nt_ki", ],
                      "by_n_ki", "by_nt_ki")
@@ -509,6 +541,8 @@ exp(summary(log(n50)))
 shapiro.test(log(n50))
 t.test(log(n50))
 sd(log(n50))
+median(log(n50))
+mad(log(n50))
 message(
   "LogMean: ", signif(exp(mean(log(n50), na.rm = TRUE)), 3),
   ", sd ", paste0(signif(exp(mean(log(n50)) + c(-1, 1) * sd(log(n50), na.rm = TRUE)), 3), collapse = ", "),
@@ -613,13 +647,14 @@ meta <- data.frame(
 
 nPredictors <- c("nChar", "logNTRatio", "charPerTax", "taxon", "rank", "nTaxa",
                  "inferredN.50.")
+set.seed(173133)
 vsurfBF <- VSURF::VSURF(meta[, nPredictors], nModelBF, verbose = FALSE)
-
 predBF <- nPredictors[vsurfBF[["varselect.interp"]]]
 cat(paste0(predBF, collapse = ", "))
 ```
 
 ```{r, fig.width = 6, fig.height = 6}
+set.seed(7150242)
 rfBF <- randomForest(meta[, predBF, drop = FALSE], nModelBF,
                      ntree = 10000, importance = TRUE)
 importance(rfBF)
@@ -637,11 +672,13 @@ for (predictor in predBF) {
 
 metaN <- meta[!is.na(meta[, "inferredN.50."]), ]
 n50 <- metaN[, "inferredN.50."]
+set.seed(571365)
 vsurfN <- VSURF::VSURF(metaN[, nPredictors], log(n50), verbose = FALSE)
 predN <- nPredictors[vsurfN[["varselect.interp"]]]
 
 message(paste(predN, collapse = ", "))
 # Expect this to be zero, or perhaps higher taxon
+set.seed(71890572)
 rfT <- randomForest(metaT[, tPredictors[vsurfT[["varselect.pred"]]]],
                     t50,
                     ntree = 10000, importance = TRUE)
@@ -657,7 +694,7 @@ plot(t50 ~ metaT$nTaxa, frame.plot = FALSE, log = "y")
 abline(h = 1, lty = "dotted")
 ```
 
-```{r, fig.width = 6, fig.height = 6}
+```{r mk-pref-char-by-tax, fig.width = 6, fig.height = 6}
 par(mfrow = c(1, 1))
 plot(.meta$nChar["trans", ], .meta$nChar["neo", ],
      pch = ifelse(abs(mk2) > epsBF, 16, 1),
@@ -683,14 +720,14 @@ legend("topleft", bty = "n",
        col = hcl.colors(6, "Red-Green")[2:5])
 ```
 
-```{r}
+```{r mk2-by-taxon}
 boxplot(mk2 ~ .meta$taxon[names(mk2)], las = 2,
         frame.plot = FALSE, cex = 0.8, ylab = "MK2 BF", notch = TRUE,
         col = TaxonCol())
 EpsLine()
 ```
 
-```{r}
+```{r nn-vs-n-spindle}
 SpindleCompare("by_nn_ki", "by_n_ki", marginals, stdErr)
 abline(h = 0, lty = 2, lwd = 1, col = "grey70")
 
@@ -722,7 +759,9 @@ sum(nWins)
   sum()
 ```
 
-```{r}
+## Estimates of n under StN'
+
+```{r nn-n-estimate}
 plot(marginals["by_nn_ki", ] - marginals["by_n_ki", ] ~
        I(2 * stdErr["by_nn_ki", ]), frame = 0); abline(h = 0, lty = 2); abline(0, 1, lty = 3); abline(0, -1, lty = 3)
 plot(marginals["by_nn_ki", ] - marginals["by_ki", ],
@@ -790,7 +829,7 @@ legend("topleft", ModelLabel(modelsNS), pch = 16, col = ModelCol(modelsNS),
 We determine how often the best non-stationary model outperforms the best
 stationary model, and vice versa.
 
-```{r}
+```{r stat-bf}
 StatCompare <- function(suffix) {
   ns <- paste0("ns_", suffix)
   st <- paste0("by_", suffix)
@@ -822,10 +861,11 @@ StatCompare("n_ki")
 StatCompare("nt_ki")
 ```
 
+
 We extract the root-frequency parameter _a_~0~ from the best-fitting
 non-stationary model for each dataset.
 
-```{r}
+```{r calculate-a0}
 # For which analyses are results available?
 allIn <- colSums(is.na(marginals)) == 0
 someIn <- colSums(!is.na(marginals[1:3, ])) > 0 &
@@ -846,7 +886,7 @@ colnames(nsValue) <- names(bestS)
 We test whether the log-odds root frequency departs significantly from zero
 (i.e. from equal root-state probabilities).
 
-```{r}
+```{r a0-vs-zero}
 # Is the median root frequency different from zero?
 # For results that include also ns_t_ki, see 5_Parameters.R
 # The values there (not here) are used for publication
@@ -867,10 +907,13 @@ t.test(f01)
 # Summary statistics for best model
 a2.5 <- a0["2.5%", ]
 a97.5 <- a0["97.5%", ]
-sum(a2.5 > 1, na.rm = TRUE)
-sum(a97.5 < 1, na.rm = TRUE)
-sum(a2.5 > 1 | a97.5 < 1, na.rm = TRUE)
-sum(!is.na(a2.5) & !is.na(a97.5))
+sprintf("a_0 differs from 50:50 (with posterior probability > 95%%) in %i of %i datasets, with the ‘absent’ state more common in %i of these %i",
+                sum(a2.5 > 1 | a97.5 < 1, na.rm = TRUE),
+                sum(!is.na(a2.5) & !is.na(a97.5)),
+                sum(a2.5 > 1, na.rm = TRUE),
+                sum(a2.5 > 1 | a97.5 < 1, na.rm = TRUE)
+      )
+# present state more common in sum(a97.5 < 1, na.rm = TRUE)
 ```
 
 For robustness, we repeat using a single fixed model (NstMk) throughout
@@ -890,10 +933,14 @@ ns97.5 <- nsValue["97.5%", ]
 a2.5 <- log(ns2.5 / (1 - ns2.5))
 a50 <- log(ns50 / (1 - ns50))
 a97.5 <- log(ns97.5 / (1 - ns97.5))
-sum(a2.5 > 1, na.rm = TRUE)
-sum(a97.5 < 1, na.rm = TRUE)
-sum(a2.5 > 1 | a97.5 < 1, na.rm = TRUE)
-sum(!is.na(a2.5) & !is.na(a97.5))
+
+
+sprintf("in NstMk, a_0 differs from 50:50 in %i of %i datasets, with the ‘absent’ state more common in %i of these %i",
+        sum(a2.5 > 0 | a97.5 < 0, na.rm = TRUE),
+        sum(!is.na(a2.5) & !is.na(a97.5)),
+        sum(a2.5 > 0, na.rm = TRUE),
+        sum(a2.5 > 0 | a97.5 < 0, na.rm = TRUE)
+        )
 
 1 / median(ns50, na.rm = TRUE)
 median(a50, na.rm = TRUE)
@@ -912,10 +959,12 @@ nsn97.5 <- nsnValue["97.5%", ]
 an2.5 <- log(nsn2.5 / (1 - nsn2.5))
 an50 <- log(nsn50 / (1 - nsn50))
 an97.5 <- log(nsn97.5 / (1 - nsn97.5))
-sum(an2.5 > 1, na.rm = TRUE)
-sum(an97.5 < 1, na.rm = TRUE)
-sum(an2.5 > 1 | an97.5 < 1, na.rm = TRUE)
-sum(!is.na(an2.5) & !is.na(an97.5))
+sprintf("in NstN, a_0 differs from 50:50 in %i of %i datasets, with the ‘absent’ state more common in %i of these %i",
+        sum(an2.5 > 0 | an97.5 < 0, na.rm = TRUE),
+        sum(!is.na(a2.5) & !is.na(a97.5)),
+        sum(an2.5 > 0, na.rm = TRUE),
+        sum(an2.5 > 0 | an97.5 < 0, na.rm = TRUE)
+        )
 
 1 / median(ns50, na.rm = TRUE)
 median(a50, na.rm = TRUE)
@@ -948,7 +997,8 @@ predBF <- nsPredictors[vsurfBF[["varselect.interp"]]]
 cat(paste0(predBF, collapse = ", "))
 ```
 
-```{r}
+```{r rf-nsMeta}
+set.seed(168324)
 rfBF <- randomForest(nsMeta[, predBF, drop = FALSE], nsPref[nsProj],
                      ntree = 10000, importance = TRUE)
 importance(rfBF)
@@ -989,6 +1039,39 @@ abline(h = 0, lty = "dashed", col = "grey70")
 abline(0, 1, lty = "dashed", col = "grey70")
 legend("topleft", ModelLabel(modelsHet), pch = 16, col = ModelCol(modelsHet),
        bty = "N")
+```
+
+## Estimates of n under Het
+
+Under model Het, the analogue of _n_ is the weighted average forward and
+reverse rates across all rate categories, weighted by the probability of each
+category, captured by the `mean_n` parameter.
+
+```{r het-n-estimate}
+hgN <- vapply(KiProjects(), function(pID) {
+  ExistingResults(pID, "hg_ki", checkRemote = FALSE)[["parameters"]][, "mean_n"] %||%
+    rep(NA_real_, 6)
+}, ExistingResults(450, "hg_ki")[["parameters"]][, "mean_n"])
+
+medHgN <- hgN["50%", ]
+hist(log(medHgN))
+abline(v = 0, lwd = 3)
+
+shapiro.test(log(medHgN))
+
+message("_n_ differs from unity (w/ pp > 95%) in ",
+        sum(hgN["97.5%", ] < 1 | hgN["2.5%", ] > 1, na.rm = TRUE),
+        " of ", sum(!is.na(medHgN)),
+        " datasets, and is less than one in ",
+        sum(hgN["97.5%", ] < 1, na.rm = TRUE),
+        " of these")
+
+summary(log(medHgN), digits = 2)
+exp(summary(log(medHgN), digits = 2))
+sd(log(medHgN), na.rm = TRUE) |> signif(3)
+mad(log(medHgN), na.rm = TRUE) |> signif(3)
+t.test(log(medHgN))
+
 ```
 
 We identify datasets with complete results for both model families and

@@ -65,7 +65,8 @@ mean0[hetV]
 # Pattinson et al. 2015
 mean2 <- sapply(TreeSimilarities("07202", models7, "MCI"), mean)
 mean2[nsV] - mean2[statV]
-range(mean2)
+mean2
+range(mean2[hetV])
 mean2[freeNV] - mean2[fixedNV]
 mean2[freeNTV] - mean2[freeNV]
 

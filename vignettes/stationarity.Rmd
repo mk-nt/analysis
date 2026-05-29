@@ -113,15 +113,6 @@ OutputPlot("stationarity", 7.2, 7, function() {
     lgdTitle = "Characters", colBy = kiNeoChar,
     text = TRUE)
   
-  postPred <- data.frame(
-    stat_root_fqs = nsP1AtStat["sim.50%", ],
-    obs_root_fqs = nsP1AtObs["sim.50%", ],
-    stat_obs = nsP1AtObs["sim.50%", ] - nsP1AtStat["sim.50%", ])
-  
-  SpindlePlot(postPred)
-  
-  
-  
   ColErrPlot(
     "Observed Pr(present)", p1["obs", ], p1["obs.25%", ], p1["obs.75%", ],
     "Pr(present), NstN, inferred root frequencies - stationary root",
@@ -222,11 +213,14 @@ OutputPlot("rootVsLeaf", 5, 5, function() {
 ```{r leaf-root-prediction}
 moreAtLeaves <- ns1["obs1", ] - ns1["root1.97.5%", ] > 0
 moreAtRoot <- ns1["obs1", ] - ns1["root1.2.5%", ] < 0
-sum(moreAtLeaves, na.rm = TRUE)
-sum(moreAtRoot, na.rm = TRUE)
-sum(!is.na(moreAtLeaves))
-signif(median(ns1["root1.50%", moreAtLeaves], na.rm = TRUE), 2)
-signif(max(ns1["root1.97.5%", moreAtLeaves], na.rm = TRUE), 2)
+sprintf("But in %i of %i datasets, the proportion of characters scored ‘present’ at the leaves lay outside the 95%% posterior probability interval of the proportion of presences at the root inferred under model NstN. In %i of these %i cases, presence was more frequent at the leaves; each of these cases also displayed a low probability of presence at the root (median = %.2f; 97.5%%ile of inferred probability of presence at root < %.2f in all cases)",
+        sum(moreAtLeaves, na.rm = TRUE),
+        sum(!is.na(moreAtLeaves)),
+        sum(moreAtLeaves, na.rm = TRUE) - sum(moreAtRoot, na.rm = TRUE),
+        sum(moreAtLeaves, na.rm = TRUE),
+        median(ns1["root1.50%", moreAtLeaves], na.rm = TRUE),
+        max(ns1["root1.97.5%", moreAtLeaves], na.rm = TRUE)
+        )
 
 
 leafExcess <- ns1["obs1", !is.na(moreAtLeaves)] - 
@@ -247,6 +241,7 @@ meta <- data.frame(
 
 leafPredictors <- c("nNeo", "obsP1", "logNTRatio", "neoPerTax", "taxon", "rank",
                     "nTaxa")
+set.seed(935)
 vsurfBF <- VSURF::VSURF(meta[, leafPredictors], leafExcess, verbose = FALSE)
 predBF <- leafPredictors[vsurfBF[["varselect.pred"]]]
 if (!length(predBF)) {
@@ -254,6 +249,7 @@ if (!length(predBF)) {
 }
 message(paste0(predBF, collapse = ", "))
 library("randomForest", quietly = TRUE)
+set.seed(935)
 rfBF <- randomForest(meta[, predBF, drop = FALSE], leafExcess,
                      ntree = 10000, importance = TRUE)
 importance(rfBF)

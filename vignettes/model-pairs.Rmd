@@ -71,7 +71,7 @@ OutputPlot("modelCmp", wd, wd * mfr[1] / mfr[2] * spaceForOma, function() {
     stdErr = stdErr
   )
   Panel(3, 4)
-  text(2.5, 70, "\U2191 g\U2013l asymmetry improves ML")
+  text(2.5, 71, "\U2191 g\U2013l asymmetry improves ML")
   text(2.5, -16.35, "\U2193 gain\U2013loss symmetry improves ML", xpd = NA)
   
   SpindleCompare("by_nn_ki", "by_n_ki", marginals, stdErr)
@@ -84,8 +84,8 @@ OutputPlot("modelCmp", wd, wd * mfr[1] / mfr[2] * spaceForOma, function() {
     stdErr = stdErr
   )
   Panel(5)
-  text(2.5, 13, expression("\U2191 Unlinking" ~ italic("t") ~ "improves ML"))
-  text(2.5, -9.6, expression("\U2193 Linking" ~ italic("t") ~ "improves ML"))
+  text(2.5, 12.5, expression("\U2191 Unlinking" ~ italic("t") ~ "improves ML"))
+  text(2.5, -6.2, expression("\U2193 Linking" ~ italic("t") ~ "improves ML"))
   
   SpindleCompare(
     modelA = c("ns_ki", "ns_t_ki", "ns_n_ki", "ns_nt_ki"),
@@ -94,7 +94,7 @@ OutputPlot("modelCmp", wd, wd * mfr[1] / mfr[2] * spaceForOma, function() {
     stdErr = stdErr
   )
   Panel(6)
-  text(2.5, 48, expression("\U2191 Non-stnry model improves ML"))
+  text(2.5, 46, expression("\U2191 Non-stnry model improves ML"))
   text(2.5, -20, expression("\U2193 Stationary model improves ML"), xpd = NA)
   
   
@@ -117,7 +117,7 @@ OutputPlot("modelCmp", wd, wd * mfr[1] / mfr[2] * spaceForOma, function() {
     )
   
   SpindleCompare("bestHet", "bestHom", hhm, hhSE)
-  text(1, 62, expression("\U2191 Heterog. model improves ML"))
+  text(1, 56.5, expression("\U2191 Heterog. model improves ML"))
   Panel(7)
   
   SpindleCompare(
@@ -128,7 +128,7 @@ OutputPlot("modelCmp", wd, wd * mfr[1] / mfr[2] * spaceForOma, function() {
     width = 0.91
   )
   Panel(8)
-  text(2.5, 27.1, expression("\U2191 Complex model improves ML"))
-  text(2.5, -15.2, expression("\U2193 Simple model improves ML"), xpd = NA)
+  text(2.5, 34, expression("\U2191 Complex model improves ML"))
+  text(2.5, -15.8, expression("\U2193 Simple model improves ML"), xpd = NA)
 })
 ```

@@ -32,14 +32,24 @@ allIn <- colSums(is.na(marginals)) == 0
 
 # Check which marginal likelihoods are unavailable.
 # Diagnose and record in MakeSlurm.R
-marginals[, !allIn]
+if (any(!allIn)) marginals[, !allIn]
 
 bestModel <- rep(NA, length(allIn))
 bestModel[allIn] <- kiModels[apply(marginals[kiModels, allIn], 2, which.max)]
 
 hasML <- names(allIn)[allIn]
 hasConv <- rowSums(!sapply(paramModels, function(scriptID) sapply(projects, HasConverged, scriptID))) == 0
-hasConv <- names(hasConv)[hasConv]
+if (any(!hasConv)) {
+  awaiting <- names(hasConv)[!hasConv]
+  message("Still waiting for: ", paste(awaiting, collapse = ", "))
+  for (pID in awaiting) for (scriptID in paramModels) {
+    if (!HasConverged(pID, scriptID)) {
+      message("Queuing up ", pID, " ", scriptID)
+      MakeSlurm(pID, scriptID)
+    }
+  }
+}
+hasConv <- names(hasConv)#[hasConv]
 
 mlEss <- intersect(hasML, hasConv)
 length(hasML)
@@ -156,17 +166,18 @@ intro_html <- markdown::markdownToHTML(text = "
 
 resOK <- names(results) %in% mlEss
 namesOK <- names(results)[resOK]
+.meta <- Metadata()
 {# Supplementary reporting
   overview <- data.frame(
     "ID" = LinkMB(names(results[resOK])),
-    Taxon = taxon[mlEss],
-    Rank = rank[mlEss],
-    RankOrder = as.numeric(rank[mlEss]),
-    Taxa = nTaxa[mlEss],
-    Characters = colSums(nChar)[mlEss],
-    "Transf." = nChar["trans", mlEss],
-    "Neom." = nChar["neo", mlEss],
-    "T:N ratio" = Sig3(nChar["trans", mlEss] / nChar["neo", mlEss]),
+    Taxon = .meta$taxon[mlEss],
+    Rank = .meta$rank[mlEss],
+    RankOrder = as.numeric(.meta$rank[mlEss]),
+    Taxa = .meta$nTaxa[mlEss],
+    Characters = colSums(.meta$nChar)[mlEss],
+    "Transf." = .meta$nChar["trans", mlEss],
+    "Neom." = .meta$nChar["neo", mlEss],
+    "T:N ratio" = Sig3(.meta$nChar["trans", mlEss] / .meta$nChar["neo", mlEss]),
     "Inferred n" = paste(Sig3(ifelse(bestModel[resOK] == "by_nt_ki",
                                       lossNT[namesOK], lossN[namesOK])),
                          ifelse(lossNot1[namesOK], "*", "")),
@@ -187,6 +198,7 @@ namesOK <- names(results)[resOK]
                gsub("Mk ", "BF, Mk-", fixed = TRUE,
                     gsub(".", " ", cols, fixed = TRUE)))))))
   
+  rankLevels <- levels(.meta$rank)
   widget <- 
     datatable(
       overview,
@@ -218,8 +230,8 @@ namesOK <- names(results)[resOK]
     ) |>
     formatStyle(
       "Rank",
-      background = styleEqual(levels(rank),
-                              hcl.colors(length(levels(rank)), rev = FALSE,
+      background = styleEqual(rankLevels,
+                              hcl.colors(length(rankLevels), rev = FALSE,
                                          alpha = 88 / 256)),
       backgroundSize = "98% 88%",
       backgroundRepeat = "no-repeat",
