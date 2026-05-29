@@ -276,3 +276,149 @@ namesOK <- names(results)[resOK]
     append(lines, intro_html, which(grepl("id=\"htmlwidget_container", lines)) - 1),
     "overview.html")
 }
+
+{# Supplementary Bayes factor matrix: one row per project, one column per model.
+ # Each cell links to the GitHub repository, labelled with the Bayes factor
+ # against the best-supported model for that project (en-dash = best model).
+  bfMatrix <- vapply(kiModels, BFLink, character(length(namesOK)),
+                     invert = TRUE)
+  bfTable <- data.frame(ID = LinkMB(namesOK), bfMatrix, check.names = FALSE)
+
+  # Per-row viridis background: 0 (best) -> bright yellow, max penalty -> dark purple.
+  # Same alpha as rank column in widget (88/256 ≈ 0.34) to keep text contrast.
+  bfRaw <- vapply(kiModels, function(scriptID) {
+    apply(marginals[, namesOK], 2, max) - marginals[scriptID, namesOK]
+  }, setNames(numeric(length(namesOK)), namesOK))
+  rowMax <- apply(bfRaw, 1, function(x) max(x, na.rm = TRUE))
+  bfNorm <- 1 - bfRaw / ifelse(rowMax == 0, 1, rowMax)  # 1 = best, 0 = worst
+  pal <- viridisLite::viridis(256, alpha = 88 / 256)
+  cellColors <- matrix(
+    pal[pmax(1L, pmin(256L, round(replace(bfNorm, is.na(bfNorm), NA) * 255) + 1L))],
+    nrow = nrow(bfNorm), dimnames = dimnames(bfNorm)
+  )
+  cellColors[is.na(bfNorm)] <- "transparent"
+  colorJSON <- paste0(
+    "[",
+    paste(apply(cellColors, 1, function(row)
+      paste0("[", paste(sprintf('"%s"', row), collapse = ","), "]")),
+      collapse = ","),
+    "]"
+  )
+  rowCallback <- DT::JS(sprintf(
+    'function(row, data, index) {
+      var c = %s[index];
+      $("td", row).each(function(i) {
+        if (i > 0) $(this).css("background-color", c[i - 1]);
+      });
+    }',
+    colorJSON
+  ))
+
+  headerColors <- c("transparent", paste0(ModelCol(kiModels), "66"))
+  headerCallback <- DT::JS(sprintf(
+    'function(thead, data, start, end, display) {
+      if (!$(thead).find("th:first").text().trim()) return;
+      var colors = [%s];
+      $(thead).find("th").each(function(i) {
+        $(this).css({
+          "background-color": colors[i] || "",
+          "font-weight": "normal",
+          "writing-mode": "vertical-lr",
+          "transform": "rotate(180deg)",
+          "white-space": "nowrap",
+          "text-align": "center",
+          "vertical-align": "middle"
+        });
+      });
+    }',
+    paste(sprintf('"%s"', headerColors), collapse = ", ")
+  ))
+
+  bfWidget <-
+    datatable(
+      bfTable,
+      escape = FALSE,
+      class = "nt-bf-table display",
+      options = list(
+        pageLength = length(namesOK),
+        dom = "t",
+        autoWidth = FALSE,
+        columnDefs = list(
+          list(width = "42px", targets = 0L),
+          list(
+            width = "30px",
+            type = "num",
+            targets = seq_len(length(kiModels)),
+            render = DT::JS("function(data, type, row, meta) {
+              if (type === 'sort' || type === 'type') {
+                var txt = data.replace(/<[^>]*>/g, '').trim();
+                var n = parseFloat(txt);
+                return isNaN(n) ? (txt === '\\u2013' ? 0 : 999999) : n;
+              }
+              return data;
+            }")
+          )
+        ),
+        headerCallback = headerCallback,
+        rowCallback = rowCallback,
+        initComplete = DT::JS('function(settings, json) {
+          $(this.api().table().container()).css("font-size", "8pt");
+          $("<style>").text(
+            ".nt-bf-table { table-layout: fixed !important; width: auto !important } " +
+            ".nt-bf-table th, .nt-bf-table td { " +
+              "box-sizing: border-box !important; padding: 4px 2px !important; " +
+              "width: 30px !important; min-width: 30px !important; max-width: 30px !important " +
+            "} " +
+            ".nt-bf-table th:first-child, .nt-bf-table td:first-child { " +
+              "width: 42px !important; min-width: 42px !important; max-width: 42px !important " +
+            "} " +
+            ".nt-bf-table td { text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap } " +
+            ".nt-bf-table a { text-decoration: none } " +
+            ".nt-bf-table thead th::before, .nt-bf-table thead th::after { display: none !important }"
+          ).appendTo("head");
+        }'),
+        drawCallback = DT::JS('function(settings) {
+          var api = new $.fn.dataTable.Api(settings);
+          var $tbody = $(api.table().body());
+          $tbody.find("tr.nt-repeat").remove();
+          var $rows = $tbody.find("tr");
+          var n = $rows.length;
+          function makeRepeat() {
+            return $(api.table().header()).find("tr").clone()
+              .addClass("nt-repeat")
+              .css("cursor", "default");
+          }
+          if (n > 1) makeRepeat().insertBefore($rows[Math.floor(n / 2)]);
+          makeRepeat().appendTo($tbody);
+        }')
+      ),
+      rownames = FALSE,
+      colnames = unname(c("ID", ModelLabel(kiModels)))
+    )
+
+  saveWidget(bfWidget, "bf_matrix.html", selfcontained = TRUE,
+             title = "Bayes factors by project and model")
+  bf_intro_html <- markdown::markdownToHTML(text = "
+## Bayes factor comparison of all models for each MorphoBank project
+
+- Each row corresponds to one MorphoBank project (linked via the \"ID\" column).
+  Each column corresponds to one of 17 analytical models tested.
+
+- The value in each cell is the log Bayes factor of the best-supported model
+  for that project relative to the column model.
+  A dash indicates the best-supported model for that row.
+  Each cell links to a corresponding GitHub repository containing the analytical
+  scripts and artefacts.
+
+- Cell background colour encodes relative model support _within each row_:
+  bright yellow = best-supported model; dark purple = least supported.
+
+- Columns can be sorted by clicking the column header.
+
+", fragment.only = TRUE)
+  lines <- readLines("bf_matrix.html")
+  writeLines(
+    append(lines, bf_intro_html,
+           which(grepl("id=\"htmlwidget_container", lines)) - 1),
+    "bf_matrix.html")
+}
