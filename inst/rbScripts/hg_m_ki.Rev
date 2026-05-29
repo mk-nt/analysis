@@ -43,6 +43,8 @@ moves.append( mvScale(rate_log_sd, weight = 1.5) )
 # Mean = 1, so that tree length ~ character changes
 # 6 categories (see Wright & Wynd 2024,
 # https://www.biorxiv.org/content/10.1101/2024.06.26.600858v1)
+# Strictly, mean rate = 1 requires `rate_categories_raw := fnDiscretizeDistribution(dnLognormal(-rate_log_sd^2 / 2, rate_log_sd), 6); rate_categories := rate_categories_raw / mean(rate_categories_raw)`.
+# Current form biases tree_length by ~exp(sigma^2 / 2).
 rate_categories := fnDiscretizeDistribution( dnLognormal( 0, rate_log_sd ), 6)
 
 # Modelled on https://revbayes.github.io/tutorials/morph_tree/V2#subsubsec_relaxing

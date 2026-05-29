@@ -25,6 +25,8 @@ print("Loaded tree with", phylogeny.ntips(), "taxa")
 # --- Reconstruct model parameters -------------------------------------------
 
 # Discretize lognormal rate variation
+# Strictly, mean rate = 1 requires `rate_categories_raw := fnDiscretizeDistribution(dnLognormal(-rate_log_sd^2 / 2, rate_log_sd), 6); rate_categories := rate_categories_raw / mean(rate_categories_raw)`.
+# Current form biases tree_length by ~exp(sigma^2 / 2).
 rate_categories := fnDiscretizeDistribution(
   dnLognormal(0, mean_rate_log_sd),
   6

@@ -23,6 +23,8 @@ for (runID in 1:2) {
   for (i in 1:n_iter) {
     rate_log_sd = p_rate_log_sd[i]
     rate_loss = p_rate_loss[i]
+    # Strictly, mean rate = 1 requires `rate_categories_raw := fnDiscretizeDistribution(dnLognormal(-rate_log_sd^2 / 2, rate_log_sd), 6); rate_categories := rate_categories_raw / mean(rate_categories_raw)`.
+    # Current form biases tree_length by ~exp(sigma^2 / 2).
     rate_categories := fnDiscretizeDistribution( dnLognormal( 0, rate_log_sd ), 6)
     rate01 := 2 / (1 + rate_loss)
     rate10 := 2 * rate_loss / (1 + rate_loss)
