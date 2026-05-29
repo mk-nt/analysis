@@ -12,8 +12,9 @@ fast <- c("104", "175", "450", "493", "635", "675", "706", "748", "950",
           "3351", "3405", "3408", "3445", "3603", "3646", "3655", "3710", 
           "3832", "3833", "3929", "4111", "4220", "4291", "4305", "4308", 
           "4309", "4310", "4467", "4747", "4761", "4790", "4867", "4910", 
-          "5099", "5186", "5201", "5230", "5255", "5268")
-med <- c("157", "563", "3200", "3392", "3705", "3711", "4230", "5327")
+          "5099", "5186", "5201", "5230", "5255", "5268", "6072")
+med <- c("157", "563", "2348", "3200", "3392", "3705", "3711", "4230", "5327",
+         "5518", "5815")
 # Codes for matrices with well corroborated trees from Asher & Smith (2022)
 syab <- .config$syab
 # Remaining projects
@@ -32,13 +33,17 @@ metaFiles <- grep(sprintf(.config$metaPattern, "\\d"),
 EnqueueMC(KiProjects(),
           c("by_ki", "by_t_ki", "by_n_ki", "by_nn_ki", "by_nt_ki",
             "rm_by_n_ki", "rm_by_t_ki", "rm_by_nt_ki",
-            "ns_ki", "ns_n_ki", "ns_nt_ki",
+            "ns_ki", "ns_n_ki", "ns_t_ki", "ns_nt_ki",
             "hg_ki", "hg2_ki", "hg_b_ki", "hg_m_ki", "hg_bm_ki"))
+
+# Running an initial marginal likelihoods estimator to completion will allow
+# future jobs to estimate and request only the resources required.
+EnqueueML(KiProjects(), "by_ki")
 
 # Estimate marginal likelihoods for all informative-conditioned projects and
 # models.
 EnqueueML(KiProjects(),
-          c("by_ki", "by_t_ki", "by_n_ki", "by_nn_ki", "by_nt_ki",
+          c("by_t_ki", "by_n_ki", "by_nn_ki", "by_nt_ki",
             "rm_by_n_ki", "rm_by_t_ki", "rm_by_nt_ki",
-            "ns_ki", "ns_n_ki", "ns_nt_ki",
+            "ns_ki", "ns_n_ki", "ns_t_ki", "ns_nt_ki",
             "hg_ki", "hg2_ki", "hg_b_ki", "hg_m_ki", "hg_bm_ki"))
