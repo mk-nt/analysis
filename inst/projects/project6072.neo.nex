@@ -1,0 +1,20 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=12 NCHAR=2;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Allium_wallichii                        00
+    Allium_wallichii_var._platyphyllum      00
+    Allium_macranthum                       10
+    Allium_fasciculatum                     10
+    Allium_hookeri                          11
+    Allium_hookeri_var._muliense            11
+    Allium_omeiense                         11
+    Allium_guanxianense                     11
+    Allium_chienchuanense                   11
+    Allium_xiangchengense                   11
+    Allium_xui                              11
+    Allium_kingdonii                        ?0
+  ;
+END;
+

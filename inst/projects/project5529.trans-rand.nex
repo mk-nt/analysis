@@ -1,0 +1,58 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=50 NCHAR=3;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Pystira_ephippigera                 000
+    Zenodorus_aff._ponapensis           000
+    Thiania_bhamoensis                  000
+    Thiania_tenuis                      000
+    Thiania_viscaensis                  000
+    Charippus_asper                     001
+    Charippus_bukittimah                001
+    Charippus_kubah                     001
+    Charippus_yinae                     001
+    Charippus_sp._KYU064                001
+    Charippus_denjii                    001
+    Charippus_callainus                 001
+    Charippus_yunnanensis               001
+    Charippus_wanlessi                  001
+    Charippus_minotaurus                001
+    Amoenema_robusta                    101
+    Amoenema_erhai                      101
+    Amoenema_liuae                      102
+    Laufeia_zhangae                     111
+    Laufeia_aenea                       111
+    Laufeia_concava                     103
+    Chalcovietnamicus_daiqini           220
+    Chalcovietnamicus_terbakar          210
+    Chalcovietnamicus_logunovi          220
+    Chalcovietnamicus_marusiki          220
+    Chalcovietnamicus_weihangi          231
+    Chalcovietnamicus_vietnamensis      221
+    Chalcovietnamicus_lii               221
+    Lokina_tamasi                       230
+    Lokina_fuxi                         231
+    Lokina_wuyi                         221
+    Lokina_nyuewa                       201
+    Lokina_tengchongensis               211
+    Lokina_blombergi                    221
+    Orcevia_meinei                      100
+    Orcevia_deelemanae                  100
+    Orcevia_cf._eucola                  101
+    Orcevia_timburtoni                  101
+    Orcevia_jinping                     102
+    Orcevia_zu                          101
+    Orcevia_feitongae                   101
+    Orcevia_shuyuani                    101
+    Orcevia_calcicola                   102
+    Orcevia_nietzschei                  101
+    Orcevia_bokoblin                    101
+    Orcevia_yahaha                      131
+    Orcevia_zabkai                      101
+    Orcevia_sokoli                      111
+    Orcevia_wuliang                     102
+    Orcevia_sica                        102
+  ;
+END;
+

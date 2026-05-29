@@ -1,0 +1,47 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=39 NCHAR=46;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Perleidus                          00??4-000001000--0000-00100001--0-000-0-000?-0
+    Watsonulus                         000042002001100--100--00000001??01000-0-000310
+    Amia_calva                         301042001000-----120--0000010100111?????200300
+    Lepisosteus_osseus                 1021200101141112022132-?010211000?002-00211132
+    Atractosteus_spatula               1021200201141113022132-?010211010?002-00211132
+    Masillosteus_janeae                10011?0100041114022132-?001211000?002-01211032
+    Obaichthys_decoratus               11012221001410?5021?3210001201101100??00221132
+    Dentilepisosteus_laevis            1101202101141014?22?32100012010001002-002210?2
+    Pliodetes_nigerienesis             20?000211001111?012?321?-01201100?00??00220121
+    Araripelepidotes_temnurus          20?00?11100??1?1022?201000-2011011000-01220121
+    Thaichthys_buddhabutrensis         00?0(0,3)0121001111202211010101200001?000?112100?1
+    Isanichthys_palustris              00??3?01000?1111102?3100?001001010?0??0?11?1?1
+    Scheenstia_maximus                 00??3?02000?1113002031??2001000010000-01?101??
+    Scheenstia_laevis                  ?0??3?02010?11130020311120?1000010????0?1100?1
+    Scheenstia_mantelli                00000?02010?111200203111?0?1001010000-01110111
+    Scheenstia_zappi                   00?00002000211?3001031??1001001010000-0?110011
+    Lepidotes_semiserratus             00?03000000211121010310010?1001010????011100??
+    Lepidotes_gigas                    0000301000021111101031001001001010000-01110111
+    Callipurbeckia_minor               00301?0021131002000010011001001110011011010(1,2)01
+    Occitanichthys_canjuersensis       003011000113000400002000100100101??11?01030201
+    Tlayuamichin_itztli                00301?0121130006000020011001001110011011010211
+    Macrosemimimus_fegerti             0030101?0123000300001000100100111001100?0-0001
+    Macrosemimimus_lennieri            00?010000123010200001000100100111001??010101??
+    Semionotus_bergeri                 00?00?00011?100201000-??0001001010011?200000??
+    Semionotus_elegans                 003000100113100100000-00000100101001102?000001
+    Semionotus_capensis                003000110113000?01000-0000010010100110200000?0
+    Paralepidotus_ornatus              303010002113000001000-??1001001110100000?10???
+    Semiolepis_brembanus               00?01002211?000202000-001001001111000010?102?1
+    Macrosemius_rostratus              3010111-21230?020000--0010010010111-1?--2-00?0
+    Notagogus_denticulatus             30?0111-212?000?0000--000001001011101?0-2-00?1
+    Propterus_elongatus                30?0101-212300020000--00000100101110100-2-00?1
+    Sangiorgioichthys_sui              00?03001010300000(1,2)002100100100101000011-010110
+    Sangiorgioichthys_aldae            00?00?000103000002003100?00100101000?11-010210
+    Luoxiongichthys_hyperdorsalis      0030300?01031001010?3101000100??0010000-?102??
+    Camerichthys_lunae                 ?0?03?0??11?10130020310110010010?0?????????1??
+    Lophionotus_sanjuanensis           00?00000000?1002020?0-00100200101101?0200001?0
+    Lophionotus_chinleana              00?00010000?1002020?0-001001001011011?2?0101?0
+    Lophionotus_kanabensis             00?00010001???0??2??0-00101100101001??2?000???
+    Kyphosichthys_grandei              00??30012???0?010200100000010010100?0-10200211
+  ;
+END;
+

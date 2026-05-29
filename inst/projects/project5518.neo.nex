@@ -1,0 +1,69 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=61 NCHAR=24;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Karatavites_medius               001000000000010110000111
+    Burmorussus_mirabilis            0?1000000000010010000111
+    Orussus_abietinus                0?1010000110010111000100
+    Ticostephanus_longus             0?1011111111110001010110
+    Ticostephanus_kachinensis        0?1011111111110001010110
+    Ticostephanus_hui                0?1011111111110001010110
+    Hypselogastrion_simplex          001011110000000101010010
+    Kotujisca_kholbotensis           00101?11011001?????10010
+    Kotujellites_crucis              0010101?01??011100?10010
+    Gasteruption_assectator          001011111110000111010010
+    Pseudofoenus_unguiculatus        001010111110001111010010
+    Baissa_anomala                   00101111000001110?11??10
+    Humiryssus_cancellatus           00101111010001?????1??10
+    Electrobaissa_omega              001011110100001001110010
+    Manlaya_ultima                   00101?1?010000?????1?010
+    Paleoaulacus_minutus             00101?1?0000000????100?0
+    Vectevania_vetula                00101111000000010111??00
+    Aulacus_eocenicus                00101?1?00000010011100?0
+    Aulacus_striatus                 001010110000001001110010
+    Electrofoenia_jehani             0010111101000010011100?0
+    Electrofoenops_diminuta          0010111001000010011100?0
+    Exilaulacus_loculatus            0010111101000010011100?0
+    Pristaulacus_calidus             001010110000001001110000
+    Brachygaster_dominicanus         101011111111110101010110
+    Semaeomyia_hispaniola            10101011111111?????10010
+    Hyptia_mexicana                  101011111111111101010?10
+    Lebanevania_azari                1010111111100111?1010?10
+    Mesevania_swinhoei               1010111111100111?1010?10
+    Eoevania_magnifica               1010111101110111?1010?10
+    Praevania_sculpturata            10101111111?0111?1010?10
+    Evania_appendigaster             101011110111010101010?10
+    Keratodellitha_basilisci         000011110000011000110?00
+    Othniodellitha_mantichora        000011100010011000110?00
+    Xenodellitha_preta               000011100000011000110?00
+    Anomopterella_coalita            00101111010001?????10?00
+    Synaphopterella_patula           00100111010001110?110?00
+    Andrenelia_pinnata               0010111111110011?1010?10
+    Praeaulacus_tenellus             00101111000001???0010100
+    Aulacogastrinus_insculptus       00101?110000011101?10100
+    Gulgonga_beattiei                ?0101111001001????????00
+    Habraulacus_zhaoi                001011110000011?00?10?00
+    Paleosyncrasis_hongi             001011110000011?00110?00
+    Sinaulacogastrinus_eucallus      ?01011110?0001???0????00
+    Aptenoperissus_burmanicus        001011111110011001?101?1
+    Myanmarina_jeannineae            001011111111111101110011
+    Ohlhoffia_robusta                0?1011110000010100010001
+    Myanmephialtites_bashkuevi       0?1011110?00010100010001
+    Archaeostephanus_corae           01111111111001?????101?0
+    Kronostephanus_zigrasi           0?111111111001???0?110?0
+    Electrostepanus_janzeni          011111111110011001110110
+    Denaeostephanus_sulcatus         011111111110011001110010
+    Lagenostephanus_lii              011111111110011101110010
+    Protostephanus_ashmeadi          0?111111111001110111?0?0
+    Schlettererius_cinctipes         011111111110011000111000
+    Acephialtitia_colossa            00100?110010010101?000?1
+    Crephanogaster_rara              00100000000001?????000?1
+    Tuphephialtites_zherikhini       001010100000011100?00011
+    Stephanogaster_magna             001000110000010100?000?1
+    Karataus_pedalis                 0010101000000101001?0001
+    Karataviola_micrura              001010110000010000??00?1
+    Micrephialtites_minor            001010100000010000?000?1
+  ;
+END;
+

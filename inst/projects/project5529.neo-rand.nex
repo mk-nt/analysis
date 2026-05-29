@@ -1,0 +1,58 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=50 NCHAR=25;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Pystira_ephippigera                 0000001000000000000010000
+    Zenodorus_aff._ponapensis           0000001000000000000010000
+    Thiania_bhamoensis                  0000001000000000000010100
+    Thiania_tenuis                      0000001000000000000010100
+    Thiania_viscaensis                  0000001000000000000010100
+    Charippus_asper                     1101101000000000000010000
+    Charippus_bukittimah                1101101000000000000010000
+    Charippus_kubah                     1101101000000000000010000
+    Charippus_yinae                     1101001000000000000010000
+    Charippus_sp._KYU064                1101001000000000000010000
+    Charippus_denjii                    1101101000000000000010000
+    Charippus_callainus                 1101101000000000000010000
+    Charippus_yunnanensis               1101101000000000000010000
+    Charippus_wanlessi                  1101101000000000000010100
+    Charippus_minotaurus                1001101000000000000010000
+    Amoenema_robusta                    1001000011010100000000000
+    Amoenema_erhai                      1001000011010000000000001
+    Amoenema_liuae                      1001000011010000000000001
+    Laufeia_zhangae                     1001000100000100010110100
+    Laufeia_aenea                       1001000100000000010110100
+    Laufeia_concava                     1001000100000000010110100
+    Chalcovietnamicus_daiqini           1001010000100100000010000
+    Chalcovietnamicus_terbakar          1001010000100100000010000
+    Chalcovietnamicus_logunovi          1001010000100100000010000
+    Chalcovietnamicus_marusiki          1001010000100100000010000
+    Chalcovietnamicus_weihangi          1001010000100100000010000
+    Chalcovietnamicus_vietnamensis      1001010000100100000010000
+    Chalcovietnamicus_lii               1001010000100100000010000
+    Lokina_tamasi                       1011000000100101010010001
+    Lokina_fuxi                         1011000000100101010010001
+    Lokina_wuyi                         1011000000100101010010001
+    Lokina_nyuewa                       1011000000100101010010001
+    Lokina_tengchongensis               1011000000100101010110001
+    Lokina_blombergi                    1011000000100101010010001
+    Orcevia_meinei                      1001000000001010101101101
+    Orcevia_deelemanae                  1001000000001010101101101
+    Orcevia_cf._eucola                  1001000000001010101101101
+    Orcevia_timburtoni                  1001000000001010101101101
+    Orcevia_jinping                     1001000000001010010110110
+    Orcevia_zu                          1001000000001010010110110
+    Orcevia_feitongae                   1001000000001010010110110
+    Orcevia_shuyuani                    1001000000001010010110110
+    Orcevia_calcicola                   1001000000001010010110110
+    Orcevia_nietzschei                  1001000000001010010110110
+    Orcevia_bokoblin                    1001000000001010010110110
+    Orcevia_yahaha                      1001000000001010010110110
+    Orcevia_zabkai                      1001000000001010010110110
+    Orcevia_sokoli                      1001000000001010010110110
+    Orcevia_wuliang                     1001000000001010101101110
+    Orcevia_sica                        1001000000001010010110110
+  ;
+END;
+

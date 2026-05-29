@@ -1,0 +1,61 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=53 NCHAR=41;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Acernaspis_quadrilineata          00112500-0-1000-00030-0011010021211101000
+    Acernaspis_woodburnensis          100104?0-0-1000-01130-?????100?120???0?00
+    Acernaspis_sufferta               00011500-0-??00-01130-0??11??0212011?1101
+    Acernaspis_sororia                1021?500-0-1000-01120-00111??021221102100
+    Acernaspis_konoverensis           000115?0-0-??00-01120-???10??021211103000
+    Acernaspis_boltoni                01011300-0-1000-01210-0??11??031221123111
+    Acernaspis_rectifrons             011114?0-0-1000-01210-0?111??0212211?3100
+    Acernaspis_incerta                ?0?115?0-??0-10-01110-???10??021211002001
+    Acernaspis_pulcher                1021?5?0-0-??10-01210-???10??0???3??0111?
+    Acernaspis_besciensis             101104?0-0-??00-01?30-???10????1230-?211?
+    Acernaspis_superciliexcelsis      101??400-0-0-00-?1130-00?10??031230-22111
+    Acernaspis_mimica                 10000400-????00-11130-0??????031230-?211?
+    Acernaspis_orestes                ?0?00400-0-0-00-11130-00111??031230-22111
+    Acernaspis_elliptifrons           1?1115?0-10??10-011?0-???11??021220-?1100
+    Acernaspis_xynon                  000105?0-0-??00-01110-???11??02122??11101
+    Acernaspis_rubicundula            1011010100-1100-01130-00111??021221010000
+    Acernaspis_skidmorei              ??0?1????????20-0113?????????021220-12?00
+    Acernaspis_dispersa               ?0?11500-0-??00-01130-00?11??031200-11100
+    Acernaspis_salmoensis             ?0?105?0-0-0-0??0113??10?10???21220-??101
+    Acernaspis_cf_stokesii            201112111100-0111?130-?00110-0?12211?3100
+    Ananaspis_sp_nov                  3031241110-102111?220-011101111???1223111
+    Ananaspis_macdonaldi              303113112101101011220-01111??13124111321?
+    Ananaspis_nuda                    200114111??0-11111220-11?11??13??01111211
+    Ananaspis_amelangorum             201112112100-11111220-1101110131231123012
+    Ananaspis_fecunda                 101112113100-111112?0-11?11??011011011223
+    Ananaspis_aspera                  201113112100-2112122??11?11??????11011223
+    Ananaspis_decora                  101112112100-11111220-1?111???21011011123
+    Kainops_guttulus                  202123112100-112212310110110-1211211212?2
+    Kainops_ekphymus                  ?0?1211130-0-21121231011?11??1210?1100223
+    Kainops_cf_ekphymus               303121213??0-2112123101??????0???21100223
+    Kainops_microps                   303120112100-21121231011111??121011101222
+    Kainops_veles                     303120112100-2112123101?211??121021111222
+    Kainops_invius                    3031241121010111212310?1?11??121011122222
+    Kainops_raymondi                  202113112100-1112123101?1100-131031122221
+    Paciphacops_serratus              302125?1211??2112122?????11???31021121233
+    Paciphacops_crosslei              302115113??0-1112123??1??1111?310211??2?3
+    Paciphacops_latigenalis           ???125114100-2112123??12?11113310?1121233
+    Paciphacops_eldredgei             3041241130-0-1111113101??11??3312?1221222
+    Paciphacops_sp_nov                3041231130-0-112212310122111033??51223222
+    Paciphacops_hudsonicus            303124113100-11121230-13111??331241123222
+    Paciphacops_logani                202124113100-1120111101??111123??3???2123
+    Paciphacops_campbelli             304124113100-11221330-1311111341251123223
+    Paciphacops_birdsongensis         203125113100-11221330-13?11??3???4112??23
+    Phacops_claviger                  100113113110-0??1120101??1011341221222233
+    Viaphacops                        ?01210214100-???0?10111?2101134123??2?2?3
+    Phacops_rana                      21113?2140-0-1131113111220-??3312???01230
+    Phacops_iowensis                  3032?02140-0-?131122111220-113311?100??31
+    Paciphacops_sp                    304125113100-1120123??12?11??3???????????
+    Paciphacops_crawfordae            ?00125?12100-212212210?1???102?122??22002
+    Paciphacops_waisfeldae            201124112100-11221230-1?111??33122???3222
+    Paciphacops_argentinus            202124113100-11221230-13111??33122???3222
+    Podowrinella                      200103?0-0-0-01101230-?0?10??000-21110100
+    Hypothetical_ancestor             20010300-0-0-01101330-00110??000-21110200
+  ;
+END;
+

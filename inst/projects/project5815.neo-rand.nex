@@ -1,0 +1,61 @@
+#NEXUS
+BEGIN DATA;
+  DIMENSIONS NTAX=53 NCHAR=9;
+  FORMAT DATATYPE=STANDARD MISSING=? GAP=- INTERLEAVE=NO symbols="0123456789";
+  MATRIX
+    Acernaspis_quadrilineata          00-101111
+    Acernaspis_woodburnensis          00-10?11?
+    Acernaspis_sufferta               00-?01?11
+    Acernaspis_sororia                00-101?11
+    Acernaspis_konoverensis           00-?01?11
+    Acernaspis_boltoni                10-101?11
+    Acernaspis_rectifrons             10-101?11
+    Acernaspis_incerta                00?001?11
+    Acernaspis_pulcher                00-?01???
+    Acernaspis_besciensis             00-?01?10
+    Acernaspis_superciliexcelsis      00-001?10
+    Acernaspis_mimica                 00??0??10
+    Acernaspis_orestes                00-001?10
+    Acernaspis_elliptifrons           ?00?01?10
+    Acernaspis_xynon                  00-?01?1?
+    Acernaspis_rubicundula            01-101?11
+    Acernaspis_skidmorei              ???????10
+    Acernaspis_dispersa               00-?01?10
+    Acernaspis_salmoensis             00-0?1?10
+    Acernaspis_cf_stokesii            010001011
+    Ananaspis_sp_nov                  01-1011?1
+    Ananaspis_macdonaldi              010101?11
+    Ananaspis_nuda                    01?001??1
+    Ananaspis_amelangorum             010001111
+    Ananaspis_fecunda                 010001?11
+    Ananaspis_aspera                  0100?1??1
+    Ananaspis_decora                  010001?11
+    Kainops_guttulus                  010011011
+    Kainops_ekphymus                  01-011?11
+    Kainops_cf_ekphymus               01?01???1
+    Kainops_microps                   010011?11
+    Kainops_veles                     010011?11
+    Kainops_invius                    010111?11
+    Kainops_raymondi                  010011011
+    Paciphacops_serratus              011??1?11
+    Paciphacops_crosslei              01?0?1111
+    Paciphacops_latigenalis           ?100?1111
+    Paciphacops_eldredgei             01-011?11
+    Paciphacops_sp_nov                01-0111?1
+    Paciphacops_hudsonicus            010001?11
+    Paciphacops_logani                0100111??
+    Paciphacops_campbelli             010001111
+    Paciphacops_birdsongensis         010001??1
+    Phacops_claviger                  011011111
+    Viaphacops                        01001111?
+    Phacops_rana                      11-010?1?
+    Phacops_iowensis                  01-010111
+    Paciphacops_sp                    0100?1???
+    Paciphacops_crawfordae            01001?11?
+    Paciphacops_waisfeldae            010001?1?
+    Paciphacops_argentinus            010001?1?
+    Podowrinella                      00-001?01
+    Hypothetical_ancestor             00-001?01
+  ;
+END;
+
