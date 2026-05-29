@@ -2,9 +2,23 @@ print("Timestamp:", time("year"), time("day"), time("seconds") / 60 / 60)
 burninGen = 12000
 runGen = 2000
 steps = 128
+ckpInterval = 100
+# Burnin is run in resumable increments so a chain of sub-burnin-length jobs can
+# complete it (revbayes#991: powerPosterior.burnin() always runs the full
+# requested count from the loaded state and tracks no cumulative total, so a
+# monolithic burnin that exceeds one job's walltime never finishes). Constraints,
+# all satisfied below: `increment` is a multiple of `ckpInterval` (so the end-of-
+# increment state is checkpointed before we record it), divides `burninGen`, and
+# exceeds `tuneInt` (so move auto-tuning fires at least once per increment).
+increment = 500
+tuneInt = 250
 
-ppFile = "%PID%_%SCRIPT%.pp"
-ppOut = "%PID%_%SCRIPT%.out.pp"
+ppFile        = "%PID%_%SCRIPT%.pp"
+ppOut         = "%PID%_%SCRIPT%.out.pp"
+ckpBurnin     = "%PID%_%SCRIPT%.burnin.ckp"
+ckpBurninDone = "%PID%_%SCRIPT%.burnin.done"
+ckpCounter    = "%PID%_%SCRIPT%.burnin.gens"
+ckpRun        = "%PID%_%SCRIPT%.run.ckp"
 
 
 if (fileExists(ppOut)) {
@@ -21,15 +35,78 @@ neo <- readDiscreteCharacterData("%MATRIXBASE.%neo.nex")
 trans <- readDiscreteCharacterData("%MATRIXBASE.%trans.nex")
 source("%SCRIPT%.Rev")
 
+# powerPosterior with MPI runs one process per stone; all processes write to the
+# same stdout file. mnScreen floods stdout with separator lines at every MCMC
+# step regardless of printgen. Clear monitors: results go to ppFile directly.
+monitors = VectorMonitors()
+
 # In RevBayes <= 1.2.5, nSteps = cats + 1 - see #673
 power_p = powerPosterior(mymodel, monitors, moves, ppFile, cats = steps - 1)
 print("  - Created powerPosterior object")
 
 
-power_p.burnin(generations = burninGen, tuningInterval = 1000)
+# Global pre-burnin, run in resumable increments. burnin() always runs exactly
+# `increment` fresh generations from the loaded state and tracks no cumulative
+# total, so we persist the running total to disk (ckpCounter) and loop until it
+# reaches burninGen. The counter is written only *after* burnin() returns, so it
+# is a conservative lower bound: a job killed mid-increment simply re-runs that
+# increment from the last state checkpoint (no mixing lost; slight overshoot is
+# harmless). .burnin(0) on the done-branch reloads the post-burnin state.
+if (fileExists(ckpBurninDone)) {
+  print("  - Burnin previously completed; loading post-burnin state")
+  power_p.initializeFromCheckpoint(ckpBurnin)
+  power_p.burnin(generations = 0, tuningInterval = 1)
+} else {
+  cumBurnin = 0
+  if (fileExists(ckpCounter)) {
+    cumBurnin = readDelimitedDataFile(ckpCounter, FALSE, "")[1][1]
+    print("  - Resuming burnin; cumulative generations so far:", cumBurnin)
+  }
+  print("  - Commencing powerPosterior burnin at", time("year"), time("day"),
+        time("seconds") / 60 / 60)
+  while (cumBurnin < burninGen) {
+    # Reload is mandatory each pass: burnin() resets its internal resume flag on
+    # return, so without re-initializing, the next call would restart the sampler
+    # from scratch and discard prior progress.
+    if (fileExists(ckpBurnin)) {
+      power_p.initializeFromCheckpoint(ckpBurnin)
+    }
+    thisBurnin = increment
+    if (burninGen - cumBurnin < increment) {
+      thisBurnin = burninGen - cumBurnin
+    }
+    power_p.burnin(generations = thisBurnin, tuningInterval = tuneInt,
+                   checkpointFile = ckpBurnin, checkpointInterval = ckpInterval)
+    cumBurnin = cumBurnin + thisBurnin
+    write(cumBurnin, file = ckpCounter, append = FALSE)
+    print("  - Cumulative burnin now", cumBurnin, "/", burninGen, "at",
+          time("year"), time("day"), time("seconds") / 60 / 60)
+  }
+  write("done", file = ckpBurninDone)
+}
+
+
+# Stone sampling: enumerate per-stone checkpoints written by power_p.run().
+# appendToStem("%PID%_%SCRIPT%.run.ckp", "_stone_K") → "%PID%_%SCRIPT%.run_stone_K.ckp".
+# Flat-mode initializeFromCheckpoint() will throw if any listed stone lacks a
+# checkpoint, so we only pass indices we have confirmed.
+nFound = 0
+for (i in 1:steps) {
+  stoneFile = "%PID%_%SCRIPT%.run_stone_" + i + ".ckp"
+  if (fileExists(stoneFile)) {
+    nFound = nFound + 1
+    runStones[nFound] = i
+  }
+}
+
+if (nFound > 0) {
+  print("  - Resuming run phase from " + nFound + " stone checkpoint(s)")
+  power_p.initializeFromCheckpoint(ckpRun, runStones)
+}
 print("  - Commencing powerPosterior run at", time("year"), time("day"),
       time("seconds") / 60 / 60)
-power_p.run(generations = runGen)
+power_p.run(generations = runGen, checkpointFile = ckpRun,
+            checkpointInterval = ckpInterval)
 print("  - Completed powerPosterior run at", time("year"), time("day"),
       time("seconds") / 60 / 60)
 
