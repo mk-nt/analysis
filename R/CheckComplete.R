@@ -117,7 +117,7 @@ ExtendRun <- function(pID, scriptID, proportion, buffer = 1.15) {
 #' @importFrom parallel detectCores
 #' @importFrom tools md5sum
 #' @importFrom treess getESSMethods treess
-#' @importFrom TreeDist GetParallel RobinsonFoulds StartParallel
+#' @importFrom TreeDist RobinsonFoulds
 #' @export
 UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
                           forgetCache = FALSE, makeSlurm = FALSE) {
@@ -192,10 +192,14 @@ UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
     message(clone)
     return(FALSE)
   }
+  
+  if (!file.exists(ConvergenceFile(pID, scriptID))) {
+    forgetCache <- TRUE
+  }
 
   if (!fetched) {
     message("No new results for ", pID, " ", scriptID,
-            if (!searchRemote && !forgetCache) "; exiting")
+            if (!searchRemote && !forgetCache) "; exiting" else ". Checking for uncommitted files on remote...")
     if (!searchRemote && !forgetCache) {
       return(FALSE)
     }
@@ -206,8 +210,8 @@ UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
   checkout <- system2("git", "checkout main", stdout = TRUE, stderr = TRUE)
   pull <- system2("git", "pull --rebase", stdout = TRUE)
   
-  if (pull[[1]] != "Already up to date.") {
-    message("Pull error 157 in ", pID, "_", scriptID, ": ",
+  if (!"Already up to date." %in% pull) {
+    message("Pull error 210 in ", pID, "_", scriptID, ": ",
             paste(pull, collapse = "\r\n"))
   }
   
@@ -218,7 +222,7 @@ UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
     # Check on the remote
     remoteFile <- file.path(RemoteDir(), scriptBase, log1)
     session <- SshSession()
-    if (isFALSE(session) && 
+    if (!isFALSE(session) && 
         ssh_exec_wait(session, paste("test -f", remoteFile)) == 0) {
       push <- ssh_exec_wait(
         .ssh$session,
@@ -272,7 +276,7 @@ UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
       return(structure(FALSE, reason = "Not converged"))
     }
     hasConverged <- TRUE
-    
+
     # Calculate ESS from POOLED samples (not individual runs)
     ess <- vapply(burnins[converged],
                   function(b) ESS(fileContents, b, sum),
@@ -308,9 +312,7 @@ UpdateRecords <- function(pID, scriptID, searchRemote = FALSE,
                                                length.out = min(1000, nTrees))])
       cli_progress_message("Calculating tree ESS")
       
-      if (length(GetParallel()) == 0) {
-        StartParallel(ceiling(detectCores() * 0.75))
-      }
+      options(mc.cores = min(8L, ceiling(detectCores() * 0.75)))
       treeESS <- do.call(
         rbind,
         treess(t1000, RobinsonFoulds, methods = getESSMethods(TRUE))
