@@ -3,7 +3,7 @@
 This repository contains scripts necessary to replicate the analyses of 
 
 Smith & Yang (2026), "Directional Biases in Morphological Evolution:
-Implications for Phylogenetic Models".
+Implications for Phylogenetic Models", _Systematic Biology_, in production.
 
 Usage details are provided in the package vignettes.
 
