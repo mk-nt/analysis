@@ -6,10 +6,10 @@ bibentry(
              person("Bo", "Yang")),
   year = 2026,
   journal = "Systematic Biology",
-  pages = "under review",
+  pages = "in press",
   textVersion = paste0(
-    "Smith, M.R. & Yang, B. (20XX). Directional Biases in Morphological ",
+    "Smith, M. R. & Yang, B. (2026). Directional Biases in Morphological ",
     "Evolution: Implications for Phylogenetic Models. ",
-    "Systematic Biology, under review."
+    "Systematic Biology, in press."
   )
 )
