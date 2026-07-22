@@ -1,6 +1,6 @@
 Package: neotrans
-Title: Modelling the evolution of neomorphic characters
-Version: 2026-05-29
+Title: Analyses for: Directional Biases in Morphological Evolution: Implications for Phylogenetic Models
+Version: 2026-07-22
 Authors@R: c(
   person("Martin R.", 'Smith', role = c("aut", "cre", "cph"), 
          email = "martin.smith@durham.ac.uk",
@@ -9,8 +9,8 @@ Authors@R: c(
 License: GPL (>= 3)
 Description: Conduct and analyse phylogenetic inference using custom models of
   morphological evolution
-URL: https://ms609.github.io/neotrans/, https://github.com/ms609/neotrans/
-BugReports: https://github.com/ms609/neotrans/issues/
+URL: https://mk-nt.github.io/analysis/
+BugReports: https://github.com/mk-nt/analysis/issues/
 Depends:
   R (>= 4.4.0),
 Imports:
