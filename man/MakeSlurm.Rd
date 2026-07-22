@@ -11,9 +11,7 @@ MakeSlurm(
   ml = FALSE,
   ess = EssTarget(pID, scriptID),
   replace = FALSE,
-  generous = TRUE,
-  dependency = NULL,
-  timeOverride = NULL
+  generous = TRUE
 )
 }
 \arguments{
@@ -28,21 +26,6 @@ run MCMCMC analysis}
 
 \item{replace}{Logical: should a corresponding job be cancelled in order to
 run this job instead?}
-
-\item{dependency}{Optional character giving a SLURM dependency clause to be
-passed via \verb{--dependency=} (e.g. \code{"afterany:17218353"}).  When set, the
-"Job already in queue" guard is skipped, since a chain of jobs deliberately
-shares a job name.  See \verb{man sbatch} for the full grammar; this package's
-\code{\link[=MakeSlurmChain]{MakeSlurmChain()}} supplies \verb{afterany:<prev>} to chain checkpoint-resuming
-runs end-to-end.}
-
-\item{timeOverride}{Optional integer specifying wall-clock seconds to request
-for this job, bypassing the prediction returned by \code{\link[=Cores]{Cores()}}.  Used by
-\code{\link[=MakeSlurmChain]{MakeSlurmChain()}} to slice a long analysis into uniform chunks.}
-}
-\value{
-On success, an integer SLURM JobID (truthy in logical contexts).
-On failure, \code{FALSE} with a \code{"reason"} attribute.
 }
 \description{
 Create a slurm job
