@@ -280,6 +280,20 @@ namesOK <- names(results)[resOK]
 {# Supplementary Bayes factor matrix: one row per project, one column per model.
  # Each cell links to the GitHub repository, labelled with the Bayes factor
  # against the best-supported model for that project (en-dash = best model).
+  bfIntroHtml <- markdown::markdownToHTML(text = "
+## Bayes factors by project and model
+
+- Each row corresponds to a MorphoBank project; each column a model.
+  Columns can be sorted by clicking the header box.
+
+- Cell values are the log Bayes factor against the best-supported model
+  for that project (marked with a dash), shaded from bright yellow
+  (best model) to dark purple (least supported model).
+  
+- Each cell links to the corresponding GitHub repository.
+
+", fragment.only = TRUE)
+
   bfMatrix <- vapply(kiModels, BFLink, character(length(namesOK)),
                      invert = TRUE)
   bfTable <- data.frame(ID = LinkMB(namesOK), bfMatrix, check.names = FALSE)
@@ -398,27 +412,8 @@ namesOK <- names(results)[resOK]
 
   saveWidget(bfWidget, "bf_matrix.html", selfcontained = TRUE,
              title = "Bayes factors by project and model")
-  bf_intro_html <- markdown::markdownToHTML(text = "
-## Bayes factor comparison of all models for each MorphoBank project
-
-- Each row corresponds to one MorphoBank project (linked via the \"ID\" column).
-  Each column corresponds to one of 17 analytical models tested.
-
-- The value in each cell is the log Bayes factor of the best-supported model
-  for that project relative to the column model.
-  A dash indicates the best-supported model for that row.
-  Each cell links to a corresponding GitHub repository containing the analytical
-  scripts and artefacts.
-
-- Cell background colour encodes relative model support _within each row_:
-  bright yellow = best-supported model; dark purple = least supported.
-
-- Columns can be sorted by clicking the column header.
-
-", fragment.only = TRUE)
   lines <- readLines("bf_matrix.html")
   writeLines(
-    append(lines, bf_intro_html,
-           which(grepl("id=\"htmlwidget_container", lines)) - 1),
+    append(lines, bfIntroHtml, which(grepl("id=\"htmlwidget_container", lines)) - 1),
     "bf_matrix.html")
 }
