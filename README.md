@@ -1,4 +1,4 @@
-# Mk-nt analysis
+# Analyses for: Directional Biases in Morphological Evolution
 
 This repository contains scripts necessary to replicate the analyses of 
 
